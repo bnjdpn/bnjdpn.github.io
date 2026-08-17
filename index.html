@@ -45,6 +45,16 @@
             "description": "Technical Leader and independent product builder shipping production software and privacy-minded Apple apps through structured, AI-assisted workflows.",
             "homeLocation": { "@type": "Place", "name": "Paris, France" },
             "worksFor": { "@type": "Organization", "name": "Shodo Studio", "url": "https://shodo.io/" },
+            "hasOccupation": {
+              "@type": "Occupation",
+              "name": "Technical Leader",
+              "occupationalCategory": "15-1252.00",
+              "skills": "Software architecture, backend systems, legacy modernization, technical leadership, AI-assisted delivery, native Apple development"
+            },
+            "alumniOf": [
+              { "@type": "CollegeOrUniversity", "name": "ESGI", "description": "Master’s degree, Software Architecture" },
+              { "@type": "CollegeOrUniversity", "name": "Conservatoire National des Arts et Métiers", "description": "Professional bachelor’s degree, Information and decision systems analysis and design" }
+            ],
             "sameAs": [
               "https://www.linkedin.com/in/benjamin-dupin/",
               "https://github.com/bnjdpn",
@@ -73,9 +83,9 @@
             "@id": "https://bnjdpn.github.io/#profile",
             "url": "https://bnjdpn.github.io/",
             "name": "Benjamin Dupin — Technical Leader & Independent Product Builder",
-            "description": "Published apps, products in preparation and production work by Benjamin Dupin.",
+            "description": "Profile, twelve years of production work and the published Apple apps of Benjamin Dupin.",
             "inLanguage": "en",
-            "dateModified": "2026-08-17T09:17:01Z",
+            "dateModified": "2026-08-17T15:45:00Z",
             "isPartOf": { "@id": "https://bnjdpn.github.io/#website" },
             "mainEntity": { "@id": "https://bnjdpn.github.io/#person" },
             "hasPart": { "@id": "https://bnjdpn.github.io/#portfolio" }
@@ -136,20 +146,142 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="overline">Portfolio / Updated 17 August 2026</p>
-          <h1 id="hero-title">Here’s what<br>I’ve shipped.</h1>
-          <p class="intro">I turn real-world problems into focused, production-ready software through structured, AI-assisted workflows.</p>
-          <p class="about-short">I’m Benjamin, a Technical Leader at <a href="https://shodo.io/">Shodo Studio</a> and an independent product builder based in Paris, France.</p>
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="about-copy">
+          <p class="overline">Profile / Updated 17 August 2026</p>
+          <h1 id="about-title">I architect,<br>specify, orchestrate<br>and validate.</h1>
+          <p class="intro">Technical Leader with twelve years in software architecture, backend systems and team leadership. I work on the high-impact end of a codebase: legacy remediation, monolith decomposition, contract testing, technical migrations and delivery practices.</p>
+          <p class="about-short">I’m Benjamin, a Technical Leader at <a href="https://shodo.io/">Shodo Studio</a> in Paris. Since January 2026 I also design and publish iOS apps on my own, from the idea to the App Store release. Stack-agnostic by design: what matters is shipping systems that stay reliable and maintainable.</p>
+          <ul class="principles" aria-label="How I work">
+            <li><strong>Architecture first</strong><span>Specify and validate before generating.</span></li>
+            <li><strong>Human accountability</strong><span>AI supports the process; review stays mine.</span></li>
+            <li><strong>Privacy-minded</strong><span>Local processing when the product benefits.</span></li>
+            <li><strong>Built to ship</strong><span>Distribution and verification are part of the work.</span></li>
+          </ul>
+          <nav aria-label="Benjamin Dupin’s public profiles">
+            <a href="https://www.linkedin.com/in/benjamin-dupin/" rel="me">Connect on LinkedIn ↗</a>
+            <a href="https://github.com/bnjdpn" rel="me">Browse public code ↗</a>
+            <a href="https://apps.apple.com/fr/developer/benjamin-dupin/id1871474236" rel="me">Browse published apps ↗</a>
+          </nav>
+        </div>
+        <aside class="about-note">
+          <picture><source type="image/webp" srcset="assets/profile/github-avatar.webp"><img src="assets/profile/github-avatar.jpg" width="460" height="460" alt="A white cat in a captain’s uniform, Benjamin’s GitHub avatar" fetchpriority="high" decoding="async"></picture>
+          <p>Yes, my GitHub is guarded by a captain cat.</p>
+          <dl><div><dt>Based in</dt><dd>Paris, France</dd></div><div><dt>Working at</dt><dd>Shodo Studio, since November 2023</dd></div><div><dt>This website</dt><dd>No cookies, no tracking</dd></div></dl>
+        </aside>
+      </section>
+
+      <nav class="contents" aria-label="Contents">
+        <a href="#experience"><span>01</span>Experience</a>
+        <a href="#products"><span>02</span>Apps</a>
+      </nav>
+
+      <section class="work-section experience" id="experience" aria-labelledby="experience-title">
+        <header class="section-heading">
+          <p>01 / Experience</p>
+          <h2 id="experience-title">What changed<br>after I joined.</h2>
+          <p>Twelve years across fintech, retail, corporate banking, payments and public agencies. The companies give the context; the delivery remains the point.</p>
+        </header>
+
+        <div class="role-log">
+          <article class="role">
+            <p class="role-period">2025—2026<span>via Shodo Studio</span></p>
+            <div class="role-body">
+              <h3>Yomoni</h3>
+              <p class="role-title">Software Engineer</p>
+              <p class="role-context">Managed savings and investment fintech, direct to consumer and through the Althéis B2B2C platform for institutional partners. Collecte team: two product managers, a tech lead, a DevOps and several developers.</p>
+              <ul><li>Led legacy remediation and split a monolith into autonomous services, orchestrating the implementation through Claude Code under systematic architectural review.</li><li>Designed and rolled out contract testing with OpenAPI and Pact to secure the front-end/back-end integrations.</li><li>Moved the delivery pipeline from Travis CI to GitHub Actions and specified the pipeline architecture.</li><li>Led new features on the Althéis B2B2C platform under domain-driven design and hexagonal architecture.</li></ul>
+              <p class="role-stack">Java 17→25 · Spring Boot · Hexagonal architecture · DDD · OpenAPI · AWS (Elastic Beanstalk, ECS, SQS) · React · GitHub Actions</p>
+            </div>
+          </article>
+          <article class="role">
+            <p class="role-period">2023—2025<span>via Shodo Studio</span></p>
+            <div class="role-body">
+              <h3>Fnac Darty</h3>
+              <p class="role-title">Software Engineer</p>
+              <p class="role-context">Products &amp; Content team inside Darty’s Digital Factory, on the cold product data and marketplace features of darty.com. Team of a product owner, two business analysts, eight back-end and four front-end developers.</p>
+              <ul><li>Migrated the search platform from Elasticsearch 6 to Elasticsearch 8, then made the applications compatible.</li><li>Designed, built and deployed a new application on Microsoft Azure.</li><li>Ran the technical migrations: Java, Spring Boot and Dropwizard.</li><li>Organised code katas for the team.</li></ul>
+              <p class="role-stack">Java 11→21 · Elasticsearch 6→8 · Spring Boot 2→3 · Microsoft Azure · GitLab CI</p>
+            </div>
+          </article>
+          <article class="role">
+            <p class="role-period">2020—2023</p>
+            <div class="role-body">
+              <h3>Société Générale CIB</h3>
+              <p class="role-title">Technical Leader</p>
+              <p class="role-context">Loan Factory, automating deal lifecycle processing inside Loan IQ, the ERP handling large multi-party credits. Joined as a developer, then became Technical Leader. The tribe spans Paris, Bangalore and New York.</p>
+              <ul><li>Led the technical growth of a three-developer feature team, owning architecture decisions and the quality of the code shipped.</li><li>Specified and validated the Java 7→17 and Spring Boot 2.3→3.1 migrations while keeping hexagonal compliance.</li><li>Treated technical debt, architecture, hiring and knowledge transfer as one system.</li><li>Recruited developers and presented brown-bag sessions to the tribe on BDD, Java 11, Java 17 and Spring Boot 3.</li></ul>
+              <p class="role-stack">Java 7→17 · Spring Boot 2.3→3.1 · Angular 11 · Oracle · Hexagonal architecture · DDD · BDD · Cucumber · Kubernetes · Kotlin</p>
+            </div>
+          </article>
+          <article class="role">
+            <p class="role-period">2018—2020</p>
+            <div class="role-body">
+              <h3>Arval, BNP Paribas</h3>
+              <p class="role-title">Full-Stack Developer</p>
+              <p class="role-context">Arval Active Link, embedded telematics for corporate vehicle fleets, used among other things to nudge drivers towards more responsible driving. Around ten developers, three product owners and a CTO.</p>
+              <ul><li>Migrated Java 8 to 11 and Spring Boot 1.3 to 2.1.</li><li>Introduced Elasticsearch.</li><li>Acted as Scrum Master for the team.</li></ul>
+              <p class="role-stack">Java 8→11 · Spring Boot 1.3→2.1 · Microservices · Oracle · Elasticsearch · Redis · AWS · Angular</p>
+            </div>
+          </article>
         </div>
 
-        <div class="app-proof" aria-label="Apps and products by Benjamin Dupin">
-          <div class="proof-heading">
-            <p><strong>Apps</strong><span>Shipped on the App Store,<br>plus what comes next</span></p>
-            <a href="https://apps.apple.com/fr/developer/benjamin-dupin/id1871474236">Developer profile ↗</a>
+        <details class="earlier-roles">
+          <summary>Earlier roles, 2014 to 2018 <span>+</span></summary>
+          <div class="role-log role-log--compact">
+            <article class="role role--compact">
+              <p class="role-period">2018</p>
+              <div class="role-body">
+                <h3>STET</h3>
+                <p class="role-title">Back-End Developer</p>
+                <p class="role-context">Version 2 of STET-CORE, the French and European mass payment clearing system, enabling bank-to-bank Instant Payment transfers in under twenty seconds. Introduced craft practices: code review, unit tests, Sonar metrics.</p>
+                <p class="role-stack">Java 8 · Vert.X · Cassandra · Solr · Kafka · Docker · Reactive architecture</p>
+              </div>
+            </article>
+            <article class="role role--compact">
+              <p class="role-period">2016—2018</p>
+              <div class="role-body">
+                <h3>Docaposte</h3>
+                <p class="role-title">Back-End Developer</p>
+                <p class="role-context">La Poste’s digital hub, on the “Veiller sur mes parents” and Proxi Services projects, which let the postal carrier collect information such as survey answers or a relative’s wellbeing check. Introduced Kafka and Elasticsearch.</p>
+                <p class="role-stack">Java 8 · Spring 4 · Vert.X · Cassandra · Elasticsearch · Kafka · Docker · Puppet · Microservices</p>
+              </div>
+            </article>
+            <article class="role role--compact">
+              <p class="role-period">2016</p>
+              <div class="role-body">
+                <h3>Economat des Armées</h3>
+                <p class="role-title">Back-End Developer</p>
+                <p class="role-context">Replacement of the first version of the internal tool used to monitor French army sites, rebuilt by a team of six under Scrum. Implemented JWT authentication and trained the team on Spring.</p>
+                <p class="role-stack">Java 8 · Spring Boot · MySQL</p>
+              </div>
+            </article>
+            <article class="role role--compact">
+              <p class="role-period">2014—2016<span>via CGI, apprenticeship</span></p>
+              <div class="role-body">
+                <h3>Agence de l’Eau Seine-Normandie</h3>
+                <p class="role-title">Full-Stack Developer</p>
+                <p class="role-context">One of the six French agencies fighting water pollution. Replaced a set of Excel files with an application computing treatment-plant yields, built by five people using agile methods. Set up DBUnit integration tests and handed the work over to the maintenance team.</p>
+                <p class="role-stack">Java 6 · Spring 4 · Hibernate · Oracle · Backbone</p>
+              </div>
+            </article>
           </div>
-          <div class="icon-wall" id="icon-wall">
+        </details>
+
+        <dl class="education">
+            <div><dt>2014—2016 · ESGI</dt><dd>Master’s degree, Software Architecture</dd></div>
+            <div><dt>2013—2014 · Conservatoire National des Arts et Métiers</dt><dd>Professional bachelor’s degree, Information and decision systems analysis and design</dd></div>
+        </dl>
+      </section>
+
+      <section class="work-section" id="products" aria-labelledby="products-title">
+        <header class="section-heading">
+          <p>02 / Apps</p>
+          <h2 id="products-title">Focused problems.<br>Real builds.</h2>
+          <p>Designed, built and released on my own. Every row leads to a real build and a page you can check. The ones still in preparation say so.</p>
+        </header>
+
+        <div class="icon-wall" id="icon-wall" aria-label="App icons, each linking to the app">
             <a href="https://apps.apple.com/app/id6758211103" aria-label="LoadSense on the App Store"><picture><source type="image/webp" srcset="assets/apps/loadsense.webp"><img src="assets/apps/loadsense.png" width="512" height="512" alt="LoadSense icon" loading="lazy" decoding="async"></picture></a>
             <a href="https://apps.apple.com/app/id6758854166" aria-label="TempoReps on the App Store"><picture><source type="image/webp" srcset="assets/apps/temporeps.webp"><img src="assets/apps/temporeps.png" width="512" height="512" alt="TempoReps icon" loading="lazy" decoding="async"></picture></a>
             <a href="https://apps.apple.com/app/id6758960761" aria-label="PRVault on the App Store"><picture><source type="image/webp" srcset="assets/apps/prvault.webp"><img src="assets/apps/prvault.png" width="512" height="512" alt="PRVault icon" loading="lazy" decoding="async"></picture></a>
@@ -168,130 +300,97 @@
             <a href="https://apps.apple.com/app/id6792521948" aria-label="Petites Dents on the App Store"><picture><source type="image/webp" srcset="assets/apps/petites-dents.webp"><img src="assets/apps/petites-dents.png" width="512" height="512" alt="Petites Dents icon" loading="lazy" decoding="async"></picture></a>
             <a href="https://bnjdpn.github.io/Echappee/" aria-label="Échappée development site"><picture><source type="image/webp" srcset="assets/apps/echappee.webp"><img src="assets/apps/echappee.png" width="512" height="512" alt="Échappée icon" loading="lazy" decoding="async"></picture></a>
             <a href="https://bnjdpn.github.io/NovaStationPinball/" aria-label="Nova Station Pinball development site"><picture><source type="image/webp" srcset="assets/apps/nova-station-pinball.webp"><img src="assets/apps/nova-station-pinball.png" width="512" height="512" alt="Nova Station Pinball icon" loading="lazy" decoding="async"></picture></a>
-          </div>
-          <script>shuffleChildren(document.getElementById("icon-wall"));</script>
         </div>
-      </section>
-
-      <nav class="contents" aria-label="Contents">
-        <a href="#products"><span>01</span>Apps</a>
-        <a href="#deliveries"><span>02</span>Production work</a>
-        <a href="#profile"><span>03</span>Profile</a>
-      </nav>
-
-      <section class="work-section" id="products" aria-labelledby="products-title">
-        <header class="section-heading">
-          <p>01 / Apps</p>
-          <h2 id="products-title">Focused problems.<br>Real builds.</h2>
-          <p>Every row leads to a real build and a page you can check. The ones still in preparation say so.</p>
-        </header>
+        <script>shuffleChildren(document.getElementById("icon-wall"));</script>
 
         <div class="product-index" id="product-index">
           <article class="product-row product-row--lead">
             <div class="product-number">001</div>
-            <picture><source type="image/webp" srcset="assets/apps/loadsense.webp"><img src="assets/apps/loadsense.png" width="512" height="512" alt="LoadSense icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iPhone, iPad &amp; Apple Watch</p><h3>LoadSense</h3><p>Turns Apple Health signals into an explainable view of energy, sleep and recovery, then runs a 28-day experiment entirely on device.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/LoadSense/">Website ↗</a><a href="https://apps.apple.com/app/id6758211103">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">002</div>
-            <picture><source type="image/webp" srcset="assets/apps/temporeps.webp"><img src="assets/apps/temporeps.png" width="512" height="512" alt="TempoReps icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS &amp; watchOS</p><h3>TempoReps</h3><p>Nine gym timers that stay readable at a distance, with alternating A/B workouts, Apple Watch and Live Activities.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/TempoReps/">Website ↗</a><a href="https://apps.apple.com/app/id6758854166">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">003</div>
-            <picture><source type="image/webp" srcset="assets/apps/prvault.webp"><img src="assets/apps/prvault.png" width="512" height="512" alt="PRVault icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS &amp; iPadOS</p><h3>PRVault</h3><p>Logs lift, WOD and cardio records across 386 exercises with 1RM formulas, CSV export and iCloud sync.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/PRVault/">Website ↗</a><a href="https://apps.apple.com/app/id6758960761">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">004</div>
-            <picture><source type="image/webp" srcset="assets/apps/groovelog.webp"><img src="assets/apps/groovelog.png" width="512" height="512" alt="GrooveLog icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS</p><h3>GrooveLog</h3><p>A Grease the Groove coach: start a pull-up cycle in about two minutes, then follow the next easy set.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/GrooveLog/">Website ↗</a><a href="https://apps.apple.com/app/id6760195408">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">005</div>
-            <picture><source type="image/webp" srcset="assets/apps/fastzen.webp"><img src="assets/apps/fastzen.png" width="512" height="512" alt="FastZen icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS</p><h3>FastZen</h3><p>Pick fasting days and a start time once. Local reminders bring you back and a Live Activity keeps the timer close.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/FastZen/">Website ↗</a><a href="https://apps.apple.com/app/id6761484595">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">006</div>
-            <picture><source type="image/webp" srcset="assets/apps/coldload.webp"><img src="assets/apps/coldload.png" width="512" height="512" alt="ColdLoad icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS, 21 languages</p><h3>ColdLoad</h3><p>Barbell plate maths that stays local: five plate styles, plate stock and bar limits, no account.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/ColdLoad/">Website ↗</a><a href="https://apps.apple.com/app/id6785921799">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">007</div>
-            <picture><source type="image/webp" srcset="assets/apps/moveatlas.webp"><img src="assets/apps/moveatlas.png" width="512" height="512" alt="MoveAtlas icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · Offline</p><h3>MoveAtlas</h3><p>An atlas of 1,324 exercises that works offline, then builds workouts by duration, equipment and body focus.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/MoveAtlas/">Website ↗</a><a href="https://apps.apple.com/app/id6786200811">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">008</div>
-            <picture><source type="image/webp" srcset="assets/apps/neatshift.webp"><img src="assets/apps/neatshift.png" width="512" height="512" alt="NeatShift icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS &amp; iPadOS</p><h3>NeatShift</h3><p>Balances household chores around real availability, room by room, and keeps the household in sync privately.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/NeatShift/">Website ↗</a><a href="https://apps.apple.com/app/id6759961773">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">009</div>
-            <picture><source type="image/webp" srcset="assets/apps/brewmeter.webp"><img src="assets/apps/brewmeter.png" width="512" height="512" alt="BrewMeter icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS &amp; widgets</p><h3>BrewMeter</h3><p>A private caffeine journal: test a drink before logging it, add it from a widget or Siri, confirm a sleep-aware cutoff.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/BrewMeter/">Website ↗</a><a href="https://apps.apple.com/app/id6760132566">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">010</div>
-            <picture><source type="image/webp" srcset="assets/apps/nobuycart.webp"><img src="assets/apps/nobuycart.png" width="512" height="512" alt="NoBuy Cart icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS</p><h3>NoBuy Cart</h3><p>A fictional marketplace with a cart you never check out, so the money you did not spend stays visible.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/NoBuyCart/">Website ↗</a><a href="https://apps.apple.com/app/id6778049102">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">011</div>
-            <picture><source type="image/webp" srcset="assets/apps/pasdujour.webp"><img src="assets/apps/pasdujour.png" width="512" height="512" alt="Pas du Jour icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · Apple Watch</p><h3>Pas du Jour</h3><p>Step complications and widgets for the wrist: six built-in styles or your own, with the goal set from the watch.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/PasDuJour/">Website ↗</a><a href="https://apps.apple.com/app/id6795232703">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">012</div>
-            <picture><source type="image/webp" srcset="assets/apps/vesperdrift.webp"><img src="assets/apps/vesperdrift.png" width="512" height="512" alt="Vesper Drift icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS game</p><h3>Vesper Drift</h3><p>A vertical arcade run built for one thumb: four timed Blooms, automatic Nova, one endless score.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/VesperDrift/">Website ↗</a><a href="https://apps.apple.com/app/id6791882792">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">013</div>
-            <picture><source type="image/webp" srcset="assets/apps/petites-gouttes.webp"><img src="assets/apps/petites-gouttes.png" width="512" height="512" alt="Petites Gouttes icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS &amp; Android</p><h3>Petites Gouttes</h3><p>Tracks a frozen breast-milk stash — dates, FIFO order, alerts — without turning family logistics into a spreadsheet.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/petites-gouttes/">Website ↗</a><a href="https://apps.apple.com/app/id6760202126">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">014</div>
-            <picture><source type="image/webp" srcset="assets/apps/petites-bouchees.webp"><img src="assets/apps/petites-bouchees.png" width="512" height="512" alt="Petites Bouchées icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS &amp; Android</p><h3>Petites Bouchées</h3><p>A weaning and allergy journal with 191 built-in foods, introduced one at a time. Family transfer stays file-based.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/petites-bouchees/">Website ↗</a><a href="https://apps.apple.com/app/id6760203890">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">015</div>
-            <picture><source type="image/webp" srcset="assets/apps/petites-nuits.webp"><img src="assets/apps/petites-nuits.png" width="512" height="512" alt="Petites Nuits icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS &amp; Android</p><h3>Petites Nuits</h3><p>A calm record of nights, wakeups and feeds. Trends without turning bedtime into a dashboard.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/petites-nuits/">Website ↗</a><a href="https://apps.apple.com/app/id6764533941">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">016</div>
-            <picture><source type="image/webp" srcset="assets/apps/petites-dents.webp"><img src="assets/apps/petites-dents.png" width="512" height="512" alt="Petites Dents icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">Available · iOS &amp; Android</p><h3>Petites Dents</h3><p>A timeline of all 20 baby teeth with the exact age at each eruption, exported as a local PDF.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/petites-dents/">Website ↗</a><a href="https://apps.apple.com/app/id6792521948">App Store ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">017</div>
-            <picture><source type="image/webp" srcset="assets/apps/echappee.webp"><img src="assets/apps/echappee.png" width="512" height="512" alt="Échappée icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">In preparation · Mac, iPhone &amp; iPad</p><h3>Échappée</h3><p>A contemplative indoor cycling game: a procedural road, changing light, structured FTMS workouts and a real smart trainer as the controller. Built and tested, not released yet.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/Echappee/">Website ↗</a></div>
           </article>
           <article class="product-row">
             <div class="product-number">018</div>
-            <picture><source type="image/webp" srcset="assets/apps/nova-station-pinball.webp"><img src="assets/apps/nova-station-pinball.png" width="512" height="512" alt="Nova Station Pinball icon" loading="lazy" decoding="async"></picture>
             <div class="product-copy"><p class="product-state">In preparation · iPhone &amp; iPad</p><h3>Nova Station Pinball</h3><p>One complete retro pinball table with an interactive guide, 17 missions, nine promotions and multiball. Offline and ad-free.</p></div>
             <div class="product-actions"><a href="https://bnjdpn.github.io/NovaStationPinball/">Website ↗</a></div>
           </article>
@@ -309,58 +408,9 @@
         </script>
       </section>
 
-      <section class="work-section deliveries" id="deliveries" aria-labelledby="deliveries-title">
-        <header class="section-heading">
-          <p>02 / Production work</p>
-          <h2 id="deliveries-title">What changed<br>after I joined.</h2>
-          <p>The companies provide context. The delivery remains the point.</p>
-        </header>
-
-        <div class="delivery-log">
-          <article>
-            <p class="delivery-date">2025—2026 · Yomoni</p>
-            <h3>A monolith made progressively changeable.</h3>
-            <ul><li>Decomposed responsibilities into autonomous services.</li><li>Secured front-end and back-end contracts with OpenAPI and Pact tests.</li><li>Migrated the delivery pipeline from Travis CI to GitHub Actions.</li></ul>
-          </article>
-          <article>
-            <p class="delivery-date">2023—2025 · Fnac Darty</p>
-            <h3>Darty’s catalogue moved to Elasticsearch&nbsp;8.</h3>
-            <ul><li>Migrated the search platform from version 6 to version 8.</li><li>Designed, developed and deployed a new Azure application.</li><li>Delivered application migrations without reducing business service.</li></ul>
-          </article>
-          <article>
-            <p class="delivery-date">2020—2023 · SGCIB</p>
-            <h3>A platform and its team brought forward together.</h3>
-            <ul><li>Moved Java 7 to Java 17 and Spring Boot 2.3 to 3.1.</li><li>Led the technical growth of a three-developer feature team.</li><li>Treated architecture, technical debt, hiring and knowledge transfer as one system.</li></ul>
-          </article>
-        </div>
-      </section>
 
 
 
-      <section class="profile" id="profile" aria-labelledby="profile-title">
-        <div class="profile-main">
-          <p class="overline">03 / Profile</p>
-          <h2 id="profile-title">Benjamin Dupin</h2>
-          <p>I’m a Technical Leader at Shodo Studio with over a decade of experience in software architecture, backend systems, legacy modernisation and technical leadership.</p>
-          <p>I work across the full delivery chain: product framing, architecture, implementation, validation and release. AI supports that process; specifications, tests and human accountability remain in charge.</p>
-          <ul class="principles" aria-label="Product principles">
-            <li><strong>Focused</strong><span>One real problem before a long feature list.</span></li>
-            <li><strong>Privacy-minded</strong><span>Local processing when the product benefits from it.</span></li>
-            <li><strong>Native when valuable</strong><span>Platform capabilities used with a purpose.</span></li>
-            <li><strong>Built to ship</strong><span>Distribution and verification are part of the product.</span></li>
-          </ul>
-          <nav aria-label="Benjamin Dupin’s public profiles">
-            <a href="https://www.linkedin.com/in/benjamin-dupin/" rel="me">Connect on LinkedIn ↗</a>
-            <a href="https://github.com/bnjdpn" rel="me">Browse public code ↗</a>
-            <a href="https://apps.apple.com/fr/developer/benjamin-dupin/id1871474236" rel="me">Browse published apps ↗</a>
-          </nav>
-        </div>
-        <aside class="profile-note">
-          <picture><source type="image/webp" srcset="assets/profile/github-avatar.webp"><img src="assets/profile/github-avatar.jpg" width="460" height="460" alt="A white cat in a captain’s uniform, Benjamin’s GitHub avatar" loading="lazy" decoding="async"></picture>
-          <p>Yes, my GitHub is guarded by a captain cat.</p>
-          <dl><div><dt>Education</dt><dd>Master’s in Software Architecture, ESGI</dd></div><div><dt>Based in</dt><dd>Paris, France</dd></div><div><dt>This website</dt><dd>No cookies, no tracking</dd></div></dl>
-        </aside>
-      </section>
     </main>
 
     <footer class="footer">

@@ -19,12 +19,12 @@ const expect = (condition, message) => {
   if (!condition) failures.push(message);
 };
 
-for (const id of ["main", "products", "deliveries", "profile"]) {
+for (const id of ["main", "about", "experience", "products"]) {
   expect(index.includes('id="' + id + '"'), "Missing section: #" + id);
 }
 
 expect(index.includes('<html lang="en">'), "The hub must declare English as its language.");
-expect(index.includes("Here’s what<br>I’ve shipped."), "The editorial promise on the first screen disappeared.");
+expect(index.includes("I architect,<br>specify, orchestrate<br>and validate."), "The first screen must open on how Benjamin works, not on the catalogue.");
 expect(index.includes("In preparation · Mac, iPhone &amp; iPad"), "Échappée’s honest release status disappeared.");
 expect(index.includes("In preparation · iPhone &amp; iPad"), "Nova Station Pinball’s honest release status disappeared.");
 expect(index.includes("Technical Leader &amp; Independent Product Builder"), "The SEO positioning is missing.");
@@ -50,11 +50,26 @@ for (const path of projectPaths) {
 
 const productRows = [...index.matchAll(/<article class="product-row[^"]*">[\s\S]*?<\/article>/g)].map((m) => m[0]);
 expect(productRows.length === 18, "The product index must list the 18 products, found " + productRows.length + ".");
-expect(productRows.every((row) => /<img\b[^>]*\bwidth="\d+"[^>]*\bheight="\d+"/.test(row)), "Every product icon must declare intrinsic dimensions.");
+expect(productRows.every((row) => !row.includes("<img")), "The product index must stay typographic; icons belong to the icon wall only.");
+const wall = index.match(/<div class="icon-wall"[^>]*>[\s\S]*?<\/div>/);
+expect(Boolean(wall), "The icon wall is missing.");
+expect((wall?.[0].match(/<img\b/g) || []).length === 18, "The icon wall must show the 18 apps.");
+expect((wall?.[0].match(/<img\b[^>]*\bwidth="\d+"[^>]*\bheight="\d+"/g) || []).length === 18, "Every icon must declare intrinsic dimensions.");
+expect(/id="icon-wall"[\s\S]{0,200}?<a href/.test(index), "The icon wall must contain links.");
 expect(productRows.filter((row) => row.includes("product-row--lead")).length === 1, "Exactly one product row must carry the lead treatment in the source order.");
 expect(index.includes('id="icon-wall"') && index.includes('id="product-index"'), "The shuffled containers must keep their identifiers.");
 expect(/shuffleChildren\(document\.getElementById\("icon-wall"\)\)/.test(index), "The icon wall must be shuffled on load.");
 expect(!/assets\/projects\//.test(index + "\n" + styles), "Editorial illustration assets must not come back.");
+
+const aboutAt = index.indexOf('id="about"');
+const expAt = index.indexOf('id="experience"');
+const productsAt = index.indexOf('id="products"');
+expect(aboutAt < expAt && expAt < productsAt, "Reading order must stay: profile, then experience, then apps.");
+const roles = [...index.matchAll(/<article class="role[^"]*">/g)].length;
+expect(roles === 8, "The experience log must keep the eight real assignments, found " + roles + ".");
+expect(index.includes("Shodo Studio") && index.includes("via CGI, apprenticeship"), "Consulting employers must stay visible next to the client.");
+expect(/<dl class="education">/.test(index), "Education must be stated in the experience section.");
+expect(!index.includes('id="deliveries"'), "The old three-entry delivery log must not come back.");
 
 const jsonLdMatch = index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
 expect(Boolean(jsonLdMatch), "JSON-LD graph is missing.");
