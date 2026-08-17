@@ -30,6 +30,8 @@ expect(index.includes("Technical Leader &amp; Independent Product Builder"), "Th
 expect(!/\b16 apps\b/i.test(index), "A fixed app count was reintroduced into permanent copy.");
 expect(!index.includes("mailto:"), "A direct email address was introduced.");
 expect(!index.includes('target="_blank"'), "Links must not force a new tab.");
+expect(index.includes('src="assets/apps/echappee.png"'), "Échappée’s development entry must keep its icon.");
+expect(index.includes('src="assets/apps/nova-station-pinball.png"'), "Nova Station Pinball’s development entry must keep its icon.");
 
 const appIds = new Set([...index.matchAll(/apps\.apple\.com\/app\/id(\d+)/g)].map((match) => match[1]));
 expect(appIds.size === 16, "Expected 16 unique public App Store apps, found " + appIds.size + ".");
