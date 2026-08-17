@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://bnjdpn.github.io/</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>https://bnjdpn.github.io/sitemap-pages.xml</loc><lastmod>2026-08-17</lastmod></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/BrewMeter/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/ColdLoad/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/Echappee/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/FastZen/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/GrooveLog/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/LoadSense/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/MoveAtlas/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/NeatShift/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/NoBuyCart/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/NovaStationPinball/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/PRVault/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/PasDuJour/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/TempoReps/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/VesperDrift/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/petites-bouchees/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/petites-dents/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/petites-gouttes/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bnjdpn.github.io/petites-nuits/sitemap.xml</loc></sitemap>
+</sitemapindex>

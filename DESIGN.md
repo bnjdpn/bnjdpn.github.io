@@ -4,10 +4,12 @@ Ce site est un inventaire de livraisons, pas une démonstration de technologies.
 
 ## Ordre de lecture
 
-1. Ce qui est déjà disponible : seize applications avec leurs vraies icônes et leurs liens App Store.
+1. Ce qui est déjà disponible : un portfolio évolutif d’applications, avec leurs vraies icônes et leurs liens vers le site et l’App Store.
 2. Ce qui a été livré en entreprise : changements observables, contexte et résultat.
-3. Ce qui est encore en construction : Échappée est présenté honnêtement comme tel.
-4. Les outils publics et le parcours complètent la preuve ; ils ne remplacent pas les produits.
+3. Ce qui est encore en construction : Échappée et Nova Station Pinball sont présentés honnêtement comme tels.
+4. Les outils publics choisis et le parcours complètent la preuve ; ils ne remplacent pas les produits.
+
+Le contenu public est en anglais pour servir de profil international. Il positionne l’IA comme une méthode de travail structurée, testée et sous responsabilité humaine, jamais comme une promesse automatique.
 
 ## Garde-fous anti-slop
 
