@@ -3,7 +3,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const [index, styles, sitemapIndex, sitemapPages, robots, manifest, notFound] = await Promise.all([
+const [index, styles, sitemapIndex, sitemapPages, robots, manifest, notFound, pagesWorkflow] = await Promise.all([
   readFile(resolve(root, "index.html"), "utf8"),
   readFile(resolve(root, "styles.css"), "utf8"),
   readFile(resolve(root, "sitemap.xml"), "utf8"),
@@ -11,6 +11,7 @@ const [index, styles, sitemapIndex, sitemapPages, robots, manifest, notFound] = 
   readFile(resolve(root, "robots.txt"), "utf8"),
   readFile(resolve(root, "site.webmanifest"), "utf8"),
   readFile(resolve(root, "404.html"), "utf8"),
+  readFile(resolve(root, ".github/workflows/pages.yml"), "utf8"),
 ]);
 const failures = [];
 
@@ -72,6 +73,12 @@ expect(sitemapPages.includes("<loc>https://bnjdpn.github.io/</loc>"), "The hub U
 expect(robots.includes("Sitemap: https://bnjdpn.github.io/sitemap.xml"), "robots.txt must expose the root sitemap index.");
 expect(JSON.parse(manifest).description.startsWith("Production software"), "The web manifest is not aligned with the English hub.");
 expect(notFound.includes('<html lang="en">') && notFound.includes("noindex"), "The 404 page must be English and noindex.");
+expect(!pagesWorkflow.includes("rsync"), "GitHub Pages must use an exact public-file allowlist.");
+expect(pagesWorkflow.includes("cp 404.html index.html robots.txt sitemap.xml sitemap-pages.xml site.webmanifest styles.css _site/"), "The Pages allowlist is missing a root public artifact.");
+expect(pagesWorkflow.includes("cp -R assets _site/assets"), "The Pages allowlist must include the public asset tree.");
+const actionUses = [...pagesWorkflow.matchAll(/uses:\s+([^@\s]+)@([^\s]+)/g)];
+expect(actionUses.length === 5, "The Pages workflow must keep its five expected third-party actions.");
+expect(actionUses.every(([, , revision]) => /^[0-9a-f]{40}$/.test(revision)), "Every GitHub Action must be pinned to an immutable commit.");
 
 const localReferences = [...index.matchAll(/(?:href|src)="([^"#]+)"/g)]
   .map((match) => match[1])
