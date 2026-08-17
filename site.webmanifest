@@ -1,7 +1,7 @@
 {
   "name": "Benjamin Dupin — Technical Leader & Independent Product Builder",
   "short_name": "Benjamin Dupin",
-  "description": "Production software, privacy-minded apps and open-source tools by Benjamin Dupin.",
+  "description": "Production software and privacy-minded Apple apps by Benjamin Dupin.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f4f3ef",
@@ -9,7 +9,7 @@
   "icons": [
     {
       "src": "/assets/profile/github-avatar.jpg",
-      "sizes": "320x320",
+      "sizes": "460x460",
       "type": "image/jpeg",
       "purpose": "any"
     }

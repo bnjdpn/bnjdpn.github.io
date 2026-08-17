@@ -19,21 +19,22 @@ const expect = (condition, message) => {
   if (!condition) failures.push(message);
 };
 
-for (const id of ["main", "products", "deliveries", "building", "open-source", "profile"]) {
+for (const id of ["main", "products", "deliveries", "profile"]) {
   expect(index.includes('id="' + id + '"'), "Missing section: #" + id);
 }
 
 expect(index.includes('<html lang="en">'), "The hub must declare English as its language.");
 expect(index.includes("Here’s what<br>I’ve shipped."), "The editorial promise on the first screen disappeared.");
-expect(index.includes("Built and tested.<br>Not released yet."), "Échappée’s honest release status disappeared.");
+expect(index.includes("In preparation · Mac, iPhone &amp; iPad"), "Échappée’s honest release status disappeared.");
+expect(index.includes("In preparation · iPhone &amp; iPad"), "Nova Station Pinball’s honest release status disappeared.");
 expect(index.includes("Technical Leader &amp; Independent Product Builder"), "The SEO positioning is missing.");
 expect(index.includes('<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'), "The root Search Console verification tag is missing.");
 expect(/"dateModified": "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z"/.test(index), "ProfilePage dateModified must use a complete ISO 8601 timestamp.");
 expect(!/\b16 apps\b/i.test(index), "A fixed app count was reintroduced into permanent copy.");
 expect(!index.includes("mailto:"), "A direct email address was introduced.");
 expect(!index.includes('target="_blank"'), "Links must not force a new tab.");
-expect(index.includes('src="assets/apps/echappee.png"'), "Échappée’s development entry must keep its icon.");
-expect(index.includes('src="assets/apps/nova-station-pinball.png"'), "Nova Station Pinball’s development entry must keep its icon.");
+expect(index.includes('src="assets/apps/echappee.png"'), "Échappée’s entry must keep its icon.");
+expect(index.includes('src="assets/apps/nova-station-pinball.png"'), "Nova Station Pinball’s entry must keep its icon.");
 
 const appIds = new Set([...index.matchAll(/apps\.apple\.com\/app\/id(\d+)/g)].map((match) => match[1]));
 expect(appIds.size === 16, "Expected 16 unique public App Store apps, found " + appIds.size + ".");
@@ -46,6 +47,14 @@ const projectPaths = [
 for (const path of projectPaths) {
   expect(index.includes("https://bnjdpn.github.io/" + path + "/"), "Missing visible project link: /" + path + "/");
 }
+
+const productRows = [...index.matchAll(/<article class="product-row[^"]*">[\s\S]*?<\/article>/g)].map((m) => m[0]);
+expect(productRows.length === 18, "The product index must list the 18 products, found " + productRows.length + ".");
+expect(productRows.every((row) => /<img\b[^>]*\bwidth="\d+"[^>]*\bheight="\d+"/.test(row)), "Every product icon must declare intrinsic dimensions.");
+expect(productRows.filter((row) => row.includes("product-row--lead")).length === 1, "Exactly one product row must carry the lead treatment in the source order.");
+expect(index.includes('id="icon-wall"') && index.includes('id="product-index"'), "The shuffled containers must keep their identifiers.");
+expect(/shuffleChildren\(document\.getElementById\("icon-wall"\)\)/.test(index), "The icon wall must be shuffled on load.");
+expect(!/assets\/projects\//.test(index + "\n" + styles), "Editorial illustration assets must not come back.");
 
 const jsonLdMatch = index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
 expect(Boolean(jsonLdMatch), "JSON-LD graph is missing.");
@@ -84,8 +93,13 @@ const actionUses = [...pagesWorkflow.matchAll(/uses:\s+([^@\s]+)@([^\s]+)/g)];
 expect(actionUses.length === 5, "The Pages workflow must keep its five expected third-party actions.");
 expect(actionUses.every(([, , revision]) => /^[0-9a-f]{40}$/.test(revision)), "Every GitHub Action must be pinned to an immutable commit.");
 
-const localReferences = [...index.matchAll(/(?:href|src)="([^"#]+)"/g)]
-  .map((match) => match[1])
+const localReferences = [
+  ...[...index.matchAll(/(?:href|src)="([^"#]+)"/g)].map((match) => match[1]),
+  ...[...index.matchAll(/srcset="([^"]+)"/g)].flatMap((match) =>
+    match[1].split(",").map((candidate) => candidate.trim().split(/\s+/)[0])),
+]
+  .map((value) => value.trim())
+  .filter(Boolean)
   .filter((value) => !/^(?:https?:|data:|\/)/.test(value));
 
 for (const reference of new Set(localReferences)) {
