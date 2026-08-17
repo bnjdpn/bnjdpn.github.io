@@ -28,6 +28,7 @@ expect(index.includes("Here’s what<br>I’ve shipped."), "The editorial promis
 expect(index.includes("Built and tested.<br>Not released yet."), "Échappée’s honest release status disappeared.");
 expect(index.includes("Technical Leader &amp; Independent Product Builder"), "The SEO positioning is missing.");
 expect(index.includes('<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'), "The root Search Console verification tag is missing.");
+expect(/"dateModified": "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z"/.test(index), "ProfilePage dateModified must use a complete ISO 8601 timestamp.");
 expect(!/\b16 apps\b/i.test(index), "A fixed app count was reintroduced into permanent copy.");
 expect(!index.includes("mailto:"), "A direct email address was introduced.");
 expect(!index.includes('target="_blank"'), "Links must not force a new tab.");
