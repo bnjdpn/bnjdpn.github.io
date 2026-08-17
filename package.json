@@ -1,0 +1,12 @@
+{
+  "name": "bnjdpn-github-io",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "check": "node scripts/check-site.mjs",
+    "check:links": "node scripts/check-live-links.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

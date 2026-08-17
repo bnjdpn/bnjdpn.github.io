@@ -1,0 +1,17 @@
+{
+  "name": "Benjamin Dupin — Produits et logiciels livrés",
+  "short_name": "Benjamin Dupin",
+  "description": "Applications disponibles, transformations métier et projets publics de Benjamin Dupin.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f3ef",
+  "theme_color": "#f4f3ef",
+  "icons": [
+    {
+      "src": "/assets/profile/github-avatar.jpg",
+      "sizes": "320x320",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

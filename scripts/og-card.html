@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carte de partage</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+      body { display: grid; grid-template-columns: 1fr 1fr; background: #f4f3ef; color: #131313; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+      main { padding: 52px; border-right: 1px solid #c9c8c2; display: flex; flex-direction: column; justify-content: space-between; }
+      .name, .meta { font: 650 14px/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; }
+      h1 { margin: 0; font-size: 86px; line-height: .86; letter-spacing: -.075em; }
+      p { max-width: 480px; margin: 28px 0 0; font-size: 26px; line-height: 1.2; letter-spacing: -.025em; }
+      aside { padding: 42px; background: #fff; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-content: center; }
+      img { width: 100%; border-radius: 22%; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="name">Benjamin Dupin</span>
+      <div><h1>Voici ce que<br>j’ai livré.</h1><p>16 apps disponibles, des plateformes modernisées et des outils publics.</p></div>
+      <span class="meta">Technical Leader · Paris</span>
+    </main>
+    <aside aria-hidden="true">
+      <img src="../assets/apps/loadsense.png" alt=""><img src="../assets/apps/temporeps.png" alt=""><img src="../assets/apps/prvault.png" alt=""><img src="../assets/apps/groovelog.png" alt="">
+      <img src="../assets/apps/fastzen.png" alt=""><img src="../assets/apps/coldload.png" alt=""><img src="../assets/apps/moveatlas.png" alt=""><img src="../assets/apps/petites-gouttes.png" alt="">
+      <img src="../assets/apps/petites-bouchees.png" alt=""><img src="../assets/apps/petites-nuits.png" alt=""><img src="../assets/apps/petites-dents.png" alt=""><img src="../assets/apps/vesperdrift.png" alt="">
+    </aside>
+  </body>
+</html>
