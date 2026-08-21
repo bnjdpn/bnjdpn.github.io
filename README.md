@@ -1,16 +1,27 @@
 # bnjdpn.github.io
 
-Hub public anglophone de Benjamin Dupin : applications publiées, livraisons professionnelles, produits en développement et outils open source.
+The source of [Benjamin Dupin’s public portfolio](https://bnjdpn.github.io/):
+shipped applications, selected product work and open-source tools.
 
-Le site est volontairement statique : HTML et CSS, sans framework, cookie, analytics ni dépendance de production.
-La racine publie aussi sitemap.xml, un index qui relie les sitemaps des 17 sites d’apps, d’Échappée et du hub lui-même.
+The site is deliberately static. It ships plain HTML, CSS and JavaScript with
+no production framework, cookies or analytics. Its sitemap index connects the
+portfolio with the independently published product sites.
 
-## Vérifier localement
+## Local development
 
 ```sh
+npm install
 npm run check
 npm run check:links
 python3 -m http.server 4173
 ```
 
-La branche `main` est validée puis publiée sur GitHub Pages par `.github/workflows/pages.yml`.
+Then open `http://localhost:4173`. The checks validate document structure,
+metadata, assets and internal/public links.
+
+## Deployment
+
+GitHub Pages publishes the validated `main` branch through
+`.github/workflows/pages.yml`. This repository contains only public portfolio
+material; private résumés, email, credentials and source documents do not
+belong here.
