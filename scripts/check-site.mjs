@@ -25,7 +25,7 @@ for (const id of ["main", "about", "experience", "products"]) {
 
 expect(index.includes('<html lang="en">'), "The hub must declare English as its language.");
 expect(index.includes("I architect,<br>specify, orchestrate<br>and validate."), "The first screen must open on how Benjamin works, not on the catalogue.");
-expect(index.includes("In preparation · Mac, iPhone &amp; iPad"), "Échappée’s honest release status disappeared.");
+expect(index.includes("Available · Mac · iPhone &amp; iPad coming later"), "Échappée’s honest release status disappeared.");
 expect(index.includes("In preparation · iPhone &amp; iPad"), "Nova Station Pinball’s honest release status disappeared.");
 expect(index.includes("Technical Leader &amp; Independent Product Builder"), "The SEO positioning is missing.");
 expect(index.includes('<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'), "The root Search Console verification tag is missing.");
@@ -37,7 +37,8 @@ expect(index.includes('src="assets/apps/echappee.png"'), "Échappée’s entry m
 expect(index.includes('src="assets/apps/nova-station-pinball.png"'), "Nova Station Pinball’s entry must keep its icon.");
 
 const appIds = new Set([...index.matchAll(/apps\.apple\.com\/app\/id(\d+)/g)].map((match) => match[1]));
-expect(appIds.size === 16, "Expected 16 unique public App Store apps, found " + appIds.size + ".");
+expect(appIds.size === 17, "Expected 17 unique public App Store apps, found " + appIds.size + ".");
+expect(appIds.has("6775410670"), "Échappée’s public Mac App Store link is missing.");
 
 const projectPaths = [
   "BrewMeter", "ColdLoad", "Echappee", "FastZen", "GrooveLog", "LoadSense", "MoveAtlas",
