@@ -26,7 +26,6 @@ for (const id of ["main", "about", "experience", "products"]) {
 expect(index.includes('<html lang="en">'), "The hub must declare English as its language.");
 expect(index.includes("I architect,<br>specify, orchestrate<br>and validate."), "The first screen must open on how Benjamin works, not on the catalogue.");
 expect(index.includes("Available · Mac · iPhone &amp; iPad coming later"), "Échappée’s honest release status disappeared.");
-expect(index.includes("In preparation · iPhone &amp; iPad"), "Nova Station Pinball’s honest release status disappeared.");
 expect(index.includes("Technical Leader &amp; Independent Product Builder"), "The SEO positioning is missing.");
 expect(index.includes('<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'), "The root Search Console verification tag is missing.");
 expect(/"dateModified": "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z"/.test(index), "ProfilePage dateModified must use a complete ISO 8601 timestamp.");
@@ -34,7 +33,6 @@ expect(!/\b16 apps\b/i.test(index), "A fixed app count was reintroduced into per
 expect(!index.includes("mailto:"), "A direct email address was introduced.");
 expect(!index.includes('target="_blank"'), "Links must not force a new tab.");
 expect(index.includes('src="assets/apps/echappee.png"'), "Échappée’s entry must keep its icon.");
-expect(index.includes('src="assets/apps/nova-station-pinball.png"'), "Nova Station Pinball’s entry must keep its icon.");
 
 const appIds = new Set([...index.matchAll(/apps\.apple\.com\/app\/id(\d+)/g)].map((match) => match[1]));
 expect(appIds.size === 17, "Expected 17 unique public App Store apps, found " + appIds.size + ".");
@@ -42,7 +40,7 @@ expect(appIds.has("6775410670"), "Échappée’s public Mac App Store link is mi
 
 const projectPaths = [
   "BrewMeter", "ColdLoad", "Echappee", "FastZen", "GrooveLog", "LoadSense", "MoveAtlas",
-  "NeatShift", "NoBuyCart", "NovaStationPinball", "PRVault", "PasDuJour", "TempoReps",
+  "NeatShift", "NoBuyCart", "PRVault", "PasDuJour", "TempoReps",
   "VesperDrift", "petites-bouchees", "petites-dents", "petites-gouttes", "petites-nuits",
 ];
 for (const path of projectPaths) {
@@ -50,12 +48,12 @@ for (const path of projectPaths) {
 }
 
 const productRows = [...index.matchAll(/<article class="product-row[^"]*">[\s\S]*?<\/article>/g)].map((m) => m[0]);
-expect(productRows.length === 18, "The product index must list the 18 products, found " + productRows.length + ".");
+expect(productRows.length === 17, "The product index must list the 17 products, found " + productRows.length + ".");
 expect(productRows.every((row) => !row.includes("<img")), "The product index must stay typographic; icons belong to the icon wall only.");
 const wall = index.match(/<div class="icon-wall"[^>]*>[\s\S]*?<\/div>/);
 expect(Boolean(wall), "The icon wall is missing.");
-expect((wall?.[0].match(/<img\b/g) || []).length === 18, "The icon wall must show the 18 apps.");
-expect((wall?.[0].match(/<img\b[^>]*\bwidth="\d+"[^>]*\bheight="\d+"/g) || []).length === 18, "Every icon must declare intrinsic dimensions.");
+expect((wall?.[0].match(/<img\b/g) || []).length === 17, "The icon wall must show the 17 apps.");
+expect((wall?.[0].match(/<img\b[^>]*\bwidth="\d+"[^>]*\bheight="\d+"/g) || []).length === 17, "Every icon must declare intrinsic dimensions.");
 expect(/id="icon-wall"[\s\S]{0,200}?<a href/.test(index), "The icon wall must contain links.");
 expect(productRows.filter((row) => row.includes("product-row--lead")).length === 1, "Exactly one product row must carry the lead treatment in the source order.");
 expect(index.includes('id="icon-wall"') && index.includes('id="product-index"'), "The shuffled containers must keep their identifiers.");
@@ -83,7 +81,7 @@ if (jsonLdMatch) {
       expect(types.has(type), "JSON-LD type is missing: " + type);
     }
     const itemList = graph.find((entry) => entry["@type"] === "ItemList");
-    expect(itemList?.itemListElement?.length === 18, "JSON-LD ItemList must contain the 18 visible product sites.");
+    expect(itemList?.itemListElement?.length === 17, "JSON-LD ItemList must contain the 17 visible product sites.");
     expect(!JSON.stringify(data).includes('"offers"'), "Unverified offers must not appear in JSON-LD.");
   } catch (error) {
     failures.push("Invalid JSON-LD: " + error.message);
