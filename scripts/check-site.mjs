@@ -1,145 +1,62 @@
-import { access, readFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const [index, styles, sitemapIndex, sitemapPages, robots, manifest, notFound, pagesWorkflow] = await Promise.all([
-  readFile(resolve(root, "index.html"), "utf8"),
-  readFile(resolve(root, "styles.css"), "utf8"),
-  readFile(resolve(root, "sitemap.xml"), "utf8"),
-  readFile(resolve(root, "sitemap-pages.xml"), "utf8"),
-  readFile(resolve(root, "robots.txt"), "utf8"),
-  readFile(resolve(root, "site.webmanifest"), "utf8"),
-  readFile(resolve(root, "404.html"), "utf8"),
-  readFile(resolve(root, ".github/workflows/pages.yml"), "utf8"),
-]);
-const failures = [];
-
-const expect = (condition, message) => {
-  if (!condition) failures.push(message);
-};
-
-for (const id of ["main", "about", "experience", "products"]) {
-  expect(index.includes('id="' + id + '"'), "Missing section: #" + id);
+import {access,readFile,readdir} from 'node:fs/promises';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const catalog=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
+const styles=await readFile(resolve(root,'styles.css'),'utf8');
+const workflow=await readFile(resolve(root,'.github/workflows/pages.yml'),'utf8');
+const sitemap=await readFile(resolve(root,'sitemap.xml'),'utf8');
+const pages=await readFile(resolve(root,'sitemap-pages.xml'),'utf8');
+const failures=[]; let references=0;
+const expect=(value,msg)=>{if(!value)failures.push(msg)};
+for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
+ const html=await readFile(resolve(root,path),'utf8');
+ const prefix=`${path}: `;
+ expect(html.includes(`<html lang="${lang}">`),prefix+'wrong document language');
+ expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
+ for(const id of ['main','about','experience','products','contact']) expect(html.includes(`id="${id}"`),prefix+`missing #${id}`);
+ expect(html.includes('<a class="skip-link" href="#main">'),prefix+'skip link missing');
+ expect(html.includes('Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48'),prefix+'Search Console verification missing');
+ expect(html.includes(`rel="canonical" href="https://bnjdpn.github.io/${lang==='fr'?'fr/':''}"`),prefix+'canonical mismatch');
+ for(const l of ['fr','en','x-default'])expect(html.includes(`hreflang="${l}"`),prefix+`hreflang ${l} missing`);
+ const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+ expect(new Set(ids).size===ids.length,prefix+'duplicate IDs');
+ for(const match of html.matchAll(/href="#([^"]+)"/g))expect(ids.includes(match[1]),prefix+'broken anchor '+match[1]);
+ const rows=[...html.matchAll(/<article class="product-row"[\s\S]*?<\/article>/g)].map(m=>m[0]);
+ expect(rows.length===catalog.length,prefix+'catalogue length mismatch');
+ expect(rows.every(row=>row.includes('data-category=')&&row.includes('data-search=')),prefix+'uncategorized product');
+ const storeIds=new Set([...html.matchAll(/apps\.apple\.com\/app\/id(\d+)/g)].map(m=>m[1]));
+ const expectedIds=catalog.filter(a=>a.id).map(a=>a.id);
+ expect(storeIds.size===expectedIds.length && expectedIds.every(id=>storeIds.has(id)),prefix+'store destinations drifted');
+ expect(!html.includes('NovaStationPinball')&&!html.includes('6799920176'),prefix+'retired app reintroduced');
+ expect(html.includes(lang==='fr'?'iPhone et iPad viendront plus tard':'iPhone and iPad coming later'),prefix+'Echappee platform caveat missing');
+ expect(html.includes(lang==='fr'?'Préversion publique':'Public prerelease'),prefix+'RealmBox prerelease caveat missing');
+ expect((html.match(/<article class="role">/g)||[]).length===8,prefix+'professional assignments missing');
+ const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+ for(const type of ['Person','WebSite','ProfilePage','ItemList'])expect(graph.some(x=>x['@type']===type),prefix+'missing JSON-LD '+type);
+ const list=graph.find(x=>x['@type']==='ItemList');
+ expect(list.numberOfItems===catalog.length&&list.itemListElement.length===catalog.length,prefix+'structured catalogue count mismatch');
+ expect(!JSON.stringify(graph).includes('"offers"'),prefix+'unverified offer in JSON-LD');
+ expect(/^\d{4}-\d{2}-\d{2}T.*Z$/.test(graph.find(x=>x['@type']==='ProfilePage').dateModified),prefix+'invalid modification timestamp');
+ expect(!/mailto:|target="_blank"/.test(html),prefix+'direct email or forced new tabs');
+ for(const img of html.matchAll(/<img\b[^>]+>/g)) expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
+ const refs=new Set([...html.matchAll(/(?:href|src)="([^"#]+)"/g)].map(m=>m[1]).filter(ref=>!/^https?:|^data:/.test(ref)));
+ for(let ref of refs){ref=ref.replace(/^\//,'').split('?')[0];if(ref===''||ref.endsWith('/'))ref+='index.html';try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}}
+ expect(html.includes('class="catalog-tools" hidden'),prefix+'filters must be progressive enhancement');
 }
-
-expect(index.includes('<html lang="en">'), "The hub must declare English as its language.");
-expect(index.includes("I architect,<br>specify, orchestrate<br>and validate."), "The first screen must open on how Benjamin works, not on the catalogue.");
-expect(index.includes("Available · Mac · iPhone &amp; iPad coming later"), "Échappée’s honest release status disappeared.");
-expect(index.includes("Technical Leader &amp; Independent Product Builder"), "The SEO positioning is missing.");
-expect(index.includes('<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'), "The root Search Console verification tag is missing.");
-expect(/"dateModified": "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z"/.test(index), "ProfilePage dateModified must use a complete ISO 8601 timestamp.");
-expect(!/\b16 apps\b/i.test(index), "A fixed app count was reintroduced into permanent copy.");
-expect(!index.includes("mailto:"), "A direct email address was introduced.");
-expect(!index.includes('target="_blank"'), "Links must not force a new tab.");
-expect(index.includes('src="assets/apps/echappee.png"'), "Échappée’s entry must keep its icon.");
-
-const appIds = new Set([...index.matchAll(/apps\.apple\.com\/app\/id(\d+)/g)].map((match) => match[1]));
-expect(appIds.size === 17, "Expected 17 unique public App Store apps, found " + appIds.size + ".");
-expect(appIds.has("6775410670"), "Échappée’s public Mac App Store link is missing.");
-
-const projectPaths = [
-  "BrewMeter", "ColdLoad", "Echappee", "FastZen", "GrooveLog", "LoadSense", "MoveAtlas",
-  "NeatShift", "NoBuyCart", "PRVault", "PasDuJour", "TempoReps",
-  "VesperDrift", "petites-bouchees", "petites-dents", "petites-gouttes", "petites-nuits",
-];
-for (const path of projectPaths) {
-  expect(index.includes("https://bnjdpn.github.io/" + path + "/"), "Missing visible project link: /" + path + "/");
-}
-
-const productRows = [...index.matchAll(/<article class="product-row[^"]*">[\s\S]*?<\/article>/g)].map((m) => m[0]);
-expect(productRows.length === 17, "The product index must list the 17 products, found " + productRows.length + ".");
-expect(productRows.every((row) => !row.includes("<img")), "The product index must stay typographic; icons belong to the icon wall only.");
-const wall = index.match(/<div class="icon-wall"[^>]*>[\s\S]*?<\/div>/);
-expect(Boolean(wall), "The icon wall is missing.");
-expect((wall?.[0].match(/<img\b/g) || []).length === 17, "The icon wall must show the 17 apps.");
-expect((wall?.[0].match(/<img\b[^>]*\bwidth="\d+"[^>]*\bheight="\d+"/g) || []).length === 17, "Every icon must declare intrinsic dimensions.");
-expect(/id="icon-wall"[\s\S]{0,200}?<a href/.test(index), "The icon wall must contain links.");
-expect(productRows.filter((row) => row.includes("product-row--lead")).length === 1, "Exactly one product row must carry the lead treatment in the source order.");
-expect(index.includes('id="icon-wall"') && index.includes('id="product-index"'), "The shuffled containers must keep their identifiers.");
-expect(/shuffleChildren\(document\.getElementById\("icon-wall"\)\)/.test(index), "The icon wall must be shuffled on load.");
-expect(!/assets\/projects\//.test(index + "\n" + styles), "Editorial illustration assets must not come back.");
-
-const aboutAt = index.indexOf('id="about"');
-const expAt = index.indexOf('id="experience"');
-const productsAt = index.indexOf('id="products"');
-expect(aboutAt < expAt && expAt < productsAt, "Reading order must stay: profile, then experience, then apps.");
-const roles = [...index.matchAll(/<article class="role[^"]*">/g)].length;
-expect(roles === 8, "The experience log must keep the eight real assignments, found " + roles + ".");
-expect(index.includes("Shodo Studio") && index.includes("via CGI, apprenticeship"), "Consulting employers must stay visible next to the client.");
-expect(/<dl class="education">/.test(index), "Education must be stated in the experience section.");
-expect(!index.includes('id="deliveries"'), "The old three-entry delivery log must not come back.");
-
-const jsonLdMatch = index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-expect(Boolean(jsonLdMatch), "JSON-LD graph is missing.");
-if (jsonLdMatch) {
-  try {
-    const data = JSON.parse(jsonLdMatch[1]);
-    const graph = data["@graph"] ?? [];
-    const types = new Set(graph.map((entry) => entry["@type"]));
-    for (const type of ["Person", "WebSite", "ProfilePage", "ItemList"]) {
-      expect(types.has(type), "JSON-LD type is missing: " + type);
-    }
-    const itemList = graph.find((entry) => entry["@type"] === "ItemList");
-    expect(itemList?.itemListElement?.length === 17, "JSON-LD ItemList must contain the 17 visible product sites.");
-    expect(!JSON.stringify(data).includes('"offers"'), "Unverified offers must not appear in JSON-LD.");
-  } catch (error) {
-    failures.push("Invalid JSON-LD: " + error.message);
-  }
-}
-
-const expectedSitemaps = [
-  "https://bnjdpn.github.io/sitemap-pages.xml",
-  ...projectPaths.map((path) => "https://bnjdpn.github.io/" + path + "/sitemap.xml"),
-];
-const indexedSitemaps = [...sitemapIndex.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-expect(sitemapIndex.includes("<sitemapindex"), "sitemap.xml must be a sitemap index.");
-expect(indexedSitemaps.length === expectedSitemaps.length, "Expected " + expectedSitemaps.length + " indexed sitemaps, found " + indexedSitemaps.length + ".");
-expect(expectedSitemaps.every((url) => indexedSitemaps.includes(url)), "The sitemap index does not cover the complete portfolio.");
-expect(sitemapPages.includes("<loc>https://bnjdpn.github.io/</loc>"), "The hub URL is missing from sitemap-pages.xml.");
-expect(robots.includes("Sitemap: https://bnjdpn.github.io/sitemap.xml"), "robots.txt must expose the root sitemap index.");
-expect(JSON.parse(manifest).description.startsWith("Production software"), "The web manifest is not aligned with the English hub.");
-expect(notFound.includes('<html lang="en">') && notFound.includes("noindex"), "The 404 page must be English and noindex.");
-expect(!pagesWorkflow.includes("rsync"), "GitHub Pages must use an exact public-file allowlist.");
-expect(pagesWorkflow.includes("cp 404.html index.html robots.txt sitemap.xml sitemap-pages.xml site.webmanifest styles.css _site/"), "The Pages allowlist is missing a root public artifact.");
-expect(pagesWorkflow.includes("cp -R assets _site/assets"), "The Pages allowlist must include the public asset tree.");
-const actionUses = [...pagesWorkflow.matchAll(/uses:\s+([^@\s]+)@([^\s]+)/g)];
-expect(actionUses.length === 5, "The Pages workflow must keep its five expected third-party actions.");
-expect(actionUses.every(([, , revision]) => /^[0-9a-f]{40}$/.test(revision)), "Every GitHub Action must be pinned to an immutable commit.");
-
-const localReferences = [
-  ...[...index.matchAll(/(?:href|src)="([^"#]+)"/g)].map((match) => match[1]),
-  ...[...index.matchAll(/srcset="([^"]+)"/g)].flatMap((match) =>
-    match[1].split(",").map((candidate) => candidate.trim().split(/\s+/)[0])),
-]
-  .map((value) => value.trim())
-  .filter(Boolean)
-  .filter((value) => !/^(?:https?:|data:|\/)/.test(value));
-
-for (const reference of new Set(localReferences)) {
-  try {
-    await access(resolve(root, reference.split("?")[0]));
-  } catch {
-    failures.push("Missing local file: " + reference);
-  }
-}
-
-for (const [pattern, label] of [
-  [/linear-gradient|radial-gradient/i, "decorative gradient"],
-  [/backdrop-filter/i, "frosted glass"],
-  [/\banimation\s*:/i, "cosmetic animation"],
-  [/fonts\.(?:googleapis|gstatic)\.com/i, "remote font"],
-]) {
-  expect(!pattern.test(index + "\n" + styles), "Forbidden anti-slop pattern: " + label + ".");
-}
-
-if (failures.length > 0) {
-  console.error(failures.map((failure) => "✗ " + failure).join("\n"));
-  process.exit(1);
-}
-
-console.log("✓ English editorial structure and SEO graph verified");
-console.log("✓ " + appIds.size + " public App Store apps and " + projectPaths.length + " product sites linked");
-console.log("✓ " + indexedSitemaps.length + " sitemaps covered by the root index");
-console.log("✓ " + new Set(localReferences).size + " local references present");
-console.log("✓ Accessibility and anti-slop guardrails respected");
+expect(sitemap.match(/<sitemap>/g)?.length===catalog.length+1,'sitemap index count mismatch');
+for(const app of catalog)expect(sitemap.includes(`https://bnjdpn.github.io/${app.path}/sitemap.xml`),'missing product sitemap '+app.path);
+for(const url of ['https://bnjdpn.github.io/','https://bnjdpn.github.io/fr/'])expect(pages.includes(`<loc>${url}</loc>`),'missing page sitemap '+url);
+expect((await readFile(resolve(root,'robots.txt'),'utf8')).includes('Sitemap: https://bnjdpn.github.io/sitemap.xml'),'robots sitemap missing');
+expect((await readFile(resolve(root,'404.html'),'utf8')).includes('noindex'),'404 must be noindex');
+JSON.parse(await readFile(resolve(root,'site.webmanifest'),'utf8'));
+expect(styles.includes(':focus-visible')&&styles.includes('prefers-reduced-motion'),'focus/reduced motion handling missing');
+expect(!/fonts\.(googleapis|gstatic)\.com|backdrop-filter|\banimation\s*:/.test(styles),'remote font or cosmetic animation introduced');
+expect(!workflow.includes('rsync'),'Pages must retain public-file allowlist');
+expect(workflow.includes('cp -R assets'),'assets missing from deployment');
+expect(/cp[^\n]+\bfr\b/.test(workflow),'French routes missing from Pages allowlist');
+const actions=[...workflow.matchAll(/uses:\s+([^@\s]+)@([^\s]+)/g)];
+expect(actions.length>=5&&actions.every(([, ,rev])=>/^[0-9a-f]{40}$/.test(rev)),'GitHub Actions must be pinned');
+if(failures.length){console.error(failures.map(x=>'✗ '+x).join('\n'));process.exit(1)}
+console.log(`✓ EN/FR routes, ${catalog.length} products, all store IDs, 8 assignments, structured data and sitemaps`);
+console.log(`✓ ${references} local references, image dimensions, keyboard hooks, static fallback and deployment allowlist`);

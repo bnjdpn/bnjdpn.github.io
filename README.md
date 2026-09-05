@@ -10,13 +10,15 @@ portfolio with the independently published product sites.
 ## Local development
 
 ```sh
-npm install
+npm run build
 npm run check
 npm run check:links
 python3 -m http.server 4173
 ```
 
-Then open `http://localhost:4173`. The checks validate document structure,
+Then open `http://localhost:4173/fr/` or `/`. Content sources live in `content/`
+and `scripts/build-site.mjs`; do not edit generated HTML alone.
+The checks validate document structure,
 metadata, assets and internal/public links.
 
 ## Deployment
@@ -25,3 +27,20 @@ GitHub Pages publishes the validated `main` branch through
 `.github/workflows/pages.yml`. This repository contains only public portfolio
 material; private résumés, email, credentials and source documents do not
 belong here.
+
+## Product sites and release maintenance
+
+[Site inventory](docs/site-inventory.md) maps each independent product to its
+sources, languages, captures, checks and publishing procedure. The portable
+[site-release-sync skill](.agents/skills/site-release-sync/SKILL.md) accompanies
+changes that may affect public accuracy; new availability claims require actual
+public release evidence for each platform. A source change without public impact
+can be documented as such without an artificial website edit.
+
+[Design and provenance](docs/design.md) describes the presentation and real assets.
+[Local delivery report](docs/verification.md) records the executed checks and
+remaining publication constraints for the redesign.
+Browser QA is optional tooling, not a visitor dependency; see the inventory for
+`check-browser.mjs`. A new route can pass locally while remaining 404 publicly
+until its separate site is published. Publish new product routes before the
+portfolio links to them, with explicit authorization for each deployment.

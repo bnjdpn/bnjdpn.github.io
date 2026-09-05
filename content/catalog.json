@@ -1,0 +1,117 @@
+[
+  {
+    "name": "LoadSense",
+    "path": "LoadSense",
+    "id": "6758211103",
+    "icon": "loadsense"
+  },
+  {
+    "name": "TempoReps",
+    "path": "TempoReps",
+    "id": "6758854166",
+    "icon": "temporeps"
+  },
+  {
+    "name": "PRVault",
+    "path": "PRVault",
+    "id": "6758960761",
+    "icon": "prvault"
+  },
+  {
+    "name": "GrooveLog",
+    "path": "GrooveLog",
+    "id": "6760195408",
+    "icon": "groovelog"
+  },
+  {
+    "name": "FastZen",
+    "path": "FastZen",
+    "id": "6761484595",
+    "icon": "fastzen"
+  },
+  {
+    "name": "ColdLoad",
+    "path": "ColdLoad",
+    "id": "6785921799",
+    "icon": "coldload"
+  },
+  {
+    "name": "MoveAtlas",
+    "path": "MoveAtlas",
+    "id": "6786200811",
+    "icon": "moveatlas"
+  },
+  {
+    "name": "NeatShift",
+    "path": "NeatShift",
+    "id": "6759961773",
+    "icon": "neatshift"
+  },
+  {
+    "name": "BrewMeter",
+    "path": "BrewMeter",
+    "id": "6760132566",
+    "icon": "brewmeter"
+  },
+  {
+    "name": "NoBuy Cart",
+    "path": "NoBuyCart",
+    "id": "6778049102",
+    "icon": "nobuycart"
+  },
+  {
+    "name": "Pas du Jour",
+    "path": "PasDuJour",
+    "id": "6795232703",
+    "icon": "pasdujour"
+  },
+  {
+    "name": "Vesper Drift",
+    "path": "VesperDrift",
+    "id": "6791882792",
+    "icon": "vesperdrift"
+  },
+  {
+    "name": "Petites Gouttes",
+    "path": "petites-gouttes",
+    "id": "6760202126",
+    "icon": "petites-gouttes"
+  },
+  {
+    "name": "Petites Bouchées",
+    "path": "petites-bouchees",
+    "id": "6760203890",
+    "icon": "petites-bouchees"
+  },
+  {
+    "name": "Petites Nuits",
+    "path": "petites-nuits",
+    "id": "6764533941",
+    "icon": "petites-nuits"
+  },
+  {
+    "name": "Petites Dents",
+    "path": "petites-dents",
+    "id": "6792521948",
+    "icon": "petites-dents"
+  },
+  {
+    "name": "Échappée",
+    "path": "Echappee",
+    "id": "6775410670",
+    "icon": "echappee"
+  },
+  {
+    "name": "RealmBox",
+    "path": "RealmBox",
+    "icon": null,
+    "releaseUrl": "https://github.com/bnjdpn/RealmBox/releases"
+  },
+  {
+    "name": "TaskLane",
+    "path": "TaskLane",
+    "icon": "tasklane",
+    "iconFormat": "png",
+    "releaseUrl": "https://github.com/bnjdpn/TaskLane/releases/latest"
+  }
+]

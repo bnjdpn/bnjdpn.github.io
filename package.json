@@ -3,8 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "check": "node scripts/check-site.mjs",
-    "check:links": "node scripts/check-live-links.mjs"
+    "check": "node scripts/build-site.mjs --check && node scripts/check-site.mjs",
+    "check:links": "node scripts/check-live-links.mjs",
+    "build": "node scripts/build-site.mjs"
   },
   "engines": {
     "node": ">=22"

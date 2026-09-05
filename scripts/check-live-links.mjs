@@ -3,7 +3,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const index = await readFile(resolve(root, "index.html"), "utf8");
+const index = (await Promise.all(["index.html", "fr/index.html"].map(path => readFile(resolve(root, path), "utf8")))).join("\n");
 const urls = [...new Set([...index.matchAll(/<a\b[^>]*href="(https:\/\/[^"#]+)"/g)].map((match) => match[1]))]
   .filter((url) => !url.includes("linkedin.com"));
 
