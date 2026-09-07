@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "check": "node scripts/build-site.mjs --check && node scripts/check-site.mjs && node scripts/check-catalogue-boundary.mjs && node --test scripts/discovery.test.mjs",
+    "check": "node scripts/build-site.mjs --check && node scripts/check-site.mjs && node scripts/check-catalogue-boundary.mjs && node --test scripts/discovery.test.mjs scripts/swipe-gesture.test.mjs",
     "check:links": "node scripts/check-live-links.mjs",
     "build": "node scripts/build-site.mjs"
   },
