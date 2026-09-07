@@ -1,0 +1,144 @@
+{
+  "checked_at": "2026-09-07",
+  "source": "https://itunes.apple.com/lookup",
+  "country": "fr",
+  "meaning": "Public storefront readback, not a candidate submission. Verify again when changing a claim.",
+  "apps": [
+    {
+      "id": "6758211103",
+      "name": "LoadSense: Body Battery",
+      "version": "3.2.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/loadsense-body-battery/id6758211103?uo=4",
+      "description_sha256": "07422cccdc2ee38deba315160d35e015a2e9584a6cce342b15576caf263e3ad1"
+    },
+    {
+      "id": "6758854166",
+      "name": "TempoReps: Timer Musculation",
+      "version": "2.3.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/temporeps-timer-musculation/id6758854166?uo=4",
+      "description_sha256": "f406a5296dda2394f75f250204f5c7eae4a7e58a4c3a8b1ca5ad961148adb2de"
+    },
+    {
+      "id": "6758960761",
+      "name": "PRVault : Suivi PR & 1RM",
+      "version": "1.3.14",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/prvault-suivi-pr-1rm/id6758960761?uo=4",
+      "description_sha256": "0c97ffe6f6deafabe3d7767e1d0e9da3dcb0ae21876ec6b86a697fa1b0058f61"
+    },
+    {
+      "id": "6760195408",
+      "name": "GrooveLog : Coach Tractions",
+      "version": "3.0.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/groovelog-coach-tractions/id6760195408?uo=4",
+      "description_sha256": "b4ccbb89b9fc200cde0de115eebcb60d7facbb082a25993cc5489ad13edd9157"
+    },
+    {
+      "id": "6761484595",
+      "name": "FastZen : Routine de jeûne",
+      "version": "1.1.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/fastzen-routine-de-je%C3%BBne/id6761484595?uo=4",
+      "description_sha256": "d7e5eb631ce258c690b403d81cccc86011f943f47a40a3c47b67a4eef71108ff"
+    },
+    {
+      "id": "6785921799",
+      "name": "ColdLoad: Calcul de disques",
+      "version": "1.4.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/coldload-calcul-de-disques/id6785921799?uo=4",
+      "description_sha256": "0d3487ab973d9f7ef5eae910916403ff2d2501a0d65e3cac59719b2d9e9819fc"
+    },
+    {
+      "id": "6786200811",
+      "name": "MoveAtlas: Atlas musculation",
+      "version": "1.1.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/moveatlas-atlas-musculation/id6786200811?uo=4",
+      "description_sha256": "0ad6e1b3fb2dd5ddcf4bf9ea8e4345b57858be28197b64d106442181c83dbd1a"
+    },
+    {
+      "id": "6759961773",
+      "name": "NeatShift: Planning ménage",
+      "version": "2.3.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/neatshift-planning-m%C3%A9nage/id6759961773?uo=4",
+      "description_sha256": "f00038ca8eda0b1624a754df525cc0d87be5c9aa01af8931c29648725e55dcbb"
+    },
+    {
+      "id": "6760132566",
+      "name": "BrewMeter - Suivi Caféine",
+      "version": "1.4.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/brewmeter-suivi-caf%C3%A9ine/id6760132566?uo=4",
+      "description_sha256": "51065337828ce72b861de39e8fee2f8ee11d471c49f87e00c3bed0e9732ec188"
+    },
+    {
+      "id": "6778049102",
+      "name": "NoBuy Cart : achats compulsifs",
+      "version": "1.1.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/nobuy-cart-achats-compulsifs/id6778049102?uo=4",
+      "description_sha256": "98b009c8ed267727bce9fc7ff0df000e84c1636b7bc678b8219846242aebaa64"
+    },
+    {
+      "id": "6795232703",
+      "name": "Widgets de pas : Pas du Jour",
+      "version": "1.1.1",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/widgets-de-pas-pas-du-jour/id6795232703?uo=4",
+      "description_sha256": "38b38fc9d14d64e9e25846b21576a05947351f1c494588425921b85a097da248"
+    },
+    {
+      "id": "6791882792",
+      "name": "Vesper Drift : Bullet Hell",
+      "version": "1.1.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/vesper-drift-bullet-hell/id6791882792?uo=4",
+      "description_sha256": "cd7acd7ee12bf805f8abcfe59ac58e8d3c55e8718389333e71a5250a40885d1e"
+    },
+    {
+      "id": "6760202126",
+      "name": "Petites Gouttes, lait maternel",
+      "version": "1.4.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/petites-gouttes-lait-maternel/id6760202126?uo=4",
+      "description_sha256": "63cbfacdd6b956524c0b72c08fb874baf44a401bf6d1c9b76f13468cb0c39284"
+    },
+    {
+      "id": "6760203890",
+      "name": "Petites Bouchées : allergènes",
+      "version": "1.1.1",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/petites-bouch%C3%A9es-allerg%C3%A8nes/id6760203890?uo=4",
+      "description_sha256": "ea7f16e674c2f1163c30bd48f7ddc9c88a21134629cfa7917e963c53ac708dba"
+    },
+    {
+      "id": "6764533941",
+      "name": "Petites Nuits : sommeil bébé",
+      "version": "1.1.0",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/petites-nuits-sommeil-b%C3%A9b%C3%A9/id6764533941?uo=4",
+      "description_sha256": "c7d648176d10801c529615628c33b29726144044d61162d410f80ebd71d1ff1c"
+    },
+    {
+      "id": "6792521948",
+      "name": "Petites Dents : Bébé",
+      "version": "1.0.8",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/petites-dents-b%C3%A9b%C3%A9/id6792521948?uo=4",
+      "description_sha256": "269ae740d7ae4d51543237b0bf7eca01bd93030f932257ae715cd9f3885c7bc0"
+    },
+    {
+      "id": "6775410670",
+      "name": "Échappée",
+      "version": "1.0.0",
+      "kind": "mac-software",
+      "url": "https://apps.apple.com/fr/app/%C3%A9chapp%C3%A9e/id6775410670?mt=12&uo=4",
+      "description_sha256": "b902f160dc4a94cfe99c35beb01ff897dd92b3e7f27544e117c9bb0d87b9e2bd"
+    }
+  ]
+}

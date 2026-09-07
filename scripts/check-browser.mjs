@@ -14,7 +14,7 @@ const base=arg('--base','http://127.0.0.1:8765');
 if(args.includes('--help')||!arg('--routes')) {console.log('Usage: node scripts/check-browser.mjs --routes routes.json [--base http://127.0.0.1:8765] [--out output/playwright]');process.exit(args.includes('--help')?0:2)}
 const routes=JSON.parse(readFileSync(arg('--routes'),'utf8'));
 const out=resolve(arg('--out','output/playwright'));mkdirSync(out,{recursive:true});
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{})});
 const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
 let interceptedPosts=0;
 await context.route('**/*',async route=>{

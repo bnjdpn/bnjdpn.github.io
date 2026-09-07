@@ -14,7 +14,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  const prefix=`${path}: `;
  expect(html.includes(`<html lang="${lang}">`),prefix+'wrong document language');
  expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
- for(const id of ['main','about','experience','products','contact']) expect(html.includes(`id="${id}"`),prefix+`missing #${id}`);
+ for(const id of ['main','about','selected','products','contact']) expect(html.includes(`id="${id}"`),prefix+`missing #${id}`);
  expect(html.includes('<a class="skip-link" href="#main">'),prefix+'skip link missing');
  expect(html.includes('Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48'),prefix+'Search Console verification missing');
  expect(html.includes(`rel="canonical" href="https://bnjdpn.github.io/${lang==='fr'?'fr/':''}"`),prefix+'canonical mismatch');
@@ -30,14 +30,12 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  expect(storeIds.size===expectedIds.length && expectedIds.every(id=>storeIds.has(id)),prefix+'store destinations drifted');
  expect(!html.includes('NovaStationPinball')&&!html.includes('6799920176'),prefix+'retired app reintroduced');
  expect(html.includes(lang==='fr'?'iPhone et iPad viendront plus tard':'iPhone and iPad coming later'),prefix+'Echappee platform caveat missing');
- expect(html.includes(lang==='fr'?'Préversion publique':'Public prerelease'),prefix+'RealmBox prerelease caveat missing');
- expect((html.match(/<article class="role">/g)||[]).length===8,prefix+'professional assignments missing');
  const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
- for(const type of ['Person','WebSite','ProfilePage','ItemList'])expect(graph.some(x=>x['@type']===type),prefix+'missing JSON-LD '+type);
+ for(const type of ['Person','WebSite','CollectionPage','ItemList'])expect(graph.some(x=>x['@type']===type),prefix+'missing JSON-LD '+type);
  const list=graph.find(x=>x['@type']==='ItemList');
  expect(list.numberOfItems===catalog.length&&list.itemListElement.length===catalog.length,prefix+'structured catalogue count mismatch');
  expect(!JSON.stringify(graph).includes('"offers"'),prefix+'unverified offer in JSON-LD');
- expect(/^\d{4}-\d{2}-\d{2}T.*Z$/.test(graph.find(x=>x['@type']==='ProfilePage').dateModified),prefix+'invalid modification timestamp');
+ expect(/^\d{4}-\d{2}-\d{2}T.*Z$/.test(graph.find(x=>x['@type']==='CollectionPage').dateModified),prefix+'invalid modification timestamp');
  expect(!/mailto:|target="_blank"/.test(html),prefix+'direct email or forced new tabs');
  for(const img of html.matchAll(/<img\b[^>]+>/g)) expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
  const refs=new Set([...html.matchAll(/(?:href|src)="([^"#]+)"/g)].map(m=>m[1]).filter(ref=>!/^https?:|^data:/.test(ref)));
@@ -58,5 +56,5 @@ expect(/cp[^\n]+\bfr\b/.test(workflow),'French routes missing from Pages allowli
 const actions=[...workflow.matchAll(/uses:\s+([^@\s]+)@([^\s]+)/g)];
 expect(actions.length>=5&&actions.every(([, ,rev])=>/^[0-9a-f]{40}$/.test(rev)),'GitHub Actions must be pinned');
 if(failures.length){console.error(failures.map(x=>'✗ '+x).join('\n'));process.exit(1)}
-console.log(`✓ EN/FR routes, ${catalog.length} products, all store IDs, 8 assignments, structured data and sitemaps`);
+console.log(`✓ EN/FR routes, ${catalog.length} products, all store IDs, structured data and sitemaps`);
 console.log(`✓ ${references} local references, image dimensions, keyboard hooks, static fallback and deployment allowlist`);

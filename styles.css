@@ -284,26 +284,7 @@ main,.masthead,.footer {
   font-family:var(--sans);
   font-style:normal
 }
-.signature-strip {
-  border-block:1px solid var(--line);
-  margin:0 var(--gutter);
-  padding:17px 0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.08em
-}
-.signature-strip span {
-  color:#a0a59a;
-  margin-inline:20px
-}
-.signature-strip a {
-  font-size:11px;
-  text-decoration:none
-}
-.selected,.catalog,.experience,.contact {
+.selected,.catalog,.contact {
   margin:0 var(--gutter);
   padding:96px 0
 }
@@ -576,26 +557,6 @@ main,.masthead,.footer {
 .product-actions span {
   margin-left:9px
 }
-.realm-icon {
-  width:53px;
-  height:53px;
-  border-radius:13px;
-  background:#262339;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-family:var(--serif);
-  font-size:28px;
-  position:relative;
-  flex-shrink:0
-}
-.realm-icon span {
-  font:10px var(--sans);
-  position:absolute;
-  right:7px;
-  bottom:6px
-}
 .availability-note {
   font-size:11px;
   color:var(--muted);
@@ -606,53 +567,6 @@ main,.masthead,.footer {
   border-block:1px solid var(--line);
   padding:40px 0;
   color:var(--muted)
-}
-.experience {
-  border-top:1px solid var(--line)
-}
-.principles {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:38px;
-  margin:50px 0
-}
-.principles article {
-  border-top:1px solid var(--ink);
-  padding-top:16px
-}
-.principles .eyebrow {
-  color:#767f6e
-}
-.principles h3 {
-  font-size:23px;
-  line-height:1.25;
-  margin:22px 0 15px
-}
-.principles p {
-  font-size:14px;
-  line-height:1.8;
-  color:var(--muted)
-}
-.experience-preview {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:36px;
-  background:#e9eadf;
-  padding:27px 32px
-}
-.experience-preview strong {
-  font-size:17px;
-  display:block
-}
-.experience-preview span {
-  font-size:11px;
-  display:block;
-  color:var(--muted);
-  margin-top:8px
-}
-.experience-details {
-  margin-top:25px;
-  border-bottom:1px solid var(--line)
 }
 summary {
   cursor:pointer;
@@ -668,64 +582,6 @@ summary::-webkit-details-marker {
 summary span {
   font-size:24px;
   line-height:1
-}
-.experience-details[open]>summary span {
-  transform:rotate(45deg)
-}
-.role {
-  display:grid;
-  grid-template-columns:.6fr 2fr;
-  gap:40px;
-  border-top:1px solid var(--line);
-  padding:32px 0
-}
-.role-period {
-  font-size:12px;
-  color:var(--muted)
-}
-.role-period span {
-  display:block;
-  font-size:10px;
-  margin-top:3px
-}
-.role h3 {
-  font-size:26px
-}
-.role-title {
-  font-size:12px;
-  margin:8px 0 16px
-}
-.role-context,.role li {
-  font-size:14px;
-  color:var(--muted);
-  line-height:1.8
-}
-.role ul {
-  padding-left:18px
-}
-.role-stack {
-  font-size:10px;
-  margin-top:17px
-}
-.education {
-  display:grid;
-  grid-template-columns:1fr 3fr;
-  gap:30px;
-  margin-top:35px
-}
-.education dl {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  margin:0
-}
-.education dt {
-  font-size:11px
-}
-.education dd {
-  font-size:13px;
-  color:var(--muted);
-  margin:6px 0 0
 }
 .contact {
   border-top:1px solid var(--line);
@@ -776,13 +632,13 @@ summary span {
   font-size:10px;
   color:var(--muted)
 }
-@media(min-width:1680px) {
+@media (min-width:1680px) {
   .footer {
     margin-inline:auto;
     max-width:1528px
   }
 }
-@media(max-width:1100px) {
+@media (max-width:1100px) {
   .hero {
     gap:15px;
     min-height:620px;
@@ -841,7 +697,7 @@ summary span {
     font-size:45px
   }
 }
-@media(max-width:760px) {
+@media (max-width:760px) {
   .masthead {
     padding:22px var(--gutter);
     gap:16px;
@@ -921,17 +777,7 @@ summary span {
   .hero-products figcaption small {
     font-size:8px
   }
-  .signature-strip {
-    font-size:8px;
-    gap:12px
-  }
-  .signature-strip span {
-    margin-inline:7px
-  }
-  .signature-strip a {
-    font-size:9px
-  }
-  .selected,.catalog,.experience {
+  .selected,.catalog {
     padding-block:60px
   }
   .catalog {
@@ -1019,7 +865,7 @@ summary span {
   .product-identity h3 {
     font-size:21px
   }
-  .app-icon,.realm-icon {
+  .app-icon {
     width:45px;
     height:45px;
     border-radius:11px
@@ -1054,32 +900,6 @@ summary span {
   .search input {
     width:240px
   }
-  .principles {
-    gap:25px
-  }
-  .principles h3 {
-    font-size:20px
-  }
-  .principles p {
-    font-size:12px
-  }
-  .experience-preview {
-    gap:15px;
-    padding:22px
-  }
-  .experience-preview strong {
-    font-size:14px
-  }
-  .experience-preview span {
-    font-size:9px
-  }
-  .education {
-    grid-template-columns:1fr;
-    gap:18px
-  }
-  .education dl {
-    gap:20px
-  }
   .contact {
     gap:30px;
     padding-block:55px
@@ -1096,7 +916,7 @@ summary span {
     gap:15px
   }
 }
-@media(max-width:480px) {
+@media (max-width:480px) {
   .hero-products {
     height:390px
   }
@@ -1198,48 +1018,6 @@ summary span {
     display:block;
     margin-top:5px
   }
-  .principles {
-    grid-template-columns:1fr;
-    gap:27px;
-    margin:32px 0
-  }
-  .principles article {
-    display:grid;
-    grid-template-columns:35px 1fr;
-    column-gap:10px
-  }
-  .principles h3 {
-    margin:0 0 10px;
-    font-size:23px
-  }
-  .principles p {
-    grid-column:2;
-    font-size:14px
-  }
-  .experience-preview {
-    grid-template-columns:1fr;
-    gap:20px;
-    padding:25px
-  }
-  .experience-preview strong {
-    font-size:17px
-  }
-  .experience-preview span {
-    font-size:11px;
-    margin-top:4px
-  }
-  .role {
-    grid-template-columns:1fr;
-    gap:14px;
-    padding:27px 0
-  }
-  .role-period span {
-    display:inline;
-    margin-left:10px
-  }
-  .education dl {
-    grid-template-columns:1fr
-  }
   .contact {
     grid-template-columns:1fr;
     gap:40px
@@ -1275,7 +1053,7 @@ summary span {
     grid-row:1
   }
 }
-@media(prefers-reduced-motion:reduce) {
+@media (prefers-reduced-motion:reduce) {
   html {
     scroll-behavior:auto
   }
@@ -1295,11 +1073,11 @@ summary span {
   .hero h1 {
     font-size:40px
   }
-  .selected,.catalog,.experience {
+  .selected,.catalog {
     padding:25px 0;
     margin:0
   }
-  .feature,.product-row,.role {
+  .feature,.product-row {
     break-inside:avoid
   }
   .feature-energy,.feature-family {
@@ -1308,5 +1086,43 @@ summary span {
   }
   .feature-energy .feature-copy>p:not(.eyebrow) {
     color:#000
+  }
+}
+.support-index {
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 28px;
+  align-content:start
+}
+.support-index li {
+  border-bottom:1px solid var(--line)
+}
+.support-index a {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  min-height:44px;
+  text-decoration:none;
+  font-size:13px
+}
+.support-index a:hover {
+  text-decoration:underline
+}
+.contact {
+  grid-template-columns:1fr 1fr
+}
+@media (max-width:680px) {
+  .contact {
+    grid-template-columns:1fr
+  }
+  .support-index {
+    gap:0 20px
+  }
+  .masthead .nav-contact {
+    display:none
   }
 }

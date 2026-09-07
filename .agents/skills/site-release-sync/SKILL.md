@@ -53,3 +53,5 @@ contrôle de non-régression des snapshots publics, avec Minitest 6.0.6.
 Une revue devenue obsolète après modification du candidat doit être refaite.
 Après une publication explicitement autorisée, relire séparément l'URL servie,
 ses téléchargements et chaque plateforme ; ne pas confondre CI et production.
+
+Le catalogue principal est exclusivement consacré aux apps autorisées. RealmBox, TaskLane, les projets professionnels et les biographies de carrière en sont exclus, même si un dépôt GitHub est public. `npm run check` applique cette frontière aux sources et aux fichiers livrés ; les mentions internes de cette règle ne constituent pas du contenu public.

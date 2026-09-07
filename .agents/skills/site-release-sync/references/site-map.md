@@ -23,11 +23,4 @@ La revue indique les changements du catalogue ou la raison précise de l'absence
 d'impact. Un clone app inaccessible reste un blocage explicite. La CI PR vérifie
 le mécanisme sans produire de preuve de disponibilité ; lire [le contrat](review.md).
 
-Périmètre de la refonte : 19 produits, soit les 17 demandés, RealmBox et TaskLane
-(dont le site Pages historique `main/docs` a été retrouvé). Les projets BarPath
-et SplitForge n'ont pas de site produit Pages établi ; RandomMountBuddy est un
-fork d'addon tiers. Ils ne sont pas transformés en apps téléchargeables dans ce
-catalogue. Nova Station Pinball reste exclu à la suite de son retrait explicite.
-Les outils web publics Onigiri Exit Calculator et Poop Price Calculator ont
-également été repérés ; leur périmètre de site est inventorié séparément des
-applications natives, sans leur attribuer une disponibilité store.
+Périmètre : les 17 apps de `content/catalog.json`, dont Échappée sur Mac. Aucune découverte automatique ne vaut autorisation d’ajout. Le contrôle `scripts/check-catalogue-boundary.mjs` bloque les exclusions explicites et les présentations de carrière dans les sources éditoriales et l’artefact public.

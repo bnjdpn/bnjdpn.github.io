@@ -1,4 +1,4 @@
-# Portfolio public
+# Catalogue public des apps
 
 Site statique HTML/CSS/JavaScript, sans framework de production, cookies ou analytics. Node >=22 dans `package.json` ; la CI utilise Node 24. Ce dépôt contient seulement les éléments publics du portfolio, pas les CV privés, échanges, credentials ou documents sources personnels.
 
@@ -21,3 +21,7 @@ Terminer le travail autorisé en préservant les modifications locales. Résoudr
 Toute modification susceptible de rendre la présentation publique inexacte ou obsolète doit déclencher une vérification du site associé. Si nécessaire, sa mise à jour fait partie du travail à livrer, sans que Benjamin ait à le redemander. Sinon, indiquer brièvement pourquoi le changement n’a aucun impact sur le site.
 
 Appliquer le skill portable [site-release-sync](.agents/skills/site-release-sync/SKILL.md), y compris pour conclure sans impact. Il fournit la carte des sources, langues, captures et validations, et le contrat de revue du candidat. Fonctionnalités, UI/navigation, captures, noms, compatibilité, plateformes, monétisation et traitement des données sont concernés. Préparer les nouveautés avec la release ; les promesses de disponibilité attendent une confirmation publique sur chaque plateforme.
+
+## Positionnement permanent
+
+Le site principal est exclusivement consacré aux apps du catalogue. Ne jamais y réintroduire RealmBox, TaskLane, des projets professionnels, un CV, une présentation de carrière ou d’autres projets hors catalogue, y compris lors d’une découverte automatique de dépôts GitHub. Le nom de Benjamin Dupin identifie uniquement l’éditeur. `npm run check` contrôle les sources éditoriales et l’artefact public, sans examiner ces exclusions internes.

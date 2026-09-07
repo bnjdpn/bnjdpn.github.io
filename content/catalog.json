@@ -100,18 +100,5 @@
     "path": "Echappee",
     "id": "6775410670",
     "icon": "echappee"
-  },
-  {
-    "name": "RealmBox",
-    "path": "RealmBox",
-    "icon": null,
-    "releaseUrl": "https://github.com/bnjdpn/RealmBox/releases"
-  },
-  {
-    "name": "TaskLane",
-    "path": "TaskLane",
-    "icon": "tasklane",
-    "iconFormat": "png",
-    "releaseUrl": "https://github.com/bnjdpn/TaskLane/releases/latest"
   }
 ]

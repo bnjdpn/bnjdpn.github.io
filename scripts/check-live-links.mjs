@@ -4,8 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const index = (await Promise.all(["index.html", "fr/index.html"].map(path => readFile(resolve(root, path), "utf8")))).join("\n");
-const urls = [...new Set([...index.matchAll(/<a\b[^>]*href="(https:\/\/[^"#]+)"/g)].map((match) => match[1]))]
-  .filter((url) => !url.includes("linkedin.com"));
+const urls = [...new Set([...index.matchAll(/<a\b[^>]*href="(https:\/\/[^"#]+)"/g)].map((match) => match[1]))];
 
 const pending = [...urls];
 const failures = [];
@@ -43,5 +42,5 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`\n✓ ${checked} liens publics joints, dont ${throttled} réponse(s) App Store limitée(s) à 429.`);
-console.log("LinkedIn est exclu du contrôle automatisé en raison de sa protection anti-robot.");
+console.log(`\n${checked - throttled} liens confirmés ; ${throttled} liens non vérifiés (HTTP 429).`);
+if (throttled) process.exitCode = 1;

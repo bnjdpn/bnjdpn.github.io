@@ -1,49 +1,6 @@
 {
   "@type": "Person",
-  "@id": "https://bnjdpn.github.io/#person",
+  "@id": "https://bnjdpn.github.io/#publisher",
   "name": "Benjamin Dupin",
-  "url": "https://bnjdpn.github.io/",
-  "jobTitle": "Technical Leader",
-  "description": "Technical Leader and independent product builder shipping production software and privacy-minded Apple apps through structured, AI-assisted workflows.",
-  "homeLocation": {
-    "@type": "Place",
-    "name": "Paris, France"
-  },
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Shodo Studio",
-    "url": "https://shodo.io/"
-  },
-  "hasOccupation": {
-    "@type": "Occupation",
-    "name": "Technical Leader",
-    "occupationalCategory": "15-1252.00",
-    "skills": "Software architecture, backend systems, legacy modernization, technical leadership, AI-assisted delivery, native Apple development"
-  },
-  "alumniOf": [
-    {
-      "@type": "CollegeOrUniversity",
-      "name": "ESGI",
-      "description": "Master’s degree, Software Architecture"
-    },
-    {
-      "@type": "CollegeOrUniversity",
-      "name": "Conservatoire National des Arts et Métiers",
-      "description": "Professional bachelor’s degree, Information and decision systems analysis and design"
-    }
-  ],
-  "sameAs": [
-    "https://www.linkedin.com/in/benjamin-dupin/",
-    "https://github.com/bnjdpn",
-    "https://apps.apple.com/fr/developer/benjamin-dupin/id1871474236"
-  ],
-  "knowsAbout": [
-    "Software architecture",
-    "Technical leadership",
-    "Legacy modernization",
-    "Product engineering",
-    "AI-assisted software delivery",
-    "Native Apple application development",
-    "Privacy-minded on-device processing"
-  ]
+  "url": "https://bnjdpn.github.io/"
 }

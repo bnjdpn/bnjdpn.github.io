@@ -1,7 +1,8 @@
 # bnjdpn.github.io
 
-The source of [Benjamin Dupin’s public portfolio](https://bnjdpn.github.io/):
-shipped applications, selected product work and open-source tools.
+The source of [Benjamin Dupin’s app catalogue](https://bnjdpn.github.io/):
+apps for training, everyday routines, baby journals and play.
+This is exclusively a product showcase; the publisher identity is not a professional biography.
 
 The site is deliberately static. It ships plain HTML, CSS and JavaScript with
 no production framework, cookies or analytics. Its sitemap index connects the
@@ -24,7 +25,7 @@ metadata, assets and internal/public links.
 ## Deployment
 
 GitHub Pages publishes the validated `main` branch through
-`.github/workflows/pages.yml`. This repository contains only public portfolio
+`.github/workflows/pages.yml`. This repository contains only app catalogue
 material; private résumés, email, credentials and source documents do not
 belong here.
 

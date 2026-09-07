@@ -23,6 +23,11 @@ jobs:
         run: |
           ruby .agents/skills/site-release-sync/scripts/check.rb --check
           ruby .agents/skills/site-release-sync/scripts/check_test.rb
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24
+      - name: Validate public catalogue and exclusions without publishing
+        run: npm run check
       - name: Record the remaining editorial review
         run: |
           echo 'Deterministic site checks ran. They do not establish product, screenshot or public release accuracy.' >> "$GITHUB_STEP_SUMMARY"
