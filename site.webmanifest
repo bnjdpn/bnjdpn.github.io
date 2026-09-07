@@ -4,8 +4,8 @@
   "description": "Apps for training, everyday life, baby journals and play.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#080a0b",
-  "theme_color": "#080a0b",
+  "background_color": "#fafaf8",
+  "theme_color": "#fafaf8",
   "icons": [
     {
       "src": "/assets/profile/github-avatar.jpg",

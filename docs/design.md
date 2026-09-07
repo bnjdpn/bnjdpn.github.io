@@ -1,99 +1,111 @@
 # Portfolio design and provenance
 
-The catalogue presents 17 independent apps, with paired French and English copy.
-The visual direction is graphite, oversized Space Grotesk type, thin generative
-lines and real product images. The opening is a swipeable app deck; the three following
-chapters introduce training, a virtual ride and family journals. The full catalogue
-remains searchable by use or name. The publisher name identifies the editor only.
+The portfolio presents 17 independent apps with paired English and French copy.
+The current design starts from a new page composition: warm off-white surfaces,
+charcoal text, orange accents and generous spacing. Oversized Bricolage Grotesque
+headings meet an italic Instrument Serif accent; DM Sans handles the supporting
+copy and controls. The publisher name identifies the editor only.
 
-## Discovery and motion
+## Page composition
 
-`assets/discovery.mjs` selects an app from a shuffled bag. A complete cycle visits
-all 17 apps; adjacent visits never select the same app or the same family of lines.
-The discovery also changes the accent and parameters of the drawing.
-`bd-app-discovery-v1` in local storage holds only catalogue IDs and a visual mode.
-There are no visitor identifiers, timestamps, cookies, analytics or network writes.
-If storage is unavailable, the current page still rotates in memory. A reload or
-return from the browser's page cache starts another discovery. Clearing browser
-storage starts a new cycle.
+The opening pairs a large typographic statement with a static composition of
+real LoadSense and Petites Bouchées captures, existing app icons, a colored disc
+and simple decorative shapes. It leads directly to the collection.
 
-The deck accepts a horizontal mouse, touch or pen gesture. Left passes to the next
-app; right keeps the outgoing app in “My selection” before moving on. Buttons offer
-the same actions, and arrow keys act only while the card itself is focused. A short
-drag springs back. Vertical scrolling, pinch zoom and product links retain their
-native behavior. The last 32 swipe actions can be undone, including an app added by
-that action; manual selection changes clear that undo history.
+Three spotlights follow: Échappée with a landscape capture, LoadSense with a real
+app screen, and the four Petites family apps. The full catalogue uses product
+icons, descriptions, platform labels, product-site links and App Store links.
+Four categories cover training, everyday life, baby and family, and play and
+escape. The support section links each visitor to the selected app's own support
+destination. There is no portfolio contact form.
 
-`bd-app-selection-v1` holds only the selected catalogue IDs in this browser. The
-selection is shared by the French and English pages and can be removed from its
-native modal drawer or from catalogue hearts. Reading this list is independent of
-the discovery state. Invalid or retired IDs are discarded; blocked browser storage
-falls back to an in-memory selection. The selection synchronizes between tabs.
-No account, identifier or network write is introduced.
+The layout adapts from three catalogue columns to two and then one. The opening
+and feature blocks also reflow for smaller screens. Standard browser scrolling
+and links remain in control; the site has no canvas, WebGL scene or scroll-driven
+story sequence.
 
-The next product image is decoded before committing the transition. A failed image
-keeps the visible card and selection intact, restores the controls and displays a
-retry message. During a transition, selection mutation controls are visibly disabled.
-The dialog preserves focus when its list refreshes and pauses background animation.
+## Progressive enhancement and accessibility
 
-`assets/experience.mjs` draws three parametric line families on a decorative 2D
-canvas. Rendering is capped at about 30 fps, 1.5 device pixel ratio and fewer lines
-on phones; it pauses when the page is hidden or the opening is off-screen. Native
-scrolling drives the opening transforms and the three overlapping product chapters.
-No scroll hijacking, WebGL runtime or production framework is used.
+`assets/site.js` adds category filtering, accent-insensitive search, a live result
+count, a reset action and the support picker. Search matches all entered words
+against each product's name and descriptive copy. Category links jump to the
+catalogue and apply the corresponding filter. The support action appears only
+after an app has been selected.
 
-Masked title entrances, staggered catalogue reveals, a visible-only app marquee,
-card exit/entry springs and the selection drawer complete the motion. Gesture
-animation is finite and owned by `assets/swipe-gesture.mjs`; it distinguishes a
-child's implicit touch capture from losing capture of the swipe surface itself.
+Without JavaScript, all 17 catalogue entries and their links remain visible. A
+native disclosure provides the full support directory. JavaScript replaces that
+directory with the picker and reveals the filtering controls only after they
+are connected.
 
-The animation control pauses both the drawing and the scroll transformations.
-Reduced-motion preferences select a static, unpinned presentation. On phones and
-short screens, the chapters flow normally. The page is complete without JavaScript:
-LoadSense remains the initial discovery, and all 17 product links stay available.
-Filtering is a separate progressive enhancement.
+The page includes a skip link, visible keyboard focus, native form controls,
+pressed states for category buttons and polite announcements for result counts.
+Motion is limited to brief desktop entrances and hover transitions; reduced
+motion disables animations, transitions and smooth scrolling. There is no
+continuous animation.
+
+The previous swipe deck, favorites, shuffled discovery and generative animation
+have been removed. The current site neither reads nor writes browser storage,
+including any values left by the earlier design. It uses no cookies or analytics
+and performs no network writes. Search and support choices are ordinary page
+state, with reconciliation when a browser restores the page from its history.
 
 ## Sources and assets
 
 - `content/catalog.json`: names, site paths, store IDs and icons.
-- `content/copy.mjs`: paired editorial copy and categories.
-- `content/explorer-copy.mjs`: paired deck, gesture and selection copy.
-- `content/preview-media.json`: dimensions, source paths, media type and normalized
-  `[x, y, width, height]` framing for every real preview, plus a separate vertical
-  catalogue offset expressed as a fraction of the framed image's width.
-- `scripts/build-site.mjs`: generates the EN/FR pages and sitemaps.
-- `styles.css` and `assets/experience.css`: base presentation and immersive layer.
-- `assets/product-media.css`: shared image viewports and product presentation.
-- `assets/swipe.css`: deck, responsive opening, selection drawer and motion.
-- `scripts/og-card.html`: reproducible source of the 1200 × 630 social image.
+- `content/copy.mjs`: `productCopy`, with paired product descriptions, platforms
+  and categories.
+- `content/studio-copy.mjs`: paired page headings, navigation, spotlights,
+  catalogue controls and support copy.
+- `content/profile.json`: the public publisher identity used by structured data.
+- `content/preview-media.json`: dimensions, original source paths, media types
+  and normalized `[x, y, width, height]` framing for real previews.
+- `scripts/build-site.mjs`: generates the EN/FR pages, structured data and
+  sitemaps from the content sources.
+- `styles.css` and `assets/site.js`: presentation and progressive enhancement.
+- `assets/fonts/`: locally served fonts and their SIL Open Font License texts.
+- `scripts/og-card.html` and `scripts/render-social.mjs`: reproducible source
+  and renderer for the 1200 × 630 `assets/social/og.jpg` preview.
 
-All product images are existing public app or game captures. No interface was
-invented. Échappée uses `site/assets/img/world/monde-col-1520.webp`; its story caption
-preserves seed 52025, km 8.3 and 17:45. Other preview provenance is recorded per
-locale in `preview-media.json`. App icons and the publisher avatar are reused.
-Decorative lines are procedural geometry, separate from the product media.
-Fonts are served locally with their SIL Open Font License texts in `assets/fonts/`.
+All product images are existing public app or game captures and icons. The
+composition does not invent an app interface. Image frames crop the source
+media through CSS; they do not redraw or retouch it. The preview manifest records
+the distinction between interface captures and composed marketing media.
+Échappée uses the existing `site/assets/img/world/monde-col-1520.webp` source,
+copied to `assets/previews/echappee.webp`; the visible caption preserves seed
+52025, km 8.3 and 17:45. Locale-specific phone previews retain their source
+provenance in the manifest.
 
-The portfolio uses unchanged copies of the published 880 px originals where
-available. CSS viewports remove the surrounding poster headlines and margins;
-they do not redraw or retouch the interface. The manifest distinguishes interface
-captures from composed marketing media, including FastZen's existing composition.
-The swipe deck and catalogue show larger interface details with individual focal
-points; the story chapters show the framed product face-on. The 422 px watch capture is
-capped at 210 CSS pixels to avoid enlarging its limited source resolution. Styles and scripts use content
-hashes in their URLs so returning visitors receive the matching presentation.
-The experience hash covers its imported modules and is propagated to their URLs.
+Styles, the page script and the social preview use content hashes in their generated URLs so their
+versions stay aligned with the generated HTML. The site ships plain HTML, CSS
+and JavaScript without a production framework.
 
-## Public content
+## Public content and verification
 
-The homepage stays English at `/`, with French at `/fr/`. Product sites retain
-their own repositories, paths, languages and legal content. Each support link goes
-to its product. Prices and device compatibility refer to the current store pages;
-Échappée explicitly identifies the Apple silicon Mac release, with iPhone/iPad
-coming later. The retired Nova Station Pinball is excluded. No career, client,
-employer, consulting or other non-catalogue project content is published.
+The homepage is English at `/`, with French at `/fr/`. Product sites retain their
+own repositories, paths, languages and legal content. Support destinations are
+product-specific: Échappée uses its support page and the other apps use their
+contact sections. Current prices and device compatibility are delegated to the
+App Store. Échappée explicitly identifies the Apple silicon Mac release, with
+iPhone and iPad coming later. The retired Nova Station Pinball remains excluded.
+No career, client, employer, consulting or other non-catalogue project content
+is published.
 
-The changes and local evidence for this design are described in
-[redesign-20260907.md](redesign-20260907.md).
-The swipe follow-up and its checks are recorded in
-[swipe-explorer-20260907.md](swipe-explorer-20260907.md).
+`npm run check` validates the generated site and local invariants.
+`npm run check:links` checks public destinations. Optional
+`npm run check:browser` runs `scripts/check-redesign-browser.mjs` against a chosen
+base URL and writes screenshots plus a machine-readable report. It covers both
+languages, desktop/tablet/mobile widths, enlarged text, keyboard access, filters,
+support destinations and the no-JavaScript presentation. It can use an existing
+Playwright runtime through `PLAYWRIGHT_MODULE`; Playwright is not a visitor
+dependency. See the [README](../README.md) for commands.
+
+The [current validation report](refonte-complete-20260907.md) records the executed
+checks for this redesign. These commands alone do not prove a deployment succeeded. Local checks, the Pages workflow and the publicly
+served result must be verified separately for each delivery.
+
+The reports [redesign-20260907.md](redesign-20260907.md),
+[swipe-explorer-20260907.md](swipe-explorer-20260907.md),
+[media-presentation-20260907.md](media-presentation-20260907.md) and
+[verification.md](verification.md) retain historical evidence for previous
+iterations. Their graphite presentation, swipe interactions, storage behavior
+and recorded checks do not describe or validate the current redesign.
