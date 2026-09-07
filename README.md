@@ -39,8 +39,9 @@ public release evidence for each platform. A source change without public impact
 can be documented as such without an artificial website edit.
 
 [Design and provenance](docs/design.md) describes the presentation and real assets.
-[Local delivery report](docs/verification.md) records the executed checks and
-remaining publication constraints for the redesign.
+[Visual redesign report](docs/redesign-20260907.md) records this design and its
+executed browser checks. The [earlier delivery report](docs/verification.md) keeps
+the history of the catalogue and release-maintenance work.
 Browser QA is optional tooling, not a visitor dependency; see the inventory for
 `check-browser.mjs`. A new route can pass locally while remaining 404 publicly
 until its separate site is published. Publish new product routes before the

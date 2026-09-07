@@ -1,0 +1,238 @@
+{
+  "LoadSense": {
+    "en": {
+      "src": "/assets/previews/loadsense-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "LoadSense/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/loadsense-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "LoadSense/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "TempoReps": {
+    "en": {
+      "src": "/assets/previews/temporeps-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "TempoReps/marketing/shots/en-US/02-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/temporeps-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "TempoReps/marketing/shots/fr-FR/02-440.webp"
+    }
+  },
+  "PRVault": {
+    "en": {
+      "src": "/assets/previews/prvault-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "PRVault/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/prvault-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "PRVault/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "GrooveLog": {
+    "en": {
+      "src": "/assets/previews/groovelog-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "GrooveLog/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/groovelog-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "GrooveLog/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "FastZen": {
+    "en": {
+      "src": "/assets/previews/fastzen-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "FastZen/marketing/shots/en-US/02-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/fastzen-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "FastZen/marketing/shots/fr-FR/02-440.webp"
+    }
+  },
+  "ColdLoad": {
+    "en": {
+      "src": "/assets/previews/coldload-en.webp",
+      "width": 440,
+      "height": 952,
+      "source": "ColdLoad/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/coldload-fr.webp",
+      "width": 440,
+      "height": 952,
+      "source": "ColdLoad/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "MoveAtlas": {
+    "en": {
+      "src": "/assets/previews/moveatlas-en.webp",
+      "width": 440,
+      "height": 954,
+      "source": "MoveAtlas/marketing/shots/en-US/02-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/moveatlas-fr.webp",
+      "width": 440,
+      "height": 954,
+      "source": "MoveAtlas/marketing/shots/fr-FR/02-440.webp"
+    }
+  },
+  "NeatShift": {
+    "en": {
+      "src": "/assets/previews/neatshift-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "NeatShift/marketing/shots/en-US/03-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/neatshift-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "NeatShift/marketing/shots/fr-FR/03-440.webp"
+    }
+  },
+  "BrewMeter": {
+    "en": {
+      "src": "/assets/previews/brewmeter-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "BrewMeter/marketing/shots/en-US/02-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/brewmeter-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "BrewMeter/marketing/shots/fr-FR/02-440.webp"
+    }
+  },
+  "NoBuyCart": {
+    "en": {
+      "src": "/assets/previews/nobuycart-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "NoBuyCart/marketing/shots/en-US/03-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/nobuycart-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "NoBuyCart/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "PasDuJour": {
+    "en": {
+      "src": "/assets/previews/pasdujour-en.webp",
+      "width": 422,
+      "height": 514,
+      "source": "PasDuJour/marketing/shots/en-US/01-422.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/pasdujour-fr.webp",
+      "width": 422,
+      "height": 514,
+      "source": "PasDuJour/marketing/shots/fr-FR/01-422.webp"
+    }
+  },
+  "VesperDrift": {
+    "en": {
+      "src": "/assets/previews/vesperdrift-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "VesperDrift/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/vesperdrift-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "VesperDrift/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "petites-gouttes": {
+    "en": {
+      "src": "/assets/previews/petites-gouttes-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "petites-gouttes/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/petites-gouttes-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "petites-gouttes/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "petites-bouchees": {
+    "en": {
+      "src": "/assets/previews/petites-bouchees-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "petites-bouchees/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/petites-bouchees-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "petites-bouchees/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "petites-nuits": {
+    "en": {
+      "src": "/assets/previews/petites-nuits-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "petites-nuits/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/petites-nuits-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "petites-nuits/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "petites-dents": {
+    "en": {
+      "src": "/assets/previews/petites-dents-en.webp",
+      "width": 440,
+      "height": 956,
+      "source": "petites-dents/marketing/shots/en-US/01-440.webp"
+    },
+    "fr": {
+      "src": "/assets/previews/petites-dents-fr.webp",
+      "width": 440,
+      "height": 956,
+      "source": "petites-dents/marketing/shots/fr-FR/01-440.webp"
+    }
+  },
+  "Echappee": {
+    "en": {
+      "src": "/assets/previews/echappee.webp",
+      "width": 1520,
+      "height": 950
+    },
+    "fr": {
+      "src": "/assets/previews/echappee.webp",
+      "width": 1520,
+      "height": 950
+    }
+  }
+}

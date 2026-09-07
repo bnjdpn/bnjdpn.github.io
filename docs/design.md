@@ -1,38 +1,58 @@
-# Portfolio design and verification
+# Portfolio design and provenance
 
-The portfolio is a small static site. Its first screen introduces app uses: training, everyday routines, life with a baby and virtual rides. The publisher name is a discreet identity. The art direction uses warm paper, dark green ink, generous sans-serif titles and one italic serif accent. Product stories use different compositions: an analytical dark surface for LoadSense, a wide real landscape for Échappée and a warm family journal presentation. The full catalogue is an ordered list with use filters and accent-insensitive search; it remains complete without JavaScript.
+The catalogue presents 17 independent apps, with paired French and English copy.
+The visual direction is graphite, oversized Space Grotesk type, thin generative
+lines and real product images. The opening highlights one app; the three following
+chapters introduce training, a virtual ride and family journals. The full catalogue
+remains searchable by use or name. The publisher name identifies the editor only.
 
-## Sources and routes
+## Discovery and motion
 
-- `content/catalog.json`: shared public product identity, site path, store identifier and icon.
-- `content/copy.mjs`: paired English/French editorial copy and use categories.
-- `content/profile.json`: publisher name and URL only. No career, client, employer or service content is included.
-- `scripts/build-site.mjs`: generates `/index.html`, `/fr/index.html`, `sitemap.xml` and `sitemap-pages.xml`. Never edit these generated files alone.
-- `styles.css`, `assets/site.js`: responsive rendering and progressively enhanced catalogue.
-- `404.html`: direct, bilingual static error page, noindex.
-- `scripts/og-card.html`: source for the 1200×630 social image at `assets/social/og.jpg`.
+`assets/discovery.mjs` selects an app from a shuffled bag. A complete cycle visits
+all 17 apps; adjacent visits never select the same app or the same family of lines.
+The selection also changes the accent, arrangement and parameters of the drawing.
+`bd-app-discovery-v1` in local storage holds only catalogue IDs and a visual mode.
+There are no visitor identifiers, timestamps, cookies, analytics or network writes.
+If storage is unavailable, the current page still rotates in memory. A reload or
+return from the browser's page cache starts another discovery. Clearing browser
+storage starts a new cycle.
 
-The old root URL remains English. `/fr/` is a new French counterpart with reciprocal hreflang and a separate canonical URL. Every application remains in its own repository and GitHub Pages subpath. French product links use their existing `/fr-FR/` routes . Support stays with each product; this portfolio has no support form or new service.
+`assets/experience.mjs` draws three parametric line families on a decorative 2D
+canvas. Rendering is capped at about 30 fps, 1.5 device pixel ratio and fewer lines
+on phones; it pauses when the page is hidden or the opening is off-screen. Native
+scrolling drives the opening transforms and the three overlapping product chapters.
+No scroll hijacking, WebGL runtime or production framework is used.
 
-## Product assets
+The animation control pauses both the drawing and the scroll transformations.
+Reduced-motion preferences select a static, unpinned presentation. On phones and
+short screens, the chapters flow normally. The page is complete without JavaScript:
+LoadSense remains the initial discovery, and all 17 product links stay available.
+Filtering is a separate progressive enhancement.
 
-The preview files are copies of existing product website assets, inspected visually on 5 September 2026. They are real app interfaces composed for the stores, plus a real Échappée game capture. No interface was drawn or generated for this redesign.
+## Sources and assets
 
-| Portfolio asset | Source repository and path | Language |
-| --- | --- | --- |
-| `assets/previews/loadsense-{en,fr}.webp` | `LoadSense/docs/assets/shots/{en-US,fr-FR}/01-440.webp` | EN/FR |
-| `assets/previews/temporeps-{en,fr}.webp` | `TempoReps/docs/assets/shots/{en-US,fr-FR}/01-440.webp` | EN/FR |
-| `assets/previews/petites-gouttes-{en,fr}.webp` | `petites-gouttes/docs/assets/shots/{en-US,fr-FR}/01-440.webp` | EN/FR |
-| `assets/previews/echappee.webp` | `Echappee/site/assets/img/world/monde-col-1520.webp` | No interface text |
+- `content/catalog.json`: names, site paths, store IDs and icons.
+- `content/copy.mjs`: paired editorial copy and categories.
+- `content/preview-media.json`: dimensions and source paths for every real preview.
+- `scripts/build-site.mjs`: generates the EN/FR pages and sitemaps.
+- `styles.css` and `assets/experience.css`: base presentation and immersive layer.
+- `scripts/og-card.html`: reproducible source of the 1200 × 630 social image.
 
-Échappée's caption preserves the public reproduction coordinates: seed 52025, km 8.3, 17:45. The seven compressed preview files total approximately 130 KB. Existing app icons and the public GitHub avatar are reused. The hero frames are CSS presentation around those existing images.
+All product images are existing public app or game captures. No interface was
+invented. Échappée uses `site/assets/img/world/monde-col-1520.webp`; its story caption
+preserves seed 52025, km 8.3 and 17:45. Other preview provenance is recorded per
+locale in `preview-media.json`. App icons and the publisher avatar are reused.
+Decorative lines are procedural geometry, separate from the product media.
+Fonts are served locally with their SIL Open Font License texts in `assets/fonts/`.
 
-## Content boundaries
+## Public content
 
-The copy describes stable uses rather than repeating fragile exercise counts, prices or unreleased details. App Store links are preserved. Prices and compatibility are referred to the store. Échappée is explicitly available for Apple silicon Mac, with iPhone/iPad later. The former unsupported blanket Android availability is removed from the portfolio. Nova Station Pinball remains excluded.
+The homepage stays English at `/`, with French at `/fr/`. Product sites retain
+their own repositories, paths, languages and legal content. Each support link goes
+to its product. Prices and device compatibility refer to the current store pages;
+Échappée explicitly identifies the Apple silicon Mac release, with iPhone/iPad
+coming later. The retired Nova Station Pinball is excluded. No career, client,
+employer, consulting or other non-catalogue project content is published.
 
-The public App Store lookup was read on 7 September 2026 for all 17 identifiers. The JSON response is kept with this task’s QA evidence; candidate metadata does not replace public facts.
-
-## Validation
-
-See [verification.md](verification.md) for this intervention’s executed checks. The catalogue boundary guard examines public sources and shipped assets, including structured data, maps and share previews. Internal documentation can explain exclusions without triggering false positives.
+The changes and local evidence for this design are described in
+[redesign-20260907.md](redesign-20260907.md).

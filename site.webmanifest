@@ -1,11 +1,11 @@
 {
-  "name": "Apps — Benjamin Dupin",
+  "name": "Apps \u2014 Benjamin Dupin",
   "short_name": "Benjamin Dupin",
   "description": "Apps for training, everyday life, baby journals and play.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f2eb",
-  "theme_color": "#f5f2eb",
+  "background_color": "#080a0b",
+  "theme_color": "#080a0b",
   "icons": [
     {
       "src": "/assets/profile/github-avatar.jpg",
