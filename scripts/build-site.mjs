@@ -1,4 +1,5 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {copy,productCopy} from '../content/copy.mjs';
@@ -6,18 +7,27 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const apps=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
 const profile=JSON.parse(await readFile(resolve(root,'content/profile.json'),'utf8'));
 const origin='https://bnjdpn.github.io';
+const assetVersions=new Map(await Promise.all(['styles.css','assets/experience.css','assets/product-media.css','assets/site.js','assets/experience.mjs'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
+const assetUrl=path=>`/${path}?v=${assetVersions.get(path)}`;
 const previewMedia=JSON.parse(await readFile(resolve(root,'content/preview-media.json'),'utf8'));
-const preview=(a,lang)=>{const m=previewMedia[a.path][lang];return `<a class="product-preview" href="${publicUrl(a,lang)}" aria-label="${esc(a.name)}"><img src="${m.src}" width="${m.width}" height="${m.height}" alt="${esc(a.name)}" loading="lazy" decoding="async"></a>`};
+for (const locales of Object.values(previewMedia)) for (const m of Object.values(locales)) {
+ const [x,y,w,h]=m.frame||[0,0,1,1];
+ if (![x,y,w,h].every(Number.isFinite)||x<0||y<0||w<=0||h<=0||x+w>1.000001||y+h>1.000001) throw new Error(`Invalid public image frame: ${m.src}`);
+ if (m.catalogOffset!==undefined&&(!Number.isFinite(m.catalogOffset)||m.catalogOffset<0)) throw new Error(`Invalid catalogue focal point: ${m.src}`);
+}
+const mediaStyle=m=>{const [x,y,w,h]=m.frame||[0,0,1,1];return `--screen-ratio:${m.width*w/(m.height*h)};--screen-width:${100/w}%;--screen-left:${-100*x/w}%;--screen-top:${-100*y/h}%;--catalog-offset:${m.catalogOffset||0}`};
+const screen=(m,alt,attrs='')=>`<span class="screen-viewport" style="${mediaStyle(m)}"><img src="${m.src}" width="${m.width}" height="${m.height}" alt="${esc(alt)}" ${attrs} decoding="async"></span>`;
+const preview=(a,lang)=>{const m=previewMedia[a.path][lang];return `<a class="product-preview" href="${publicUrl(a,lang)}" aria-label="${esc(a.name)}">${screen(m,a.name,'loading="lazy"')}</a>`};
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const publicUrl=(a,lang)=>`${origin}/${a.path}/${lang==='fr'?'fr-FR/' : ''}`;
 // French paths follow each product site's existing published routing.
 const icon=a=>`<img class="app-icon" src="/assets/apps/${a.icon}.${a.iconFormat||'webp'}" width="512" height="512" alt="" loading="lazy" decoding="async">`;
-const shot=(name,lang,alt,cls='',eager=false)=>`<img class="${cls}" src="/assets/previews/${name}-${lang}.webp" width="440" height="956" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+const shot=(name,lang,alt)=>screen(previewMedia[apps.find(a=>a.icon===name).path][lang],alt,'loading="lazy"');
 const outputs=new Map();
 for(const lang of ['en','fr']) {
  const t=copy[lang], url=origin+(lang==='fr'?'/fr/':'/');
  const app=path=>apps.find(a=>a.path===path);
- const discovery=apps.map((a,i)=>({id:a.path,name:a.name,number:String(i+1).padStart(2,'0'),url:publicUrl(a,lang),category:productCopy[a.path].category,categoryLabel:t.categories[productCopy[a.path].category],platform:productCopy[a.path][lang][0],headline:productCopy[a.path][lang][1],description:productCopy[a.path][lang][2],image:(({src,width,height})=>({src,width,height}))(previewMedia[a.path][lang]),icon:`/assets/apps/${a.icon}.${a.iconFormat||'webp'}`}));
+ const discovery=apps.map((a,i)=>({id:a.path,name:a.name,number:String(i+1).padStart(2,'0'),url:publicUrl(a,lang),category:productCopy[a.path].category,categoryLabel:t.categories[productCopy[a.path].category],platform:productCopy[a.path][lang][0],headline:productCopy[a.path][lang][1],description:productCopy[a.path][lang][2],image:(({src,width,height,frame})=>({src,width,height,frame}))(previewMedia[a.path][lang]),icon:`/assets/apps/${a.icon}.${a.iconFormat||'webp'}`}));
  const lead=discovery[0];
  const d=lang==='fr'?{line1:'Le quotidien,',line2:'autrement.',label:'17 apps indépendantes. Autant de possibles.',chosen:'À découvrir cette fois',next:'Une autre découverte',scroll:'Faites défiler pour explorer',pause:'Mettre les animations en pause',resume:'Activer les animations',all:'Les 17 applications',chapter:'Changer de perspective',chapterTitle:'Un autre rythme.\nUn autre horizon.'}:{line1:'Everyday life,',line2:'reimagined.',label:'17 independent apps. So many possibilities.',chosen:'This time, discover',next:'Discover another app',scroll:'Scroll to explore',pause:'Pause animations',resume:'Enable animations',all:'All 17 applications',chapter:'A change of perspective',chapterTitle:'Another rhythm.\nAnother horizon.'};
  const graph=[profile,{'@type':'WebSite','@id':`${origin}/#website`,url:origin+'/',name:'Benjamin Dupin',inLanguage:['en','fr'],publisher:{'@id':profile['@id']}},{'@type':'CollectionPage','@id':url+'#apps',url,name:t.title,description:t.description,inLanguage:lang,dateModified:'2026-09-07T12:00:00Z',mainEntity:{'@id':url+'#catalogue'}},{'@type':'ItemList','@id':url+'#catalogue',name:t.apps,numberOfItems:apps.length,itemListElement:apps.map((a,i)=>({'@type':'ListItem',position:i+1,name:a.name,url:publicUrl(a,lang)}))}];
@@ -30,11 +40,11 @@ for(const lang of ['en','fr']) {
 <meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">
 <meta name="theme-color" content="#090c10"><meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="${url}"><link rel="alternate" hreflang="en" href="${origin}/"><link rel="alternate" hreflang="fr" href="${origin}/fr/"><link rel="alternate" hreflang="x-default" href="${origin}/">
-<link rel="icon" href="/assets/profile/github-avatar.jpg" type="image/jpeg"><link rel="apple-touch-icon" href="/assets/profile/github-avatar.jpg"><link rel="manifest" href="/site.webmanifest"><link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/assets/experience.css">
+<link rel="icon" href="/assets/profile/github-avatar.jpg" type="image/jpeg"><link rel="apple-touch-icon" href="/assets/profile/github-avatar.jpg"><link rel="manifest" href="/site.webmanifest"><link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="${assetUrl('styles.css')}"><link rel="stylesheet" href="${assetUrl('assets/experience.css')}"><link rel="stylesheet" href="${assetUrl('assets/product-media.css')}">
 <meta property="og:type" content="website"><meta property="og:locale" content="${lang==='fr'?'fr_FR':'en_US'}"><meta property="og:locale:alternate" content="${lang==='fr'?'en_US':'fr_FR'}"><meta property="og:site_name" content="Benjamin Dupin"><meta property="og:title" content="${esc(t.title)}"><meta property="og:description" content="${esc(t.description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${origin}/assets/social/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Benjamin Dupin · ${esc(t.theme)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(t.title)}"><meta name="twitter:description" content="${esc(t.description)}"><meta name="twitter:image" content="${origin}/assets/social/og.jpg">
 <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph},null,2)}</script>
-<script src="/assets/site.js" defer></script><script type="module" src="/assets/experience.mjs"></script><script type="application/json" id="discovery-data">${JSON.stringify(discovery).replaceAll('<','\\u003c')}</script></head><body id="top"><div class="reading-progress" aria-hidden="true"></div>
+<script src="${assetUrl('assets/site.js')}" defer></script><script type="module" src="${assetUrl('assets/experience.mjs')}"></script><script type="application/json" id="discovery-data">${JSON.stringify(discovery).replaceAll('<','\\u003c')}</script></head><body id="top"><div class="reading-progress" aria-hidden="true"></div>
 <a class="skip-link" href="#main">${t.skip}</a>
 <header class="masthead"><a class="identity" href="${lang==='fr'?'/fr/':'/'}"><span class="monogram" aria-hidden="true">bd.</span><span>Benjamin Dupin</span></a><nav aria-label="${t.nav}"><a href="#products">${t.apps}</a><a class="nav-contact" href="#contact">${t.contact} <span aria-hidden="true">↗</span></a></nav><nav class="languages" aria-label="${lang==='fr'?'Langues':'Languages'}"><a href="/fr/" lang="fr" hreflang="fr" ${lang==='fr'?'aria-current="page"':''}>FR</a><span aria-hidden="true">/</span><a href="/" lang="en" hreflang="en" ${lang==='en'?'aria-current="page"':''}>EN</a></nav></header>
 <main id="main" tabindex="-1">
@@ -43,7 +53,7 @@ for(const lang of ['en','fr']) {
 <canvas class="flow-field" aria-hidden="true"></canvas><div class="stage-grid" aria-hidden="true"></div>
 <div class="experience-topline"><p class="eyebrow">${d.label}</p><span class="edition-mark" aria-hidden="true">BD / APPS — 2026</span></div>
 <div class="hero-heading"><h1 id="hero-title"><span>${d.line1}</span><em>${d.line2}</em></h1><p class="hero-subtitle">${t.intro}</p></div>
-<figure class="discovery-visual"><a id="discovery-image-link" href="${lead.url}" aria-label="${esc(t.discover+' '+lead.name)}"><img id="discovery-image" src="${lead.image.src}" width="${lead.image.width}" height="${lead.image.height}" alt="${esc(lead.name)}" fetchpriority="high" decoding="async"></a><figcaption><span class="visual-cross" aria-hidden="true">+</span><span>${t.realShot}</span><span class="visual-cross" aria-hidden="true">+</span></figcaption></figure>
+<figure class="discovery-visual" style="${mediaStyle(lead.image)}"><a id="discovery-image-link" href="${lead.url}" aria-label="${esc(t.discover+' '+lead.name)}">${screen(lead.image,lead.name,'id="discovery-image" fetchpriority="high"')}</a><figcaption><span id="visual-app-name">${esc(lead.name)}</span><span class="visual-caption">${lang==='fr'?'Vue du produit':'Product view'}</span></figcaption></figure>
 <div class="discovery-copy"><p class="discovery-kicker"><span class="live-dot" aria-hidden="true"></span>${d.chosen} <span id="discovery-number">${lead.number}</span><span class="dim">/ 17</span></p><div class="discovery-identity"><img id="discovery-icon" src="${lead.icon}" width="48" height="48" alt=""><h2 id="discovery-name">${esc(lead.name)}</h2></div><p id="discovery-headline">${esc(lead.headline)}</p><p id="discovery-platform">${esc(lead.platform)}</p><div class="discovery-actions"><a class="button" id="discovery-link" href="${lead.url}">${t.discover} <span aria-hidden="true">↗</span></a><button type="button" id="next-discovery" class="shuffle-button" hidden aria-label="${d.next}" title="${d.next}"><span aria-hidden="true">↻</span></button></div><p class="sr-only" id="discovery-announcement" role="status" aria-live="polite"></p></div>
 <div class="experience-bottom"><a href="#selected" class="scroll-cue"><span class="scroll-track" aria-hidden="true"><i></i></span>${d.scroll}</a><a href="#products" class="all-apps-link">${d.all} <span aria-hidden="true">↗</span></a><button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" aria-label="${d.pause}" data-pause="${d.pause}" data-resume="${d.resume}" hidden><span aria-hidden="true">Ⅱ</span></button></div>
 </div></section>

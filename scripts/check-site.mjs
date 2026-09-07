@@ -3,7 +3,7 @@ import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const catalog=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
-const styles=(await Promise.all(['styles.css','assets/experience.css'].map(path=>readFile(resolve(root,path),'utf8')))).join('\n');
+const styles=(await Promise.all(['styles.css','assets/experience.css','assets/product-media.css'].map(path=>readFile(resolve(root,path),'utf8')))).join('\n');
 const workflow=await readFile(resolve(root,'.github/workflows/pages.yml'),'utf8');
 const sitemap=await readFile(resolve(root,'sitemap.xml'),'utf8');
 const pages=await readFile(resolve(root,'sitemap-pages.xml'),'utf8');

@@ -33,9 +33,12 @@ Filtering is a separate progressive enhancement.
 
 - `content/catalog.json`: names, site paths, store IDs and icons.
 - `content/copy.mjs`: paired editorial copy and categories.
-- `content/preview-media.json`: dimensions and source paths for every real preview.
+- `content/preview-media.json`: dimensions, source paths, media type and normalized
+  `[x, y, width, height]` framing for every real preview, plus a separate vertical
+  catalogue offset expressed as a fraction of the framed image's width.
 - `scripts/build-site.mjs`: generates the EN/FR pages and sitemaps.
 - `styles.css` and `assets/experience.css`: base presentation and immersive layer.
+- `assets/product-media.css`: shared image viewports and product presentation.
 - `scripts/og-card.html`: reproducible source of the 1200 × 630 social image.
 
 All product images are existing public app or game captures. No interface was
@@ -44,6 +47,15 @@ preserves seed 52025, km 8.3 and 17:45. Other preview provenance is recorded per
 locale in `preview-media.json`. App icons and the publisher avatar are reused.
 Decorative lines are procedural geometry, separate from the product media.
 Fonts are served locally with their SIL Open Font License texts in `assets/fonts/`.
+
+The portfolio uses unchanged copies of the published 880 px originals where
+available. CSS viewports remove the surrounding poster headlines and margins;
+they do not redraw or retouch the interface. The manifest distinguishes interface
+captures from composed marketing media, including FastZen's existing composition.
+The hero and story chapters show the framed product face-on. Catalogue cards show
+larger interface details with individual focal points. The 422 px watch capture is
+capped at 210 CSS pixels to avoid enlarging its limited source resolution. Styles and scripts use content
+hashes in their URLs so returning visitors receive the matching presentation.
 
 ## Public content
 

@@ -1,0 +1,43 @@
+/* Public captures are framed in CSS. The original image and its pixels are intact. */
+.screen-viewport{display:block;position:relative;overflow:hidden;aspect-ratio:var(--screen-ratio);border-radius:12px;isolation:isolate;background:#111619}
+.screen-viewport>img{position:absolute!important;display:block;width:var(--screen-width,100%)!important;max-width:none!important;height:auto!important;min-height:0!important;max-height:none!important;left:var(--screen-left,0)!important;top:var(--screen-top,0)!important;margin:0!important;object-fit:initial!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important}
+.experience .discovery-visual,.experience[data-composition='reverse'] .discovery-visual{left:76%;top:14%;width:min(29vw,calc(63svh * var(--screen-ratio)));max-width:370px;filter:none;transform:translateX(-50%) translateY(calc(var(--hero-progress)*-24px));transform-origin:center}
+.experience .discovery-visual a{border:0;border-radius:12px;box-shadow:0 24px 65px #0004;overflow:visible;background:none;outline-offset:9px}
+.experience .discovery-visual .screen-viewport{border-radius:12px;outline:1px solid #ffffff20;outline-offset:0}
+.discovery-visual figcaption{margin-top:18px;padding-top:13px;border-top:1px solid #a7b1a947;gap:15px;font:10px/1.5 var(--sans);text-transform:none;letter-spacing:0;color:#d0d8d2}
+.discovery-visual .visual-caption{color:#8f9c95;text-align:right;font-size:9px}
+.experience[data-landscape='true'] .discovery-visual{left:auto;right:var(--gutter);top:37%;width:min(43vw,calc(42svh * var(--screen-ratio)));max-width:620px;transform:translateY(calc(var(--hero-progress)*-20px))}
+.experience[data-landscape='true'] .discovery-visual a,.experience[data-landscape='true'] .screen-viewport{border-radius:2px}
+.experience[data-watch='true'] .discovery-visual{width:26vw;max-width:210px;top:26%}
+.experience[data-watch='true'] .discovery-visual a,.experience[data-watch='true'] .screen-viewport{border-radius:24px}
+.feature-energy figure,.feature-family figure{background:#101b1e;padding:65px 40px;gap:22px;overflow:hidden}
+.feature-energy figure:after{display:none}
+.feature-family figure{background:#202a28}
+.feature-energy .screen-viewport,.feature-family .screen-viewport{width:100%;max-width:330px;border-radius:12px;box-shadow:0 25px 50px #0003;transform:translateY(calc(var(--scene-progress)*-18px));outline:1px solid #ffffff15}
+.feature-energy figcaption,.feature-family figcaption{align-self:stretch;text-align:center;margin:0;color:#a4b1aa;font-size:11px}
+.product-preview{height:330px;border-radius:3px;border:1px solid #ffffff16;background:#18212a;padding:0}
+.product-preview .screen-viewport{width:100%;border-radius:0;margin-block-start:calc(var(--catalog-offset,0) * -100%);transform:translateY(0);transition:transform .65s cubic-bezier(.22,1,.36,1)}
+.product-preview:hover .screen-viewport{transform:translateY(-12px)}
+.product-row[data-app='Echappee'] .product-preview .screen-viewport{height:100%;aspect-ratio:auto}
+.product-row[data-app='Echappee'] .product-preview img{width:100%!important;height:100%!important;object-fit:cover!important}
+.product-row[data-app='PasDuJour'] .product-preview{padding:25px 50px;background:#06080b}
+.product-row[data-app='PasDuJour'] .screen-viewport{border-radius:20px}
+.product-row[data-app='petites-dents'] .product-preview{background:#fff}
+.product-row[data-app='petites-dents'] .screen-viewport{width:min(82%,345px);margin-inline:auto;margin-block-start:max(calc(var(--catalog-offset,0) * -82%),calc(var(--catalog-offset,0) * -345px))}
+@media(min-width:761px) and (max-width:999px){.experience .discovery-visual,.experience[data-composition='reverse'] .discovery-visual{top:25%;width:26vw;left:77%}.experience[data-landscape='true'] .discovery-visual{top:43%;width:47vw;left:auto;right:var(--gutter)}}
+@media(min-width:1000px) and (max-height:850px){.experience .discovery-visual{top:13%;width:min(28vw,calc(61svh * var(--screen-ratio)))}.experience[data-landscape='true'] .discovery-visual{top:32%;width:min(39vw,calc(42svh * var(--screen-ratio)))}.experience[data-watch='true'] .discovery-visual{top:25%;width:25vw}}
+@media(max-width:760px){
+ .experience .discovery-visual,.experience[data-composition='reverse'] .discovery-visual{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:230px;margin:32px auto}
+ .experience .discovery-visual a,.experience .discovery-visual .screen-viewport{border-radius:8px}
+ .discovery-visual figcaption{font-size:8px;line-height:1.45;padding-top:10px;margin-top:13px;gap:8px}
+ .discovery-visual .visual-caption{font-size:8px}
+ .experience[data-landscape='true'] .discovery-visual{width:100%;max-width:none;left:auto;right:auto;top:auto;transform:none;margin:0 auto 28px}
+ .experience[data-watch='true'] .discovery-visual{width:100%;left:auto;top:auto;max-width:210px;margin-block:45px}
+ .feature-energy figure,.feature-family figure{padding:35px 25px}
+ .feature-energy .screen-viewport,.feature-family .screen-viewport{max-width:255px;transform:none}
+ .product-preview{height:310px}
+ .product-row[data-app='PasDuJour'] .product-preview{padding:22px 35px}
+}
+@media(prefers-reduced-motion:reduce){.product-preview .screen-viewport,.feature .screen-viewport{transform:none!important;transition:none}}
+body.motion-paused .feature .screen-viewport{transform:none}
+.product-row[data-app='PasDuJour'] .screen-viewport{max-width:210px;margin-inline:auto}

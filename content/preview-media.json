@@ -1,226 +1,466 @@
 {
   "LoadSense": {
     "en": {
-      "src": "/assets/previews/loadsense-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "LoadSense/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/loadsense-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "LoadSense/marketing/shots/en-US/03-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface sans slogan",
+      "catalogOffset": 0.7
     },
     "fr": {
-      "src": "/assets/previews/loadsense-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "LoadSense/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/loadsense-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "LoadSense/marketing/shots/fr-FR/03-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface sans slogan",
+      "catalogOffset": 0.7
     }
   },
   "TempoReps": {
     "en": {
-      "src": "/assets/previews/temporeps-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "TempoReps/marketing/shots/en-US/02-440.webp"
+      "src": "/assets/previews/temporeps-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "TempoReps/marketing/shots/en-US/03-880.webp",
+      "frame": [
+        0.075,
+        0.22,
+        0.85,
+        0.78
+      ],
+      "sourceKind": "affiche",
+      "catalogOffset": 0.9
     },
     "fr": {
-      "src": "/assets/previews/temporeps-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "TempoReps/marketing/shots/fr-FR/02-440.webp"
+      "src": "/assets/previews/temporeps-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "TempoReps/marketing/shots/fr-FR/03-880.webp",
+      "frame": [
+        0.075,
+        0.22,
+        0.85,
+        0.78
+      ],
+      "sourceKind": "affiche",
+      "catalogOffset": 0.9
     }
   },
   "PRVault": {
     "en": {
-      "src": "/assets/previews/prvault-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "PRVault/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/prvault-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "PRVault/marketing/shots/en-US/01-880.webp",
+      "frame": [
+        0.075,
+        0.22,
+        0.85,
+        0.78
+      ],
+      "sourceKind": "affiche"
     },
     "fr": {
-      "src": "/assets/previews/prvault-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "PRVault/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/prvault-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "PRVault/marketing/shots/fr-FR/01-880.webp",
+      "frame": [
+        0.075,
+        0.22,
+        0.85,
+        0.78
+      ],
+      "sourceKind": "affiche"
     }
   },
   "GrooveLog": {
     "en": {
-      "src": "/assets/previews/groovelog-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "GrooveLog/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/groovelog-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "GrooveLog/marketing/shots/en-US/03-880.webp",
+      "frame": [
+        0.09,
+        0.29,
+        0.82,
+        0.68
+      ],
+      "sourceKind": "affiche"
     },
     "fr": {
-      "src": "/assets/previews/groovelog-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "GrooveLog/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/groovelog-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "GrooveLog/marketing/shots/fr-FR/03-880.webp",
+      "frame": [
+        0.09,
+        0.29,
+        0.82,
+        0.68
+      ],
+      "sourceKind": "affiche"
     }
   },
   "FastZen": {
     "en": {
-      "src": "/assets/previews/fastzen-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "FastZen/marketing/shots/en-US/02-440.webp"
+      "src": "/assets/previews/fastzen-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "FastZen/marketing/shots/en-US/03-880.webp",
+      "frame": [
+        0.13,
+        0.25,
+        0.74,
+        0.65
+      ],
+      "sourceKind": "affiche avec maquette composee",
+      "catalogOffset": 0.6
     },
     "fr": {
-      "src": "/assets/previews/fastzen-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "FastZen/marketing/shots/fr-FR/02-440.webp"
+      "src": "/assets/previews/fastzen-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "FastZen/marketing/shots/fr-FR/03-880.webp",
+      "frame": [
+        0.13,
+        0.279,
+        0.74,
+        0.621
+      ],
+      "sourceKind": "affiche avec maquette composee",
+      "catalogOffset": 0.6
     }
   },
   "ColdLoad": {
     "en": {
-      "src": "/assets/previews/coldload-en.webp",
-      "width": 440,
-      "height": 952,
-      "source": "ColdLoad/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/coldload-en-detail.webp",
+      "width": 880,
+      "height": 1905,
+      "source": "ColdLoad/marketing/shots/en-US/01-880.webp",
+      "frame": [
+        0.147,
+        0.235,
+        0.706,
+        0.722
+      ],
+      "sourceKind": "affiche",
+      "catalogOffset": 0.7
     },
     "fr": {
-      "src": "/assets/previews/coldload-fr.webp",
-      "width": 440,
-      "height": 952,
-      "source": "ColdLoad/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/coldload-fr-detail.webp",
+      "width": 880,
+      "height": 1905,
+      "source": "ColdLoad/marketing/shots/fr-FR/01-880.webp",
+      "frame": [
+        0.147,
+        0.235,
+        0.706,
+        0.722
+      ],
+      "sourceKind": "affiche",
+      "catalogOffset": 0.7
     }
   },
   "MoveAtlas": {
     "en": {
-      "src": "/assets/previews/moveatlas-en.webp",
-      "width": 440,
-      "height": 954,
-      "source": "MoveAtlas/marketing/shots/en-US/02-440.webp"
+      "src": "/assets/previews/moveatlas-en-detail.webp",
+      "width": 880,
+      "height": 1907,
+      "source": "MoveAtlas/marketing/shots/en-US/03-880.webp",
+      "frame": [
+        0.06,
+        0.17,
+        0.88,
+        0.6
+      ],
+      "sourceKind": "planche marketing"
     },
     "fr": {
-      "src": "/assets/previews/moveatlas-fr.webp",
-      "width": 440,
-      "height": 954,
-      "source": "MoveAtlas/marketing/shots/fr-FR/02-440.webp"
+      "src": "/assets/previews/moveatlas-fr-detail.webp",
+      "width": 880,
+      "height": 1907,
+      "source": "MoveAtlas/marketing/shots/fr-FR/03-880.webp",
+      "frame": [
+        0.06,
+        0.17,
+        0.88,
+        0.6
+      ],
+      "sourceKind": "planche marketing"
     }
   },
   "NeatShift": {
     "en": {
-      "src": "/assets/previews/neatshift-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "NeatShift/marketing/shots/en-US/03-440.webp"
+      "src": "/assets/previews/neatshift-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "NeatShift/marketing/shots/en-US/02-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface brute"
     },
     "fr": {
-      "src": "/assets/previews/neatshift-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "NeatShift/marketing/shots/fr-FR/03-440.webp"
+      "src": "/assets/previews/neatshift-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "NeatShift/marketing/shots/fr-FR/02-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface brute"
     }
   },
   "BrewMeter": {
     "en": {
-      "src": "/assets/previews/brewmeter-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "BrewMeter/marketing/shots/en-US/02-440.webp"
+      "src": "/assets/previews/brewmeter-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "BrewMeter/marketing/shots/en-US/01-880.webp",
+      "frame": [
+        0.075,
+        0.22,
+        0.85,
+        0.78
+      ],
+      "sourceKind": "affiche"
     },
     "fr": {
-      "src": "/assets/previews/brewmeter-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "BrewMeter/marketing/shots/fr-FR/02-440.webp"
+      "src": "/assets/previews/brewmeter-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "BrewMeter/marketing/shots/fr-FR/01-880.webp",
+      "frame": [
+        0.075,
+        0.22,
+        0.85,
+        0.78
+      ],
+      "sourceKind": "affiche"
     }
   },
   "NoBuyCart": {
     "en": {
-      "src": "/assets/previews/nobuycart-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "NoBuyCart/marketing/shots/en-US/03-440.webp"
+      "src": "/assets/previews/nobuycart-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "NoBuyCart/marketing/shots/en-US/03-880.webp",
+      "frame": [
+        0.143,
+        0.226,
+        0.714,
+        0.728
+      ],
+      "sourceKind": "affiche",
+      "catalogOffset": 0.38
     },
     "fr": {
-      "src": "/assets/previews/nobuycart-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "NoBuyCart/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/nobuycart-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "NoBuyCart/marketing/shots/fr-FR/01-880.webp",
+      "frame": [
+        0.143,
+        0.226,
+        0.714,
+        0.728
+      ],
+      "sourceKind": "affiche",
+      "catalogOffset": 0.95
     }
   },
   "PasDuJour": {
     "en": {
-      "src": "/assets/previews/pasdujour-en.webp",
+      "src": "/assets/previews/pasdujour-en-detail.webp",
       "width": 422,
       "height": 514,
-      "source": "PasDuJour/marketing/shots/en-US/01-422.webp"
+      "source": "PasDuJour/marketing/shots/en-US/02-422.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface watchOS brute"
     },
     "fr": {
-      "src": "/assets/previews/pasdujour-fr.webp",
+      "src": "/assets/previews/pasdujour-fr-detail.webp",
       "width": 422,
       "height": 514,
-      "source": "PasDuJour/marketing/shots/fr-FR/01-422.webp"
+      "source": "PasDuJour/marketing/shots/fr-FR/02-422.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface watchOS brute"
     }
   },
   "VesperDrift": {
     "en": {
-      "src": "/assets/previews/vesperdrift-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "VesperDrift/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/vesperdrift-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "VesperDrift/marketing/shots/en-US/03-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "jeu brut"
     },
     "fr": {
-      "src": "/assets/previews/vesperdrift-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "VesperDrift/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/vesperdrift-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "VesperDrift/marketing/shots/fr-FR/03-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "jeu brut"
     }
   },
   "petites-gouttes": {
     "en": {
-      "src": "/assets/previews/petites-gouttes-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "petites-gouttes/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/petites-gouttes-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "petites-gouttes/marketing/shots/en-US/02-880.webp",
+      "frame": [
+        0.145,
+        0.24,
+        0.71,
+        0.712
+      ],
+      "sourceKind": "affiche"
     },
     "fr": {
-      "src": "/assets/previews/petites-gouttes-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "petites-gouttes/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/petites-gouttes-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "petites-gouttes/marketing/shots/fr-FR/02-880.webp",
+      "frame": [
+        0.145,
+        0.24,
+        0.71,
+        0.712
+      ],
+      "sourceKind": "affiche"
     }
   },
   "petites-bouchees": {
     "en": {
-      "src": "/assets/previews/petites-bouchees-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "petites-bouchees/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/petites-bouchees-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "petites-bouchees/marketing/shots/en-US/03-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface brute",
+      "catalogOffset": 0.2
     },
     "fr": {
-      "src": "/assets/previews/petites-bouchees-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "petites-bouchees/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/petites-bouchees-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "petites-bouchees/marketing/shots/fr-FR/03-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface brute",
+      "catalogOffset": 0.2
     }
   },
   "petites-nuits": {
     "en": {
-      "src": "/assets/previews/petites-nuits-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "petites-nuits/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/petites-nuits-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "petites-nuits/marketing/shots/en-US/02-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface brute",
+      "catalogOffset": 0.39
     },
     "fr": {
-      "src": "/assets/previews/petites-nuits-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "petites-nuits/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/petites-nuits-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "petites-nuits/marketing/shots/fr-FR/02-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface brute",
+      "catalogOffset": 0.39
     }
   },
   "petites-dents": {
     "en": {
-      "src": "/assets/previews/petites-dents-en.webp",
-      "width": 440,
-      "height": 956,
-      "source": "petites-dents/marketing/shots/en-US/01-440.webp"
+      "src": "/assets/previews/petites-dents-en-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "petites-dents/marketing/shots/en-US/01-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface brute",
+      "catalogOffset": 0.75
     },
     "fr": {
-      "src": "/assets/previews/petites-dents-fr.webp",
-      "width": 440,
-      "height": 956,
-      "source": "petites-dents/marketing/shots/fr-FR/01-440.webp"
+      "src": "/assets/previews/petites-dents-fr-detail.webp",
+      "width": 880,
+      "height": 1912,
+      "source": "petites-dents/marketing/shots/fr-FR/01-880.webp",
+      "frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "sourceKind": "interface brute",
+      "catalogOffset": 0.75
     }
   },
   "Echappee": {

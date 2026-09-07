@@ -51,6 +51,11 @@ function startExperience(apps) {
     const visibleImage = $('#discovery-image');
     visibleImage.width = app.image.width; visibleImage.height = app.image.height;
     visibleImage.src = app.image.src; visibleImage.alt = app.name;
+    const [x,y,w,h] = app.image.frame || [0,0,1,1];
+    const frameStyle = `--screen-ratio:${app.image.width*w/(app.image.height*h)};--screen-width:${100/w}%;--screen-left:${-100*x/w}%;--screen-top:${-100*y/h}%`;
+    $('.discovery-visual').style.cssText = frameStyle;
+    visibleImage.parentElement.style.cssText = frameStyle;
+    $('#visual-app-name').textContent = app.name;
     if (announce) $('#discovery-announcement').textContent = `${app.name}. ${app.headline}`;
     nextButton.disabled = false;
     measure(); draw(); schedule();
