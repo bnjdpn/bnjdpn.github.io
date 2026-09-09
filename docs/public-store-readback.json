@@ -39,10 +39,11 @@
     {
       "id": "6761484595",
       "name": "FastZen : Routine de jeûne",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "kind": "software",
       "url": "https://apps.apple.com/fr/app/fastzen-routine-de-je%C3%BBne/id6761484595?uo=4",
-      "description_sha256": "d7e5eb631ce258c690b403d81cccc86011f943f47a40a3c47b67a4eef71108ff"
+      "description_sha256": "1ca6784432debb76a47f47acedda2c5bff15256cb4a8f02a3f3fbe3845909402",
+      "checked_at": "2026-09-09T21:36:11.052507+00:00"
     },
     {
       "id": "6785921799",
