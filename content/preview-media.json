@@ -386,7 +386,11 @@
         1.0
       ],
       "sourceKind": "interface brute",
-      "catalogOffset": 0.2
+      "catalogOffset": 0.2,
+      "sourceVersion": "1.1.2",
+      "sourceVerifiedAt": "2026-09-09T18:59:18.776240+00:00",
+      "sourceSHA256": "6e40cd5c70e5afd3ad7ceb311f0f40e76d0bc285d1edb379568466b53ad240ea",
+      "sourceCommit": "2f6d6e5a611b52f0efe2da8682c9322f47be9134"
     },
     "fr": {
       "src": "/assets/previews/petites-bouchees-fr-detail.webp",
@@ -400,7 +404,11 @@
         1.0
       ],
       "sourceKind": "interface brute",
-      "catalogOffset": 0.2
+      "catalogOffset": 0.2,
+      "sourceVersion": "1.1.2",
+      "sourceVerifiedAt": "2026-09-09T18:59:18.776240+00:00",
+      "sourceSHA256": "ab14a449263e8c36486921cb889ac8408bd4628c2a0e5b09e338868b0d12b6a4",
+      "sourceCommit": "2f6d6e5a611b52f0efe2da8682c9322f47be9134"
     }
   },
   "petites-nuits": {
