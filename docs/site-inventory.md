@@ -1,6 +1,6 @@
 # Carte des sites
 
-Inventaire vérifié pour la refonte locale du 7 septembre 2026. Chaque dépôt reste
+Inventaire mis à jour pour la livraison éditoriale du 10 septembre 2026. Chaque dépôt reste
 indépendant. La carte locale `.agents/skills/site-release-sync/references/site-map.md`
 fait autorité pour ses captures, validations et étapes de publication ; les sources
 ci-dessous font autorité pour le contenu. Les nombres incluent les redirections
@@ -13,7 +13,7 @@ et pages d’erreur existantes, sans compter deux fois une ancre d’aide/FAQ.
 | FastZen | `bnjdpn/FastZen` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-ES, es-MX, fr-FR, it, ja, pt-BR | 19 | [Site](https://bnjdpn.github.io/FastZen/) |
 | GrooveLog | `bnjdpn/GrooveLog` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-ES, fr-FR | 9 | [Site](https://bnjdpn.github.io/GrooveLog/) |
 | LoadSense | `bnjdpn/LoadSense` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, fr-FR, ja | 16 | [Site](https://bnjdpn.github.io/LoadSense/) |
-| MoveAtlas | `bnjdpn/MoveAtlas` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | en-US, fr-FR | 43 | [Site](https://bnjdpn.github.io/MoveAtlas/) |
+| MoveAtlas | `bnjdpn/MoveAtlas` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-ES, fr-FR | 43 | [Site](https://bnjdpn.github.io/MoveAtlas/) |
 | NeatShift | `bnjdpn/NeatShift` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | en-US, fr-FR | 7 | [Site](https://bnjdpn.github.io/NeatShift/) |
 | NoBuy Cart | `bnjdpn/NoBuyCart` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-MX, fr-FR, ja, ko, pt-BR, zh-Hans, zh-Hant | 20 | [Site](https://bnjdpn.github.io/NoBuyCart/) |
 | Pas du Jour | `bnjdpn/PasDuJour` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | en-US, fr-FR | 5 | [Site](https://bnjdpn.github.io/PasDuJour/) |
@@ -37,8 +37,10 @@ pour chacune des neuf langues.
 
 ## Captures et langues
 
-Les captures des 16 apps viennent des fiches Apple publiques ou des sources
-Watch déjà versionnées pour Pas du Jour. `marketing/site.json` contient les
+Les captures proviennent des interfaces natives qualifiées des releases, ou des
+sources inchangées déjà publiées. La livraison du 10 septembre présente les nouveautés
+comme disponibles sur instruction explicite de l’éditeur, sans attendre Apple ;
+cela ne constitue pas un reçu d’approbation. `marketing/site.json` contient les
 versions/sources publiques et les mappings `local_assets`; `marketing/README.md`
 décrit leur usage. FR/EN sont rédigés autour des usages réels. Les autres langues
 conservent leurs catalogues publics vérifiés et leurs pages juridiques.

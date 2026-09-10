@@ -34,29 +34,29 @@
       "src": "/assets/previews/temporeps-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "TempoReps/marketing/shots/en-US/03-880.webp",
+      "source": "TempoReps/marketing/shots/en-US/01-880.webp",
       "frame": [
-        0.075,
-        0.22,
-        0.85,
-        0.78
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche",
-      "catalogOffset": 0.9
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/temporeps-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "TempoReps/marketing/shots/fr-FR/03-880.webp",
+      "source": "TempoReps/marketing/shots/fr-FR/01-880.webp",
       "frame": [
-        0.075,
-        0.22,
-        0.85,
-        0.78
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche",
-      "catalogOffset": 0.9
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "PRVault": {
@@ -64,27 +64,29 @@
       "src": "/assets/previews/prvault-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "PRVault/marketing/shots/en-US/01-880.webp",
+      "source": "PRVault/marketing/shots/en-US/03-880.webp",
       "frame": [
-        0.075,
-        0.22,
-        0.85,
-        0.78
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/prvault-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "PRVault/marketing/shots/fr-FR/01-880.webp",
+      "source": "PRVault/marketing/shots/fr-FR/03-880.webp",
       "frame": [
-        0.075,
-        0.22,
-        0.85,
-        0.78
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "GrooveLog": {
@@ -94,12 +96,13 @@
       "height": 1912,
       "source": "GrooveLog/marketing/shots/en-US/03-880.webp",
       "frame": [
-        0.09,
-        0.29,
-        0.82,
-        0.68
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/groovelog-fr-detail.webp",
@@ -107,12 +110,13 @@
       "height": 1912,
       "source": "GrooveLog/marketing/shots/fr-FR/03-880.webp",
       "frame": [
-        0.09,
-        0.29,
-        0.82,
-        0.68
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "FastZen": {
@@ -120,59 +124,59 @@
       "src": "/assets/previews/fastzen-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "FastZen/marketing/shots/en-US/03-880.webp",
+      "source": "FastZen/marketing/shots/en-US/01-880.webp",
       "frame": [
-        0.13,
-        0.25,
-        0.74,
-        0.65
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche avec maquette composee",
-      "catalogOffset": 0.6
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/fastzen-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "FastZen/marketing/shots/fr-FR/03-880.webp",
+      "source": "FastZen/marketing/shots/fr-FR/01-880.webp",
       "frame": [
-        0.13,
-        0.279,
-        0.74,
-        0.621
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche avec maquette composee",
-      "catalogOffset": 0.6
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "ColdLoad": {
     "en": {
       "src": "/assets/previews/coldload-en-detail.webp",
       "width": 880,
-      "height": 1905,
-      "source": "ColdLoad/marketing/shots/en-US/01-880.webp",
+      "height": 1912,
+      "source": "ColdLoad/marketing/shots/en-US/02-880.webp",
       "frame": [
-        0.147,
-        0.235,
-        0.706,
-        0.722
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche",
-      "catalogOffset": 0.7
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/coldload-fr-detail.webp",
       "width": 880,
-      "height": 1905,
-      "source": "ColdLoad/marketing/shots/fr-FR/01-880.webp",
+      "height": 1912,
+      "source": "ColdLoad/marketing/shots/fr-FR/02-880.webp",
       "frame": [
-        0.147,
-        0.235,
-        0.706,
-        0.722
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche",
-      "catalogOffset": 0.7
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "MoveAtlas": {
@@ -180,27 +184,29 @@
       "src": "/assets/previews/moveatlas-en-detail.webp",
       "width": 880,
       "height": 1907,
-      "source": "MoveAtlas/marketing/shots/en-US/03-880.webp",
+      "source": "MoveAtlas/marketing/shots/en-US/02-my-gym-880.webp",
       "frame": [
-        0.06,
-        0.17,
-        0.88,
-        0.6
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "planche marketing"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/moveatlas-fr-detail.webp",
       "width": 880,
       "height": 1907,
-      "source": "MoveAtlas/marketing/shots/fr-FR/03-880.webp",
+      "source": "MoveAtlas/marketing/shots/fr-FR/02-my-gym-880.webp",
       "frame": [
-        0.06,
-        0.17,
-        0.88,
-        0.6
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "planche marketing"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "NeatShift": {
@@ -208,27 +214,29 @@
       "src": "/assets/previews/neatshift-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "NeatShift/marketing/shots/en-US/02-880.webp",
+      "source": "NeatShift/marketing/shots/en-US/01-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface brute"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/neatshift-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "NeatShift/marketing/shots/fr-FR/02-880.webp",
+      "source": "NeatShift/marketing/shots/fr-FR/01-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface brute"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "BrewMeter": {
@@ -236,27 +244,29 @@
       "src": "/assets/previews/brewmeter-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "BrewMeter/marketing/shots/en-US/01-880.webp",
+      "source": "BrewMeter/marketing/shots/en-US/02-880.webp",
       "frame": [
-        0.075,
-        0.22,
-        0.85,
-        0.78
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/brewmeter-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "BrewMeter/marketing/shots/fr-FR/01-880.webp",
+      "source": "BrewMeter/marketing/shots/fr-FR/02-880.webp",
       "frame": [
-        0.075,
-        0.22,
-        0.85,
-        0.78
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "NoBuyCart": {
@@ -264,15 +274,15 @@
       "src": "/assets/previews/nobuycart-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "NoBuyCart/marketing/shots/en-US/03-880.webp",
+      "source": "NoBuyCart/marketing/shots/en-US/01-880.webp",
       "frame": [
-        0.143,
-        0.226,
-        0.714,
-        0.728
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche",
-      "catalogOffset": 0.38
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/nobuycart-fr-detail.webp",
@@ -280,13 +290,13 @@
       "height": 1912,
       "source": "NoBuyCart/marketing/shots/fr-FR/01-880.webp",
       "frame": [
-        0.143,
-        0.226,
-        0.714,
-        0.728
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche",
-      "catalogOffset": 0.95
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "PasDuJour": {
@@ -294,27 +304,29 @@
       "src": "/assets/previews/pasdujour-en-detail.webp",
       "width": 422,
       "height": 514,
-      "source": "PasDuJour/marketing/shots/en-US/02-422.webp",
+      "source": "PasDuJour/marketing/shots/en-US/04-422.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface watchOS brute"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/pasdujour-fr-detail.webp",
       "width": 422,
       "height": 514,
-      "source": "PasDuJour/marketing/shots/fr-FR/02-422.webp",
+      "source": "PasDuJour/marketing/shots/fr-FR/04-422.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface watchOS brute"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "VesperDrift": {
@@ -324,12 +336,13 @@
       "height": 1912,
       "source": "VesperDrift/marketing/shots/en-US/03-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "jeu brut"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/vesperdrift-fr-detail.webp",
@@ -337,12 +350,13 @@
       "height": 1912,
       "source": "VesperDrift/marketing/shots/fr-FR/03-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "jeu brut"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "petites-gouttes": {
@@ -350,27 +364,29 @@
       "src": "/assets/previews/petites-gouttes-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-gouttes/marketing/shots/en-US/02-880.webp",
+      "source": "petites-gouttes/marketing/shots/en-US/01-880.webp",
       "frame": [
-        0.145,
-        0.24,
-        0.71,
-        0.712
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/petites-gouttes-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-gouttes/marketing/shots/fr-FR/02-880.webp",
+      "source": "petites-gouttes/marketing/shots/fr-FR/01-880.webp",
       "frame": [
-        0.145,
-        0.24,
-        0.71,
-        0.712
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "affiche"
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "petites-bouchees": {
@@ -378,15 +394,15 @@
       "src": "/assets/previews/petites-bouchees-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-bouchees/marketing/shots/en-US/03-880.webp",
+      "source": "petites-bouchees/marketing/shots/en-US/01-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface brute",
-      "catalogOffset": 0.2,
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0,
       "sourceVersion": "1.1.2",
       "sourceVerifiedAt": "2026-09-09T18:59:18.776240+00:00",
       "sourceSHA256": "6e40cd5c70e5afd3ad7ceb311f0f40e76d0bc285d1edb379568466b53ad240ea",
@@ -396,15 +412,15 @@
       "src": "/assets/previews/petites-bouchees-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-bouchees/marketing/shots/fr-FR/03-880.webp",
+      "source": "petites-bouchees/marketing/shots/fr-FR/01-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface brute",
-      "catalogOffset": 0.2,
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0,
       "sourceVersion": "1.1.2",
       "sourceVerifiedAt": "2026-09-09T18:59:18.776240+00:00",
       "sourceSHA256": "ab14a449263e8c36486921cb889ac8408bd4628c2a0e5b09e338868b0d12b6a4",
@@ -416,29 +432,29 @@
       "src": "/assets/previews/petites-nuits-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-nuits/marketing/shots/en-US/02-880.webp",
+      "source": "petites-nuits/marketing/shots/en-US/01-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface brute",
-      "catalogOffset": 0.39
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/petites-nuits-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-nuits/marketing/shots/fr-FR/02-880.webp",
+      "source": "petites-nuits/marketing/shots/fr-FR/01-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface brute",
-      "catalogOffset": 0.39
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "petites-dents": {
@@ -446,29 +462,29 @@
       "src": "/assets/previews/petites-dents-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-dents/marketing/shots/en-US/01-880.webp",
+      "source": "petites-dents/marketing/shots/en-US/02-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface brute",
-      "catalogOffset": 0.75
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     },
     "fr": {
       "src": "/assets/previews/petites-dents-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-dents/marketing/shots/fr-FR/01-880.webp",
+      "source": "petites-dents/marketing/shots/fr-FR/02-880.webp",
       "frame": [
-        0.0,
-        0.0,
-        1.0,
-        1.0
+        0,
+        0,
+        1,
+        1
       ],
-      "sourceKind": "interface brute",
-      "catalogOffset": 0.75
+      "sourceKind": "native interface, publisher release",
+      "catalogOffset": 0
     }
   },
   "Echappee": {

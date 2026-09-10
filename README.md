@@ -79,3 +79,7 @@ A local check, a successful Pages workflow and the content served publicly are
 separate evidence. A new product route can pass locally while remaining 404
 publicly until its separate site is published. Publish new product routes before
 the portfolio links to them, with explicit authorization for each deployment.
+
+## Présentation des évolutions du 10 septembre 2026
+
+Le catalogue FR/EN présente les fonctionnalités finalisées et leurs captures natives, selon la consigne explicite de l’éditeur de les considérer disponibles pour cette publication. Cette décision éditoriale ne constitue pas une preuve d’approbation Apple ; les reçus de soumission restent dans les artefacts privés des apps. Les plateformes et les tarifs ne sont pas extrapolés.
