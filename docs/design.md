@@ -1,111 +1,105 @@
-# Portfolio design and provenance
+# Design, sources et entretien des sites
 
-The portfolio presents 17 independent apps with paired English and French copy.
-The current design starts from a new page composition: warm off-white surfaces,
-charcoal text, orange accents and generous spacing. Oversized Bricolage Grotesque
-headings meet an italic Instrument Serif accent; DM Sans handles the supporting
-copy and controls. The publisher name identifies the editor only.
+Le portfolio est un outil de choix parmi 17 apps indépendantes. Son ouverture
+propose quatre usages, puis le catalogue montre immédiatement chaque produit,
+sa fonction, une vraie capture et ses destinations. Les trois éclairages
+Échappée / LoadSense / famille viennent ensuite. Benjamin Dupin identifie
+l’éditeur ; aucune présentation de carrière ou de prestations n’est ajoutée.
 
-## Page composition
+## Fondations et compositions
 
-The opening pairs a large typographic statement with a static composition of
-real LoadSense and Petites Bouchées captures, existing app icons, a colored disc
-and simple decorative shapes. It leads directly to the collection.
+Le portfolio utilise un fond presque blanc, une typographie sombre, des repères
+orangés et une grille de catalogue à deux colonnes, puis une sur mobile.
+Bricolage Grotesque et DM Sans sont locales. La recherche et les catégories
+filtrent les 17 entrées ; sans JavaScript, tout le catalogue reste accessible.
+Le support dirige vers la bonne app et conserve un annuaire natif sans script.
+Les ancres `main`, `about`, `selected`, `products` et `contact` sont conservées.
 
-Three spotlights follow: Échappée with a landscape capture, LoadSense with a real
-app screen, and the four Petites family apps. The full catalogue uses product
-icons, descriptions, platform labels, product-site links and App Store links.
-Four categories cover training, everyday life, baby and family, and play and
-escape. The support section links each visitor to the selected app's own support
-destination. There is no portfolio contact form.
+Les sites produit conservent leur propre générateur et publication. La cohérence
+porte sur les comportements, la lisibilité, les tailles de contrôle, les médias
+et la maintenance ; la structure du récit reste propre au produit :
 
-The layout adapts from three catalogue columns to two and then one. The opening
-and feature blocks also reflow for smaller screens. Standard browser scrolling
-and links remain in control; the site has no canvas, WebGL scene or scroll-driven
-story sequence.
+| Site ou famille | Composition retenue |
+| --- | --- |
+| LoadSense | Lecture des données et limites expliquées autour de trois vues contextualisées |
+| ColdLoad | Guide de chargement : poids cible, matériel, comptage inverse |
+| PRVault | Archive des records et progression de la version publique vérifiée |
+| TempoReps | Modes de séance, bibliothèque puis comparaison Tempo / MIX |
+| MoveAtlas | Recherche dans l’atlas, carnet et référence iPad |
+| BrewMeter | Journal caféiné, tableau de bord puis étiquette et historique |
+| FastZen | Minuteur central puis calendrier et exception ponctuelle |
+| GrooveLog | Prochain set / set enregistré, puis lecture du cycle |
+| NeatShift | Exemple de foyer, répartition, tâches et retards |
+| NoBuy Cart | Envie, temps de décision et simulation explicitement séparée |
+| Pas du Jour | Trois vues Watch lisibles et guide propre à la montre |
+| Petites Bouchées | Journal d’introductions et double lecture aliments / progression |
+| Petites Dents | Album, historique et souvenirs PDF |
+| Petites Gouttes | Inventaire et guide d’impression conservé |
+| Petites Nuits | Carnet de midi à midi, saisie et calendrier distincts |
+| Vesper Drift | Vol réel, gestes, règles et score |
+| Échappée | Paysage, parcours et vues jour/nuit ; support et pages auxiliaires propres |
 
-## Progressive enhancement and accessibility
+Les fondations communes ont été éprouvées sur le portfolio, LoadSense et Petites
+Bouchées avant extension. Les six sites BrewMeter / FastZen / GrooveLog /
+NeatShift / NoBuyCart / PasDuJour partagent `scripts/site-foundations.css` par
+copie explicite versionnée sous `marketing/foundations.css`. Leurs thèmes et
+compositions restent locaux. `scripts/sync-site-foundations.mjs --check` détecte
+une divergence ; sans option il synchronise ces seuls adopteurs et leurs deux
+petits outils de médias. Aucun build ne charge un fichier parent ou une branche
+GitHub mutable. Les autres familles gardent leur socle local, sans migration
+artificielle dans ce mécanisme.
 
-`assets/site.js` adds category filtering, accent-insensitive search, a live result
-count, a reset action and the support picker. Search matches all entered words
-against each product's name and descriptive copy. Category links jump to the
-catalogue and apply the corresponding filter. The support action appears only
-after an app has been selected.
+Ces règles sont révisables. Le nombre de sections, la palette, la serif ou la
+symétrie ne sont pas des obligations. Revoir une décision à partir des usages
+et du rendu entier, y compris sans animation. Les captures ne doivent pas servir
+d’ornements illisibles ; leurs liens ouvrent l’original avec ou sans JavaScript.
 
-Without JavaScript, all 17 catalogue entries and their links remain visible. A
-native disclosure provides the full support directory. JavaScript replaces that
-directory with the picker and reveals the filtering controls only after they
-are connected.
+## Références sélectionnées
 
-The page includes a skip link, visible keyboard focus, native form controls,
-pressed states for category buttons and polite announcements for result counts.
-Motion is limited to brief desktop entrances and hover transitions; reduced
-motion disables animations, transitions and smooth scrolling. There is no
-continuous animation.
+- [Impeccable](https://impeccable.style/) et son [dépôt](https://github.com/pbakaus/impeccable) : clarifier la hiérarchie et retirer les éléments sans rôle. Aucun kit, score de goût, hook ou style par défaut importé.
+- [Utopia](https://utopia.fyi/), [CUBE CSS](https://cube.fyi/) et le [Sidebar gratuit d’Every Layout](https://every-layout.dev/layouts/sidebar/) : échelles fluides, séparation des compositions et primitives, reflow dicté par l’espace disponible. Pas de framework ni accès payant.
+- [Whole Earth Index](https://wholeearth.info/), repéré via [Siteinspire](https://www.siteinspire.com/) et ouvert dans Chrome : une collection indexée peut se découvrir sans récit promotionnel préalable. La grille et les repères sont utiles ; son noir intégral et sa typographie ne sont pas transposés au catalogue d’apps.
+- [Poetry Camera](https://poetry.camera/), également ouvert : l’objet réel porte l’identité. La photographie plein écran n’est pas une recette pour des captures verticales ; le flou observé à l’ouverture est écarté pour préserver l’accès immédiat au produit.
+- [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [Web Interface Guidelines](https://vercel.com/design/guidelines), [Playwright accessibility](https://playwright.dev/docs/accessibility-testing) : comportements clavier, focus, erreurs de saisie, contraste et contrôle du rendu. Axe complète l’inspection ; il ne certifie pas le site.
+- [Web Vitals](https://web.dev/articles/vitals) : séparer observations locales et données de terrain. Aucun gain de conversion ou d’usage n’est déduit des chronométrages locaux.
 
-The previous swipe deck, favorites, shuffled discovery and generative animation
-have been removed. The current site neither reads nor writes browser storage,
-including any values left by the earlier design. It uses no cookies or analytics
-and performs no network writes. Search and support choices are ordinary page
-state, with reconciliation when a browser restores the page from its history.
+Les deux références visuelles sont conservées dans les preuves locales du
+14 septembre. Aucun média, code ou identité de ces sites n’a été copié.
 
-## Sources and assets
+## Sources et vérité publique
 
-- `content/catalog.json`: names, site paths, store IDs and icons.
-- `content/copy.mjs`: `productCopy`, with paired product descriptions, platforms
-  and categories.
-- `content/studio-copy.mjs`: paired page headings, navigation, spotlights,
-  catalogue controls and support copy.
-- `content/profile.json`: the public publisher identity used by structured data.
-- `content/preview-media.json`: dimensions, original source paths, media types
-  and normalized `[x, y, width, height]` framing for real previews.
-- `scripts/build-site.mjs`: generates the EN/FR pages, structured data and
-  sitemaps from the content sources.
-- `styles.css` and `assets/site.js`: presentation and progressive enhancement.
-- `assets/fonts/`: locally served fonts and their SIL Open Font License texts.
-- `scripts/og-card.html` and `scripts/render-social.mjs`: reproducible source
-  and renderer for the 1200 × 630 `assets/social/og.jpg` preview.
+- `content/catalog.json` : catalogue explicitement autorisé, chemins et identifiants Store.
+- `content/copy.mjs` et `content/studio-copy.mjs` : textes FR/EN du catalogue et de la page.
+- `content/preview-media.json` : fichiers, dimensions, provenance, langue et cadrage des captures. Réexaminer les copies lorsque les médias d’un produit changent.
+- `scripts/build-site.mjs`, `styles.css`, `assets/site.js` : génération, présentation et amélioration progressive.
+- `scripts/og-card.html` et `scripts/render-social.mjs` : cartes EN et FR de 1200 × 630, avec médias locaux authentiques.
+- `assets/fonts/` : fontes et textes de licence SIL OFL versionnés.
+- [Inventaire](site-inventory.md) : sources, langues et routes confirmées par dépôt.
 
-All product images are existing public app or game captures and icons. The
-composition does not invent an app interface. Image frames crop the source
-media through CSS; they do not redraw or retouch it. The preview manifest records
-the distinction between interface captures and composed marketing media.
-Échappée uses the existing `site/assets/img/world/monde-col-1520.webp` source,
-copied to `assets/previews/echappee.webp`; the visible caption preserves seed
-52025, km 8.3 and 17:45. Locale-specific phone previews retain their source
-provenance in the manifest.
+Les captures conservent leur provenance : interface native ou capture marketing
+publique Apple. Une capture encadrée n’est pas décrite comme une interface brute.
+Échappée réutilise ses paysages réels avec leurs repères de scène ; aucune
+modification fonctionnelle du jeu n’appartient à cette mission.
 
-Styles, the page script and the social preview use content hashes in their generated URLs so their
-versions stay aligned with the generated HTML. The site ships plain HTML, CSS
-and JavaScript without a production framework.
+La lecture Apple du 14 septembre a notamment révélé PRVault public en 1.4.0 :
+le site et le catalogue ne présentent plus l’import CSV du candidat 1.5.0.
+Les anciens snapshots des autres produits restent datés et ne sont plus
+annoncés comme la dernière version. Les tarifs et compatibilités sont délégués
+aux fiches officielles ; une autorisation éditoriale historique ne démontre
+pas la disponibilité d’une nouvelle release. Les pages juridiques conservent
+leur fond et les routes utilisées par les stores.
 
-## Public content and verification
+## Vérification et prochaine release
 
-The homepage is English at `/`, with French at `/fr/`. Product sites retain their
-own repositories, paths, languages and legal content. Support destinations are
-product-specific: Échappée uses its support page and the other apps use their
-contact sections. Current prices and device compatibility are delegated to the
-App Store. Échappée explicitly identifies the Apple silicon Mac release, with
-iPhone and iPad coming later. The retired Nova Station Pinball remains excluded.
-No career, client, employer, consulting or other non-catalogue project content
-is published.
+Les commandes sont dans le [README](../README.md), les cartes locales
+`site-release-sync` et le [bilan du 14 septembre](redesign-20260914.md).
+Inspecter les accueils entiers FR/EN sur mobile et bureau, puis les variantes
+qui changent réellement de modèle. Tester les écritures longues/non latines,
+le clavier, le texte agrandi et l’absence de JavaScript selon les surfaces
+modifiées. Tous les envois de formulaire de test doivent être interceptés.
 
-`npm run check` validates the generated site and local invariants.
-`npm run check:links` checks public destinations. Optional
-`npm run check:browser` runs `scripts/check-redesign-browser.mjs` against a chosen
-base URL and writes screenshots plus a machine-readable report. It covers both
-languages, desktop/tablet/mobile widths, enlarged text, keyboard access, filters,
-support destinations and the no-JavaScript presentation. It can use an existing
-Playwright runtime through `PLAYWRIGHT_MODULE`; Playwright is not a visitor
-dependency. See the [README](../README.md) for commands.
-
-The [current validation report](refonte-complete-20260907.md) records the executed
-checks for this redesign. These commands alone do not prove a deployment succeeded. Local checks, the Pages workflow and the publicly
-served result must be verified separately for each delivery.
-
-The reports [redesign-20260907.md](redesign-20260907.md),
-[swipe-explorer-20260907.md](swipe-explorer-20260907.md),
-[media-presentation-20260907.md](media-presentation-20260907.md) and
-[verification.md](verification.md) retain historical evidence for previous
-iterations. Their graphite presentation, swipe interactions, storage behavior
-and recorded checks do not describe or validate the current redesign.
+Une future modification d’usage, UI, capture, nom, compatibilité, offre ou
+traitement des données déclenche une revue du site associé et du catalogue.
+Mettre à jour ce qui a changé ou expliquer l’absence d’impact public. Garder
+les preuves locales, la CI et l’état servi distincts ; une publication demande
+son autorisation propre. Le site ne crée ni collecte, ni cookies, ni tracking.

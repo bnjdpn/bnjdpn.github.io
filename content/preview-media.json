@@ -71,8 +71,10 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "published App Store screenshot",
+      "catalogOffset": 0,
+      "sourceVersion": "1.4.0",
+      "verifiedAt": "2026-09-14"
     },
     "fr": {
       "src": "/assets/previews/prvault-fr-detail.webp",
@@ -85,8 +87,10 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "published App Store screenshot",
+      "catalogOffset": 0,
+      "sourceVersion": "1.4.0",
+      "verifiedAt": "2026-09-14"
     }
   },
   "GrooveLog": {
@@ -154,29 +158,33 @@
       "src": "/assets/previews/coldload-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "ColdLoad/marketing/shots/en-US/02-880.webp",
+      "source": "ColdLoad/marketing/shots/en-US/01-880.webp",
       "frame": [
         0,
         0,
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "verified native interface",
+      "catalogOffset": 0,
+      "verifiedAt": "2026-09-14",
+      "sourceVersion": "1.5.0"
     },
     "fr": {
       "src": "/assets/previews/coldload-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "ColdLoad/marketing/shots/fr-FR/02-880.webp",
+      "source": "ColdLoad/marketing/shots/fr-FR/01-880.webp",
       "frame": [
         0,
         0,
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "verified native interface",
+      "catalogOffset": 0,
+      "verifiedAt": "2026-09-14",
+      "sourceVersion": "1.5.0"
     }
   },
   "MoveAtlas": {
@@ -244,29 +252,33 @@
       "src": "/assets/previews/brewmeter-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "BrewMeter/marketing/shots/en-US/02-880.webp",
+      "source": "BrewMeter/marketing/shots/en-US/01-880.webp",
       "frame": [
         0,
         0,
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "verified native interface",
+      "catalogOffset": 0,
+      "sourceVersion": "1.5.0",
+      "verifiedAt": "2026-09-14"
     },
     "fr": {
       "src": "/assets/previews/brewmeter-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "BrewMeter/marketing/shots/fr-FR/02-880.webp",
+      "source": "BrewMeter/marketing/shots/fr-FR/01-880.webp",
       "frame": [
         0,
         0,
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "verified native interface",
+      "catalogOffset": 0,
+      "sourceVersion": "1.5.0",
+      "verifiedAt": "2026-09-14"
     }
   },
   "NoBuyCart": {
@@ -371,8 +383,10 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "verified native interface",
+      "catalogOffset": 0,
+      "sourceVersion": "1.5.1",
+      "verifiedAt": "2026-09-14"
     },
     "fr": {
       "src": "/assets/previews/petites-gouttes-fr-detail.webp",
@@ -385,8 +399,10 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "verified native interface",
+      "catalogOffset": 0,
+      "sourceVersion": "1.5.1",
+      "verifiedAt": "2026-09-14"
     }
   },
   "petites-bouchees": {
@@ -462,29 +478,33 @@
       "src": "/assets/previews/petites-dents-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-dents/marketing/shots/en-US/02-880.webp",
+      "source": "petites-dents/marketing/shots/en-US/01-880.webp",
       "frame": [
         0,
         0,
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "verified native interface",
+      "catalogOffset": 0,
+      "sourceVersion": "2.1.0",
+      "verifiedAt": "2026-09-14"
     },
     "fr": {
       "src": "/assets/previews/petites-dents-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "petites-dents/marketing/shots/fr-FR/02-880.webp",
+      "source": "petites-dents/marketing/shots/fr-FR/01-880.webp",
       "frame": [
         0,
         0,
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "verified native interface",
+      "catalogOffset": 0,
+      "sourceVersion": "2.1.0",
+      "verifiedAt": "2026-09-14"
     }
   },
   "Echappee": {

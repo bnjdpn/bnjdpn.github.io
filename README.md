@@ -8,10 +8,10 @@ The site is deliberately static. It ships plain HTML, CSS and JavaScript with
 no production framework, cookies or analytics. Its sitemap index connects the
 portfolio with the independently published product sites.
 
-The current design uses a warm off-white background, charcoal typography and
-orange accents. Real app captures introduce the collection, followed by three
-spotlights, a searchable catalogue of 17 apps and a product-specific support
-picker. English lives at `/`; French lives at `/fr/`.
+The catalogue opens with a short usage index and a searchable directory with
+real product previews. Three editorial spotlights and product-specific support
+follow. English lives at `/`; French at `/fr/`. Product sites keep independent
+compositions and build systems, documented in [design.md](docs/design.md).
 
 ## Local development
 
@@ -47,7 +47,7 @@ To regenerate the 1200 × 630 social preview from `scripts/og-card.html`, run:
 PLAYWRIGHT_MODULE=/path/to/playwright node scripts/render-social.mjs
 ```
 
-This updates `assets/social/og.jpg`; run `npm run build` afterwards to refresh
+This updates `assets/social/og.jpg` and `assets/social/og-fr.jpg`; run `npm run build` afterwards to refresh
 its content hash in the page metadata. The `PLAYWRIGHT_MODULE` setting can be omitted
 when `playwright` already resolves in the local environment.
 
@@ -68,8 +68,8 @@ public release evidence for each platform. A source change without public impact
 can be documented as such without an artificial website edit.
 
 [Design and provenance](docs/design.md) describes the current presentation and
-real assets. [Current validation](docs/refonte-complete-20260907.md) records the
-executed checks for this complete redesign. The earlier [redesign report](docs/redesign-20260907.md),
+real assets. [Current validation](docs/redesign-20260914.md) records the
+executed local checks and per-site evidence for this redesign. The earlier [redesign report](docs/redesign-20260907.md),
 [swipe report](docs/swipe-explorer-20260907.md),
 [media report](docs/media-presentation-20260907.md) and
 [delivery report](docs/verification.md) are historical records. They describe
@@ -80,6 +80,51 @@ separate evidence. A new product route can pass locally while remaining 404
 publicly until its separate site is published. Publish new product routes before
 the portfolio links to them, with explicit authorization for each deployment.
 
-## Présentation des évolutions du 10 septembre 2026
+## Local ecosystem review
 
-Le catalogue FR/EN présente les fonctionnalités finalisées et leurs captures natives, selon la consigne explicite de l’éditeur de les considérer disponibles pour cette publication. Cette décision éditoriale ne constitue pas une preuve d’approbation Apple ; les reçus de soumission restent dans les artefacts privés des apps. Les plateformes et les tarifs ne sont pas extrapolés.
+The explicit catalogue is the only input to the cross-site preview and checker.
+Existing generated outputs are required; this command does not build or publish:
+
+```sh
+python3 scripts/preview-ecosystem.py check --apps /path/to/Apps --echappee /path/to/Echappee
+python3 scripts/preview-ecosystem.py serve --apps /path/to/Apps --echappee /path/to/Echappee --port 4174
+# To inspect the exact prepared artifacts instead of generated docs:
+python3 scripts/preview-ecosystem.py check --staged --apps /path/to/Apps --echappee /path/to/Echappee
+node scripts/sync-site-foundations.mjs --check
+```
+
+The server binds to loopback and serves only public output paths, including
+GitHub Pages prefixes. It does not emulate GitHub's missing-route handling.
+The checker visits all HTML references, CSS assets, sitemap destinations,
+manifest icons and cross-site anchors. Public destinations still require the
+separate network check.
+
+Reusable optional browser tools use an existing Playwright and axe installation:
+
+```sh
+PLAYWRIGHT_MODULE=/path/to/playwright AXE_PATH=/path/to/axe.min.js node scripts/review-site-browser.mjs --routes routes.json --base http://127.0.0.1:4174 --out output/playwright/review
+PLAYWRIGHT_MODULE=/path/to/playwright node scripts/review-site-interactions.mjs --base http://127.0.0.1:4174 --out output/playwright/interactions
+PLAYWRIGHT_MODULE=/path/to/playwright node scripts/measure-product-performance.cjs /path/to/Apps BrewMeter,FastZen,GrooveLog,NeatShift,NoBuyCart,PasDuJour
+```
+
+`routes.json` is an explicit list such as
+`[{"path":"/BrewMeter/fr-FR/","name":"brewmeter-fr","capture":true}]`.
+The first tool captures selected routes at 1440/390 px, scans the other routes
+at 320/768/1440, and checks enlarged text plus axe on the captured sample.
+The interaction tool covers the six explicit foundation adopters; other sites
+have local checks described in their README. Network writes are intercepted.
+Performance uses each requested `_site`, three fresh browser contexts per width,
+and reports current local observations without claiming field performance.
+No QA dependency is shipped to visitors.
+
+After an authorized publication, compare the served files with the exact staged
+commit using `python3 scripts/check-published-artifacts.py --spec sites.json
+--out output/playwright/publication-readback.json`. The JSON list supplies
+`site`, `stage`, `base_url` (HTTPS, trailing slash) and full `sha` for each site.
+The report checks every HTML, CSS, JavaScript, sitemap and manifest plus selected
+media; `extra_paths` extends the explicit media sample. This read-only comparison
+complements exact-commit CI and a browser visit to the public URLs.
+
+The dated September 7–10 reports retain earlier decisions and checks. They are
+historical evidence, not continuing authorization to announce a candidate as
+available or publish the current work.

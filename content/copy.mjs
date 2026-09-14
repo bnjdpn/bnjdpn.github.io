@@ -1,5 +1,5 @@
-// Publisher-approved release presentation: all completed features are presented as available.
-// Apple submission and approval evidence is retained separately; no approval status is inferred here.
+// Public product descriptions. Candidate features require store readback before inclusion.
+// Public availability and site publication are separate; see docs/site-inventory.md.
 export const productCopy = {
   "LoadSense": {
     "category": "training",
@@ -32,12 +32,12 @@ export const productCopy = {
     "en": [
       "iPhone · iPad",
       "Your next record starts with the last one.",
-      "Bring weighted strength sets in from CSV, review each row and keep matching saved sets from being added again. Find your lifting, WOD and cardio records in one place."
+      "Keep your lifting, WOD and cardio records together. Find previous results, follow progress and export your journal as CSV."
     ],
     "fr": [
       "iPhone · iPad",
       "Le prochain record commence par le précédent.",
-      "Importez vos séries avec charge depuis un CSV, vérifiez chaque ligne et évitez de réajouter les occurrences déjà enregistrées. Retrouvez vos records de musculation, de WOD et de cardio."
+      "Gardez vos records de musculation, de WOD et de cardio ensemble. Retrouvez vos résultats, suivez votre progression et exportez votre carnet en CSV."
     ]
   },
   "GrooveLog": {

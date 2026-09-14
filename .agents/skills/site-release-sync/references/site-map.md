@@ -24,3 +24,10 @@ d'impact. Un clone app inaccessible reste un blocage explicite. La CI PR vérifi
 le mécanisme sans produire de preuve de disponibilité ; lire [le contrat](review.md).
 
 Périmètre : les 17 apps de `content/catalog.json`, dont Échappée sur Mac. Aucune découverte automatique ne vaut autorisation d’ajout. Le contrôle `scripts/check-catalogue-boundary.mjs` bloque les exclusions explicites et les présentations de carrière dans les sources éditoriales et l’artefact public.
+
+Les règles de composition révisables et la provenance des médias sont dans
+[docs/design.md](../../../../docs/design.md). Les commandes de revue croisée,
+les copies locales du socle et les rapports sont dans le
+[README](../../../../README.md#local-ecosystem-review). Lorsqu’une capture change
+dans une app, vérifier aussi son fichier et son cadrage dans
+`content/preview-media.json` ; la seule correction du texte ne suffit pas.
