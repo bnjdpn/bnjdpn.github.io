@@ -29,7 +29,10 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  const expectedIds=catalog.filter(a=>a.id).map(a=>a.id);
  expect(storeIds.size===expectedIds.length && expectedIds.every(id=>storeIds.has(id)),prefix+'store destinations drifted');
  expect(!html.includes('NovaStationPinball')&&!html.includes('6799920176'),prefix+'retired app reintroduced');
- expect(html.includes(lang==='fr'?'iPhone et iPad viendront plus tard':'iPhone and iPad coming later'),prefix+'Echappee platform caveat missing');
+ const echappeeRow=rows.find(row=>row.includes('data-app="Echappee"'));
+ expect(echappeeRow?.includes(lang==='fr'?'iPhone · iPad · Mac Apple silicon':'iPhone · iPad · Apple silicon Mac'),prefix+'Echappee released platforms missing');
+ expect(echappeeRow?.includes('href="https://apps.apple.com/app/id6775410670"'),prefix+'Echappee universal App Store link missing');
+ expect(!echappeeRow?.includes('?mt=12'),prefix+'Echappee store link still forces the Mac storefront');
  const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
  for(const type of ['Person','WebSite','CollectionPage','ItemList'])expect(graph.some(x=>x['@type']===type),prefix+'missing JSON-LD '+type);
  const list=graph.find(x=>x['@type']==='ItemList');

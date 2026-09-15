@@ -212,14 +212,14 @@ export const productCopy = {
   "Echappee": {
     "category": "play",
     "en": [
-      "Apple silicon Mac",
+      "iPhone · iPad · Apple silicon Mac",
       "Turn the pedals. Let the road unfold.",
-      "A contemplative indoor cycling game with changing landscapes and a compatible FTMS smart trainer. iPhone and iPad versions are coming later."
+      "A contemplative indoor cycling game with changing landscapes and a compatible FTMS smart trainer. Available now on the App Store."
     ],
     "fr": [
-      "Mac Apple silicon",
+      "iPhone · iPad · Mac Apple silicon",
       "Tourner les jambes. Laisser la route venir.",
-      "Un jeu de cyclisme en intérieur contemplatif, des paysages changeants et un home trainer FTMS compatible. Les versions iPhone et iPad viendront plus tard."
+      "Un jeu de cyclisme en intérieur contemplatif, des paysages changeants et un home trainer FTMS compatible. Disponible maintenant sur l’App Store."
     ]
   }
 };

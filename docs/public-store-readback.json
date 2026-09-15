@@ -137,8 +137,13 @@
       "id": "6775410670",
       "name": "Échappée",
       "version": "1.0.0",
-      "kind": "mac-software",
-      "url": "https://apps.apple.com/fr/app/%C3%A9chapp%C3%A9e/id6775410670?mt=12&uo=4",
+      "kind": "software",
+      "url": "https://apps.apple.com/fr/app/%C3%A9chapp%C3%A9e/id6775410670?uo=4",
+      "platforms": ["iPhone", "iPad", "Mac"],
+      "minimum_os_version": "15.0",
+      "formatted_price": "25,00 €",
+      "current_version_release_date": "2026-09-15T12:16:03Z",
+      "checked_at": "2026-09-15T12:25:23Z",
       "description_sha256": "b902f160dc4a94cfe99c35beb01ff897dd92b3e7f27544e117c9bb0d87b9e2bd"
     }
   ]
