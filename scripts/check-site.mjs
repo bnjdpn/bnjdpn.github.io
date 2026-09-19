@@ -1,6 +1,7 @@
 import {access,readFile,readdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {guides} from '../content/guides.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const catalog=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
 const styles=await readFile(resolve(root,'styles.css'),'utf8');
@@ -45,6 +46,29 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  for(let ref of refs){ref=ref.replace(/^\//,'').split('?')[0];if(ref===''||ref.endsWith('/'))ref+='index.html';try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}}
  expect(html.includes('class="catalog-tools" hidden'),prefix+'filters must be progressive enhancement');
 }
+for(const guide of guides){
+ const html=await readFile(resolve(root,guide.path),'utf8');
+ const url=`https://bnjdpn.github.io/${guide.path.replace(/index\.html$/,'')}`;
+ const prefix=`${guide.path}: `;
+ expect(html.includes(`<html lang="${guide.lang}">`),prefix+'language mismatch');
+ expect(html.includes(`rel="canonical" href="${url}"`),prefix+'canonical mismatch');
+ expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
+ expect(html.includes(`href="https://apps.apple.com/app/id${catalog.find(app=>app.path===guide.app)?.id}"`),prefix+'wrong App Store destination');
+ expect(html.includes('property="og:image"')&&html.includes('property="og:url"'),prefix+'social preview missing');
+ expect(!/<script\b/.test(html),prefix+'guide should work without JavaScript');
+ expect(!/\b(?:pt|ct)=/.test(html),prefix+'unverified attribution token');
+ for(const img of html.matchAll(/<img\b[^>]+>/g))expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
+ for(const match of html.matchAll(/(?:href|src)="(\/[^"]+)"/g)){
+  const ref=match[1].split(/[?#]/)[0];let path=ref.slice(1);if(path.endsWith('/')||!path)path+='index.html';
+  try{await access(resolve(root,path));references++;}catch{failures.push(prefix+'missing file '+ref)}
+ }
+ expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
+ if(guide.alternate){
+  const alternate=guides.find(g=>g.path.replace(/index\.html$/,'')===guide.alternate);
+  expect(alternate?.alternate===guide.path.replace(/index\.html$/,''),prefix+'non-reciprocal alternate');
+  expect(html.includes(`hreflang="${alternate?.lang}" href="https://bnjdpn.github.io/${guide.alternate}"`),prefix+'alternate missing');
+ }else expect(!html.includes('hreflang='),prefix+'false alternate');
+}
 expect(sitemap.match(/<sitemap>/g)?.length===catalog.length+1,'sitemap index count mismatch');
 for(const app of catalog)expect(sitemap.includes(`https://bnjdpn.github.io/${app.path}/sitemap.xml`),'missing product sitemap '+app.path);
 for(const url of ['https://bnjdpn.github.io/','https://bnjdpn.github.io/fr/'])expect(pages.includes(`<loc>${url}</loc>`),'missing page sitemap '+url);
@@ -59,5 +83,5 @@ expect(/cp[^\n]+\bfr\b/.test(workflow),'French routes missing from Pages allowli
 const actions=[...workflow.matchAll(/uses:\s+([^@\s]+)@([^\s]+)/g)];
 expect(actions.length>=5&&actions.every(([, ,rev])=>/^[0-9a-f]{40}$/.test(rev)),'GitHub Actions must be pinned');
 if(failures.length){console.error(failures.map(x=>'✗ '+x).join('\n'));process.exit(1)}
-console.log(`✓ EN/FR routes, ${catalog.length} products, all store IDs, structured data and sitemaps`);
+console.log(`✓ EN/FR routes, ${guides.length} guides, ${catalog.length} products, all store IDs, structured data and sitemaps`);
 console.log(`✓ ${references} local references, image dimensions, keyboard hooks, static fallback and deployment allowlist`);

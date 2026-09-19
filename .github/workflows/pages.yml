@@ -38,6 +38,7 @@ jobs:
           cp 404.html index.html robots.txt sitemap.xml sitemap-pages.xml site.webmanifest styles.css _site/
           cp -R assets _site/assets
           cp -R fr _site/fr
+          cp -R guides _site/guides
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:

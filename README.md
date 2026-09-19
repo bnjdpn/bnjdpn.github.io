@@ -12,6 +12,10 @@ The catalogue opens with a short usage index and a searchable directory with
 real product previews. Three editorial spotlights and product-specific support
 follow. English lives at `/`; French at `/fr/`. Product sites keep independent
 compositions and build systems, documented in [design.md](docs/design.md).
+Two practical entry points complement the directory: a bilingual reusable
+TempoReps timer guide and a French Petites Bouchées journal-sharing guide.
+Their copy lives in `content/guides.mjs`; [delivery notes](docs/acquisition-guides-20260919.md)
+record the verified destinations, attribution limit and reusable short texts.
 
 ## Local development
 

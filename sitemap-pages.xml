@@ -2,4 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url><loc>https://bnjdpn.github.io/</loc><xhtml:link rel="alternate" hreflang="en" href="https://bnjdpn.github.io/"/><xhtml:link rel="alternate" hreflang="fr" href="https://bnjdpn.github.io/fr/"/></url>
 <url><loc>https://bnjdpn.github.io/fr/</loc><xhtml:link rel="alternate" hreflang="en" href="https://bnjdpn.github.io/"/><xhtml:link rel="alternate" hreflang="fr" href="https://bnjdpn.github.io/fr/"/></url>
+<url><loc>https://bnjdpn.github.io/guides/tempo-timer/</loc><xhtml:link rel="alternate" hreflang="en" href="https://bnjdpn.github.io/guides/tempo-timer/"/><xhtml:link rel="alternate" hreflang="fr" href="https://bnjdpn.github.io/fr/guides/minuteur-tempo/"/></url>
+<url><loc>https://bnjdpn.github.io/fr/guides/minuteur-tempo/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://bnjdpn.github.io/fr/guides/minuteur-tempo/"/><xhtml:link rel="alternate" hreflang="en" href="https://bnjdpn.github.io/guides/tempo-timer/"/></url>
+<url><loc>https://bnjdpn.github.io/fr/guides/journal-diversification/</loc></url>
 </urlset>
