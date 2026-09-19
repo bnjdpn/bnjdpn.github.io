@@ -4,12 +4,12 @@ Trois pages, deux besoins : [minuteur de tempo/circuit en français](https://bnj
 
 ## Destinations et attribution
 
-| Usage / campagne envisagée | App | URL d’installation | Attribution | Source, consultée le 19 septembre 2026 |
-| --- | --- | --- | --- | --- |
-| Guide minuteur réutilisable | TempoReps | <https://apps.apple.com/app/id6758854166> | Indisponible : aucun `pt`/`ct` officiel obtenu | [App Store public](https://apps.apple.com/fr/app/temporeps-timer-musculation/id6758854166) |
-| Guide journal et transmission | Petites Bouchées | <https://apps.apple.com/app/id6760203890> | Indisponible : aucun `pt`/`ct` officiel obtenu | [App Store public](https://apps.apple.com/fr/app/petites-bouch%C3%A9es-allerg%C3%A8nes/id6760203890) |
+| Usage / campagne | App | URL d’installation | Source et date |
+| --- | --- | --- | --- |
+| `Web Guide Tempo` | TempoReps (`6758854166`) | <https://apps.apple.com/app/apple-store/id6758854166?pt=128480256&ct=Web%20Guide%20Tempo&mt=8> | App Store Connect → TempoReps → Analyses → Acquisition → Campagnes → Générer un lien, 19 septembre 2026 |
+| `Web Guide Journal` | Petites Bouchées (`6760203890`) | <https://apps.apple.com/app/apple-store/id6760203890?pt=128480256&ct=Web%20Guide%20Journal&mt=8> | App Store Connect → Petites Bouchées → Analyses → Acquisition → Campagnes → Générer un lien, 19 septembre 2026 |
 
-Une tentative de consultation de la session App Store Connect existante a abouti à la page de connexion avec `authResult=FAILED` le 19 septembre. Aucun token n’a été inventé, aucune campagne n’a été créée, aucun lien UTM ne se substitue à la mesure Apple. [Apple décrit la création des liens dans Analytics](https://developer.apple.com/help/app-store-connect-analytics/acquisition/campaign-links) : il faut d’abord générer le lien dans l’interface pour obtenir le provider token. Une reprise autorisée consisterait à créer seulement ces deux campagnes, copier leurs URL officielles, remplacer les deux liens des guides dans `content/guides.mjs` et consigner leur source/date ici ; reconstruire, valider et republier. Aucun clic de QA ne constitue un téléchargement attribué. Les seuils de confidentialité peuvent masquer les petites cohortes ; une ligne absente n’est pas un zéro.
+La session ASC du compte Benjamin Dupin était accessible lors de la passe de clôture. Les deux liens ont été produits dans l’interface Apple, avec le même provider token `128480256` et deux seuls noms de campagne, sans le déduire d’un autre identifiant. Les versions française et anglaise du guide TempoReps partagent la même campagne. [Apple explique les paramètres `pt`, `ct` et `mt`](https://developer.apple.com/help/app-store-connect-analytics/acquisition/campaign-links). Les liens sont opérationnels au niveau des boutons ; aucun téléchargement attribué n’est encore prouvé. Les cellules de campagne peuvent être masquées sous les seuils de confidentialité : une absence de ligne n’est pas zéro.
 
 ## Sources et médias réutilisés
 
@@ -19,8 +19,8 @@ Une tentative de consultation de la session App Store Connect existante a abouti
 
 ## Textes prêts, non envoyés
 
-> Je suis Benjamin, le développeur de TempoReps. J’ai rédigé un guide court pour choisir un mode, vérifier les phases et retrouver un minuteur enregistré. L’exemple de circuit sert à comprendre le réglage, pas à prescrire une séance : https://bnjdpn.github.io/fr/guides/minuteur-tempo/
+> Vous réglez le même minuteur à chaque séance ? Ce guide aide à choisir le mode, relire les phases et enregistrer une configuration pour la retrouver. Je suis Benjamin, le développeur de TempoReps : https://bnjdpn.github.io/fr/guides/minuteur-tempo/
 
-> Je suis Benjamin, le développeur de Petites Bouchées. Ce guide explique comment relire un journal de diversification et choisir entre transfert manuel gratuit et documents PDF à partager. Il ne donne pas de conseil médical : https://bnjdpn.github.io/fr/guides/journal-diversification/
+> Difficile de se rappeler quand un aliment a été proposé et ce que vous aviez noté ? Ce guide montre comment relire le journal et choisir entre transfert familial manuel et document PDF lisible. Je suis Benjamin, le développeur de Petites Bouchées : https://bnjdpn.github.io/fr/guides/journal-diversification/
 
-Ces textes n’ont été envoyés à personne ni publiés sur un réseau. Après une première période d’environ 28 jours, distinguer : indexabilité technique des pages versus indexation réellement observée dans Search Console ; visites des pages versus téléchargements éventuellement attribués dans App Store Connect ; puis ventes et MRR seulement si les données comparables existent. Aucun taux clic-installation n’est calculable avec les seules URL non attribuées. J+28 donne au mieux un signal précoce, pas une maturité SEO.
+Ces textes n’ont été envoyés à personne ni publiés sur un réseau. Le 19 septembre, Search Console reconnaissait la propriété `https://bnjdpn.github.io/` ; son sitemap `/sitemap.xml` portait encore un échec de lecture du 17 août, tandis que l’inspection des trois guides indiquait « Google ne reconnaît pas cette URL », sans exploration ni sitemap référent. Ces constats précèdent la soumission de clôture et ne contredisent pas l’indexabilité technique locale. Après une première période d’environ 28 jours, distinguer : exploration et indexation réellement observées ; visites de recherche ; téléchargements éventuellement attribués dans ASC ; puis ventes et MRR seulement si les données comparables existent. Ne pas calculer un taux clic-installation à partir de dénominateurs incompatibles. J+28 donne au mieux un signal précoce, pas une maturité SEO.

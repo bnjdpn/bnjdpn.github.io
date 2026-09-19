@@ -53,10 +53,13 @@ for(const guide of guides){
  expect(html.includes(`<html lang="${guide.lang}">`),prefix+'language mismatch');
  expect(html.includes(`rel="canonical" href="${url}"`),prefix+'canonical mismatch');
  expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
- expect(html.includes(`href="https://apps.apple.com/app/id${catalog.find(app=>app.path===guide.app)?.id}"`),prefix+'wrong App Store destination');
+ const campaign=new URL(guide.storeUrl);
+ expect(campaign.origin==='https://apps.apple.com'&&campaign.pathname===`/app/apple-store/id${catalog.find(app=>app.path===guide.app)?.id}`,prefix+'wrong App Store destination');
+ expect(campaign.searchParams.get('pt')==='128480256'&&campaign.searchParams.get('ct')===(guide.app==='TempoReps'?'Web Guide Tempo':'Web Guide Journal')&&campaign.searchParams.get('mt')==='8',prefix+'campaign attribution mismatch');
+ expect(html.includes(`href="${guide.storeUrl.replaceAll('&','&amp;')}"`),prefix+'campaign link not preserved in HTML');
  expect(html.includes('property="og:image"')&&html.includes('property="og:url"'),prefix+'social preview missing');
  expect(!/<script\b/.test(html),prefix+'guide should work without JavaScript');
- expect(!/\b(?:pt|ct)=/.test(html),prefix+'unverified attribution token');
+ expect(!html.includes('guide-related'),prefix+'unrelated guide recommendation');
  for(const img of html.matchAll(/<img\b[^>]+>/g))expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
  for(const match of html.matchAll(/(?:href|src)="(\/[^"]+)"/g)){
   const ref=match[1].split(/[?#]/)[0];let path=ref.slice(1);if(path.endsWith('/')||!path)path+='index.html';
