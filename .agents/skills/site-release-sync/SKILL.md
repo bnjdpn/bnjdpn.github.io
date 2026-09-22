@@ -1,57 +1,28 @@
 ---
 name: site-release-sync
-description: Keep this product's public site and portfolio accurate when features, UI, screenshots, platforms, offers or data handling change, including release preparation and public release readback.
+description: Synchroniser le site et le catalogue quand la présentation publique du produit change, ou préparer la revue web d’un candidat de release.
 ---
 
 # Maintenir le site avec le produit
 
-Lire [la carte locale](references/site-map.md) : sources réellement éditables,
-routes, langues, captures, contrôles et publication. Ce skill et ses scripts
-sont autonomes dans le clone ; ne pas chercher un dossier parent du portefeuille.
+- Pour une modification du site ou un impact public à vérifier, consulter [la carte locale](references/site-map.md) : sources, langues, captures et publication. Choisir les contrôles adaptés aux surfaces touchées.
+- Pour une release, consulter aussi [le contrat de revue](references/review.md) : JSON lié au candidat, commandes et preuves exigées par Fastlane. La revue reste requise même si son résultat est « aucun impact public ».
+- Un changement interne sans effet sur le contenu public ne demande pas de travail web. Si le skill a été chargé pour lever un doute, conclure avec la raison, sans créer de modifications artificielles.
 
-- Comparer le changement au produit **publiquement téléchargeable par plateforme**.
-  Code, captures de développement, métadonnées préparées, merge, tag et soumission
-  au store ne prouvent pas la disponibilité. Relire le store public ou les fichiers
-  de release effectivement téléchargeables ; conserver la preuve exacte dans
-  les artefacts de release existants, avec version, plateforme, URL et date.
-- Vérifier présentation, aide/FAQ, support, confidentialité, conditions, captures,
-  compatibilité, offre et catalogue principal selon l'impact. Maintenir FR/EN,
-  les autres traductions existantes et les URL store/sous-chemins. Conserver le
-  sens juridique, les avertissements et les protections de formulaire.
-- Modifier les sources, puis régénérer. Une UI qui rend les visuels inexacts
-  exige de nouvelles captures réelles avec données de démonstration et provenance.
-  Préparer ces captures et textes avec le candidat. Tant que sa release est en
-  attente, conserver le contenu public confirmé et garder les nouveautés dans
-  une branche/patch non publié, hors de l'artefact Pages courant. Ne pas brancher
-  automatiquement les métadonnées du candidat sur des promesses publiques.
-- Un refactoring interne peut conclure « aucun impact public », avec une raison
-  précise ; ne pas créer artificiellement des modifications de site. Si le
-  catalogue est touché, traiter aussi `bnjdpn/bnjdpn.github.io`. Un dépôt inaccessible
-  constitue une action restante à nommer, jamais une synchronisation réussie.
-- Exécuter les contrôles de la carte, puis relire au navigateur les routes et
-  formats concernés, clavier et langues compris. Tester les formulaires sans
-  transmettre de message réel. Les gardes déterministes ne jugent ni la fidélité
-  des captures, ni les textes, ni la disponibilité distante.
+Le skill et ses scripts fonctionnent dans ce clone, sans dossier parent du portefeuille.
 
-Pour une release, ajouter la revue JSON décrite dans
-[le contrat de revue](references/review.md) aux artefacts déjà utilisés par le
-pipeline (ou dans un dossier temporaire pour une simulation). Aucun fichier
-d'état perpétuel n'est nécessaire. Exécuter depuis la racine :
+## Contraintes de contenu et de livraison
 
-```sh
-ruby .agents/skills/site-release-sync/scripts/check.rb --check
-ruby .agents/skills/site-release-sync/scripts/check.rb --fingerprint
-ruby .agents/skills/site-release-sync/scripts/check.rb --review "$SITE_REVIEW_FILE" --require-review
-ruby .agents/skills/site-release-sync/scripts/check_test.rb
-```
+Modifier les sources puis régénérer les sorties. Préserver l’identité visuelle, FR/EN et les autres traductions concernées, les URL store/sous-chemins, le sens juridique, les avertissements et les protections de formulaire. Une UI qui rend les visuels inexacts exige des captures réelles, avec données de démonstration et provenance.
 
-Les appels Fastlane utilisent `SITE_REVIEW_FILE`. Un résultat `pending` autorise
-la préparation du candidat mais ne permet aucune nouvelle promesse publique.
-Pour les sites `marketing/site.json`, `--check` exécute également
-`scripts/marketing_site_test.rb` : la release et les CI partagent ainsi le même
-contrôle de non-régression des snapshots publics, avec Minitest 6.0.6.
-Une revue devenue obsolète après modification du candidat doit être refaite.
-Après une publication explicitement autorisée, relire séparément l'URL servie,
-ses téléchargements et chaque plateforme ; ne pas confondre CI et production.
+Préparer textes et captures avec le candidat. Les nouvelles promesses doivent correspondre au produit **publiquement téléchargeable sur chaque plateforme** : code, merge, tag ou soumission ne prouvent pas cette disponibilité. Lorsqu’une promesse change, relire le store public ou les fichiers téléchargeables et garder version, plateforme, URL, date et preuve dans les artefacts existants. En attendant la release, garder les nouveautés dans une branche/patch non publié, hors de l’artefact Pages courant ; conserver les snapshots publics confirmés plutôt que les métadonnées du candidat.
 
-Le catalogue principal est exclusivement consacré aux apps autorisées. RealmBox, TaskLane, les projets professionnels et les biographies de carrière en sont exclus, même si un dépôt GitHub est public. `npm run check` applique cette frontière aux sources et aux fichiers livrés ; les mentions internes de cette règle ne constituent pas du contenu public.
+Si le catalogue est touché, traiter aussi `bnjdpn/bnjdpn.github.io`, selon ses instructions et l’autorisation en cours. Un dépôt inaccessible reste un travail à signaler. Une préparation de contenu n’autorise pas sa publication.
+
+## Résultat attendu
+
+Livrer les sources et sorties cohérentes, avec contrôles pertinents réussis et rendu examiné pour les changements visuels ou de parcours (routes, formats, clavier et langues concernés). Tester les formulaires sans envoyer de message réel. Une garde déterministe ne prouve ni fidélité des captures ni disponibilité distante.
+
+Une attente de release peut terminer la préparation locale si les nouveautés sont prêtes et leur emplacement indiqué ; elle ne termine pas la synchronisation publique. Après une publication autorisée, relire l’URL servie, ses téléchargements et les plateformes concernées. Distinguer validation locale, CI et contenu effectivement servi.
+
+Le catalogue principal reste exclusivement consacré aux apps autorisées. RealmBox, TaskLane, projets professionnels et biographies de carrière sont exclus, même si un dépôt GitHub est public. `npm run check` contrôle les sources et l’artefact public.

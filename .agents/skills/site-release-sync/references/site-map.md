@@ -1,5 +1,7 @@
 # Portfolio : carte des sources et de la publication
 
+Cette carte recense les surfaces et contrôles disponibles. Pour un changement ciblé, examiner les éléments affectés ; élargir aux langues et formats partagés si un composant commun change. La release conserve les exigences du [contrat de revue](review.md).
+
 | Élément | Source / procédure |
 | --- | --- |
 | Dépôt / URL | `bnjdpn/bnjdpn.github.io` · [site public](https://bnjdpn.github.io/) |
@@ -8,7 +10,7 @@
 | Produits | `content/catalog.json` et `content/copy.mjs` définissent le catalogue et les liens `https://bnjdpn.github.io/<slug>/`, puis le générateur produit le HTML et les données structurées ; ne pas introduire un dépôt privé/non annoncé ou un produit retiré |
 | Captures | [assets](../../../../assets/) : copies des captures/icônes publiques confirmées, provenance dans le dépôt app. Aucune UI inventée ni donnée personnelle |
 | Langues | Français et anglais ; le générateur et les contrôles définissent leurs routes, liens alternates et canoniques |
-| Validation | `npm run check` ; `npm run check:links` si les destinations changent ; `ruby .agents/skills/site-release-sync/scripts/check.rb --check` et `ruby .agents/skills/site-release-sync/scripts/check_test.rb` |
+| Validation | `npm run check` ; `npm run check:links` si les destinations changent ; `ruby .agents/skills/site-release-sync/scripts/check.rb --check` |
 | QA | `python3 -m http.server 4173`, puis formats mobile/tablette/desktop, filtres, menu, clavier, FR/EN, images et console |
 | Publication | [.github/workflows/pages.yml](../../../../.github/workflows/pages.yml) valide puis met en scène seulement l'allowlist publique dans `_site`. Un push `main` ou dispatch publie : autorisation préalable, puis readback de l'URL servie |
 

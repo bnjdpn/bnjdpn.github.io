@@ -62,3 +62,14 @@ publication des nouveautés si elle n'est pas encore autorisée.
 soumission ou publication. Les CI sans ce fichier contrôlent l'intégrité du
 workflow et les scénarios simulés, et annoncent explicitement la revue de contenu
 restant humaine. Ne pas fabriquer une revue pour faire passer la CI.
+
+## Contrôles selon l’opération
+
+Depuis la racine du dépôt :
+
+- `ruby .agents/skills/site-release-sync/scripts/check.rb --check` vérifie les fichiers du workflow et les références. Pour un site `marketing/site.json`, il exécute aussi `scripts/marketing_site_test.rb` (snapshots publics, Minitest 6.0.6). Il ne remplace pas les contrôles de génération de la carte locale.
+- `ruby .agents/skills/site-release-sync/scripts/check.rb --fingerprint` fournit l’identité du candidat pour rédiger ou actualiser sa revue.
+- `ruby .agents/skills/site-release-sync/scripts/check.rb --review "$SITE_REVIEW_FILE" --require-review` valide le JSON et sa correspondance avec le candidat. Fastlane lit la même variable ; conserver les contrôles exigés par sa lane, sans répéter un contrôle déjà réussi sur les mêmes entrées.
+- `ruby .agents/skills/site-release-sync/scripts/check_test.rb` teste le garde sur des scénarios locaux. Utile si le garde ou son contrat évolue ; ce n’est pas une étape obligatoire pour chaque retouche éditoriale ou release.
+
+Un état `pending` permet la préparation du candidat, sans nouvelle promesse publique. Toute modification du candidat après la revue impose de l’actualiser. Réutiliser les artefacts du pipeline ou un dossier temporaire de simulation ; aucun registre supplémentaire n’est nécessaire.

@@ -18,9 +18,9 @@ Terminer le travail autorisé en préservant les modifications locales. Résoudr
 
 ## Cohérence du site avec les releases
 
-Toute modification susceptible de rendre la présentation publique inexacte ou obsolète doit déclencher une vérification du site associé. Si nécessaire, sa mise à jour fait partie du travail à livrer, sans que Benjamin ait à le redemander. Sinon, indiquer brièvement pourquoi le changement n’a aucun impact sur le site.
+Si le changement peut rendre la présentation publique inexacte (fonctionnalités, UI/captures, noms, compatibilité, plateformes, offre ou données), utiliser [site-release-sync](.agents/skills/site-release-sync/SKILL.md) et inclure les mises à jour nécessaires dans le travail. Une préparation de release utilise aussi ce skill pour la revue du candidat, même sans impact public.
 
-Appliquer le skill portable [site-release-sync](.agents/skills/site-release-sync/SKILL.md), y compris pour conclure sans impact. Il fournit la carte des sources, langues, captures et validations, et le contrat de revue du candidat. Fonctionnalités, UI/navigation, captures, noms, compatibilité, plateformes, monétisation et traitement des données sont concernés. Préparer les nouveautés avec la release ; les promesses de disponibilité attendent une confirmation publique sur chaque plateforme.
+Un changement interne sans effet public ne demande ni chargement du skill ni contrôle web systématique ; justifier l'absence d'impact si elle n'est pas évidente. Préparer textes et captures avec le candidat ; publier les nouvelles promesses seulement après confirmation de disponibilité sur chaque plateforme et dans les autorisations accordées.
 
 ## Positionnement permanent
 
