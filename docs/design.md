@@ -35,7 +35,7 @@ et la maintenance ; la structure du récit reste propre au produit :
 | Petites Bouchées | Journal d’introductions et double lecture aliments / progression |
 | Petites Dents | Album, historique et souvenirs PDF |
 | Petites Gouttes | Inventaire et guide d’impression conservé |
-| Petites Nuits | Carnet de midi à midi, saisie et calendrier distincts |
+| Petites Nuits | Démarrage rapide d’un sommeil et carnet 24 h de midi à midi |
 | Vesper Drift | Vol réel, gestes, règles et score |
 | Échappée | Paysage, parcours et vues jour/nuit ; support et pages auxiliaires propres |
 

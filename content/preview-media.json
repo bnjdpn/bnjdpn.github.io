@@ -297,8 +297,13 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "qualified native iPhone capture of public release",
+      "catalogOffset": 0,
+      "sourceVersion": "1.3.1",
+      "verifiedAt": "2026-09-24",
+      "sourceSHA256": "8c9daa2ad08471a7a97e85d30afba0c106107983366236cc9de198abac081a61",
+      "sourceCommit": "758f7e252a79201ad73c17f8385d28a6ae851429",
+      "sourceFile": "Builds/AppStore/NoBuyCart/studio-v3-nobuycart-131-20260924-r9/screenshots/en-US/01-want-it-give-it-a-pause.png"
     },
     "fr": {
       "src": "/assets/previews/nobuycart-fr-detail.webp",
@@ -311,8 +316,13 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "qualified native iPhone capture of public release",
+      "catalogOffset": 0,
+      "sourceVersion": "1.3.1",
+      "verifiedAt": "2026-09-24",
+      "sourceSHA256": "50b67ead1013bddc2b8d9e748fc3334045be0d604fd14167bbb915b3774935a8",
+      "sourceCommit": "758f7e252a79201ad73c17f8385d28a6ae851429",
+      "sourceFile": "Builds/AppStore/NoBuyCart/studio-v3-nobuycart-131-20260924-r9/screenshots/fr-FR/01-une-envie-gardez-la-en-pause.png"
     }
   },
   "PasDuJour": {
@@ -421,12 +431,13 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
+      "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "1.1.2",
-      "sourceVerifiedAt": "2026-09-09T18:59:18.776240+00:00",
-      "sourceSHA256": "6e40cd5c70e5afd3ad7ceb311f0f40e76d0bc285d1edb379568466b53ad240ea",
-      "sourceCommit": "2f6d6e5a611b52f0efe2da8682c9322f47be9134"
+      "sourceVersion": "1.1.6",
+      "sourceSHA256": "18a13d7a13839fc64c2a638fa893d49ec33766076fe4ac5e97d2992fff9c11d4",
+      "sourceCommit": "11a01b6adbaa7b060f5a461010f91b112f51fa35",
+      "verifiedAt": "2026-09-24",
+      "sourceFile": "ios/Builds/AppStore/petites-bouchees/studio-icon-v3-bouchees-116-20260924-r5/screenshots/en-US/iPhone 17 Pro Max-03_Catalogue.png"
     },
     "fr": {
       "src": "/assets/previews/petites-bouchees-fr-detail.webp",
@@ -439,12 +450,13 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
+      "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "1.1.2",
-      "sourceVerifiedAt": "2026-09-09T18:59:18.776240+00:00",
-      "sourceSHA256": "ab14a449263e8c36486921cb889ac8408bd4628c2a0e5b09e338868b0d12b6a4",
-      "sourceCommit": "2f6d6e5a611b52f0efe2da8682c9322f47be9134"
+      "sourceVersion": "1.1.6",
+      "sourceSHA256": "a21c6e8ca5b20a73a00bf03022eb5f807d92de5f0d24fe51c8e792900ddc0464",
+      "sourceCommit": "11a01b6adbaa7b060f5a461010f91b112f51fa35",
+      "verifiedAt": "2026-09-24",
+      "sourceFile": "ios/Builds/AppStore/petites-bouchees/studio-icon-v3-bouchees-116-20260924-r5/screenshots/fr-FR/iPhone 17 Pro Max-03_Catalogue.png"
     }
   },
   "petites-nuits": {
@@ -459,8 +471,13 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "qualified native iPhone capture of public release",
+      "catalogOffset": 0,
+      "sourceVersion": "1.2.2",
+      "verifiedAt": "2026-09-24",
+      "sourceSHA256": "99e6de9a34b6d0403ec99084e6a3be2ffcaf7f1dab986618a09aeae763cc0421",
+      "sourceCommit": "f8a13aaeb1f68d62b1f1e4caa10c6fee818946b2",
+      "sourceFile": "ios/Builds/AppStore/PetitesNuits/studio-premium-20260923-petitesnuits-122-r25-candidate/screenshots/en-US/iPhone 17 Pro Max-01-Start.png"
     },
     "fr": {
       "src": "/assets/previews/petites-nuits-fr-detail.webp",
@@ -473,8 +490,13 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "qualified native iPhone capture of public release",
+      "catalogOffset": 0,
+      "sourceVersion": "1.2.2",
+      "verifiedAt": "2026-09-24",
+      "sourceSHA256": "c4fb925a9d3e1ea669d6daae4cf54374092c15c396a23a99f7e567158d0dc777",
+      "sourceCommit": "f8a13aaeb1f68d62b1f1e4caa10c6fee818946b2",
+      "sourceFile": "ios/Builds/AppStore/PetitesNuits/studio-premium-20260923-petitesnuits-122-r25-candidate/screenshots/fr-FR/iPhone 17 Pro Max-01-Start.png"
     }
   },
   "petites-dents": {
@@ -489,10 +511,13 @@
         1,
         1
       ],
-      "sourceKind": "verified native interface",
+      "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "2.1.0",
-      "verifiedAt": "2026-09-14"
+      "sourceVersion": "2.1.2",
+      "verifiedAt": "2026-09-24",
+      "sourceSHA256": "9de3e4d6b604eefd3086c10beb0f234b44c45c35578d6f427b77850a5b3ce4ca",
+      "sourceCommit": "669f8a764adb99307308f026ae06cc10b4b25c1a",
+      "sourceFile": "ios/Builds/AppStore/PetitesDents/studio-v3-dents-212-20260924-r8/screenshots/en-US/PetitesDents_APP_IPHONE_67_01_Mouth.png"
     },
     "fr": {
       "src": "/assets/previews/petites-dents-fr-detail.webp",
@@ -505,10 +530,13 @@
         1,
         1
       ],
-      "sourceKind": "verified native interface",
+      "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "2.1.0",
-      "verifiedAt": "2026-09-14"
+      "sourceVersion": "2.1.2",
+      "verifiedAt": "2026-09-24",
+      "sourceSHA256": "de311286377d1ba773757dcfab7b4a6f01de3f33b80ed0346f3515d02e808b5f",
+      "sourceCommit": "669f8a764adb99307308f026ae06cc10b4b25c1a",
+      "sourceFile": "ios/Builds/AppStore/PetitesDents/studio-v3-dents-212-20260924-r8/screenshots/fr-FR/PetitesDents_APP_IPHONE_67_01_Mouth.png"
     }
   },
   "Echappee": {

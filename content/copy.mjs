@@ -175,12 +175,12 @@ export const productCopy = {
     "en": [
       "iPhone",
       "A gentle record of little nights.",
-      "Record nights and naps separately and see totals without counting overlapping periods twice. Preview a PDF journal with the notes you choose."
+      "Start and finish a sleep with one tap, then read nights and naps together in the 24-hour diary. Preview a PDF journal with the notes you choose."
     ],
     "fr": [
       "iPhone",
       "Un carnet doux pour les petites nuits.",
-      "Notez les nuits et les siestes séparément, avec des totaux sans double comptage des chevauchements. Prévisualisez un carnet PDF avec les notes de votre choix."
+      "Lancez et terminez un sommeil d’un geste, puis retrouvez nuits et siestes dans le carnet 24 h. Prévisualisez un carnet PDF avec les notes de votre choix."
     ]
   },
   "petites-dents": {
