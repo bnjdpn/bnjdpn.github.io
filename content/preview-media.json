@@ -139,8 +139,10 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "qualified native iPhone capture of public release",
+      "catalogOffset": 0,
+      "sourceVersion": "1.2.4",
+      "verifiedAt": "2026-09-24"
     },
     "fr": {
       "src": "/assets/previews/fastzen-fr-detail.webp",
@@ -153,8 +155,10 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "qualified native iPhone capture of public release",
+      "catalogOffset": 0,
+      "sourceVersion": "1.2.4",
+      "verifiedAt": "2026-09-24"
     }
   },
   "ColdLoad": {
