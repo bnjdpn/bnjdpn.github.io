@@ -105,8 +105,10 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "qualified native iPhone capture of public release",
+      "catalogOffset": 0,
+      "sourceVersion": "3.1.2",
+      "verifiedAt": "2026-09-24"
     },
     "fr": {
       "src": "/assets/previews/groovelog-fr-detail.webp",
@@ -119,8 +121,10 @@
         1,
         1
       ],
-      "sourceKind": "native interface, publisher release",
-      "catalogOffset": 0
+      "sourceKind": "qualified native iPhone capture of public release",
+      "catalogOffset": 0,
+      "sourceVersion": "3.1.2",
+      "verifiedAt": "2026-09-24"
     }
   },
   "FastZen": {
@@ -259,10 +263,10 @@
         1,
         1
       ],
-      "sourceKind": "verified native interface",
+      "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "1.5.0",
-      "verifiedAt": "2026-09-14"
+      "sourceVersion": "1.5.4",
+      "verifiedAt": "2026-09-24"
     },
     "fr": {
       "src": "/assets/previews/brewmeter-fr-detail.webp",
@@ -275,10 +279,10 @@
         1,
         1
       ],
-      "sourceKind": "verified native interface",
+      "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "1.5.0",
-      "verifiedAt": "2026-09-14"
+      "sourceVersion": "1.5.4",
+      "verifiedAt": "2026-09-24"
     }
   },
   "NoBuyCart": {

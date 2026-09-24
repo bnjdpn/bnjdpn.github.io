@@ -110,12 +110,12 @@ export const productCopy = {
     "en": [
       "iPhone",
       "Keep an eye on your caffeine.",
-      "Read caffeine from a label per serving or per 100 mL, convert the volume and preview the result. Keep drink records and estimates together."
+      "Log your drinks and see recorded intake, estimated remaining caffeine and your chosen bedtime estimate separately. Review favorites before logging and explore trends."
     ],
     "fr": [
       "iPhone",
       "Garder un œil sur sa caféine.",
-      "Saisissez la caféine d’une étiquette par portion ou pour 100 mL, convertissez le volume et vérifiez le résultat. Retrouvez vos boissons et leurs estimations."
+      "Notez vos boissons et distinguez la consommation enregistrée, la caféine restante estimée et l’estimation au coucher choisi. Vérifiez les favoris avant validation et explorez les tendances."
     ]
   },
   "NoBuyCart": {

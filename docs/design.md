@@ -26,7 +26,7 @@ et la maintenance ; la structure du récit reste propre au produit :
 | PRVault | Archive des records et progression de la version publique vérifiée |
 | TempoReps | Modes de séance, bibliothèque puis comparaison Tempo / MIX |
 | MoveAtlas | Recherche dans l’atlas, carnet et référence iPad |
-| BrewMeter | Journal caféiné, tableau de bord puis étiquette et historique |
+| BrewMeter | Journal caféiné, tableau de bord puis favori et tendances |
 | FastZen | Minuteur central puis calendrier et exception ponctuelle |
 | GrooveLog | Prochain set / set enregistré, puis lecture du cycle |
 | NeatShift | Exemple de foyer, répartition, tâches et retards |
