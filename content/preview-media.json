@@ -403,8 +403,8 @@
       ],
       "sourceKind": "verified native interface",
       "catalogOffset": 0,
-      "sourceVersion": "1.5.1",
-      "verifiedAt": "2026-09-14"
+      "sourceVersion": "1.5.4",
+      "verifiedAt": "2026-09-25"
     },
     "fr": {
       "src": "/assets/previews/petites-gouttes-fr-detail.webp",
@@ -419,8 +419,8 @@
       ],
       "sourceKind": "verified native interface",
       "catalogOffset": 0,
-      "sourceVersion": "1.5.1",
-      "verifiedAt": "2026-09-14"
+      "sourceVersion": "1.5.4",
+      "verifiedAt": "2026-09-25"
     }
   },
   "petites-bouchees": {

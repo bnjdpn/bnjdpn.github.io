@@ -149,7 +149,7 @@ export const productCopy = {
     "en": [
       "iPhone",
       "One less thing to remember.",
-      "Track your milk stash and the next bag to use. The Nursery Pack brings daily sheets, labels and A4 or Letter PDF exports together with direct shortcuts."
+      "Track your milk stash and the next bag to use. The Daycare Pack brings daily sheets, labels and A4 or Letter PDF exports together with direct shortcuts."
     ],
     "fr": [
       "iPhone",
