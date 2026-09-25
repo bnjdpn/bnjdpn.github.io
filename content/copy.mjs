@@ -199,14 +199,14 @@ export const productCopy = {
   "VesperDrift": {
     "category": "play",
     "en": [
-      "iPhone",
+      "iPhone and iPad",
       "One thumb. One more run.",
-      "Move, time your attacks and chase a score with one thumb. Share a result card that keeps ranked runs and practice clearly identified."
+      "Fly with one thumb and automatic fire. Explore nine Expeditions, replay an endless run and share a result card with its score and run type."
     ],
     "fr": [
-      "iPhone",
+      "iPhone et iPad",
       "Un pouce. Encore une partie.",
-      "Déplacez-vous, déclenchez vos attaques et visez un score avec un pouce. Partagez une carte de résultat qui distingue clairement les parties classées de l’entraînement."
+      "Pilotez d’un pouce avec tir automatique. Explorez neuf Expéditions, relancez une partie sans fin et partagez une carte indiquant le score et le type de partie."
     ]
   },
   "Echappee": {
