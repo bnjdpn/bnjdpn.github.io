@@ -12,7 +12,7 @@ et pages d’erreur existantes, sans compter deux fois une ancre d’aide/FAQ.
 | ColdLoad | `bnjdpn/ColdLoad` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-AU, en-CA, en-GB, en-US, es-ES, es-MX, fr-CA, fr-FR, it, ja, ko, nl-NL, pl, pt-BR, ru, sv, tr, uk, zh-Hans, zh-Hant | 81 | [Site](https://bnjdpn.github.io/ColdLoad/) |
 | FastZen | `bnjdpn/FastZen` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-ES, es-MX, fr-FR, it, ja, pt-BR | 19 | [Site](https://bnjdpn.github.io/FastZen/) |
 | GrooveLog | `bnjdpn/GrooveLog` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-ES, fr-FR | 9 | [Site](https://bnjdpn.github.io/GrooveLog/) |
-| LoadSense | `bnjdpn/LoadSense` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, fr-FR, ja | 16 | [Site](https://bnjdpn.github.io/LoadSense/) |
+| LoadSense | `bnjdpn/LoadSense` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-ES, fr-FR, ja | 21 | [Site](https://bnjdpn.github.io/LoadSense/) |
 | MoveAtlas | `bnjdpn/MoveAtlas` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-ES, fr-FR | 43 | [Site](https://bnjdpn.github.io/MoveAtlas/) |
 | NeatShift | `bnjdpn/NeatShift` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | en-US, fr-FR | 7 | [Site](https://bnjdpn.github.io/NeatShift/) |
 | NoBuy Cart | `bnjdpn/NoBuyCart` | `marketing/site.json`, `site.html.erb`, `theme.css`, `legal/` → `docs/` | de-DE, en-US, es-MX, fr-FR, ja, ko, pt-BR, zh-Hans, zh-Hant | 20 | [Site](https://bnjdpn.github.io/NoBuyCart/) |

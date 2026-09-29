@@ -4,28 +4,28 @@
       "src": "/assets/previews/loadsense-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "LoadSense/marketing/shots/en-US/03-880.webp",
+      "source": "LoadSense/marketing/shots/en-US/02-880.webp",
       "frame": [
         0.0,
         0.0,
         1.0,
         1.0
       ],
-      "sourceKind": "interface sans slogan",
+      "sourceKind": "LoadSense 3.4.1 sealed r13 Store screenshot 02, V3 HRV context",
       "catalogOffset": 0.7
     },
     "fr": {
       "src": "/assets/previews/loadsense-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "LoadSense/marketing/shots/fr-FR/03-880.webp",
+      "source": "LoadSense/marketing/shots/fr-FR/02-880.webp",
       "frame": [
         0.0,
         0.0,
         1.0,
         1.0
       ],
-      "sourceKind": "interface sans slogan",
+      "sourceKind": "LoadSense 3.4.1 sealed r13 Store screenshot 02, V3 HRV context",
       "catalogOffset": 0.7
     }
   },

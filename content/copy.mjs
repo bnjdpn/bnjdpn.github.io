@@ -5,13 +5,13 @@ export const productCopy = {
     "category": "training",
     "en": [
       "iPhone · iPad · Apple Watch",
-      "Make sense of your daily energy.",
-      "Read today’s Apple Health data with context for sleep and activity. Your dashboard appears before optional on-device explanations."
+      "Understand today’s recovery.",
+      "See when health data was updated, how sleep, HRV and training load inform the estimate, and the measurements behind it. Available in Spanish on iPhone and Apple Watch."
     ],
     "fr": [
       "iPhone · iPad · Apple Watch",
-      "Comprendre son énergie du jour.",
-      "Retrouvez les données du jour d’Apple Santé, avec le contexte du sommeil et de l’activité. Le tableau de bord s’affiche avant les explications facultatives sur l’appareil."
+      "Comprendre sa récupération du jour.",
+      "Voyez quand les données de Santé ont été actualisées, comment sommeil, VFC et charge éclairent l’estimation, puis les mesures qui la fondent. Disponible en espagnol sur iPhone et Apple Watch."
     ]
   },
   "TempoReps": {
