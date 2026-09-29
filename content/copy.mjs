@@ -96,13 +96,13 @@ export const productCopy = {
     "category": "everyday",
     "en": [
       "iPhone · iPad",
-      "Make room for a shared routine.",
-      "Try a sample household for free without changing your own. Explore chores, availability and a preview of how tasks can be shared."
+      "A clearer plan for a shared home.",
+      "See today's chores and overdue work, plan around each person's time, and preview how an absence changes the schedule. Try a sample home without changing your own."
     ],
     "fr": [
       "iPhone · iPad",
-      "Faire une place à chacun dans la routine.",
-      "Essayez gratuitement un foyer d’exemple sans modifier le vôtre. Découvrez les tâches, les disponibilités et un aperçu de leur répartition."
+      "Un planning plus clair pour le foyer.",
+      "Voyez les tâches du jour et les retards, répartissez selon le temps de chacun et prévisualisez l’effet d’une absence. Essayez un foyer d’exemple sans modifier le vôtre."
     ]
   },
   "BrewMeter": {
