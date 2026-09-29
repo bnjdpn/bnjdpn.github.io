@@ -56,12 +56,12 @@ export const productCopy = {
   "ColdLoad": {
     "category": "training",
     "en": [
-      "iPhone",
+      "iPhone · iPad",
       "The right plates, without the maths.",
       "Try a guided example in kg or lb, then use your own plate inventory. See what goes on each side and when a target cannot be reached."
     ],
     "fr": [
-      "iPhone",
+      "iPhone · iPad",
       "Les bons disques, sans calcul mental.",
       "Essayez un exemple guidé en kg ou lb, puis utilisez votre inventaire de disques. Voyez les changements de chaque côté et les charges impossibles à atteindre."
     ]
