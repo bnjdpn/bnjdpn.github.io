@@ -107,8 +107,9 @@
       ],
       "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "3.1.2",
-      "verifiedAt": "2026-09-24"
+      "sourceVersion": "3.2.0",
+      "verifiedAt": "2026-10-03",
+      "sourceCommit": "beb4bc8604d56b8290aff63bc51148b3ecba4da9"
     },
     "fr": {
       "src": "/assets/previews/groovelog-fr-detail.webp",
@@ -123,8 +124,9 @@
       ],
       "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "3.1.2",
-      "verifiedAt": "2026-09-24"
+      "sourceVersion": "3.2.0",
+      "verifiedAt": "2026-10-03",
+      "sourceCommit": "beb4bc8604d56b8290aff63bc51148b3ecba4da9"
     }
   },
   "FastZen": {
