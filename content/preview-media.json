@@ -141,8 +141,9 @@
       ],
       "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "1.2.4",
-      "verifiedAt": "2026-09-24"
+      "sourceVersion": "1.3.0",
+      "verifiedAt": "2026-10-03",
+      "sourceCommit": "b879feb48c6cdcf3fbf2089464bdd210b187727a"
     },
     "fr": {
       "src": "/assets/previews/fastzen-fr-detail.webp",
@@ -157,8 +158,9 @@
       ],
       "sourceKind": "qualified native iPhone capture of public release",
       "catalogOffset": 0,
-      "sourceVersion": "1.2.4",
-      "verifiedAt": "2026-09-24"
+      "sourceVersion": "1.3.0",
+      "verifiedAt": "2026-10-03",
+      "sourceCommit": "b879feb48c6cdcf3fbf2089464bdd210b187727a"
     }
   },
   "ColdLoad": {
