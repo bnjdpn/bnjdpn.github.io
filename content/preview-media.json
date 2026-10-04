@@ -4,29 +4,83 @@
       "src": "/assets/previews/loadsense-en-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "LoadSense/marketing/shots/en-US/02-880.webp",
+      "source": "LoadSense/marketing/shots/en-US/01-880.webp",
       "frame": [
         0.0,
         0.0,
         1.0,
         1.0
       ],
-      "sourceKind": "LoadSense 3.4.1 sealed r13 Store screenshot 02, V3 HRV context",
-      "catalogOffset": 0.7
+      "sourceKind": "qualified native capture of verified public release",
+      "catalogOffset": 0,
+      "sourceVersion": "3.5.0",
+      "verifiedAt": "2026-10-04T05:05:30.794413+00:00",
+      "sourceSHA256": "7860be6a6ab9cf767b8301711a6e5a118fd7d10c96ad98ed10f2a467cad4b780",
+      "nativeSource": {
+        "base": "assets/shots/en-US/01",
+        "variants": [
+          {
+            "w": 440,
+            "h": 956
+          },
+          {
+            "w": 880,
+            "h": 1912
+          }
+        ],
+        "url": "https://bnjdpn.github.io/LoadSense/assets/shots/en-US/01-880.webp",
+        "width": 880,
+        "height": 1912,
+        "source_version": "3.5.0",
+        "native_source_sha256": "1516b5859eea28ab0035aef46a03d84763f9458f2e9bd6f8877acb5326f8478d",
+        "native_candidate_commit": "3d7c97c5f8cb78ac68c2b26173313c4b0514dde9",
+        "native_scene": "01_Today_Local_Health",
+        "source_kind": "verified_native_release",
+        "source_release_run": "loadsense-glance-350-20261003-r6",
+        "verified_at": "2026-10-04T05:05:30.794413+00:00",
+        "public_source_url": "https://itunes.apple.com/lookup?id=6758211103&country=us&entity=software"
+      }
     },
     "fr": {
       "src": "/assets/previews/loadsense-fr-detail.webp",
       "width": 880,
       "height": 1912,
-      "source": "LoadSense/marketing/shots/fr-FR/02-880.webp",
+      "source": "LoadSense/marketing/shots/fr-FR/01-880.webp",
       "frame": [
         0.0,
         0.0,
         1.0,
         1.0
       ],
-      "sourceKind": "LoadSense 3.4.1 sealed r13 Store screenshot 02, V3 HRV context",
-      "catalogOffset": 0.7
+      "sourceKind": "qualified native capture of verified public release",
+      "catalogOffset": 0,
+      "sourceVersion": "3.5.0",
+      "verifiedAt": "2026-10-04T05:05:30.794413+00:00",
+      "sourceSHA256": "f3d3b190d705f41a37026c8f6d5546c0cf1b5d2b9845f44d5f1d2472476787ff",
+      "nativeSource": {
+        "base": "assets/shots/fr-FR/01",
+        "variants": [
+          {
+            "w": 440,
+            "h": 956
+          },
+          {
+            "w": 880,
+            "h": 1912
+          }
+        ],
+        "url": "https://bnjdpn.github.io/LoadSense/assets/shots/fr-FR/01-880.webp",
+        "width": 880,
+        "height": 1912,
+        "source_version": "3.5.0",
+        "native_source_sha256": "67704353ea2ad792a5e19152ccfa78f483cd820fd370dc7b853fc1397579bc71",
+        "native_candidate_commit": "3d7c97c5f8cb78ac68c2b26173313c4b0514dde9",
+        "native_scene": "01_Today_Local_Health",
+        "source_kind": "verified_native_release",
+        "source_release_run": "loadsense-glance-350-20261003-r6",
+        "verified_at": "2026-10-04T05:05:30.794413+00:00",
+        "public_source_url": "https://itunes.apple.com/lookup?id=6758211103&country=fr&entity=software"
+      }
     }
   },
   "TempoReps": {
@@ -177,10 +231,35 @@
         1,
         1
       ],
-      "sourceKind": "qualified native iPhone capture of public release",
+      "sourceKind": "qualified native capture of verified public release",
       "catalogOffset": 0,
-      "verifiedAt": "2026-09-29",
-      "sourceVersion": "1.6.1"
+      "verifiedAt": "2026-10-04T05:06:35.495163+00:00",
+      "sourceVersion": "1.7.0",
+      "sourceSHA256": "f20a6ace8b0d7ffca1ce0530efab078fcde67b979a88e5a232facd7a7631e406",
+      "nativeSource": {
+        "base": "assets/shots/en-US/01",
+        "variants": [
+          {
+            "w": 440,
+            "h": 956
+          },
+          {
+            "w": 880,
+            "h": 1912
+          }
+        ],
+        "url": "https://bnjdpn.github.io/ColdLoad/assets/shots/en-US/01-880.webp",
+        "width": 880,
+        "height": 1912,
+        "native_source": {
+          "run_id": "coldload-glance-170-20261003-r2",
+          "version": "1.7.0",
+          "source_commit": "3dfb5277472571098a726286aea622e0c3ac0a5b",
+          "path": "raw-screenshots/en-US/iPhone 17 Pro Max-01-coldload.png",
+          "sha256": "9c870741ad23504f12a7be35a6dfe58ebbc01a219d25fba30ebe909177acb80b",
+          "locale": "en-US"
+        }
+      }
     },
     "fr": {
       "src": "/assets/previews/coldload-fr-detail.webp",
@@ -193,10 +272,35 @@
         1,
         1
       ],
-      "sourceKind": "qualified native iPhone capture of public release",
+      "sourceKind": "qualified native capture of verified public release",
       "catalogOffset": 0,
-      "verifiedAt": "2026-09-29",
-      "sourceVersion": "1.6.1"
+      "verifiedAt": "2026-10-04T05:06:35.495163+00:00",
+      "sourceVersion": "1.7.0",
+      "sourceSHA256": "c4b63da3047c6e2349a6f8a5b34176ed837aea57f859bb54302f12d2518568c8",
+      "nativeSource": {
+        "base": "assets/shots/fr-FR/01",
+        "variants": [
+          {
+            "w": 440,
+            "h": 956
+          },
+          {
+            "w": 880,
+            "h": 1912
+          }
+        ],
+        "url": "https://bnjdpn.github.io/ColdLoad/assets/shots/fr-FR/01-880.webp",
+        "width": 880,
+        "height": 1912,
+        "native_source": {
+          "run_id": "coldload-glance-170-20261003-r2",
+          "version": "1.7.0",
+          "source_commit": "3dfb5277472571098a726286aea622e0c3ac0a5b",
+          "path": "raw-screenshots/fr-FR/iPhone 17 Pro Max-01-coldload.png",
+          "sha256": "e7f86df0aa3d171ee2a34ca4d0db4c37a8196ea4e8e713f39b948248f95a7cdb",
+          "locale": "fr-FR"
+        }
+      }
     }
   },
   "MoveAtlas": {
@@ -271,10 +375,35 @@
         1,
         1
       ],
-      "sourceKind": "qualified native iPhone capture of public release",
+      "sourceKind": "qualified native capture of verified public release",
       "catalogOffset": 0,
-      "sourceVersion": "1.5.4",
-      "verifiedAt": "2026-09-24"
+      "sourceVersion": "1.6.0",
+      "verifiedAt": "2026-10-04T05:04:20.641384+00:00",
+      "sourceSHA256": "0d1d651339827349b9461017736bcdf4ff6518eb35f8571c1c83db55d46bab27",
+      "nativeSource": {
+        "base": "assets/shots/en-US/01",
+        "variants": [
+          {
+            "w": 440,
+            "h": 956
+          },
+          {
+            "w": 880,
+            "h": 1912
+          }
+        ],
+        "url": "https://bnjdpn.github.io/BrewMeter/assets/shots/en-US/01-880.webp",
+        "width": 880,
+        "height": 1912,
+        "native_source": {
+          "run_id": "brewmeter-glance-160-20261002-r3",
+          "version": "1.6.0",
+          "source_commit": "647814c5a507c55abb810d5d2de3ab76cfa134d2",
+          "path": "raw_screenshots/en-US/iPhone 17 Pro Max-01_Dashboard.png",
+          "sha256": "d02cf0026d8e42a06907c6e9e81df541f98d588aaf2757a5bad8200af2b4b0e0",
+          "locale": "en-US"
+        }
+      }
     },
     "fr": {
       "src": "/assets/previews/brewmeter-fr-detail.webp",
@@ -287,10 +416,35 @@
         1,
         1
       ],
-      "sourceKind": "qualified native iPhone capture of public release",
+      "sourceKind": "qualified native capture of verified public release",
       "catalogOffset": 0,
-      "sourceVersion": "1.5.4",
-      "verifiedAt": "2026-09-24"
+      "sourceVersion": "1.6.0",
+      "verifiedAt": "2026-10-04T05:04:20.641384+00:00",
+      "sourceSHA256": "8560c6cca538df64ed753f1b7e5397b61c56dbbd07949ab610e048c764c7dc9f",
+      "nativeSource": {
+        "base": "assets/shots/fr-FR/01",
+        "variants": [
+          {
+            "w": 440,
+            "h": 956
+          },
+          {
+            "w": 880,
+            "h": 1912
+          }
+        ],
+        "url": "https://bnjdpn.github.io/BrewMeter/assets/shots/fr-FR/01-880.webp",
+        "width": 880,
+        "height": 1912,
+        "native_source": {
+          "run_id": "brewmeter-glance-160-20261002-r3",
+          "version": "1.6.0",
+          "source_commit": "647814c5a507c55abb810d5d2de3ab76cfa134d2",
+          "path": "raw_screenshots/fr-FR/iPhone 17 Pro Max-01_Dashboard.png",
+          "sha256": "2b1653b1e4282ae582c758b1a36e9ab79a83ab4effac3b9f955db985a1ed3d20",
+          "locale": "fr-FR"
+        }
+      }
     }
   },
   "NoBuyCart": {
