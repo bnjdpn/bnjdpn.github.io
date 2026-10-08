@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {productCopy} from '../content/copy.mjs';
 import {studioCopy} from '../content/studio-copy.mjs';
 import {guides} from '../content/guides.mjs';
+import {appDocuments} from '../content/app-documents.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const [apps,profile,media]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json'].map(readJSON));
@@ -41,14 +42,14 @@ function languages(lang, enHref, frHref, withHreflang=true){
  const en=withHreflang?' hreflang="en"':'';
  return `<nav class="languages" aria-label="${t.languages}"><a href="${frHref}" lang="fr"${fr} ${lang==='fr'?'aria-current="page"':''}>FR</a><a href="${enHref}" lang="en"${en} ${lang==='en'?'aria-current="page"':''}>EN</a></nav>`;
 }
-function header(lang, enHref, frHref, nav, withHreflang=true){
+function header(lang, enHref, frHref, nav, withHreflang=true, contactFallback=studioCopy[lang].contactFallback){
  const t=studioCopy[lang], home=homeFor(lang);
  const links=nav||`<a href="${home}#products">${t.apps}</a><a href="${home}#guides">${t.guidesNav}</a>`;
- return `<a class="skip-link" href="#main">${t.skip}</a><header class="bar"><a class="brand" href="${home}">bnjdpn</a><nav class="main-nav" aria-label="${t.nav}">${links}</nav><div class="bar-tools">${languages(lang,enHref,frHref,withHreflang)}${contactButton(t.contactTitle)}</div></header>${contactNote(t.contactFallback)}`;
+ return `<a class="skip-link" href="#main">${t.skip}</a><header class="bar"><a class="brand" href="${home}">bnjdpn</a><nav class="main-nav" aria-label="${t.nav}">${links}</nav><div class="bar-tools">${languages(lang,enHref,frHref,withHreflang)}${contactButton(t.contactTitle)}</div></header>${contactNote(contactFallback)}`;
 }
-function footer(lang, enHref, frHref, withHreflang=true){
+function footer(lang, enHref, frHref, withHreflang=true, footerLine=studioCopy[lang].footerLine){
  const t=studioCopy[lang], home=homeFor(lang);
- return `<footer class="footer"><a class="footer-wordmark" href="${home}">Benjamin Dupin</a>${contactButton(t.contactTitle)}${languages(lang,enHref,frHref,withHreflang)}<p>© 2026 Benjamin Dupin</p><p>${t.footerLine}</p><p>${t.noTracking}</p><a href="#top">${t.top}</a></footer>`;
+ return `<footer class="footer"><a class="footer-wordmark" href="${home}">Benjamin Dupin</a>${contactButton(t.contactTitle)}${languages(lang,enHref,frHref,withHreflang)}<p>© 2026 Benjamin Dupin</p><p>${esc(footerLine)}</p><p>${t.noTracking}</p><a href="#top">${t.top}</a></footer>`;
 }
 function head({lang,title,description,url,enHref,frHref,social,socialWidth,socialHeight,socialAlt,extra=''}){
  return `<!doctype html>
@@ -104,6 +105,24 @@ ${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','pri
 `);
  }
 }
+// These documents do not create a product page, catalogue row or store link.
+for(const app of appDocuments){
+ for(const lang of ['en','fr']){
+  const t=studioCopy[lang], text=app[lang];
+  for(const leaf of ['support','privacy']){
+   const document=text[leaf], label=t[leaf];
+   const en=origin+pagePath(app,'en',leaf+'/'), fr=origin+pagePath(app,'fr',leaf+'/');
+   const sections=document.sections.map(section=>`<section><h2>${esc(section.heading)}</h2>${section.paragraphs.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</section>`).join('\n');
+   const links=['support','privacy'].filter(other=>other!==leaf).map(other=>`<li><a href="${pagePath(app,lang,other+'/')}">${t[other]}</a></li>`).join('');
+   outputs.set(`${lang==='fr'?'fr/':''}apps/${slugOf(app)}/${leaf}/index.html`,`${head({lang,title:`${label}. ${app.name}. Benjamin Dupin`,description:document.description,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset(`assets/social/og${lang==='fr'?'-fr':''}.jpg`),socialWidth:1200,socialHeight:630,socialAlt:t.title})}
+<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr,undefined,true,text.contactFallback)}
+<main id="main" tabindex="-1"><article class="plain"><p class="crumbs"><a href="${homeFor(lang)}#products">${t.homeLabel}</a></p><h1>${esc(app.name)}. ${label}</h1><p>${esc(text.status)}</p>${leaf==='privacy'?`<p>${esc(text.dateLabel)}${lang==='fr'?'\u00a0':''}: <time datetime="${app.policyDate}">${app.policyDate}</time></p>`:''}
+${sections}<section id="contact"><h2>${t.contactTitle}</h2><p>${esc(text.contact)}</p>${contactButton(t.contactTitle)}</section><ul class="links">${links}</ul></article></main>
+${footer(lang,en,fr,true,text.footerLine)}</body></html>
+`);
+  }
+ }
+}
 for(const guide of guides){
  const app=product(guide.app), url=origin+guideLink(guide), home=homeFor(guide.lang);
  const preview=media[app.path][guide.lang];
@@ -144,6 +163,12 @@ for(const app of apps){
  }
 }
 const seen=new Set();
+for(const app of appDocuments){
+ for(const leaf of ['support/','privacy/']){
+  const en=origin+pagePath(app,'en',leaf), fr=origin+pagePath(app,'fr',leaf);
+  pageLocs.push({loc:en,en,fr},{loc:fr,en,fr});
+ }
+}
 const sitemapPages=pageLocs.filter(item=>{if(seen.has(item.loc))return false; seen.add(item.loc); return true;});
 outputs.set('sitemap-pages.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${sitemapPages.map(item=>{
  if(item.solo)return `<url><loc>${item.loc}</loc></url>`;

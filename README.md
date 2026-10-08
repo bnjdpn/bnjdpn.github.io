@@ -10,6 +10,10 @@ portfolio with the independently published product sites.
 
 The home page is the list of 17 apps. Each app has a page, a support page and a
 privacy page under `/apps/` and `/fr/apps/`. English lives at `/`; French at `/fr/`.
+`content/app-documents.mjs` generates support and privacy pages for store
+submissions without adding an app to the home catalogue or creating a product
+page or store link. These bilingual documents also enter `sitemap-pages.xml`.
+Petits Besoins uses this path while its Android release is in preparation.
 Product sites keep independent compositions and build systems, documented in [design.md](docs/design.md).
 Two practical entry points complement the directory: a bilingual reusable
 TempoReps timer guide and a French Petites Bouchées journal-sharing guide.
