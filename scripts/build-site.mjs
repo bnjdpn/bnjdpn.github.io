@@ -105,18 +105,18 @@ ${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','pri
 `);
  }
 }
-// These documents do not create a product page, catalogue row or store link.
+// Submission pages do not create a catalogue row or an availability claim.
 for(const app of appDocuments){
  for(const lang of ['en','fr']){
   const t=studioCopy[lang], text=app[lang];
-  for(const leaf of ['support','privacy']){
-   const document=text[leaf], label=t[leaf];
-   const en=origin+pagePath(app,'en',leaf+'/'), fr=origin+pagePath(app,'fr',leaf+'/');
+  for(const leaf of ['landing','support','privacy']){
+   const document=text[leaf], label=leaf==='landing'?app.name:t[leaf], route=leaf==='landing'?'':leaf+'/';
+   const en=origin+pagePath(app,'en',route), fr=origin+pagePath(app,'fr',route);
    const sections=document.sections.map(section=>`<section><h2>${esc(section.heading)}</h2>${section.paragraphs.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</section>`).join('\n');
-   const links=['support','privacy'].filter(other=>other!==leaf).map(other=>`<li><a href="${pagePath(app,lang,other+'/')}">${t[other]}</a></li>`).join('');
-   outputs.set(`${lang==='fr'?'fr/':''}apps/${slugOf(app)}/${leaf}/index.html`,`${head({lang,title:`${label}. ${app.name}. Benjamin Dupin`,description:document.description,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset(`assets/social/og${lang==='fr'?'-fr':''}.jpg`),socialWidth:1200,socialHeight:630,socialAlt:t.title})}
+   const links=['landing','support','privacy'].filter(other=>other!==leaf).map(other=>`<li><a href="${pagePath(app,lang,other==='landing'?'':other+'/')}">${other==='landing'?app.name:t[other]}</a></li>`).join('');
+   outputs.set(`${lang==='fr'?'fr/':''}apps/${slugOf(app)}/${route}index.html`,`${head({lang,title:leaf==='landing'?`${app.name}. ${lang==='fr'?'Carnet de propreté':'Potty notebook'}. Benjamin Dupin`:`${label}. ${app.name}. Benjamin Dupin`,description:document.description,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/petits-besoins-icon.png'),socialWidth:1024,socialHeight:1024,socialAlt:app.name,extra:`<meta name="apple-itunes-app" content="app-id=${app.appStoreId}"><meta name="twitter:image:alt" content="${esc(app.name)}"><script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'SoftwareApplication',name:app.name,operatingSystem:'iOS 17 or later; Android 8 or later',applicationCategory:'LifestyleApplication',url:lang==='fr'?fr:en,publisher:{'@type':'Person',name:'Benjamin Dupin'},description:text.status})}</script>`})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr,undefined,true,text.contactFallback)}
-<main id="main" tabindex="-1"><article class="plain"><p class="crumbs"><a href="${homeFor(lang)}#products">${t.homeLabel}</a></p><h1>${esc(app.name)}. ${label}</h1><p>${esc(text.status)}</p>${leaf==='privacy'?`<p>${esc(text.dateLabel)}${lang==='fr'?'\u00a0':''}: <time datetime="${app.policyDate}">${app.policyDate}</time></p>`:''}
+<main id="main" tabindex="-1"><article class="plain"><p class="crumbs"><a href="${homeFor(lang)}#products">${t.homeLabel}</a></p><h1>${leaf==='landing'?esc(app.name):esc(app.name)+'. '+label}</h1><p>${esc(text.status)}</p>${leaf==='privacy'?`<p>${esc(text.dateLabel)}${lang==='fr'?'\u00a0':''}: <time datetime="${app.policyDate}">${app.policyDate}</time></p>`:''}
 ${sections}<section id="contact"><h2>${t.contactTitle}</h2><p>${esc(text.contact)}</p>${contactButton(t.contactTitle)}</section><ul class="links">${links}</ul></article></main>
 ${footer(lang,en,fr,true,text.footerLine)}</body></html>
 `);
@@ -164,7 +164,7 @@ for(const app of apps){
 }
 const seen=new Set();
 for(const app of appDocuments){
- for(const leaf of ['support/','privacy/']){
+ for(const leaf of ['','support/','privacy/']){
   const en=origin+pagePath(app,'en',leaf), fr=origin+pagePath(app,'fr',leaf);
   pageLocs.push({loc:en,en,fr},{loc:fr,en,fr});
  }
