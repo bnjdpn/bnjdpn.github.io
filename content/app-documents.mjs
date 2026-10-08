@@ -1,67 +1,246 @@
-// Store submission documents stay separate from the catalogue of available apps.
-export const appDocuments = [{
-  name: 'Petits Besoins',
-  path: 'petits-besoins',
-  package: 'com.bnjdpn.petitsbesoins',
-  policyDate: '2026-10-08',
-  en: {
-    footerLine: 'Android app in preparation.',
-    status: 'Petits Besoins is an Android app in preparation. It is not yet published on Google Play.',
-    contact: 'For a question about the app or your data, use Contact to open your mail app. Benjamin Dupin receives only what you choose to send. This website does not send the message. Please avoid sending personal information about your child.',
-    contactFallback: 'Enable JavaScript to use the Contact button. It opens your mail app.',
-    dateLabel: 'Policy date',
-    support: {
-      description: 'Help with Petits Besoins for Android, reminders, the PDF kit and data stored on your device.',
-      sections: [
-        {heading: 'How do I set reminders?', paragraphs: ['Open Reminders, enable them and choose the interval and daily time window. On Android 13 or later, allow notifications when prompted. You can snooze a notification for 15 minutes. Android may delay reminders to save battery.']},
-        {heading: 'What does the PDF kit contain?', paragraphs: ['The kit contains the care instructions you enter and blank weekly and tracking sheets. It does not export your recorded history. The preview is free. PDF export is the planned paid option, but Google Play purchases are not available in the current version. A debug build can simulate the purchase.', 'The app creates the PDF on your device and opens the Android share chooser. You choose the receiving app. The kit hides the child\'s name by default. Check the preview before sharing.']},
-        {heading: 'Can I restore a Google Play purchase?', paragraphs: ['The current version has no Google Play purchase or restore function. The simulated debug purchase stays on that installation. It is not a Google Play purchase.']},
-        {heading: 'How do I change the language?', paragraphs: ['The app follows your device language. Choose French or English in Android\'s language settings. There is no language selector inside the app.']},
-        {heading: 'Where are my data and how do I delete them?', paragraphs: ['Profiles and entries stay on your device. The app has no account or online sync and excludes its data from Android backup and device transfer.', 'You can delete individual entries from the history. To remove all app data, clear its storage in Android settings or uninstall it. Copies you shared through another app remain there until you delete them.']},
-      ],
+// Submission pages remain separate from the catalogue of available apps.
+export const appDocuments = [
+  {
+    "name": "Petits Besoins",
+    "path": "petits-besoins",
+    "package": "com.bnjdpn.petitsbesoins",
+    "appStoreId": "6820659968",
+    "policyDate": "2026-10-08",
+    "en": {
+      "footerLine": "iOS and Android versions in preparation.",
+      "status": "Petits Besoins is in preparation for iOS and Android. It is not yet available in either store.",
+      "contact": "For a question about the app or its data, the Contact button opens the mail app. Benjamin Dupin receives only the message that is sent. This website does not send it. Avoid including personal information about a child.",
+      "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
+      "dateLabel": "Policy date",
+      "landing": {
+        "description": "Petits Besoins, a local potty training notebook for parents. iOS and Android versions in preparation. Published by Benjamin Dupin.",
+        "sections": [
+          {
+            "heading": "A notebook for the adult",
+            "paragraphs": [
+              "Record potty visits, accidents and wet or dry diapers. Home and daycare entries stay separate. A wet diaper does not count as an accident."
+            ]
+          },
+          {
+            "heading": "Prepare the same notes for daycare",
+            "paragraphs": [
+              "Profiles, unlimited history, reminders, daily text summaries and the complete kit preview are free. On iOS, the daycare kit is a one-time purchase for PDF export and reusable blank sheets. The offer opens only from Export kit."
+            ]
+          },
+          {
+            "heading": "Stored on the device",
+            "paragraphs": [
+              "No account, ads or analytics. The notebook stays on the device. The app provides no medical advice, diagnosis or prediction."
+            ]
+          }
+        ]
+      },
+      "support": {
+        "description": "Petits Besoins support for iOS and Android, local reminders, the daycare PDF kit and stored data.",
+        "sections": [
+          {
+            "heading": "Set reminders",
+            "paragraphs": [
+              "Open Settings on iOS or Reminders on Android. Enable reminders, then choose the interval and daily window. Notification permission is requested when reminders are enabled. Snooze postpones a reminder by 15 minutes. Device settings may delay notification delivery."
+            ]
+          },
+          {
+            "heading": "Preview and export the kit",
+            "paragraphs": [
+              "The kit contains the family instructions and blank weekly and tracking sheets. It does not export the recorded history. Its complete preview is free. The child name is hidden by default. The share sheet opens only after an export is requested."
+            ]
+          },
+          {
+            "heading": "Purchases and restoration",
+            "paragraphs": [
+              "On iOS, a one-time StoreKit purchase unlocks PDF export and reusable sheets. Restore purchases is in Settings and in the offer. Closing the offer keeps the draft. Android has no Google Play purchase or restoration in this version. Its simulated purchase is available only in debug builds."
+            ]
+          },
+          {
+            "heading": "Change the language",
+            "paragraphs": [
+              "The app follows the device language. French and English are included. iOS also includes British English. There is no language selector in the app."
+            ]
+          },
+          {
+            "heading": "Delete data",
+            "paragraphs": [
+              "Individual entries can be deleted from History. Uninstalling the app removes its local data. On Android, clearing app storage also removes them. Copies shared elsewhere must be deleted in the receiving app or storage location."
+            ]
+          }
+        ]
+      },
+      "privacy": {
+        "description": "Petits Besoins privacy policy for iOS and Android, local data, Apple purchases, reminders, sharing and deletion.",
+        "sections": [
+          {
+            "heading": "Scope",
+            "paragraphs": [
+              "Benjamin Dupin publishes Petits Besoins for iOS and Android, identified by com.bnjdpn.petitsbesoins. This policy covers the versions in preparation."
+            ]
+          },
+          {
+            "heading": "Child information",
+            "paragraphs": [
+              "An adult may enter a child name or pseudonym, potty and diaper entries, dates, times, home or daycare setting, notes and kit instructions. These data stay on the device. Benjamin Dupin does not receive them."
+            ]
+          },
+          {
+            "heading": "Local storage",
+            "paragraphs": [
+              "The iOS version stores the notebook with SwiftData and local preferences. It has no account, server or online sync. Android uses Room and DataStore. Android backup and device transfer are disabled. Petits Besoins provides no backup service. On iOS, operating system backups may include local app data according to device settings."
+            ]
+          },
+          {
+            "heading": "Network and collection",
+            "paragraphs": [
+              "Petits Besoins has no ads, analytics or third-party crash reporting. It does not transmit notebook entries to Benjamin Dupin or a server. On iOS, StoreKit communicates with Apple for product information, purchases and restoration. Android requests no Internet permission."
+            ]
+          },
+          {
+            "heading": "Local reminders",
+            "paragraphs": [
+              "The operating system schedules and displays local notifications. Permission is requested when reminders are enabled. On Android, the startup permission lets the app reschedule reminders after a restart. Reminder scheduling does not send notebook data."
+            ]
+          },
+          {
+            "heading": "PDF and text sharing",
+            "paragraphs": [
+              "PDFs are generated on the device and contain kit instructions and blank sheets, not the recorded history. The child name is hidden by default. Including it requires an explicit selection. Daily text summaries can also be shared. The chosen receiving app handles the shared copy under its own policy."
+            ]
+          },
+          {
+            "heading": "Purchases",
+            "paragraphs": [
+              "Apple processes the iOS one-time purchase through StoreKit. The app checks entitlement to PDF export and reusable sheets. It does not collect payment card information. Android purchase simulation changes a local setting and processes no payment. Google Play Billing is not implemented."
+            ]
+          },
+          {
+            "heading": "Retention and deletion",
+            "paragraphs": [
+              "Entries remain on the device until they are deleted or app data are removed. Uninstalling removes local data. Android also permits clearing app storage in device settings. PDFs and text shared elsewhere remain until those copies are deleted."
+            ]
+          }
+        ]
+      }
     },
-    privacy: {
-      description: 'Privacy policy for Petits Besoins for Android, local storage, reminders, sharing and deletion.',
-      sections: [
-        {heading: 'Who this policy covers', paragraphs: ['Benjamin Dupin publishes Petits Besoins for Android, identified by com.bnjdpn.petitsbesoins. This policy describes the current version in preparation.']},
-        {heading: 'Children\'s data and local storage', paragraphs: ['Petits Besoins is a notebook for parents and caregivers to record a child\'s potty use and diaper changes. An adult enters the child\'s name, entries, dates, times, home or care setting and optional notes. The kit can also contain care instructions.', 'The app stores profiles and entries in a Room database on your device. It stores preferences, reminders and kit drafts locally with Android DataStore. Benjamin Dupin does not receive these data.']},
-        {heading: 'Network access and collection', paragraphs: ['The current app does not access the network. It requests no Internet permission and includes no networking library. It has no analytics, crash reporting, ads or user account. It does not send the notebook to a server.']},
-        {heading: 'Local reminders', paragraphs: ['Android schedules reminders on your device and displays local notifications. The app requests notification permission on Android 13 or later. Permission to receive the device startup event lets it reschedule reminders after a restart. These functions do not send your entries anywhere.']},
-        {heading: 'PDFs and sharing', paragraphs: ['PDF export is the planned paid kit option. It is currently accessible through a simulated purchase in debug builds, without a real payment. The app generates the PDF on your device in its temporary storage. It contains your kit instructions and blank sheets, not your recorded history. The child\'s name is hidden by default, and you can choose to include it.', 'The app opens the Android share chooser only when you request an export. You choose the receiving app. You can also choose to share a daily text summary. The receiving app then handles that copy under its own privacy policy. Benjamin Dupin does not receive it through Petits Besoins.']},
-        {heading: 'Purchases', paragraphs: ['Google Play Billing and purchase restoration are not implemented in the current version. The debug purchase changes a local setting and processes no payment. Petits Besoins collects no card data.', 'Google Play Billing is the intended payment service for the paid export. Google would process that payment. This policy will be reviewed when billing is implemented.']},
-        {heading: 'Android backup', paragraphs: ['The app disables Android backup with allowBackup set to false. Its backup rules exclude app data from cloud backup and device transfer, including the database and local preferences. It has no backup or sync service of its own. Do not rely on Android backup to recover the notebook after uninstalling the app or changing devices.']},
-        {heading: 'Retention and deletion', paragraphs: ['The app keeps your entries on the device until you delete them or remove the app data. You can delete individual entries from the history. Clear the app\'s storage in Android settings or uninstall the app to remove all its local data.', 'Removing app data does not remove PDFs or text you shared elsewhere. Delete those copies in the receiving app or storage location.']},
-      ],
-    },
-  },
-  fr: {
-    footerLine: 'App Android en préparation.',
-    status: 'Petits Besoins est une app Android en préparation. Elle n\'est pas encore publiée sur Google Play.',
-    contact: 'Pour une question sur l\'app ou vos données, utilisez Contact pour ouvrir votre application mail. Benjamin Dupin reçoit seulement ce que vous choisissez d\'envoyer. Ce site n\'envoie pas le message. Évitez d\'envoyer des informations personnelles sur votre enfant.',
-    contactFallback: 'Activez JavaScript pour utiliser le bouton Contact. Il ouvre votre application mail.',
-    dateLabel: 'Date de la politique',
-    support: {
-      description: 'Aide pour Petits Besoins sur Android, les rappels, le kit PDF et les données sur votre appareil.',
-      sections: [
-        {heading: 'Comment régler les rappels\u00a0?', paragraphs: ['Ouvrez Rappels, activez-les et choisissez l\'intervalle et les horaires de la journée. Sur Android 13 ou plus récent, autorisez les notifications lorsque l\'app vous le demande. Vous pouvez reporter une notification de 15 minutes. Android peut retarder les rappels pour économiser la batterie.']},
-        {heading: 'Que contient le kit PDF\u00a0?', paragraphs: ['Le kit contient les consignes que vous saisissez et des feuilles vierges de semaine et de suivi. Il n\'exporte pas votre historique. L\'aperçu est gratuit. L\'export PDF est l\'option payante prévue, mais l\'achat sur Google Play n\'est pas disponible dans la version actuelle. Une version de debug peut simuler l\'achat.', 'L\'app crée le PDF sur votre appareil et ouvre le menu de partage Android. Vous choisissez l\'application destinataire. Le kit masque le nom de l\'enfant par défaut. Vérifiez l\'aperçu avant de partager.']},
-        {heading: 'Puis-je restaurer un achat Google Play\u00a0?', paragraphs: ['La version actuelle ne permet ni l\'achat sur Google Play ni sa restauration. L\'achat simulé en debug reste sur cette installation. Ce n\'est pas un achat Google Play.']},
-        {heading: 'Comment changer la langue\u00a0?', paragraphs: ['L\'app suit la langue de votre appareil. Choisissez le français ou l\'anglais dans les réglages de langue d\'Android. L\'app n\'a pas de sélecteur de langue interne.']},
-        {heading: 'Où sont mes données et comment les supprimer\u00a0?', paragraphs: ['Les profils et les entrées restent sur votre appareil. L\'app n\'a ni compte ni synchronisation en ligne et exclut ses données des sauvegardes Android et du transfert entre appareils.', 'Vous pouvez supprimer une entrée dans l\'historique. Pour effacer toutes les données de l\'app, effacez son stockage dans les réglages Android ou désinstallez-la. Les copies partagées avec une autre application y restent tant que vous ne les supprimez pas.']},
-      ],
-    },
-    privacy: {
-      description: 'Politique de confidentialité de Petits Besoins sur Android, stockage local, rappels, partage et suppression.',
-      sections: [
-        {heading: 'Champ de cette politique', paragraphs: ['Benjamin Dupin édite Petits Besoins pour Android, identifiée par com.bnjdpn.petitsbesoins. Cette politique décrit la version actuelle en préparation.']},
-        {heading: 'Données de l\'enfant et stockage local', paragraphs: ['Petits Besoins est un carnet destiné aux parents et aux personnes qui s\'occupent de l\'enfant pour noter les passages au pot et les changes. Un adulte saisit le nom de l\'enfant, les entrées, les dates, les heures, le lieu à la maison ou en garde et les notes facultatives. Le kit peut aussi contenir des consignes de garde.', 'L\'app conserve les profils et les entrées dans une base Room sur votre appareil. Elle conserve les préférences, les rappels et les brouillons du kit sur l\'appareil avec Android DataStore. Benjamin Dupin ne reçoit pas ces données.']},
-        {heading: 'Accès réseau et collecte', paragraphs: ['L\'app actuelle n\'accède pas au réseau. Elle ne demande pas la permission Internet et ne contient aucune bibliothèque réseau. Elle n\'a ni mesure d\'audience, ni rapport de plantage, ni publicité, ni compte utilisateur. Elle n\'envoie pas le carnet à un serveur.']},
-        {heading: 'Rappels locaux', paragraphs: ['Android programme les rappels sur votre appareil et affiche des notifications locales. L\'app demande l\'autorisation de notification sur Android 13 ou plus récent. La permission de recevoir le démarrage de l\'appareil lui permet de reprogrammer les rappels après un redémarrage. Ces fonctions ne transmettent pas vos entrées.']},
-        {heading: 'PDF et partage', paragraphs: ['L\'export PDF est l\'option payante prévue pour le kit. Il est actuellement accessible par un achat simulé dans les versions de debug, sans paiement réel. L\'app génère le PDF sur votre appareil dans son stockage temporaire. Il contient vos consignes du kit et des feuilles vierges, sans votre historique. Le nom de l\'enfant est masqué par défaut, et vous pouvez choisir de l\'inclure.', 'L\'app ouvre le menu de partage Android lorsque vous demandez un export. Vous choisissez l\'application destinataire. Vous pouvez aussi choisir de partager une synthèse texte du jour. L\'application destinataire traite ensuite cette copie selon sa propre politique de confidentialité. Benjamin Dupin ne la reçoit pas par Petits Besoins.']},
-        {heading: 'Achats', paragraphs: ['Google Play Billing et la restauration d\'achat ne sont pas implémentés dans la version actuelle. L\'achat de debug modifie un réglage local et ne réalise aucun paiement. Petits Besoins ne collecte aucune donnée de carte bancaire.', 'Google Play Billing est le service de paiement prévu pour l\'export payant. Google traiterait ce paiement. Cette politique sera revue lors de l\'intégration des achats.']},
-        {heading: 'Sauvegardes Android', paragraphs: ['L\'app désactive les sauvegardes Android avec allowBackup à false. Ses règles excluent les données de l\'app des sauvegardes cloud et du transfert entre appareils, y compris la base de données et les préférences locales. Elle n\'a pas de service de sauvegarde ou de synchronisation propre. Ne comptez pas sur une sauvegarde Android pour récupérer le carnet après une désinstallation ou un changement d\'appareil.']},
-        {heading: 'Conservation et suppression', paragraphs: ['L\'app garde vos entrées sur l\'appareil jusqu\'à leur suppression ou à l\'effacement des données de l\'app. Vous pouvez supprimer une entrée dans l\'historique. Effacez le stockage de l\'app dans les réglages Android ou désinstallez-la pour supprimer toutes ses données locales.', 'L\'effacement des données de l\'app ne supprime pas les PDF ou les textes partagés ailleurs. Supprimez ces copies dans l\'application destinataire ou leur emplacement de stockage.']},
-      ],
-    },
-  },
-}];
+    "fr": {
+      "footerLine": "Versions iOS et Android en préparation.",
+      "status": "Petits Besoins est en préparation pour iOS et Android. L’app n’est pas encore disponible sur les stores.",
+      "contact": "Pour une question sur l’app ou ses données, le bouton Contact ouvre l’application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l’envoie pas. Éviter d’y inclure des informations personnelles sur un enfant.",
+      "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
+      "dateLabel": "Date de la politique",
+      "landing": {
+        "description": "Petits Besoins, carnet local de propreté pour les parents. Versions iOS et Android en préparation. Édité par Benjamin Dupin.",
+        "sections": [
+          {
+            "heading": "Un carnet pour l’adulte",
+            "paragraphs": [
+              "Noter les passages au pot, les accidents et les couches mouillées ou sèches. Les entrées de la maison et de la garde restent séparées. Une couche mouillée ne compte pas comme un accident."
+            ]
+          },
+          {
+            "heading": "Préparer les mêmes consignes pour la garde",
+            "paragraphs": [
+              "Les profils, l’historique illimité, les rappels, la synthèse texte du jour et l’aperçu complet du kit sont gratuits. Sur iOS, un achat unique donne accès à l’export PDF du kit crèche et aux feuilles vierges réutilisables. L’offre s’ouvre seulement depuis Exporter le kit."
+            ]
+          },
+          {
+            "heading": "Sur l’appareil",
+            "paragraphs": [
+              "Sans compte, publicité ni mesure d’audience. Le carnet reste sur l’appareil. L’app ne donne aucun conseil médical, diagnostic ou prédiction."
+            ]
+          }
+        ]
+      },
+      "support": {
+        "description": "Aide Petits Besoins sur iOS et Android, rappels locaux, kit crèche PDF et données sur l’appareil.",
+        "sections": [
+          {
+            "heading": "Régler les rappels",
+            "paragraphs": [
+              "Ouvrir Réglages sur iOS ou Rappels sur Android. Activer les rappels, puis choisir l’intervalle et les horaires de la journée. L’autorisation de notification est demandée à l’activation. Reporter décale un rappel de 15 minutes. Les réglages de l’appareil peuvent retarder les notifications."
+            ]
+          },
+          {
+            "heading": "Prévisualiser et exporter le kit",
+            "paragraphs": [
+              "Le kit contient les consignes de la famille et des feuilles vierges de semaine et de suivi. Il n’exporte pas l’historique. L’aperçu complet est gratuit. Le prénom est masqué par défaut. Le menu de partage s’ouvre seulement après une demande d’export."
+            ]
+          },
+          {
+            "heading": "Acheter et restaurer",
+            "paragraphs": [
+              "Sur iOS, un achat unique StoreKit donne accès à l’export PDF et aux feuilles réutilisables. Restaurer les achats se trouve dans Réglages et dans l’offre. Fermer l’offre conserve le brouillon. Cette version Android ne propose ni achat Google Play ni restauration. L’achat simulé existe seulement en debug."
+            ]
+          },
+          {
+            "heading": "Changer la langue",
+            "paragraphs": [
+              "L’app suit la langue de l’appareil. Le français et l’anglais sont inclus. iOS inclut aussi l’anglais britannique. L’app n’a pas de sélecteur de langue interne."
+            ]
+          },
+          {
+            "heading": "Supprimer les données",
+            "paragraphs": [
+              "Une entrée se supprime depuis Historique. La désinstallation supprime les données locales de l’app. Sur Android, l’effacement du stockage les supprime aussi. Les copies partagées ailleurs doivent être supprimées dans l’application destinataire ou leur emplacement de stockage."
+            ]
+          }
+        ]
+      },
+      "privacy": {
+        "description": "Confidentialité Petits Besoins sur iOS et Android, données locales, achats Apple, rappels, partage et suppression.",
+        "sections": [
+          {
+            "heading": "Champ de la politique",
+            "paragraphs": [
+              "Benjamin Dupin édite Petits Besoins pour iOS et Android, identifiée par com.bnjdpn.petitsbesoins. Cette politique couvre les versions en préparation."
+            ]
+          },
+          {
+            "heading": "Informations sur l’enfant",
+            "paragraphs": [
+              "Un adulte peut saisir un prénom ou pseudonyme, des passages au pot et des changes, les dates, les heures, le lieu maison ou garde, des notes et les consignes du kit. Ces données restent sur l’appareil. Benjamin Dupin ne les reçoit pas."
+            ]
+          },
+          {
+            "heading": "Stockage local",
+            "paragraphs": [
+              "Sur iOS, le carnet utilise SwiftData et des préférences locales. L’app n’a ni compte, serveur ni synchronisation en ligne. Android utilise Room et DataStore. Ses sauvegardes Android et transferts entre appareils sont désactivés. Petits Besoins ne fournit pas de service de sauvegarde. Sur iOS, les sauvegardes du système peuvent inclure les données locales selon les réglages de l’appareil."
+            ]
+          },
+          {
+            "heading": "Réseau et collecte",
+            "paragraphs": [
+              "Petits Besoins n’a ni publicité, mesure d’audience ni rapport de plantage tiers. L’app n’envoie pas les entrées du carnet à Benjamin Dupin ou à un serveur. Sur iOS, StoreKit communique avec Apple pour les produits, les achats et leur restauration. Android ne demande pas la permission Internet."
+            ]
+          },
+          {
+            "heading": "Rappels locaux",
+            "paragraphs": [
+              "Le système programme et affiche les notifications locales. L’autorisation est demandée à l’activation des rappels. Sur Android, la permission de démarrage permet de les reprogrammer après un redémarrage. La programmation n’envoie pas les données du carnet."
+            ]
+          },
+          {
+            "heading": "PDF et partage de texte",
+            "paragraphs": [
+              "Les PDF sont créés sur l’appareil. Ils contiennent les consignes du kit et des feuilles vierges, sans l’historique. Le prénom est masqué par défaut. Son inclusion demande une sélection explicite. La synthèse texte du jour peut aussi être partagée. L’application destinataire traite la copie selon sa propre politique."
+            ]
+          },
+          {
+            "heading": "Achats",
+            "paragraphs": [
+              "Apple traite l’achat unique iOS avec StoreKit. L’app vérifie le droit d’accès à l’export PDF et aux feuilles réutilisables. Elle ne collecte pas les informations de carte bancaire. Sur Android, la simulation modifie un réglage local, sans paiement. Google Play Billing n’est pas intégré."
+            ]
+          },
+          {
+            "heading": "Conservation et suppression",
+            "paragraphs": [
+              "Les entrées restent sur l’appareil jusqu’à leur suppression ou à l’effacement des données de l’app. La désinstallation supprime les données locales. Android permet aussi d’effacer le stockage dans les réglages de l’appareil. Les PDF et textes partagés ailleurs restent présents jusqu’à la suppression de ces copies."
+            ]
+          }
+        ]
+      }
+    }
+  }
+];

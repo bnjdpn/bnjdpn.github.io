@@ -57,7 +57,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
 for(const lang of ['en','fr']){
  for(const app of [...catalog,...appDocuments]){
   const slug=app.path.toLowerCase();
-  for(const leaf of appDocuments.includes(app)?['support/','privacy/']:['','support/','privacy/']){
+  for(const leaf of ['','support/','privacy/']){
    const path=`${lang==='fr'?'fr/':''}apps/${slug}/${leaf}index.html`;
    const html=await readFile(resolve(root,path),'utf8');
    const prefix=`${path}: `;
@@ -73,13 +73,17 @@ for(const lang of ['en','fr']){
     expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
     for(const alternate of ['en','fr'])expect(html.includes(`rel="alternate" hreflang="${alternate}" href="${origin}/${alternate==='fr'?'fr/':''}apps/${slug}/${leaf}"`),prefix+'alternate missing');
     expect(!/apps\.apple\.com|play\.google\.com\/store|class="store-button"/.test(html),prefix+'unpublished store link');
+    expect(html.includes(`name="apple-itunes-app" content="app-id=${app.appStoreId}"`),prefix+'Smart App Banner missing');
+    for(const key of ['og:image','og:image:alt','twitter:image','twitter:image:alt'])expect(html.includes(`"${key}"`),prefix+'social image metadata missing');
+    const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+    expect(schema['@type']==='SoftwareApplication'&&schema.name==='Petits Besoins'&&!schema.offers&&!schema.aggregateRating,prefix+'unsupported software claim');
     if(leaf==='privacy/')expect(html.includes(app.package)&&html.includes(`<time datetime="${app.policyDate}">${app.policyDate}</time>`),prefix+'policy identity/date missing');
     for(const match of html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)){
      let ref=match[1].split(/[?#]/)[0].slice(1);if(!ref||ref.endsWith('/'))ref+='index.html';
      try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref)}
     }
    }
-   if(leaf==='')expect(html.includes(`https://apps.apple.com/app/id${app.id}`),prefix+'App Store link missing');
+   if(leaf===''&&!appDocuments.includes(app))expect(html.includes(`https://apps.apple.com/app/id${app.id}`),prefix+'App Store link missing');
   }
  }
 }
