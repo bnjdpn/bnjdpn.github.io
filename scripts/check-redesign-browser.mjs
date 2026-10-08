@@ -23,7 +23,7 @@ const apps = JSON.parse(readFileSync(join(root, 'content/catalog.json'), 'utf8')
 const ids = apps.map(app => app.path).sort();
 const categories = ['all', 'training', 'everyday', 'family', 'play'];
 const expectedCategory = category => apps.filter(app => category === 'all' || productCopy[app.path].category === category).map(app => app.path).sort();
-const expectedSupport = lang => apps.map(app => ({name:app.name, url:`https://bnjdpn.github.io/${app.path}/${lang === 'fr' ? 'fr-FR/' : ''}${app.path === 'Echappee' ? 'support.html' : '#contact'}`}));
+const expectedSupport = lang => apps.map(app => ({name:app.name, url:`${lang === 'fr' ? '/fr' : ''}/apps/${app.path.toLowerCase()}/support/`}));
 const base = arg('--base', 'http://127.0.0.1:4173').replace(/\/$/, '');
 const out = resolve(arg('--out', join(root, 'output/playwright/redesign')));
 const viewports = [{width:1440, height:1000}, {width:768, height:1024}, {width:390, height:844}, {width:320, height:800}];
@@ -147,24 +147,17 @@ async function interactions(page, result) {
   await assertState(page, result, 'Second accented product name', ['petites-bouchees'], 'all', 'bouchees');
   await page.locator('#app-search').fill('no-product-matches-qa-987654');
   await assertState(page, result, 'No search results', [], 'all', 'no-product-matches-qa-987654');
-  await page.locator('[data-category-link="family"]').first().click();
+  await page.locator('#clear-filters').click();
+  await page.locator('[data-filter="family"]').click();
   await assertState(page, result, 'Family section catalogue link', expectedCategory('family'), 'family', '');
   await page.locator('#clear-filters').click();
   await assertState(page, result, 'Final reset', ids, 'all', '');
 }
 
-async function supportPicker(page, result) {
-  const picker = page.locator('#support-app');
-  const go = page.locator('#support-go');
-  const options = await picker.locator('option').evaluateAll(elements => elements.map(option => ({name:option.textContent.trim(), url:option.value})));
-  check(result, 'Support picker offers every product plus a placeholder', options.length === apps.length + 1 && options[0].url === '' && same(options.slice(1), expectedSupport(result.language)), options);
-  check(result, 'Support action starts hidden with no destination', await go.isHidden() && await go.getAttribute('href') === null);
-  for (const option of options.slice(1)) {
-    await picker.selectOption(option.url);
-    check(result, `Support destination for ${option.name}`, await go.isVisible() && await go.getAttribute('href') === option.url, await go.getAttribute('href'));
-  }
-  await picker.selectOption('');
-  check(result, 'Clearing support selection removes the action and destination', await go.isHidden() && await go.getAttribute('href') === null);
+async function contactLink(page, result) {
+  const link = page.locator('a.contact-mail').first();
+  const text = (await link.textContent())?.trim();
+  check(result, 'Contact address is visible', await link.isVisible() && text === 'contact@bnjdpn.com' && await link.getAttribute('href') === 'mailto:contact@bnjdpn.com', text);
 }
 
 try {
@@ -181,14 +174,14 @@ try {
       await loadImages(page);
       check(result, 'Correct document language', await page.locator('html').getAttribute('lang') === lang);
       check(result, 'Catalogue contains every expected product exactly once', same(await page.locator('.product-row').evaluateAll(rows => rows.map(row => row.dataset.app).sort()), ids));
-      check(result, 'Support anchor exists', await page.locator('#contact').count() === 1 && await page.locator('a[href="#contact"]').count() > 0);
+      check(result, 'Support anchor exists', await page.locator('#contact').count() === 1 && await page.locator('a[href$="#contact"]').count() > 0);
       await page.keyboard.press('Tab');
       const firstStop = await page.evaluate(() => ({href:document.activeElement?.getAttribute('href'), text:document.activeElement?.textContent.trim(), rect:document.activeElement?.getBoundingClientRect().toJSON()}));
       check(result, 'First Tab reveals the skip link', firstStop.href === '#main' && firstStop.rect.width > 0 && firstStop.rect.height > 0 && firstStop.rect.top >= 0 && firstStop.rect.bottom <= viewports[0].height, firstStop);
       await page.keyboard.press('Enter');
       check(result, 'Skip link targets the main content', await page.locator('#main').count() === 1 && new URL(page.url()).hash === '#main');
       await interactions(page, result);
-      await supportPicker(page, result);
+      await contactLink(page, result);
       for (const viewport of viewports) {
         await page.setViewportSize(viewport);
         await page.evaluate(() => {document.documentElement.style.fontSize = ''; window.scrollTo(0, 0);});

@@ -40,12 +40,35 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  expect(list.numberOfItems===catalog.length&&list.itemListElement.length===catalog.length,prefix+'structured catalogue count mismatch');
  expect(!JSON.stringify(graph).includes('"offers"'),prefix+'unverified offer in JSON-LD');
  expect(/^\d{4}-\d{2}-\d{2}T.*Z$/.test(graph.find(x=>x['@type']==='CollectionPage').dateModified),prefix+'invalid modification timestamp');
- expect(!/mailto:|target="_blank"/.test(html),prefix+'direct email or forced new tabs');
+ const mails=[...html.matchAll(/mailto:([^"']+)/g)].map(match=>match[1]);
+ expect(mails.length>0&&mails.every(address=>address==='contact@bnjdpn.com'),prefix+'contact address missing or unexpected');
+ expect(html.includes('>contact@bnjdpn.com</a>'),prefix+'contact address not visible');
+ expect(/<title>[^<]*Benjamin Dupin/.test(html),prefix+'Benjamin Dupin missing from the title');
+ expect(html.includes('class="footer-wordmark" href="')&&html.includes('>Benjamin Dupin</a>'),prefix+'Benjamin Dupin missing from the footer');
+ expect(!/target="_blank"/.test(html),prefix+'forced new tab');
  for(const img of html.matchAll(/<img\b[^>]+>/g)) expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
- const refs=new Set([...html.matchAll(/(?:href|src)="([^"#]+)"/g)].map(m=>m[1]).filter(ref=>!/^https?:|^data:/.test(ref)));
+ const refs=new Set([...html.matchAll(/(?:href|src)="([^"#]+)"/g)].map(m=>m[1]).filter(ref=>!/^(?:https?:|data:|mailto:)/.test(ref)));
  for(let ref of refs){ref=ref.replace(/^\//,'').split('?')[0];if(ref===''||ref.endsWith('/'))ref+='index.html';try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}}
  expect(html.includes('class="catalog-tools" hidden'),prefix+'filters must be progressive enhancement');
 }
+for(const lang of ['en','fr']){
+ for(const app of catalog){
+  const slug=app.path.toLowerCase();
+  for(const leaf of ['', 'support/', 'privacy/']){
+   const path=`${lang==='fr'?'fr/':''}apps/${slug}/${leaf}index.html`;
+   const html=await readFile(resolve(root,path),'utf8');
+   const prefix=`${path}: `;
+   expect(html.includes(`<html lang="${lang}">`),prefix+'language mismatch');
+   expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
+   expect(html.includes('mailto:contact@bnjdpn.com')&&html.includes('>contact@bnjdpn.com</a>'),prefix+'visible contact link missing');
+   expect(/<title>[^<]*Benjamin Dupin/.test(html),prefix+'Benjamin Dupin missing from the title');
+   expect(html.includes('>Benjamin Dupin</a>'),prefix+'Benjamin Dupin missing from the footer');
+   expect(!/target="_blank"/.test(html),prefix+'forced new tab');
+   if(leaf==='')expect(html.includes(`https://apps.apple.com/app/id${app.id}`),prefix+'App Store link missing');
+  }
+ }
+}
+expect(workflow.includes('cp -R apps'),'app pages missing from Pages allowlist');
 for(const guide of guides){
  const html=await readFile(resolve(root,guide.path),'utf8');
  const url=`https://bnjdpn.github.io/${guide.path.replace(/index\.html$/,'')}`;

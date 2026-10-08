@@ -11,7 +11,7 @@ assert(hasExcludedContent('{"name":"TaskLane"}'));
 assert(hasExcludedContent('<h2>Parcours professionnel</h2>'));
 assert(!hasExcludedContent('Apps pour le sport · Benjamin Dupin · Échappée'));
 async function walk(path){const entries=await readdir(resolve(root,path),{withFileTypes:true});return (await Promise.all(entries.map(e=>e.isDirectory()?walk(`${path}/${e.name}`):`${path}/${e.name}`))).flat();}
-const files=['index.html','404.html','sitemap.xml','sitemap-pages.xml','robots.txt','styles.css','site.webmanifest',...(await walk('fr')),...(await walk('assets')),...(await walk('content')),'scripts/og-card.html'];
+const files=['index.html','404.html','sitemap.xml','sitemap-pages.xml','robots.txt','styles.css','site.webmanifest',...(await walk('fr')),...(await walk('apps')),...(await walk('guides')),...(await walk('assets')),...(await walk('content')),'scripts/og-card.html'];
 const failures=[];
 for(const path of files){
  if(hasExcludedContent(path)) failures.push(`${path}: excluded asset or route`);
