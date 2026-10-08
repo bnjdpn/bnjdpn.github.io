@@ -71,6 +71,30 @@ async function loadImages(page) {
   });
 }
 
+async function assertIcons(page, result, label) {
+  const broken = await page.evaluate(async () => {
+    const icons = [...document.querySelectorAll('img.app-icon')];
+    const wait = icon => {
+      if (icon.complete) return null;
+      return new Promise(resolve => {
+        const done = () => resolve();
+        icon.addEventListener('load', done, {once:true});
+        icon.addEventListener('error', done, {once:true});
+        setTimeout(done, 8000);
+      });
+    };
+    const step = Math.max(innerHeight * 0.8, 400);
+    for (let y = 0; y <= document.documentElement.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    }
+    await Promise.all(icons.map(wait));
+    window.scrollTo(0, 0);
+    return icons.filter(icon => icon.naturalWidth === 0).map(icon => icon.getAttribute('src'));
+  });
+  check(result, `${label}: icons loaded after scroll`, broken.length === 0, broken);
+}
+
 async function visibleIds(page) {
   return page.locator('.product-row').evaluateAll(rows => rows.filter(row => !row.hidden && getComputedStyle(row).display !== 'none' && getComputedStyle(row).visibility !== 'hidden' && row.getBoundingClientRect().height > 0).map(row => row.dataset.app).sort());
 }
@@ -179,6 +203,7 @@ try {
     try {
       const response = await page.goto(base + result.path, {waitUntil:'networkidle'});
       check(result, 'Page responds successfully', !!response?.ok(), response?.status());
+      await assertIcons(page, result, 'Home');
       await loadImages(page);
       check(result, 'Correct document language', await page.locator('html').getAttribute('lang') === lang);
       check(result, 'Catalogue contains every expected product exactly once', same(await page.locator('.product-row').evaluateAll(rows => rows.map(row => row.dataset.app).sort()), ids));
@@ -199,6 +224,12 @@ try {
         await page.evaluate(() => {document.documentElement.style.fontSize = `${parseFloat(getComputedStyle(document.documentElement).fontSize) * 2}px`; window.scrollTo(0, 0);});
         await inspectLayout(page, result, `${viewport.width}px at 200% text`, `${lang}-${viewport.width}-text-200.png`);
         await catalogueShape(page, result, `${viewport.width}px at 200% text`);
+      }
+      for (const app of apps) {
+        const appPath = `${lang === 'fr' ? '/fr' : ''}/apps/${app.path.toLowerCase()}/`;
+        const appResponse = await page.goto(base + appPath, {waitUntil:'load'});
+        check(result, `${app.name} page responds`, !!appResponse?.ok(), appResponse?.status());
+        await assertIcons(page, result, app.name);
       }
     } catch (error) {
       result.issues.push(error.stack || error.message);

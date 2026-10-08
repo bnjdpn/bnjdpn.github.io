@@ -152,7 +152,14 @@ h1, h2, h3 {
 }
 .row-link > * { min-width: 0; }
 .num { color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 580; min-width: 0; }
-.app-icon, .row-link .app-icon { width: 64px; height: 64px; }
+.app-icon, .row-link .app-icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.row-link > .app-icon { min-width: 64px; min-height: 64px; }
 .name, .use, figcaption, .intro, .js-note, .prose, .guide-intro, .guide-note, .availability-note, .plain, .links, .app-links, p, li {
   min-width: 0;
   overflow-wrap: anywhere;
@@ -337,6 +344,7 @@ h1, h2, h3 {
   .name { grid-column: 3; grid-row: 1; font-size: clamp(1.45rem, 6.4vw, 2.15rem); }
   .use { grid-column: 3; grid-row: 2; }
   .app-icon, .row-link .app-icon { width: 42px; height: 42px; }
+  .row-link > .app-icon { min-width: 42px; min-height: 42px; }
   .product-row { column-gap: 1rem; }
   .store-link { margin-left: 0; align-self: center; }
   .poster { grid-template-columns: 1fr; }

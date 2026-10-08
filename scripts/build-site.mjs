@@ -20,7 +20,7 @@ const homeFor=lang=>lang==='fr'?'/fr/':'/';
 const pagePath=(app,lang,leaf='')=>`${lang==='fr'?'/fr':''}/apps/${slugOf(app)}/${leaf}`;
 const urlFor=(app,lang)=>`${origin}/${app.path}/${lang==='fr'?'fr-FR/':''}`;
 const storeUrl=app=>`https://apps.apple.com/app/id${app.id}`;
-const icon=(app,eager=false)=>`<img class="app-icon" src="/assets/apps/${app.icon}.${app.iconFormat||'webp'}" width="512" height="512" alt="" loading="${eager?'eager':'lazy'}" decoding="async">`;
+const icon=(app,eager=false)=>`<img class="app-icon" src="/assets/apps/${app.icon}.${app.iconFormat||'webp'}" width="512" height="512" alt="" ${eager?'loading="eager" decoding="sync"':'loading="lazy" decoding="async"'}>`;
 for(const locales of Object.values(media))for(const item of Object.values(locales)){
  const [x,y,w,h]=item.frame||[0,0,1,1];
  if(![x,y,w,h].every(Number.isFinite)||x<0||y<0||w<=0||h<=0||x+w>1.000001||y+h>1.000001)throw new Error(`Invalid image frame: ${item.src}`);
@@ -65,7 +65,7 @@ for(const lang of ['en','fr']){
   const copy=productCopy[app.path], text=copy[lang];
   const search=esc([app.name,text.devices,text.summary,...text.body].join(' '));
   const num=String(index+1).padStart(2,'0');
-  return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${copy.category}" data-search="${search}"><a class="row-link" href="${pagePath(app,lang)}"><span class="num">${num}</span>${icon(app)}<span class="name">${esc(app.name)}</span><span class="use">${t.categories[copy.category]}</span></a><a class="store-link" href="${storeUrl(app)}" aria-label="App Store, ${esc(app.name)}">${t.store}</a><figure class="preview">${screen(app.path,lang,index===0)}<figcaption>${esc(text.summary)} ${esc(text.devices)}</figcaption></figure></article></li>`;
+  return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${copy.category}" data-search="${search}"><a class="row-link" href="${pagePath(app,lang)}"><span class="num">${num}</span>${icon(app,index<10)}<span class="name">${esc(app.name)}</span><span class="use">${t.categories[copy.category]}</span></a><a class="store-link" href="${storeUrl(app)}" aria-label="App Store, ${esc(app.name)}">${t.store}</a><figure class="preview">${screen(app.path,lang,index===0)}<figcaption>${esc(text.summary)} ${esc(text.devices)}</figcaption></figure></article></li>`;
  }).join('\n');
  const directory=apps.map(app=>`<li><a href="${pagePath(app,lang,'support/')}">${esc(app.name)}</a></li>`).join('');
  outputs.set(lang==='en'?'index.html':'fr/index.html',`${head({lang,title:t.title,description:t.description,url,enHref:origin+'/',frHref:origin+'/fr/',social,socialWidth:1200,socialHeight:630,socialAlt:t.title,extra:'<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'})}
