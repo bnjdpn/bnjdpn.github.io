@@ -8,7 +8,8 @@ du header est bnjdpn. Le contact est un bouton. L'adresse n'est pas écrite dans
 ## Fondations et compositions
 
 Le portfolio est un sommaire : les noms en Bricolage, une capture à droite quand
-le pointeur peut survoler, et la capture sous le nom sur un écran tactile.
+le pointeur peut survoler. Sur un écran étroit, la liste reste compacte et la
+capture est sur la fiche.
 Sans JavaScript, tout le catalogue reste accessible. Le bouton Contact assemble
 l'adresse au clic. Sans JavaScript, la page de support déjà publiée indique
 comment écrire.

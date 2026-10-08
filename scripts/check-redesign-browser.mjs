@@ -146,7 +146,7 @@ async function catalogueShape(page, result, label) {
     return {hover, shown: shown.length, fixed: fixed.length, inFlow: inFlow.length, total: previews.length};
   });
   if (stage.hover) check(result, `${label}: one capture stays beside the names`, stage.shown === 1 && stage.fixed === 1, stage);
-  else check(result, `${label}: each capture sits with its name`, stage.inFlow === stage.total, stage);
+  else check(result, `${label}: the list stays compact`, stage.shown === 0 && stage.inFlow === 0, stage);
 }
 
 async function contactLink(page, result) {
@@ -182,7 +182,7 @@ try {
       await loadImages(page);
       check(result, 'Correct document language', await page.locator('html').getAttribute('lang') === lang);
       check(result, 'Catalogue contains every expected product exactly once', same(await page.locator('.product-row').evaluateAll(rows => rows.map(row => row.dataset.app).sort()), ids));
-      check(result, 'Support anchor exists', await page.locator('#contact').count() === 1 && await page.locator('a[href$="#contact"]').count() > 0);
+      check(result, 'Support anchor exists', await page.locator('#contact').count() === 1 && await page.locator('[data-contact]').count() > 0);
       await page.keyboard.press('Tab');
       const firstStop = await page.evaluate(() => ({href:document.activeElement?.getAttribute('href'), text:document.activeElement?.textContent.trim(), rect:document.activeElement?.getBoundingClientRect().toJSON()}));
       check(result, 'First Tab reveals the skip link', firstStop.href === '#main' && firstStop.rect.width > 0 && firstStop.rect.height > 0 && firstStop.rect.top >= 0 && firstStop.rect.bottom <= viewports[0].height, firstStop);

@@ -43,12 +43,12 @@ function languages(lang, enHref, frHref, withHreflang=true){
 }
 function header(lang, enHref, frHref, nav, withHreflang=true){
  const t=studioCopy[lang], home=homeFor(lang);
- const links=nav||`<a href="${home}#products">${t.apps}</a><a href="${home}#guides">${t.guidesNav}</a><a href="${home}#contact">${t.contactTitle}</a>`;
- return `<a class="skip-link" href="#main">${t.skip}</a><header class="bar"><a class="brand" href="${home}">bnjdpn</a><nav class="main-nav" aria-label="${t.nav}">${links}</nav>${languages(lang,enHref,frHref,withHreflang)}${contactButton(t.contactTitle)}</header>${contactNote(t.contactFallback)}`;
+ const links=nav||`<a href="${home}#products">${t.apps}</a><a href="${home}#guides">${t.guidesNav}</a>`;
+ return `<a class="skip-link" href="#main">${t.skip}</a><header class="bar"><a class="brand" href="${home}">bnjdpn</a><nav class="main-nav" aria-label="${t.nav}">${links}</nav><div class="bar-tools">${languages(lang,enHref,frHref,withHreflang)}${contactButton(t.contactTitle)}</div></header>${contactNote(t.contactFallback)}`;
 }
-function footer(lang){
+function footer(lang, enHref, frHref, withHreflang=true){
  const t=studioCopy[lang], home=homeFor(lang);
- return `<footer class="footer"><a class="footer-wordmark" href="${home}">Benjamin Dupin</a><p>© 2026 Benjamin Dupin</p><p>${t.footerLine}</p><p>${t.noTracking}</p><a href="#top">${t.top}</a></footer>`;
+ return `<footer class="footer"><a class="footer-wordmark" href="${home}">Benjamin Dupin</a>${contactButton(t.contactTitle)}${languages(lang,enHref,frHref,withHreflang)}<p>© 2026 Benjamin Dupin</p><p>${t.footerLine}</p><p>${t.noTracking}</p><a href="#top">${t.top}</a></footer>`;
 }
 function head({lang,title,description,url,enHref,frHref,social,socialWidth,socialHeight,socialAlt,extra=''}){
  return `<!doctype html>
@@ -72,10 +72,10 @@ for(const lang of ['en','fr']){
 <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script><script src="${asset('assets/site.js')}" defer></script></head>
 <body id="top">${header(lang,'/','/fr/')}
 <main id="main" tabindex="-1"><section class="lede" id="about" aria-labelledby="hero-title"><h1 id="hero-title">${t.h1}</h1><p class="intro">${t.intro}</p></section>
-<section class="catalog" id="products" aria-labelledby="selected"><h2 id="selected">${t.catalogTitle}</h2><ol class="index">${catalog}</ol><p class="availability-note">${t.availability}</p></section>
+<section class="catalog" id="products"><ol class="index" id="selected">${catalog}</ol><p class="availability-note">${t.availability}</p></section>
 <section class="guides-index" id="guides" aria-labelledby="guides-title"><h2 id="guides-title">${t.guidesTitle}</h2><p>${t.guidesIntro}</p><ul class="guide-list">${guideCards(lang)}</ul></section>
 <section class="contact-block" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">${t.contactTitle}</h2><p>${esc(t.contactText)}</p>${contactButton(t.contactTitle)}<details class="support-directory"><summary>${t.supportDirectory}</summary><ul>${directory}</ul></details></section></main>
-${footer(lang)}</body></html>
+${footer(lang,'/','/fr/')}</body></html>
 `);
  for(const app of apps){
   const copy=productCopy[app.path], text=copy[lang];
@@ -86,21 +86,21 @@ ${footer(lang)}</body></html>
   const shot=media[app.path][lang];
   const socialAbs=origin+shot.src;
   const crumbs=`<p class="crumbs"><a href="${home}#products">${t.homeLabel}</a></p>`;
-  const links=`<ul class="links"><li><a href="${storeUrl(app)}">${t.store}</a></li><li><a href="${support}">${t.support}</a></li><li><a href="${privacy}">${t.privacy}</a></li><li><a href="${urlFor(app,lang)}">${t.productSite}</a></li></ul>`;
+  const links=`<ul class="links"><li><a href="${support}">${t.support}</a></li><li><a href="${privacy}">${t.privacy}</a></li><li><a href="${urlFor(app,lang)}">${t.productSite}</a></li></ul>`;
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/index.html`,`${head({lang,title,description,url:origin+local,enHref:en,frHref:fr,social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr)}
-<main id="main" tabindex="-1"><article class="poster">${crumbs}<p class="kicker">${t.categories[copy.category]}</p><h1>${esc(app.name)}</h1>${icon(app,true)}<figure>${screen(app.path,lang,true)}<figcaption>${t.shotCaption}</figcaption></figure><p class="devices">${esc(text.devices)}</p><div class="prose">${text.body.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</div>${links}</article></main>
-${footer(lang)}</body></html>
+<main id="main" tabindex="-1"><article class="poster">${crumbs}<div class="title-row">${icon(app,true)}<div class="title-copy"><p class="kicker">${t.categories[copy.category]}</p><h1>${esc(app.name)}</h1></div></div><p class="devices">${esc(text.devices)}</p><p class="store-row"><a class="store-button" href="${storeUrl(app)}">${t.store}</a></p><figure>${screen(app.path,lang,true)}<figcaption>${t.shotCaption}</figcaption></figure><div class="prose">${text.body.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</div>${links}</article></main>
+${footer(lang,en,fr)}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/support/index.html`,`${head({lang,title:`${t.support}. ${title}`,description:text.summary,url:origin+support,enHref:origin+pagePath(app,'en','support/'),frHref:origin+pagePath(app,'fr','support/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}
 <main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.support}</h1><p>${esc(t.supportLead)}</p><p>${t.supportExisting}</p><p><a href="${copy.productSupport[lang]}">${esc(copy.productSupport[lang])}</a></p><p><a href="${local}">${esc(app.name)}</a></p></article></main>
-${footer(lang)}</body></html>
+${footer(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/privacy/index.html`,`${head({lang,title:`${t.privacy}. ${title}`,description:text.summary,url:origin+privacy,enHref:origin+pagePath(app,'en','privacy/'),frHref:origin+pagePath(app,'fr','privacy/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}
 <main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.privacy}</h1><p>${t.privacyLead}</p><p><a href="${copy.privacy[lang]}">${esc(copy.privacy[lang])}</a></p><p>${esc(t.privacyMail)}</p><p><a href="${local}">${esc(app.name)}</a></p></article></main>
-${footer(lang)}</body></html>
+${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}</body></html>
 `);
  }
 }
@@ -119,14 +119,14 @@ for(const guide of guides){
 <html lang="${guide.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(guide.title)}</title><meta name="description" content="${esc(guide.description)}"><meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#121712"><link rel="canonical" href="${url}">${alternatives}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${asset('styles.css')}"><meta property="og:type" content="article"><meta property="og:locale" content="${guide.lang==='fr'?'fr_FR':'en_US'}"><meta property="og:site_name" content="bnjdpn"><meta property="og:title" content="${esc(guide.title)}"><meta property="og:description" content="${esc(guide.description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${origin+preview.src}"><meta property="og:image:width" content="${preview.width}"><meta property="og:image:height" content="${preview.height}"><meta property="og:image:alt" content="${esc(guide.imageAlt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(guide.title)}"><meta name="twitter:description" content="${esc(guide.description)}"><meta name="twitter:image" content="${origin+preview.src}"><script src="${asset('assets/site.js')}" defer></script></head>
 <body id="top">${header(guide.lang,guideEn,guideFr,guideNav,Boolean(guide.alternate))}
 <main id="main" tabindex="-1"><article class="guide"><div class="guide-hero"><div><p class="kicker">${esc(guide.kicker)}</p><h1>${esc(guide.heading)}</h1><p class="guide-intro">${esc(guide.intro)}</p></div><figure>${screen(app.path,guide.lang,true)}<figcaption>${guide.lang==='fr'?'Écran de l\'application publiée.':'Screen from the published app.'}</figcaption></figure></div><div class="guide-body" id="steps">${sections}<aside class="guide-note"><p>${esc(guide.note)}</p></aside><p class="app-links"><a href="${esc(guide.storeUrl)}">${esc(guide.storeLabel)}</a><a href="${local}">${esc(guide.productLabel)}</a></p></div></article></main>
-${footer(guide.lang)}</body></html>
+${footer(guide.lang,guideEn,guideFr,Boolean(guide.alternate))}</body></html>
 `);
 }
 outputs.set('404.html',`<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#121712"><title>Page not found. Benjamin Dupin</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${asset('styles.css')}"><script src="${asset('assets/site.js')}" defer></script></head>
-<body id="top"><a class="skip-link" href="#main">Skip to content</a><header class="bar"><a class="brand" href="/">bnjdpn</a>${contactButton('Contact')}</header>${contactNote(studioCopy.en.contactFallback)}
+<body id="top"><a class="skip-link" href="#main">Skip to content</a><header class="bar"><a class="brand" href="/">bnjdpn</a><div class="bar-tools">${contactButton('Contact')}</div></header>${contactNote(studioCopy.en.contactFallback)}
 <main id="main" class="missing" tabindex="-1"><h1>Page not found.</h1><p>This address does not match a page on the site.</p><p><a href="/#products">Apps in English</a></p><section lang="fr"><h2>Page introuvable.</h2><p>Cette adresse ne correspond à aucune page du site.</p><p><a href="/fr/#products">Applications en français</a></p></section></main>
-<footer class="footer"><a class="footer-wordmark" href="/">Benjamin Dupin</a><p>© 2026 Benjamin Dupin</p><p>${studioCopy.en.noTracking}</p></footer></body></html>
+<footer class="footer"><a class="footer-wordmark" href="/">Benjamin Dupin</a>${contactButton('Contact')}<nav class="languages" aria-label="Languages"><a href="/fr/" lang="fr" hreflang="fr">FR</a><a href="/" lang="en" hreflang="en" aria-current="page">EN</a></nav><p>© 2026 Benjamin Dupin</p><p>${studioCopy.en.noTracking}</p></footer></body></html>
 `);
 const pageLocs=[];
 for(const lang of ['en','fr']){
