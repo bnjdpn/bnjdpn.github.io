@@ -126,15 +126,15 @@ export const appDocuments = [
     },
     "fr": {
       "footerLine": "Versions iOS et Android en préparation.",
-      "status": "Petits Besoins est en préparation pour iOS et Android. L’app n’est pas encore disponible sur les stores.",
-      "contact": "Pour une question sur l’app ou ses données, le bouton Contact ouvre l’application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l’envoie pas. Éviter d’y inclure des informations personnelles sur un enfant.",
-      "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
+      "status": "Petits Besoins est en préparation pour iOS et Android. L'app n'est pas encore disponible sur les stores.",
+      "contact": "Pour une question sur l'app ou ses données, le bouton Contact ouvre l'application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l'envoie pas. Éviter d'y inclure des informations personnelles sur un enfant.",
+      "contactFallback": "JavaScript est nécessaire pour ouvrir l'application mail avec le bouton Contact.",
       "dateLabel": "Date de la politique",
       "landing": {
         "description": "Petits Besoins, carnet local de propreté pour les parents. Versions iOS et Android en préparation. Édité par Benjamin Dupin.",
         "sections": [
           {
-            "heading": "Un carnet pour l’adulte",
+            "heading": "Un carnet pour l'adulte",
             "paragraphs": [
               "Noter les passages au pot, les accidents et les couches mouillées ou sèches. Les entrées de la maison et de la garde restent séparées. Une couche mouillée ne compte pas comme un accident."
             ]
@@ -142,48 +142,48 @@ export const appDocuments = [
           {
             "heading": "Préparer les mêmes consignes pour la garde",
             "paragraphs": [
-              "Les profils, l’historique illimité, les rappels, la synthèse texte du jour et l’aperçu complet du kit sont gratuits. Sur iOS, un achat unique donne accès à l’export PDF du kit crèche et aux feuilles vierges réutilisables. L’offre s’ouvre seulement depuis Exporter le kit."
+              "Les profils, l'historique illimité, les rappels, la synthèse texte du jour et l'aperçu complet du kit sont gratuits. Sur iOS, un achat unique donne accès à l'export PDF du kit crèche et aux feuilles vierges réutilisables. L'offre s'ouvre seulement depuis Exporter le kit."
             ]
           },
           {
-            "heading": "Sur l’appareil",
+            "heading": "Sur l'appareil",
             "paragraphs": [
-              "Sans compte, publicité ni mesure d’audience. Le carnet reste sur l’appareil. L’app ne donne aucun conseil médical, diagnostic ou prédiction."
+              "Sans compte, publicité ni mesure d'audience. Le carnet reste sur l'appareil. L'app ne donne aucun conseil médical, diagnostic ou prédiction."
             ]
           }
         ]
       },
       "support": {
-        "description": "Aide Petits Besoins sur iOS et Android, rappels locaux, kit crèche PDF et données sur l’appareil.",
+        "description": "Aide Petits Besoins sur iOS et Android, rappels locaux, kit crèche PDF et données sur l'appareil.",
         "sections": [
           {
             "heading": "Régler les rappels",
             "paragraphs": [
-              "Ouvrir Réglages sur iOS ou Rappels sur Android. Activer les rappels, puis choisir l’intervalle et les horaires de la journée. L’autorisation de notification est demandée à l’activation. Reporter décale un rappel de 15 minutes. Les réglages de l’appareil peuvent retarder les notifications."
+              "Ouvrir Réglages sur iOS ou Rappels sur Android. Activer les rappels, puis choisir l'intervalle et les horaires de la journée. L'autorisation de notification est demandée à l'activation. Reporter décale un rappel de 15 minutes. Les réglages de l'appareil peuvent retarder les notifications."
             ]
           },
           {
             "heading": "Prévisualiser et exporter le kit",
             "paragraphs": [
-              "Le kit contient les consignes de la famille et des feuilles vierges de semaine et de suivi. Il n’exporte pas l’historique. L’aperçu complet est gratuit. Le prénom est masqué par défaut. Le menu de partage s’ouvre seulement après une demande d’export."
+              "Le kit contient les consignes de la famille et des feuilles vierges de semaine et de suivi. Il n'exporte pas l'historique. L'aperçu complet est gratuit. Le prénom est masqué par défaut. Le menu de partage s'ouvre seulement après une demande d'export."
             ]
           },
           {
             "heading": "Acheter et restaurer",
             "paragraphs": [
-              "Sur iOS, un achat unique StoreKit donne accès à l’export PDF et aux feuilles réutilisables. Restaurer les achats se trouve dans Réglages et dans l’offre. Fermer l’offre conserve le brouillon. Cette version Android ne propose ni achat Google Play ni restauration. L’achat simulé existe seulement en debug."
+              "Sur iOS, un achat unique StoreKit donne accès à l'export PDF et aux feuilles réutilisables. Restaurer les achats se trouve dans Réglages et dans l'offre. Fermer l'offre conserve le brouillon. Cette version Android ne propose ni achat Google Play ni restauration. L'achat simulé existe seulement en debug."
             ]
           },
           {
             "heading": "Changer la langue",
             "paragraphs": [
-              "L’app suit la langue de l’appareil. Le français et l’anglais sont inclus. iOS inclut aussi l’anglais britannique. L’app n’a pas de sélecteur de langue interne."
+              "L'app suit la langue de l'appareil. Le français et l'anglais sont inclus. iOS inclut aussi l'anglais britannique. L'app n'a pas de sélecteur de langue interne."
             ]
           },
           {
             "heading": "Supprimer les données",
             "paragraphs": [
-              "Une entrée se supprime depuis Historique. La désinstallation supprime les données locales de l’app. Sur Android, l’effacement du stockage les supprime aussi. Les copies partagées ailleurs doivent être supprimées dans l’application destinataire ou leur emplacement de stockage."
+              "Une entrée se supprime depuis Historique. La désinstallation supprime les données locales de l'app. Sur Android, l'effacement du stockage les supprime aussi. Les copies partagées ailleurs doivent être supprimées dans l'application destinataire ou leur emplacement de stockage."
             ]
           }
         ]
@@ -198,45 +198,45 @@ export const appDocuments = [
             ]
           },
           {
-            "heading": "Informations sur l’enfant",
+            "heading": "Informations sur l'enfant",
             "paragraphs": [
-              "Un adulte peut saisir un prénom ou pseudonyme, des passages au pot et des changes, les dates, les heures, le lieu maison ou garde, des notes et les consignes du kit. Ces données restent sur l’appareil. Benjamin Dupin ne les reçoit pas."
+              "Un adulte peut saisir un prénom ou pseudonyme, des passages au pot et des changes, les dates, les heures, le lieu maison ou garde, des notes et les consignes du kit. Ces données restent sur l'appareil. Benjamin Dupin ne les reçoit pas."
             ]
           },
           {
             "heading": "Stockage local",
             "paragraphs": [
-              "Sur iOS, le carnet utilise SwiftData et des préférences locales. L’app n’a ni compte, serveur ni synchronisation en ligne. Android utilise Room et DataStore. Ses sauvegardes Android et transferts entre appareils sont désactivés. Petits Besoins ne fournit pas de service de sauvegarde. Sur iOS, les sauvegardes du système peuvent inclure les données locales selon les réglages de l’appareil."
+              "Sur iOS, le carnet utilise SwiftData et des préférences locales. L'app n'a ni compte, serveur ni synchronisation en ligne. Android utilise Room et DataStore. Ses sauvegardes Android et transferts entre appareils sont désactivés. Petits Besoins ne fournit pas de service de sauvegarde. Sur iOS, les sauvegardes du système peuvent inclure les données locales selon les réglages de l'appareil."
             ]
           },
           {
             "heading": "Réseau et collecte",
             "paragraphs": [
-              "Petits Besoins n’a ni publicité, mesure d’audience ni rapport de plantage tiers. L’app n’envoie pas les entrées du carnet à Benjamin Dupin ou à un serveur. Sur iOS, StoreKit communique avec Apple pour les produits, les achats et leur restauration. Android ne demande pas la permission Internet."
+              "Petits Besoins n'a ni publicité, mesure d'audience ni rapport de plantage tiers. L'app n'envoie pas les entrées du carnet à Benjamin Dupin ou à un serveur. Sur iOS, StoreKit communique avec Apple pour les produits, les achats et leur restauration. Android ne demande pas la permission Internet."
             ]
           },
           {
             "heading": "Rappels locaux",
             "paragraphs": [
-              "Le système programme et affiche les notifications locales. L’autorisation est demandée à l’activation des rappels. Sur Android, la permission de démarrage permet de les reprogrammer après un redémarrage. La programmation n’envoie pas les données du carnet."
+              "Le système programme et affiche les notifications locales. L'autorisation est demandée à l'activation des rappels. Sur Android, la permission de démarrage permet de les reprogrammer après un redémarrage. La programmation n'envoie pas les données du carnet."
             ]
           },
           {
             "heading": "PDF et partage de texte",
             "paragraphs": [
-              "Les PDF sont créés sur l’appareil. Ils contiennent les consignes du kit et des feuilles vierges, sans l’historique. Le prénom est masqué par défaut. Son inclusion demande une sélection explicite. La synthèse texte du jour peut aussi être partagée. L’application destinataire traite la copie selon sa propre politique."
+              "Les PDF sont créés sur l'appareil. Ils contiennent les consignes du kit et des feuilles vierges, sans l'historique. Le prénom est masqué par défaut. Son inclusion demande une sélection explicite. La synthèse texte du jour peut aussi être partagée. L'application destinataire traite la copie selon sa propre politique."
             ]
           },
           {
             "heading": "Achats",
             "paragraphs": [
-              "Apple traite l’achat unique iOS avec StoreKit. L’app vérifie le droit d’accès à l’export PDF et aux feuilles réutilisables. Elle ne collecte pas les informations de carte bancaire. Sur Android, la simulation modifie un réglage local, sans paiement. Google Play Billing n’est pas intégré."
+              "Apple traite l'achat unique iOS avec StoreKit. L'app vérifie le droit d'accès à l'export PDF et aux feuilles réutilisables. Elle ne collecte pas les informations de carte bancaire. Sur Android, la simulation modifie un réglage local, sans paiement. Google Play Billing n'est pas intégré."
             ]
           },
           {
             "heading": "Conservation et suppression",
             "paragraphs": [
-              "Les entrées restent sur l’appareil jusqu’à leur suppression ou à l’effacement des données de l’app. La désinstallation supprime les données locales. Android permet aussi d’effacer le stockage dans les réglages de l’appareil. Les PDF et textes partagés ailleurs restent présents jusqu’à la suppression de ces copies."
+              "Les entrées restent sur l'appareil jusqu'à leur suppression ou à l'effacement des données de l'app. La désinstallation supprime les données locales. Android permet aussi d'effacer le stockage dans les réglages de l'appareil. Les PDF et textes partagés ailleurs restent présents jusqu'à la suppression de ces copies."
             ]
           }
         ]
