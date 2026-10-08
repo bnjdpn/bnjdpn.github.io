@@ -10,6 +10,9 @@ const sitemap=await readFile(resolve(root,'sitemap.xml'),'utf8');
 const pages=await readFile(resolve(root,'sitemap-pages.xml'),'utf8');
 const failures=[]; let references=0;
 const expect=(value,msg)=>{if(!value)failures.push(msg)};
+const origin='https://bnjdpn.com';
+const exposed=[...'contact'].join('')+String.fromCharCode(64);
+const hasContact=html=>html.includes('data-contact')&&html.includes('<noscript>')&&!html.includes(exposed)&&!html.includes('mailto:');
 for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  const html=await readFile(resolve(root,path),'utf8');
  const prefix=`${path}: `;
@@ -18,7 +21,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  for(const id of ['main','about','selected','products','contact']) expect(html.includes(`id="${id}"`),prefix+`missing #${id}`);
  expect(html.includes('<a class="skip-link" href="#main">'),prefix+'skip link missing');
  expect(html.includes('Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48'),prefix+'Search Console verification missing');
- expect(html.includes(`rel="canonical" href="https://bnjdpn.github.io/${lang==='fr'?'fr/':''}"`),prefix+'canonical mismatch');
+ expect(html.includes(`rel="canonical" href="${origin}/${lang==='fr'?'fr/':''}"`),prefix+'canonical mismatch');
  for(const l of ['fr','en','x-default'])expect(html.includes(`hreflang="${l}"`),prefix+`hreflang ${l} missing`);
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
  expect(new Set(ids).size===ids.length,prefix+'duplicate IDs');
@@ -40,16 +43,14 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  expect(list.numberOfItems===catalog.length&&list.itemListElement.length===catalog.length,prefix+'structured catalogue count mismatch');
  expect(!JSON.stringify(graph).includes('"offers"'),prefix+'unverified offer in JSON-LD');
  expect(/^\d{4}-\d{2}-\d{2}T.*Z$/.test(graph.find(x=>x['@type']==='CollectionPage').dateModified),prefix+'invalid modification timestamp');
- const mails=[...html.matchAll(/mailto:([^"']+)/g)].map(match=>match[1]);
- expect(mails.length>0&&mails.every(address=>address==='contact@bnjdpn.com'),prefix+'contact address missing or unexpected');
- expect(html.includes('>contact@bnjdpn.com</a>'),prefix+'contact address not visible');
+ expect(hasContact(html),prefix+'contact control missing or address exposed');
  expect(/<title>[^<]*Benjamin Dupin/.test(html),prefix+'Benjamin Dupin missing from the title');
  expect(html.includes('class="footer-wordmark" href="')&&html.includes('>Benjamin Dupin</a>'),prefix+'Benjamin Dupin missing from the footer');
  expect(!/target="_blank"/.test(html),prefix+'forced new tab');
  for(const img of html.matchAll(/<img\b[^>]+>/g)) expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
  const refs=new Set([...html.matchAll(/(?:href|src)="([^"#]+)"/g)].map(m=>m[1]).filter(ref=>!/^(?:https?:|data:|mailto:)/.test(ref)));
  for(let ref of refs){ref=ref.replace(/^\//,'').split('?')[0];if(ref===''||ref.endsWith('/'))ref+='index.html';try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}}
- expect(html.includes('class="catalog-tools" hidden'),prefix+'filters must be progressive enhancement');
+ expect(html.includes('class="index"'),prefix+'catalogue index missing');
 }
 for(const lang of ['en','fr']){
  for(const app of catalog){
@@ -60,7 +61,7 @@ for(const lang of ['en','fr']){
    const prefix=`${path}: `;
    expect(html.includes(`<html lang="${lang}">`),prefix+'language mismatch');
    expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
-   expect(html.includes('mailto:contact@bnjdpn.com')&&html.includes('>contact@bnjdpn.com</a>'),prefix+'visible contact link missing');
+   expect(hasContact(html),prefix+'contact control missing or address exposed');
    expect(/<title>[^<]*Benjamin Dupin/.test(html),prefix+'Benjamin Dupin missing from the title');
    expect(html.includes('>Benjamin Dupin</a>'),prefix+'Benjamin Dupin missing from the footer');
    expect(!/target="_blank"/.test(html),prefix+'forced new tab');
@@ -71,7 +72,7 @@ for(const lang of ['en','fr']){
 expect(workflow.includes('cp -R apps'),'app pages missing from Pages allowlist');
 for(const guide of guides){
  const html=await readFile(resolve(root,guide.path),'utf8');
- const url=`https://bnjdpn.github.io/${guide.path.replace(/index\.html$/,'')}`;
+ const url=`${origin}/${guide.path.replace(/index\.html$/,'')}`;
  const prefix=`${guide.path}: `;
  expect(html.includes(`<html lang="${guide.lang}">`),prefix+'language mismatch');
  expect(html.includes(`rel="canonical" href="${url}"`),prefix+'canonical mismatch');
@@ -81,7 +82,9 @@ for(const guide of guides){
  expect(campaign.searchParams.get('pt')==='128480256'&&campaign.searchParams.get('ct')===(guide.app==='TempoReps'?'Web Guide Tempo':'Web Guide Journal')&&campaign.searchParams.get('mt')==='8',prefix+'campaign attribution mismatch');
  expect(html.includes(`href="${guide.storeUrl.replaceAll('&','&amp;')}"`),prefix+'campaign link not preserved in HTML');
  expect(html.includes('property="og:image"')&&html.includes('property="og:url"'),prefix+'social preview missing');
- expect(!/<script\b/.test(html),prefix+'guide should work without JavaScript');
+ const scripts=[...html.matchAll(/<script\b([^>]*)>/gi)].map(match=>match[1]);
+ expect(scripts.length===1&&/src="\/assets\/site\.js/.test(scripts[0]),prefix+'guide should only load the contact script');
+ expect(hasContact(html),prefix+'contact control missing or address exposed');
  expect(!html.includes('guide-related'),prefix+'unrelated guide recommendation');
  for(const img of html.matchAll(/<img\b[^>]+>/g))expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
  for(const match of html.matchAll(/(?:href|src)="(\/[^"]+)"/g)){
@@ -92,13 +95,13 @@ for(const guide of guides){
  if(guide.alternate){
   const alternate=guides.find(g=>g.path.replace(/index\.html$/,'')===guide.alternate);
   expect(alternate?.alternate===guide.path.replace(/index\.html$/,''),prefix+'non-reciprocal alternate');
-  expect(html.includes(`hreflang="${alternate?.lang}" href="https://bnjdpn.github.io/${guide.alternate}"`),prefix+'alternate missing');
+  expect(html.includes(`hreflang="${alternate?.lang}" href="${origin}/${guide.alternate}"`),prefix+'alternate missing');
  }else expect(!html.includes('hreflang='),prefix+'false alternate');
 }
 expect(sitemap.match(/<sitemap>/g)?.length===catalog.length+1,'sitemap index count mismatch');
-for(const app of catalog)expect(sitemap.includes(`https://bnjdpn.github.io/${app.path}/sitemap.xml`),'missing product sitemap '+app.path);
-for(const url of ['https://bnjdpn.github.io/','https://bnjdpn.github.io/fr/'])expect(pages.includes(`<loc>${url}</loc>`),'missing page sitemap '+url);
-expect((await readFile(resolve(root,'robots.txt'),'utf8')).includes('Sitemap: https://bnjdpn.github.io/sitemap.xml'),'robots sitemap missing');
+for(const app of catalog)expect(sitemap.includes(`${origin}/${app.path}/sitemap.xml`),'missing product sitemap '+app.path);
+for(const url of [`${origin}/`,`${origin}/fr/`])expect(pages.includes(`<loc>${url}</loc>`),'missing page sitemap '+url);
+expect((await readFile(resolve(root,'robots.txt'),'utf8')).includes(`Sitemap: ${origin}/sitemap.xml`),'robots sitemap missing');
 expect((await readFile(resolve(root,'404.html'),'utf8')).includes('noindex'),'404 must be noindex');
 JSON.parse(await readFile(resolve(root,'site.webmanifest'),'utf8'));
 expect(styles.includes(':focus-visible')&&styles.includes('prefers-reduced-motion'),'focus/reduced motion handling missing');

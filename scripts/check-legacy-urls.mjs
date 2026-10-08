@@ -57,9 +57,9 @@ for(const path of local){
    if(!present)failed++;
    lines.push(`${present?'OK':'FAIL'} anchor #${id} on ${path}`);
   }
-  const mail=html.includes('href="mailto:contact@bnjdpn.com"')&&html.includes('>contact@bnjdpn.com</a>');
-  if(!mail)failed++;
-  lines.push(`${mail?'OK':'FAIL'} visible mailto on ${path}`);
+  const contact=html.includes('data-contact')&&html.includes('<noscript>')&&!html.includes('mailto:');
+  if(!contact)failed++;
+  lines.push(`${contact?'OK':'FAIL'} contact control on ${path}`);
   const name=html.includes('Benjamin Dupin');
   if(!name)failed++;
   lines.push(`${name?'OK':'FAIL'} Benjamin Dupin on ${path}`);

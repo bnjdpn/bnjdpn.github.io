@@ -4,8 +4,8 @@
   "description": "Seventeen iOS apps by Benjamin Dupin.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f4f1ea",
-  "theme_color": "#f4f1ea",
+  "background_color": "#121712",
+  "theme_color": "#121712",
   "icons": [
     {
       "src": "/assets/profile/github-avatar.jpg",

@@ -47,7 +47,7 @@ async function newContext(javaScriptEnabled = true) {
     }
     // Absolute first-party assets should use the candidate being checked.
     const url = new URL(request.url());
-    if (url.origin === 'https://bnjdpn.github.io' && new URL(base).origin !== url.origin) {
+    if ((url.origin === 'https://bnjdpn.github.io' || url.origin === 'https://bnjdpn.com') && new URL(base).origin !== url.origin) {
       const response = await context.request.get(base + url.pathname + url.search);
       return route.fulfill({response});
     }
@@ -59,10 +59,15 @@ async function newContext(javaScriptEnabled = true) {
 async function loadImages(page) {
   await page.evaluate(async () => {
     await document.fonts.ready;
-    await Promise.all([...document.images].map(image => {
-      image.loading = 'eager';
-      return image.decode().catch(() => {});
-    }));
+    const visible = [...document.images].filter(image => {
+      const preview = image.closest('.preview');
+      return !(preview && getComputedStyle(preview).display === 'none');
+    });
+    for (const image of visible) image.loading = 'eager';
+    const step = Math.max(window.innerHeight, 700);
+    for (let y = 0; y <= document.documentElement.scrollHeight; y += step) window.scrollTo(0, y);
+    window.scrollTo(0, 0);
+    await Promise.all(visible.map(image => image.decode().catch(() => {})));
   });
 }
 
@@ -79,7 +84,11 @@ async function inspectLayout(page, result, label, fileName) {
       const rect = element.getBoundingClientRect();
       return rect.width && (rect.right > innerWidth + 1 || rect.left < -1) && getComputedStyle(element).position !== 'fixed';
     }).slice(0, 12).map(element => ({tag:element.tagName, class:element.className, text:element.textContent.trim().slice(0, 60)})),
-    brokenImages:[...document.images].filter(image => !image.complete || image.naturalWidth === 0).map(image => image.getAttribute('src')),
+    brokenImages:[...document.images].filter(image => {
+      const preview = image.closest('.preview');
+      if (preview && getComputedStyle(preview).display === 'none') return false;
+      return !image.complete || image.naturalWidth === 0;
+    }).map(image => image.getAttribute('src')),
     clippedHeadings:[...document.querySelectorAll('h1, h2, h3')].flatMap(heading => {
       let left = 0, right = innerWidth;
       for (let parent = heading.parentElement; parent; parent = parent.parentElement) {
@@ -123,41 +132,40 @@ async function assertState(page, result, label, expected, category, query) {
   check(result, `${label}: empty state`, state.emptyVisible === (expected.length === 0), state.emptyVisible);
 }
 
-async function interactions(page, result) {
-  const filterValues = await page.locator('[data-filter]').evaluateAll(buttons => buttons.map(button => button.dataset.filter).sort());
-  check(result, 'All category controls exist', same(filterValues, [...categories].sort()), filterValues);
-  await assertState(page, result, 'Initial catalogue', ids, 'all', '');
-  for (const category of categories) {
-    await page.locator(`[data-filter="${category}"]`).click();
-    await assertState(page, result, `Category ${category}`, expectedCategory(category), category, '');
-  }
-  await page.locator('[data-filter="all"]').click();
-  await page.locator('#app-search').fill('echappee');
-  await assertState(page, result, 'Accent-insensitive search', ['Echappee'], 'all', 'echappee');
-  await page.locator('[data-filter="training"]').click();
-  await assertState(page, result, 'Nonmatching category plus search', [], 'training', 'echappee');
-  await page.locator('[data-filter="play"]').click();
-  await assertState(page, result, 'Matching category plus search', ['Echappee'], 'play', 'echappee');
-  await page.locator('#clear-filters').click();
-  await assertState(page, result, 'Clear filters', ids, 'all', '');
-  check(result, 'Clear filters focuses search', await page.locator('#app-search').evaluate(input => document.activeElement === input));
-  await page.locator('#app-search').fill('  PETITES   GOUTTES  ');
-  await assertState(page, result, 'Case and multiple search terms', ['petites-gouttes'], 'all', '  PETITES   GOUTTES  ');
-  await page.locator('#app-search').fill('bouchees');
-  await assertState(page, result, 'Second accented product name', ['petites-bouchees'], 'all', 'bouchees');
-  await page.locator('#app-search').fill('no-product-matches-qa-987654');
-  await assertState(page, result, 'No search results', [], 'all', 'no-product-matches-qa-987654');
-  await page.locator('#clear-filters').click();
-  await page.locator('[data-filter="family"]').click();
-  await assertState(page, result, 'Family section catalogue link', expectedCategory('family'), 'family', '');
-  await page.locator('#clear-filters').click();
-  await assertState(page, result, 'Final reset', ids, 'all', '');
+async function catalogueShape(page, result, label) {
+  const visible = await visibleIds(page);
+  check(result, `${label}: every app stays listed`, same(visible, ids), visible);
+  const links = await page.locator('.row-link').evaluateAll(rows => rows.map(row => row.getAttribute('href')));
+  check(result, `${label}: each name opens its page`, links.length === ids.length && links.every(href => href && href.includes('/apps/')), links);
+  const stage = await page.evaluate(() => {
+    const hover = matchMedia('(hover: hover) and (pointer: fine)').matches && innerWidth >= 1000;
+    const previews = [...document.querySelectorAll('.preview')];
+    const shown = previews.filter(preview => getComputedStyle(preview).display !== 'none');
+    const fixed = shown.filter(preview => getComputedStyle(preview).position === 'fixed');
+    const inFlow = previews.filter(preview => getComputedStyle(preview).position !== 'fixed' && getComputedStyle(preview).display !== 'none' && preview.getBoundingClientRect().height > 40);
+    return {hover, shown: shown.length, fixed: fixed.length, inFlow: inFlow.length, total: previews.length};
+  });
+  if (stage.hover) check(result, `${label}: one capture stays beside the names`, stage.shown === 1 && stage.fixed === 1, stage);
+  else check(result, `${label}: each capture sits with its name`, stage.inFlow === stage.total, stage);
 }
 
 async function contactLink(page, result) {
-  const link = page.locator('a.contact-mail').first();
-  const text = (await link.textContent())?.trim();
-  check(result, 'Contact address is visible', await link.isVisible() && text === 'contact@bnjdpn.com' && await link.getAttribute('href') === 'mailto:contact@bnjdpn.com', text);
+  const button = page.locator('[data-contact]').first();
+  const before = await page.content();
+  const local = ['c', 'o', 'n', 't', 'a', 'c', 't'].join('');
+  const domain = ['bnj', 'dpn', '.', 'c', 'o', 'm'].join('');
+  const secret = local + String.fromCharCode(64) + domain;
+  check(result, 'Contact address is absent before the click', !before.includes(secret) && !before.includes('mailto:'));
+  check(result, 'Contact button is visible', await button.isVisible() && (await button.textContent())?.trim() === 'Contact');
+  const captured = await page.evaluate(() => {
+    let href = '';
+    const original = HTMLAnchorElement.prototype.click;
+    HTMLAnchorElement.prototype.click = function () { href = this.href; };
+    document.querySelector('[data-contact]').click();
+    HTMLAnchorElement.prototype.click = original;
+    return {href, left: document.body.innerHTML.includes('mailto:')};
+  });
+  check(result, 'Contact click assembles a mail link', captured.href === `mailto:${secret}` && captured.left === false, captured.href);
 }
 
 try {
@@ -180,21 +188,17 @@ try {
       check(result, 'First Tab reveals the skip link', firstStop.href === '#main' && firstStop.rect.width > 0 && firstStop.rect.height > 0 && firstStop.rect.top >= 0 && firstStop.rect.bottom <= viewports[0].height, firstStop);
       await page.keyboard.press('Enter');
       check(result, 'Skip link targets the main content', await page.locator('#main').count() === 1 && new URL(page.url()).hash === '#main');
-      await interactions(page, result);
+      await catalogueShape(page, result, 'Initial catalogue');
       await contactLink(page, result);
       for (const viewport of viewports) {
         await page.setViewportSize(viewport);
         await page.evaluate(() => {document.documentElement.style.fontSize = ''; window.scrollTo(0, 0);});
+        await loadImages(page);
         await inspectLayout(page, result, `${viewport.width}px`, `${lang}-${viewport.width}.png`);
-        // Repeat the actual controls at every width, including the narrow layout.
-        await page.locator('[data-filter="family"]').click();
-        await assertState(page, result, `${viewport.width}px family control`, expectedCategory('family'), 'family', '');
-        await page.locator('#clear-filters').click();
+        await catalogueShape(page, result, `${viewport.width}px catalogue`);
         await page.evaluate(() => {document.documentElement.style.fontSize = `${parseFloat(getComputedStyle(document.documentElement).fontSize) * 2}px`; window.scrollTo(0, 0);});
         await inspectLayout(page, result, `${viewport.width}px at 200% text`, `${lang}-${viewport.width}-text-200.png`);
-        await page.locator('[data-filter="play"]').click();
-        await assertState(page, result, `${viewport.width}px at 200% text controls`, expectedCategory('play'), 'play', '');
-        await page.locator('#clear-filters').click();
+        await catalogueShape(page, result, `${viewport.width}px at 200% text`);
       }
     } catch (error) {
       result.issues.push(error.stack || error.message);

@@ -3,14 +3,15 @@
 Le portfolio est l'index des 17 apps. L'accueil liste chaque app avec une phrase
 factuelle. La fiche, le support et la confidentialité sont sous `/apps/` et
 `/fr/apps/`. Benjamin Dupin reste dans le titre et le pied de page. La marque
-du header est bnjdpn. Le contact visible est contact@bnjdpn.com.
+du header est bnjdpn. Le contact est un bouton. L'adresse n'est pas écrite dans la page.
 
 ## Fondations et compositions
 
-Le portfolio utilise un fond papier, une encre sombre, Instrument Serif pour les
-titres et DM Sans pour le texte. La liste des 17 apps est le contenu de l'accueil.
-La recherche et les catégories filtrent les entrées. Sans JavaScript, tout le
-catalogue reste accessible. Le contact est le lien mailto:contact@bnjdpn.com.
+Le portfolio est un sommaire : les noms en Bricolage, une capture à droite quand
+le pointeur peut survoler, et la capture sous le nom sur un écran tactile.
+Sans JavaScript, tout le catalogue reste accessible. Le bouton Contact assemble
+l'adresse au clic. Sans JavaScript, la page de support déjà publiée indique
+comment écrire.
 Les ancres `main`, `about`, `selected`, `products` et `contact` sont conservées.
 
 Les sites produit conservent leur propre générateur et publication. La cohérence
