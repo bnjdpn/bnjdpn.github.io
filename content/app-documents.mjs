@@ -88,7 +88,7 @@ export const appDocuments = [
           {
             "heading": "Local storage",
             "paragraphs": [
-              "The iOS version stores the notebook with SwiftData and local preferences. It has no account, server or online sync. Android uses Room and DataStore. Android backup and device transfer are disabled. Petits Besoins provides no backup service. On iOS, operating system backups may include local app data according to device settings."
+              "The iOS version stores the notebook with SwiftData and local preferences. It has no account, server or online sync. Android uses Room and DataStore. Android backup and device transfer are disabled. Petits Besoins provides no backup service. On iOS, the notebook directory is excluded from device backup. Operating system backups may include preferences according to device settings. Do not rely on them to recover the notebook."
             ]
           },
           {
@@ -206,7 +206,7 @@ export const appDocuments = [
           {
             "heading": "Stockage local",
             "paragraphs": [
-              "Sur iOS, le carnet utilise SwiftData et des préférences locales. L'app n'a ni compte, serveur ni synchronisation en ligne. Android utilise Room et DataStore. Ses sauvegardes Android et transferts entre appareils sont désactivés. Petits Besoins ne fournit pas de service de sauvegarde. Sur iOS, les sauvegardes du système peuvent inclure les données locales selon les réglages de l'appareil."
+              "Sur iOS, le carnet utilise SwiftData et des préférences locales. L'app n'a ni compte, serveur ni synchronisation en ligne. Android utilise Room et DataStore. Ses sauvegardes Android et transferts entre appareils sont désactivés. Petits Besoins ne fournit pas de service de sauvegarde. Sur iOS, le dossier du carnet est exclu des sauvegardes. Le système peut sauvegarder les préférences selon les réglages de l'appareil. Ces sauvegardes ne permettent pas de récupérer le carnet."
             ]
           },
           {
