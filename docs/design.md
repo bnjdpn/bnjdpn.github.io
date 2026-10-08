@@ -1,18 +1,18 @@
 # Design, sources et entretien des sites
 
-Le portfolio est un outil de choix parmi 17 apps indépendantes. Son ouverture
-propose quatre usages, puis le catalogue montre immédiatement chaque produit,
-sa fonction, une vraie capture et ses destinations. Les trois éclairages
-Échappée / LoadSense / famille viennent ensuite. Benjamin Dupin identifie
-l’éditeur ; aucune présentation de carrière ou de prestations n’est ajoutée.
+Le portfolio est l'index des 17 apps. L'accueil liste chaque app avec une phrase
+factuelle. La fiche, le support et la confidentialité sont sous `/apps/` et
+`/fr/apps/`. Benjamin Dupin reste dans le titre et le pied de page. La marque
+du header est bnjdpn. Le contact est un bouton. L'adresse n'est pas écrite dans la page.
 
 ## Fondations et compositions
 
-Le portfolio utilise un fond presque blanc, une typographie sombre, des repères
-orangés et une grille de catalogue à deux colonnes, puis une sur mobile.
-Bricolage Grotesque et DM Sans sont locales. La recherche et les catégories
-filtrent les 17 entrées ; sans JavaScript, tout le catalogue reste accessible.
-Le support dirige vers la bonne app et conserve un annuaire natif sans script.
+Le portfolio est un sommaire : les noms en Bricolage, une capture à droite quand
+le pointeur peut survoler. Sur un écran étroit, la liste reste compacte et la
+capture est sur la fiche.
+Sans JavaScript, tout le catalogue reste accessible. Le bouton Contact assemble
+l'adresse au clic. Sans JavaScript, la page de support déjà publiée indique
+comment écrire.
 Les ancres `main`, `about`, `selected`, `products` et `contact` sont conservées.
 
 Les sites produit conservent leur propre générateur et publication. La cohérence

@@ -1,17 +1,16 @@
 # bnjdpn.github.io
 
-The source of [Benjamin Dupin’s app catalogue](https://bnjdpn.github.io/):
-apps for training, everyday routines, baby journals and play.
+The source of the [bnjdpn app catalogue](https://bnjdpn.github.io/).
+Benjamin Dupin remains in the site title and footer.
 This is exclusively a product showcase; the publisher identity is not a professional biography.
 
 The site is deliberately static. It ships plain HTML, CSS and JavaScript with
 no production framework, cookies or analytics. Its sitemap index connects the
 portfolio with the independently published product sites.
 
-The catalogue opens with a short usage index and a searchable directory with
-real product previews. Three editorial spotlights and product-specific support
-follow. English lives at `/`; French at `/fr/`. Product sites keep independent
-compositions and build systems, documented in [design.md](docs/design.md).
+The home page is the list of 17 apps. Each app has a page, a support page and a
+privacy page under `/apps/` and `/fr/apps/`. English lives at `/`; French at `/fr/`.
+Product sites keep independent compositions and build systems, documented in [design.md](docs/design.md).
 Two practical entry points complement the directory: a bilingual reusable
 TempoReps timer guide and a French Petites Bouchées journal-sharing guide.
 Their copy lives in `content/guides.mjs`; [delivery notes](docs/acquisition-guides-20260919.md)

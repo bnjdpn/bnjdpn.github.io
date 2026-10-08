@@ -2,10 +2,10 @@
 
 | Élément | Source / procédure |
 | --- | --- |
-| Dépôt / URL | `bnjdpn/bnjdpn.github.io` · [site public](https://bnjdpn.github.io/) |
+| Dépôt / URL | `bnjdpn/bnjdpn.github.io` · [site public](https://bnjdpn.com/) |
 | Sources | [content](../../../../content/), [scripts/build-site.mjs](../../../../scripts/build-site.mjs), [styles.css](../../../../styles.css) et [assets](../../../../assets/) ; le générateur produit les HTML EN/FR et les sitemaps. Ne pas modifier les sorties seules |
 | Surfaces | `/`, `/fr/`, `404.html`, ancres portfolio/catalogue/contact, métadonnées JSON-LD et de partage, `sitemap.xml`, `sitemap-pages.xml`, `robots.txt`, manifeste |
-| Produits | `content/catalog.json` et `content/copy.mjs` définissent le catalogue et les liens `https://bnjdpn.github.io/<slug>/`, puis le générateur produit le HTML et les données structurées ; ne pas introduire un dépôt privé/non annoncé ou un produit retiré |
+| Produits | `content/catalog.json` et `content/copy.mjs` définissent le catalogue. Le générateur lie chaque site produit en `https://bnjdpn.com/<slug>/`. Les URL de support et de confidentialité déjà citées par l'App Store restent sur `https://bnjdpn.github.io/`. Ne pas introduire un dépôt privé, non annoncé, ou un produit retiré |
 | Captures | [assets](../../../../assets/) : copies des captures/icônes publiques confirmées, provenance dans le dépôt app. Aucune UI inventée ni donnée personnelle |
 | Langues | Français et anglais ; le générateur et les contrôles définissent leurs routes, liens alternates et canoniques |
 | Validation | `npm run check` ; `npm run check:links` si les destinations changent ; `ruby .agents/skills/site-release-sync/scripts/check.rb --check` et `ruby .agents/skills/site-release-sync/scripts/check_test.rb` |

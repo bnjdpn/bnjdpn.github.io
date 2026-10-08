@@ -23,7 +23,7 @@ const apps = JSON.parse(readFileSync(join(root, 'content/catalog.json'), 'utf8')
 const ids = apps.map(app => app.path).sort();
 const categories = ['all', 'training', 'everyday', 'family', 'play'];
 const expectedCategory = category => apps.filter(app => category === 'all' || productCopy[app.path].category === category).map(app => app.path).sort();
-const expectedSupport = lang => apps.map(app => ({name:app.name, url:`https://bnjdpn.github.io/${app.path}/${lang === 'fr' ? 'fr-FR/' : ''}${app.path === 'Echappee' ? 'support.html' : '#contact'}`}));
+const expectedSupport = lang => apps.map(app => ({name:app.name, url:`${lang === 'fr' ? '/fr' : ''}/apps/${app.path.toLowerCase()}/support/`}));
 const base = arg('--base', 'http://127.0.0.1:4173').replace(/\/$/, '');
 const out = resolve(arg('--out', join(root, 'output/playwright/redesign')));
 const viewports = [{width:1440, height:1000}, {width:768, height:1024}, {width:390, height:844}, {width:320, height:800}];
@@ -47,7 +47,7 @@ async function newContext(javaScriptEnabled = true) {
     }
     // Absolute first-party assets should use the candidate being checked.
     const url = new URL(request.url());
-    if (url.origin === 'https://bnjdpn.github.io' && new URL(base).origin !== url.origin) {
+    if ((url.origin === 'https://bnjdpn.github.io' || url.origin === 'https://bnjdpn.com') && new URL(base).origin !== url.origin) {
       const response = await context.request.get(base + url.pathname + url.search);
       return route.fulfill({response});
     }
@@ -59,11 +59,40 @@ async function newContext(javaScriptEnabled = true) {
 async function loadImages(page) {
   await page.evaluate(async () => {
     await document.fonts.ready;
-    await Promise.all([...document.images].map(image => {
-      image.loading = 'eager';
-      return image.decode().catch(() => {});
-    }));
+    const visible = [...document.images].filter(image => {
+      const preview = image.closest('.preview');
+      return !(preview && getComputedStyle(preview).display === 'none');
+    });
+    for (const image of visible) image.loading = 'eager';
+    const step = Math.max(window.innerHeight, 700);
+    for (let y = 0; y <= document.documentElement.scrollHeight; y += step) window.scrollTo(0, y);
+    window.scrollTo(0, 0);
+    await Promise.all(visible.map(image => image.decode().catch(() => {})));
   });
+}
+
+async function assertIcons(page, result, label) {
+  const broken = await page.evaluate(async () => {
+    const icons = [...document.querySelectorAll('img.app-icon')];
+    const wait = icon => {
+      if (icon.complete) return null;
+      return new Promise(resolve => {
+        const done = () => resolve();
+        icon.addEventListener('load', done, {once:true});
+        icon.addEventListener('error', done, {once:true});
+        setTimeout(done, 8000);
+      });
+    };
+    const step = Math.max(innerHeight * 0.8, 400);
+    for (let y = 0; y <= document.documentElement.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    }
+    await Promise.all(icons.map(wait));
+    window.scrollTo(0, 0);
+    return icons.filter(icon => icon.naturalWidth === 0).map(icon => icon.getAttribute('src'));
+  });
+  check(result, `${label}: icons loaded after scroll`, broken.length === 0, broken);
 }
 
 async function visibleIds(page) {
@@ -79,7 +108,11 @@ async function inspectLayout(page, result, label, fileName) {
       const rect = element.getBoundingClientRect();
       return rect.width && (rect.right > innerWidth + 1 || rect.left < -1) && getComputedStyle(element).position !== 'fixed';
     }).slice(0, 12).map(element => ({tag:element.tagName, class:element.className, text:element.textContent.trim().slice(0, 60)})),
-    brokenImages:[...document.images].filter(image => !image.complete || image.naturalWidth === 0).map(image => image.getAttribute('src')),
+    brokenImages:[...document.images].filter(image => {
+      const preview = image.closest('.preview');
+      if (preview && getComputedStyle(preview).display === 'none') return false;
+      return !image.complete || image.naturalWidth === 0;
+    }).map(image => image.getAttribute('src')),
     clippedHeadings:[...document.querySelectorAll('h1, h2, h3')].flatMap(heading => {
       let left = 0, right = innerWidth;
       for (let parent = heading.parentElement; parent; parent = parent.parentElement) {
@@ -123,48 +156,40 @@ async function assertState(page, result, label, expected, category, query) {
   check(result, `${label}: empty state`, state.emptyVisible === (expected.length === 0), state.emptyVisible);
 }
 
-async function interactions(page, result) {
-  const filterValues = await page.locator('[data-filter]').evaluateAll(buttons => buttons.map(button => button.dataset.filter).sort());
-  check(result, 'All category controls exist', same(filterValues, [...categories].sort()), filterValues);
-  await assertState(page, result, 'Initial catalogue', ids, 'all', '');
-  for (const category of categories) {
-    await page.locator(`[data-filter="${category}"]`).click();
-    await assertState(page, result, `Category ${category}`, expectedCategory(category), category, '');
-  }
-  await page.locator('[data-filter="all"]').click();
-  await page.locator('#app-search').fill('echappee');
-  await assertState(page, result, 'Accent-insensitive search', ['Echappee'], 'all', 'echappee');
-  await page.locator('[data-filter="training"]').click();
-  await assertState(page, result, 'Nonmatching category plus search', [], 'training', 'echappee');
-  await page.locator('[data-filter="play"]').click();
-  await assertState(page, result, 'Matching category plus search', ['Echappee'], 'play', 'echappee');
-  await page.locator('#clear-filters').click();
-  await assertState(page, result, 'Clear filters', ids, 'all', '');
-  check(result, 'Clear filters focuses search', await page.locator('#app-search').evaluate(input => document.activeElement === input));
-  await page.locator('#app-search').fill('  PETITES   GOUTTES  ');
-  await assertState(page, result, 'Case and multiple search terms', ['petites-gouttes'], 'all', '  PETITES   GOUTTES  ');
-  await page.locator('#app-search').fill('bouchees');
-  await assertState(page, result, 'Second accented product name', ['petites-bouchees'], 'all', 'bouchees');
-  await page.locator('#app-search').fill('no-product-matches-qa-987654');
-  await assertState(page, result, 'No search results', [], 'all', 'no-product-matches-qa-987654');
-  await page.locator('[data-category-link="family"]').first().click();
-  await assertState(page, result, 'Family section catalogue link', expectedCategory('family'), 'family', '');
-  await page.locator('#clear-filters').click();
-  await assertState(page, result, 'Final reset', ids, 'all', '');
+async function catalogueShape(page, result, label) {
+  const visible = await visibleIds(page);
+  check(result, `${label}: every app stays listed`, same(visible, ids), visible);
+  const links = await page.locator('.row-link').evaluateAll(rows => rows.map(row => row.getAttribute('href')));
+  check(result, `${label}: each name opens its page`, links.length === ids.length && links.every(href => href && href.includes('/apps/')), links);
+  const stage = await page.evaluate(() => {
+    const hover = matchMedia('(hover: hover) and (pointer: fine)').matches && innerWidth >= 1000;
+    const previews = [...document.querySelectorAll('.preview')];
+    const shown = previews.filter(preview => getComputedStyle(preview).display !== 'none');
+    const fixed = shown.filter(preview => getComputedStyle(preview).position === 'fixed');
+    const inFlow = previews.filter(preview => getComputedStyle(preview).position !== 'fixed' && getComputedStyle(preview).display !== 'none' && preview.getBoundingClientRect().height > 40);
+    return {hover, shown: shown.length, fixed: fixed.length, inFlow: inFlow.length, total: previews.length};
+  });
+  if (stage.hover) check(result, `${label}: one capture stays beside the names`, stage.shown === 1 && stage.fixed === 1, stage);
+  else check(result, `${label}: the list stays compact`, stage.shown === 0 && stage.inFlow === 0, stage);
 }
 
-async function supportPicker(page, result) {
-  const picker = page.locator('#support-app');
-  const go = page.locator('#support-go');
-  const options = await picker.locator('option').evaluateAll(elements => elements.map(option => ({name:option.textContent.trim(), url:option.value})));
-  check(result, 'Support picker offers every product plus a placeholder', options.length === apps.length + 1 && options[0].url === '' && same(options.slice(1), expectedSupport(result.language)), options);
-  check(result, 'Support action starts hidden with no destination', await go.isHidden() && await go.getAttribute('href') === null);
-  for (const option of options.slice(1)) {
-    await picker.selectOption(option.url);
-    check(result, `Support destination for ${option.name}`, await go.isVisible() && await go.getAttribute('href') === option.url, await go.getAttribute('href'));
-  }
-  await picker.selectOption('');
-  check(result, 'Clearing support selection removes the action and destination', await go.isHidden() && await go.getAttribute('href') === null);
+async function contactLink(page, result) {
+  const button = page.locator('[data-contact]').first();
+  const before = await page.content();
+  const local = ['c', 'o', 'n', 't', 'a', 'c', 't'].join('');
+  const domain = ['bnj', 'dpn', '.', 'c', 'o', 'm'].join('');
+  const secret = local + String.fromCharCode(64) + domain;
+  check(result, 'Contact address is absent before the click', !before.includes(secret) && !before.includes('mailto:'));
+  check(result, 'Contact button is visible', await button.isVisible() && (await button.textContent())?.trim() === 'Contact');
+  const captured = await page.evaluate(() => {
+    let href = '';
+    const original = HTMLAnchorElement.prototype.click;
+    HTMLAnchorElement.prototype.click = function () { href = this.href; };
+    document.querySelector('[data-contact]').click();
+    HTMLAnchorElement.prototype.click = original;
+    return {href, left: document.body.innerHTML.includes('mailto:')};
+  });
+  check(result, 'Contact click assembles a mail link', captured.href === `mailto:${secret}` && captured.left === false, captured.href);
 }
 
 try {
@@ -178,30 +203,33 @@ try {
     try {
       const response = await page.goto(base + result.path, {waitUntil:'networkidle'});
       check(result, 'Page responds successfully', !!response?.ok(), response?.status());
+      await assertIcons(page, result, 'Home');
       await loadImages(page);
       check(result, 'Correct document language', await page.locator('html').getAttribute('lang') === lang);
       check(result, 'Catalogue contains every expected product exactly once', same(await page.locator('.product-row').evaluateAll(rows => rows.map(row => row.dataset.app).sort()), ids));
-      check(result, 'Support anchor exists', await page.locator('#contact').count() === 1 && await page.locator('a[href="#contact"]').count() > 0);
+      check(result, 'Support anchor exists', await page.locator('#contact').count() === 1 && await page.locator('[data-contact]').count() > 0);
       await page.keyboard.press('Tab');
       const firstStop = await page.evaluate(() => ({href:document.activeElement?.getAttribute('href'), text:document.activeElement?.textContent.trim(), rect:document.activeElement?.getBoundingClientRect().toJSON()}));
       check(result, 'First Tab reveals the skip link', firstStop.href === '#main' && firstStop.rect.width > 0 && firstStop.rect.height > 0 && firstStop.rect.top >= 0 && firstStop.rect.bottom <= viewports[0].height, firstStop);
       await page.keyboard.press('Enter');
       check(result, 'Skip link targets the main content', await page.locator('#main').count() === 1 && new URL(page.url()).hash === '#main');
-      await interactions(page, result);
-      await supportPicker(page, result);
+      await catalogueShape(page, result, 'Initial catalogue');
+      await contactLink(page, result);
       for (const viewport of viewports) {
         await page.setViewportSize(viewport);
         await page.evaluate(() => {document.documentElement.style.fontSize = ''; window.scrollTo(0, 0);});
+        await loadImages(page);
         await inspectLayout(page, result, `${viewport.width}px`, `${lang}-${viewport.width}.png`);
-        // Repeat the actual controls at every width, including the narrow layout.
-        await page.locator('[data-filter="family"]').click();
-        await assertState(page, result, `${viewport.width}px family control`, expectedCategory('family'), 'family', '');
-        await page.locator('#clear-filters').click();
+        await catalogueShape(page, result, `${viewport.width}px catalogue`);
         await page.evaluate(() => {document.documentElement.style.fontSize = `${parseFloat(getComputedStyle(document.documentElement).fontSize) * 2}px`; window.scrollTo(0, 0);});
         await inspectLayout(page, result, `${viewport.width}px at 200% text`, `${lang}-${viewport.width}-text-200.png`);
-        await page.locator('[data-filter="play"]').click();
-        await assertState(page, result, `${viewport.width}px at 200% text controls`, expectedCategory('play'), 'play', '');
-        await page.locator('#clear-filters').click();
+        await catalogueShape(page, result, `${viewport.width}px at 200% text`);
+      }
+      for (const app of apps) {
+        const appPath = `${lang === 'fr' ? '/fr' : ''}/apps/${app.path.toLowerCase()}/`;
+        const appResponse = await page.goto(base + appPath, {waitUntil:'load'});
+        check(result, `${app.name} page responds`, !!appResponse?.ok(), appResponse?.status());
+        await assertIcons(page, result, app.name);
       }
     } catch (error) {
       result.issues.push(error.stack || error.message);
