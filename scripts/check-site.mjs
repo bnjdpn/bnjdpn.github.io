@@ -2,6 +2,7 @@ import {access,readFile,readdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {guides} from '../content/guides.mjs';
+import {appDocuments} from '../content/app-documents.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const catalog=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
 const styles=await readFile(resolve(root,'styles.css'),'utf8');
@@ -51,11 +52,12 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  const refs=new Set([...html.matchAll(/(?:href|src)="([^"#]+)"/g)].map(m=>m[1]).filter(ref=>!/^(?:https?:|data:|mailto:)/.test(ref)));
  for(let ref of refs){ref=ref.replace(/^\//,'').split('?')[0];if(ref===''||ref.endsWith('/'))ref+='index.html';try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}}
  expect(html.includes('class="index"'),prefix+'catalogue index missing');
+ for(const app of appDocuments)expect(!html.includes(app.name)&&!html.includes(`/apps/${app.path}/`),prefix+'submission-only app leaked into home');
 }
 for(const lang of ['en','fr']){
- for(const app of catalog){
+ for(const app of [...catalog,...appDocuments]){
   const slug=app.path.toLowerCase();
-  for(const leaf of ['', 'support/', 'privacy/']){
+  for(const leaf of appDocuments.includes(app)?['support/','privacy/']:['','support/','privacy/']){
    const path=`${lang==='fr'?'fr/':''}apps/${slug}/${leaf}index.html`;
    const html=await readFile(resolve(root,path),'utf8');
    const prefix=`${path}: `;
@@ -65,6 +67,18 @@ for(const lang of ['en','fr']){
    expect(/<title>[^<]*Benjamin Dupin/.test(html),prefix+'Benjamin Dupin missing from the title');
    expect(html.includes('>Benjamin Dupin</a>'),prefix+'Benjamin Dupin missing from the footer');
    expect(!/target="_blank"/.test(html),prefix+'forced new tab');
+   if(appDocuments.includes(app)){
+    const url=`${origin}/${lang==='fr'?'fr/':''}apps/${slug}/${leaf}`;
+    expect(html.includes(`rel="canonical" href="${url}"`),prefix+'canonical mismatch');
+    expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
+    for(const alternate of ['en','fr'])expect(html.includes(`rel="alternate" hreflang="${alternate}" href="${origin}/${alternate==='fr'?'fr/':''}apps/${slug}/${leaf}"`),prefix+'alternate missing');
+    expect(!/apps\.apple\.com|play\.google\.com\/store|class="store-button"/.test(html),prefix+'unpublished store link');
+    if(leaf==='privacy/')expect(html.includes(app.package)&&html.includes(`<time datetime="${app.policyDate}">${app.policyDate}</time>`),prefix+'policy identity/date missing');
+    for(const match of html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)){
+     let ref=match[1].split(/[?#]/)[0].slice(1);if(!ref||ref.endsWith('/'))ref+='index.html';
+     try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref)}
+    }
+   }
    if(leaf==='')expect(html.includes(`https://apps.apple.com/app/id${app.id}`),prefix+'App Store link missing');
   }
  }
