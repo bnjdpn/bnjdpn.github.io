@@ -29,3 +29,12 @@ Le site principal est exclusivement consacré aux apps du catalogue. Ne jamais y
 ## Agents cloud Cursor
 
 Environnement cloud : `.cursor/environment.json` (install idempotent, Ubuntu Linux). Pas de simulateur iOS ni de Xcode sur les agents cloud.
+
+## Amélioration continue
+
+Tout agent (Codex, Cursor, Studio CEO) qui rencontre un frein réel et reproductible le corrige lui-même : test lent, test ou script qui plante sans cesse, étape manuelle répétée, consigne fausse ou périmée.
+- **Correction sur place :** si c'est petit et sûr, dans la même PR. Sinon, une PR séparée `chore: amélioration continue`, ou une carte dans les Idées du board Studio si c'est gros.
+- **Consignes :** mets à jour cet AGENTS.md quand une consigne est fausse, périmée ou manquante (commande exacte, piège rencontré). Garde-le court, spécifique et vérifié.
+- **Preuve :** avant/après obligatoire (temps mesuré, échec reproduit puis vert). Pas d'« amélioration » sans mesure.
+- **Limites :** ne jamais affaiblir un test, un garde-fou qualité ou anti-slop pour gagner du temps. Ne pas toucher aux prix, aux achats intégrés ni aux secrets. Ne pas modifier le `~/.codex/AGENTS.md` global ni installer de skills en dehors de ceux que ce fichier prévoit.
+- **Rapport :** une ligne par amélioration dans le rapport du job ou la description de la PR, sous « Améliorations continues ».
