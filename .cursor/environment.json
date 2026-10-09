@@ -1,0 +1,10 @@
+{
+  "install": "node -e \"const m=+process.versions.node.split('.')[0]; if (m < 22) { console.error('Need Node >= 22, got ' + process.versions.node); process.exit(1); }\" && npm run check",
+  "terminals": [
+    {
+      "name": "preview",
+      "command": "python3 -m http.server 4173",
+      "description": "Static site preview on http://127.0.0.1:4173"
+    }
+  ]
+}

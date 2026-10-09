@@ -25,3 +25,7 @@ Appliquer le skill portable [site-release-sync](.agents/skills/site-release-sync
 ## Positionnement permanent
 
 Le site principal est exclusivement consacré aux apps du catalogue. Ne jamais y réintroduire RealmBox, TaskLane, des projets professionnels, un CV, une présentation de carrière ou d’autres projets hors catalogue, y compris lors d’une découverte automatique de dépôts GitHub. Le nom de Benjamin Dupin identifie uniquement l’éditeur. `npm run check` contrôle les sources éditoriales et l’artefact public, sans examiner ces exclusions internes.
+
+## Agents cloud Cursor
+
+Environnement cloud : `.cursor/environment.json` (install idempotent, Ubuntu Linux). Pas de simulateur iOS ni de Xcode sur les agents cloud.
