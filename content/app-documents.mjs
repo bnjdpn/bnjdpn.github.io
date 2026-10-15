@@ -5,7 +5,7 @@ export const appDocuments = [
     "path": "petits-besoins",
     "package": "com.bnjdpn.petitsbesoins",
     "appStoreId": "6820659968",
-    "policyDate": "2026-10-08",
+    "policyDate": "2026-10-15",
     "en": {
       "footerLine": "iOS and Android versions in preparation.",
       "status": "Petits Besoins is in preparation for iOS and Android. It is not yet available in either store.",
@@ -94,7 +94,7 @@ export const appDocuments = [
           {
             "heading": "Network and collection",
             "paragraphs": [
-              "Petits Besoins has no ads, analytics or third-party crash reporting. It does not transmit notebook entries to Benjamin Dupin or a server. On iOS, StoreKit communicates with Apple for product information, purchases and restoration. Android requests no Internet permission."
+              "Petits Besoins has no ads, analytics or third-party crash reporting. It does not transmit notebook entries to Benjamin Dupin or a server. On iOS, StoreKit communicates with Apple for product information, purchases and restoration. On Android, the Google Play Billing library communicates with Google Play for the product, the purchase and its restoration. It adds the Internet permission for this purpose only."
             ]
           },
           {
@@ -112,7 +112,7 @@ export const appDocuments = [
           {
             "heading": "Purchases",
             "paragraphs": [
-              "Apple processes the iOS one-time purchase through StoreKit. The app checks entitlement to PDF export and reusable sheets. It does not collect payment card information. Android purchase simulation changes a local setting and processes no payment. Google Play Billing is not implemented."
+              "Apple processes the iOS one-time purchase through StoreKit. The app checks entitlement to PDF export and reusable sheets. It does not collect payment card information. Google Play processes the Android one-time purchase through Google Play Billing. The app reads the purchase state to unlock the same features. Debug builds keep a local simulation without payment."
             ]
           },
           {
@@ -212,7 +212,7 @@ export const appDocuments = [
           {
             "heading": "Réseau et collecte",
             "paragraphs": [
-              "Petits Besoins n'a ni publicité, mesure d'audience ni rapport de plantage tiers. L'app n'envoie pas les entrées du carnet à Benjamin Dupin ou à un serveur. Sur iOS, StoreKit communique avec Apple pour les produits, les achats et leur restauration. Android ne demande pas la permission Internet."
+              "Petits Besoins n'a ni publicité, mesure d'audience ni rapport de plantage tiers. L'app n'envoie pas les entrées du carnet à Benjamin Dupin ou à un serveur. Sur iOS, StoreKit communique avec Apple pour les produits, les achats et leur restauration. Sur Android, la bibliothèque Google Play Billing communique avec Google Play pour le produit, l'achat et sa restauration. Elle ajoute la permission Internet pour ce seul usage."
             ]
           },
           {
@@ -230,7 +230,7 @@ export const appDocuments = [
           {
             "heading": "Achats",
             "paragraphs": [
-              "Apple traite l'achat unique iOS avec StoreKit. L'app vérifie le droit d'accès à l'export PDF et aux feuilles réutilisables. Elle ne collecte pas les informations de carte bancaire. Sur Android, la simulation modifie un réglage local, sans paiement. Google Play Billing n'est pas intégré."
+              "Apple traite l'achat unique iOS avec StoreKit. L'app vérifie le droit d'accès à l'export PDF et aux feuilles réutilisables. Elle ne collecte pas les informations de carte bancaire. Google Play traite l'achat unique Android avec Google Play Billing. L'app lit l'état de l'achat pour débloquer les mêmes fonctions. Les versions de développement gardent une simulation locale, sans paiement."
             ]
           },
           {
