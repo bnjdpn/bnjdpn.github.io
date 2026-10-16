@@ -3,12 +3,21 @@ name: Public site release review
 # No store submission, Pages deployment or external write occurs in this workflow.
 on:
   pull_request:
-  push:
-    branches: [main]
+    paths-ignore:
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "AUDIT.md"
+      - "README.md"
+      - "design-proposals/**"
+      - ".cursor/**"
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   review-workflow:
