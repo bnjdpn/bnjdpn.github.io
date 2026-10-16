@@ -3,6 +3,7 @@ export const appDocuments = [
   {
     "name": "Petits Besoins",
     "path": "petits-besoins",
+    "socialImage": "assets/petits-besoins-icon.png",
     "package": "com.bnjdpn.petitsbesoins",
     "appStoreId": "6820659968",
     "policyDate": "2026-10-15",
@@ -242,5 +243,123 @@ export const appDocuments = [
         ]
       }
     }
+  },
+{
+  "name": "Petits Pots",
+  "path": "petits-pots",
+  "package": "com.bnjdpn.petitspots",
+  "policyDate": "2026-10-16",
+  "en": {
+    "footerLine": "iOS and Android versions in preparation.",
+    "status": "Petits Pots is in preparation for iOS and Android. It is not yet available in either public store.",
+    "contact": "For a question about the app or its data, the Contact button opens the mail app. Benjamin Dupin receives only the message that is sent. This website does not send it. Avoid including personal information about a child.",
+    "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
+    "dateLabel": "Policy date",
+    "privacy": {
+      "description": "Petits Pots privacy policy for iOS and Android: local storage, purchases, Google Play Billing diagnostics and deletion.",
+      "sections": [
+        {
+          "heading": "Scope",
+          "paragraphs": [
+            "Benjamin Dupin publishes Petits Pots for iOS and Android, identified by com.bnjdpn.petitspots. This policy covers the versions in preparation."
+          ]
+        },
+        {
+          "heading": "Data stored on your device",
+          "paragraphs": [
+            "Food stock, quantities, dates and use-by dates, templates, meal journals and menu plans are stored on your device. Android uses a local Room database named petits-pots.db; iOS uses SwiftData. There is no Petits Pots account or sync with a publisher server. The app does not send your stock, journal or plans to Benjamin Dupin or Google."
+          ]
+        },
+        {
+          "heading": "Purchases and restoration",
+          "paragraphs": [
+            "Stock management and one day of menus are free. An optional one-time Pro purchase unlocks planning for 2–21 days and multiple personal templates. Its product identifier is com.bnjdpn.petitspots.pro.lifetime.",
+            "Apple processes purchases and restoration through StoreKit 2 on iOS; Google processes them through Google Play Billing on Android. Petits Pots does not receive your payment card number. Purchase evidence and access rights are checked on the device. Android stores a signed purchase proof locally; iOS reads the verified transactions provided by StoreKit."
+          ]
+        },
+        {
+          "heading": "Google Play Billing diagnostics",
+          "paragraphs": [
+            "The Google Play Billing SDK sends technical diagnostics, device model and system information, the app version and a random Billing session identifier to Google for service operation and technical analysis. Transfers use encrypted connections. The app does not offer an opt-out or a deletion request mechanism for these remote diagnostics. Clearing local app data does not delete these diagnostics from Google.",
+            "Google Play distribution and licence protection services may also process data under Google’s policies. Food stock and meal journal data are not included in these Billing diagnostics. Google’s privacy policy: https://policies.google.com/privacy."
+          ]
+        },
+        {
+          "heading": "Advertising, analytics and permissions",
+          "paragraphs": [
+            "Petits Pots has no ads or advertising SDKs, analytics tracking or third-party crash reporting. Its core features do not request access to your location, contacts, camera or microphone. StoreKit and Google Play Billing communicate with their respective stores for products, purchases and restoration."
+          ]
+        },
+        {
+          "heading": "Retention and deletion",
+          "paragraphs": [
+            "Your records remain on the device until you delete them or remove app data. Uninstalling the app removes its local data. On Android, you can also clear app storage in device settings; this deletes your stock, templates, journals and plans. Android app backup is disabled. Petits Pots provides no publisher backup or recovery service."
+          ]
+        },
+        {
+          "heading": "An organisation tool for parents",
+          "paragraphs": [
+            "Petits Pots is an organisation tool for parents. Storage dates and use-by dates are indicative. The app does not provide medical advice, diagnosis or treatment."
+          ]
+        }
+      ]
+    }
+  },
+  "fr": {
+    "footerLine": "Versions iOS et Android en préparation.",
+    "status": "Petits Pots est en préparation pour iOS et Android. L’app n’est pas encore disponible sur les stores publics.",
+    "contact": "Pour une question sur l’app ou ses données, le bouton Contact ouvre l’application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l’envoie pas. Éviter d’y inclure des informations personnelles sur un enfant.",
+    "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
+    "dateLabel": "Date de la politique",
+    "privacy": {
+      "description": "Confidentialité Petits Pots sur iOS et Android : stockage local, achats, diagnostics Google Play Billing et suppression.",
+      "sections": [
+        {
+          "heading": "Champ de la politique",
+          "paragraphs": [
+            "Benjamin Dupin édite Petits Pots pour iOS et Android, identifiée par com.bnjdpn.petitspots. Cette politique couvre les versions en préparation."
+          ]
+        },
+        {
+          "heading": "Données conservées sur votre appareil",
+          "paragraphs": [
+            "Le stock d’aliments, les quantités, les dates et DLC, les gabarits, le journal des repas et les plans de menus sont conservés sur votre appareil. Android utilise une base Room locale nommée petits-pots.db ; iOS utilise SwiftData. Il n’y a pas de compte Petits Pots ni de synchronisation avec un serveur de l’éditeur. L’app n’envoie pas votre stock, votre journal ou vos plans à Benjamin Dupin ou à Google."
+          ]
+        },
+        {
+          "heading": "Achats et restauration",
+          "paragraphs": [
+            "La gestion du stock et une journée de menus sont gratuites. Un achat unique facultatif Pro débloque la planification de 2 à 21 jours et plusieurs gabarits personnels. Son identifiant produit est com.bnjdpn.petitspots.pro.lifetime.",
+            "Apple traite les achats et leur restauration avec StoreKit 2 sur iOS ; Google les traite avec Google Play Billing sur Android. Petits Pots ne reçoit pas votre numéro de carte bancaire. Les preuves d’achat et les droits d’accès sont vérifiés sur l’appareil. Android conserve localement une preuve d’achat signée ; iOS lit les transactions vérifiées fournies par StoreKit."
+          ]
+        },
+        {
+          "heading": "Diagnostics Google Play Billing",
+          "paragraphs": [
+            "Le SDK Google Play Billing envoie à Google des diagnostics techniques, des informations sur le modèle et le système de l’appareil, la version de l’app et un identifiant aléatoire de session Billing. Ces données servent au fonctionnement et à l’analyse technique du service. Les envois utilisent des connexions chiffrées. L’app ne propose ni désactivation ni mécanisme de demande de suppression de ces diagnostics distants. Effacer les données locales de l’app ne supprime pas ces diagnostics chez Google.",
+            "Les services de distribution et de protection de licence Google Play peuvent également traiter des données selon les règles de Google. Le stock et le journal des repas ne font pas partie de ces diagnostics Billing. Politique de confidentialité de Google : https://policies.google.com/privacy."
+          ]
+        },
+        {
+          "heading": "Publicité, mesure d’audience et permissions",
+          "paragraphs": [
+            "Petits Pots n’a ni publicité, SDK publicitaire, suivi analytique ni rapport de plantage tiers. Ses fonctions principales ne demandent pas l’accès à votre localisation, vos contacts, votre caméra ou votre microphone. StoreKit et Google Play Billing communiquent avec leurs stores respectifs pour les produits, les achats et leur restauration."
+          ]
+        },
+        {
+          "heading": "Conservation et suppression",
+          "paragraphs": [
+            "Vos données restent sur l’appareil jusqu’à leur suppression ou à l’effacement des données de l’app. La désinstallation supprime les données locales. Sur Android, vous pouvez aussi effacer le stockage dans les réglages de l’appareil ; cela supprime le stock, les gabarits, le journal et les plans. La sauvegarde Android de l’app est désactivée. Petits Pots ne fournit pas de service de sauvegarde ou de récupération chez l’éditeur."
+          ]
+        },
+        {
+          "heading": "Un outil d’organisation pour les parents",
+          "paragraphs": [
+            "Petits Pots est un outil d’organisation pour les parents. Les dates de conservation et DLC sont indicatives. L’app ne fournit ni conseil, diagnostic ou traitement médical."
+          ]
+        }
+      ]
+    }
   }
+}
 ];
