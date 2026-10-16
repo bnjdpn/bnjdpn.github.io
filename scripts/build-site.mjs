@@ -100,7 +100,7 @@ ${footer(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','sup
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/privacy/index.html`,`${head({lang,title:`${t.privacy}. ${title}`,description:text.summary,url:origin+privacy,enHref:origin+pagePath(app,'en','privacy/'),frHref:origin+pagePath(app,'fr','privacy/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}
-<main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.privacy}</h1>${copy.privacyParagraphs?.[lang].map(paragraph=>`<p>${paragraph}</p>`).join('') ?? `<p>${t.privacyLead}</p><p><a href="${copy.privacy[lang]}">${esc(copy.privacy[lang])}</a></p><p>${esc(t.privacyMail)}</p>`}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
+<main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.privacy}</h1>${copy.privacyParagraphs?.[lang] ? `<p><a href="${copy.privacy[lang]}">${t.privacy} — iPhone, iPad, Mac</a></p><h2>Android</h2>${copy.privacyParagraphs[lang].map(paragraph=>`<p>${paragraph}</p>`).join('')}` : `<p>${t.privacyLead}</p><p><a href="${copy.privacy[lang]}">${esc(copy.privacy[lang])}</a></p><p>${esc(t.privacyMail)}</p>`}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
 ${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}</body></html>
 `);
  }
