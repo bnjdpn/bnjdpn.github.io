@@ -1,8 +1,6 @@
 name: Publish GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -12,11 +10,12 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    if: ${{ vars.STUDIO_ISOLATED_MAC_ENABLED == 'true' }}
+    runs-on: [self-hosted, macOS, studio-isolated]
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Set up Ruby for site release checks
@@ -49,7 +48,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    if: ${{ vars.STUDIO_ISOLATED_MAC_ENABLED == 'true' }}
+    runs-on: [self-hosted, macOS, studio-isolated]
     needs: build
     steps:
       - name: Deploy
