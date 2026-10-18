@@ -255,6 +255,47 @@ export const appDocuments = [
     "contact": "For a question about the app or its data, the Contact button opens the mail app. Benjamin Dupin receives only the message that is sent. This website does not send it. Avoid including personal information about a child.",
     "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
     "dateLabel": "Policy date",
+    "support": {
+      "description": "Petits Pots support for iOS and Android: food stock, shopping list, menus, Pro purchase and stored data.",
+      "sections": [
+        {
+          "heading": "Track your stock",
+          "paragraphs": [
+            "Record bags of frozen cubes, jars and pouches with their quantities and dates. Each bag keeps its own cube mass and use-by date. The default cube mass in Settings applies only to new bags. Calculated freezer dates are indicative and can be changed. For jars and pouches, enter the date on the packaging. Expired batches stay visible and are never deleted automatically."
+          ]
+        },
+        {
+          "heading": "Use the shopping list",
+          "paragraphs": [
+            "The list groups the foods you have recorded as running low, finished or needing a refill. Foods you have never recorded are not added automatically. Checking off a purchase does not add stock: record the new bag, jar or pouch yourself."
+          ]
+        },
+        {
+          "heading": "Plan menus",
+          "paragraphs": [
+            "Adjust your lunch, snack and dinner templates, then generate a preview from your stock. Review or regenerate it before confirming. Confirmation reserves the quantities. Marking a meal as served updates the journal without subtracting them twice. To edit or delete a reserved batch, first cancel its unserved portions in Menus."
+          ]
+        },
+        {
+          "heading": "Purchases and restoration",
+          "paragraphs": [
+            "Stock, the shopping list, the journal, active templates and one day of menus are free. Petits Pots Pro is an optional one-time purchase, with no subscription. It unlocks planning for 2 to 21 days and multiple personal templates. The price is shown in the app before you buy. Restore my purchase is in the Pro offer. Apple handles purchases on iOS and Google Play on Android."
+          ]
+        },
+        {
+          "heading": "Change the language",
+          "paragraphs": [
+            "The app follows the language chosen for the app or the device. French and English are included."
+          ]
+        },
+        {
+          "heading": "Delete data",
+          "paragraphs": [
+            "Delete batch removes a batch permanently. Uninstalling the app removes its local data. On Android, clearing app storage also removes them. There is no account or publisher backup, so deleted data cannot be recovered."
+          ]
+        }
+      ]
+    },
     "privacy": {
       "description": "Petits Pots privacy policy for iOS and Android: local storage, purchases, Google Play Billing diagnostics and deletion.",
       "sections": [
@@ -311,6 +352,47 @@ export const appDocuments = [
     "contact": "Pour une question sur l’app ou ses données, le bouton Contact ouvre l’application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l’envoie pas. Éviter d’y inclure des informations personnelles sur un enfant.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
     "dateLabel": "Date de la politique",
+    "support": {
+      "description": "Aide Petits Pots sur iOS et Android : stock d’aliments, courses, menus, achat Pro et données sur l’appareil.",
+      "sections": [
+        {
+          "heading": "Suivre votre stock",
+          "paragraphs": [
+            "Enregistrez les sacs de cubes congelés, les pots et les gourdes avec leurs quantités et leurs dates. Chaque sac conserve sa propre masse par cube et sa DLC. La masse des futurs cubes, dans Réglages, s’applique seulement aux nouveaux sacs. Les DLC calculées pour le congélateur sont indicatives et modifiables. Pour les pots et les gourdes, saisissez la date de l’emballage. Les lots dont la DLC est dépassée restent visibles et ne sont jamais supprimés automatiquement."
+          ]
+        },
+        {
+          "heading": "Utiliser la liste de courses",
+          "paragraphs": [
+            "La liste regroupe les aliments que vous avez renseignés comme bientôt finis, finis ou à racheter. Les aliments jamais renseignés n’y sont pas ajoutés automatiquement. Cocher un achat n’ajoute pas de stock : enregistrez vous-même le nouveau sac, pot ou gourde."
+          ]
+        },
+        {
+          "heading": "Planifier les menus",
+          "paragraphs": [
+            "Ajustez vos gabarits du midi, du goûter et du soir, puis générez un aperçu à partir de votre stock. Relisez-le ou régénérez-le avant de le valider. La validation réserve les quantités. Marquer un repas comme servi alimente le journal, sans second décompte. Pour modifier ou supprimer un lot réservé, annulez d’abord ses portions non servies dans Menus."
+          ]
+        },
+        {
+          "heading": "Achat et restauration",
+          "paragraphs": [
+            "Le stock, la liste de courses, le journal, les gabarits actifs et une journée de menus sont gratuits. Petits Pots Pro est un achat unique facultatif, sans abonnement. Il débloque la planification de 2 à 21 jours et plusieurs gabarits personnels. Le prix est affiché dans l’app avant l’achat. Restaurer mon achat se trouve dans l’offre Pro. Apple traite les achats sur iOS, Google Play sur Android."
+          ]
+        },
+        {
+          "heading": "Changer la langue",
+          "paragraphs": [
+            "L’app suit la langue choisie pour l’app ou pour l’appareil. Le français et l’anglais sont inclus."
+          ]
+        },
+        {
+          "heading": "Supprimer les données",
+          "paragraphs": [
+            "Supprimer ce lot efface définitivement un lot. La désinstallation supprime les données locales de l’app. Sur Android, l’effacement du stockage les supprime aussi. Il n’y a ni compte ni sauvegarde chez l’éditeur : les données supprimées ne peuvent pas être récupérées."
+          ]
+        }
+      ]
+    },
     "privacy": {
       "description": "Confidentialité Petits Pots sur iOS et Android : stockage local, achats, diagnostics Google Play Billing et suppression.",
       "sections": [
