@@ -13,7 +13,7 @@ const failures=[]; let references=0;
 const expect=(value,msg)=>{if(!value)failures.push(msg)};
 const origin='https://bnjdpn.com';
 const exposed=[...'contact'].join('')+String.fromCharCode(64);
-const hasContact=html=>html.includes('data-contact')&&html.includes('<noscript>')&&!html.includes(exposed)&&!html.includes('mailto:');
+const hasContact=html=>html.includes('data-contact')&&/href="\/(?:fr\/)?contact\//.test(html)&&html.includes('<noscript>')&&!html.includes(exposed)&&!html.includes('mailto:');
 for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  const html=await readFile(resolve(root,path),'utf8');
  const prefix=`${path}: `;

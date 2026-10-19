@@ -6,9 +6,13 @@
     "check": "node scripts/build-site.mjs --check && node scripts/check-site.mjs && node scripts/check-catalogue-boundary.mjs",
     "check:links": "node scripts/check-live-links.mjs",
     "build": "node scripts/build-site.mjs",
+    "check:preview-pages": "node scripts/check-preview-pages.mjs",
     "check:browser": "node scripts/check-redesign-browser.mjs"
   },
   "engines": {
     "node": ">=22"
+  },
+  "devDependencies": {
+    "wrangler": "^4.151.2"
   }
 }

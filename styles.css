@@ -250,6 +250,14 @@ h1, h2, h3 {
   text-decoration: none;
 }
 .store-button:hover, .store-button:focus-visible { background: var(--ink); }
+.contact-form { display: grid; gap: .65rem; margin-block: 1.5rem; max-width: 38rem; }
+.contact-form label, .turnstile-box p { color: var(--ink); font-weight: 600; }
+.contact-form input, .contact-form select, .contact-form textarea { width: 100%; border: 1px solid var(--line); border-radius: .35rem; background: var(--surface); color: var(--ink); font: inherit; padding: .75rem; }
+.contact-form textarea { resize: vertical; }
+.form-help, .form-status { font-size: .92rem; }
+.form-status { padding: .75rem; border-left: 3px solid var(--mark); background: var(--surface); }
+.turnstile-box { margin-block: .5rem; }
+.contact-form button:disabled { opacity: .55; cursor: not-allowed; }
 .prose { max-width: 40rem; }
 .prose p { margin: .8rem 0 0; }
 .links { list-style: none; display: flex; flex-wrap: wrap; gap: .15rem 1.3rem; padding: 0; margin: .3rem 0 0; }

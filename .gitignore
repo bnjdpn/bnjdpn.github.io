@@ -2,3 +2,6 @@
 _site/
 output/
 .playwright-cli/
+dist/
+
+node_modules/
