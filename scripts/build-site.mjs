@@ -1,4 +1,4 @@
-import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,rm,cp} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -13,7 +13,7 @@ const origin='https://bnjdpn.com';
 const versions=new Map(await Promise.all(['styles.css','assets/site.js','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
 const asset=path=>`/${path}?v=${versions.get(path)}`;
 const esc=value=>String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
-const contactButton=label=>`<button type="button" class="contact" data-contact>${label}</button>`;
+const contactButton=(label,lang='en',app=null)=>`<a class="contact" data-contact href="/${lang==='fr'?'fr/':''}contact/${app?`?app=${encodeURIComponent(app.toLowerCase())}`:''}"${app?` data-app="${esc(app.toLowerCase())}"`:''}>${label}</a>`;
 const contactNote=text=>`<noscript><p class="js-note">${esc(text)}</p></noscript>`;
 const product=path=>apps.find(app=>app.path===path);
 const slugOf=app=>app.path.toLowerCase();
@@ -42,14 +42,14 @@ function languages(lang, enHref, frHref, withHreflang=true){
  const en=withHreflang?' hreflang="en"':'';
  return `<nav class="languages" aria-label="${t.languages}"><a href="${frHref}" lang="fr"${fr} ${lang==='fr'?'aria-current="page"':''}>FR</a><a href="${enHref}" lang="en"${en} ${lang==='en'?'aria-current="page"':''}>EN</a></nav>`;
 }
-function header(lang, enHref, frHref, nav, withHreflang=true, contactFallback=studioCopy[lang].contactFallback){
+function header(lang, enHref, frHref, nav, withHreflang=true, contactFallback=studioCopy[lang].contactFallback, app=null){
  const t=studioCopy[lang], home=homeFor(lang);
  const links=nav||`<a href="${home}#products">${t.apps}</a><a href="${home}#guides">${t.guidesNav}</a>`;
- return `<a class="skip-link" href="#main">${t.skip}</a><header class="bar"><a class="brand" href="${home}">bnjdpn</a><nav class="main-nav" aria-label="${t.nav}">${links}</nav><div class="bar-tools">${languages(lang,enHref,frHref,withHreflang)}${contactButton(t.contactTitle)}</div></header>${contactNote(contactFallback)}`;
+ return `<a class="skip-link" href="#main">${t.skip}</a><header class="bar"><a class="brand" href="${home}">bnjdpn</a><nav class="main-nav" aria-label="${t.nav}">${links}</nav><div class="bar-tools">${languages(lang,enHref,frHref,withHreflang)}${contactButton(t.contactTitle,lang,app)}</div></header>${contactNote(contactFallback)}`;
 }
-function footer(lang, enHref, frHref, withHreflang=true, footerLine=studioCopy[lang].footerLine){
+function footer(lang, enHref, frHref, withHreflang=true, footerLine=studioCopy[lang].footerLine, app=null){
  const t=studioCopy[lang], home=homeFor(lang);
- return `<footer class="footer"><a class="footer-wordmark" href="${home}">Benjamin Dupin</a>${contactButton(t.contactTitle)}${languages(lang,enHref,frHref,withHreflang)}<p>© 2026 Benjamin Dupin</p><p>${esc(footerLine)}</p><p>${t.noTracking}</p><a href="#top">${t.top}</a></footer>`;
+ return `<footer class="footer"><a class="footer-wordmark" href="${home}">Benjamin Dupin</a>${contactButton(t.contactTitle,lang,app)}${languages(lang,enHref,frHref,withHreflang)}<p>© 2026 Benjamin Dupin</p><p>${esc(footerLine)}</p><p>${t.noTracking}</p><a href="#top">${t.top}</a></footer>`;
 }
 function head({lang,title,description,url,enHref,frHref,social,socialWidth,socialHeight,socialAlt,extra=''}){
  return `<!doctype html>
@@ -75,7 +75,7 @@ for(const lang of ['en','fr']){
 <main id="main" tabindex="-1"><section class="lede" id="about" aria-labelledby="hero-title"><h1 id="hero-title">${t.h1}</h1><p class="intro">${t.intro}</p></section>
 <section class="catalog" id="products"><ol class="index" id="selected">${catalog}</ol><p class="availability-note">${t.availability}</p></section>
 <section class="guides-index" id="guides" aria-labelledby="guides-title"><h2 id="guides-title">${t.guidesTitle}</h2><p>${t.guidesIntro}</p><ul class="guide-list">${guideCards(lang)}</ul></section>
-<section class="contact-block" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">${t.contactTitle}</h2><p>${esc(t.contactText)}</p>${contactButton(t.contactTitle)}<details class="support-directory"><summary>${t.supportDirectory}</summary><ul>${directory}</ul></details></section></main>
+<section class="contact-block" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">${t.contactTitle}</h2><p>${esc(t.contactText)}</p>${contactButton(t.contactTitle,lang)}<details class="support-directory"><summary>${t.supportDirectory}</summary><ul>${directory}</ul></details></section></main>
 ${footer(lang,'/','/fr/')}</body></html>
 `);
  for(const app of apps){
@@ -89,19 +89,19 @@ ${footer(lang,'/','/fr/')}</body></html>
   const crumbs=`<p class="crumbs"><a href="${home}#products">${t.homeLabel}</a></p>`;
   const links=`<ul class="links"><li><a href="${support}">${t.support}</a></li><li><a href="${privacy}">${t.privacy}</a></li><li><a href="${urlFor(app,lang)}">${t.productSite}</a></li></ul>`;
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/index.html`,`${head({lang,title,description,url:origin+local,enHref:en,frHref:fr,social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
-<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr)}
+<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr,undefined,true,studioCopy[lang].contactFallback,app.path)}
 <main id="main" tabindex="-1"><article class="poster">${crumbs}<div class="title-row">${icon(app,true)}<div class="title-copy"><p class="kicker">${t.categories[copy.category]}</p><h1>${esc(app.name)}</h1></div></div><p class="devices">${esc(text.devices)}</p><p class="store-row"><a class="store-button" href="${storeUrl(app)}">${t.store}</a></p><figure>${screen(app.path,lang,true)}<figcaption>${t.shotCaption}</figcaption></figure><div class="prose">${text.body.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</div>${links}</article></main>
-${footer(lang,en,fr)}</body></html>
+${footer(lang,en,fr,true,studioCopy[lang].footerLine,app.path)}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/support/index.html`,`${head({lang,title:`${t.support}. ${title}`,description:text.summary,url:origin+support,enHref:origin+pagePath(app,'en','support/'),frHref:origin+pagePath(app,'fr','support/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
-<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}
-<main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.support}</h1><p>${esc(t.supportLead)}</p><p>${t.supportExisting}</p><p><a href="${copy.productSupport[lang]}">${esc(copy.productSupport[lang])}</a></p><p><a href="${local}">${esc(app.name)}</a></p></article></main>
-${footer(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}</body></html>
+<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'),undefined,true,studioCopy[lang].contactFallback,app.path)}
+<main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.support}</h1><p>${esc(t.supportLead)}</p><p>${esc(t.supportExisting)}</p>${contactButton(t.contactTitle,lang,app.path)}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
+${footer(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'),true,studioCopy[lang].footerLine,app.path)}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/privacy/index.html`,`${head({lang,title:`${t.privacy}. ${title}`,description:text.summary,url:origin+privacy,enHref:origin+pagePath(app,'en','privacy/'),frHref:origin+pagePath(app,'fr','privacy/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
-<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}
+<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'),undefined,true,studioCopy[lang].contactFallback,app.path)}
 <main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.privacy}</h1>${copy.privacyParagraphs?.[lang] ? `<p><a href="${copy.privacy[lang]}">${t.privacy} — iPhone, iPad, Mac</a></p><h2>Android</h2>${copy.privacyParagraphs[lang].map(paragraph=>`<p>${paragraph}</p>`).join('')}` : `<p>${t.privacyLead}</p><p><a href="${copy.privacy[lang]}">${esc(copy.privacy[lang])}</a></p><p>${esc(t.privacyMail)}</p>`}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
-${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}</body></html>
+${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'),true,studioCopy[lang].footerLine,app.path)}</body></html>
 `);
  }
 }
@@ -117,10 +117,10 @@ for(const app of appDocuments){
    const sections=document.sections.map(section=>`<section><h2>${esc(section.heading)}</h2>${section.paragraphs.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</section>`).join('\n');
    const links=['landing','support','privacy'].filter(other=>text[other]&&other!==leaf).map(other=>`<li><a href="${pagePath(app,lang,other==='landing'?'':other+'/')}">${other==='landing'?app.name:t[other]}</a></li>`).join('');
    outputs.set(`${lang==='fr'?'fr/':''}apps/${slugOf(app)}/${route}index.html`,`${head({lang,title:leaf==='landing'?`${app.name}. ${lang==='fr'?'Carnet de propreté':'Potty notebook'}. Benjamin Dupin`:`${label}. ${app.name}. Benjamin Dupin`,description:document.description,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset(app.socialImage||`assets/social/og${lang==='fr'?'-fr':''}.jpg`),socialWidth:app.socialImage?1024:1200,socialHeight:app.socialImage?1024:630,socialAlt:app.socialImage?app.name:'Benjamin Dupin',extra:`${app.appStoreId?`<meta name="apple-itunes-app" content="app-id=${app.appStoreId}">`:''}<meta name="twitter:image:alt" content="${esc(app.socialImage?app.name:'Benjamin Dupin')}"><script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'SoftwareApplication',name:app.name,operatingSystem:'iOS 17 or later; Android 8 or later',applicationCategory:'LifestyleApplication',url:lang==='fr'?fr:en,publisher:{'@type':'Person',name:'Benjamin Dupin'},description:text.status})}</script>`})}
-<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr,undefined,true,text.contactFallback)}
+<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr,undefined,true,text.contactFallback,app.path)}
 <main id="main" tabindex="-1"><article class="plain"><p class="crumbs"><a href="${homeFor(lang)}#products">${t.homeLabel}</a></p><h1>${leaf==='landing'?esc(app.name):esc(app.name)+'. '+label}</h1><p>${esc(text.status)}</p>${leaf==='privacy'?`<p>${esc(text.dateLabel)}${lang==='fr'?'\u00a0':''}: <time datetime="${app.policyDate}">${app.policyDate}</time></p>`:''}
-${sections}<section id="contact"><h2>${t.contactTitle}</h2><p>${esc(text.contact)}</p>${contactButton(t.contactTitle)}</section>${links?`<ul class="links">${links}</ul>`:''}</article></main>
-${footer(lang,en,fr,true,text.footerLine)}</body></html>
+${sections}<section id="contact"><h2>${t.contactTitle}</h2><p>${esc(text.contact)}</p>${contactButton(t.contactTitle,lang,app.path)}</section>${links?`<ul class="links">${links}</ul>`:''}</article></main>
+${footer(lang,en,fr,true,text.footerLine,app.path)}</body></html>
 `);
   }
  }
@@ -143,6 +143,18 @@ for(const guide of guides){
 ${footer(guide.lang,guideEn,guideFr,Boolean(guide.alternate))}</body></html>
 `);
 }
+const contactCopy={
+ en:{title:'Contact support',description:'Send a message about one of the apps by Benjamin Dupin.',intro:'Choose the app and write your message. The form is protected against automated spam.',app:'App',choose:'Choose an app',email:'Your email address',message:'Message',challenge:'Spam protection',submit:'Send message',sent:'Your message was sent.',invalid:'The form could not be sent. Check the fields and try again.',setup:'The contact form is temporarily unavailable.',required:'Required',privacy:'The email address is used only to reply to this message.'},
+ fr:{title:'Contacter le support',description:'Écrivez au sujet des applications de Benjamin Dupin.',intro:'Choisissez l’app et écrivez votre message. Le formulaire limite les envois automatisés.',app:'App',choose:'Choisir une app',email:'Votre adresse e-mail',message:'Message',challenge:'Protection anti-spam',submit:'Envoyer le message',sent:'Votre message a été envoyé.',invalid:'Le formulaire n’a pas pu être envoyé. Vérifiez les champs puis réessayez.',setup:'Le formulaire de contact est temporairement indisponible.',required:'Obligatoire',privacy:'L’adresse e-mail sert uniquement à répondre à ce message.'}
+};
+const contactApps=[...apps,...appDocuments].map(app=>({slug:slugOf(app),name:app.name}));
+for(const lang of ['en','fr']){
+ const c=contactCopy[lang], t=studioCopy[lang], home=homeFor(lang), url=origin+home+'contact/', en=origin+'/contact/', fr=origin+'/fr/contact/';
+ const options=contactApps.map(app=>`<option value="${esc(app.slug)}">${esc(app.name)}</option>`).join('');
+ const status=`<p class="form-status" data-form-status role="status" aria-live="polite" hidden></p>`;
+ const form=`<form class="contact-form" action="/api/contact" method="post" data-contact-form data-locale="${lang}"><input type="hidden" name="locale" value="${lang}"><label for="contact-app">${c.app}</label><select id="contact-app" name="app" required><option value="">${c.choose}</option>${options}</select><label for="contact-email">${c.email}</label><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required><label for="contact-message">${c.message}</label><textarea id="contact-message" name="message" rows="7" maxlength="4000" required></textarea><p class="form-help">${c.privacy}</p><div class="turnstile-box"><p>${c.challenge}</p><div data-turnstile></div></div>${status}<button class="store-button" type="submit" data-submit disabled>${c.submit}</button></form>`;
+ outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:`${c.title}. bnjdpn`,description:c.description,url,enHref:en,frHref:fr,social:origin+asset(`assets/social/og${lang==='fr'?'-fr':''}.jpg`),socialWidth:1200,socialHeight:630,socialAlt:c.title})}<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr)}<main id="main" tabindex="-1"><article class="plain contact-page"><p class="crumbs"><a href="${home}">${t.homeLabel}</a></p><h1>${c.title}</h1><p>${c.intro}</p>${form}</article></main>${footer(lang,en,fr)}</body></html>`);
+}
 outputs.set('404.html',`<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#121712"><title>Page not found. Benjamin Dupin</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${asset('styles.css')}"><script src="${asset('assets/site.js')}" defer></script></head>
 <body id="top"><a class="skip-link" href="#main">Skip to content</a><header class="bar"><a class="brand" href="/">bnjdpn</a><div class="bar-tools">${contactButton('Contact')}</div></header>${contactNote(studioCopy.en.contactFallback)}
@@ -152,6 +164,7 @@ outputs.set('404.html',`<!doctype html>
 const pageLocs=[];
 for(const lang of ['en','fr']){
  pageLocs.push({loc:origin+homeFor(lang), en:origin+'/', fr:origin+'/fr/'});
+ pageLocs.push({loc:origin+homeFor(lang)+'contact/', en:origin+'/contact/', fr:origin+'/fr/contact/'});
 }
 for(const guide of guides){
  const loc=origin+guideLink(guide);
@@ -172,6 +185,20 @@ for(const app of appDocuments){
  }
 }
 const sitemapPages=pageLocs.filter(item=>{if(seen.has(item.loc))return false; seen.add(item.loc); return true;});
+const legacyRedirects=[...apps,...appDocuments].flatMap(app=>{
+ const old=`/${app.path}`, slug=slugOf(app);
+ return [
+  `${old}/fr-FR/privacy.html /fr/apps/${slug}/privacy/ 301`,
+  `${old}/fr-FR/support.html /fr/apps/${slug}/support/ 301`,
+  `${old}/privacy.html /apps/${slug}/privacy/ 301`,
+  `${old}/support.html /apps/${slug}/support/ 301`,
+  `${old}/fr-FR/ /fr/apps/${slug}/ 301`,
+  `${old}/en-US/ /apps/${slug}/ 301`,
+  `${old} /apps/${slug}/ 301`,
+  `${old}/* /apps/${slug}/:splat 301`
+ ];
+});
+outputs.set('_redirects',legacyRedirects.join('\n')+'\n');
 outputs.set('sitemap-pages.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${sitemapPages.map(item=>{
  if(item.solo)return `<url><loc>${item.loc}</loc></url>`;
  const links=[item.en?`<xhtml:link rel="alternate" hreflang="en" href="${item.en}"/>`:'', item.fr?`<xhtml:link rel="alternate" hreflang="fr" href="${item.fr}"/>`:''].filter(Boolean).join('');
@@ -180,5 +207,12 @@ outputs.set('sitemap-pages.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset
 outputs.set('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>${origin}/sitemap-pages.xml</loc></sitemap>\n${apps.map(app=>`<sitemap><loc>${origin}/${app.path}/sitemap.xml</loc></sitemap>`).join('\n')}\n</sitemapindex>\n`);
 let stale=false;
 for(const [path,html] of outputs){if(process.argv.includes('--check')){if(await readFile(resolve(root,path),'utf8').catch(()=>null)!==html){console.error(`Stale generated output: ${path}. Run npm run build.`);stale=true;}}else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),html);}}
+if(!process.argv.includes('--check')){
+ const dist=resolve(root,'dist');
+ await rm(dist,{recursive:true,force:true});
+ for(const [path,html] of outputs){const target=resolve(dist,path);await mkdir(dirname(target),{recursive:true});await writeFile(target,html);}
+ await cp(resolve(root,'assets'),resolve(dist,'assets'),{recursive:true});
+ for(const path of ['styles.css','robots.txt','site.webmanifest','_redirects'])await cp(resolve(root,path),resolve(dist,path));
+}
 if(stale)process.exit(1);
 console.log(`✓ ${outputs.size} static outputs ${process.argv.includes('--check')?'are current':'generated'} (English + French, ${apps.length} products)`);

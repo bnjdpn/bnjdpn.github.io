@@ -1,0 +1,10 @@
+name = "bnjdpn-site"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-10-19"
+
+[[services]]
+binding = "EMAIL_SERVICE"
+service = "bnjdpn-contact-email"
+
+[vars]
+TURNSTILE_SITE_KEY = "0x4AAAAAAFb8sZbCULV4skmB"

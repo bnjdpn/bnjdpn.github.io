@@ -1,0 +1,11 @@
+name = "bnjdpn-contact-email"
+main = "src/index.js"
+compatibility_date = "2026-10-19"
+workers_dev = false
+preview_urls = false
+
+[[send_email]]
+name = "CONTACT_EMAIL"
+
+[vars]
+CONTACT_FROM = "contact@bnjdpn.com"
