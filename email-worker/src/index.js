@@ -1,5 +1,3 @@
-import { EmailMessage } from 'cloudflare:email';
-
 const appNames = {
   'loadsense': 'LoadSense', 'temporeps': 'TempoReps', 'prvault': 'PRVault', 'groovelog': 'GrooveLog',
   'fastzen': 'FastZen', 'coldload': 'ColdLoad', 'moveatlas': 'MoveAtlas', 'neatshift': 'NeatShift',
@@ -22,27 +20,20 @@ export default {
     const app = String(payload.app || '').toLowerCase();
     const email = String(payload.email || '').trim();
     const message = String(payload.message || '').trim();
+    const destination = env.CONTACT_DESTINATION_ADDRESS;
+    if (!destination) return new Response('Contact delivery is not configured', { status: 503 });
     if (!appNames[app] || email.length > 254 || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email) || /[\r\n]/.test(email) || message.length < 10 || message.length > 4000) {
       return new Response('Invalid payload', { status: 400 });
     }
 
-    const safeMessage = message.replace(/\r\n?/g, '\n');
-    const subject = `bnjdpn.com contact: ${appNames[app]}`;
-    const raw = [
-      `From: ${env.CONTACT_FROM}`,
-      'To: contact@bnjdpn.com',
-      `Reply-To: ${email}`,
-      `Subject: ${subject}`,
-      'MIME-Version: 1.0',
-      'Content-Type: text/plain; charset=UTF-8',
-      '',
-      `App: ${appNames[app]}`,
-      `Reply to: ${email}`,
-      '',
-      safeMessage
-    ].join('\r\n');
-    await env.CONTACT_EMAIL.send(new EmailMessage(env.CONTACT_FROM, 'contact@bnjdpn.com', raw));
-    console.info('contact_email_accepted', { app });
-    return new Response(null, { status: 204 });
+    const result = await env.CONTACT_EMAIL.send({
+      from: env.CONTACT_FROM,
+      to: destination,
+      replyTo: email,
+      subject: `bnjdpn.com contact: ${appNames[app]}`,
+      text: `App: ${appNames[app]}\nReply to: ${email}\n\n${message.replace(/\r\n?/g, '\n')}`
+    });
+    console.info('contact_email_accepted', { app, messageId: result.messageId });
+    return Response.json({ messageId: result.messageId });
   }
 };

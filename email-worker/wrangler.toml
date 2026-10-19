@@ -6,7 +6,6 @@ preview_urls = false
 
 [[send_email]]
 name = "CONTACT_EMAIL"
-destination_address = "contact@bnjdpn.com"
 
 [vars]
 CONTACT_FROM = "contact@bnjdpn.com"

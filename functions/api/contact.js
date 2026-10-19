@@ -61,5 +61,8 @@ export async function onRequestPost({ request, env }) {
     body: JSON.stringify({ app, email, message })
   });
   if (!delivery.ok) return redirect(request, locale, app, 'error');
+  const { messageId } = await delivery.json();
+  if (typeof messageId !== 'string' || !messageId) return redirect(request, locale, app, 'error');
+  console.info('contact_email_accepted', { app, status: delivery.status, messageId });
   return redirect(request, locale, app, 'sent');
 }
