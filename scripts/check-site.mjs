@@ -64,7 +64,7 @@ for(const lang of ['en','fr']){
    const prefix=`${path}: `;
    expect(html.includes(`<html lang="${lang}">`),prefix+'language mismatch');
    expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
-   expect(hasContact(html),prefix+'contact control missing or address exposed');
+   expect(['petits-pots','petits-besoins'].includes(slug) ? (html.includes('href="mailto:petites@bnjdpn.com"')&&!html.includes('data-contact')&&!html.includes(exposed)) : hasContact(html),prefix+'contact control missing or address exposed');
    expect(/<title>[^<]*Benjamin Dupin/.test(html),prefix+'Benjamin Dupin missing from the title');
    expect(html.includes('>Benjamin Dupin</a>'),prefix+'Benjamin Dupin missing from the footer');
    expect(!/target="_blank"/.test(html),prefix+'forced new tab');
@@ -83,6 +83,11 @@ for(const lang of ['en','fr']){
      let ref=match[1].split(/[?#]/)[0].slice(1);if(!ref||ref.endsWith('/'))ref+='index.html';
      try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref)}
     }
+   }
+   if(['petites-gouttes','petites-bouchees','petites-dents','petites-nuits'].includes(slug)&&leaf){
+    expect(!/formspree/i.test(html),prefix+'obsolete form processor');
+    for(const value of ['Cloudflare Turnstile','Workers','Email Routing','petites@bnjdpn.com','https://www.cloudflare.com/privacypolicy/','https://www.cloudflare.com/turnstile-privacy-policy/'])expect(html.includes(value),prefix+'missing Petites disclosure: '+value);
+    if(leaf==='support/')expect(html.includes(`href="https://bnjdpn.com/${slug}/#contact"`),prefix+'noncanonical Petites form link');
    }
    if(leaf===''&&!appDocuments.includes(app))expect(html.includes(`https://apps.apple.com/app/id${app.id}`),prefix+'App Store link missing');
   }

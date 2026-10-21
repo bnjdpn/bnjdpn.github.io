@@ -278,7 +278,7 @@ export const productCopy = {
   'petites-gouttes': {
     category:'family',
     privacy:{en:'https://bnjdpn.github.io/petites-gouttes/en-US/privacy.html', fr:'https://bnjdpn.github.io/petites-gouttes/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/petites-gouttes/#contact', fr:'https://bnjdpn.github.io/petites-gouttes/fr-FR/#contact'},
+    productSupport:{en:'https://bnjdpn.com/petites-gouttes/#contact', fr:'https://bnjdpn.com/petites-gouttes/#contact'},
     en:{
       devices:'iPhone',
       summary:'Tracks stored milk by amount, date and place, and chooses which bags to use.',
@@ -301,7 +301,7 @@ export const productCopy = {
   'petites-bouchees': {
     category:'family',
     privacy:{en:'https://bnjdpn.github.io/petites-bouchees/en-US/privacy.html', fr:'https://bnjdpn.github.io/petites-bouchees/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/petites-bouchees/#contact', fr:'https://bnjdpn.github.io/petites-bouchees/fr-FR/#contact'},
+    productSupport:{en:'https://bnjdpn.com/petites-bouchees/#contact', fr:'https://bnjdpn.com/petites-bouchees/#contact'},
     en:{
       devices:'iPhone',
       summary:'Records foods a baby has tried, with the date and the note you write.',
@@ -324,7 +324,7 @@ export const productCopy = {
   'petites-nuits': {
     category:'family',
     privacy:{en:'https://bnjdpn.github.io/petites-nuits/en-US/privacy.html', fr:'https://bnjdpn.github.io/petites-nuits/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/petites-nuits/#contact', fr:'https://bnjdpn.github.io/petites-nuits/fr-FR/#contact'},
+    productSupport:{en:'https://bnjdpn.com/petites-nuits/#contact', fr:'https://bnjdpn.com/petites-nuits/#contact'},
     en:{
       devices:'iPhone',
       summary:'Records nights and naps, then groups that day from noon to noon.',
@@ -347,7 +347,7 @@ export const productCopy = {
   'petites-dents': {
     category:'family',
     privacy:{en:'https://bnjdpn.github.io/petites-dents/privacy.html', fr:'https://bnjdpn.github.io/petites-dents/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/petites-dents/#contact', fr:'https://bnjdpn.github.io/petites-dents/fr-FR/#contact'},
+    productSupport:{en:'https://bnjdpn.com/petites-dents/#contact', fr:'https://bnjdpn.com/petites-dents/#contact'},
     en:{
       devices:'iPhone',
       summary:'Records the day each of the 20 baby teeth erupts, and the child\'s age that day.',
