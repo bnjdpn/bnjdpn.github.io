@@ -415,7 +415,7 @@ export const appDocuments = [
         {
           "heading": "Des menus avec ce que vous avez",
           "paragraphs": [
-            "Adaptez vos gabarits pour midi, le goûter et le soir, puis générez une journée de menus à partir de vos réserves. Consultez l’aperçu et régénérez avant de valider. La validation réserve les quantités ; confirmer un repas servi met à jour le journal sans les décompter une seconde fois."
+            "Adaptez vos gabarits pour midi, le goûter et le soir, puis générez une journée de menus à partir de vos réserves. Consultez l’aperçu et régénérez avant de valider. La validation réserve les quantités ; marquer un repas comme servi met à jour le journal sans les décompter une seconde fois."
           ]
         },
         {
