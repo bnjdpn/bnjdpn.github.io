@@ -6,6 +6,7 @@ import {productCopy} from '../content/copy.mjs';
 import {studioCopy} from '../content/studio-copy.mjs';
 import {guides} from '../content/guides.mjs';
 import {appDocuments} from '../content/app-documents.mjs';
+import {petitesFormApps, petitesFormPrivacy, petitesMailApps, petitesMailPrivacy} from '../content/petites-contact.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const [apps,profile,media]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json'].map(readJSON));
@@ -35,6 +36,7 @@ function wideShot(path,lang){
  return item.width>item.height?' wide':'';
 }
 const outputs=new Map();
+const petitesDisclosure=(app,lang)=>petitesFormApps.has(app.path)?`<p>${esc(petitesFormPrivacy[lang])}</p><p><a href="https://www.cloudflare.com/privacypolicy/">${lang==='fr'?'Politique de confidentialité de Cloudflare':'Cloudflare privacy policy'}</a> · <a href="https://www.cloudflare.com/turnstile-privacy-policy/">${lang==='fr'?'Confidentialité de Turnstile':'Turnstile privacy policy'}</a></p>`:'';
 const guideLink=guide=>`/${guide.path.replace(/index\.html$/,'')}`;
 function languages(lang, enHref, frHref, withHreflang=true){
  const t=studioCopy[lang];
@@ -95,12 +97,12 @@ ${footer(lang,en,fr)}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/support/index.html`,`${head({lang,title:`${t.support}. ${title}`,description:text.summary,url:origin+support,enHref:origin+pagePath(app,'en','support/'),frHref:origin+pagePath(app,'fr','support/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}
-<main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.support}</h1><p>${esc(t.supportLead)}</p><p>${t.supportExisting}</p><p><a href="${copy.productSupport[lang]}">${esc(copy.productSupport[lang])}</a></p><p><a href="${local}">${esc(app.name)}</a></p></article></main>
+<main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.support}</h1><p>${esc(t.supportLead)}</p><p>${t.supportExisting}</p><p><a href="${copy.productSupport[lang]}">${esc(copy.productSupport[lang])}</a></p>${petitesDisclosure(app,lang)}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
 ${footer(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/privacy/index.html`,`${head({lang,title:`${t.privacy}. ${title}`,description:text.summary,url:origin+privacy,enHref:origin+pagePath(app,'en','privacy/'),frHref:origin+pagePath(app,'fr','privacy/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}
-<main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.privacy}</h1>${copy.privacyParagraphs?.[lang] ? `<p><a href="${copy.privacy[lang]}">${t.privacy} — iPhone, iPad, Mac</a></p><h2>Android</h2>${copy.privacyParagraphs[lang].map(paragraph=>`<p>${paragraph}</p>`).join('')}` : `<p>${t.privacyLead}</p><p><a href="${copy.privacy[lang]}">${esc(copy.privacy[lang])}</a></p><p>${esc(t.privacyMail)}</p>`}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
+<main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.privacy}</h1>${copy.privacyParagraphs?.[lang] ? `<p><a href="${copy.privacy[lang]}">${t.privacy} — iPhone, iPad, Mac</a></p><h2>Android</h2>${copy.privacyParagraphs[lang].map(paragraph=>`<p>${paragraph}</p>`).join('')}` : `<p>${t.privacyLead}</p><p><a href="${copy.privacy[lang]}">${esc(copy.privacy[lang])}</a></p><p>${esc(t.privacyMail)}</p>`}${petitesDisclosure(app,lang)}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
 ${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}</body></html>
 `);
  }
@@ -178,6 +180,12 @@ outputs.set('sitemap-pages.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset
  return `<url><loc>${item.loc}</loc>${links}</url>`;
 }).join('\n')}\n</urlset>\n`);
 outputs.set('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>${origin}/sitemap-pages.xml</loc></sitemap>\n${apps.map(app=>`<sitemap><loc>${origin}/${app.path}/sitemap.xml</loc></sitemap>`).join('\n')}\n</sitemapindex>\n`);
+for(const [path,html] of outputs){
+ if([...petitesMailApps].some(slug=>new RegExp(`^(fr/)?apps/${slug}/`).test(path))){
+  const mailLang=path.startsWith('fr/')?'fr':'en';
+  outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">petites@bnjdpn.com</a>').replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'').replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1<p>${esc(petitesMailPrivacy[mailLang])}</p>`));
+ }
+}
 let stale=false;
 for(const [path,html] of outputs){if(process.argv.includes('--check')){if(await readFile(resolve(root,path),'utf8').catch(()=>null)!==html){console.error(`Stale generated output: ${path}. Run npm run build.`);stale=true;}}else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),html);}}
 if(stale)process.exit(1);
