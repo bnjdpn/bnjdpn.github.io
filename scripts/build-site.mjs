@@ -6,7 +6,7 @@ import {productCopy} from '../content/copy.mjs';
 import {studioCopy} from '../content/studio-copy.mjs';
 import {guides} from '../content/guides.mjs';
 import {appDocuments} from '../content/app-documents.mjs';
-import {petitesFormApps, petitesFormPrivacy, petitesMailApps} from '../content/petites-contact.mjs';
+import {petitesFormApps, petitesFormPrivacy, petitesMailApps, petitesMailPrivacy} from '../content/petites-contact.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const [apps,profile,media]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json'].map(readJSON));
@@ -182,7 +182,8 @@ outputs.set('sitemap-pages.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset
 outputs.set('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>${origin}/sitemap-pages.xml</loc></sitemap>\n${apps.map(app=>`<sitemap><loc>${origin}/${app.path}/sitemap.xml</loc></sitemap>`).join('\n')}\n</sitemapindex>\n`);
 for(const [path,html] of outputs){
  if([...petitesMailApps].some(slug=>new RegExp(`^(fr/)?apps/${slug}/`).test(path))){
-  outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">petites@bnjdpn.com</a>').replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,''));
+  const mailLang=path.startsWith('fr/')?'fr':'en';
+  outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">petites@bnjdpn.com</a>').replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'').replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1<p>${esc(petitesMailPrivacy[mailLang])}</p>`));
  }
 }
 let stale=false;
