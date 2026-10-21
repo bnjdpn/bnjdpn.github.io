@@ -14,6 +14,7 @@ export const appDocuments = [
       "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
       "dateLabel": "Policy date",
       "landing": {
+        "subtitle": "Potty notebook",
         "description": "Petits Besoins, a local potty training notebook for parents. iOS and Android versions in preparation. Published by Benjamin Dupin.",
         "sections": [
           {
@@ -132,6 +133,7 @@ export const appDocuments = [
       "contactFallback": "JavaScript est nécessaire pour ouvrir l'application mail avec le bouton Contact.",
       "dateLabel": "Date de la politique",
       "landing": {
+        "subtitle": "Carnet de propreté",
         "description": "Petits Besoins, carnet local de propreté pour les parents. Versions iOS et Android en préparation. Édité par Benjamin Dupin.",
         "sections": [
           {
@@ -255,6 +257,48 @@ export const appDocuments = [
     "contact": "For a question about the app or its data, the petites@bnjdpn.com link opens the mail app. Benjamin Dupin receives only the message that is sent. This website does not send it. Avoid including personal information about a child.",
     "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
     "dateLabel": "Policy date",
+    "landing": {
+      "subtitle": "Baby food stock and menus",
+      "description": "Petits Pots brings your baby food stock, shopping list and meal plans together, with local storage and no account.",
+      "sections": [
+        {
+          "heading": "Track each batch",
+          "paragraphs": [
+            "Record bags of frozen cubes, jars and pouches with their quantities, dates and available amounts. Each bag keeps its own cube weight and storage date. Expired batches stay visible and are never deleted automatically."
+          ]
+        },
+        {
+          "heading": "Shop from your stock",
+          "paragraphs": [
+            "See the foods you have recorded as running low, finished or needing a refill, grouped in one shopping list. Track starches, herbs and fats too. Checking off a purchase does not add food to your stock: you record the quantities yourself."
+          ]
+        },
+        {
+          "heading": "Plan with what you have",
+          "paragraphs": [
+            "Adjust your lunch, snack and dinner templates, then generate one day of meals from your supplies. Review or regenerate the preview before confirming it. Confirmation reserves the quantities; marking a meal as served updates your journal without subtracting them twice."
+          ]
+        },
+        {
+          "heading": "Free features and Pro",
+          "paragraphs": [
+            "Stock, shopping lists, the journal, editable active templates and one day of meal planning are free. Petits Pots Pro unlocks planning for 2 to 21 days and a library of multiple personal template sets through an optional one-time purchase, with no subscription. The price is shown in the app before you buy."
+          ]
+        },
+        {
+          "heading": "Your data on your phone",
+          "paragraphs": [
+            "Your stock and menus are stored locally. No Petits Pots account and no ads."
+          ]
+        },
+        {
+          "heading": "Storage dates and medical advice",
+          "paragraphs": [
+            "Calculated freezer storage dates are indicative and can be changed. For jars and pouches, enter the date on the packaging. Petits Pots cannot check the cold chain and does not replace medical advice or guidance from your healthcare professional."
+          ]
+        }
+      ]
+    },
     "support": {
       "description": "Petits Pots support for iOS and Android: food stock, shopping list, menus, Pro purchase and stored data.",
       "sections": [
@@ -352,6 +396,48 @@ export const appDocuments = [
     "contact": "Pour une question sur l’app ou ses données, le lien petites@bnjdpn.com ouvre l’application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l’envoie pas. Éviter d’y inclure des informations personnelles sur un enfant.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
     "dateLabel": "Date de la politique",
+    "landing": {
+      "subtitle": "Stock et menus de bébé",
+      "description": "Petits Pots réunit votre stock pour les repas de bébé, vos courses et vos menus, avec des données locales et sans compte.",
+      "sections": [
+        {
+          "heading": "Votre stock, lot par lot",
+          "paragraphs": [
+            "Notez vos sacs de cubes congelés, pots et gourdes : quantités, dates et réserves disponibles. Chaque sac garde son propre poids de cube et sa date de conservation. Les lots expirés restent visibles, sans suppression automatique."
+          ]
+        },
+        {
+          "heading": "Une liste de courses à partir de vos réserves",
+          "paragraphs": [
+            "Retrouvez les aliments renseignés bientôt finis, finis ou à racheter, regroupés dans une seule liste. Gérez aussi les féculents, aromates et matières grasses. Cocher un achat ne crée pas de stock : vous gardez la main sur les quantités ajoutées."
+          ]
+        },
+        {
+          "heading": "Des menus avec ce que vous avez",
+          "paragraphs": [
+            "Adaptez vos gabarits pour midi, le goûter et le soir, puis générez une journée de menus à partir de vos réserves. Consultez l’aperçu et régénérez avant de valider. La validation réserve les quantités ; confirmer un repas servi met à jour le journal sans les décompter une seconde fois."
+          ]
+        },
+        {
+          "heading": "Gratuit et Pro",
+          "paragraphs": [
+            "Le stock, les courses, le journal, les gabarits actifs modifiables et une journée de menus sont gratuits. Petits Pots Pro ouvre la planification de 2 à 21 jours et la bibliothèque de plusieurs jeux de gabarits personnels, avec un achat unique facultatif, sans abonnement. Le prix s’affiche dans l’app avant l’achat."
+          ]
+        },
+        {
+          "heading": "Vos données sur votre téléphone",
+          "paragraphs": [
+            "Votre stock et vos menus restent enregistrés localement. Aucun compte Petits Pots, aucune publicité."
+          ]
+        },
+        {
+          "heading": "Conservation et avis médical",
+          "paragraphs": [
+            "Les durées de conservation calculées pour le congélateur sont indicatives et modifiables. Pour les pots et gourdes, saisissez la date de l’emballage. Petits Pots ne vérifie pas la chaîne du froid et ne remplace pas un avis médical ou les recommandations de votre professionnel de santé."
+          ]
+        }
+      ]
+    },
     "support": {
       "description": "Aide Petits Pots sur iOS et Android : stock d’aliments, courses, menus, achat Pro et données sur l’appareil.",
       "sections": [
