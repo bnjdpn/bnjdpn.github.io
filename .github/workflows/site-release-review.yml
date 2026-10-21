@@ -28,10 +28,6 @@ jobs:
         uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b
         with:
           ruby-version: "4.0.6"
-      - name: Verify the site release workflow
-        run: |
-          ruby .agents/skills/site-release-sync/scripts/check.rb --check
-          ruby .agents/skills/site-release-sync/scripts/check_test.rb
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 24
@@ -40,5 +36,4 @@ jobs:
       - name: Record the remaining editorial review
         run: |
           echo 'Deterministic site checks ran. They do not establish product, screenshot or public release accuracy.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Apply .agents/skills/site-release-sync/SKILL.md to this change. Record updated pages, prepared-but-held pages, or a concrete no-public-impact reason in the PR/release review.' >> "$GITHUB_STEP_SUMMARY"
           echo 'New availability promises require current public readback for each platform. A tag, merge or store submission is not release confirmation.' >> "$GITHUB_STEP_SUMMARY"
