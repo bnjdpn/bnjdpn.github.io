@@ -23,7 +23,7 @@ with tempfile.TemporaryDirectory() as temp:
 
     # Reject a path which leaves docs and re-enters it, even though resolve()
     # lands on a valid source. No destination is created before validation ends.
-    fixture = base / 'fixture'
+    fixture = (base / 'fixture').resolve()
     (fixture / 'content').mkdir(parents=True)
     (fixture / 'content/catalog.json').write_text('[{"path":"Example"}]')
     (fixture / 'index.html').write_text('<html lang="en"></html>')
@@ -51,6 +51,21 @@ with tempfile.TemporaryDirectory() as temp:
         assert (accepted / 'public/Example/index.html').is_file()
         assert not (accepted / 'public/Example/internal.md').exists()
         assert set(result['sources'][1]['files']) == {'index.html'}
+        generated = fixture / '.local/exact-stage/Example'
+        generated.mkdir(parents=True)
+        (generated / 'index.html').write_text('<html lang="fr"></html>')
+        result = assembler.assemble([{**source, 'stage': str(generated),
+                                      'kind': 'local-generator-stage'}], base / 'generated')
+        assert result['files'] == 2
+        assert not any('Ruby docs' in b for b in result['blockers'])
+        (generated / 'internal.md').write_text('Excluded source')
+        try:
+            assembler.assemble([{**source, 'stage': str(generated),
+                                 'kind': 'local-generator-stage'}], base / 'private-generated')
+            raise AssertionError('Private stage file accepted')
+        except ValueError as error:
+            assert 'Disallowed public type' in str(error)
+        assert not (base / 'private-generated').exists()
     finally:
         assembler.ROOT, assembler.git, assembler.ecosystem.PUBLIC = original
 

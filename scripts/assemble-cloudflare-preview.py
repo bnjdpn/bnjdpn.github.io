@@ -33,13 +33,14 @@ def assemble(spec, output):
         repo, stage = Path(source['repo']).resolve(), Path(source['stage']).resolve()
         if git(repo, 'rev-parse', 'HEAD') != source['sha']:
             raise ValueError(f"Source HEAD changed: {source['site']}")
-        if not stage.is_relative_to(repo) or not (stage / 'index.html').is_file():
+        generated = source['kind'] == 'local-generator-stage'
+        if not (stage.is_relative_to(ROOT / '.local') if generated else stage.is_relative_to(repo)) or not (stage / 'index.html').is_file():
             raise ValueError(f"Invalid public output: {source['site']}")
-        if source['site'] != 'Portfolio' and source['kind'] not in ['local-generated-docs-not-staged', 'existing-staged-output']:
+        if source['site'] != 'Portfolio' and source['kind'] not in ['local-generated-docs-not-staged', 'existing-staged-output', 'local-generator-stage']:
             raise ValueError('Unknown source kind')
         if source['site'] != 'Portfolio' and ((stage.name == 'docs') != (source['kind'] == 'local-generated-docs-not-staged')):
             raise ValueError('docs are candidate sources and require a generator-derived allowlist')
-        if source['site'] != 'Portfolio' and stage.relative_to(repo).as_posix() not in ['docs', '_site', '_pages']:
+        if source['site'] != 'Portfolio' and not generated and stage.relative_to(repo).as_posix() not in ['docs', '_site', '_pages']:
             raise ValueError('Only existing docs/_site/_pages outputs may be assembled')
         candidates = []
         if source['site'] == 'Portfolio':
@@ -97,7 +98,7 @@ def assemble(spec, output):
         shutil.copyfile(source, target)
     report = {'publishable': False, 'qualification': 'Local candidate only; no served-byte, store URL, contact delivery or provider qualification.',
               'sources': provenance, 'files': len(plan),
-              'blockers': ['Ruby docs outputs are not qualified exact Pages stages.',
+              'blockers': (['Ruby docs outputs are not qualified exact Pages stages.'] if any(x['kind'] == 'local-generated-docs-not-staged' for x in sources) else []) + [
                            'Independent legacy sites outside the catalogue and www Worker routes need a migration decision.',
                            'Current production equivalence and store URLs need readback before any cutover.']}
     (output / 'manifest.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')

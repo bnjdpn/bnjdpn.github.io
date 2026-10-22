@@ -11,7 +11,8 @@ La préparation ne touche aucun compte, DNS, Worker, workflow ou réglage Pages.
 `scripts/assemble-cloudflare-preview.py` accepte un manifeste explicite local :
 une entrée par site du catalogue avec `site`, `repo`, `stage`, `sha` complet et
 `kind`. Les chemins `stage` doivent être des sorties existantes `docs`, `_site`
-ou `_pages` sous leur dépôt. La racine est sélectionnée par l’allowlist du
+ou `_pages` sous leur dépôt, ou des sorties `local-generator-stage` sous
+le `.local/` de ce dépôt (voir ci-dessous). La racine est sélectionnée par l’allowlist du
 vérificateur d’écosystème, alignée sur `pages.yml` (dont apps/guides/contact).
 Le script refuse un catalogue incomplet, un SHA modifié, une destination déjà
 existante, les liens symboliques et les types de fichier non autorisés.
@@ -26,6 +27,22 @@ exige `files`, la liste des chemins rendue par le générateur existant
 chargeant `scripts/marketing_site.rb` sans exécuter son CLI. Ne pas copier `docs/`
 récursivement : plusieurs dépôts y conservent des preuves et notes internes.
 Aucun générateur n’est copié ni modifié par l’assembleur.
+
+Pour obtenir les transformations exactes sans écrire dans les apps, utiliser
+`scripts/stage-product-preview.rb` avec une version Ruby compatible avec leurs
+générateurs. Il appelle le même `seo_stage_files` et le même contrôle des chemins
+que `stage!`, puis écrit uniquement dans une nouvelle sortie sous `.local/` ici :
+
+```sh
+ruby scripts/stage-product-preview.rb /path/to/App .local/exact-stages/App
+```
+
+La sortie JSON décrit les extensions autorisées par ce générateur et les hachages
+produits. Une entrée `local-generator-stage` référence cette sortie avec le vrai
+`repo`, son SHA actuel et ces extensions. Conserver le rapport JSON en dehors de
+l’arbre public ; comparer l’état source avant/après et les routes/hachages avec le
+candidat précédent. Cette préparation ne lance ni build natif ni commande de
+publication et ne modifie pas le `.local/` ou les proofs des apps.
 
 ```sh
 python3 scripts/assemble-cloudflare-preview.py --spec /path/to/sources.json --out .local/cloudflare-candidate
