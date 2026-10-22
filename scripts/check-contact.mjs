@@ -1,7 +1,9 @@
+import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
-import {contactCopy} from '../content/contact-page.mjs';
+import {contactApps, contactCopy} from '../content/contact-page.mjs';
+import {petitsPotsFormPrivacy} from '../content/petites-contact.mjs';
 
 const code = await readFile(new URL('../assets/contact.js', import.meta.url), 'utf8');
 // No network: exercise the shipped handler against browser-API doubles.
@@ -10,8 +12,8 @@ function page(search='', response=async()=>({ok:true,json:async()=>({ok:true})})
   Object.assign(inputs.app,{value:'petits-pots'}); inputs.category.value='other'; inputs.email.value='qa@example.invalid'; inputs.message.value='Test message';
   let submit, widget, resetCount=0;
   const calls=[], scripts=[], timers=new Map();
-  const form={action:'https://petites-forms.bnjdpn.com/contact',dataset:{messages:JSON.stringify(contactCopy.en.messages)},elements:{namedItem:name=>inputs[name]},reportValidity:()=>true,addEventListener:(event,handler)=>{if(event==='submit')submit=handler;}};
-  const elements={'support-form':form,'form-status':{textContent:''},'send-message':{disabled:true},'app-version-label':{textContent:''},'os-version-label':{textContent:''}};
+  const form={action:'https://petites-forms.bnjdpn.com/contact',dataset:{messages:JSON.stringify(contactCopy.en.messages),apps:JSON.stringify(contactApps)},elements:{namedItem:name=>inputs[name]},reportValidity:()=>true,addEventListener:(event,handler)=>{if(event==='submit')submit=handler;}};
+  const elements={'contact-title':{textContent:'',dataset:{template:contactCopy.en.title}},'contact-privacy':{href:''},'support-form':form,'form-status':{textContent:''},'send-message':{disabled:true},'app-version-label':{textContent:''},'os-version-label':{textContent:''}};
   const links=[{href:'https://bnjdpn.com/fr/contact/'},{href:'https://bnjdpn.com/contact/'}];
   const window={location:{search},turnstile:{render:(_target,options)=>{widget=options;return 'widget';},reset:()=>{resetCount++;}}};
   class FormDataDouble extends Map {constructor(){super(Object.entries(inputs).map(([k,v])=>[k,v.value]));}}
@@ -33,7 +35,7 @@ assert.equal(metadata.calls[0].options.credentials,'omit'); assert.equal(metadat
 assert.equal(metadata.resets,1); assert.equal(metadata.elements['form-status'].textContent,contactCopy.en.messages.success);
 metadata.token('renewed'); assert.equal(metadata.elements['form-status'].textContent,contactCopy.en.messages.success);
 
-for (const search of ['?app=other','?app=petits-pots%3Cscript%3E']) {
+for (const search of ['?app=other','?app=petits-pots%3Cscript%3E','?app=','?app=__proto__']) {
   const invalid=page(search); await invalid.send(); assert.equal(invalid.scripts.length,0); assert.equal(invalid.calls.length,0);
 }
 for (const response of [async()=>({ok:false,json:async()=>({ok:false,error:'send'})}),async()=>({ok:true,json:async()=>({ok:false})}),async()=>{throw new Error('network');},async()=>({ok:true,json:async()=>{throw new Error('invalid JSON');}})]) {
@@ -63,3 +65,37 @@ for (const lang of ['en','fr']) {
 }
 assert((await readFile(new URL('../.github/workflows/pages.yml',import.meta.url),'utf8')).includes('cp -R contact _site/contact'));
 console.log('✓ Contact EN/FR: safe context, fixed destination, token requirement/renewal, duplicate submit, failure recovery, expiry and blocked script; no real requests');
+
+const received=[];
+const server=createServer(async(req,res)=>{
+  let body=''; for await(const part of req) body+=part;
+  received.push({method:req.method,path:req.url,fields:Object.fromEntries(new URLSearchParams(body))});
+  res.writeHead(200,{'Content-Type':'application/json'}); res.end(JSON.stringify({ok:true}));
+});
+await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+try {
+  const endpoint=`http://127.0.0.1:${server.address().port}/contact`;
+  for(const system of ['iOS 27.1','Android 16']) {
+    const support=page('?app=petits-besoins&category=bug&app_version=1.0.0%20(5)&os_version='+encodeURIComponent(system), options=>fetch(endpoint,{method:options.method,body:new URLSearchParams(options.body)}));
+    assert.equal(support.elements['contact-title'].textContent,'Contact Petits Besoins');
+    assert.equal(support.elements['contact-privacy'].href,'/apps/petits-besoins/privacy/');
+    assert(support.links.every(link=>new URL(link.href).searchParams.get('app')==='petits-besoins'));
+    support.init(); support.token('fixture-only'); await support.send();
+    assert.equal(support.elements['form-status'].textContent,contactCopy.en.messages.success);
+    const sent=received.at(-1); assert.equal(sent.method,'POST'); assert.equal(sent.path,'/contact');
+    assert.deepEqual(sent.fields,{app:'petits-besoins',category:'bug',email:'qa@example.invalid',message:'Test message',_gotcha:'',app_version:'1.0.0 (5)',os_version:system,'cf-turnstile-response':'fixture-only'});
+  }
+} finally { await new Promise(resolve=>server.close(resolve)); }
+console.log('✓ Petits Besoins: iOS/Android context submitted to local fake server only');
+
+for (const lang of ['en','fr']) {
+  const prefix=lang==='fr'?'fr/':'';
+  const esc=value=>value.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+  for (const app of ['petits-pots','petits-besoins']) {
+    for (const leaf of ['','support/','privacy/']) {
+      const html=await readFile(new URL(`../${prefix}apps/${app}/${leaf}index.html`,import.meta.url),'utf8');
+      assert(html.includes(esc(petitsPotsFormPrivacy[lang])),`${lang}/${app}/${leaf}: approved contact notice missing`);
+    }
+  }
+}
+console.log('✓ Exact approved support notice shared only by Petits Pots and Petits Besoins');

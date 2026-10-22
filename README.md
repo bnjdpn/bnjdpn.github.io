@@ -34,7 +34,8 @@ and `scripts/build-site.mjs`; do not edit generated HTML alone.
 `content/studio-copy.mjs` contains the page copy; `productCopy` in
 `content/copy.mjs` contains the product descriptions and categories.
 `npm run check` validates generated outputs, document structure, metadata,
-assets, internal links and the catalogue boundary. `npm run check:links`
+assets, internal links and the catalogue boundary. Its contact checks use a local
+fake server; they do not verify Cloudflare email delivery. `npm run check:links`
 checks public destinations and depends on network availability.
 
 Optional browser QA uses an existing Playwright installation, with no visitor
@@ -60,10 +61,11 @@ when `playwright` already resolves in the local environment.
 
 ## Deployment
 
-GitHub Pages publishes the validated `main` branch through
-`.github/workflows/pages.yml`. This repository contains only app catalogue
-material; private résumés, email, credentials and source documents do not
-belong here.
+Until the planned Cloudflare migration is complete, GitHub Pages still
+publishes the validated `main` branch through `.github/workflows/pages.yml`;
+pushing to `main` can therefore publish through that existing path. This
+repository contains only app catalogue material; private résumés, email,
+credentials and source documents do not belong here.
 
 ## Product sites and release maintenance
 

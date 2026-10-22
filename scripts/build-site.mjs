@@ -5,9 +5,9 @@ import {fileURLToPath} from 'node:url';
 import {productCopy} from '../content/copy.mjs';
 import {studioCopy} from '../content/studio-copy.mjs';
 import {guides} from '../content/guides.mjs';
-import {contactCopy, contactBody} from '../content/contact-page.mjs';
+import {contactApps, contactCopy, contactBody} from '../content/contact-page.mjs';
 import {appDocuments} from '../content/app-documents.mjs';
-import {petitesFormApps, petitesFormPrivacy, petitsPotsFormPrivacy, petitesMailApps, petitesMailPrivacy} from '../content/petites-contact.mjs';
+import {petitesFormApps, petitesFormPrivacy, petitsPotsFormPrivacy} from '../content/petites-contact.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const [apps,profile,media]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json'].map(readJSON));
@@ -37,7 +37,7 @@ function wideShot(path,lang){
  return item.width>item.height?' wide':'';
 }
 const outputs=new Map();
-const petitesDisclosure=(app,lang)=>petitesFormApps.has(app.path)?`<p>${esc((app.path==='petits-pots'?petitsPotsFormPrivacy:petitesFormPrivacy)[lang])}</p><p><a href="https://www.cloudflare.com/privacypolicy/">${lang==='fr'?'Politique de confidentialité de Cloudflare':'Cloudflare privacy policy'}</a> · <a href="https://www.cloudflare.com/turnstile-privacy-policy/">${lang==='fr'?'Confidentialité de Turnstile':'Turnstile privacy policy'}</a></p>`:'';
+const petitesDisclosure=(app,lang)=>petitesFormApps.has(app.path)?`<p>${esc((['petits-pots','petits-besoins'].includes(app.path)?petitsPotsFormPrivacy:petitesFormPrivacy)[lang])}</p><p><a href="https://www.cloudflare.com/privacypolicy/">${lang==='fr'?'Politique de confidentialité de Cloudflare':'Cloudflare privacy policy'}</a> · <a href="https://www.cloudflare.com/turnstile-privacy-policy/">${lang==='fr'?'Confidentialité de Turnstile':'Turnstile privacy policy'}</a></p>`:'';
 const guideLink=guide=>`/${guide.path.replace(/index\.html$/,'')}`;
 function languages(lang, enHref, frHref, withHreflang=true){
  const t=studioCopy[lang];
@@ -65,7 +65,7 @@ for (const lang of ['en','fr']) {
  const t=contactCopy[lang], en=origin+'/contact/', fr=origin+'/fr/contact/';
  const mailHeader=header(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">E-mail</a>').replace(/<noscript>[\s\S]*?<\/noscript>/g,'');
  const mailFooter=footer(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">E-mail</a>');
- outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:t.title+'. Benjamin Dupin',description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'})}<link rel="stylesheet" href="${asset('assets/contact.css')}"><script src="${asset('assets/contact.js')}" defer></script></head><body id="top">${mailHeader}${contactBody(lang,esc)}${mailFooter}</body></html>\n`);
+ outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:t.title.replace('{app}',contactApps['petits-pots'])+'. Benjamin Dupin',description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'})}<link rel="stylesheet" href="${asset('assets/contact.css')}"><script src="${asset('assets/contact.js')}" defer></script></head><body id="top">${mailHeader}${contactBody(lang,esc)}${mailFooter}</body></html>\n`);
 }
 const guideCards=lang=>guides.filter(g=>g.lang===lang).map(g=>`<li><a href="${guideLink(g)}">${esc(g.heading)}</a></li>`).join('');
 for(const lang of ['en','fr']){
@@ -188,15 +188,13 @@ outputs.set('sitemap-pages.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset
 }).join('\n')}\n</urlset>\n`);
 outputs.set('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>${origin}/sitemap-pages.xml</loc></sitemap>\n${apps.map(app=>`<sitemap><loc>${origin}/${app.path}/sitemap.xml</loc></sitemap>`).join('\n')}\n</sitemapindex>\n`);
 for(const [path,html] of outputs){
- if (/^(fr\/)?apps\/petits-pots\//.test(path)) {
+ const formApp=Object.keys(contactApps).find(slug=>new RegExp(`^(fr/)?apps/${slug}/`).test(path));
+ if (formApp) {
   const lang=path.startsWith('fr/')?'fr':'en';
-  const contactPath=`${lang==='fr'?'/fr':''}/contact/?app=petits-pots`;
-  outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>([^<]*)<\/button>/g,`<a class="contact" href="${contactPath}">$1</a>`).replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'').replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1${petitesDisclosure({path:'petits-pots'},lang)}`));
+  const contactPath=`${lang==='fr'?'/fr':''}/contact/?app=${formApp}`;
+  outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>([^<]*)<\/button>/g,`<a class="contact" href="${contactPath}">$1</a>`).replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'').replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1${petitesDisclosure({path:formApp},lang)}`));
  }
- if([...petitesMailApps].some(slug=>new RegExp(`^(fr/)?apps/${slug}/`).test(path))){
-  const mailLang=path.startsWith('fr/')?'fr':'en';
-  outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">petites@bnjdpn.com</a>').replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'').replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1<p>${esc(petitesMailPrivacy[mailLang])}</p>`));
- }
+
 }
 let stale=false;
 for(const [path,html] of outputs){if(process.argv.includes('--check')){if(await readFile(resolve(root,path),'utf8').catch(()=>null)!==html){console.error(`Stale generated output: ${path}. Run npm run build.`);stale=true;}}else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),html);}}

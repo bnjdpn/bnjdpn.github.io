@@ -64,7 +64,7 @@ for(const lang of ['en','fr']){
    const prefix=`${path}: `;
    expect(html.includes(`<html lang="${lang}">`),prefix+'language mismatch');
    expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
-   expect(slug==='petits-pots' ? (html.includes(`href="${lang==='fr'?'/fr':''}/contact/?app=petits-pots"`)&&!html.includes('data-contact')) : slug==='petits-besoins' ? (html.includes('href="mailto:petites@bnjdpn.com"')&&!html.includes('data-contact')&&!html.includes(exposed)) : hasContact(html),prefix+'contact control missing or address exposed');
+   expect(['petits-pots','petits-besoins'].includes(slug) ? (html.includes(`href="${lang==='fr'?'/fr':''}/contact/?app=${slug}"`)&&!html.includes('data-contact')) : hasContact(html),prefix+'contact control missing or address exposed');
    expect(/<title>[^<]*Benjamin Dupin/.test(html),prefix+'Benjamin Dupin missing from the title');
    expect(html.includes('>Benjamin Dupin</a>'),prefix+'Benjamin Dupin missing from the footer');
    expect(!/target="_blank"/.test(html),prefix+'forced new tab');

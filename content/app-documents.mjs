@@ -6,11 +6,11 @@ export const appDocuments = [
     "socialImage": "assets/petits-besoins-icon.png",
     "package": "com.bnjdpn.petitsbesoins",
     "appStoreId": "6820659968",
-    "policyDate": "2026-10-15",
+    "policyDate": "2026-10-22",
     "en": {
       "footerLine": "iOS and Android versions in preparation.",
       "status": "Petits Besoins is in preparation for iOS and Android. It is not yet available in either store.",
-      "contact": "For a question about the app or its data, the petites@bnjdpn.com link opens the mail app. Benjamin Dupin receives only the message that is sent. This website does not send it. Avoid including personal information about a child.",
+      "contact": "For a question about the app or its data, use the protected contact form or email petites@bnjdpn.com. Avoid including personal information about a child.",
       "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
       "dateLabel": "Policy date",
       "landing": {

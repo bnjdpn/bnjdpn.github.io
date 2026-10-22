@@ -6,7 +6,9 @@
   const button = document.getElementById('send-message');
   const copy = JSON.parse(form.dataset.messages);
   const query = new URLSearchParams(window.location.search);
-  const validApp = !query.has('app') || query.get('app') === 'petits-pots';
+  const apps = JSON.parse(form.dataset.apps);
+  const app = query.has('app') ? query.get('app') : 'petits-pots';
+  const validApp = Object.hasOwn(apps, app);
   const field = name => form.elements.namedItem(name);
   const oneLine = value => (value || '').replace(/[\u0000-\u001f\u007f]+/g, ' ').trim().slice(0, 64);
   const category = query.get('category');
@@ -19,7 +21,7 @@
   // Preserve only the supported context when changing language, never email/message.
   document.querySelectorAll('.languages a').forEach(link => {
     const url = new URL(link.href);
-    if (validApp) url.searchParams.set('app', 'petits-pots');
+    if (validApp) url.searchParams.set('app', app);
     else url.searchParams.set('app', 'unsupported');
     for (const name of ['category', 'app_version', 'os_version']) {
       const value = field(name).value;
@@ -62,6 +64,11 @@
     }
   });
   if (!validApp) { setStatus('invalid'); return; }
+  field('app').value = app;
+  const title = document.getElementById('contact-title');
+  title.textContent = title.dataset.template.replace('{app}', apps[app]);
+  document.title = title.textContent + '. Benjamin Dupin';
+  document.getElementById('contact-privacy').href = (document.documentElement.lang === 'fr' ? '/fr' : '') + '/apps/' + app + '/privacy/';
   window.supportTurnstileReady = function () {
     clearTimeout(loadTimeout);
     widget = window.turnstile.render('#spam-protection', {
