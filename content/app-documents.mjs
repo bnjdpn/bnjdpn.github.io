@@ -250,11 +250,11 @@ export const appDocuments = [
   "name": "Petits Pots",
   "path": "petits-pots",
   "package": "com.bnjdpn.petitspots",
-  "policyDate": "2026-10-16",
+  "policyDate": "2026-10-22",
   "en": {
     "footerLine": "iOS and Android versions in preparation.",
     "status": "Petits Pots is in preparation for iOS and Android. It is not yet available in either public store.",
-    "contact": "For a question about the app or its data, the petites@bnjdpn.com link opens the mail app. Benjamin Dupin receives only the message that is sent. This website does not send it. Avoid including personal information about a child.",
+    "contact": "For a question about the app or its data, use the protected contact form or email petites@bnjdpn.com. Avoid including personal information about a child.",
     "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
     "dateLabel": "Policy date",
     "landing": {
@@ -393,7 +393,7 @@ export const appDocuments = [
   "fr": {
     "footerLine": "Versions iOS et Android en préparation.",
     "status": "Petits Pots est en préparation pour iOS et Android. L’app n’est pas encore disponible sur les stores publics.",
-    "contact": "Pour une question sur l’app ou ses données, le lien petites@bnjdpn.com ouvre l’application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l’envoie pas. Éviter d’y inclure des informations personnelles sur un enfant.",
+    "contact": "Pour une question sur l’app ou ses données, utilisez le formulaire de contact protégé ou écrivez à petites@bnjdpn.com. Évitez les informations personnelles sur un enfant.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
     "dateLabel": "Date de la politique",
     "landing": {

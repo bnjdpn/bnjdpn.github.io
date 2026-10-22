@@ -5,13 +5,14 @@ import {fileURLToPath} from 'node:url';
 import {productCopy} from '../content/copy.mjs';
 import {studioCopy} from '../content/studio-copy.mjs';
 import {guides} from '../content/guides.mjs';
+import {contactCopy, contactBody} from '../content/contact-page.mjs';
 import {appDocuments} from '../content/app-documents.mjs';
-import {petitesFormApps, petitesFormPrivacy, petitesMailApps, petitesMailPrivacy} from '../content/petites-contact.mjs';
+import {petitesFormApps, petitesFormPrivacy, petitsPotsFormPrivacy, petitesMailApps, petitesMailPrivacy} from '../content/petites-contact.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const [apps,profile,media]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json'].map(readJSON));
 const origin='https://bnjdpn.com';
-const versions=new Map(await Promise.all(['styles.css','assets/site.js','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
+const versions=new Map(await Promise.all(['assets/contact.css','assets/contact.js','styles.css','assets/site.js','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
 const asset=path=>`/${path}?v=${versions.get(path)}`;
 const esc=value=>String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const contactButton=label=>`<button type="button" class="contact" data-contact>${label}</button>`;
@@ -36,7 +37,7 @@ function wideShot(path,lang){
  return item.width>item.height?' wide':'';
 }
 const outputs=new Map();
-const petitesDisclosure=(app,lang)=>petitesFormApps.has(app.path)?`<p>${esc(petitesFormPrivacy[lang])}</p><p><a href="https://www.cloudflare.com/privacypolicy/">${lang==='fr'?'Politique de confidentialité de Cloudflare':'Cloudflare privacy policy'}</a> · <a href="https://www.cloudflare.com/turnstile-privacy-policy/">${lang==='fr'?'Confidentialité de Turnstile':'Turnstile privacy policy'}</a></p>`:'';
+const petitesDisclosure=(app,lang)=>petitesFormApps.has(app.path)?`<p>${esc((app.path==='petits-pots'?petitsPotsFormPrivacy:petitesFormPrivacy)[lang])}</p><p><a href="https://www.cloudflare.com/privacypolicy/">${lang==='fr'?'Politique de confidentialité de Cloudflare':'Cloudflare privacy policy'}</a> · <a href="https://www.cloudflare.com/turnstile-privacy-policy/">${lang==='fr'?'Confidentialité de Turnstile':'Turnstile privacy policy'}</a></p>`:'';
 const guideLink=guide=>`/${guide.path.replace(/index\.html$/,'')}`;
 function languages(lang, enHref, frHref, withHreflang=true){
  const t=studioCopy[lang];
@@ -59,6 +60,12 @@ function head({lang,title,description,url,enHref,frHref,social,socialWidth,socia
 <title>${esc(title)}</title><meta name="description" content="${esc(description)}">${extra}<meta name="theme-color" content="#121712"><meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="${url}"><link rel="alternate" hreflang="en" href="${enHref}"><link rel="alternate" hreflang="fr" href="${frHref}"><link rel="alternate" hreflang="x-default" href="${enHref}"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/site.webmanifest"><link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="${asset('styles.css')}">
 <meta property="og:type" content="website"><meta property="og:locale" content="${lang==='fr'?'fr_FR':'en_US'}"><meta property="og:locale:alternate" content="${lang==='fr'?'en_US':'fr_FR'}"><meta property="og:site_name" content="bnjdpn"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${social}"><meta property="og:image:width" content="${socialWidth}"><meta property="og:image:height" content="${socialHeight}"><meta property="og:image:alt" content="${esc(socialAlt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${social}">`;
+}
+for (const lang of ['en','fr']) {
+ const t=contactCopy[lang], en=origin+'/contact/', fr=origin+'/fr/contact/';
+ const mailHeader=header(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">E-mail</a>').replace(/<noscript>[\s\S]*?<\/noscript>/g,'');
+ const mailFooter=footer(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">E-mail</a>');
+ outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:t.title+'. Benjamin Dupin',description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'})}<link rel="stylesheet" href="${asset('assets/contact.css')}"><script src="${asset('assets/contact.js')}" defer></script></head><body id="top">${mailHeader}${contactBody(lang,esc)}${mailFooter}</body></html>\n`);
 }
 const guideCards=lang=>guides.filter(g=>g.lang===lang).map(g=>`<li><a href="${guideLink(g)}">${esc(g.heading)}</a></li>`).join('');
 for(const lang of ['en','fr']){
@@ -151,7 +158,7 @@ outputs.set('404.html',`<!doctype html>
 <main id="main" class="missing" tabindex="-1"><h1>Page not found.</h1><p>This address does not match a page on the site.</p><p><a href="/#products">Apps in English</a></p><section lang="fr"><h2>Page introuvable.</h2><p>Cette adresse ne correspond à aucune page du site.</p><p><a href="/fr/#products">Applications en français</a></p></section></main>
 <footer class="footer"><a class="footer-wordmark" href="/">Benjamin Dupin</a>${contactButton('Contact')}<nav class="languages" aria-label="Languages"><a href="/fr/" lang="fr" hreflang="fr">FR</a><a href="/" lang="en" hreflang="en" aria-current="page">EN</a></nav><p>© 2026 Benjamin Dupin</p><p>${studioCopy.en.noTracking}</p></footer></body></html>
 `);
-const pageLocs=[];
+const pageLocs=[{loc:origin+'/contact/',en:origin+'/contact/',fr:origin+'/fr/contact/'},{loc:origin+'/fr/contact/',en:origin+'/contact/',fr:origin+'/fr/contact/'}];
 for(const lang of ['en','fr']){
  pageLocs.push({loc:origin+homeFor(lang), en:origin+'/', fr:origin+'/fr/'});
 }
@@ -181,6 +188,11 @@ outputs.set('sitemap-pages.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset
 }).join('\n')}\n</urlset>\n`);
 outputs.set('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>${origin}/sitemap-pages.xml</loc></sitemap>\n${apps.map(app=>`<sitemap><loc>${origin}/${app.path}/sitemap.xml</loc></sitemap>`).join('\n')}\n</sitemapindex>\n`);
 for(const [path,html] of outputs){
+ if (/^(fr\/)?apps\/petits-pots\//.test(path)) {
+  const lang=path.startsWith('fr/')?'fr':'en';
+  const contactPath=`${lang==='fr'?'/fr':''}/contact/?app=petits-pots`;
+  outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>([^<]*)<\/button>/g,`<a class="contact" href="${contactPath}">$1</a>`).replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'').replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1${petitesDisclosure({path:'petits-pots'},lang)}`));
+ }
  if([...petitesMailApps].some(slug=>new RegExp(`^(fr/)?apps/${slug}/`).test(path))){
   const mailLang=path.startsWith('fr/')?'fr':'en';
   outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">petites@bnjdpn.com</a>').replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'').replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1<p>${esc(petitesMailPrivacy[mailLang])}</p>`));
