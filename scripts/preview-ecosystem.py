@@ -11,7 +11,7 @@ from urllib.parse import unquote, urljoin, urlsplit
 
 ORIGIN = 'https://bnjdpn.github.io'
 PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml',
-          'site.webmanifest', 'styles.css', 'assets', 'fr']
+          'site.webmanifest', 'styles.css', 'assets', 'fr', 'apps', 'guides', 'contact']
 
 class Page(HTMLParser):
     def __init__(self, text):
@@ -35,6 +35,7 @@ class Page(HTMLParser):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['check', 'serve'])
+    parser.add_argument('--artifact', type=Path, help='Check/serve one assembled public artifact instead of separate repositories')
     parser.add_argument('--apps', type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument('--echappee', type=Path)
     parser.add_argument('--port', type=int, default=4174)
@@ -45,7 +46,10 @@ def main():
     catalogue = json.loads((portfolio / 'content/catalog.json').read_text())
     roots = {row['path']: (args.echappee or args.apps.parent / 'Echappee') / '_pages'
              if row['path'] == 'Echappee' else args.apps / row['path'] / ('_site' if args.staged else 'docs') for row in catalogue}
-    if args.staged: portfolio = portfolio / '_site'
+    if args.artifact:
+        portfolio = args.artifact.resolve()
+        roots = {row['path']: portfolio / row['path'] for row in catalogue}
+    elif args.staged: portfolio = portfolio / '_site'
     if not (portfolio / 'index.html').is_file():
         parser.error(f'Missing portfolio output: {portfolio}')
 
@@ -75,7 +79,7 @@ def main():
 
     errors, checked, counts, pages = [], 0, {}, {}
     files = [(portfolio / f, '/' + f) for f in PUBLIC if (portfolio / f).is_file()]
-    for folder in ['assets', 'fr']:
+    for folder in ['assets', 'fr', 'apps', 'guides', 'contact']:
         files += [(p, '/' + p.relative_to(portfolio).as_posix()) for p in (portfolio / folder).rglob('*') if p.is_file()]
     for slug, root in roots.items():
         if not root.is_dir(): errors.append({'site': slug, 'error': 'Missing generated root', 'path': str(root)}); continue
@@ -91,7 +95,7 @@ def main():
             if path.name == '404.html' and 'noindex' not in page.meta.get('robots', ''):
                 errors.append({'from': route, 'error': '404 missing noindex'})
             canonical = [x.get('href', '') for x in page.links if x.get('rel') == 'canonical']
-            if canonical and any(not x.startswith(ORIGIN + '/') for x in canonical):
+            if canonical and any(not x.startswith((ORIGIN + '/', 'https://bnjdpn.com/')) for x in canonical):
                 errors.append({'from': route, 'error': 'Unexpected canonical', 'value': canonical})
         elif path.suffix == '.css':
             refs = re.findall(r'url\([\s\"\']*([^\)\"\']+)', path.read_text())
@@ -103,7 +107,7 @@ def main():
         for ref in refs:
             if not ref or ref.startswith(('data:', 'mailto:', 'tel:', 'javascript:')): continue
             url = urljoin(ORIGIN + route, ref); parsed = urlsplit(url)
-            if parsed.netloc != 'bnjdpn.github.io': continue
+            if parsed.netloc not in ['bnjdpn.github.io', 'bnjdpn.com', 'www.bnjdpn.com']: continue
             target = local(url); checked += 1
             if target is None or not target.is_file():
                 errors.append({'from': route, 'ref': ref, 'error': 'Missing local target'}); continue

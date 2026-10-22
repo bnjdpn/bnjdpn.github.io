@@ -2,3 +2,5 @@
 _site/
 output/
 .playwright-cli/
+.local/
+scripts/__pycache__/

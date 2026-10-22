@@ -1,9 +1,9 @@
 # Carte des sites
 
 Inventaire vérifié sur les sorties locales de la refonte du 14 septembre 2026. Chaque dépôt reste
-indépendant. La carte locale `.agents/skills/site-release-sync/references/site-map.md`
-fait autorité pour ses captures, validations et étapes de publication ; les sources
-ci-dessous font autorité pour le contenu. Les nombres incluent les redirections
+indépendant. Les scripts et workflows de chaque dépôt définissent ses validations et son
+artefact public ; les sources ci-dessous font autorité pour le contenu.
+L’ancien skill local `site-release-sync` n’est plus présent dans ce dépôt. Les nombres incluent les redirections
 et pages d’erreur existantes, sans compter deux fois une ancre d’aide/FAQ.
 
 | Produit | Dépôt | Source éditable → sortie | Langues produit | Routes HTML | URL |

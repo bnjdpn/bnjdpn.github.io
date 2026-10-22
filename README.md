@@ -67,11 +67,16 @@ pushing to `main` can therefore publish through that existing path. This
 repository contains only app catalogue material; private résumés, email,
 credentials and source documents do not belong here.
 
+A local Cloudflare candidate can assemble these independent sites into one public
+artifact while preserving their prefixes and languages. See the
+[preparation contract](docs/cloudflare-preview.md). This does not deploy or change
+the existing GitHub Pages workflow.
+
 ## Product sites and release maintenance
 
 [Site inventory](docs/site-inventory.md) maps each independent product to its
 sources, languages, captures, checks and publishing procedure. The portable
-[site-release-sync skill](.agents/skills/site-release-sync/SKILL.md) accompanies
+release checks in each product repository accompany
 changes that may affect public accuracy; new availability claims require actual
 public release evidence for each platform. A source change without public impact
 can be documented as such without an artificial website edit.
