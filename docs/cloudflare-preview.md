@@ -72,3 +72,57 @@ La PR #12 n’est pas reprise : ses redirections génériques supprimeraient des
 langues, des ancres de support et les sitemaps enfants. Les fichiers originaux
 restent présents ici. GitHub Pages continue son fonctionnement existant ; pousser
 sur `main` peut publier et reste hors du périmètre de cette préparation locale.
+
+## Contact local : réutilisation de la chaîne Cloudflare existante
+
+`functions/api/contact.js` reprend uniquement l’API de la branche
+`feat/506-cloudflare`, avec ses protections et le binding `EMAIL_SERVICE` vers
+le Worker existant `bnjdpn-contact-email`. Aucun build ni fichier `_redirects`
+de cette branche n’est repris. Les stages conservés ci-dessus ne sont pas modifiés.
+Les fonctions Pages et `email-worker/` sont des sources serveur, jamais des fichiers
+à copier dans l’arbre public statique. Leur déploiement reste séparé et non effectué.
+
+Le contrat est `POST /api/contact`, de même origine, en JSON, multipart ou
+URL-encoded, limité à 32 Kio sur le flux réellement lu. Les champs sont `app`,
+`email`, `message` (2–5000 caractères), `_gotcha` et `cf-turnstile-response`.
+Les 19 identités existantes sont acceptées par chemin ou nom d’app normalisé.
+Le support historique Nova Station Pinball est accepté séparément, sans ajout
+au catalogue commercial.
+`category` est bornée à 80 caractères ; `app_version`, `os_version`, `platform`,
+`device_model`, `ui_language` et `trainer_model` à 64, sans caractères de contrôle.
+Le pays fourni par Cloudflare et la page référente sans query ni fragment sont
+ajoutés côté serveur ; un champ client ne peut pas remplacer ces deux valeurs.
+`_subject`, `_next` et les destinataires fournis par un client ne commandent
+jamais un en-tête, une destination ou une redirection. Turnstile doit confirmer
+le hostname de la requête et l’action `contact` ; le honeypot n’envoie aucun mail.
+
+Avec `Accept: application/json`, succès signifie HTTP 200 avec `{ "ok": true }`,
+et les refus sont des statuts 4xx/5xx avec `{ "ok": false, "error": "…" }`.
+Les erreurs ne redirigent pas un `fetch` vers une page HTML 200. Le Worker email
+accuse l’acceptation avec un HTTP 204 vide : aucun `messageId` n’est inventé ni
+attendu. Cette acceptation ne prouve pas une réception dans la boîte finale.
+Le contact central reste limité à ses deux apps actuelles ; l’API ne réécrit pas
+les formulaires des sites indépendants. Ils forment un lot distinct.
+
+`GET /api/contact/config` ne renvoie que la clé publique Turnstile, sans cache.
+Le navigateur utilise cette clé et l’action `contact`, renouvelle les tokens
+et conserve le texte en cas d’erreur. Les bindings serveur sont
+`TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` et `EMAIL_SERVICE` côté Pages ;
+`CONTACT_EMAIL`, `CONTACT_FROM` et `CONTACT_DESTINATION_ADDRESS` côté Worker.
+La destination de l’enveloppe et la restriction du binding email restent
+alignées dans `email-worker/wrangler.toml`, sur la boîte Formulaires décidée
+pour le service existant. Aucun destinataire ou secret n’est renvoyé au client.
+Root doit encore vérifier la destination autorisée et les bindings de production.
+Les valeurs masquées par l’API de configuration ne prouvent pas leur absence.
+
+Tests locaux sans Cloudflare, Turnstile réel ni envoi email :
+
+```sh
+node scripts/contact-api-test.mjs
+node scripts/check-contact.mjs
+```
+
+Ces contrôles utilisent uniquement des doublures de requêtes, service binding
+et email. Aucun résultat local ne constitue une preuve de réception ou de réponse
+Grok. Le projet Pages existant, ses domaines et les routes `/_asc-hooks/*` et
+`/_funnel/*` restent sous vérification séparée avant toute bascule.

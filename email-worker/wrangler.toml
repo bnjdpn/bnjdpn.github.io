@@ -1,0 +1,14 @@
+# Existing service only; this file does not create or deploy it.
+name = "bnjdpn-contact-email"
+main = "src/index.js"
+compatibility_date = "2026-10-19"
+workers_dev = false
+preview_urls = false
+
+[[send_email]]
+name = "CONTACT_EMAIL"
+destination_address = "bnj+formulaires@mail.grokbot.com"
+
+[vars]
+CONTACT_FROM = "contact@bnjdpn.com"
+CONTACT_DESTINATION_ADDRESS = "bnj+formulaires@mail.grokbot.com"

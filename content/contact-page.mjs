@@ -25,7 +25,7 @@ export const contactCopy = {
 export function contactBody(lang, esc) {
   const t = contactCopy[lang];
   return `<main id="main" tabindex="-1"><article class="plain contact-page"><h1 id="contact-title" data-template="${esc(t.title)}">${t.title.replace('{app}', contactApps['petits-pots'])}</h1><p>${t.intro}</p>
-<form id="support-form" action="https://petites-forms.bnjdpn.com/contact" method="post" data-messages="${esc(JSON.stringify(t.messages))}" data-apps="${esc(JSON.stringify(contactApps))}">
+<form id="support-form" action="/api/contact" method="post" data-messages="${esc(JSON.stringify(t.messages))}" data-apps="${esc(JSON.stringify(contactApps))}">
 <input type="hidden" name="app" value="petits-pots">
 <label for="email">${t.email}</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
 <label for="category">${t.category}</label><select id="category" name="category">${t.categories.map(([value,label])=>`<option value="${value}">${label}</option>`).join('')}</select>

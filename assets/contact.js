@@ -69,10 +69,12 @@
   title.textContent = title.dataset.template.replace('{app}', apps[app]);
   document.title = title.textContent + '. Benjamin Dupin';
   document.getElementById('contact-privacy').href = (document.documentElement.lang === 'fr' ? '/fr' : '') + '/apps/' + app + '/privacy/';
+  let sitekey;
   window.supportTurnstileReady = function () {
+    if (!sitekey) { verificationLost('unavailable'); return; }
     clearTimeout(loadTimeout);
     widget = window.turnstile.render('#spam-protection', {
-      sitekey: '0x4AAAAAAFezChpqNmpql-I3', language: document.documentElement.lang, size: 'flexible',
+      sitekey, action: 'contact', language: document.documentElement.lang, size: 'flexible',
       callback: value => { token = value; button.disabled = busy; if (!busy && !settledStatus) setStatus('ready'); },
       'expired-callback': () => verificationLost('verify'),
       'error-callback': () => verificationLost('unavailable'),
@@ -80,9 +82,15 @@
     });
   };
   const loadTimeout = setTimeout(() => verificationLost('unavailable'), 15000);
-  const script = document.createElement('script');
-  script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=supportTurnstileReady&render=explicit';
-  script.async = true;
-  script.onerror = () => { clearTimeout(loadTimeout); verificationLost('unavailable'); };
-  document.head.appendChild(script);
+  fetch('/api/contact/config', {headers: {Accept: 'application/json'}, credentials: 'omit'})
+    .then(response => { if (!response.ok) throw new Error('configuration'); return response.json(); })
+    .then(config => {
+      if (typeof config.sitekey !== 'string' || !config.sitekey) throw new Error('configuration');
+      sitekey = config.sitekey;
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=supportTurnstileReady&render=explicit';
+      script.async = true;
+      script.onerror = () => { clearTimeout(loadTimeout); verificationLost('unavailable'); };
+      document.head.appendChild(script);
+    }).catch(() => { clearTimeout(loadTimeout); verificationLost('unavailable'); });
 }());
