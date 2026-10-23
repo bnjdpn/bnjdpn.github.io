@@ -99,6 +99,8 @@ def assemble(spec, output):
             if path.suffix in ['.html', '.js', '.txt', '.xml', '.css', '.json']:
                 if re.search(rb'-----BEGIN [A-Z ]*PRIVATE KEY-----|\bgh[pousr]_[A-Za-z0-9]{20,}|\bxox[baprs]-[A-Za-z0-9-]{10,}', data):
                     raise ValueError(f'Credential pattern in output: {path}')
+            if path.suffix in ['.html', '.js', '.txt', '.xml', '.css', '.json', '.webmanifest'] and re.search(rb'bnjdpn\.github\.io|formspree', data, re.I):
+                raise ValueError(f'Obsolete hosting/contact dependency in public output: {path}')
             if path.suffix == '.html':
                 hit = re.search(rb'<html\b[^>]*\blang=[\"\x27]([^\"\x27]+)', data, re.I)
                 if hit: languages.add(hit[1].decode())

@@ -3,8 +3,8 @@
 export const productCopy = {
   LoadSense: {
     category:'training',
-    privacy:{en:'https://bnjdpn.github.io/LoadSense/en-US/privacy.html', fr:'https://bnjdpn.github.io/LoadSense/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/LoadSense/#contact', fr:'https://bnjdpn.github.io/LoadSense/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/LoadSense/en-US/privacy.html', fr:'https://bnjdpn.com/LoadSense/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/LoadSense/#contact', fr:'https://bnjdpn.com/LoadSense/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad, Apple Watch',
       summary:'Shows recovery, HRV and sleep beside Health data, and marks missing or old measurements.',
@@ -26,8 +26,8 @@ export const productCopy = {
   },
   TempoReps: {
     category:'training',
-    privacy:{en:'https://bnjdpn.github.io/TempoReps/en-US/privacy.html', fr:'https://bnjdpn.github.io/TempoReps/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/TempoReps/#contact', fr:'https://bnjdpn.github.io/TempoReps/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/TempoReps/en-US/privacy.html', fr:'https://bnjdpn.com/TempoReps/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/TempoReps/#contact', fr:'https://bnjdpn.com/TempoReps/fr-FR/#contact'},
     en:{
       devices:'iPhone, Apple Watch',
       summary:'Times intervals, repetition tempo and circuits, including on Apple Watch.',
@@ -47,8 +47,8 @@ export const productCopy = {
   },
   PRVault: {
     category:'training',
-    privacy:{en:'https://bnjdpn.github.io/PRVault/en-US/privacy.html', fr:'https://bnjdpn.github.io/PRVault/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/PRVault/#contact', fr:'https://bnjdpn.github.io/PRVault/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/PRVault/en-US/privacy.html', fr:'https://bnjdpn.com/PRVault/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/PRVault/#contact', fr:'https://bnjdpn.com/PRVault/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
       summary:'Logs lifting, WOD and cardio records, and labels an estimated one-rep max as an estimate.',
@@ -70,8 +70,8 @@ export const productCopy = {
   },
   GrooveLog: {
     category:'training',
-    privacy:{en:'https://bnjdpn.github.io/GrooveLog/en-US/privacy.html', fr:'https://bnjdpn.github.io/GrooveLog/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/GrooveLog/#contact', fr:'https://bnjdpn.github.io/GrooveLog/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/GrooveLog/en-US/privacy.html', fr:'https://bnjdpn.com/GrooveLog/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/GrooveLog/#contact', fr:'https://bnjdpn.com/GrooveLog/fr-FR/#contact'},
     en:{
       devices:'iPhone',
       summary:'Logs short practice sets through the day and shows the next Grease the Groove set.',
@@ -93,8 +93,8 @@ export const productCopy = {
   },
   FastZen: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.github.io/FastZen/en-US/privacy.html', fr:'https://bnjdpn.github.io/FastZen/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/FastZen/#contact', fr:'https://bnjdpn.github.io/FastZen/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/FastZen/en-US/privacy.html', fr:'https://bnjdpn.com/FastZen/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/FastZen/#contact', fr:'https://bnjdpn.com/FastZen/fr-FR/#contact'},
     en:{
       devices:'iPhone',
       summary:'Times a fast and lays out a week, including rest days.',
@@ -116,8 +116,8 @@ export const productCopy = {
   },
   ColdLoad: {
     category:'training',
-    privacy:{en:'https://bnjdpn.github.io/ColdLoad/en-US/privacy.html', fr:'https://bnjdpn.github.io/ColdLoad/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/ColdLoad/#contact', fr:'https://bnjdpn.github.io/ColdLoad/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/ColdLoad/en-US/privacy.html', fr:'https://bnjdpn.com/ColdLoad/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/ColdLoad/#contact', fr:'https://bnjdpn.com/ColdLoad/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
       summary:'Calculates the plates for each side of a barbell, in kg or lb.',
@@ -139,8 +139,8 @@ export const productCopy = {
   },
   MoveAtlas: {
     category:'training',
-    privacy:{en:'https://bnjdpn.github.io/MoveAtlas/en-US/privacy.html', fr:'https://bnjdpn.github.io/MoveAtlas/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/MoveAtlas/#contact', fr:'https://bnjdpn.github.io/MoveAtlas/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/MoveAtlas/en-US/privacy.html', fr:'https://bnjdpn.com/MoveAtlas/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/MoveAtlas/#contact', fr:'https://bnjdpn.com/MoveAtlas/fr-FR/#contact'},
     en:{
       devices:'iPhone',
       summary:'Searches an offline atlas of 1,324 exercises and stores machine settings for a gym.',
@@ -162,8 +162,8 @@ export const productCopy = {
   },
   NeatShift: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.github.io/NeatShift/en-US/privacy.html', fr:'https://bnjdpn.github.io/NeatShift/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/NeatShift/#contact', fr:'https://bnjdpn.github.io/NeatShift/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/NeatShift/en-US/privacy.html', fr:'https://bnjdpn.com/NeatShift/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/NeatShift/#contact', fr:'https://bnjdpn.com/NeatShift/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
       summary:'Schedules household chores by room and person, and shows what is overdue.',
@@ -185,8 +185,8 @@ export const productCopy = {
   },
   BrewMeter: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.github.io/BrewMeter/en-US/privacy.html', fr:'https://bnjdpn.github.io/BrewMeter/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/BrewMeter/#contact', fr:'https://bnjdpn.github.io/BrewMeter/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/BrewMeter/en-US/privacy.html', fr:'https://bnjdpn.com/BrewMeter/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/BrewMeter/#contact', fr:'https://bnjdpn.com/BrewMeter/fr-FR/#contact'},
     en:{
       devices:'iPhone',
       summary:'Logs drinks and separates recorded caffeine from an estimate of what remains.',
@@ -208,8 +208,8 @@ export const productCopy = {
   },
   NoBuyCart: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.github.io/NoBuyCart/en-US/privacy.html', fr:'https://bnjdpn.github.io/NoBuyCart/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/NoBuyCart/#contact', fr:'https://bnjdpn.github.io/NoBuyCart/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/NoBuyCart/en-US/privacy.html', fr:'https://bnjdpn.com/NoBuyCart/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/NoBuyCart/#contact', fr:'https://bnjdpn.com/NoBuyCart/fr-FR/#contact'},
     en:{
       devices:'iPhone',
       summary:'Saves wishes with a note and a later decision, apart from a fictional shop that does not check out.',
@@ -231,8 +231,8 @@ export const productCopy = {
   },
   PasDuJour: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.github.io/PasDuJour/privacy.html', fr:'https://bnjdpn.github.io/PasDuJour/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/PasDuJour/#contact', fr:'https://bnjdpn.github.io/PasDuJour/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/PasDuJour/privacy.html', fr:'https://bnjdpn.com/PasDuJour/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/PasDuJour/#contact', fr:'https://bnjdpn.com/PasDuJour/fr-FR/#contact'},
     en:{
       devices:'Apple Watch',
       summary:'Shows today\'s steps and a goal on an Apple Watch face.',
@@ -254,8 +254,8 @@ export const productCopy = {
   },
   VesperDrift: {
     category:'play',
-    privacy:{en:'https://bnjdpn.github.io/VesperDrift/privacy.html', fr:'https://bnjdpn.github.io/VesperDrift/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/VesperDrift/#contact', fr:'https://bnjdpn.github.io/VesperDrift/fr-FR/#contact'},
+    privacy:{en:'https://bnjdpn.com/VesperDrift/privacy.html', fr:'https://bnjdpn.com/VesperDrift/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/VesperDrift/#contact', fr:'https://bnjdpn.com/VesperDrift/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
       summary:'Flies a ship with one finger while it fires, through expeditions and an endless run.',
@@ -277,7 +277,7 @@ export const productCopy = {
   },
   'petites-gouttes': {
     category:'family',
-    privacy:{en:'https://bnjdpn.github.io/petites-gouttes/en-US/privacy.html', fr:'https://bnjdpn.github.io/petites-gouttes/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/petites-gouttes/en-US/privacy.html', fr:'https://bnjdpn.com/petites-gouttes/fr-FR/privacy.html'},
     productSupport:{en:'https://bnjdpn.com/petites-gouttes/#contact', fr:'https://bnjdpn.com/petites-gouttes/#contact'},
     en:{
       devices:'iPhone',
@@ -300,7 +300,7 @@ export const productCopy = {
   },
   'petites-bouchees': {
     category:'family',
-    privacy:{en:'https://bnjdpn.github.io/petites-bouchees/en-US/privacy.html', fr:'https://bnjdpn.github.io/petites-bouchees/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/petites-bouchees/en-US/privacy.html', fr:'https://bnjdpn.com/petites-bouchees/fr-FR/privacy.html'},
     productSupport:{en:'https://bnjdpn.com/petites-bouchees/#contact', fr:'https://bnjdpn.com/petites-bouchees/#contact'},
     en:{
       devices:'iPhone',
@@ -323,7 +323,7 @@ export const productCopy = {
   },
   'petites-nuits': {
     category:'family',
-    privacy:{en:'https://bnjdpn.github.io/petites-nuits/en-US/privacy.html', fr:'https://bnjdpn.github.io/petites-nuits/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/petites-nuits/en-US/privacy.html', fr:'https://bnjdpn.com/petites-nuits/fr-FR/privacy.html'},
     productSupport:{en:'https://bnjdpn.com/petites-nuits/#contact', fr:'https://bnjdpn.com/petites-nuits/#contact'},
     en:{
       devices:'iPhone',
@@ -346,7 +346,7 @@ export const productCopy = {
   },
   'petites-dents': {
     category:'family',
-    privacy:{en:'https://bnjdpn.github.io/petites-dents/privacy.html', fr:'https://bnjdpn.github.io/petites-dents/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/petites-dents/privacy.html', fr:'https://bnjdpn.com/petites-dents/privacy.html'},
     productSupport:{en:'https://bnjdpn.com/petites-dents/#contact', fr:'https://bnjdpn.com/petites-dents/#contact'},
     en:{
       devices:'iPhone',
@@ -376,18 +376,18 @@ export const productCopy = {
         "Bluetooth scanning finds your sensors. Échappée does not record your location. Android 11 and earlier require location permission for this scan.",
         "Google Play handles the one-time purchase and restoration under its own terms. Échappée receives a signed purchase receipt. The receipt and the two-ride trial counter are encrypted locally with an Android Keystore key. Android backups and game exports exclude them. Uninstalling removes local data and the trial counter. Your purchase remains associated with your Google Play account.",
         "You can export activities and send the files to another service yourself. Échappée does not transmit them automatically.",
-        "For questions or requests about your data, use the <a href=\"https://bnjdpn.github.io/Echappee/support.html\">support form</a>, choosing “Privacy”. If you use this form, Formspree processes your reply address and message to handle your request. Messages are kept while handling your request, then deleted. You can request access, correction or deletion through the same form. The game does not send your activities to this service."
+        "For questions or requests about your data, use the <a href=\"https://bnjdpn.com/Echappee/support.html\">support form</a>, choosing “Privacy”. If you use this form, Cloudflare and Grok Bot process your reply address and message to handle your request. Messages are kept while handling your request, then deleted. You can request access, correction or deletion through the same form. The game does not send your activities to this service."
       ],
       fr:[
         "Éditeur : Benjamin Dupin. Application : Échappée Android (<code>com.bnjdpn.echappee</code>).",
         "Échappée fonctionne sans compte Échappée, serveur de jeu, publicité ni télémétrie. Vos réglages, séances, activités et mesures de capteurs restent sur votre appareil. Ces données servent à préparer et enregistrer vos sorties et à afficher vos mesures sportives. Elles restent stockées localement jusqu'à leur suppression ou à la désinstallation. Aucun accès distant à ces données n'est prévu. Le scan Bluetooth sert à trouver vos capteurs. Échappée ne relève pas votre position. Android 11 et les versions antérieures demandent une autorisation de localisation pour ce scan.",
         "Google Play traite l'achat unique et sa restauration selon ses propres règles. Échappée reçoit un reçu d'achat signé. Le reçu et le compteur des deux sorties d'essai sont chiffrés localement avec une clé Android Keystore. Ils ne sont pas inclus dans les sauvegardes Android ou les exports du jeu. La désinstallation supprime les données locales et le compteur d'essai. Votre achat reste associé à votre compte Google Play.",
         "Vous pouvez exporter vos activités et les transmettre vous-même à un autre service. Échappée ne transmet pas ces fichiers automatiquement.",
-        "Pour toute question ou demande relative à vos données, utilisez le <a href=\"https://bnjdpn.github.io/Echappee/fr-FR/support.html\">formulaire d'assistance</a>, catégorie « Confidentialité ». Si vous utilisez ce formulaire, votre adresse de réponse et votre message transitent par Formspree pour traiter votre demande. Ils sont conservés le temps de vous répondre, puis supprimés. Vous pouvez demander l'accès, la rectification ou l'effacement de ces échanges par le même formulaire. Le jeu n'envoie pas vos activités à ce service."
+        "Pour toute question ou demande relative à vos données, utilisez le <a href=\"https://bnjdpn.com/Echappee/fr-FR/support.html\">formulaire d'assistance</a>, catégorie « Confidentialité ». Si vous utilisez ce formulaire, votre adresse de réponse et votre message transitent par Cloudflare et Grok Bot pour traiter votre demande. Ils sont conservés le temps de vous répondre, puis supprimés. Vous pouvez demander l'accès, la rectification ou l'effacement de ces échanges par le même formulaire. Le jeu n'envoie pas vos activités à ce service."
       ]
     },
-    privacy:{en:'https://bnjdpn.github.io/Echappee/privacy.html', fr:'https://bnjdpn.github.io/Echappee/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.github.io/Echappee/support.html', fr:'https://bnjdpn.github.io/Echappee/fr-FR/support.html'},
+    privacy:{en:'https://bnjdpn.com/Echappee/privacy.html', fr:'https://bnjdpn.com/Echappee/fr-FR/privacy.html'},
+    productSupport:{en:'https://bnjdpn.com/Echappee/support.html', fr:'https://bnjdpn.com/Echappee/fr-FR/support.html'},
     en:{
       devices:'iPhone · iPad · Apple silicon Mac',
       summary:'Generates an indoor cycling road for a connected FTMS trainer, or a ride with no measured effort.',
