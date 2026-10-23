@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Local preview and read-only cross-site reference checks for the explicit catalogue."""
 import argparse
+import hashlib
 import http.server
 import json
 import re
@@ -12,6 +13,9 @@ from urllib.parse import unquote, urljoin, urlsplit
 ORIGIN = 'https://bnjdpn.github.io'
 PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml',
           'site.webmanifest', 'styles.css', 'assets', 'fr', 'apps', 'guides', 'contact']
+LEGACY = {'RealmBox', 'TaskLane', 'NovaStationPinball', 'onigiri-exit-calculator', 'poop-price-calculator'}
+SERVER_INPUTS = {'functions/api/contact.js', 'functions/api/contact/config.js',
+                 'content/catalog.json', 'content/app-documents.mjs', 'wrangler.toml'}
 
 class Page(HTMLParser):
     def __init__(self, text):
@@ -27,6 +31,7 @@ class Page(HTMLParser):
         if tag == 'link': self.links.append(a)
         for key in ['href', 'src', 'poster']:
             if a.get(key): self.refs.append(a[key])
+        if tag == 'form' and a.get('action'): self.refs.append(a['action'])
         if a.get('srcset'):
             self.refs.extend(x.strip().split()[0] for x in a['srcset'].split(',') if x.strip())
         if tag == 'meta' and a.get('property', a.get('name')) in ['og:image', 'twitter:image']:
@@ -46,10 +51,37 @@ def main():
     catalogue = json.loads((portfolio / 'content/catalog.json').read_text())
     roots = {row['path']: (args.echappee or args.apps.parent / 'Echappee') / '_pages'
              if row['path'] == 'Echappee' else args.apps / row['path'] / ('_site' if args.staged else 'docs') for row in catalogue}
+    historical, server_routes, setup_errors = [], set(), []
     if args.artifact:
         portfolio = args.artifact.resolve()
         roots = {row['path']: portfolio / row['path'] for row in catalogue}
+        manifest_path = portfolio.parent / 'manifest.json'
+        if manifest_path.is_file():
+            manifest = json.loads(manifest_path.read_text())
+            historical = manifest.get('historical_prefixes', [])
+            if historical and (set(historical) != LEGACY or len(historical) != len(LEGACY)):
+                parser.error('Artifact must declare the exact five historical prefixes')
+            roots.update({name: portfolio / name for name in historical})
+            server = manifest.get('server_inputs', {})
+            if historical:
+                if set(server) != SERVER_INPUTS:
+                    setup_errors.append({'error': 'Incomplete Pages server inputs'})
+                for name in SERVER_INPUTS:
+                    path = portfolio.parent / name
+                    if (not path.is_file() or path.is_symlink() or
+                        hashlib.sha256(path.read_bytes()).hexdigest() != server.get(name, {}).get('sha256')):
+                        setup_errors.append({'error': 'Missing or changed Pages server input', 'path': name})
+                routes_file = portfolio / '_routes.json'
+                expected = {'version': 1, 'include': ['/api/contact', '/api/contact/config'],
+                            'exclude': ['/_asc-hooks/*', '/_funnel/*']}
+                if (not routes_file.is_file() or json.loads(routes_file.read_text()) != expected or
+                    hashlib.sha256(routes_file.read_bytes()).hexdigest() != manifest.get('routing_sha256')):
+                    setup_errors.append({'error': 'Pages function routing changed or missing'})
+                else: server_routes = set(expected['include'])
     elif args.staged: portfolio = portfolio / '_site'
+    else:
+        if all((portfolio / name).is_file() for name in SERVER_INPUTS - {'wrangler.toml'}):
+            server_routes = {'/api/contact', '/api/contact/config'}
     if not (portfolio / 'index.html').is_file():
         parser.error(f'Missing portfolio output: {portfolio}')
 
@@ -77,7 +109,7 @@ def main():
         finally: server.server_close()
         return
 
-    errors, checked, counts, pages = [], 0, {}, {}
+    errors, checked, counts, pages = setup_errors, 0, {}, {}
     files = [(portfolio / f, '/' + f) for f in PUBLIC if (portfolio / f).is_file()]
     for folder in ['assets', 'fr', 'apps', 'guides', 'contact']:
         files += [(p, '/' + p.relative_to(portfolio).as_posix()) for p in (portfolio / folder).rglob('*') if p.is_file()]
@@ -108,6 +140,9 @@ def main():
             if not ref or ref.startswith(('data:', 'mailto:', 'tel:', 'javascript:')): continue
             url = urljoin(ORIGIN + route, ref); parsed = urlsplit(url)
             if parsed.netloc not in ['bnjdpn.github.io', 'bnjdpn.com', 'www.bnjdpn.com']: continue
+            if parsed.path in server_routes:
+                checked += 1
+                continue
             target = local(url); checked += 1
             if target is None or not target.is_file():
                 errors.append({'from': route, 'ref': ref, 'error': 'Missing local target'}); continue
@@ -116,7 +151,8 @@ def main():
                 if unquote(parsed.fragment) not in target_page.ids:
                     errors.append({'from': route, 'ref': ref, 'error': 'Missing anchor'})
     report = {'scope': 'Local generated HTML, CSS URLs, sitemap links, manifest assets, metadata targets and cross-site anchors. External services are excluded.',
-              'htmlRoutes': counts, 'references': checked, 'errors': errors}
+              'htmlRoutes': counts, 'historicalPrefixes': historical,
+              'serverRoutes': sorted(server_routes), 'references': checked, 'errors': errors}
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False, indent=2))

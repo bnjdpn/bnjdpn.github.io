@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Behaviour checks for candidate allowlists and the assembled-site checker."""
 import importlib.util
+import hashlib
+import shutil
 import json
 import subprocess
 import tempfile
@@ -32,22 +34,35 @@ with tempfile.TemporaryDirectory() as temp:
     stage.mkdir(parents=True)
     (stage / 'index.html').write_text('<html lang="fr"></html>')
     (stage / 'internal.md').write_text('Excluded internal note')
+    for name in assembler.SERVER_INPUTS:
+        if name == 'content/catalog.json': continue
+        target = fixture / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / name, target)
+    legacy = []
+    for name in sorted(assembler.LEGACY):
+        root = fixture / name
+        root.mkdir()
+        output = fixture / '.local/legacy' / name
+        output.mkdir(parents=True)
+        (output / 'index.html').write_text('<html lang="en"></html>')
+        legacy.append({'site': name, 'repo': str(root), 'stage': str(output), 'sha': 'a' * 40, 'kind': 'local-generator-stage'})
     original = assembler.ROOT, assembler.git, assembler.ecosystem.PUBLIC
-    assembler.ROOT, assembler.git, assembler.ecosystem.PUBLIC = fixture, lambda *args: 'sha', ['index.html']
+    assembler.ROOT, assembler.git, assembler.ecosystem.PUBLIC = fixture, lambda *args: 'a' * 40 if 'rev-parse' in args else '', ['index.html']
     try:
         source = {'site': 'Example', 'repo': str(repo), 'stage': str(stage),
-                  'sha': 'sha', 'kind': 'local-generated-docs-not-staged'}
+                  'sha': 'a' * 40, 'kind': 'local-generated-docs-not-staged'}
         for index, unsafe in enumerate(['../docs/index.html', str(stage / 'index.html')]):
             output = base / f'rejected-path-{index}'
             try:
-                assembler.assemble([{**source, 'files': [unsafe]}], output)
+                assembler.assemble([{**source, 'files': [unsafe]}, *legacy], output)
                 raise AssertionError('Unsafe source path accepted')
             except ValueError as error:
                 assert 'relative without parent segments' in str(error)
             assert not output.exists()
         accepted = base / 'accepted'
-        result = assembler.assemble([{**source, 'files': ['./index.html']}], accepted)
-        assert result['files'] == 2
+        result = assembler.assemble([{**source, 'files': ['./index.html']}, *legacy], accepted)
+        assert result['files'] == 8
         assert (accepted / 'public/Example/index.html').is_file()
         assert not (accepted / 'public/Example/internal.md').exists()
         assert set(result['sources'][1]['files']) == {'index.html'}
@@ -55,13 +70,40 @@ with tempfile.TemporaryDirectory() as temp:
         generated.mkdir(parents=True)
         (generated / 'index.html').write_text('<html lang="fr"></html>')
         result = assembler.assemble([{**source, 'stage': str(generated),
-                                      'kind': 'local-generator-stage'}], base / 'generated')
-        assert result['files'] == 2
+                                      'kind': 'local-generator-stage'}, *legacy], base / 'generated')
+        assert result['files'] == 8
         assert not any('Ruby docs' in b for b in result['blockers'])
+        assert (accepted / 'functions/api/contact.js').is_file()
+        assert (accepted / 'functions/api/contact/config.js').is_file()
+        assert (accepted / 'content/catalog.json').is_file()
+        assert (accepted / 'content/app-documents.mjs').is_file()
+        assert not (accepted / 'public/functions').exists() and not (accepted / 'public/content').exists()
+        assert json.loads((accepted / 'public/_routes.json').read_text()) == assembler.FUNCTION_ROUTES
+        assert (accepted / 'wrangler.toml').is_file()
+        # Legacy entries are mandatory, never silently discarded or redirected.
+        try:
+            assembler.assemble([{**source, 'files': ['index.html']}], base / 'missing-legacy')
+            raise AssertionError('Missing legacy roots accepted')
+        except ValueError as error:
+            assert 'five historical' in str(error)
+        assert not (base / 'missing-legacy').exists()
+        # Declaring .json does not allow arbitrary stage documents.
+        (generated / 'private.json').write_text('{"internal":true}')
+        try:
+            assembler.assemble([{**source, 'stage': str(generated), 'kind': 'local-generator-stage', 'extensions': ['.html', '.json']}, *legacy], base / 'private-json')
+            raise AssertionError('Arbitrary JSON accepted')
+        except ValueError as error:
+            assert 'Disallowed public type' in str(error)
+        assert not (base / 'private-json').exists()
+        (generated / 'private.json').unlink()
+        realm = next(item for item in legacy if item['site'] == 'RealmBox')
+        (Path(realm['stage']) / 'release-manifest.json').write_text('{"release":"public"}')
+        result = assembler.assemble([{**source, 'files': ['index.html']}, *legacy], base / 'public-release')
+        assert (base / 'public-release/public/RealmBox/release-manifest.json').is_file()
         (generated / 'internal.md').write_text('Excluded source')
         try:
             assembler.assemble([{**source, 'stage': str(generated),
-                                 'kind': 'local-generator-stage'}], base / 'private-generated')
+                                 'kind': 'local-generator-stage'}, *legacy], base / 'private-generated')
             raise AssertionError('Private stage file accepted')
         except ValueError as error:
             assert 'Disallowed public type' in str(error)
@@ -93,4 +135,36 @@ with tempfile.TemporaryDirectory() as temp:
     (artifact / 'sitemap.xml').write_text('<urlset><url><loc>https://bnjdpn.com/ColdLoad/missing-locale/</loc></url></urlset>')
     assert subprocess.run(command, capture_output=True).returncode == 1
     assert any(e['ref'].endswith('/missing-locale/') for e in json.loads(report.read_text())['errors'])
-print('Passed: parent/absolute path refusal before creation, canonical allowlist, incomplete catalogue refusal, assembled contact/query route, bnjdpn.com anchor, sitemap locale target.')
+    # A complete artifact checker/preview resolves the five independent prefixes.
+    for name in sorted(assembler.LEGACY):
+        (artifact / name).mkdir()
+        (artifact / name / 'index.html').write_text('<html lang="en"><a href="en/#ready">EN</a></html>')
+        (artifact / name / 'en').mkdir()
+        (artifact / name / 'en/index.html').write_text('<html lang="en"><section id="ready"></section></html>')
+    (artifact / 'sitemap.xml').write_text('<urlset><url><loc>https://bnjdpn.com/RealmBox/en/#ready</loc></url></urlset>')
+    server = {}
+    for source, target in assembler.SERVER_INPUTS.items():
+        dest = base / target
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / source, dest)
+        server[target] = {'sha256': hashlib.sha256(dest.read_bytes()).hexdigest()}
+    routing = artifact / '_routes.json'
+    routing.write_text(json.dumps(assembler.FUNCTION_ROUTES))
+    (base / 'manifest.json').write_text(json.dumps({'historical_prefixes': sorted(assembler.LEGACY), 'server_inputs': server,
+        'routing_sha256': hashlib.sha256(routing.read_bytes()).hexdigest()}))
+    assert subprocess.run(command, capture_output=True).returncode == 0
+    checked = json.loads(report.read_text())
+    assert set(checked['historicalPrefixes']) == assembler.LEGACY
+    assert all(checked['htmlRoutes'][name] == 2 for name in assembler.LEGACY)
+    (base / 'content/app-documents.mjs').unlink()
+    assert subprocess.run(command, capture_output=True).returncode == 1
+    assert any(e['error'] == 'Missing or changed Pages server input' for e in json.loads(report.read_text())['errors'])
+    shutil.copyfile(ROOT / 'content/app-documents.mjs', base / 'content/app-documents.mjs')
+    routing.write_text(json.dumps({**assembler.FUNCTION_ROUTES, 'include': ['/*']}))
+    assert subprocess.run(command, capture_output=True).returncode == 1
+    assert any('routing changed' in e['error'] for e in json.loads(report.read_text())['errors'])
+    routing.write_text(json.dumps(assembler.FUNCTION_ROUTES))
+    (artifact / 'RealmBox/en/index.html').write_text('<html lang="en"></html>')
+    assert subprocess.run(command, capture_output=True).returncode == 1
+    assert any(e['error'] == 'Missing anchor' for e in json.loads(report.read_text())['errors'])
+print('Passed: mandatory five historical prefixes, safe explicit stages, narrow public JSON exceptions, server imports kept outside public, exact API routing, complete legacy links/anchors, missing dependency and wildcard-route refusal.')

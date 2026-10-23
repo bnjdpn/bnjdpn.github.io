@@ -1,0 +1,12 @@
+# Candidate-root sidecar for the EXISTING Pages project, never a public asset.
+name = "bnjdpn-site-506"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-10-19"
+
+[[services]]
+binding = "EMAIL_SERVICE"
+service = "bnjdpn-contact-email"
+
+[vars]
+TURNSTILE_SITE_KEY = "0x4AAAAAAFb8sZbCULV4skmB"
+# TURNSTILE_SECRET_KEY and existing secret bindings stay in the account, not here.

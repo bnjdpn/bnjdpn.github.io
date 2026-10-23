@@ -15,25 +15,38 @@ ecosystem = importlib.util.module_from_spec(module)
 module.loader.exec_module(ecosystem)
 # Same public types as marketing_seo.rb SAFE_STAGE_EXTENSIONS; no source/config types.
 EXTENSIONS = set('.avif .css .html .ico .jpeg .jpg .js .png .svg .txt .webmanifest .webp .woff2 .xml'.split())
+LEGACY = {'RealmBox', 'TaskLane', 'NovaStationPinball', 'onigiri-exit-calculator', 'poop-price-calculator'}
+PUBLIC_JSON = {'VesperDrift': {'press/media/manifest.json'}, 'RealmBox': {'release-manifest.json'}}
+SERVER_INPUTS = {'functions/api/contact.js': 'functions/api/contact.js',
+                 'functions/api/contact/config.js': 'functions/api/contact/config.js',
+                 'content/catalog.json': 'content/catalog.json',
+                 'content/app-documents.mjs': 'content/app-documents.mjs',
+                 'cloudflare/pages-upload.toml': 'wrangler.toml'}
+FUNCTION_ROUTES = {'version': 1, 'include': ['/api/contact', '/api/contact/config'],
+                   'exclude': ['/_asc-hooks/*', '/_funnel/*']}
 
 def git(repo, *args):
     return subprocess.check_output(['git', '-C', str(repo), *args], text=True).strip()
 
 def assemble(spec, output):
     catalogue = json.loads((ROOT / 'content/catalog.json').read_text())
-    expected = {x['path'] for x in catalogue}
+    expected = {x['path'] for x in catalogue} | LEGACY
     if len(spec) != len(expected) or {x['site'] for x in spec} != expected:
-        raise ValueError('Spec must contain exactly one explicit output for every catalogue site')
+        raise ValueError('Spec must contain exactly one explicit output for every catalogue site and all five historical prefixes')
     if output.exists():
         raise ValueError('Refusing to replace an existing output; choose a fresh candidate directory')
     sources = [{'site': 'Portfolio', 'repo': str(ROOT), 'stage': str(ROOT),
                 'sha': git(ROOT, 'rev-parse', 'HEAD'), 'kind': 'local-generated-root'}, *spec]
     plan, provenance = [], []
     for source in sources:
+        if not re.fullmatch('[0-9a-f]{40}', source['sha']):
+            raise ValueError('Every source SHA must be a full lowercase Git commit SHA')
         repo, stage = Path(source['repo']).resolve(), Path(source['stage']).resolve()
         if git(repo, 'rev-parse', 'HEAD') != source['sha']:
             raise ValueError(f"Source HEAD changed: {source['site']}")
         generated = source['kind'] == 'local-generator-stage'
+        if source['site'] in LEGACY and not generated:
+            raise ValueError('Historical sites require an explicit verified public stage under central .local/')
         if not (stage.is_relative_to(ROOT / '.local') if generated else stage.is_relative_to(repo)) or not (stage / 'index.html').is_file():
             raise ValueError(f"Invalid public output: {source['site']}")
         if source['site'] != 'Portfolio' and source['kind'] not in ['local-generated-docs-not-staged', 'existing-staged-output', 'local-generator-stage']:
@@ -75,10 +88,15 @@ def assemble(spec, output):
             relative = path.resolve().relative_to(stage)
             if any(p.startswith('.') for p in relative.parts) and relative.as_posix() != '.nojekyll':
                 raise ValueError(f'Hidden public path: {path}')
-            if path.suffix.lower() not in set(source.get('extensions', EXTENSIONS)) and relative.as_posix() != '.nojekyll' and not (source['site'] == 'Echappee' and path.suffix == '.mp4'):
+            special = (relative.as_posix() in PUBLIC_JSON.get(source['site'], set()) or
+                       (source['site'] in {'Echappee', 'VesperDrift'} and path.suffix == '.mp4'))
+            if any(part in {'node_modules', '_src', 'src', 'scripts', 'tools', 'tests', 'proofs', 'evidence', 'functions', 'email-worker'} for part in relative.parts):
+                raise ValueError(f'Technical source in public output: {path}')
+            if ((path.suffix.lower() not in EXTENSIONS and not special) or
+                (path.suffix.lower() not in set(source.get('extensions', EXTENSIONS)) and not special)) and relative.as_posix() != '.nojekyll':
                 raise ValueError(f'Disallowed public type: {path}')
             data = path.read_bytes()
-            if path.suffix in ['.html', '.js', '.txt', '.xml', '.css']:
+            if path.suffix in ['.html', '.js', '.txt', '.xml', '.css', '.json']:
                 if re.search(rb'-----BEGIN [A-Z ]*PRIVATE KEY-----|\bgh[pousr]_[A-Za-z0-9]{20,}|\bxox[baprs]-[A-Za-z0-9-]{10,}', data):
                     raise ValueError(f'Credential pattern in output: {path}')
             if path.suffix == '.html':
@@ -89,6 +107,16 @@ def assemble(spec, output):
             plan.append((path, target))
         provenance.append({**source, 'workingTreeStatus': git(repo, 'status', '--porcelain', '--untracked-files=no'),
                            'languages': sorted(languages), 'files': files})
+    targets = [target.as_posix() for _, target in plan]
+    if len(targets) != len(set(targets)):
+        raise ValueError('Overlapping public source paths')
+    # Compile-time function imports and configuration stay beside, never inside, public/.
+    server = {}
+    for name, target in SERVER_INPUTS.items():
+        path = ROOT / name
+        if path.is_symlink() or not path.resolve().is_relative_to(ROOT.resolve()) or not path.is_file() or not path.stat().st_size:
+            raise ValueError(f'Missing/unsafe server input: {name}')
+        server[target] = {'source': name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
     # Validate everything before creating a candidate. Manifest stays outside the public directory.
     artifact = output / 'public'
     artifact.mkdir(parents=True)
@@ -96,10 +124,19 @@ def assemble(spec, output):
         target = artifact / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
+    (artifact / '_routes.json').write_text(json.dumps(FUNCTION_ROUTES, indent=2) + '\n')
+    for target, record in server.items():
+        path = output / target
+        path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / record['source'], path)
     report = {'publishable': False, 'qualification': 'Local candidate only; no served-byte, store URL, contact delivery or provider qualification.',
-              'sources': provenance, 'files': len(plan),
+              'sources': provenance, 'files': len(plan) + 1, 'historical_prefixes': sorted(LEGACY),
+              'server_inputs': server, 'function_routes': FUNCTION_ROUTES,
+              'routing_sha256': hashlib.sha256((artifact / '_routes.json').read_bytes()).hexdigest(),
+              'direct_upload': {'cwd': str(output), 'assets': 'public', 'project': 'bnjdpn-site-506',
+                                'note': 'Root must review and explicitly choose the branch. Existing dashboard secrets and Worker routes stay outside this artifact.'},
               'blockers': (['Ruby docs outputs are not qualified exact Pages stages.'] if any(x['kind'] == 'local-generated-docs-not-staged' for x in sources) else []) + [
-                           'Independent legacy sites outside the catalogue and www Worker routes need a migration decision.',
+                           'Existing www Worker routes and Pages runtime bindings need live preservation/readback.',
                            'Current production equivalence and store URLs need readback before any cutover.']}
     (output / 'manifest.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     return report

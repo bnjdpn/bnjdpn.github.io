@@ -1,15 +1,17 @@
 # Préparer un artefact Cloudflare local
 
 Choix de préparation pour [#15](https://github.com/bnjdpn/bnjdpn.github.io/issues/15) :
-un seul arbre statique contenant la racine et les 17 sites indépendants aux
-préfixes de `content/catalog.json`. Les pages centrales EN/FR ne remplacent
+un seul arbre statique contenant la racine, les 17 sites indépendants aux
+préfixes de `content/catalog.json` et les cinq sites historiques préservés.
+Ces derniers ne sont pas réintroduits dans le catalogue commercial.
+Les pages centrales EN/FR ne remplacent
 aucune langue, politique archivée, ancre ou page produit indépendante.
 Petits Pots et Petits Besoins conservent leurs documents centraux et leur
 formulaire `/contact/?app=petits-pots|petits-besoins`, sans nouvelle chaîne email.
 La préparation ne touche aucun compte, DNS, Worker, workflow ou réglage Pages.
 
 `scripts/assemble-cloudflare-preview.py` accepte un manifeste explicite local :
-une entrée par site du catalogue avec `site`, `repo`, `stage`, `sha` complet et
+une entrée par site du catalogue et par préfixe historique avec `site`, `repo`, `stage`, `sha` complet et
 `kind`. Les chemins `stage` doivent être des sorties existantes `docs`, `_site`
 ou `_pages` sous leur dépôt, ou des sorties `local-generator-stage` sous
 le `.local/` de ce dépôt (voir ci-dessous). La racine est sélectionnée par l’allowlist du
@@ -58,6 +60,47 @@ Une copie locale réussie ne qualifie ni l’équivalence au site servi ni la de
 version disponible dans les stores. Les liens et sitemaps reconnaissent les deux
 origines historiques `bnjdpn.github.io` et `bnjdpn.com` pour contrôler leurs cibles
 et ancres dans l’artefact. Aucune réécriture des URL historiques n’est ajoutée.
+
+La liste contient exactement 22 entrées : les 17 du catalogue, puis `RealmBox`,
+`TaskLane`, `NovaStationPinball`, `onigiri-exit-calculator` et
+`poop-price-calculator`. Chaque entrée historique utilise obligatoirement
+`kind: "local-generator-stage"`, avec le dépôt source isolé et son vrai SHA
+complet ; `stage` pointe vers sa sortie publique vérifiée sous le `.local/`
+central, jamais vers la racine du dépôt ou un `docs/` contenant des notes.
+Les sorties préparées se trouvent sous
+`.local/cloudflare-final-20261023/{catalogue,legacy}/<préfixe>`.
+Les seules exceptions JSON publiques sont `RealmBox/release-manifest.json`
+et `VesperDrift/press/media/manifest.json` ; une extension `.json` déclarée
+dans le manifeste n’autorise aucun autre document. Les sources `_src`, `src`,
+scripts, outils et preuves restent exclues. Le checker et le serveur de preview
+lisent les cinq préfixes depuis le manifeste voisin et vérifient aussi leurs
+langues, liens, ancres et assets.
+
+L’assemblage ajoute uniquement `public/_routes.json` comme contrôle Pages :
+les fonctions sont limitées à `/api/contact` et `/api/contact/config` ;
+`/_asc-hooks/*` et `/_funnel/*` sont explicitement exclus. Les routes Workers
+de zone existantes restent configurées séparément, sans écrasement par ce lot.
+À côté de `public/`, l’assembleur conserve `functions/api/contact.js`,
+`functions/api/contact/config.js`, leurs imports `content/catalog.json` et
+`content/app-documents.mjs`, et `wrangler.toml` issu de
+`cloudflare/pages-upload.toml`. Leurs hachages entrent dans le manifeste privé.
+Ni ces sources, ni le Worker email, ni les secrets ne sont copiés dans `public/`.
+
+Le direct upload doit partir du répertoire candidat, car Wrangler y cherche
+`functions/` et sa configuration ; téléverser `public/` depuis un autre cwd
+peut perdre les fonctions. Le SDK local Wrangler 4.152.0 confirme ce comportement
+et refuse un chemin `--config` personnalisé pour `pages deploy`. Root choisit
+explicitement la branche après revue :
+
+```sh
+cd /chemin/du/candidat
+wrangler pages deploy public --project-name bnjdpn-site-506 --branch <branche-revue>
+```
+
+Cette commande est documentaire, jamais exécutée par l’assembleur. Le projet,
+le binding `EMAIL_SERVICE`, la date `2026-10-19` et la clé Turnstile publique
+existants sont conservés ; les valeurs secrètes restent dans le compte. Root
+doit vérifier leurs bindings et les deux routes `www` après déploiement.
 
 Avant toute bascule : qualifier chaque staging exact et chaque URL store/langue,
 relire les octets servis, décider du maintien des sites historiques hors catalogue
