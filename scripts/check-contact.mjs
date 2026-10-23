@@ -10,15 +10,15 @@ const code = await readFile(new URL('../assets/contact.js', import.meta.url), 'u
 function page(search='', response=async()=>({ok:true,json:async()=>({ok:true})}), configResponse=async()=>({ok:true,json:async()=>({sitekey:'fixture-public-key'})})) {
   const inputs=Object.fromEntries(['app','category','email','message','_gotcha','app_version','os_version'].map(name=>[name,{value:''}]));
   Object.assign(inputs.app,{value:'petits-pots'}); inputs.category.value='other'; inputs.email.value='qa@example.invalid'; inputs.message.value='Test message';
-  let submit, widget, resetCount=0;
+  let submit, widget, resetCount=0, resetThrows=false;
   const calls=[], scripts=[], timers=new Map();
   const form={action:'/api/contact',dataset:{messages:JSON.stringify(contactCopy.en.messages),apps:JSON.stringify(contactApps)},elements:{namedItem:name=>inputs[name]},reportValidity:()=>true,addEventListener:(event,handler)=>{if(event==='submit')submit=handler;}};
   const elements={'contact-title':{textContent:'',dataset:{template:contactCopy.en.title}},'contact-privacy':{href:''},'support-form':form,'form-status':{textContent:''},'send-message':{disabled:true},'app-version-label':{textContent:''},'os-version-label':{textContent:''}};
   const links=[{href:'https://bnjdpn.com/fr/contact/'},{href:'https://bnjdpn.com/contact/'}];
-  const window={location:{search},turnstile:{render:(_target,options)=>{widget=options;return 'widget';},reset:()=>{resetCount++;}}};
+  const window={location:{search},turnstile:{render:(_target,options)=>{widget=options;return 'widget';},reset:()=>{resetCount++;if(resetThrows)throw new Error('widget reset failed');}}};
   class FormDataDouble extends Map {constructor(){super(Object.entries(inputs).map(([k,v])=>[k,v.value]));}}
   vm.runInNewContext(code,{window,document:{documentElement:{lang:'en'},getElementById:id=>elements[id],querySelectorAll:()=>links,createElement:()=>({}),head:{appendChild:script=>scripts.push(script)}},URL,URLSearchParams,FormData:FormDataDouble,AbortController,setTimeout:(fn,ms)=>{timers.set(ms,fn);return ms;},clearTimeout:id=>timers.delete(id),fetch:async(url,options)=>{if(url==='/api/contact/config')return configResponse();calls.push({url,options});return response(options);}});
-  return {inputs,elements,links,calls,scripts,timers,init:async()=>{await new Promise(setImmediate);window.supportTurnstileReady?.();assert.equal(widget.action,'contact');assert.equal(widget.sitekey,'fixture-public-key');},token:value=>widget.callback(value),expire:()=>widget['expired-callback'](),verificationError:()=>widget['error-callback'](),verificationTimeout:()=>widget['timeout-callback'](),send:()=>submit({preventDefault(){}}),get resets(){return resetCount;}};
+  return {inputs,elements,links,calls,scripts,timers,init:async()=>{await new Promise(setImmediate);window.supportTurnstileReady?.();assert.equal(widget.action,'contact');assert.equal(widget.sitekey,'fixture-public-key');},token:value=>widget.callback(value),failReset:()=>{resetThrows=true;},expire:()=>widget['expired-callback'](),verificationError:()=>widget['error-callback'](),verificationTimeout:()=>widget['timeout-callback'](),send:()=>submit({preventDefault(){}}),get resets(){return resetCount;}};
 }
 
 const metadata=page('?app=petits-pots&category=purchase&app_version=%3Cscript%3Ebad%3C%2Fscript%3E%0A1.0&os_version='+ 'x'.repeat(100)+'&email=secret&message=secret&redirect=https://evil.invalid');
@@ -44,6 +44,11 @@ for (const response of [async()=>({ok:false,json:async()=>({ok:false,error:'send
   await failure.send(); assert.equal(failure.calls.length,1); assert.equal(failure.resets,1);
 }
 let release;
+const resetFailure=page('',async()=>({ok:false,json:async()=>({ok:false})}));
+await resetFailure.init(); resetFailure.failReset(); resetFailure.token('once'); await resetFailure.send();
+assert.equal(resetFailure.inputs.message.value,'Test message'); assert.equal(resetFailure.elements['send-message'].disabled,true);
+resetFailure.token('renewed'); assert.equal(resetFailure.elements['send-message'].disabled,false);
+await resetFailure.send(); assert.equal(resetFailure.calls.length,2);
 const pending=page('',()=>new Promise(resolve=>{release=resolve;})); await pending.init(); pending.token('once');
 const first=pending.send(); await pending.send(); assert.equal(pending.calls.length,1);
 release({ok:true,json:async()=>({ok:true})}); await first;

@@ -58,7 +58,7 @@
     } finally {
       clearTimeout(timeout);
       token = ''; // Tokens are single-use, including failed or ambiguous attempts.
-      if (widget !== undefined) window.turnstile.reset(widget);
+      try { if (widget !== undefined) window.turnstile.reset(widget); } catch (_) { token = ''; }
       busy = false;
       button.disabled = !token;
     }
