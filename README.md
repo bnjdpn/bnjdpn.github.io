@@ -13,7 +13,8 @@ privacy page under `/apps/` and `/fr/apps/`. English lives at `/`; French at `/f
 `content/app-documents.mjs` generates support and privacy pages for store
 submissions without adding an app to the home catalogue or creating a product
 page or store link. These bilingual documents also enter `sitemap-pages.xml`.
-Petits Besoins uses this path while its Android release is in preparation.
+Petits Besoins uses this path with its Android release in a progressive rollout
+and its iOS release under review.
 Product sites keep independent compositions and build systems, documented in [design.md](docs/design.md).
 Two practical entry points complement the directory: a bilingual reusable
 TempoReps timer guide and a French Petites Bouchées journal-sharing guide.
@@ -64,7 +65,8 @@ when `playwright` already resolves in the local environment.
 The public catalogue and 22 explicit product-site stages (23 public site roots)
 are served from the existing Cloudflare Pages project `bnjdpn-site-506`. Web
 releases use direct upload with Wrangler 4.152.0; GitHub Pages and GitHub
-Actions do not publish these sites.
+Actions do not publish these sites. The former catalogue Pages and review
+workflows have been removed; the documented checks run locally.
 The former `bnjdpn.github.io` URLs remain HTTP 301 compatibility redirects to
 the same paths on `bnjdpn.com`. Échappée’s Windows build workflow is separate.
 
@@ -90,9 +92,9 @@ executed local checks and per-site evidence for this redesign. The earlier [rede
 [delivery report](docs/verification.md) are historical records. They describe
 previous iterations; their checks do not validate the current redesign.
 
-A local check, a successful Pages workflow and the content served publicly are
-separate evidence. A new product route can pass locally while remaining 404
-publicly until its separate site is published. Publish new product routes before
+Local validation, an authorized Cloudflare upload and the content served
+publicly are separate evidence. A new product route can pass locally while
+remaining 404 publicly until its separate site is published. Publish new product routes before
 the portfolio links to them, with explicit authorization for each deployment.
 
 ## Local ecosystem review
@@ -101,15 +103,16 @@ The explicit catalogue is the only input to the cross-site preview and checker.
 Existing generated outputs are required; this command does not build or publish:
 
 ```sh
-python3 scripts/preview-ecosystem.py check --apps /path/to/Apps --echappee /path/to/Echappee
-python3 scripts/preview-ecosystem.py serve --apps /path/to/Apps --echappee /path/to/Echappee --port 4174
+python3 scripts/preview-ecosystem.py check --apps /path/to/Studio --echappee /path/to/Studio/Echappee
+python3 scripts/preview-ecosystem.py serve --apps /path/to/Studio --echappee /path/to/Studio/Echappee --port 4174
 # To inspect the exact prepared artifacts instead of generated docs:
-python3 scripts/preview-ecosystem.py check --staged --apps /path/to/Apps --echappee /path/to/Echappee
+python3 scripts/preview-ecosystem.py check --staged --apps /path/to/Studio --echappee /path/to/Studio/Echappee
 node scripts/sync-site-foundations.mjs --check
 ```
 
 The server binds to loopback and serves only public output paths, including
-GitHub Pages prefixes. It does not emulate GitHub's missing-route handling.
+the product-site prefixes retained on Cloudflare. It does not emulate the
+production redirect and missing-route configuration.
 The checker visits all HTML references, CSS assets, sitemap destinations,
 manifest icons and cross-site anchors. Public destinations still require the
 separate network check.
@@ -119,7 +122,7 @@ Reusable optional browser tools use an existing Playwright and axe installation:
 ```sh
 PLAYWRIGHT_MODULE=/path/to/playwright AXE_PATH=/path/to/axe.min.js node scripts/review-site-browser.mjs --routes routes.json --base http://127.0.0.1:4174 --out output/playwright/review
 PLAYWRIGHT_MODULE=/path/to/playwright node scripts/review-site-interactions.mjs --base http://127.0.0.1:4174 --out output/playwright/interactions
-PLAYWRIGHT_MODULE=/path/to/playwright node scripts/measure-product-performance.cjs /path/to/Apps BrewMeter,FastZen,GrooveLog,NeatShift,NoBuyCart,PasDuJour
+PLAYWRIGHT_MODULE=/path/to/playwright node scripts/measure-product-performance.cjs /path/to/Studio BrewMeter,FastZen,GrooveLog,NeatShift,NoBuyCart,PasDuJour
 ```
 
 `routes.json` is an explicit list such as
@@ -138,7 +141,8 @@ commit using `python3 scripts/check-published-artifacts.py --spec sites.json
 `site`, `stage`, `base_url` (HTTPS, trailing slash) and full `sha` for each site.
 The report checks every HTML, CSS, JavaScript, sitemap and manifest plus selected
 media; `extra_paths` extends the explicit media sample. This read-only comparison
-complements exact-commit CI and a browser visit to the public URLs.
+complements local checks at the exact commit and a browser visit to the public
+URLs.
 
 The dated September 7–10 reports retain earlier decisions and checks. They are
 historical evidence, not continuing authorization to announce a candidate as

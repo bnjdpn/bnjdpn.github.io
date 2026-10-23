@@ -6,7 +6,6 @@ import {appDocuments} from '../content/app-documents.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const catalog=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
 const styles=await readFile(resolve(root,'styles.css'),'utf8');
-const workflow=await readFile(resolve(root,'.github/workflows/pages.yml'),'utf8');
 const sitemap=await readFile(resolve(root,'sitemap.xml'),'utf8');
 const pages=await readFile(resolve(root,'sitemap-pages.xml'),'utf8');
 const failures=[]; let references=0;
@@ -93,7 +92,6 @@ for(const lang of ['en','fr']){
   }
  }
 }
-expect(workflow.includes('cp -R apps'),'app pages missing from Pages allowlist');
 for(const guide of guides){
  const html=await readFile(resolve(root,guide.path),'utf8');
  const url=`${origin}/${guide.path.replace(/index\.html$/,'')}`;
@@ -130,11 +128,6 @@ expect((await readFile(resolve(root,'404.html'),'utf8')).includes('noindex'),'40
 JSON.parse(await readFile(resolve(root,'site.webmanifest'),'utf8'));
 expect(styles.includes(':focus-visible')&&styles.includes('prefers-reduced-motion'),'focus/reduced motion handling missing');
 expect(!/fonts\.(googleapis|gstatic)\.com/.test(styles),'remote font introduced');
-expect(!workflow.includes('rsync'),'Pages must retain public-file allowlist');
-expect(workflow.includes('cp -R assets'),'assets missing from deployment');
-expect(/cp[^\n]+\bfr\b/.test(workflow),'French routes missing from Pages allowlist');
-const actions=[...workflow.matchAll(/uses:\s+([^@\s]+)@([^\s]+)/g)];
-expect(actions.length>=5&&actions.every(([, ,rev])=>/^[0-9a-f]{40}$/.test(rev)),'GitHub Actions must be pinned');
 if(failures.length){console.error(failures.map(x=>'✗ '+x).join('\n'));process.exit(1)}
 console.log(`✓ EN/FR routes, ${guides.length} guides, ${catalog.length} products, all store IDs, structured data and sitemaps`);
-console.log(`✓ ${references} local references, image dimensions, keyboard hooks, static fallback and deployment allowlist`);
+console.log(`✓ ${references} local references, image dimensions, keyboard hooks, static fallback`);
