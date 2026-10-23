@@ -1,6 +1,6 @@
 # bnjdpn.github.io
 
-The source of the [bnjdpn app catalogue](https://bnjdpn.github.io/).
+The source of the [bnjdpn app catalogue](https://bnjdpn.com/).
 Benjamin Dupin remains in the site title and footer.
 This is exclusively a product showcase; the publisher identity is not a professional biography.
 
@@ -61,16 +61,17 @@ when `playwright` already resolves in the local environment.
 
 ## Deployment
 
-Until the planned Cloudflare migration is complete, GitHub Pages still
-publishes the validated `main` branch through `.github/workflows/pages.yml`;
-pushing to `main` can therefore publish through that existing path. This
-repository contains only app catalogue material; private résumés, email,
-credentials and source documents do not belong here.
+The public catalogue and 22 explicit product-site stages (23 public site roots)
+are served from the existing Cloudflare Pages project `bnjdpn-site-506`. Web
+releases use direct upload with Wrangler 4.152.0; GitHub Pages and GitHub
+Actions do not publish these sites.
+The former `bnjdpn.github.io` URLs remain HTTP 301 compatibility redirects to
+the same paths on `bnjdpn.com`. Échappée’s Windows build workflow is separate.
 
-A local Cloudflare candidate can assemble these independent sites into one public
-artifact while preserving their prefixes and languages. See the
-[preparation contract](docs/cloudflare-preview.md). This does not deploy or change
-the existing GitHub Pages workflow.
+See [Cloudflare deployment](cloudflare/DEPLOY.md) for the staged release and
+readback process. A source commit or push records code; only an authorized
+Wrangler upload deploys it. This repository contains public catalogue material;
+credentials and secrets stay in the Cloudflare account.
 
 ## Product sites and release maintenance
 
