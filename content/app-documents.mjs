@@ -6,16 +6,16 @@ export const appDocuments = [
     "socialImage": "assets/petits-besoins-icon.png",
     "package": "com.bnjdpn.petitsbesoins",
     "appStoreId": "6820659968",
-    "policyDate": "2026-10-22",
+    "policyDate": "2026-10-23",
     "en": {
-      "footerLine": "iOS and Android versions in preparation.",
-      "status": "Petits Besoins is in preparation for iOS and Android. It is not yet available in either store.",
+      "footerLine": "Android: staged rollout on Google Play. iOS: under review.",
+      "status": "Petits Besoins for Android is available on Google Play through a staged rollout. The iOS version is under review.",
       "contact": "For a question about the app or its data, use the protected contact form or email petites@bnjdpn.com. Avoid including personal information about a child.",
       "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
       "dateLabel": "Policy date",
       "landing": {
         "subtitle": "Potty notebook",
-        "description": "Petits Besoins, a local potty training notebook for parents. iOS and Android versions in preparation. Published by Benjamin Dupin.",
+        "description": "Petits Besoins, a local potty notebook for parents. Android available through a staged Google Play rollout; iOS under review. Published by Benjamin Dupin.",
         "sections": [
           {
             "heading": "A notebook for the adult",
@@ -32,7 +32,7 @@ export const appDocuments = [
           {
             "heading": "Stored on the device",
             "paragraphs": [
-              "No account, ads or analytics. The notebook stays on the device. The app provides no medical advice, diagnosis or prediction."
+              "No account or ads. The notebook stays on the device. See the privacy policy for details about data handling. The app provides no medical advice, diagnosis or prediction."
             ]
           }
         ]
@@ -55,7 +55,7 @@ export const appDocuments = [
           {
             "heading": "Purchases and restoration",
             "paragraphs": [
-              "On iOS, a one-time StoreKit purchase unlocks PDF export and reusable sheets. Restore purchases is in Settings and in the offer. Closing the offer keeps the draft. Android has no Google Play purchase or restoration in this version. Its simulated purchase is available only in debug builds."
+              "A one-time purchase through StoreKit on iOS or Google Play Billing on Android unlocks PDF export and reusable sheets. The offer displays the price provided by the store. Use Restore purchases in Settings to retrieve an existing entitlement. Closing the offer keeps the draft."
             ]
           },
           {
@@ -73,12 +73,12 @@ export const appDocuments = [
         ]
       },
       "privacy": {
-        "description": "Petits Besoins privacy policy for iOS and Android, local data, Apple purchases, reminders, sharing and deletion.",
+        "description": "Petits Besoins privacy policy: local notebook, purchases, Google Play Billing technical data, sharing and deletion.",
         "sections": [
           {
             "heading": "Scope",
             "paragraphs": [
-              "Benjamin Dupin publishes Petits Besoins for iOS and Android, identified by com.bnjdpn.petitsbesoins. This policy covers the versions in preparation."
+              "Benjamin Dupin publishes Petits Besoins for iOS and Android, identified by com.bnjdpn.petitsbesoins. This policy covers the Android version distributed on Google Play and the iOS version under review."
             ]
           },
           {
@@ -96,7 +96,7 @@ export const appDocuments = [
           {
             "heading": "Network and collection",
             "paragraphs": [
-              "Petits Besoins has no ads, analytics or third-party crash reporting. It does not transmit notebook entries to Benjamin Dupin or a server. On iOS, StoreKit communicates with Apple for product information, purchases and restoration. On Android, the Google Play Billing library communicates with Google Play for the product, the purchase and its restoration. It adds the Internet permission for this purpose only."
+              "Petits Besoins has no ads and sends no notebook entries to Benjamin Dupin or to Google Play Billing. On iOS, StoreKit communicates with Apple for products, purchases and restoration. On Android, Google Play Billing communicates with Google for these operations and can transmit technical diagnostics through its transport library, including response and error information, timing, app and system context, and a randomly generated Billing client/session identifier. Google uses these technical data to analyse Billing operation. The app provides no switch to disable this Billing telemetry. Benjamin Dupin does not receive these SDK logs."
             ]
           },
           {
@@ -114,27 +114,27 @@ export const appDocuments = [
           {
             "heading": "Purchases",
             "paragraphs": [
-              "Apple processes the iOS one-time purchase through StoreKit. The app checks entitlement to PDF export and reusable sheets. It does not collect payment card information. Google Play processes the Android one-time purchase through Google Play Billing. The app reads the purchase state to unlock the same features. Debug builds keep a local simulation without payment."
+              "Apple processes the iOS one-time purchase through StoreKit. Google Play processes the Android one-time purchase through Google Play Billing. The app reads and locally stores purchase status and signed receipts to unlock PDF export and reusable sheets. It queries purchases when the app resumes, during restoration and after some purchase results, and sends an unacknowledged purchase token to Google Play to acknowledge it. These exchanges with Google can occur automatically after an optional purchase. The notebook can be used without buying the Kit. The app does not access payment card details."
             ]
           },
           {
             "heading": "Retention and deletion",
             "paragraphs": [
-              "Entries remain on the device until they are deleted or app data are removed. Uninstalling removes local data. Android also permits clearing app storage in device settings. PDFs and text shared elsewhere remain until those copies are deleted."
+              "Entries remain on the device until they are deleted or app data are removed. Uninstalling removes local data. Android also permits clearing app storage in device settings. PDFs and text shared elsewhere remain until those copies are deleted. Clearing local data does not erase payment and diagnostic data retained by Google, which manages them under its privacy policy."
             ]
           }
         ]
       }
     },
     "fr": {
-      "footerLine": "Versions iOS et Android en préparation.",
-      "status": "Petits Besoins est en préparation pour iOS et Android. L'app n'est pas encore disponible sur les stores.",
+      "footerLine": "Android : déploiement progressif sur Google Play. iOS : en examen.",
+      "status": "Petits Besoins pour Android est disponible sur Google Play en déploiement progressif. La version iOS est en examen.",
       "contact": "Pour une question sur l'app ou ses données, le lien petites@bnjdpn.com ouvre l'application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l'envoie pas. Éviter d'y inclure des informations personnelles sur un enfant.",
       "contactFallback": "JavaScript est nécessaire pour ouvrir l'application mail avec le bouton Contact.",
       "dateLabel": "Date de la politique",
       "landing": {
         "subtitle": "Carnet de propreté",
-        "description": "Petits Besoins, carnet local de propreté pour les parents. Versions iOS et Android en préparation. Édité par Benjamin Dupin.",
+        "description": "Petits Besoins, carnet local de propreté pour les parents. Android disponible progressivement sur Google Play ; iOS en examen. Édité par Benjamin Dupin.",
         "sections": [
           {
             "heading": "Un carnet pour l'adulte",
@@ -145,13 +145,13 @@ export const appDocuments = [
           {
             "heading": "Préparer les mêmes consignes pour la garde",
             "paragraphs": [
-              "Les profils, l'historique illimité, les rappels, la synthèse texte du jour et l'aperçu complet du kit sont gratuits. Sur iOS, un achat unique donne accès à l'export PDF du kit crèche et aux feuilles vierges réutilisables. L'offre s'ouvre seulement depuis Exporter le kit."
+              "Les profils, l'historique illimité, les rappels, la synthèse texte du jour et l'aperçu complet du kit sont gratuits. Sur iOS et Android, un achat unique donne accès à l'export PDF du kit crèche et aux feuilles vierges réutilisables. L'offre s'ouvre seulement depuis Exporter le kit."
             ]
           },
           {
             "heading": "Sur l'appareil",
             "paragraphs": [
-              "Sans compte, publicité ni mesure d'audience. Le carnet reste sur l'appareil. L'app ne donne aucun conseil médical, diagnostic ou prédiction."
+              "Sans compte ni publicité. Le carnet reste sur l'appareil. Consultez la politique de confidentialité pour les détails du traitement des données. L'app ne donne aucun conseil médical, diagnostic ou prédiction."
             ]
           }
         ]
@@ -174,7 +174,7 @@ export const appDocuments = [
           {
             "heading": "Acheter et restaurer",
             "paragraphs": [
-              "Sur iOS, un achat unique StoreKit donne accès à l'export PDF et aux feuilles réutilisables. Restaurer les achats se trouve dans Réglages et dans l'offre. Fermer l'offre conserve le brouillon. Cette version Android ne propose ni achat Google Play ni restauration. L'achat simulé existe seulement en debug."
+              "Un achat unique via StoreKit sur iOS ou Google Play Billing sur Android donne accès à l'export PDF et aux feuilles réutilisables. L'offre affiche le prix fourni par le store. Utilisez Restaurer les achats dans Réglages pour retrouver un droit existant. Fermer l'offre conserve le brouillon."
             ]
           },
           {
@@ -192,12 +192,12 @@ export const appDocuments = [
         ]
       },
       "privacy": {
-        "description": "Confidentialité Petits Besoins sur iOS et Android, données locales, achats Apple, rappels, partage et suppression.",
+        "description": "Confidentialité Petits Besoins : carnet local, achats, données techniques Google Play Billing, partage et suppression.",
         "sections": [
           {
             "heading": "Champ de la politique",
             "paragraphs": [
-              "Benjamin Dupin édite Petits Besoins pour iOS et Android, identifiée par com.bnjdpn.petitsbesoins. Cette politique couvre les versions en préparation."
+              "Benjamin Dupin édite Petits Besoins pour iOS et Android, identifiée par com.bnjdpn.petitsbesoins. Cette politique couvre la version Android distribuée sur Google Play et la version iOS en examen."
             ]
           },
           {
@@ -215,7 +215,7 @@ export const appDocuments = [
           {
             "heading": "Réseau et collecte",
             "paragraphs": [
-              "Petits Besoins n'a ni publicité, mesure d'audience ni rapport de plantage tiers. L'app n'envoie pas les entrées du carnet à Benjamin Dupin ou à un serveur. Sur iOS, StoreKit communique avec Apple pour les produits, les achats et leur restauration. Sur Android, la bibliothèque Google Play Billing communique avec Google Play pour le produit, l'achat et sa restauration. Elle ajoute la permission Internet pour ce seul usage."
+              "Petits Besoins ne contient pas de publicité et ne transmet aucune entrée du carnet à Benjamin Dupin ou à Google Play Billing. Sur iOS, StoreKit communique avec Apple pour les produits, les achats et leur restauration. Sur Android, Google Play Billing communique avec Google pour ces opérations et peut transmettre des diagnostics techniques par sa bibliothèque de transport : résultats et erreurs, durées, contexte de l'app et du système, ainsi qu'un identifiant aléatoire de client ou de session Billing. Google utilise ces données techniques pour analyser le fonctionnement de Billing. L'app ne propose pas d'interrupteur pour désactiver cette télémétrie Billing. Benjamin Dupin ne reçoit pas ces journaux du SDK."
             ]
           },
           {
@@ -233,13 +233,13 @@ export const appDocuments = [
           {
             "heading": "Achats",
             "paragraphs": [
-              "Apple traite l'achat unique iOS avec StoreKit. L'app vérifie le droit d'accès à l'export PDF et aux feuilles réutilisables. Elle ne collecte pas les informations de carte bancaire. Google Play traite l'achat unique Android avec Google Play Billing. L'app lit l'état de l'achat pour débloquer les mêmes fonctions. Les versions de développement gardent une simulation locale, sans paiement."
+              "Apple traite l'achat unique iOS avec StoreKit. Google Play traite l'achat unique Android avec Google Play Billing. L'app lit et conserve localement l'état des achats et les reçus signés pour débloquer l'export PDF et les feuilles réutilisables. Elle interroge les achats à la reprise de l'app, lors de la restauration et après certains résultats d'achat, puis transmet à Google Play le token d'un achat non acquitté pour l'acquitter. Ces échanges avec Google peuvent se produire automatiquement après un achat facultatif. Le carnet reste utilisable sans acheter le Kit. L'app n'accède pas aux informations de carte bancaire."
             ]
           },
           {
             "heading": "Conservation et suppression",
             "paragraphs": [
-              "Les entrées restent sur l'appareil jusqu'à leur suppression ou à l'effacement des données de l'app. La désinstallation supprime les données locales. Android permet aussi d'effacer le stockage dans les réglages de l'appareil. Les PDF et textes partagés ailleurs restent présents jusqu'à la suppression de ces copies."
+              "Les entrées restent sur l'appareil jusqu'à leur suppression ou à l'effacement des données de l'app. La désinstallation supprime les données locales. Android permet aussi d'effacer le stockage dans les réglages de l'appareil. Les PDF et textes partagés ailleurs restent présents jusqu'à la suppression de ces copies. La suppression locale n’efface pas les données de paiement et de diagnostic conservées par Google, qui les gère selon sa politique de confidentialité."
             ]
           }
         ]
