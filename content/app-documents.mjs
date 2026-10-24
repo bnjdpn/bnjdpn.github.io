@@ -1,5 +1,185 @@
 // Available Android apps reuse their existing documents for catalogue cards.
 export const appDocuments = [
+{
+  "name": "Catminers",
+  "path": "catminers",
+  "package": "com.bnjdpn.catminers",
+  "upcoming": true,
+  "socialImage": "assets/catminers-icon.png",
+  "policyDate": "2026-10-24",
+  "operatingSystem": "iOS 15 or later; Android 8 or later",
+  "applicationCategory": "GameApplication",
+  "fr": {
+    "footerLine": "Catminers est en préparation pour iOS et Android.",
+    "status": "Catminers est en préparation pour iPhone, iPad et Android. Le jeu n’est pas encore disponible en téléchargement.",
+    "contact": "Pour une question sur Catminers, utilisez Contact. Le bouton ouvre votre application de courrier ; ce site n’envoie pas votre message.",
+    "contactFallback": "JavaScript est nécessaire pour ouvrir l’application de courrier avec le bouton Contact.",
+    "dateLabel": "Date de la politique",
+    "landing": {
+      "subtitle": "Un démineur et des chats à accueillir",
+      "description": "Catminers, un démineur félin avec une campagne, des défis quotidiens et un refuge animé. Première version en préparation pour iOS et Android.",
+      "sections": [
+        {
+          "heading": "Explorer une galerie",
+          "paragraphs": [
+            "Ouvrez les cases sûres, marquez les mines et utilisez les chiffres pour avancer. La première case est sans danger. La campagne traverse dix mondes ; des défis quotidiens et des grilles personnalisées complètent l’aventure."
+          ]
+        },
+        {
+          "heading": "Accueillir des compagnons",
+          "paragraphs": [
+            "Les victoires rapportent des poissons et débloquent des chats. Chaque compagnon apporte un pouvoir : indice sûr, mine repérée, protection ou gain de poissons. Le refuge indique le prochain chat à accueillir."
+          ]
+        },
+        {
+          "heading": "Une progression gratuite, des achats facultatifs",
+          "paragraphs": [
+            "Tous les niveaux sont accessibles sans achat. Des packs de poissons et un pass à paiement unique sont en préparation. Le pass ajoute 50 % aux poissons gagnés à chaque victoire et donne 5 000 poissons lors de l’achat initial. Les prix seront ceux affichés par Apple ou Google. Aucun abonnement ni publicité n’est intégré."
+          ]
+        }
+      ]
+    },
+    "support": {
+      "description": "Aide Catminers : commandes du démineur, vies, progression locale, achats et restauration du pass.",
+      "sections": [
+        {
+          "heading": "Jouer",
+          "paragraphs": [
+            "Touchez une case pour l’ouvrir et gardez le doigt appuyé pour poser ou retirer un drapeau. Un double toucher sur un chiffre ouvre les voisines sans drapeau lorsque le nombre de drapeaux correspond. Les options proposent aussi des boutons et une inversion des commandes. Le guide de Moka reste accessible dans les options."
+          ]
+        },
+        {
+          "heading": "Vies et progression",
+          "paragraphs": [
+            "Une défaite enlève une vie. La réserve contient cinq vies ; une vie revient toutes les trente minutes. Un plein peut s’acheter pour 500 poissons gagnés en jouant ou achetés. Fermer une offre ne déclenche aucun achat."
+          ]
+        },
+        {
+          "heading": "Achats et restauration",
+          "paragraphs": [
+            "Les achats utilisent le compte du store. Le prix est affiché avant l’ouverture de la confirmation Apple ou Google. Le pass permanent se retrouve avec Restaurer le pass, sur le même store et avec le même compte. Les 5 000 poissons initiaux ne sont pas redonnés lors d’une restauration. Les packs consommables déjà livrés ne se restaurent pas depuis le store.",
+            "Le jeu ne propose pas de synchronisation entre appareils. Une sauvegarde système peut conserver la progression selon vos réglages. Supprimer les données de l’app peut effacer les poissons et la progression locale. Les remboursements se demandent à Apple ou Google."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "description": "Confidentialité de Catminers : données locales, achats Apple et Google, sauvegardes système et contact.",
+      "sections": [
+        {
+          "heading": "Application concernée",
+          "paragraphs": [
+            "Cette politique concerne Catminers, identifiant com.bnjdpn.catminers, publié par Benjamin Dupin. La première version est en préparation."
+          ]
+        },
+        {
+          "heading": "Données du jeu",
+          "paragraphs": [
+            "Le jeu conserve sur l’appareil la progression, les victoires, les poissons, les vies et leur recharge, les chats et robes acquis, ainsi que les options. Il ne demande pas de compte Catminers et n’envoie pas ces données au développeur. Aucun outil publicitaire ou de mesure d’audience n’est intégré."
+          ]
+        },
+        {
+          "heading": "Achats",
+          "paragraphs": [
+            "Apple ou Google traitent les paiements avec votre compte du store. Le développeur ne reçoit pas vos coordonnées de carte bancaire. Le jeu conserve localement des identifiants de transactions Apple ou des empreintes de jetons Google pour éviter de créditer deux fois un même achat. Ces informations ne sont pas envoyées à un serveur du développeur. Le store conserve les données de transaction selon sa propre politique."
+          ]
+        },
+        {
+          "heading": "Sauvegardes, suppression et contact",
+          "paragraphs": [
+            "L’app n’a pas de service de synchronisation propre. Les sauvegardes système d’Apple ou Google peuvent inclure les données du jeu, selon vos réglages. Supprimer les données de l’application supprime sa copie locale ; les historiques détenus par le store suivent les règles de ce store.",
+            "Un message envoyé au support est traité pour répondre à votre demande. Ce site ouvre votre application de courrier et ne transmet pas automatiquement de données du jeu. Pour toute question sur vos données, utilisez Contact."
+          ]
+        }
+      ]
+    }
+  },
+  "en": {
+    "footerLine": "Catminers is in development for iOS and Android.",
+    "status": "Catminers is in development for iPhone, iPad and Android. It is not available to download yet.",
+    "contact": "For a Catminers question, use Contact. The button opens your mail app; this site does not send your message.",
+    "contactFallback": "JavaScript is needed for the Contact button to open your mail app.",
+    "dateLabel": "Policy date",
+    "landing": {
+      "subtitle": "Minesweeper with cats to welcome",
+      "description": "Catminers is a feline minesweeper game with a campaign, daily challenges and an animated refuge. Its first iOS and Android release is in development.",
+      "sections": [
+        {
+          "heading": "Explore a gallery",
+          "paragraphs": [
+            "Open safe cells, flag mines and use the numbers to make your next move. The first cell is safe. The campaign crosses ten worlds, with daily challenges and custom boards alongside it."
+          ]
+        },
+        {
+          "heading": "Welcome companions",
+          "paragraphs": [
+            "Wins earn fish and unlock cats. Each companion brings a power: a safe hint, a marked mine, protection or extra fish. Your refuge shows the next cat to welcome."
+          ]
+        },
+        {
+          "heading": "Free progression, optional purchases",
+          "paragraphs": [
+            "Every level is playable without a purchase. Fish packs and a one-time pass are being prepared. The pass adds 50% to fish earned with every win and grants 5,000 fish on the initial purchase. Prices will be those displayed by Apple or Google. There are no subscriptions or ads."
+          ]
+        }
+      ]
+    },
+    "support": {
+      "description": "Catminers help: minesweeper controls, lives, local progress, purchases and pass restoration.",
+      "sections": [
+        {
+          "heading": "Play",
+          "paragraphs": [
+            "Tap a cell to open it and hold to place or remove a flag. Double-tapping a number opens unflagged neighbors when the flag count matches. Options also offer button controls and reversed gestures. Moka’s guide remains available in Options."
+          ]
+        },
+        {
+          "heading": "Lives and progress",
+          "paragraphs": [
+            "A defeat costs one life. You can hold five lives and regain one every thirty minutes. A refill costs 500 fish, earned by playing or bought in the store. Closing an offer never starts a purchase."
+          ]
+        },
+        {
+          "heading": "Purchases and restoration",
+          "paragraphs": [
+            "Purchases use your store account. The price is shown before Apple or Google opens its confirmation. Use Restore pass on the same store and account to recover the permanent pass. Restoring does not grant the initial 5,000 fish again. Delivered consumable packs cannot be restored from the store.",
+            "The game has no cross-device sync. System backups may keep progress, depending on your settings. Removing app data can delete local fish and progress. Refund requests go to Apple or Google."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "description": "Catminers privacy: local data, Apple and Google purchases, system backups and contact.",
+      "sections": [
+        {
+          "heading": "Application",
+          "paragraphs": [
+            "This policy covers Catminers, identifier com.bnjdpn.catminers, published by Benjamin Dupin. Its first release is in development."
+          ]
+        },
+        {
+          "heading": "Game data",
+          "paragraphs": [
+            "The game stores progress, wins, fish, lives and recharge time, owned cats and coats, and preferences on your device. It needs no Catminers account and does not send this data to the developer. It contains no advertising or analytics tools."
+          ]
+        },
+        {
+          "heading": "Purchases",
+          "paragraphs": [
+            "Apple or Google processes payments using your store account. The developer does not receive your card details. To prevent duplicate credits, the game keeps Apple transaction identifiers or Google token digests locally. They are not sent to a developer server. The store retains transaction data under its own policy."
+          ]
+        },
+        {
+          "heading": "Backups, removal and contact",
+          "paragraphs": [
+            "The app has no sync service of its own. Apple or Google system backups may include game data, depending on your settings. Removing app data removes its local copy; records held by the store follow that store’s rules.",
+            "Support messages are used to respond to your request. This site opens your mail app and does not automatically send game data. For data questions, use Contact."
+          ]
+        }
+      ]
+    }
+  }
+},
   {
     "name": "Petits Besoins",
     "path": "petits-besoins",

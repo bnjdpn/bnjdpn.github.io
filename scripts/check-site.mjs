@@ -95,6 +95,7 @@ for(const lang of ['en','fr']){
      expect(storeLinks.length===1&&storeLinks[0]===app.androidStoreUrl,prefix+'published Android link missing or unexpected store link');
     }else expect(storeLinks.length===0,prefix+'unpublished store link');
     expect(app.appStoreId&&leaf!==''?html.includes(`name="apple-itunes-app" content="app-id=${app.appStoreId}"`):!html.includes('apple-itunes-app'),prefix+'Smart App Banner mismatch');
+    expect(!html.includes('?v=undefined'),prefix+'asset content hash missing');
     for(const key of ['og:image','og:image:alt','twitter:image','twitter:image:alt'])expect(html.includes(`"${key}"`),prefix+'social image metadata missing');
     const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
     expect(schema['@type']==='SoftwareApplication'&&schema.name===app.name&&!schema.offers&&!schema.aggregateRating,prefix+'unsupported software claim');
