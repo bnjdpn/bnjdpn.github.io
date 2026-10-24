@@ -108,6 +108,34 @@ with tempfile.TemporaryDirectory() as temp:
         except ValueError as error:
             assert 'Disallowed public type' in str(error)
         assert not (base / 'private-generated').exists()
+        # One reviewer video for Tempo does not open MP4 uploads generally.
+        (fixture / 'content/catalog.json').write_text('[{"path":"TempoReps"}]')
+        tempo = fixture / 'TempoReps'
+        tempo.mkdir()
+        video_stage = fixture / '.local/tempo-review'
+        (video_stage / 'review').mkdir(parents=True)
+        (video_stage / 'index.html').write_text('<html lang="en"></html>')
+        video = video_stage / 'review/foreground-service-code10.mp4'
+        video.write_bytes(b'unit-test bytes\x00')
+        video_source = {**source, 'site': 'TempoReps', 'repo': str(tempo),
+                        'stage': str(video_stage), 'kind': 'local-generator-stage'}
+        assembler.assemble([video_source, *legacy], base / 'tempo-review')
+        assert (base / 'tempo-review/public/TempoReps/review/foreground-service-code10.mp4').read_bytes() == video.read_bytes()
+        video.rename(video_stage / 'review/other.mp4')
+        try:
+            assembler.assemble([video_source, *legacy], base / 'tempo-other-video')
+            raise AssertionError('Other Tempo MP4 accepted')
+        except ValueError as error:
+            assert 'Disallowed public type' in str(error)
+        assert not (base / 'tempo-other-video').exists()
+        (video_stage / 'review/other.mp4').rename(video)
+        (fixture / 'content/catalog.json').write_text('[{"path":"Example"}]')
+        try:
+            assembler.assemble([{**video_source, 'site': 'Example', 'repo': str(repo)}, *legacy], base / 'other-app-video')
+            raise AssertionError('Tempo video path accepted for another app')
+        except ValueError as error:
+            assert 'Disallowed public type' in str(error)
+        assert not (base / 'other-app-video').exists()
     finally:
         assembler.ROOT, assembler.git, assembler.ecosystem.PUBLIC = original
 
