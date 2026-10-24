@@ -11,6 +11,7 @@ import {petitesFormApps, petitesFormPrivacy, petitsPotsFormPrivacy} from '../con
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const [apps,profile,media]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json'].map(readJSON));
+const catalogue=[...apps,...appDocuments.filter(app=>app.catalogue)];
 const origin='https://bnjdpn.com';
 const versions=new Map(await Promise.all(['assets/contact.css','assets/contact.js','styles.css','assets/site.js','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
 const asset=path=>`/${path}?v=${versions.get(path)}`;
@@ -23,7 +24,14 @@ const homeFor=lang=>lang==='fr'?'/fr/':'/';
 const pagePath=(app,lang,leaf='')=>`${lang==='fr'?'/fr':''}/apps/${slugOf(app)}/${leaf}`;
 const urlFor=(app,lang)=>`${origin}/${app.path}/${lang==='fr'?'fr-FR/':''}`;
 const storeUrl=app=>`https://apps.apple.com/app/id${app.id}`;
-const icon=(app,eager=false)=>`<img class="app-icon" src="/assets/apps/${app.icon}.${app.iconFormat||'webp'}" width="512" height="512" alt="" ${eager?'loading="eager" decoding="sync"':'loading="lazy" decoding="async"'}>`;
+const iconPath=app=>app.catalogue?.icon||`assets/apps/${app.icon}.${app.iconFormat||'webp'}`;
+const icon=(app,eager=false)=>`<img class="app-icon" src="/${iconPath(app)}" width="512" height="512" alt="" ${eager?'loading="eager" decoding="sync"':'loading="lazy" decoding="async"'}>`;
+const playUrl=app=>app.package?`https://play.google.com/store/apps/details?id=${app.package}`:null;
+const storeLinks=(app,kind,lang)=>[
+ app.id?`<a class="${kind}" href="${storeUrl(app)}"${kind==='store-link'?` aria-label="App Store, ${esc(app.name)}"`:''}>${studioCopy[lang].store}</a>`:'',
+ playUrl(app)?`<a class="${kind}" href="${playUrl(app)}" aria-label="Google Play, ${esc(app.name)}">Google Play</a>`:''
+].filter(Boolean).join(kind==='store-link'?'<br>':' ');
+const devicesFor=(app,lang)=>productCopy[app.path][lang].devices+(app.package?' · Android':'');
 for(const locales of Object.values(media))for(const item of Object.values(locales)){
  const [x,y,w,h]=item.frame||[0,0,1,1];
  if(![x,y,w,h].every(Number.isFinite)||x<0||y<0||w<=0||h<=0||x+w>1.000001||y+h>1.000001)throw new Error(`Invalid image frame: ${item.src}`);
@@ -70,14 +78,18 @@ for (const lang of ['en','fr']) {
 const guideCards=lang=>guides.filter(g=>g.lang===lang).map(g=>`<li><a href="${guideLink(g)}">${esc(g.heading)}</a></li>`).join('');
 for(const lang of ['en','fr']){
  const t=studioCopy[lang], home=homeFor(lang), url=origin+home, social=`${origin}${asset(`assets/social/og${lang==='fr'?'-fr':''}.jpg`)}`;
- const graph=[profile,{'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'bnjdpn',inLanguage:['en','fr'],publisher:{'@id':profile['@id']}},{'@type':'CollectionPage','@id':url+'#apps',url,name:t.title,description:t.description,inLanguage:lang,dateModified:'2026-10-08T00:00:00Z',mainEntity:{'@id':url+'#catalogue'}},{'@type':'ItemList','@id':url+'#catalogue',name:t.apps,numberOfItems:apps.length,itemListElement:apps.map((app,i)=>({'@type':'ListItem',position:i+1,name:app.name,url:origin+pagePath(app,lang)}))}];
- const catalog=apps.map((app,index)=>{
+ const graph=[profile,{'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'bnjdpn',inLanguage:['en','fr'],publisher:{'@id':profile['@id']}},{'@type':'CollectionPage','@id':url+'#apps',url,name:t.title,description:t.description,inLanguage:lang,dateModified:'2026-10-08T00:00:00Z',mainEntity:{'@id':url+'#catalogue'}},{'@type':'ItemList','@id':url+'#catalogue',name:t.apps,numberOfItems:catalogue.length,itemListElement:catalogue.map((app,i)=>({'@type':'ListItem',position:i+1,name:app.name,url:origin+pagePath(app,lang)}))}];
+ const catalog=catalogue.map((app,index)=>{
+  if(app.catalogue){
+   const text=app[lang], search=esc([app.name,text.landing.subtitle,text.landing.description,text.status].join(' '));
+   return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${app.catalogue.category}" data-search="${search}"><a class="row-link" href="${pagePath(app,lang)}"><span class="num">${String(index+1).padStart(2,'0')}</span>${icon(app)}<span class="name">${esc(app.name)}</span><span class="use">${esc(text.footerLine)}</span></a><span class="store-links">${storeLinks(app,'store-link',lang)}</span><figure class="preview">${icon(app)}<figcaption>${esc(text.landing.subtitle)}. ${esc(text.status)}</figcaption></figure></article></li>`;
+  }
   const copy=productCopy[app.path], text=copy[lang];
-  const search=esc([app.name,text.devices,text.summary,...text.body].join(' '));
+  const search=esc([app.name,devicesFor(app,lang),text.summary,...text.body].join(' '));
   const num=String(index+1).padStart(2,'0');
-  return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${copy.category}" data-search="${search}"><a class="row-link" href="${pagePath(app,lang)}"><span class="num">${num}</span>${icon(app,index<10)}<span class="name">${esc(app.name)}</span><span class="use">${t.categories[copy.category]}</span></a><a class="store-link" href="${storeUrl(app)}" aria-label="App Store, ${esc(app.name)}">${t.store}</a><figure class="preview">${screen(app.path,lang,index===0)}<figcaption>${esc(text.summary)} ${esc(text.devices)}</figcaption></figure></article></li>`;
+  return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${copy.category}" data-search="${search}"><a class="row-link" href="${pagePath(app,lang)}"><span class="num">${num}</span>${icon(app,index<10)}<span class="name">${esc(app.name)}</span><span class="use">${t.categories[copy.category]}</span></a><span class="store-links">${storeLinks(app,'store-link',lang)}</span><figure class="preview">${screen(app.path,lang,index===0)}<figcaption>${esc(text.summary)} ${esc(devicesFor(app,lang))}</figcaption></figure></article></li>`;
  }).join('\n');
- const directory=apps.map(app=>`<li><a href="${pagePath(app,lang,'support/')}">${esc(app.name)}</a></li>`).join('');
+ const directory=catalogue.map(app=>`<li><a href="${pagePath(app,lang,'support/')}">${esc(app.name)}</a></li>`).join('');
  outputs.set(lang==='en'?'index.html':'fr/index.html',`${head({lang,title:t.title,description:t.description,url,enHref:origin+'/',frHref:origin+'/fr/',social,socialWidth:1200,socialHeight:630,socialAlt:t.title,extra:'<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'})}
 <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script><script src="${asset('assets/site.js')}" defer></script></head>
 <body id="top">${header(lang,'/','/fr/')}
@@ -85,7 +97,7 @@ for(const lang of ['en','fr']){
 <section class="catalog" id="products"><ol class="index" id="selected">${catalog}</ol><p class="availability-note">${t.availability}</p></section>
 <section class="guides-index" id="guides" aria-labelledby="guides-title"><h2 id="guides-title">${t.guidesTitle}</h2><p>${t.guidesIntro}</p><ul class="guide-list">${guideCards(lang)}</ul></section>
 <section class="contact-block" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">${t.contactTitle}</h2><p>${esc(t.contactText)}</p>${contactButton(t.contactTitle)}<details class="support-directory"><summary>${t.supportDirectory}</summary><ul>${directory}</ul></details></section></main>
-${footer(lang,'/','/fr/')}</body></html>
+${footer(lang,'/','/fr/',true,t.catalogueFooterLine)}</body></html>
 `);
  for(const app of apps){
   const copy=productCopy[app.path], text=copy[lang];
@@ -99,8 +111,8 @@ ${footer(lang,'/','/fr/')}</body></html>
   const links=`<ul class="links"><li><a href="${support}">${t.support}</a></li><li><a href="${privacy}">${t.privacy}</a></li><li><a href="${urlFor(app,lang)}">${t.productSite}</a></li></ul>`;
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/index.html`,`${head({lang,title,description,url:origin+local,enHref:en,frHref:fr,social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr)}
-<main id="main" tabindex="-1"><article class="poster">${crumbs}<div class="title-row">${icon(app,true)}<div class="title-copy"><p class="kicker">${t.categories[copy.category]}</p><h1>${esc(app.name)}</h1></div></div><p class="devices">${esc(text.devices)}</p><p class="store-row"><a class="store-button" href="${storeUrl(app)}">${t.store}</a></p><figure>${screen(app.path,lang,true)}<figcaption>${t.shotCaption}</figcaption></figure><div class="prose">${text.body.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</div>${links}</article></main>
-${footer(lang,en,fr)}</body></html>
+<main id="main" tabindex="-1"><article class="poster">${crumbs}<div class="title-row">${icon(app,true)}<div class="title-copy"><p class="kicker">${t.categories[copy.category]}</p><h1>${esc(app.name)}</h1></div></div><p class="devices">${esc(devicesFor(app,lang))}</p><p class="store-row">${storeLinks(app,'store-button',lang)}</p><figure>${screen(app.path,lang,true)}<figcaption>${t.shotCaption}</figcaption></figure><div class="prose">${text.body.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</div>${links}</article></main>
+${footer(lang,en,fr,true,app.package?t.catalogueFooterLine:t.footerLine)}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/support/index.html`,`${head({lang,title:`${t.support}. ${title}`,description:text.summary,url:origin+support,enHref:origin+pagePath(app,'en','support/'),frHref:origin+pagePath(app,'fr','support/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}
@@ -114,7 +126,7 @@ ${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','pri
 `);
  }
 }
-// Submission pages do not create a catalogue row or an availability claim.
+// Documents keep their existing routes; published Android entries also appear in the catalogue.
 for(const app of appDocuments){
  for(const lang of ['en','fr']){
   const t=studioCopy[lang], text=app[lang];
@@ -125,7 +137,7 @@ for(const app of appDocuments){
    const en=origin+pagePath(app,'en',route), fr=origin+pagePath(app,'fr',route);
    const sections=document.sections.map(section=>`<section><h2>${esc(section.heading)}</h2>${section.paragraphs.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</section>`).join('\n');
    const links=['landing','support','privacy'].filter(other=>text[other]&&other!==leaf).map(other=>`<li><a href="${pagePath(app,lang,other==='landing'?'':other+'/')}">${other==='landing'?app.name:t[other]}</a></li>`).join('');
-   outputs.set(`${lang==='fr'?'fr/':''}apps/${slugOf(app)}/${route}index.html`,`${head({lang,title:leaf==='landing'?`${app.name}. ${document.subtitle}. Benjamin Dupin`:`${label}. ${app.name}. Benjamin Dupin`,description:document.description,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset(app.socialImage||`assets/social/og${lang==='fr'?'-fr':''}.jpg`),socialWidth:app.socialImage?1024:1200,socialHeight:app.socialImage?1024:630,socialAlt:app.socialImage?app.name:'Benjamin Dupin',extra:`${app.appStoreId?`<meta name="apple-itunes-app" content="app-id=${app.appStoreId}">`:''}<meta name="twitter:image:alt" content="${esc(app.socialImage?app.name:'Benjamin Dupin')}"><script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'SoftwareApplication',name:app.name,operatingSystem:'iOS 17 or later; Android 8 or later',applicationCategory:'LifestyleApplication',url:lang==='fr'?fr:en,publisher:{'@type':'Person',name:'Benjamin Dupin'},description:text.status})}</script>`})}
+   outputs.set(`${lang==='fr'?'fr/':''}apps/${slugOf(app)}/${route}index.html`,`${head({lang,title:leaf==='landing'?`${app.name}. ${document.subtitle}. Benjamin Dupin`:`${label}. ${app.name}. Benjamin Dupin`,description:document.description,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset(app.socialImage||`assets/social/og${lang==='fr'?'-fr':''}.jpg`),socialWidth:app.socialImage?1024:1200,socialHeight:app.socialImage?1024:630,socialAlt:app.socialImage?app.name:'Benjamin Dupin',extra:`${app.appStoreId&&leaf!=='landing'?`<meta name="apple-itunes-app" content="app-id=${app.appStoreId}">`:''}<meta name="twitter:image:alt" content="${esc(app.socialImage?app.name:'Benjamin Dupin')}"><script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'SoftwareApplication',name:app.name,operatingSystem:leaf==='landing'&&app.androidStoreUrl?'Android 8 or later':'iOS 17 or later; Android 8 or later',applicationCategory:'LifestyleApplication',url:lang==='fr'?fr:en,publisher:{'@type':'Person',name:'Benjamin Dupin'},description:text.status})}</script>`})}
 <script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr,undefined,true,text.contactFallback)}
 <main id="main" tabindex="-1"><article class="plain"><p class="crumbs"><a href="${homeFor(lang)}#products">${t.homeLabel}</a></p><h1>${leaf==='landing'?esc(app.name):esc(app.name)+'. '+label}</h1><p>${esc(text.status)}</p>${leaf==='landing'&&app.androidStoreUrl?`<p class="app-links"><a href="${esc(app.androidStoreUrl)}">${lang==='fr'?'Télécharger sur Google Play':'Get it on Google Play'}</a></p>`:''}${leaf==='privacy'?`<p>${esc(text.dateLabel)}${lang==='fr'?'\u00a0':''}: <time datetime="${app.policyDate}">${app.policyDate}</time></p>`:''}
 ${sections}<section id="contact"><h2>${t.contactTitle}</h2><p>${esc(text.contact)}</p>${contactButton(t.contactTitle)}</section>${links?`<ul class="links">${links}</ul>`:''}</article></main>
@@ -199,4 +211,4 @@ for(const [path,html] of outputs){
 let stale=false;
 for(const [path,html] of outputs){if(process.argv.includes('--check')){if(await readFile(resolve(root,path),'utf8').catch(()=>null)!==html){console.error(`Stale generated output: ${path}. Run npm run build.`);stale=true;}}else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),html);}}
 if(stale)process.exit(1);
-console.log(`✓ ${outputs.size} static outputs ${process.argv.includes('--check')?'are current':'generated'} (English + French, ${apps.length} products)`);
+console.log(`✓ ${outputs.size} static outputs ${process.argv.includes('--check')?'are current':'generated'} (English + French, ${catalogue.length} products)`);

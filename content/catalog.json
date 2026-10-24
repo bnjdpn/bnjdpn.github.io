@@ -75,30 +75,35 @@
     "name": "Petites Gouttes",
     "path": "petites-gouttes",
     "id": "6760202126",
-    "icon": "petites-gouttes"
+    "icon": "petites-gouttes",
+    "package": "com.bnjdpn.petitesgouttes"
   },
   {
     "name": "Petites Bouchées",
     "path": "petites-bouchees",
     "id": "6760203890",
-    "icon": "petites-bouchees"
+    "icon": "petites-bouchees",
+    "package": "com.bnjdpn.petitesbouchees"
   },
   {
     "name": "Petites Nuits",
     "path": "petites-nuits",
     "id": "6764533941",
-    "icon": "petites-nuits"
+    "icon": "petites-nuits",
+    "package": "com.bnjdpn.petitesnuits"
   },
   {
     "name": "Petites Dents",
     "path": "petites-dents",
     "id": "6792521948",
-    "icon": "petites-dents"
+    "icon": "petites-dents",
+    "package": "com.bnjdpn.petitesdents"
   },
   {
     "name": "Échappée",
     "path": "Echappee",
     "id": "6775410670",
-    "icon": "echappee"
+    "icon": "echappee",
+    "package": "com.bnjdpn.echappee"
   }
 ]

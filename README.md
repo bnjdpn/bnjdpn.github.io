@@ -8,13 +8,18 @@ The site is deliberately static. It ships plain HTML, CSS and JavaScript with
 no production framework, cookies or analytics. Its sitemap index connects the
 portfolio with the independently published product sites.
 
-The home page is the list of 17 apps. Each app has a page, a support page and a
-privacy page under `/apps/` and `/fr/apps/`. English lives at `/`; French at `/fr/`.
-`content/app-documents.mjs` generates support and privacy pages for store
-submissions without adding an app to the home catalogue or creating a product
-page or store link. These bilingual documents also enter `sitemap-pages.xml`.
-Petits Besoins uses this path with its Android release in a progressive rollout
-and its iOS release under review.
+The home page lists 19 apps. Seventeen have an available Apple version; seven
+have a public Android version linked on Google Play (some use staged rollouts). Petits Pots and Petits Besoins are available on Android while their
+first iOS versions are under review, so their cards and landing pages have no
+active Apple installation link. Store pages specify prices, devices and availability.
+
+Each app has a page, a support page and a privacy page under `/apps/` and
+`/fr/apps/`. English lives at `/`; French at `/fr/`. The 17 Apple products live in
+`content/catalog.json`; `content/app-documents.mjs` supplies the two additional
+Android catalogue cards from their existing localized documents and icons.
+These bilingual documents also enter `sitemap-pages.xml`; they do not create
+independent product sites or duplicate catalogue records. Public Android package
+identities alone enable Play links; internal candidates have no public Play CTA.
 Product sites keep independent compositions and build systems, documented in [design.md](docs/design.md).
 Two practical entry points complement the directory: a bilingual reusable
 TempoReps timer guide and a French Petites Bouchées journal-sharing guide.

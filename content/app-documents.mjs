@@ -1,8 +1,10 @@
-// Submission pages remain separate from the catalogue of available apps.
+// Available Android apps reuse their existing documents for catalogue cards.
 export const appDocuments = [
   {
     "name": "Petits Besoins",
     "path": "petits-besoins",
+    "catalogue": {"category": "family", "icon": "assets/petits-besoins-icon.png"},
+    "androidStoreUrl": "https://play.google.com/store/apps/details?id=com.bnjdpn.petitsbesoins",
     "socialImage": "assets/petits-besoins-icon.png",
     "package": "com.bnjdpn.petitsbesoins",
     "appStoreId": "6820659968",
@@ -249,6 +251,7 @@ export const appDocuments = [
 {
   "name": "Petits Pots",
   "path": "petits-pots",
+  "catalogue": {"category": "family", "icon": "assets/petits-pots-icon.png"},
   "package": "com.bnjdpn.petitspots",
   "androidStoreUrl": "https://play.google.com/store/apps/details?id=com.bnjdpn.petitspots",
   "policyDate": "2026-10-22",

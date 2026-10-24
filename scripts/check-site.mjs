@@ -5,6 +5,9 @@ import {guides} from '../content/guides.mjs';
 import {appDocuments} from '../content/app-documents.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const catalog=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
+const availableDocuments=appDocuments.filter(app=>app.catalogue);
+const availableCatalogue=[...catalog,...availableDocuments];
+const publicAndroid=new Map([['Echappee','com.bnjdpn.echappee'],['petits-pots','com.bnjdpn.petitspots'],['petits-besoins','com.bnjdpn.petitsbesoins'],['petites-gouttes','com.bnjdpn.petitesgouttes'],['petites-bouchees','com.bnjdpn.petitesbouchees'],['petites-dents','com.bnjdpn.petitesdents'],['petites-nuits','com.bnjdpn.petitesnuits']]);
 const styles=await readFile(resolve(root,'styles.css'),'utf8');
 const sitemap=await readFile(resolve(root,'sitemap.xml'),'utf8');
 const pages=await readFile(resolve(root,'sitemap-pages.xml'),'utf8');
@@ -27,7 +30,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  expect(new Set(ids).size===ids.length,prefix+'duplicate IDs');
  for(const match of html.matchAll(/href="#([^"]+)"/g))expect(ids.includes(match[1]),prefix+'broken anchor '+match[1]);
  const rows=[...html.matchAll(/<article class="product-row"[\s\S]*?<\/article>/g)].map(m=>m[0]);
- expect(rows.length===catalog.length,prefix+'catalogue length mismatch');
+ expect(rows.length===availableCatalogue.length,prefix+'catalogue length mismatch');
  expect(rows.every(row=>row.includes('data-category=')&&row.includes('data-search=')),prefix+'uncategorized product');
  const storeIds=new Set([...html.matchAll(/apps\.apple\.com\/app\/id(\d+)/g)].map(m=>m[1]));
  const expectedIds=catalog.filter(a=>a.id).map(a=>a.id);
@@ -40,7 +43,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
  for(const type of ['Person','WebSite','CollectionPage','ItemList'])expect(graph.some(x=>x['@type']===type),prefix+'missing JSON-LD '+type);
  const list=graph.find(x=>x['@type']==='ItemList');
- expect(list.numberOfItems===catalog.length&&list.itemListElement.length===catalog.length,prefix+'structured catalogue count mismatch');
+ expect(list.numberOfItems===availableCatalogue.length&&list.itemListElement.length===availableCatalogue.length,prefix+'structured catalogue count mismatch');
  expect(!JSON.stringify(graph).includes('"offers"'),prefix+'unverified offer in JSON-LD');
  expect(/^\d{4}-\d{2}-\d{2}T.*Z$/.test(graph.find(x=>x['@type']==='CollectionPage').dateModified),prefix+'invalid modification timestamp');
  expect(hasContact(html),prefix+'contact control missing or address exposed');
@@ -51,7 +54,15 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  const refs=new Set([...html.matchAll(/(?:href|src)="([^"#]+)"/g)].map(m=>m[1]).filter(ref=>!/^(?:https?:|data:|mailto:)/.test(ref)));
  for(let ref of refs){ref=ref.replace(/^\//,'').split('?')[0];if(ref===''||ref.endsWith('/'))ref+='index.html';try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}}
  expect(html.includes('class="index"'),prefix+'catalogue index missing');
- for(const app of appDocuments)expect(!html.includes(app.name)&&!html.includes(`/apps/${app.path}/`),prefix+'submission-only app leaked into home');
+ for(const app of appDocuments){
+  const row=rows.find(row=>row.includes(`data-app="${app.path}"`));
+  if(app.catalogue){
+   expect(row?.includes(app[lang].footerLine),prefix+app.path+' platform review status missing');
+   expect(!row?.includes('apps.apple.com'),prefix+app.path+' unreleased Apple link');
+  }else expect(!row,prefix+'submission-only app leaked into home');
+ }
+ const playPackages=[...html.matchAll(/play\.google\.com\/store\/apps\/details\?id=([^"&]+)/g)].map(m=>m[1]);
+ expect(playPackages.length===publicAndroid.size&&new Set(playPackages).size===publicAndroid.size&&[...publicAndroid.values()].every(p=>playPackages.includes(p)),prefix+'public Android catalogue destinations mismatch');
 }
 for(const lang of ['en','fr']){
  for(const app of [...catalog,...appDocuments]){
@@ -61,6 +72,10 @@ for(const lang of ['en','fr']){
    const path=`${lang==='fr'?'fr/':''}apps/${slug}/${leaf}index.html`;
    const html=await readFile(resolve(root,path),'utf8');
    const prefix=`${path}: `;
+   if(leaf===''){
+    const playHref=`https://play.google.com/store/apps/details?id=${publicAndroid.get(app.path)}`;
+    expect(publicAndroid.has(app.path)?html.includes(`href="${playHref}"`):!html.includes('play.google.com/store/apps/details'),prefix+'public Android install link mismatch');
+   }
    expect(html.includes(`<html lang="${lang}">`),prefix+'language mismatch');
    expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
    expect(['petits-pots','petits-besoins'].includes(slug) ? (html.includes(`href="${lang==='fr'?'/fr':''}/contact/?app=${slug}"`)&&!html.includes('data-contact')) : hasContact(html),prefix+'contact control missing or address exposed');
@@ -78,7 +93,7 @@ for(const lang of ['en','fr']){
      expect(app.androidStoreUrl===`https://play.google.com/store/apps/details?id=${app.package}`,prefix+'Android package link mismatch');
      expect(storeLinks.length===1&&storeLinks[0]===app.androidStoreUrl,prefix+'published Android link missing or unexpected store link');
     }else expect(storeLinks.length===0,prefix+'unpublished store link');
-    expect(app.appStoreId?html.includes(`name="apple-itunes-app" content="app-id=${app.appStoreId}"`):!html.includes('apple-itunes-app'),prefix+'Smart App Banner mismatch');
+    expect(app.appStoreId&&leaf!==''?html.includes(`name="apple-itunes-app" content="app-id=${app.appStoreId}"`):!html.includes('apple-itunes-app'),prefix+'Smart App Banner mismatch');
     for(const key of ['og:image','og:image:alt','twitter:image','twitter:image:alt'])expect(html.includes(`"${key}"`),prefix+'social image metadata missing');
     const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
     expect(schema['@type']==='SoftwareApplication'&&schema.name===app.name&&!schema.offers&&!schema.aggregateRating,prefix+'unsupported software claim');
@@ -134,5 +149,5 @@ JSON.parse(await readFile(resolve(root,'site.webmanifest'),'utf8'));
 expect(styles.includes(':focus-visible')&&styles.includes('prefers-reduced-motion'),'focus/reduced motion handling missing');
 expect(!/fonts\.(googleapis|gstatic)\.com/.test(styles),'remote font introduced');
 if(failures.length){console.error(failures.map(x=>'✗ '+x).join('\n'));process.exit(1)}
-console.log(`✓ EN/FR routes, ${guides.length} guides, ${catalog.length} products, all store IDs, structured data and sitemaps`);
+console.log(`✓ EN/FR routes, ${guides.length} guides, ${availableCatalogue.length} products, all store IDs, structured data and sitemaps`);
 console.log(`✓ ${references} local references, image dimensions, keyboard hooks, static fallback`);
