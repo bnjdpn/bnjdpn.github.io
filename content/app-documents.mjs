@@ -3,7 +3,7 @@ export const appDocuments = [
   {
     "name": "Petits Besoins",
     "path": "petits-besoins",
-    "catalogue": {"category": "family", "icon": "assets/petits-besoins-icon.png"},
+    "catalogue": {"category": "family", "icon": "assets/petits-besoins-icon.png", "availability": {"en": "Available on Android. The iOS version is not available yet.", "fr": "Disponible sur Android. La version iOS n’est pas encore disponible."}},
     "androidStoreUrl": "https://play.google.com/store/apps/details?id=com.bnjdpn.petitsbesoins",
     "socialImage": "assets/petits-besoins-icon.png",
     "package": "com.bnjdpn.petitsbesoins",
@@ -251,7 +251,7 @@ export const appDocuments = [
 {
   "name": "Petits Pots",
   "path": "petits-pots",
-  "catalogue": {"category": "family", "icon": "assets/petits-pots-icon.png"},
+  "catalogue": {"category": "family", "icon": "assets/petits-pots-icon.png", "availability": {"en": "Available on Android. The iOS version is not available yet.", "fr": "Disponible sur Android. La version iOS n’est pas encore disponible."}},
   "package": "com.bnjdpn.petitspots",
   "androidStoreUrl": "https://play.google.com/store/apps/details?id=com.bnjdpn.petitspots",
   "policyDate": "2026-10-22",

@@ -57,7 +57,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  for(const app of appDocuments){
   const row=rows.find(row=>row.includes(`data-app="${app.path}"`));
   if(app.catalogue){
-   expect(row?.includes(app[lang].footerLine),prefix+app.path+' platform review status missing');
+   expect(row?.includes(app.catalogue.availability[lang]),prefix+app.path+' platform review status missing');
    expect(!row?.includes('apps.apple.com'),prefix+app.path+' unreleased Apple link');
   }else expect(!row,prefix+'submission-only app leaked into home');
  }
@@ -90,6 +90,7 @@ for(const lang of ['en','fr']){
     const storeLinks=[...html.matchAll(/href="([^"]+)"/g)].map(match=>match[1]).filter(href=>/apps\.apple\.com|play\.google\.com\/store/.test(href));
     const publishedAndroid=leaf===''&&app.androidStoreUrl;
     if(publishedAndroid){
+     expect(!/under review|en (?:cours d.examen|examen)|staged rollout|déploiement progressif/.test(html),prefix+'store procedure leaked into landing');
      expect(app.androidStoreUrl===`https://play.google.com/store/apps/details?id=${app.package}`,prefix+'Android package link mismatch');
      expect(storeLinks.length===1&&storeLinks[0]===app.androidStoreUrl,prefix+'published Android link missing or unexpected store link');
     }else expect(storeLinks.length===0,prefix+'unpublished store link');
