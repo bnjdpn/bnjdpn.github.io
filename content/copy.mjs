@@ -396,7 +396,7 @@ export const productCopy = {
       body:[
         'The road is generated as you ride, with a day and night cycle. Each world has a seed, so the same route can be ridden again.',
         'Free mode follows the terrain when a trainer is connected. Workout mode follows a session you import or edit, including .zwo files. Contemplation shows the road without power, cadence or workout data. Without a trainer, only Contemplation is available.',
-        'There is no account, no ads and no in-app purchase. The app does not open a network connection.'
+        'No Échappée account or ads. On Android, two trial rides are included, followed by a one-time Google Play unlock. Purchases and restoration communicate with Google; Play Billing may also send diagnostics, as described in the privacy policy. Check each store page for its purchase terms.'
       ]
     },
     fr:{
@@ -405,7 +405,7 @@ export const productCopy = {
       body:[
         'La route se génère pendant que vous roulez, avec un cycle jour et nuit. Chaque monde a une graine, donc le même parcours peut être refait.',
         'Le mode libre suit le terrain quand un home trainer est connecté. Le mode Workout suit une séance importée ou modifiée, fichiers .zwo compris. La Contemplation montre la route sans puissance, cadence ni donnée de séance. Sans home trainer, seule la Contemplation est disponible.',
-        'Pas de compte, pas de publicité et pas d\'achat intégré. L\'app n\'ouvre pas de connexion réseau.'
+        "Pas de compte Échappée ni de publicité. Sur Android, deux sorties d’essai sont incluses, puis un achat unique via Google Play permet de continuer. L’achat et la restauration impliquent des échanges avec Google ; Play Billing peut aussi envoyer des diagnostics, décrits dans la politique de confidentialité. Consultez la fiche de chaque boutique pour ses conditions d’achat."
       ]
     }
   }
