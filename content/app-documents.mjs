@@ -81,7 +81,8 @@ export const appDocuments = [
         {
           "heading": "Achats",
           "paragraphs": [
-            "Apple ou Google traitent les paiements avec votre compte du store. Le développeur ne reçoit pas vos coordonnées de carte bancaire. Le jeu conserve localement des identifiants de transactions Apple ou des empreintes de jetons Google pour éviter de créditer deux fois un même achat. Ces informations ne sont pas envoyées à un serveur du développeur. Le store conserve les données de transaction selon sa propre politique."
+            "Apple ou Google traitent les paiements avec votre compte du store. Le développeur ne reçoit pas vos coordonnées de carte bancaire. Le jeu conserve localement des identifiants de transactions Apple ou des empreintes de jetons Google pour éviter de créditer deux fois un même achat. Ces informations ne sont pas envoyées à un serveur du développeur. Le store conserve les données de transaction selon sa propre politique.",
+            "Sur Android, la bibliothèque Google Play Billing transmet aussi à Google des diagnostics techniques sur le fonctionnement des achats : versions du jeu et de la bibliothèque, modèle et système de l’appareil, mémoire et informations de réseau. Cette transmission peut avoir lieu lors de la connexion au service d’achats, même sans achat. Google traite ces informations selon sa politique de confidentialité. Ces diagnostics sont envoyés à Google, pas à un serveur du développeur. La progression et le contenu de votre sauvegarde restent sur l’appareil."
           ]
         },
         {
@@ -166,7 +167,8 @@ export const appDocuments = [
         {
           "heading": "Purchases",
           "paragraphs": [
-            "Apple or Google processes payments using your store account. The developer does not receive your card details. To prevent duplicate credits, the game keeps Apple transaction identifiers or Google token digests locally. They are not sent to a developer server. The store retains transaction data under its own policy."
+            "Apple or Google processes payments using your store account. The developer does not receive your card details. To prevent duplicate credits, the game keeps Apple transaction identifiers or Google token digests locally. They are not sent to a developer server. The store retains transaction data under its own policy.",
+            "On Android, the Google Play Billing library also sends Google technical diagnostics about purchase operations: game and library versions, device model and system, memory and network information. This can happen when connecting to the billing service, even without a purchase. Google processes this information under its privacy policy. These diagnostics go to Google, rather than to a developer server. Your progress and saved game content stay on your device."
           ]
         },
         {
