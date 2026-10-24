@@ -250,10 +250,11 @@ export const appDocuments = [
   "name": "Petits Pots",
   "path": "petits-pots",
   "package": "com.bnjdpn.petitspots",
+  "androidStoreUrl": "https://play.google.com/store/apps/details?id=com.bnjdpn.petitspots",
   "policyDate": "2026-10-22",
   "en": {
-    "footerLine": "iOS and Android versions in preparation.",
-    "status": "Petits Pots is in preparation for iOS and Android. It is not yet available in either public store.",
+    "footerLine": "Available on Android. iOS under review.",
+    "status": "Petits Pots is available on Android. The iOS app is awaiting App Store review.",
     "contact": "For a question about the app or its data, use the protected contact form or email petites@bnjdpn.com. Avoid including personal information about a child.",
     "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
     "dateLabel": "Policy date",
@@ -391,8 +392,8 @@ export const appDocuments = [
     }
   },
   "fr": {
-    "footerLine": "Versions iOS et Android en préparation.",
-    "status": "Petits Pots est en préparation pour iOS et Android. L’app n’est pas encore disponible sur les stores publics.",
+    "footerLine": "Disponible sur Android. iOS en cours d’examen.",
+    "status": "Petits Pots est disponible sur Android. L’app iOS est en attente d’examen par Apple.",
     "contact": "Pour une question sur l’app ou ses données, utilisez le formulaire de contact protégé ou écrivez à petites@bnjdpn.com. Évitez les informations personnelles sur un enfant.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
     "dateLabel": "Date de la politique",

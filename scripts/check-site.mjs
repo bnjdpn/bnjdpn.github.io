@@ -72,7 +72,12 @@ for(const lang of ['en','fr']){
     expect(html.includes(`rel="canonical" href="${url}"`),prefix+'canonical mismatch');
     expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
     for(const alternate of ['en','fr'])expect(html.includes(`rel="alternate" hreflang="${alternate}" href="${origin}/${alternate==='fr'?'fr/':''}apps/${slug}/${leaf}"`),prefix+'alternate missing');
-    expect(!/apps\.apple\.com|play\.google\.com\/store|class="store-button"/.test(html),prefix+'unpublished store link');
+    const storeLinks=[...html.matchAll(/href="([^"]+)"/g)].map(match=>match[1]).filter(href=>/apps\.apple\.com|play\.google\.com\/store/.test(href));
+    const publishedAndroid=leaf===''&&app.androidStoreUrl;
+    if(publishedAndroid){
+     expect(app.androidStoreUrl===`https://play.google.com/store/apps/details?id=${app.package}`,prefix+'Android package link mismatch');
+     expect(storeLinks.length===1&&storeLinks[0]===app.androidStoreUrl,prefix+'published Android link missing or unexpected store link');
+    }else expect(storeLinks.length===0,prefix+'unpublished store link');
     expect(app.appStoreId?html.includes(`name="apple-itunes-app" content="app-id=${app.appStoreId}"`):!html.includes('apple-itunes-app'),prefix+'Smart App Banner mismatch');
     for(const key of ['og:image','og:image:alt','twitter:image','twitter:image:alt'])expect(html.includes(`"${key}"`),prefix+'social image metadata missing');
     const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
