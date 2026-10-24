@@ -100,7 +100,10 @@ previous iterations; their checks do not validate the current redesign.
 Local validation, an authorized Cloudflare upload and the content served
 publicly are separate evidence. A new product route can pass locally while
 remaining 404 publicly until its separate site is published. Publish new product routes before
-the portfolio links to them, with explicit authorization for each deployment.
+the portfolio links to them. The [Studio instructions](../_studio/AGENTS.md) authorize
+website updates that accompany the requested work. Publish those updates without
+waiting for store approval; distinguish available features from upcoming changes.
+An unrelated deployment still needs a mandate covering it.
 
 ## Local ecosystem review
 

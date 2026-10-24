@@ -50,7 +50,8 @@ are never committed or copied into `public/`.
 ## Deploy and verify
 
 Commit and push preserve the reviewed sources; they do not deploy the site.
-After release approval, use Wrangler 4.152.0 from the candidate directory so it
+For website changes covered by AGENTS.md, deploy during the work without waiting
+for app-store approval. After validating the candidate, use Wrangler 4.152.0 from its directory so it
 can read both `public/` and the adjacent Pages functions/configuration. Select
 the reviewed Cloudflare branch explicitly:
 

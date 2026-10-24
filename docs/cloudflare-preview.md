@@ -113,8 +113,10 @@ central conserve le Worker existant ; aucun envoi réel n’est exécuté.
 
 La PR #12 n’est pas reprise : ses redirections génériques supprimeraient des
 langues, des ancres de support et les sitemaps enfants. Les fichiers originaux
-restent présents ici. GitHub Pages continue son fonctionnement existant ; pousser
-sur `main` peut publier et reste hors du périmètre de cette préparation locale.
+restent présents ici. Ce constat de préparation précède la bascule Cloudflare.
+GitHub Pages n’est plus l’hébergement actif ; la procédure actuelle est dans
+[cloudflare/DEPLOY.md](../cloudflare/DEPLOY.md). Un push conserve les sources
+mais ne vaut pas déploiement.
 
 ## Contact local : réutilisation de la chaîne Cloudflare existante
 
