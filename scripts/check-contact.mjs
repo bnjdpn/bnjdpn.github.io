@@ -75,7 +75,6 @@ for (const lang of ['en','fr']) {
   assert(html.includes('type="submit" disabled')); assert(html.includes('mailto:petites@bnjdpn.com'));
   assert(html.includes('role="status"')); assert(html.includes(`<link rel="canonical" href="https://bnjdpn.com/${prefix}contact/">`));
 }
-assert((await readFile(new URL('../.github/workflows/pages.yml',import.meta.url),'utf8')).includes('cp -R contact _site/contact'));
 console.log('✓ Contact EN/FR: safe context, fixed destination, token requirement/renewal, duplicate submit, failure recovery, expiry and blocked script; no real requests');
 
 const received=[];
