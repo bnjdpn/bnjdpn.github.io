@@ -33,7 +33,8 @@ export const productCopy = {
       summary:'Times intervals, repetition tempo and circuits, including on Apple Watch.',
       body:[
         'Nine modes are free. Tempo, EMOM, Tabata, AMRAP, For Time, MIX, Rest, Stopwatch and Mirror. The free tier stores two configurations and MIX circuits of up to two blocks. There is no account, no ads and no session limit.',
-        'Pro raises the library to 20 saved configurations and removes the MIX block limit. It is a monthly subscription, a yearly subscription, or a one-time purchase. Workouts stay on the device.'
+        'Pro raises the library to 20 saved configurations and removes the MIX block limit. It is a monthly subscription, a yearly subscription, or a one-time purchase. Workouts stay on the device.',
+        'Version 2.5.0 is in preparation: seven days of free workout history, with full history, statistics and training streaks in Pro. Pro will also add optional Apple Health integration and scheduled reminders for saved timers. These additions are not yet available in the public version.'
       ]
     },
     fr:{
@@ -41,7 +42,8 @@ export const productCopy = {
       summary:'Minutage des intervalles, du tempo de répétition et des circuits, y compris sur Apple Watch.',
       body:[
         'Neuf modes sont gratuits. Tempo, EMOM, Tabata, AMRAP, For Time, MIX, Repos, Chrono et Mirror. Le palier gratuit conserve deux configurations et des circuits MIX de deux blocs au plus. Pas de compte, pas de publicité, pas de limite de séance.',
-        'Pro monte la bibliothèque à 20 configurations enregistrées et retire la limite de blocs MIX. C\'est un abonnement mensuel, un abonnement annuel, ou un achat unique. Les séances restent sur l\'appareil.'
+        'Pro monte la bibliothèque à 20 configurations enregistrées et retire la limite de blocs MIX. C\'est un abonnement mensuel, un abonnement annuel, ou un achat unique. Les séances restent sur l\'appareil.',
+        'La version 2.5.0 est en préparation : sept jours d’historique gratuits, puis l’historique complet, les statistiques et les séries d’entraînement dans Pro. Pro ajoutera aussi l’intégration facultative à Santé d’Apple et des rappels pour les minuteurs enregistrés. Ces ajouts ne sont pas encore disponibles dans la version publique.'
       ]
     }
   },
