@@ -4,20 +4,20 @@ export const appDocuments = [
   "name": "Catminers",
   "path": "catminers",
   "package": "com.bnjdpn.catminers",
-  "upcoming": true,
+  "upcoming": false,
   "socialImage": "assets/catminers-icon.png",
   "policyDate": "2026-10-24",
   "operatingSystem": "iOS 15 or later; Android 8 or later",
   "applicationCategory": "GameApplication",
   "fr": {
-    "footerLine": "Catminers est en préparation pour iOS et Android.",
-    "status": "Catminers est en préparation pour iPhone, iPad et Android. Le jeu n’est pas encore disponible en téléchargement.",
+    "footerLine": "Catminers 1.0.0 est soumis à Apple et Google pour examen.",
+    "status": "Catminers 1.0.0 est en cours d’examen chez Apple et Google. Le téléchargement public n’est pas encore ouvert.",
     "contact": "Pour une question sur Catminers, utilisez Contact. Le bouton ouvre votre application de courrier ; ce site n’envoie pas votre message.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application de courrier avec le bouton Contact.",
     "dateLabel": "Date de la politique",
     "landing": {
       "subtitle": "Un démineur et des chats à accueillir",
-      "description": "Catminers, un démineur félin avec une campagne, des défis quotidiens et un refuge animé. Première version en préparation pour iOS et Android.",
+      "description": "Catminers, un démineur félin avec une campagne, des défis quotidiens et un refuge animé. Version 1.0.0 soumise à Apple et Google.",
       "sections": [
         {
           "heading": "Explorer une galerie",
@@ -34,7 +34,7 @@ export const appDocuments = [
         {
           "heading": "Une progression gratuite, des achats facultatifs",
           "paragraphs": [
-            "Tous les niveaux sont accessibles sans achat. Des packs de poissons et un pass à paiement unique sont en préparation. Le pass ajoute 50 % aux poissons gagnés à chaque victoire et donne 5 000 poissons lors de l’achat initial. Les prix seront ceux affichés par Apple ou Google. Aucun abonnement ni publicité n’est intégré."
+            "Tous les niveaux sont accessibles sans achat. La boutique propose des packs de poissons et un pass à paiement unique. Le pass ajoute 50 % aux poissons gagnés à chaque victoire et donne 5 000 poissons lors de l’achat initial. Les prix sont ceux affichés par Apple ou Google. Aucun abonnement ni publicité n’est intégré."
           ]
         }
       ]
@@ -69,7 +69,7 @@ export const appDocuments = [
         {
           "heading": "Application concernée",
           "paragraphs": [
-            "Cette politique concerne Catminers, identifiant com.bnjdpn.catminers, publié par Benjamin Dupin. La première version est en préparation."
+            "Cette politique concerne Catminers, identifiant com.bnjdpn.catminers, publié par Benjamin Dupin."
           ]
         },
         {
@@ -96,14 +96,14 @@ export const appDocuments = [
     }
   },
   "en": {
-    "footerLine": "Catminers is in development for iOS and Android.",
-    "status": "Catminers is in development for iPhone, iPad and Android. It is not available to download yet.",
+    "footerLine": "Catminers 1.0.0 has been submitted to Apple and Google for review.",
+    "status": "Catminers 1.0.0 is under review by Apple and Google. Public downloads are not open yet.",
     "contact": "For a Catminers question, use Contact. The button opens your mail app; this site does not send your message.",
     "contactFallback": "JavaScript is needed for the Contact button to open your mail app.",
     "dateLabel": "Policy date",
     "landing": {
       "subtitle": "Minesweeper with cats to welcome",
-      "description": "Catminers is a feline minesweeper game with a campaign, daily challenges and an animated refuge. Its first iOS and Android release is in development.",
+      "description": "Catminers is a feline minesweeper game with a campaign, daily challenges and an animated refuge. Version 1.0.0 has been submitted to Apple and Google.",
       "sections": [
         {
           "heading": "Explore a gallery",
@@ -120,7 +120,7 @@ export const appDocuments = [
         {
           "heading": "Free progression, optional purchases",
           "paragraphs": [
-            "Every level is playable without a purchase. Fish packs and a one-time pass are being prepared. The pass adds 50% to fish earned with every win and grants 5,000 fish on the initial purchase. Prices will be those displayed by Apple or Google. There are no subscriptions or ads."
+            "Every level is playable without a purchase. The shop offers fish packs and a one-time pass. The pass adds 50% to fish earned with every win and grants 5,000 fish on the initial purchase. Prices are those displayed by Apple or Google. There are no subscriptions or ads."
           ]
         }
       ]
@@ -155,7 +155,7 @@ export const appDocuments = [
         {
           "heading": "Application",
           "paragraphs": [
-            "This policy covers Catminers, identifier com.bnjdpn.catminers, published by Benjamin Dupin. Its first release is in development."
+            "This policy covers Catminers, identifier com.bnjdpn.catminers, published by Benjamin Dupin."
           ]
         },
         {
