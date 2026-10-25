@@ -532,7 +532,7 @@ export const appDocuments = [
         {
           "heading": "Scope",
           "paragraphs": [
-            "Benjamin Dupin publishes Petits Pots for iOS and Android, identified by com.bnjdpn.petitspots. This policy covers the versions in preparation."
+            "Benjamin Dupin publishes Petits Pots for iOS and Android, identified by com.bnjdpn.petitspots. This policy covers the iOS and Android apps."
           ]
         },
         {
@@ -671,7 +671,7 @@ export const appDocuments = [
         {
           "heading": "Champ de la politique",
           "paragraphs": [
-            "Benjamin Dupin édite Petits Pots pour iOS et Android, identifiée par com.bnjdpn.petitspots. Cette politique couvre les versions en préparation."
+            "Benjamin Dupin édite Petits Pots pour iOS et Android, identifiée par com.bnjdpn.petitspots. Cette politique couvre les apps iOS et Android."
           ]
         },
         {
