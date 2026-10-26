@@ -79,8 +79,8 @@ function head({lang,title,description,url,enHref,frHref,social,socialWidth,socia
 }
 for (const lang of ['en','fr']) {
  const t=contactCopy[lang], en=origin+'/contact/', fr=origin+'/fr/contact/';
- const mailHeader=header(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">E-mail</a>').replace(/<noscript>[\s\S]*?<\/noscript>/g,'');
- const mailFooter=footer(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">E-mail</a>');
+ const mailHeader=header(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:contact@bnjdpn.com">E-mail</a>').replace(/<noscript>[\s\S]*?<\/noscript>/g,'');
+ const mailFooter=footer(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:contact@bnjdpn.com">E-mail</a>');
  outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:t.pageTitle,description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'})}<link rel="stylesheet" href="${asset('assets/contact.css')}"><script src="${asset('assets/contact.js')}" defer></script></head><body id="top">${mailHeader}${contactBody(lang,esc)}${mailFooter}</body></html>\n`);
 }
 const guideCards=lang=>guides.filter(g=>g.lang===lang).map(g=>`<li><a href="${guideLink(g)}">${esc(g.heading)}</a></li>`).join('');

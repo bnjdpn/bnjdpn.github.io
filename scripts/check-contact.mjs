@@ -72,7 +72,7 @@ for (const lang of ['en','fr']) {
   const html=await readFile(new URL(`../${prefix}contact/index.html`,import.meta.url),'utf8');
   assert(html.includes(`<html lang="${lang}">`)); assert(html.includes('name="_gotcha"')); assert(html.includes('maxlength="5000"'));
   assert(html.includes('action="/api/contact"'));
-  assert(html.includes('type="submit" disabled')); assert(html.includes('mailto:petites@bnjdpn.com'));
+  assert(html.includes('type="submit" disabled')); assert(html.includes('mailto:contact@bnjdpn.com'));
   assert(html.includes('role="status"')); assert(html.includes(`<link rel="canonical" href="https://bnjdpn.com/${prefix}contact/">`));
 }
 console.log('✓ Contact EN/FR: safe context, fixed destination, token requirement/renewal, duplicate submit, failure recovery, expiry and blocked script; no real requests');

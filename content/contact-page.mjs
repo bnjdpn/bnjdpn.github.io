@@ -36,5 +36,5 @@ export function contactBody(lang, esc) {
 <p class="contact-privacy">${t.privacy} <a id="contact-privacy" href="${lang==='fr'?'/fr':''}/apps/petits-pots/privacy/">${t.policy}</a> · <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Cloudflare Turnstile</a></p>
 <div id="spam-protection"></div><p id="form-status" role="status" aria-live="polite">${t.security}</p>
 <button id="send-message" class="store-button" type="submit" disabled>${t.send}</button>
-</form><noscript><p>${t.nojs}</p></noscript><p>${t.fallback} <a href="mailto:petites@bnjdpn.com">petites@bnjdpn.com</a>.</p></article></main>`;
+</form><noscript><p>${t.nojs}</p></noscript><p>${t.fallback} <a href="mailto:contact@bnjdpn.com">contact@bnjdpn.com</a>.</p></article></main>`;
 }
