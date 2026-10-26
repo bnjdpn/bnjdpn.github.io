@@ -7,7 +7,7 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const catalog=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
 // Links to migrated app sites point into other repositories; preview-ecosystem.py checks them after assembly.
 const migrated=Object.keys(JSON.parse(await readFile(resolve(root,'content/product-sites/migrated.json'),'utf8')));
-const appSiteRef=ref=>migrated.some(path=>ref.replace(/^\//,'').startsWith(path+'/'));
+const appSiteRef=ref=>[...migrated,'Echappee'].some(path=>ref.replace(/^\//,'').startsWith(path+'/'));
 const availableDocuments=appDocuments.filter(app=>app.catalogue);
 const availableCatalogue=[...catalog,...availableDocuments];
 const publicAndroid=new Map([['Echappee','com.bnjdpn.echappee'],['petits-pots','com.bnjdpn.petitspots'],['petits-besoins','com.bnjdpn.petitsbesoins'],['petites-gouttes','com.bnjdpn.petitesgouttes'],['petites-bouchees','com.bnjdpn.petitesbouchees'],['petites-dents','com.bnjdpn.petitesdents'],['petites-nuits','com.bnjdpn.petitesnuits']]);

@@ -27,7 +27,9 @@ const homeFor=lang=>lang==='fr'?'/fr/':'/';
 const pagePath=(app,lang,leaf='')=>`${lang==='fr'?'/fr':''}/apps/${slugOf(app)}/${leaf}`;
 // Apps whose own site is built by scripts/product-site: their /apps/<slug>/ pages
 // answer 301 (see _redirects) and every link points to the app site directly.
-const appHref=(app,lang,leaf='')=>{const m=migrated[app.path];if(!m)return pagePath(app,lang,leaf);const base=lang==='fr'?m.fr:m.en;return leaf==='support/'?base+'#contact':leaf==='privacy/'?(lang==='fr'?m.privacyFr:m.privacyEn):base;};
+// Échappée has its own site but keeps /apps/echappee/support/ and privacy/: Google Play links to them.
+const ownSites={Echappee:{en:'/Echappee/',fr:'/Echappee/fr-FR/'}};
+const appHref=(app,lang,leaf='')=>{const m=migrated[app.path];if(!m)return !leaf&&ownSites[app.path]?ownSites[app.path][lang]:pagePath(app,lang,leaf);const base=lang==='fr'?m.fr:m.en;return leaf==='support/'?base+'#contact':leaf==='privacy/'?(lang==='fr'?m.privacyFr:m.privacyEn):base;};
 const urlFor=(app,lang)=>`${origin}/${app.path}/${lang==='fr'?'fr-FR/':''}`;
 const storeUrl=app=>`https://apps.apple.com/app/id${app.id}`;
 const iconPath=app=>app.catalogue?.icon||`assets/apps/${app.icon}.${app.iconFormat||'webp'}`;
@@ -79,12 +81,12 @@ for (const lang of ['en','fr']) {
  const t=contactCopy[lang], en=origin+'/contact/', fr=origin+'/fr/contact/';
  const mailHeader=header(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">E-mail</a>').replace(/<noscript>[\s\S]*?<\/noscript>/g,'');
  const mailFooter=footer(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:petites@bnjdpn.com">E-mail</a>');
- outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:t.genericTitle+'. Benjamin Dupin',description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'})}<link rel="stylesheet" href="${asset('assets/contact.css')}"><script src="${asset('assets/contact.js')}" defer></script></head><body id="top">${mailHeader}${contactBody(lang,esc)}${mailFooter}</body></html>\n`);
+ outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:t.pageTitle,description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'})}<link rel="stylesheet" href="${asset('assets/contact.css')}"><script src="${asset('assets/contact.js')}" defer></script></head><body id="top">${mailHeader}${contactBody(lang,esc)}${mailFooter}</body></html>\n`);
 }
 const guideCards=lang=>guides.filter(g=>g.lang===lang).map(g=>`<li><a href="${guideLink(g)}">${esc(g.heading)}</a></li>`).join('');
 for(const lang of ['en','fr']){
  const t=studioCopy[lang], home=homeFor(lang), url=origin+home, social=`${origin}${asset(`assets/social/og${lang==='fr'?'-fr':''}.jpg`)}`;
- const graph=[profile,{'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'bnjdpn',inLanguage:['en','fr'],publisher:{'@id':profile['@id']}},{'@type':'CollectionPage','@id':url+'#apps',url,name:t.title,description:t.description,inLanguage:lang,dateModified:'2026-10-08T00:00:00Z',mainEntity:{'@id':url+'#catalogue'}},{'@type':'ItemList','@id':url+'#catalogue',name:t.apps,numberOfItems:catalogue.length,itemListElement:catalogue.map((app,i)=>({'@type':'ListItem',position:i+1,name:app.name,url:origin+pagePath(app,lang)}))}];
+ const graph=[profile,{'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'bnjdpn',inLanguage:['en','fr'],publisher:{'@id':profile['@id']}},{'@type':'CollectionPage','@id':url+'#apps',url,name:t.title,description:t.description,inLanguage:lang,dateModified:'2026-10-08T00:00:00Z',mainEntity:{'@id':url+'#catalogue'}},{'@type':'ItemList','@id':url+'#catalogue',name:t.apps,numberOfItems:catalogue.length,itemListElement:catalogue.map((app,i)=>({'@type':'ListItem',position:i+1,name:app.name,url:origin+appHref(app,lang)}))}];
  const catalog=catalogue.map((app,index)=>{
   if(app.catalogue){
    const text=app[lang], search=esc([app.name,text.landing.subtitle,app.catalogue.availability[lang]].join(' '));
