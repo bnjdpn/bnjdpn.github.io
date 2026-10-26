@@ -174,6 +174,8 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   const styles = ['base.css', ...(images.has('assets/foundations.css') ? ['foundations.css'] : []), 'theme.css']
     .map((name) => `<link rel="stylesheet" href="${prefix}assets/${name}">`).join('');
   const heroShot = app.heroShot ?? 0;
+  // Every screenshot of the store listing, in store order, hero first.
+  const gallery = [heroShot, ...shots.map((_, i) => i).filter((i) => i !== heroShot && t.alts[i])];
 
   const html = `<!doctype html>
 <html lang="${locale}" dir="ltr">
@@ -184,7 +186,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   <meta name="theme-color" content="${cfg.theme_color}"><meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="${url}">${alternates}
   <meta name="apple-itunes-app" content="app-id=${app.appStoreId}"><link rel="icon" href="${prefix}assets/app-icon.png"><link rel="apple-touch-icon" href="${prefix}assets/app-icon.png"><link rel="manifest" href="${prefix}site.webmanifest">
-  ${styles}${kept.scripts}<style>${LAYOUT_CSS}</style>
+  ${styles}<style>${LAYOUT_CSS}</style>
   <meta name="author" content="Benjamin Dupin"><link rel="author" href="${cfg.developer_profile_url}">
   ${meta.join('\n  ')}
   <script type="application/ld+json">${jsonLd(cfg, app, t, locale, url, social)}</script>
@@ -198,15 +200,15 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   </header>
   <main id="main" class="ps-main">
     ${anchors('hero')}<section class="ps-hero" aria-labelledby="hero-title">
-      <div>
+      <div class="ps-hero-text">
         <p class="ps-eyebrow">${e(hero.eyebrow)}</p>
         <h1 id="hero-title">${e(hero.h1)}</h1>
         <p class="ps-intro">${e(hero.intro)}</p>
-        <div class="ps-actions"><a class="app-store-action" href="${e(store)}" rel="external"><img src="${prefix}${cfg.app_store_badges[locale]}" width="120" height="40" alt="${e(ui.badgeAlt)}"></a>${app.playUrl && hero.play ? `<a class="ps-link" href="${e(app.playUrl)}" rel="external">${e(hero.play)} <span aria-hidden="true">↗</span></a>` : ''}${guide && hero.guide ? `<a class="ps-link" href="${cfg.base_url}${guide}">${e(hero.guide)} <span aria-hidden="true">→</span></a>` : ''}</div>
+        <div class="ps-actions"><a class="app-store-action" href="${e(store)}" rel="external"><img src="${prefix}${cfg.app_store_badges[locale]}" width="120" height="40" alt="${e(ui.badgeAlt)}"></a>${app.playUrl && hero.play ? `<a class="ps-button" href="${e(app.playUrl)}" rel="external">${e(hero.play)}</a>` : ''}${guide && hero.guide ? `<a class="ps-button" href="${cfg.base_url}${guide}">${e(hero.guide)} <span aria-hidden="true">→</span></a>` : ''}</div>
         <p class="ps-note">${e(hero.note)}</p>
       </div>
-      <figure class="ps-visual">${shotLink(prefix, shots[heroShot], t.alts[heroShot], true)}</figure>
     </section>
+    <div class="ps-gallery" role="region" tabindex="0" aria-label="${e(ui.dialog)}">${gallery.map((i, n) => `<figure>${shotLink(prefix, shots[i], t.alts[i], n === 0)}</figure>`).join('')}</div>
     ${app.sections.map((s) => renderSection(s, { t, prefix, shots, store, play: app.playUrl, legal, anchors })).join('\n    ')}
     ${related ? `${anchors('related')}<section class="ps-section ps-related" id="more-apps" aria-labelledby="more-apps-title"><header class="ps-head"><h2 id="more-apps-title">${e(t.relatedTitle)}</h2></header><ul>${related}</ul></section>` : ''}
     ${anchors('contact')}<section class="ps-section ps-support" id="contact" aria-labelledby="contact-title">
@@ -217,7 +219,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   <footer class="site-footer"><p><strong>${e(cfg.app_name)}</strong><br>${e(t.footer)}</p>${kept.legalNav}<nav class="seo-author-links" data-portfolio-seo-links aria-label="${e(ui.moreApps)}"><a href="https://bnjdpn.com/">${e(ui.moreApps)}</a><a href="${cfg.developer_profile_url}">Benjamin Dupin · App Store</a></nav>
 <small class="trademark-notice">${app.playUrl ? 'Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.' : 'Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.'}</small></footer>
   <dialog class="screenshot-dialog" aria-label="${e(ui.dialog)}"><form method="dialog"><button aria-label="${e(ui.close)}">×</button></form><img alt="" width="880" height="1912"></dialog>
-  <script src="${prefix}assets/site.js" defer></script>
+  <script src="${prefix}assets/site.js" defer></script>${lazyScripts(kept.scripts)}
 </body>
 </html>
 `;
@@ -229,4 +231,12 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   if (!missing.length) return html;
   const spans = missing.map((id) => `<span class="legacy-anchor" id="${e(id)}" aria-hidden="true"></span>`).join('');
   return html.replace('<section class="ps-section"', `${spans}<section class="ps-section"`);
+}
+
+// Third-party scripts kept from the previous page (Turnstile) load only when the
+// support form comes near the screen, so they stay off the first paint.
+function lazyScripts(tags) {
+  const srcs = [...tags.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
+  if (!srcs.length) return '';
+  return `<script>(function(){var s=${JSON.stringify(srcs)},d=0,f=document.querySelectorAll('.support-form');function l(){if(d)return;d=1;s.forEach(function(u){var e=document.createElement('script');e.src=u;e.async=true;document.head.appendChild(e)})}if(!f.length||!('IntersectionObserver' in window))return l();var o=new IntersectionObserver(function(x){if(x.some(function(y){return y.isIntersecting})){o.disconnect();l()}},{rootMargin:'800px 0px'});f.forEach(function(e){o.observe(e);e.addEventListener('focusin',l)})})()</script>`;
 }
