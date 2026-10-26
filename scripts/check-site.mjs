@@ -10,7 +10,7 @@ const migrated=Object.keys(JSON.parse(await readFile(resolve(root,'content/produ
 const appSiteRef=ref=>[...migrated,'Echappee'].some(path=>ref.replace(/^\//,'').startsWith(path+'/'));
 const availableDocuments=appDocuments.filter(app=>app.catalogue);
 const availableCatalogue=[...catalog,...availableDocuments];
-const publicAndroid=new Map([['Echappee','com.bnjdpn.echappee'],['petits-pots','com.bnjdpn.petitspots'],['petits-besoins','com.bnjdpn.petitsbesoins'],['petites-gouttes','com.bnjdpn.petitesgouttes'],['petites-bouchees','com.bnjdpn.petitesbouchees'],['petites-dents','com.bnjdpn.petitesdents'],['petites-nuits','com.bnjdpn.petitesnuits']]);
+const publicAndroid=new Map([['Echappee','com.bnjdpn.echappee'],['petits-pots','com.bnjdpn.petitspots'],['petits-besoins','com.bnjdpn.petitsbesoins'],['petites-gouttes','com.bnjdpn.petitesgouttes'],['VesperDrift','com.bnjdpn.vesperdrift'],['petites-bouchees','com.bnjdpn.petitesbouchees'],['petites-dents','com.bnjdpn.petitesdents'],['petites-nuits','com.bnjdpn.petitesnuits']]);
 const styles=await readFile(resolve(root,'styles.css'),'utf8');
 const sitemap=await readFile(resolve(root,'sitemap.xml'),'utf8');
 const pages=await readFile(resolve(root,'sitemap-pages.xml'),'utf8');

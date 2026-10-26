@@ -258,20 +258,20 @@ export const productCopy = {
     productSupport:{en:'https://bnjdpn.com/VesperDrift/#contact', fr:'https://bnjdpn.com/VesperDrift/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
-      summary:'Flies a ship with one finger while it fires, through expeditions and an endless run.',
+      summary:'A one-thumb space shooter: the ship fires on its own while you dodge and pick upgrades in flight.',
       body:[
-        'The endless run is free and has no attempt limit. Nine expeditions use fixed layouts. The first three are free. The other six are part of Vesper Mastery, a one-time purchase that also adds the Cycle Chamber and drift codes.',
-        'The daily challenge uses one shared seed until midnight UTC, with one ranked attempt. A local leaderboard works offline. Game Center is separate.',
-        'The game runs offline, with no forced ads and no account. A shared result card does not include a player name.'
+        'The campaign has 18 missions across three sectors and three bosses. All four ships are earned by playing, and the Alloy from missions pays for permanent upgrades.',
+        'One contract with special rules is free each week, on a 12-week rotation. Two optional one-time purchases: the Contracts Archive opens all 36 contracts, and Aegis gives that ship at level 3, which mission 12 also unlocks.',
+        'Progress stays on the device, with no account. On iPhone and iPad, Arcade, Daily Drift, Expeditions and Vesper Mastery remain. On Android, progress can be exported as a backup.'
       ]
     },
     fr:{
       devices:'iPhone, iPad',
-      summary:'Pilote un vaisseau avec un doigt pendant qu\'il tire, dans des expéditions et une partie sans fin.',
+      summary:'Un shoot\'em up spatial à un pouce : le vaisseau tire seul pendant que vous esquivez et choisissez vos armes en vol.',
       body:[
-        'La partie sans fin est gratuite, sans limite de tentatives. Neuf expéditions ont un tracé fixe. Les trois premières sont gratuites. Les six autres font partie de Maîtrise Vesper, un achat unique qui ajoute aussi la Salle des Cycles et les codes de dérive.',
-        'Le défi du jour utilise une graine commune jusqu\'à minuit UTC, avec une tentative classée. Un classement local fonctionne hors ligne. Game Center est séparé.',
-        'Le jeu tourne hors ligne, sans publicité forcée et sans compte. Une carte de résultat partagée ne contient pas de nom de joueur.'
+        'La campagne compte 18 missions dans trois secteurs et trois boss. Les quatre vaisseaux se gagnent en jouant, et l\'alliage des missions paie les améliorations durables.',
+        'Un contrat à règles spéciales est gratuit chaque semaine, sur une rotation de douze semaines. Deux achats uniques facultatifs : l\'Archive ouvre les 36 contrats, et Aegis donne ce vaisseau au niveau 3, que la mission 12 débloque aussi.',
+        'La progression reste sur l\'appareil, sans compte. Sur iPhone et iPad, l\'Arcade, la Dérive du Jour, les Expéditions et Maîtrise Vesper restent. Sur Android, la progression s\'exporte en sauvegarde.'
       ]
     }
   },

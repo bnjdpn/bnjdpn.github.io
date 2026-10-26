@@ -69,7 +69,8 @@
     "name": "Vesper Drift",
     "path": "VesperDrift",
     "id": "6791882792",
-    "icon": "vesperdrift"
+    "icon": "vesperdrift",
+    "package": "com.bnjdpn.vesperdrift"
   },
   {
     "name": "Petites Gouttes",
