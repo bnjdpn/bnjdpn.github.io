@@ -3,6 +3,7 @@
 export const LOCALE_NAMES = {
   "de-DE": "Deutsch",
   "en-US": "English (US)",
+  "es-ES": "Español (España)",
   "es-MX": "Español (México)",
   "fr-FR": "Français (France)",
   "it": "Italiano",

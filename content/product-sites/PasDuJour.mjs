@@ -3,10 +3,7 @@
 // notes (identical to the listing read 2026-10-26), the four watch screenshots.
 // In-App Purchase read 2026-10-26: Pas du Jour Pro $3.99 (US), 4,99 € (FR),
 // one-time. Watch app requires watchOS 26 (project.yml). Not on Google Play.
-const formNote = {
-  en: "This form is protected against spam by Cloudflare Turnstile, which checks technical browser signals, including your IP address. Cloudflare forwards your message to petites@bnjdpn.com. An automated assistant (AI) used by the publisher sorts messages and prepares or sends replies; the publisher remains responsible for this processing.",
-  fr: "Ce formulaire est protégé contre le spam par Cloudflare Turnstile, qui vérifie des signaux techniques du navigateur, dont votre adresse IP. Cloudflare transmet votre message à petites@bnjdpn.com. Un assistant automatisé (IA) utilisé par l'éditeur trie les messages et prépare ou envoie les réponses ; l'éditeur reste responsable de ce traitement.",
-};
+import { FORM_NOTE as formNote } from './form-note.mjs';
 
 export default {
   appStoreId: "6795232703",

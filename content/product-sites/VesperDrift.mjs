@@ -5,10 +5,7 @@
 // In-App Purchases read 2026-10-26: US Vesper Contracts Archive $3.99,
 // Aegis Ship Pack $3.99, Vesper Mastery $3.99; FR 3,99 € / 3,99 € / 4,99 €.
 // Requires iOS 17. iPhone and iPad. Not on Google Play.
-const formNote = {
-  en: "This form is protected against spam by Cloudflare Turnstile, which checks technical browser signals, including your IP address. Cloudflare forwards your message to petites@bnjdpn.com. An automated assistant (AI) used by the publisher sorts messages and prepares or sends replies; the publisher remains responsible for this processing.",
-  fr: "Ce formulaire est protégé contre le spam par Cloudflare Turnstile, qui vérifie des signaux techniques du navigateur, dont votre adresse IP. Cloudflare transmet votre message à petites@bnjdpn.com. Un assistant automatisé (IA) utilisé par l'éditeur trie les messages et prépare ou envoie les réponses ; l'éditeur reste responsable de ce traitement.",
-};
+import { FORM_NOTE as formNote } from './form-note.mjs';
 
 export default {
   appStoreId: "6791882792",

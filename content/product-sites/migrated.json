@@ -1,9 +1,21 @@
 {
+  "GrooveLog": {
+    "en": "/GrooveLog/",
+    "fr": "/GrooveLog/fr-FR/",
+    "privacyEn": "/GrooveLog/en-US/privacy",
+    "privacyFr": "/GrooveLog/fr-FR/privacy"
+  },
   "LoadSense": {
     "en": "/LoadSense/",
     "fr": "/LoadSense/fr-FR/",
     "privacyEn": "/LoadSense/en-US/privacy",
     "privacyFr": "/LoadSense/fr-FR/privacy"
+  },
+  "MoveAtlas": {
+    "en": "/MoveAtlas/",
+    "fr": "/MoveAtlas/fr-FR/",
+    "privacyEn": "/MoveAtlas/en-US/privacy",
+    "privacyFr": "/MoveAtlas/fr-FR/privacy"
   },
   "NeatShift": {
     "en": "/NeatShift/",
