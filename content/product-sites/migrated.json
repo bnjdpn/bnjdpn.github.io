@@ -11,17 +11,35 @@
     "privacyEn": "/NeatShift/en-US/privacy",
     "privacyFr": "/NeatShift/fr-FR/privacy"
   },
+  "NoBuyCart": {
+    "en": "/NoBuyCart/",
+    "fr": "/NoBuyCart/fr-FR/",
+    "privacyEn": "/NoBuyCart/en-US/privacy",
+    "privacyFr": "/NoBuyCart/fr-FR/privacy"
+  },
   "PRVault": {
     "en": "/PRVault/",
     "fr": "/PRVault/fr-FR/",
     "privacyEn": "/PRVault/en-US/privacy",
     "privacyFr": "/PRVault/fr-FR/privacy"
   },
+  "PasDuJour": {
+    "en": "/PasDuJour/",
+    "fr": "/PasDuJour/fr-FR/",
+    "privacyEn": "/PasDuJour/privacy",
+    "privacyFr": "/PasDuJour/privacy"
+  },
   "TempoReps": {
     "en": "/TempoReps/",
     "fr": "/TempoReps/fr-FR/",
     "privacyEn": "/TempoReps/en-US/privacy",
     "privacyFr": "/TempoReps/fr-FR/privacy"
+  },
+  "VesperDrift": {
+    "en": "/VesperDrift/",
+    "fr": "/VesperDrift/fr-FR/",
+    "privacyEn": "/VesperDrift/privacy",
+    "privacyFr": "/VesperDrift/privacy"
   },
   "petites-bouchees": {
     "en": "/petites-bouchees/",

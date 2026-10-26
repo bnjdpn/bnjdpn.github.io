@@ -31,13 +31,17 @@ function merge(base, own) {
 
 function picture(prefix, shot, alt, eager) {
   const sizes = eager ? '(max-width: 760px) 78vw, 310px' : '(max-width: 760px) 78vw, 250px';
-  const set = (fmt) => [440, 880].map((w) => `${prefix}${shot.base}-${w}.${fmt} ${w}w`).join(', ');
+  const variants = shot.variants ?? [{ w: 440, h: 956 }, { w: 880, h: 1912 }];
+  const big = variants[variants.length - 1];
+  const set = (fmt) => variants.map(({ w }) => `${prefix}${shot.base}-${w}.${fmt} ${w}w`).join(', ');
   const load = eager ? 'decoding="async" fetchpriority="high"' : 'decoding="async" loading="lazy"';
-  return `<picture><source type="image/avif" srcset="${set('avif')}" sizes="${sizes}"><img src="${prefix}${shot.base}-880.webp" srcset="${set('webp')}" sizes="${sizes}" width="880" height="1912" alt="${e(alt)}" ${load}></picture>`;
+  return `<picture><source type="image/avif" srcset="${set('avif')}" sizes="${sizes}"><img src="${prefix}${shot.base}-${big.w}.webp" srcset="${set('webp')}" sizes="${sizes}" width="${big.w}" height="${big.h}" alt="${e(alt)}" ${load}></picture>`;
 }
 
+const largest = (shot) => (shot.variants ?? [{ w: 880 }]).at(-1).w;
+
 function shotLink(prefix, shot, alt, eager = false) {
-  return `<a class="shot-link" href="${prefix}${shot.base}-880.webp" data-screenshot data-caption="${e(alt)}" aria-label="${e(alt)}">${picture(prefix, shot, alt, eager)}</a>`;
+  return `<a class="shot-link" href="${prefix}${shot.base}-${largest(shot)}.webp" data-screenshot data-caption="${e(alt)}" aria-label="${e(alt)}">${picture(prefix, shot, alt, eager)}</a>`;
 }
 
 function jsonLd(cfg, app, t, locale, url, social) {
@@ -120,7 +124,7 @@ function imageType(path) {
 export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, previous }) {
   const lang = language(locale);
   const t = copyFor(app, locale);
-  const ui = uiByLanguage[lang];
+  const ui = uiByLanguage[locale] ?? uiByLanguage[lang];
   if (!ui) throw new Error(`Missing interface strings for ${lang}`);
   const primary = locale === cfg.primary_locale;
   const prefix = primary ? '' : '../';
@@ -131,7 +135,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   const legal = { privacy: kept.privacyHref };
   const aliases = cfg.fragment_aliases ?? {};
   const anchors = (key, extra = []) => [...(aliases[key] ?? []), ...extra].map((id) => `<span class="legacy-anchor" id="${e(id)}" aria-hidden="true"></span>`).join('');
-  const ogOf = (code) => uiByLanguage[language(code)].ogLocale.replace(/_.*/, '') + '_' + (code.split('-')[1] ?? uiByLanguage[language(code)].ogLocale.split('_')[1]);
+  const ogOf = (code) => uiByLanguage[code]?.ogLocale ?? uiByLanguage[language(code)].ogLocale.replace(/_.*/, '') + '_' + (code.split('-')[1] ?? uiByLanguage[language(code)].ogLocale.split('_')[1]);
   const ownOg = ogOf(locale);
   const socialPath = images.socialFor(locale);
   const social = { url: `${cfg.base_url}${socialPath}`, ...images.size(socialPath) };
@@ -159,7 +163,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   ].join('');
   const languages = cfg.locales.map(({ code }) => `<a href="${localeUrl(cfg, code)}" hreflang="${code}" lang="${code}"${code === locale ? ' aria-current="page"' : ''}>${e(names[code] ?? code)}</a>`).join('');
   const related = (cfg.related_apps ?? []).map((r) => {
-    const tagline = r.tagline?.[lang] ?? r.tagline?.en ?? '';
+    const tagline = r.tagline?.[locale] ?? r.tagline?.[lang] ?? r.tagline?.en ?? '';
     return `<li><a href="${e(r.site_url)}"><img src="${prefix}${e(r.icon_path)}" width="48" height="48" alt="" loading="lazy" decoding="async"><span><strong>${e(r.name)}</strong><small>${e(tagline)}</small></span></a></li>`;
   }).join('');
   const options = ui.categories.map((label, i) => `<option value="${e(ui.categoryValues[i])}">${e(label)}</option>`).join('');
@@ -203,7 +207,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
       <figure class="ps-visual">${shotLink(prefix, shots[heroShot], t.alts[heroShot], true)}</figure>
     </section>
     ${app.sections.map((s) => renderSection(s, { t, prefix, shots, store, legal, anchors })).join('\n    ')}
-    ${anchors('related')}<section class="ps-section ps-related" id="more-apps" aria-labelledby="more-apps-title"><header class="ps-head"><h2 id="more-apps-title">${e(t.relatedTitle)}</h2></header><ul>${related}</ul></section>
+    ${related ? `${anchors('related')}<section class="ps-section ps-related" id="more-apps" aria-labelledby="more-apps-title"><header class="ps-head"><h2 id="more-apps-title">${e(t.relatedTitle)}</h2></header><ul>${related}</ul></section>` : ''}
     ${anchors('contact')}<section class="ps-section ps-support" id="contact" aria-labelledby="contact-title">
       <header class="ps-head"><p class="ps-kicker">${e(ui.support)}</p><h2 id="contact-title">${e(t.supportTitle)}</h2><p>${e(t.supportIntro)}</p></header>
       ${kept.form}${t.formNote ? `\n      <p class="ps-small ps-form-note">${e(t.formNote)}</p>` : ''}

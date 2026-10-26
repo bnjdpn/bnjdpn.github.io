@@ -7,8 +7,11 @@ export const LOCALE_NAMES = {
   "fr-FR": "Français (France)",
   "it": "Italiano",
   "ja": "日本語",
+  "ko": "한국어",
   "pl": "Polski",
-  "pt-BR": "Português (Brasil)"
+  "pt-BR": "Português (Brasil)",
+  "zh-Hans": "简体中文",
+  "zh-Hant": "繁體中文"
 };
 
 export const UI = {
@@ -330,6 +333,126 @@ export const UI = {
     "dialog": "Prévia do produto",
     "close": "Fechar",
     "ogLocale": "pt_BR",
+    "guide": null
+  },
+  "ko": {
+    "skip": "콘텐츠로 이동",
+    "navMain": "주요 탐색",
+    "language": "언어",
+    "support": "지원",
+    "moreApps": "다른 앱",
+    "badgeAlt": "App Store에서 다운로드",
+    "formSending": "보내는 중…",
+    "formSuccess": "메시지를 보냈습니다. 감사합니다.",
+    "formError": "메시지를 보내지 못했습니다. 다시 시도해 주세요.",
+    "labels": {
+      "category": "분류",
+      "email": "이메일",
+      "appVersion": "앱 버전",
+      "osVersion": "OS 버전",
+      "message": "메시지"
+    },
+    "categories": [
+      "질문",
+      "버그",
+      "손쉬운 사용",
+      "개인정보",
+      "기타"
+    ],
+    "categoryValues": [
+      "질문",
+      "버그",
+      "손쉬운 사용",
+      "개인정보",
+      "기타"
+    ],
+    "send": "보내기",
+    "legalNav": "법적 링크",
+    "privacy": "개인정보 처리방침",
+    "terms": "이용약관",
+    "dialog": "제품 미리보기",
+    "close": "닫기",
+    "ogLocale": "ko_KR",
+    "guide": null
+  },
+  "zh-Hans": {
+    "skip": "跳到内容",
+    "navMain": "主导航",
+    "language": "语言",
+    "support": "支持",
+    "moreApps": "更多 App",
+    "badgeAlt": "在 App Store 下载",
+    "formSending": "正在发送…",
+    "formSuccess": "消息已发送，谢谢。",
+    "formError": "消息未能发送，请重试。",
+    "labels": {
+      "category": "类别",
+      "email": "你的邮箱",
+      "appVersion": "App 版本",
+      "osVersion": "系统版本",
+      "message": "消息"
+    },
+    "categories": [
+      "问题",
+      "错误",
+      "辅助功能",
+      "隐私",
+      "其他"
+    ],
+    "categoryValues": [
+      "问题",
+      "错误",
+      "辅助功能",
+      "隐私",
+      "其他"
+    ],
+    "send": "发送",
+    "legalNav": "法律链接",
+    "privacy": "隐私",
+    "terms": "条款",
+    "dialog": "产品预览",
+    "close": "关闭",
+    "ogLocale": "zh_CN",
+    "guide": null
+  },
+  "zh-Hant": {
+    "skip": "跳至內容",
+    "navMain": "主導覽",
+    "language": "語言",
+    "support": "支援",
+    "moreApps": "更多 App",
+    "badgeAlt": "從 App Store 下載",
+    "formSending": "正在傳送…",
+    "formSuccess": "訊息已送出，謝謝。",
+    "formError": "訊息無法送出，請再試一次。",
+    "labels": {
+      "category": "類別",
+      "email": "你的電子郵件",
+      "appVersion": "App 版本",
+      "osVersion": "系統版本",
+      "message": "訊息"
+    },
+    "categories": [
+      "問題",
+      "錯誤",
+      "輔助使用",
+      "隱私",
+      "其他"
+    ],
+    "categoryValues": [
+      "問題",
+      "錯誤",
+      "輔助使用",
+      "隱私",
+      "其他"
+    ],
+    "send": "傳送",
+    "legalNav": "法律連結",
+    "privacy": "隱私",
+    "terms": "條款",
+    "dialog": "產品預覽",
+    "close": "關閉",
+    "ogLocale": "zh_TW",
     "guide": null
   }
 };
