@@ -7,7 +7,7 @@ const PERSON_ID = 'https://bnjdpn.com/#benjamin-dupin';
 
 // Small additions to the app theme: a plain definition list for modes,
 // feature items without numbers, the privacy line.
-const INLINE_CSS = '.mode-list{margin:0;display:grid}.mode-list div{border-top:1px solid var(--line);padding:16px 0}.mode-list div:last-child{border-bottom:1px solid var(--line)}.mode-list dt{font:600 .85rem/1.4 ui-monospace,monospace;letter-spacing:.04em;color:var(--accent)}.mode-list dd{margin:6px 0 0;color:var(--muted);line-height:1.6}.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}.feature-grid .feature-item{grid-template-columns:1fr}@media (max-width:760px){.feature-grid{grid-template-columns:1fr}}.offer-privacy a{color:inherit}';
+const INLINE_CSS = '.mode-list{margin:0;display:grid}.mode-list div{border-top:1px solid var(--line);padding:16px 0}.mode-list div:last-child{border-bottom:1px solid var(--line)}.mode-list dt{font:600 .85rem/1.4 ui-monospace,monospace;letter-spacing:.04em;color:var(--accent)}.mode-list dd{margin:6px 0 0;color:var(--muted);line-height:1.6}.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}.feature-grid .feature-item{grid-template-columns:1fr}@media (max-width:760px){.feature-grid{grid-template-columns:1fr}}.offer-privacy a{color:inherit}.offer-wrap{padding-top:0}.offer-wrap .offer-comparison{margin-top:0}';
 
 export function language(locale) {
   return locale.split('-')[0];
@@ -152,7 +152,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale }) {
       <div class="feature-list feature-grid">${t.workout.map(([title, text]) => `<article class="feature-item"><div><h3>${e(title)}</h3><p>${e(text)}</p></div></article>`).join('')}</div>
     </section>
 
-    <div class="story">
+    <div class="story offer-wrap">
       <section class="offer-comparison" id="free-and-pro" aria-labelledby="offer-title">
         <header><p class="section-kicker">${e(t.navOffer)}</p><h2 id="offer-title">${e(t.offerTitle)}</h2><p class="offer-intro">${e(t.offerIntro)}</p></header>
         <div class="offer-options">
