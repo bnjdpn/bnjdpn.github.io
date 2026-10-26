@@ -84,7 +84,7 @@ const SECTIONS = {
 };
 
 function renderSection(section, ctx) {
-  const { t, prefix, shots, store, legal, anchors } = ctx;
+  const { t, prefix, shots, store, play, legal, anchors } = ctx;
   const c = t.sections[section.key];
   if (!c) throw new Error(`Missing copy for section ${section.key}`);
   const id = section.id ?? section.key;
@@ -93,7 +93,7 @@ function renderSection(section, ctx) {
     body = `<div class="ps-plans">${c.plans.map((p) => `<article class="ps-plan"><h3>${e(p.title)}</h3>${p.price ? `<p>${e(p.price)}</p>` : ''}<ul>${p.items.map((x) => `<li>${e(x)}</li>`).join('')}</ul></article>`).join('')}</div>`
       + (c.notes ?? []).map((x) => `<p class="ps-small">${e(x)}</p>`).join('')
       + (c.privacy ? `<p class="ps-small">${e(c.privacy)} <a href="${legal.privacy}">${e(c.privacyLink)}</a></p>` : '')
-      + (c.cta ? `<p><a class="ps-link" href="${e(store)}" rel="external">${e(c.cta)} <span aria-hidden="true">↗</span></a></p>` : '');
+      + (c.cta ? `<p><a class="ps-link" href="${e(store)}" rel="external">${e(c.cta)} <span aria-hidden="true">↗</span></a>${play && c.playCta ? ` <a class="ps-link" href="${e(play)}" rel="external">${e(c.playCta)} <span aria-hidden="true">↗</span></a>` : ''}</p>` : '');
   } else {
     const text = SECTIONS[section.type](c);
     const figures = (section.shots ?? []).map((i, n) => `<figure>${shotLink(prefix, shots[i], t.alts[i])}${c.captions?.[n] ? `<figcaption>${e(c.captions[n])}</figcaption>` : ''}</figure>`).join('');
@@ -207,7 +207,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
       </div>
       <figure class="ps-visual">${shotLink(prefix, shots[heroShot], t.alts[heroShot], true)}</figure>
     </section>
-    ${app.sections.map((s) => renderSection(s, { t, prefix, shots, store, legal, anchors })).join('\n    ')}
+    ${app.sections.map((s) => renderSection(s, { t, prefix, shots, store, play: app.playUrl, legal, anchors })).join('\n    ')}
     ${related ? `${anchors('related')}<section class="ps-section ps-related" id="more-apps" aria-labelledby="more-apps-title"><header class="ps-head"><h2 id="more-apps-title">${e(t.relatedTitle)}</h2></header><ul>${related}</ul></section>` : ''}
     ${anchors('contact')}<section class="ps-section ps-support" id="contact" aria-labelledby="contact-title">
       <header class="ps-head"><p class="ps-kicker">${e(ui.support)}</p><h2 id="contact-title">${e(t.supportTitle)}</h2><p>${e(t.supportIntro)}</p></header>
