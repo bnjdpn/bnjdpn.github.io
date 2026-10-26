@@ -89,4 +89,16 @@ body{margin:0;-webkit-text-size-adjust:100%}
 .ps-body:not(.ps-text-only) .ps-list,.ps-body:not(.ps-text-only) .ps-cards{grid-template-columns:1fr}
 .ps-gallery figure{flex-basis:236px}
 }
+/* Desktop: hero text on the left, the first store screenshot in a device frame on the right. */
+.ps-device{display:none}
+@media (min-width:1000px){
+.ps-hero{grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:clamp(40px,6vw,96px)}
+.ps-device{display:block;position:relative;margin:0;width:300px;padding:11px;border-radius:52px;background:#0d0d0f;box-shadow:inset 0 0 0 2px #2c2c30,0 40px 80px -36px rgb(0 0 0/.55)}
+.ps-device::before{content:"";position:absolute;z-index:1;top:22px;left:50%;width:84px;height:25px;margin-left:-42px;border-radius:13px;background:#000}
+.ps-device img{display:block;width:100%;height:auto;border-radius:41px}
+.ps-device-watch{width:260px;padding:16px;border-radius:64px}
+.ps-device-watch::before{display:none}
+.ps-device-watch img{border-radius:50px}
+.ps-hero+.ps-gallery figure:first-child{display:none}
+}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}

@@ -38,6 +38,18 @@ function picture(prefix, shot, alt, eager) {
   return `<picture><source type="image/avif" srcset="${set('avif')}" sizes="${sizes}"><img src="${prefix}${shot.base}-${big.w}.webp" srcset="${set('webp')}" sizes="${sizes}" width="${big.w}" height="${big.h}" alt="${e(alt)}" ${load}></picture>`;
 }
 
+// Desktop hero: the first store screenshot in a device frame. It is hidden below
+// 1000px, where the gallery under the hero shows the same screenshot; lazy loading
+// keeps phones from downloading it, and desktops get it from the gallery's request.
+function device(prefix, shot, alt) {
+  const variants = shot.variants ?? [{ w: 440, h: 956 }, { w: 880, h: 1912 }];
+  const big = variants.at(-1);
+  const watch = big.h / big.w < 1.5;
+  const set = (fmt) => variants.map(({ w }) => `${prefix}${shot.base}-${w}.${fmt} ${w}w`).join(', ');
+  const sizes = watch ? '260px' : '300px';
+  return `<figure class="ps-device${watch ? ' ps-device-watch' : ''}"><picture><source type="image/avif" srcset="${set('avif')}" sizes="${sizes}"><img src="${prefix}${shot.base}-${big.w}.webp" srcset="${set('webp')}" sizes="${sizes}" width="${big.w}" height="${big.h}" alt="${e(alt)}" loading="lazy" decoding="async"></picture></figure>`;
+}
+
 const largest = (shot) => (shot.variants ?? [{ w: 880 }]).at(-1).w;
 
 function shotLink(prefix, shot, alt, eager = false) {
@@ -207,6 +219,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
         <div class="ps-actions"><a class="app-store-action" href="${e(store)}" rel="external"><img src="${prefix}${cfg.app_store_badges[locale]}" width="120" height="40" alt="${e(ui.badgeAlt)}"></a>${app.playUrl && hero.play ? `<a class="ps-button" href="${e(app.playUrl)}" rel="external">${e(hero.play)}</a>` : ''}${guide && hero.guide ? `<a class="ps-button" href="${cfg.base_url}${guide}">${e(hero.guide)} <span aria-hidden="true">→</span></a>` : ''}</div>
         <p class="ps-note">${e(hero.note)}</p>
       </div>
+      ${device(prefix, shots[heroShot], t.alts[heroShot])}
     </section>
     <div class="ps-gallery" role="region" tabindex="0" aria-label="${e(ui.dialog)}">${gallery.map((i, n) => `<figure>${shotLink(prefix, shots[i], t.alts[i], n === 0)}</figure>`).join('')}</div>
     ${app.sections.map((s) => renderSection(s, { t, prefix, shots, store, play: app.playUrl, legal, anchors })).join('\n    ')}

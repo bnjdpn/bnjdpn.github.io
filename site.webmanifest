@@ -1,11 +1,11 @@
 {
-  "name": "Apps by Benjamin Dupin",
+  "name": "Benjamin Dupin",
   "short_name": "bnjdpn",
-  "description": "Seventeen iOS apps by Benjamin Dupin.",
+  "description": "19 apps by Benjamin Dupin for iPhone, iPad, Mac, Apple Watch and Android.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#121712",
-  "theme_color": "#121712",
+  "background_color": "#f5f2ea",
+  "theme_color": "#f5f2ea",
   "icons": [
     {
       "src": "/assets/profile/github-avatar.jpg",

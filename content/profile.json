@@ -1,6 +1,9 @@
 {
   "@type": "Person",
-  "@id": "https://bnjdpn.com/#publisher",
+  "@id": "https://bnjdpn.com/#benjamin-dupin",
   "name": "Benjamin Dupin",
-  "url": "https://bnjdpn.com/"
+  "url": "https://bnjdpn.com/",
+  "sameAs": [
+    "https://apps.apple.com/fr/developer/benjamin-dupin/id1871474236"
+  ]
 }
