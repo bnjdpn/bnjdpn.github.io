@@ -17,8 +17,8 @@ const pages=await readFile(resolve(root,'sitemap-pages.xml'),'utf8');
 const failures=[]; let references=0;
 const expect=(value,msg)=>{if(!value)failures.push(msg)};
 const origin='https://bnjdpn.com';
-const exposed=[...'contact'].join('')+String.fromCharCode(64);
-const hasContact=html=>html.includes('data-contact')&&html.includes('<noscript>')&&!html.includes(exposed)&&!html.includes('mailto:');
+const address=/[a-z0-9._%+-]+(?:@|&#64;)[a-z0-9-]+\.[a-z]{2,}/i;
+const hasContact=html=>/<a class="contact" href="(?:\/fr)?\/contact\/(?:\?app=[a-z-]+)?">/.test(html)&&!address.test(html)&&!html.includes('mailto:')&&!/grok ?bot/i.test(html);
 for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  const html=await readFile(resolve(root,path),'utf8');
  const prefix=`${path}: `;
@@ -81,7 +81,7 @@ for(const lang of ['en','fr']){
    }
    expect(html.includes(`<html lang="${lang}">`),prefix+'language mismatch');
    expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
-   expect(['petits-pots','petits-besoins'].includes(slug) ? (html.includes(`href="${lang==='fr'?'/fr':''}/contact/?app=${slug}"`)&&!html.includes('data-contact')) : hasContact(html),prefix+'contact control missing or address exposed');
+   expect(hasContact(html)&&!html.includes('data-contact'),prefix+'contact control missing or address exposed');
    expect(/<title>[^<]*Benjamin Dupin/.test(html),prefix+'Benjamin Dupin missing from the title');
    expect(html.includes('>Benjamin Dupin</a>'),prefix+'Benjamin Dupin missing from the footer');
    expect(!/target="_blank"/.test(html),prefix+'forced new tab');
@@ -111,7 +111,7 @@ for(const lang of ['en','fr']){
    }
    if(['petites-gouttes','petites-bouchees','petites-dents','petites-nuits'].includes(slug)&&leaf){
     expect(!/formspree/i.test(html),prefix+'obsolete form processor');
-    for(const value of ['Cloudflare Turnstile','Workers','Email Routing','petites@bnjdpn.com','https://www.cloudflare.com/privacypolicy/','https://www.cloudflare.com/turnstile-privacy-policy/'])expect(html.includes(value),prefix+'missing Petites disclosure: '+value);
+    for(const value of ['Cloudflare Turnstile','Workers','Email Routing','https://www.cloudflare.com/privacypolicy/','https://www.cloudflare.com/turnstile-privacy-policy/'])expect(html.includes(value),prefix+'missing Petites disclosure: '+value);
     if(leaf==='support/')expect(html.includes(`href="https://bnjdpn.com/${slug}/#contact"`),prefix+'noncanonical Petites form link');
    }
    if(leaf===''&&!appDocuments.includes(app))expect(html.includes(`https://apps.apple.com/app/id${app.id}`),prefix+'App Store link missing');
@@ -131,7 +131,7 @@ for(const guide of guides){
  expect(html.includes(`href="${guide.storeUrl.replaceAll('&','&amp;')}"`),prefix+'campaign link not preserved in HTML');
  expect(html.includes('property="og:image"')&&html.includes('property="og:url"'),prefix+'social preview missing');
  const scripts=[...html.matchAll(/<script\b([^>]*)>/gi)].map(match=>match[1]);
- expect(scripts.length===1&&/src="\/assets\/site\.js/.test(scripts[0]),prefix+'guide should only load the contact script');
+ expect(scripts.length===0,prefix+'guide should load no script');
  expect(hasContact(html),prefix+'contact control missing or address exposed');
  expect(!html.includes('guide-related'),prefix+'unrelated guide recommendation');
  for(const img of html.matchAll(/<img\b[^>]+>/g))expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');

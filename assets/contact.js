@@ -7,8 +7,10 @@
   const copy = JSON.parse(form.dataset.messages);
   const query = new URLSearchParams(window.location.search);
   const apps = JSON.parse(form.dataset.apps);
-  const app = query.has('app') ? query.get('app') : 'petits-pots';
-  const validApp = Object.hasOwn(apps, app);
+  const appField = form.elements.namedItem('app');
+  const requested = query.get('app');
+  if (requested && Object.hasOwn(apps, requested)) appField.value = requested;
+  const validApp = () => Object.hasOwn(apps, appField.value);
   const field = name => form.elements.namedItem(name);
   const oneLine = value => (value || '').replace(/[\u0000-\u001f\u007f]+/g, ' ').trim().slice(0, 64);
   const category = query.get('category');
@@ -21,8 +23,7 @@
   // Preserve only the supported context when changing language, never email/message.
   document.querySelectorAll('.languages a').forEach(link => {
     const url = new URL(link.href);
-    if (validApp) url.searchParams.set('app', app);
-    else url.searchParams.set('app', 'unsupported');
+    if (validApp()) url.searchParams.set('app', appField.value);
     for (const name of ['category', 'app_version', 'os_version']) {
       const value = field(name).value;
       if (value) url.searchParams.set(name, value);
@@ -37,7 +38,8 @@
   };
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (busy || !validApp) return;
+    if (busy) return;
+    if (!validApp()) { setStatus('invalid'); appField.focus(); return; }
     if (!form.reportValidity()) return;
     if (!token) { setStatus('verify'); return; }
     const data = new FormData(form);
@@ -63,12 +65,16 @@
       button.disabled = !token;
     }
   });
-  if (!validApp) { setStatus('invalid'); return; }
-  field('app').value = app;
   const title = document.getElementById('contact-title');
-  title.textContent = title.dataset.template.replace('{app}', apps[app]);
-  document.title = title.textContent + '. Benjamin Dupin';
-  document.getElementById('contact-privacy').href = (document.documentElement.lang === 'fr' ? '/fr' : '') + '/apps/' + app + '/privacy/';
+  const privacy = document.getElementById('contact-privacy');
+  const showApp = () => {
+    title.textContent = validApp() ? title.dataset.template.replace('{app}', apps[appField.value]) : title.dataset.generic;
+    document.title = title.textContent + '. Benjamin Dupin';
+    privacy.hidden = !validApp();
+    if (validApp()) privacy.href = (document.documentElement.lang === 'fr' ? '/fr' : '') + '/apps/' + appField.value + '/privacy/';
+  };
+  appField.addEventListener('change', showApp);
+  showApp();
   let sitekey;
   window.supportTurnstileReady = function () {
     if (!sitekey) { verificationLost('unavailable'); return; }

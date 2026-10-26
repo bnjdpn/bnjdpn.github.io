@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {productCopy} from '../content/copy.mjs';
 import {studioCopy} from '../content/studio-copy.mjs';
 import {guides} from '../content/guides.mjs';
-import {contactApps, contactCopy, contactBody} from '../content/contact-page.mjs';
+import {contactApps, formApps, contactCopy, contactBody} from '../content/contact-page.mjs';
 import {appDocuments} from '../content/app-documents.mjs';
 import {petitesFormApps, petitesFormPrivacy, petitsPotsFormPrivacy} from '../content/petites-contact.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
@@ -13,7 +13,7 @@ const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'))
 const [apps,profile,media,migrated]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json','content/product-sites/migrated.json'].map(readJSON));
 const catalogue=[...apps,...appDocuments.filter(app=>app.catalogue)];
 const origin='https://bnjdpn.com';
-const versions=new Map(await Promise.all(['assets/contact.css','assets/contact.js','styles.css','assets/site.js','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
+const versions=new Map(await Promise.all(['assets/contact.css','assets/contact.js','styles.css','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
 for (const path of new Set(appDocuments.map(app=>app.socialImage).filter(Boolean))) {
  versions.set(path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12));
 }
@@ -79,8 +79,7 @@ function head({lang,title,description,url,enHref,frHref,social,socialWidth,socia
 }
 for (const lang of ['en','fr']) {
  const t=contactCopy[lang], en=origin+'/contact/', fr=origin+'/fr/contact/';
- const mailHeader=header(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:contact@bnjdpn.com">E-mail</a>').replace(/<noscript>[\s\S]*?<\/noscript>/g,'');
- const mailFooter=footer(lang,en,fr).replaceAll(/<button type="button" class="contact" data-contact>[^<]*<\/button>/g,'<a class="contact" href="mailto:contact@bnjdpn.com">E-mail</a>');
+ const mailHeader=header(lang,en,fr), mailFooter=footer(lang,en,fr);
  outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:t.pageTitle,description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'})}<link rel="stylesheet" href="${asset('assets/contact.css')}"><script src="${asset('assets/contact.js')}" defer></script></head><body id="top">${mailHeader}${contactBody(lang,esc)}${mailFooter}</body></html>\n`);
 }
 const guideCards=lang=>guides.filter(g=>g.lang===lang).map(g=>`<li><a href="${guideLink(g)}">${esc(g.heading)}</a></li>`).join('');
@@ -101,7 +100,7 @@ for(const lang of ['en','fr']){
  const upcomingSection=upcoming.length?`<section class="guides-index" id="upcoming"><h2>${lang==='fr'?'En préparation':'In development'}</h2><ul class="guide-list">${upcoming.map(app=>`<li><a href="${pagePath(app,lang)}">${esc(app.name)}</a> — ${esc(app[lang].landing.subtitle)}</li>`).join('')}</ul></section>`:'';
  const directory=[...catalogue,...upcoming].map(app=>`<li><a href="${appHref(app,lang,'support/')}">${esc(app.name)}</a></li>`).join('');
  outputs.set(lang==='en'?'index.html':'fr/index.html',`${head({lang,title:t.title,description:t.description,url,enHref:origin+'/',frHref:origin+'/fr/',social,socialWidth:1200,socialHeight:630,socialAlt:t.title,extra:'<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'})}
-<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script><script src="${asset('assets/site.js')}" defer></script></head>
+<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script></head>
 <body id="top">${header(lang,'/','/fr/')}
 <main id="main" tabindex="-1"><section class="lede" id="about" aria-labelledby="hero-title"><h1 id="hero-title">${t.h1}</h1><p class="intro">${t.intro}</p></section>
 <section class="catalog" id="products"><ol class="index" id="selected">${catalog}</ol><p class="availability-note">${t.availability}</p></section>
@@ -121,17 +120,17 @@ ${footer(lang,'/','/fr/',true,t.catalogueFooterLine)}</body></html>
   const crumbs=`<p class="crumbs"><a href="${home}#products">${t.homeLabel}</a></p>`;
   const links=`<ul class="links"><li><a href="${support}">${t.support}</a></li><li><a href="${privacy}">${t.privacy}</a></li><li><a href="${urlFor(app,lang)}">${t.productSite}</a></li></ul>`;
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/index.html`,`${head({lang,title,description,url:origin+local,enHref:en,frHref:fr,social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
-<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr)}
+</head><body id="top">${header(lang,en,fr)}
 <main id="main" tabindex="-1"><article class="poster">${crumbs}<div class="title-row">${icon(app,true)}<div class="title-copy"><p class="kicker">${t.categories[copy.category]}</p><h1>${esc(app.name)}</h1></div></div><p class="devices">${esc(devicesFor(app,lang))}</p><p class="store-row">${storeLinks(app,'store-button',lang)}</p><figure>${screen(app.path,lang,true)}<figcaption>${t.shotCaption}</figcaption></figure><div class="prose">${text.body.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</div>${links}</article></main>
 ${footer(lang,en,fr,true,app.package?t.catalogueFooterLine:t.footerLine)}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/support/index.html`,`${head({lang,title:`${t.support}. ${title}`,description:text.summary,url:origin+support,enHref:origin+pagePath(app,'en','support/'),frHref:origin+pagePath(app,'fr','support/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
-<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}
+</head><body id="top">${header(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}
 <main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.support}</h1><p>${esc(t.supportLead)}</p><p>${t.supportExisting}</p><p><a href="${copy.productSupport[lang]}">${esc(copy.productSupport[lang])}</a></p>${petitesDisclosure(app,lang)}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
 ${footer(lang,origin+pagePath(app,'en','support/'),origin+pagePath(app,'fr','support/'))}</body></html>
 `);
   outputs.set((lang==='fr'?'fr/':'')+`apps/${slugOf(app)}/privacy/index.html`,`${head({lang,title:`${t.privacy}. ${title}`,description:text.summary,url:origin+privacy,enHref:origin+pagePath(app,'en','privacy/'),frHref:origin+pagePath(app,'fr','privacy/'),social:socialAbs,socialWidth:shot.width,socialHeight:shot.height,socialAlt:app.name})}
-<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}
+</head><body id="top">${header(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}
 <main id="main" tabindex="-1"><article class="plain">${crumbs}<h1>${esc(app.name)}. ${t.privacy}</h1>${copy.privacyParagraphs?.[lang] ? `<p><a href="${copy.privacy[lang]}">${t.privacy} — iPhone, iPad, Mac</a></p><h2>Android</h2>${copy.privacyParagraphs[lang].map(paragraph=>`<p>${paragraph}</p>`).join('')}` : `<p>${t.privacyLead}</p><p><a href="${copy.privacy[lang]}">${esc(copy.privacy[lang])}</a></p><p>${esc(t.privacyMail)}</p>`}${petitesDisclosure(app,lang)}<p><a href="${local}">${esc(app.name)}</a></p></article></main>
 ${footer(lang,origin+pagePath(app,'en','privacy/'),origin+pagePath(app,'fr','privacy/'))}</body></html>
 `);
@@ -149,7 +148,7 @@ for(const app of appDocuments){
    const sections=document.sections.map(section=>`<section><h2>${esc(section.heading)}</h2>${section.paragraphs.map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</section>`).join('\n');
    const links=['landing','support','privacy'].filter(other=>text[other]&&other!==leaf).map(other=>`<li><a href="${pagePath(app,lang,other==='landing'?'':other+'/')}">${other==='landing'?app.name:t[other]}</a></li>`).join('');
    outputs.set(`${lang==='fr'?'fr/':''}apps/${slugOf(app)}/${route}index.html`,`${head({lang,title:leaf==='landing'?`${app.name}. ${document.subtitle}. Benjamin Dupin`:`${label}. ${app.name}. Benjamin Dupin`,description:leaf==='landing'&&app.catalogue?`${app.name}. ${document.subtitle}. ${app.catalogue.availability[lang]}`:document.description,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset(app.socialImage||`assets/social/og${lang==='fr'?'-fr':''}.jpg`),socialWidth:app.socialImage?1024:1200,socialHeight:app.socialImage?1024:630,socialAlt:app.socialImage?app.name:'Benjamin Dupin',robots:app.sitemap===false?'noindex, follow':undefined,extra:`${app.appStoreId&&leaf!=='landing'?`<meta name="apple-itunes-app" content="app-id=${app.appStoreId}">`:''}<meta name="twitter:image:alt" content="${esc(app.socialImage?app.name:'Benjamin Dupin')}"><script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'SoftwareApplication',name:app.name,operatingSystem:app.operatingSystem||(leaf==='landing'&&app.androidStoreUrl?'Android 8 or later':'iOS 17 or later; Android 8 or later'),applicationCategory:app.applicationCategory||'LifestyleApplication',url:lang==='fr'?fr:en,publisher:{'@type':'Person',name:'Benjamin Dupin'},description:leaf==='landing'&&app.catalogue?app.catalogue.availability[lang]:text.status})}</script>`})}
-<script src="${asset('assets/site.js')}" defer></script></head><body id="top">${header(lang,en,fr,undefined,true,text.contactFallback)}
+</head><body id="top">${header(lang,en,fr,undefined,true,text.contactFallback)}
 <main id="main" tabindex="-1"><article class="plain"><p class="crumbs"><a href="${homeFor(lang)}#products">${t.homeLabel}</a></p><h1>${leaf==='landing'?esc(app.name):esc(app.name)+'. '+label}</h1><p>${esc(leaf==='landing'&&app.catalogue?app.catalogue.availability[lang]:text.status)}</p>${leaf==='landing'&&app.androidStoreUrl?`<p class="app-links"><a href="${esc(app.androidStoreUrl)}">${lang==='fr'?'Télécharger sur Google Play':'Get it on Google Play'}</a></p>`:''}${leaf==='privacy'?`<p>${esc(text.dateLabel)}${lang==='fr'?'\u00a0':''}: <time datetime="${app.policyDate}">${app.policyDate}</time></p>`:''}
 ${sections}<section id="contact"><h2>${t.contactTitle}</h2><p>${esc(text.contact)}</p>${contactButton(t.contactTitle)}</section>${links?`<ul class="links">${links}</ul>`:''}</article></main>
 ${footer(lang,en,fr,true,leaf==='landing'&&app.catalogue?app.catalogue.availability[lang]:text.footerLine)}</body></html>
@@ -169,14 +168,14 @@ for(const guide of guides){
  const guideEn=guide.alternate&&guide.lang==='fr'?'/'+guide.alternate:guide.lang==='en'?guideLink(guide):homeFor('en');
  const guideFr=guide.alternate&&guide.lang==='en'?'/'+guide.alternate:guide.lang==='fr'?guideLink(guide):homeFor('fr');
  outputs.set(guide.path,`<!doctype html>
-<html lang="${guide.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(guide.title)}</title><meta name="description" content="${esc(guide.description)}"><meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#121712"><link rel="canonical" href="${url}">${alternatives}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${asset('styles.css')}"><meta property="og:type" content="article"><meta property="og:locale" content="${guide.lang==='fr'?'fr_FR':'en_US'}"><meta property="og:site_name" content="bnjdpn"><meta property="og:title" content="${esc(guide.title)}"><meta property="og:description" content="${esc(guide.description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${origin+preview.src}"><meta property="og:image:width" content="${preview.width}"><meta property="og:image:height" content="${preview.height}"><meta property="og:image:alt" content="${esc(guide.imageAlt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(guide.title)}"><meta name="twitter:description" content="${esc(guide.description)}"><meta name="twitter:image" content="${origin+preview.src}"><script src="${asset('assets/site.js')}" defer></script></head>
+<html lang="${guide.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(guide.title)}</title><meta name="description" content="${esc(guide.description)}"><meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#121712"><link rel="canonical" href="${url}">${alternatives}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${asset('styles.css')}"><meta property="og:type" content="article"><meta property="og:locale" content="${guide.lang==='fr'?'fr_FR':'en_US'}"><meta property="og:site_name" content="bnjdpn"><meta property="og:title" content="${esc(guide.title)}"><meta property="og:description" content="${esc(guide.description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${origin+preview.src}"><meta property="og:image:width" content="${preview.width}"><meta property="og:image:height" content="${preview.height}"><meta property="og:image:alt" content="${esc(guide.imageAlt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(guide.title)}"><meta name="twitter:description" content="${esc(guide.description)}"><meta name="twitter:image" content="${origin+preview.src}"></head>
 <body id="top">${header(guide.lang,guideEn,guideFr,guideNav,Boolean(guide.alternate))}
 <main id="main" tabindex="-1"><article class="guide"><div class="guide-hero"><div><p class="kicker">${esc(guide.kicker)}</p><h1>${esc(guide.heading)}</h1><p class="guide-intro">${esc(guide.intro)}</p></div><figure>${screen(app.path,guide.lang,true)}<figcaption>${guide.lang==='fr'?'Écran de l\'application publiée.':'Screen from the published app.'}</figcaption></figure></div><div class="guide-body" id="steps">${sections}<aside class="guide-note"><p>${esc(guide.note)}</p></aside><p class="app-links"><a href="${esc(guide.storeUrl)}">${esc(guide.storeLabel)}</a><a href="${local}">${esc(guide.productLabel)}</a></p></div></article></main>
 ${footer(guide.lang,guideEn,guideFr,Boolean(guide.alternate))}</body></html>
 `);
 }
 outputs.set('404.html',`<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#121712"><title>Page not found. Benjamin Dupin</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${asset('styles.css')}"><script src="${asset('assets/site.js')}" defer></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#121712"><title>Page not found. Benjamin Dupin</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${asset('styles.css')}"></head>
 <body id="top"><a class="skip-link" href="#main">Skip to content</a><header class="bar"><a class="brand" href="/">bnjdpn</a><div class="bar-tools">${contactButton('Contact')}</div></header>${contactNote(studioCopy.en.contactFallback)}
 <main id="main" class="missing" tabindex="-1"><h1>Page not found.</h1><p>This address does not match a page on the site.</p><p><a href="/#products">Apps in English</a></p><section lang="fr"><h2>Page introuvable.</h2><p>Cette adresse ne correspond à aucune page du site.</p><p><a href="/fr/#products">Applications en français</a></p></section></main>
 <footer class="footer"><a class="footer-wordmark" href="/">Benjamin Dupin</a>${contactButton('Contact')}<nav class="languages" aria-label="Languages"><a href="/fr/" lang="fr" hreflang="fr">FR</a><a href="/" lang="en" hreflang="en" aria-current="page">EN</a></nav><p>© 2026 Benjamin Dupin</p><p>${studioCopy.en.noTracking}</p></footer></body></html>
@@ -211,12 +210,14 @@ outputs.set('sitemap-pages.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset
 }).join('\n')}\n</urlset>\n`);
 outputs.set('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>${origin}/sitemap-pages.xml</loc></sitemap>\n${apps.map(app=>`<sitemap><loc>${origin}/${app.path}/sitemap.xml</loc></sitemap>`).join('\n')}\n</sitemapindex>\n`);
 for(const [path,html] of outputs){
- const formApp=Object.keys(contactApps).find(slug=>new RegExp(`^(fr/)?apps/${slug}/`).test(path));
- if (formApp) {
-  const lang=path.startsWith('fr/')?'fr':'en';
-  const contactPath=`${lang==='fr'?'/fr':''}/contact/?app=${formApp}`;
-  outputs.set(path,html.replaceAll(/<button type="button" class="contact" data-contact>([^<]*)<\/button>/g,`<a class="contact" href="${contactPath}">$1</a>`).replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'').replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1${petitesDisclosure({path:formApp},lang)}`));
- }
+ if (!path.endsWith('.html')) continue;
+ // Every Contact control opens the protected form; no page publishes an address.
+ const lang=path.startsWith('fr/')?'fr':'en';
+ const pageApp=path.match(/^(?:fr\/)?apps\/([^/]+)\//)?.[1];
+ const contactPath=`${lang==='fr'?'/fr':''}/contact/${Object.hasOwn(formApps,pageApp)?`?app=${pageApp}`:''}`;
+ let page=html.replaceAll(/<button type="button" class="contact" data-contact>([^<]*)<\/button>/g,`<a class="contact" href="${contactPath}">$1</a>`).replaceAll(/<noscript><p class="js-note">[^<]*<\/p><\/noscript>/g,'');
+ if (Object.hasOwn(contactApps,pageApp)) page=page.replace(/(<section id="contact"><h2>[^<]*<\/h2><p>[^<]*<\/p>)/,`$1${petitesDisclosure({path:pageApp},lang)}`);
+ outputs.set(path,page);
 
 }
 const redirects=Object.entries(migrated).flatMap(([path,m])=>{

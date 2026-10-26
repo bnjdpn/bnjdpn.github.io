@@ -13,7 +13,7 @@ export const appDocuments = [
   "fr": {
     "footerLine": "Un démineur félin de Benjamin Dupin.",
     "status": "Un démineur félin avec une campagne, des défis quotidiens et un refuge animé.",
-    "contact": "Pour une question sur Catminers, utilisez Contact. Le bouton ouvre un nouvel e-mail dans votre application de courrier.",
+    "contact": "Pour une question sur Catminers, utilisez le formulaire de contact.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application de courrier avec le bouton Contact.",
     "dateLabel": "Date de la politique",
     "landing": {
@@ -90,7 +90,7 @@ export const appDocuments = [
           "heading": "Sauvegardes, suppression et contact",
           "paragraphs": [
             "L’app n’a pas de service de synchronisation propre. Les sauvegardes système d’Apple ou Google peuvent inclure les données du jeu, selon vos réglages. Supprimer les données de l’application supprime sa copie locale ; les historiques détenus par le store suivent les règles de ce store.",
-            "Un message envoyé au support est traité pour répondre à votre demande. Ce site ouvre votre application de courrier et ne transmet pas automatiquement de données du jeu. Pour toute question sur vos données, utilisez Contact."
+            "Un message envoyé au support est traité pour répondre à votre demande. Le formulaire de contact passe par Cloudflare (Turnstile contre le spam, Workers pour l’envoi) et ne joint aucune donnée du jeu. Pour toute question sur vos données, utilisez ce formulaire."
           ]
         }
       ]
@@ -99,7 +99,7 @@ export const appDocuments = [
   "en": {
     "footerLine": "A feline minesweeper game by Benjamin Dupin.",
     "status": "A feline minesweeper game with a campaign, daily challenges and an animated refuge.",
-    "contact": "For a Catminers question, use Contact. The button opens a new email in your mail app.",
+    "contact": "For a Catminers question, use the contact form.",
     "contactFallback": "JavaScript is needed for the Contact button to open your mail app.",
     "dateLabel": "Policy date",
     "landing": {
@@ -176,7 +176,7 @@ export const appDocuments = [
           "heading": "Backups, removal and contact",
           "paragraphs": [
             "The app has no sync service of its own. Apple or Google system backups may include game data, depending on your settings. Removing app data removes its local copy; records held by the store follow that store’s rules.",
-            "Support messages are used to respond to your request. The Contact button opens your mail app; game data is not attached. For data questions, use Contact."
+            "Support messages are used to respond to your request. The contact form goes through Cloudflare (Turnstile against spam, Workers for delivery) and attaches no game data. For data questions, use the same form."
           ]
         }
       ]
@@ -195,7 +195,7 @@ export const appDocuments = [
     "en": {
       "footerLine": "Available on Google Play.",
       "status": "Petits Besoins for Android is available on Google Play.",
-      "contact": "For a question about the app or its data, use the protected contact form or email petites@bnjdpn.com. Avoid including personal information about a child.",
+      "contact": "For a question about the app or its data, use the protected contact form. Avoid including personal information about a child.",
       "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
       "dateLabel": "Policy date",
       "landing": {
@@ -314,7 +314,7 @@ export const appDocuments = [
     "fr": {
       "footerLine": "Disponible sur Google Play.",
       "status": "Petits Besoins pour Android est disponible sur Google Play.",
-      "contact": "Pour une question sur l'app ou ses données, le lien petites@bnjdpn.com ouvre l'application mail. Benjamin Dupin reçoit seulement le message que vous envoyez. Éviter d'y inclure des informations personnelles sur un enfant.",
+      "contact": "Pour une question sur l'app ou ses données, utilisez le formulaire de contact de l'app. Benjamin Dupin reçoit seulement le message que vous envoyez. Éviter d'y inclure des informations personnelles sur un enfant.",
       "contactFallback": "JavaScript est nécessaire pour ouvrir l'application mail avec le bouton Contact.",
       "dateLabel": "Date de la politique",
       "landing": {
@@ -441,7 +441,7 @@ export const appDocuments = [
   "en": {
     "footerLine": "Available on Android.",
     "status": "Petits Pots is available on Android.",
-    "contact": "For a question about the app or its data, use the protected contact form or email petites@bnjdpn.com. Avoid including personal information about a child.",
+    "contact": "For a question about the app or its data, use the protected contact form. Avoid including personal information about a child.",
     "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
     "dateLabel": "Policy date",
     "landing": {
@@ -580,7 +580,7 @@ export const appDocuments = [
   "fr": {
     "footerLine": "Disponible sur Android.",
     "status": "Petits Pots est disponible sur Android.",
-    "contact": "Pour une question sur l’app ou ses données, utilisez le formulaire de contact protégé ou écrivez à petites@bnjdpn.com. Évitez les informations personnelles sur un enfant.",
+    "contact": "Pour une question sur l’app ou ses données, utilisez le formulaire de contact protégé. Évitez les informations personnelles sur un enfant.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
     "dateLabel": "Date de la politique",
     "landing": {

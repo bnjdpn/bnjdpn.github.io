@@ -2,18 +2,18 @@ import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
-import {contactApps, contactCopy} from '../content/contact-page.mjs';
+import {formApps, contactCopy} from '../content/contact-page.mjs';
 import {petitsPotsFormPrivacy} from '../content/petites-contact.mjs';
 
 const code = await readFile(new URL('../assets/contact.js', import.meta.url), 'utf8');
 // No network: exercise the shipped handler against browser-API doubles.
 function page(search='', response=async()=>({ok:true,json:async()=>({ok:true})}), configResponse=async()=>({ok:true,json:async()=>({sitekey:'fixture-public-key'})})) {
   const inputs=Object.fromEntries(['app','category','email','message','_gotcha','app_version','os_version'].map(name=>[name,{value:''}]));
-  Object.assign(inputs.app,{value:'petits-pots'}); inputs.category.value='other'; inputs.email.value='qa@example.invalid'; inputs.message.value='Test message';
+  Object.assign(inputs.app,{value:search.includes('app=')?'':'petits-pots',addEventListener:()=>{},focus:()=>{}}); inputs.category.value='other'; inputs.email.value='qa@example.invalid'; inputs.message.value='Test message';
   let submit, widget, resetCount=0, resetThrows=false;
   const calls=[], scripts=[], timers=new Map();
-  const form={action:'/api/contact',dataset:{messages:JSON.stringify(contactCopy.en.messages),apps:JSON.stringify(contactApps)},elements:{namedItem:name=>inputs[name]},reportValidity:()=>true,addEventListener:(event,handler)=>{if(event==='submit')submit=handler;}};
-  const elements={'contact-title':{textContent:'',dataset:{template:contactCopy.en.title}},'contact-privacy':{href:''},'support-form':form,'form-status':{textContent:''},'send-message':{disabled:true},'app-version-label':{textContent:''},'os-version-label':{textContent:''}};
+  const form={action:'/api/contact',dataset:{messages:JSON.stringify(contactCopy.en.messages),apps:JSON.stringify(formApps)},elements:{namedItem:name=>inputs[name]},reportValidity:()=>true,addEventListener:(event,handler)=>{if(event==='submit')submit=handler;}};
+  const elements={'contact-title':{textContent:'',dataset:{template:contactCopy.en.title,generic:contactCopy.en.genericTitle}},'contact-privacy':{href:'',hidden:true},'support-form':form,'form-status':{textContent:''},'send-message':{disabled:true},'app-version-label':{textContent:''},'os-version-label':{textContent:''}};
   const links=[{href:'https://bnjdpn.com/fr/contact/'},{href:'https://bnjdpn.com/contact/'}];
   const window={location:{search},turnstile:{render:(_target,options)=>{widget=options;return 'widget';},reset:()=>{resetCount++;if(resetThrows)throw new Error('widget reset failed');}}};
   class FormDataDouble extends Map {constructor(){super(Object.entries(inputs).map(([k,v])=>[k,v.value]));}}
@@ -36,7 +36,7 @@ assert.equal(metadata.resets,1); assert.equal(metadata.elements['form-status'].t
 metadata.token('renewed'); assert.equal(metadata.elements['form-status'].textContent,contactCopy.en.messages.success);
 
 for (const search of ['?app=other','?app=petits-pots%3Cscript%3E','?app=','?app=__proto__']) {
-  const invalid=page(search); await invalid.send(); assert.equal(invalid.scripts.length,0); assert.equal(invalid.calls.length,0);
+  const invalid=page(search); await invalid.send(); assert.equal(invalid.calls.length,0); assert.equal(invalid.elements['form-status'].textContent,contactCopy.en.messages.invalid);
 }
 for (const response of [async()=>({ok:false,json:async()=>({ok:false,error:'send'})}),async()=>({ok:true,json:async()=>({ok:false})}),async()=>{throw new Error('network');},async()=>({ok:true,json:async()=>{throw new Error('invalid JSON');}})]) {
   const failure=page('',response); await failure.init(); failure.token('used'); await failure.send();
@@ -72,7 +72,7 @@ for (const lang of ['en','fr']) {
   const html=await readFile(new URL(`../${prefix}contact/index.html`,import.meta.url),'utf8');
   assert(html.includes(`<html lang="${lang}">`)); assert(html.includes('name="_gotcha"')); assert(html.includes('maxlength="5000"'));
   assert(html.includes('action="/api/contact"'));
-  assert(html.includes('type="submit" disabled')); assert(html.includes('mailto:contact@bnjdpn.com'));
+  assert(html.includes('type="submit" disabled')); assert(!/mailto:|[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,}/i.test(html)); assert(html.includes('<select id="app" name="app" required>'));
   assert(html.includes('role="status"')); assert(html.includes(`<link rel="canonical" href="https://bnjdpn.com/${prefix}contact/">`));
 }
 console.log('✓ Contact EN/FR: safe context, fixed destination, token requirement/renewal, duplicate submit, failure recovery, expiry and blocked script; no real requests');

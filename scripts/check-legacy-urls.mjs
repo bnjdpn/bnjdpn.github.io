@@ -7,7 +7,7 @@ const base=arg('--base','http://127.0.0.1:4173').replace(/\/$/,'');
 const out=arg('--out','');
 const local=[
  '/','/fr/','/guides/tempo-timer/','/fr/guides/minuteur-tempo/','/fr/guides/journal-diversification/',
- '/404.html','/robots.txt','/sitemap.xml','/sitemap-pages.xml','/site.webmanifest','/styles.css','/assets/site.js','/assets/favicon.svg'
+ '/404.html','/robots.txt','/sitemap.xml','/sitemap-pages.xml','/site.webmanifest','/styles.css','/assets/favicon.svg'
 ];
 const anchors=['main','about','selected','products','contact'];
 const remote=[

@@ -94,7 +94,7 @@ export default {
       supportTitle: "Questions or a bug to report?",
       supportIntro: "Write to Benjamin Dupin, who develops Petites Nuits. For a bug, add your app version and your phone system version.",
       footer: "Made by Benjamin Dupin.",
-      formNote: "This form is protected against spam by Cloudflare Turnstile, which checks technical browser signals, including your IP address. Cloudflare forwards your message to petites@bnjdpn.com. An automated assistant (AI) used by the publisher sorts messages and prepares or sends replies; the publisher remains responsible for this processing.",
+      formNote: "This form is protected against spam by Cloudflare Turnstile, which checks technical browser signals, including your IP address. Cloudflare forwards your message to the publisher.",
     },
     "en-GB": {
       description: "Log your baby's nights, naps and wakeups, read noon-to-noon totals and preview the full PDF diary for free. A one-off purchase unlocks sharing and printing.",
@@ -193,7 +193,7 @@ export default {
       supportTitle: "Une question ou un bug à signaler ?",
       supportIntro: "Écrivez à Benjamin Dupin, qui développe Petites Nuits. Pour un bug, indiquez la version de l'app et celle du système de votre téléphone.",
       footer: "Créé par Benjamin Dupin.",
-      formNote: "Ce formulaire est protégé contre le spam par Cloudflare Turnstile, qui vérifie des signaux techniques du navigateur, dont votre adresse IP. Cloudflare transmet votre message à petites@bnjdpn.com. Un assistant automatisé (IA) utilisé par l'éditeur trie les messages et prépare ou envoie les réponses ; l'éditeur reste responsable de ce traitement.",
+      formNote: "Ce formulaire est protégé contre le spam par Cloudflare Turnstile, qui vérifie des signaux techniques du navigateur, dont votre adresse IP. Cloudflare transmet votre message à l'éditeur.",
     },
   },
 };

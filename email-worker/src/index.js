@@ -7,7 +7,7 @@ const appNames = {
   pasdujour: 'Pas du Jour', vesperdrift: 'Vesper Drift', 'petites-gouttes': 'Petites Gouttes',
   'petites-bouchees': 'Petites Bouchées', 'petites-nuits': 'Petites Nuits', 'petites-dents': 'Petites Dents',
   echappee: 'Échappée', 'petits-besoins': 'Petits Besoins', 'petits-pots': 'Petits Pots',
-  novastationpinball: 'Nova Station Pinball'
+  catminers: 'Catminers', novastationpinball: 'Nova Station Pinball'
 };
 const limits = { category: 80, app_version: 64, os_version: 64, platform: 64, device_model: 64, ui_language: 64, trainer_model: 64, source_page: 300, country: 16 };
 const oneLine = (value, max) => String(value || '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, max);
