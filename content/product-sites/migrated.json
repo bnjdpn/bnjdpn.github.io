@@ -5,6 +5,12 @@
     "privacyEn": "/BrewMeter/en-US/privacy",
     "privacyFr": "/BrewMeter/fr-FR/privacy"
   },
+  "ColdLoad": {
+    "en": "/ColdLoad/",
+    "fr": "/ColdLoad/fr-FR/",
+    "privacyEn": "/ColdLoad/en-US/privacy",
+    "privacyFr": "/ColdLoad/fr-FR/privacy"
+  },
   "FastZen": {
     "en": "/FastZen/",
     "fr": "/FastZen/fr-FR/",

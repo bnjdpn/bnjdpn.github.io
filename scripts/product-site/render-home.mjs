@@ -163,7 +163,8 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   ].join('');
   const languages = cfg.locales.map(({ code }) => `<a href="${localeUrl(cfg, code)}" hreflang="${code}" lang="${code}"${code === locale ? ' aria-current="page"' : ''}>${e(names[code] ?? code)}</a>`).join('');
   const related = (cfg.related_apps ?? []).map((r) => {
-    const tagline = r.tagline?.[locale] ?? r.tagline?.[lang] ?? r.tagline?.en ?? '';
+    const own = app.relatedTaglines?.[r.name];
+    const tagline = own?.[locale] ?? r.tagline?.[locale] ?? r.tagline?.[lang] ?? r.tagline?.en ?? '';
     return `<li><a href="${e(r.site_url)}"><img src="${prefix}${e(r.icon_path)}" width="48" height="48" alt="" loading="lazy" decoding="async"><span><strong>${e(r.name)}</strong><small>${e(tagline)}</small></span></a></li>`;
   }).join('');
   const options = ui.categories.map((label, i) => `<option value="${e(ui.categoryValues[i])}">${e(label)}</option>`).join('');
