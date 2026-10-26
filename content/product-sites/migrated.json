@@ -23,10 +23,28 @@
     "privacyEn": "/TempoReps/en-US/privacy",
     "privacyFr": "/TempoReps/fr-FR/privacy"
   },
+  "petites-bouchees": {
+    "en": "/petites-bouchees/",
+    "fr": "/petites-bouchees/fr-FR/",
+    "privacyEn": "/petites-bouchees/en-US/privacy",
+    "privacyFr": "/petites-bouchees/fr-FR/privacy"
+  },
+  "petites-dents": {
+    "en": "/petites-dents/",
+    "fr": "/petites-dents/fr-FR/",
+    "privacyEn": "/petites-dents/privacy",
+    "privacyFr": "/petites-dents/privacy"
+  },
   "petites-gouttes": {
     "en": "/petites-gouttes/",
     "fr": "/petites-gouttes/fr-FR/",
     "privacyEn": "/petites-gouttes/en-US/privacy",
     "privacyFr": "/petites-gouttes/fr-FR/privacy"
+  },
+  "petites-nuits": {
+    "en": "/petites-nuits/",
+    "fr": "/petites-nuits/fr-FR/",
+    "privacyEn": "/petites-nuits/en-US/privacy",
+    "privacyFr": "/petites-nuits/fr-FR/privacy"
   }
 }
