@@ -1,4 +1,16 @@
 {
+  "BrewMeter": {
+    "en": "/BrewMeter/",
+    "fr": "/BrewMeter/fr-FR/",
+    "privacyEn": "/BrewMeter/en-US/privacy",
+    "privacyFr": "/BrewMeter/fr-FR/privacy"
+  },
+  "FastZen": {
+    "en": "/FastZen/",
+    "fr": "/FastZen/fr-FR/",
+    "privacyEn": "/FastZen/en-US/privacy",
+    "privacyFr": "/FastZen/fr-FR/privacy"
+  },
   "GrooveLog": {
     "en": "/GrooveLog/",
     "fr": "/GrooveLog/fr-FR/",
