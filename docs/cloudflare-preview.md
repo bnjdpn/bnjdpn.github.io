@@ -61,9 +61,11 @@ version disponible dans les stores. Les liens et sitemaps reconnaissent les deux
 origines historiques `bnjdpn.github.io` et `bnjdpn.com` pour contrôler leurs cibles
 et ancres dans l’artefact. Aucune réécriture des URL historiques n’est ajoutée.
 
-La liste contient exactement 22 entrées : les 17 du catalogue, puis `RealmBox`,
+La liste contient exactement 18 entrées : les 17 du catalogue, puis `RealmBox`.
 `TaskLane`, `NovaStationPinball`, `onigiri-exit-calculator` et
-`poop-price-calculator`. Chaque entrée historique utilise obligatoirement
+`poop-price-calculator` sont retirés (décision du 26/10/2026) : aucune sortie
+publique, `functions/_middleware.js` répond 410 Gone sur ces préfixes et
+l’assembleur refuse une entrée pour eux. L’entrée historique utilise obligatoirement
 `kind: "local-generator-stage"`, avec le dépôt source isolé et son vrai SHA
 complet ; `stage` pointe vers sa sortie publique vérifiée sous le `.local/`
 central, jamais vers la racine du dépôt ou un `docs/` contenant des notes.

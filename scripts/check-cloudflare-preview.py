@@ -62,7 +62,7 @@ with tempfile.TemporaryDirectory() as temp:
             assert not output.exists()
         accepted = base / 'accepted'
         result = assembler.assemble([{**source, 'files': ['./index.html']}, *legacy], accepted)
-        assert result['files'] == 8
+        assert result['files'] == 4
         assert (accepted / 'public/Example/index.html').is_file()
         assert not (accepted / 'public/Example/internal.md').exists()
         assert set(result['sources'][1]['files']) == {'index.html'}
@@ -71,7 +71,7 @@ with tempfile.TemporaryDirectory() as temp:
         (generated / 'index.html').write_text('<html lang="fr"></html>')
         result = assembler.assemble([{**source, 'stage': str(generated),
                                       'kind': 'local-generator-stage'}, *legacy], base / 'generated')
-        assert result['files'] == 8
+        assert result['files'] == 4
         assert not any('Ruby docs' in b for b in result['blockers'])
         assert (accepted / 'functions/api/contact.js').is_file()
         assert (accepted / 'functions/api/contact/config.js').is_file()
@@ -85,8 +85,22 @@ with tempfile.TemporaryDirectory() as temp:
             assembler.assemble([{**source, 'files': ['index.html']}], base / 'missing-legacy')
             raise AssertionError('Missing legacy roots accepted')
         except ValueError as error:
-            assert 'five historical' in str(error)
+            assert 'historical RealmBox' in str(error)
         assert not (base / 'missing-legacy').exists()
+        # Retired prefixes answer 410 from the middleware and never ship files.
+        gone_root = fixture / '.local/legacy/TaskLane'
+        gone_root.mkdir(parents=True)
+        (gone_root / 'index.html').write_text('<html lang="en"></html>')
+        try:
+            assembler.assemble([{**source, 'files': ['index.html']}, *legacy,
+                                {'site': 'TaskLane', 'repo': str(fixture), 'stage': str(gone_root), 'sha': 'a' * 40,
+                                 'kind': 'local-generator-stage'}], base / 'gone-prefix')
+            raise AssertionError('Retired prefix accepted')
+        except ValueError as error:
+            assert 'exactly one' in str(error) or '410' in str(error)
+        assert not (base / 'gone-prefix').exists()
+        assert all(f'/{name}/*' in assembler.FUNCTION_ROUTES['include'] for name in assembler.GONE)
+        assert (accepted / 'functions/_middleware.js').is_file()
         # Declaring .json does not allow arbitrary stage documents.
         (generated / 'private.json').write_text('{"internal":true}')
         try:
@@ -163,7 +177,7 @@ with tempfile.TemporaryDirectory() as temp:
     (artifact / 'sitemap.xml').write_text('<urlset><url><loc>https://bnjdpn.com/ColdLoad/missing-locale/</loc></url></urlset>')
     assert subprocess.run(command, capture_output=True).returncode == 1
     assert any(e['ref'].endswith('/missing-locale/') for e in json.loads(report.read_text())['errors'])
-    # A complete artifact checker/preview resolves the five independent prefixes.
+    # A complete artifact checker/preview resolves the historical prefix.
     for name in sorted(assembler.LEGACY):
         (artifact / name).mkdir()
         (artifact / name / 'index.html').write_text('<html lang="en"><a href="en/#ready">EN</a></html>')
@@ -195,4 +209,4 @@ with tempfile.TemporaryDirectory() as temp:
     (artifact / 'RealmBox/en/index.html').write_text('<html lang="en"></html>')
     assert subprocess.run(command, capture_output=True).returncode == 1
     assert any(e['error'] == 'Missing anchor' for e in json.loads(report.read_text())['errors'])
-print('Passed: mandatory five historical prefixes, safe explicit stages, narrow public JSON exceptions, server imports kept outside public, exact API routing, complete legacy links/anchors, missing dependency and wildcard-route refusal.')
+print('Passed: mandatory RealmBox historical prefix, retired prefixes refused (410 middleware), safe explicit stages, narrow public JSON exceptions, server imports kept outside public, exact API routing, complete legacy links/anchors, missing dependency and wildcard-route refusal.')

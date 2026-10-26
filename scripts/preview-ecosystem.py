@@ -13,8 +13,9 @@ from urllib.parse import unquote, urljoin, urlsplit
 ORIGIN = 'https://bnjdpn.github.io'
 PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml',
           'site.webmanifest', 'styles.css', 'assets', 'fr', 'apps', 'guides', 'contact']
-LEGACY = {'RealmBox', 'TaskLane', 'NovaStationPinball', 'onigiri-exit-calculator', 'poop-price-calculator'}
-SERVER_INPUTS = {'functions/api/contact.js', 'functions/api/contact/config.js',
+LEGACY = {'RealmBox'}
+GONE = ['NovaStationPinball', 'TaskLane', 'onigiri-exit-calculator', 'poop-price-calculator']
+SERVER_INPUTS = {'functions/_middleware.js', 'functions/api/contact.js', 'functions/api/contact/config.js',
                  'content/catalog.json', 'content/app-documents.mjs', 'wrangler.toml'}
 
 class Page(HTMLParser):
@@ -60,7 +61,7 @@ def main():
             manifest = json.loads(manifest_path.read_text())
             historical = manifest.get('historical_prefixes', [])
             if historical and (set(historical) != LEGACY or len(historical) != len(LEGACY)):
-                parser.error('Artifact must declare the exact five historical prefixes')
+                parser.error('Artifact must declare exactly the historical RealmBox prefix')
             roots.update({name: portfolio / name for name in historical})
             server = manifest.get('server_inputs', {})
             if historical:
@@ -72,12 +73,13 @@ def main():
                         hashlib.sha256(path.read_bytes()).hexdigest() != server.get(name, {}).get('sha256')):
                         setup_errors.append({'error': 'Missing or changed Pages server input', 'path': name})
                 routes_file = portfolio / '_routes.json'
-                expected = {'version': 1, 'include': ['/api/contact', '/api/contact/config'],
+                expected = {'version': 1, 'include': ['/api/contact', '/api/contact/config',
+                                                      *[r for name in GONE for r in (f'/{name}', f'/{name}/*')]],
                             'exclude': ['/_asc-hooks/*', '/_funnel/*']}
                 if (not routes_file.is_file() or json.loads(routes_file.read_text()) != expected or
                     hashlib.sha256(routes_file.read_bytes()).hexdigest() != manifest.get('routing_sha256')):
                     setup_errors.append({'error': 'Pages function routing changed or missing'})
-                else: server_routes = set(expected['include'])
+                else: server_routes = {'/api/contact', '/api/contact/config'}
     elif args.staged: portfolio = portfolio / '_site'
     else:
         if all((portfolio / name).is_file() for name in SERVER_INPUTS - {'wrangler.toml'}):
@@ -93,7 +95,10 @@ def main():
         else:
             if parts and parts[0] not in PUBLIC: return None
             p = portfolio.joinpath(*parts)
-        return p / 'index.html' if p.is_dir() else p
+        if p.is_dir(): return p / 'index.html'
+        # Cloudflare Pages serves x.html at the extensionless URL x.
+        if not p.exists() and p.suffix == '' and p.with_name(p.name + '.html').is_file(): return p.with_name(p.name + '.html')
+        return p
 
     if args.command == 'serve':
         class Handler(http.server.SimpleHTTPRequestHandler):

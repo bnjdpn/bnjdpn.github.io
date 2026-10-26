@@ -3,7 +3,7 @@
 export const productCopy = {
   LoadSense: {
     category:'training',
-    privacy:{en:'https://bnjdpn.com/LoadSense/en-US/privacy.html', fr:'https://bnjdpn.com/LoadSense/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/LoadSense/en-US/privacy', fr:'https://bnjdpn.com/LoadSense/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/LoadSense/#contact', fr:'https://bnjdpn.com/LoadSense/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad, Apple Watch',
@@ -26,7 +26,7 @@ export const productCopy = {
   },
   TempoReps: {
     category:'training',
-    privacy:{en:'https://bnjdpn.com/TempoReps/en-US/privacy.html', fr:'https://bnjdpn.com/TempoReps/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/TempoReps/en-US/privacy', fr:'https://bnjdpn.com/TempoReps/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/TempoReps/#contact', fr:'https://bnjdpn.com/TempoReps/fr-FR/#contact'},
     en:{
       devices:'iPhone, Apple Watch',
@@ -47,7 +47,7 @@ export const productCopy = {
   },
   PRVault: {
     category:'training',
-    privacy:{en:'https://bnjdpn.com/PRVault/en-US/privacy.html', fr:'https://bnjdpn.com/PRVault/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/PRVault/en-US/privacy', fr:'https://bnjdpn.com/PRVault/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/PRVault/#contact', fr:'https://bnjdpn.com/PRVault/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
@@ -70,7 +70,7 @@ export const productCopy = {
   },
   GrooveLog: {
     category:'training',
-    privacy:{en:'https://bnjdpn.com/GrooveLog/en-US/privacy.html', fr:'https://bnjdpn.com/GrooveLog/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/GrooveLog/en-US/privacy', fr:'https://bnjdpn.com/GrooveLog/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/GrooveLog/#contact', fr:'https://bnjdpn.com/GrooveLog/fr-FR/#contact'},
     en:{
       devices:'iPhone',
@@ -93,7 +93,7 @@ export const productCopy = {
   },
   FastZen: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.com/FastZen/en-US/privacy.html', fr:'https://bnjdpn.com/FastZen/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/FastZen/en-US/privacy', fr:'https://bnjdpn.com/FastZen/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/FastZen/#contact', fr:'https://bnjdpn.com/FastZen/fr-FR/#contact'},
     en:{
       devices:'iPhone',
@@ -116,7 +116,7 @@ export const productCopy = {
   },
   ColdLoad: {
     category:'training',
-    privacy:{en:'https://bnjdpn.com/ColdLoad/en-US/privacy.html', fr:'https://bnjdpn.com/ColdLoad/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/ColdLoad/en-US/privacy', fr:'https://bnjdpn.com/ColdLoad/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/ColdLoad/#contact', fr:'https://bnjdpn.com/ColdLoad/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
@@ -139,7 +139,7 @@ export const productCopy = {
   },
   MoveAtlas: {
     category:'training',
-    privacy:{en:'https://bnjdpn.com/MoveAtlas/en-US/privacy.html', fr:'https://bnjdpn.com/MoveAtlas/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/MoveAtlas/en-US/privacy', fr:'https://bnjdpn.com/MoveAtlas/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/MoveAtlas/#contact', fr:'https://bnjdpn.com/MoveAtlas/fr-FR/#contact'},
     en:{
       devices:'iPhone',
@@ -162,7 +162,7 @@ export const productCopy = {
   },
   NeatShift: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.com/NeatShift/en-US/privacy.html', fr:'https://bnjdpn.com/NeatShift/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/NeatShift/en-US/privacy', fr:'https://bnjdpn.com/NeatShift/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/NeatShift/#contact', fr:'https://bnjdpn.com/NeatShift/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
@@ -185,7 +185,7 @@ export const productCopy = {
   },
   BrewMeter: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.com/BrewMeter/en-US/privacy.html', fr:'https://bnjdpn.com/BrewMeter/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/BrewMeter/en-US/privacy', fr:'https://bnjdpn.com/BrewMeter/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/BrewMeter/#contact', fr:'https://bnjdpn.com/BrewMeter/fr-FR/#contact'},
     en:{
       devices:'iPhone',
@@ -208,7 +208,7 @@ export const productCopy = {
   },
   NoBuyCart: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.com/NoBuyCart/en-US/privacy.html', fr:'https://bnjdpn.com/NoBuyCart/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/NoBuyCart/en-US/privacy', fr:'https://bnjdpn.com/NoBuyCart/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/NoBuyCart/#contact', fr:'https://bnjdpn.com/NoBuyCart/fr-FR/#contact'},
     en:{
       devices:'iPhone',
@@ -231,7 +231,7 @@ export const productCopy = {
   },
   PasDuJour: {
     category:'everyday',
-    privacy:{en:'https://bnjdpn.com/PasDuJour/privacy.html', fr:'https://bnjdpn.com/PasDuJour/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/PasDuJour/privacy', fr:'https://bnjdpn.com/PasDuJour/privacy'},
     productSupport:{en:'https://bnjdpn.com/PasDuJour/#contact', fr:'https://bnjdpn.com/PasDuJour/fr-FR/#contact'},
     en:{
       devices:'Apple Watch',
@@ -254,7 +254,7 @@ export const productCopy = {
   },
   VesperDrift: {
     category:'play',
-    privacy:{en:'https://bnjdpn.com/VesperDrift/privacy.html', fr:'https://bnjdpn.com/VesperDrift/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/VesperDrift/privacy', fr:'https://bnjdpn.com/VesperDrift/privacy'},
     productSupport:{en:'https://bnjdpn.com/VesperDrift/#contact', fr:'https://bnjdpn.com/VesperDrift/fr-FR/#contact'},
     en:{
       devices:'iPhone, iPad',
@@ -277,7 +277,7 @@ export const productCopy = {
   },
   'petites-gouttes': {
     category:'family',
-    privacy:{en:'https://bnjdpn.com/petites-gouttes/en-US/privacy.html', fr:'https://bnjdpn.com/petites-gouttes/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/petites-gouttes/en-US/privacy', fr:'https://bnjdpn.com/petites-gouttes/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/petites-gouttes/#contact', fr:'https://bnjdpn.com/petites-gouttes/#contact'},
     en:{
       devices:'iPhone',
@@ -300,7 +300,7 @@ export const productCopy = {
   },
   'petites-bouchees': {
     category:'family',
-    privacy:{en:'https://bnjdpn.com/petites-bouchees/en-US/privacy.html', fr:'https://bnjdpn.com/petites-bouchees/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/petites-bouchees/en-US/privacy', fr:'https://bnjdpn.com/petites-bouchees/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/petites-bouchees/#contact', fr:'https://bnjdpn.com/petites-bouchees/#contact'},
     en:{
       devices:'iPhone',
@@ -323,7 +323,7 @@ export const productCopy = {
   },
   'petites-nuits': {
     category:'family',
-    privacy:{en:'https://bnjdpn.com/petites-nuits/en-US/privacy.html', fr:'https://bnjdpn.com/petites-nuits/fr-FR/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/petites-nuits/en-US/privacy', fr:'https://bnjdpn.com/petites-nuits/fr-FR/privacy'},
     productSupport:{en:'https://bnjdpn.com/petites-nuits/#contact', fr:'https://bnjdpn.com/petites-nuits/#contact'},
     en:{
       devices:'iPhone',
@@ -346,7 +346,7 @@ export const productCopy = {
   },
   'petites-dents': {
     category:'family',
-    privacy:{en:'https://bnjdpn.com/petites-dents/privacy.html', fr:'https://bnjdpn.com/petites-dents/privacy.html'},
+    privacy:{en:'https://bnjdpn.com/petites-dents/privacy', fr:'https://bnjdpn.com/petites-dents/privacy'},
     productSupport:{en:'https://bnjdpn.com/petites-dents/#contact', fr:'https://bnjdpn.com/petites-dents/#contact'},
     en:{
       devices:'iPhone',
@@ -377,7 +377,7 @@ export const productCopy = {
         "Google Play handles the one-time purchase and restoration under its own terms. Échappée receives a signed purchase receipt. The receipt and the two-ride trial counter are encrypted locally with an Android Keystore key. Android backups and game exports exclude them. Uninstalling removes local data and the trial counter. Your purchase remains associated with your Google Play account.",
         "The Google Play Billing library included in the Android app may send diagnostics to Google when handling purchases or restoration. These diagnostics are collected and shared with Google for analytics. Purchase history is collected to provide the purchase and restoration features. Échappée does not send your workouts, activities or sensor measurements to Google for these purposes.",
         "You can export activities and send the files to another service yourself. Échappée does not transmit them automatically.",
-        "For questions or requests about your data, use the <a href=\"https://bnjdpn.com/Echappee/support.html\">support form</a>, choosing “Privacy”. If you use this form, Cloudflare and Grok Bot process your reply address and message to handle your request. Messages are kept while handling your request, then deleted. You can request access, correction or deletion through the same form. The game does not send your activities to this service."
+        "For questions or requests about your data, use the <a href=\"https://bnjdpn.com/Echappee/support\">support form</a>, choosing “Privacy”. If you use this form, Cloudflare and Grok Bot process your reply address and message to handle your request. Messages are kept while handling your request, then deleted. You can request access, correction or deletion through the same form. The game does not send your activities to this service."
       ],
       fr:[
         "Éditeur : Benjamin Dupin. Application : Échappée Android (<code>com.bnjdpn.echappee</code>).",
@@ -385,11 +385,11 @@ export const productCopy = {
         "Google Play traite l'achat unique et sa restauration selon ses propres règles. Échappée reçoit un reçu d'achat signé. Le reçu et le compteur des deux sorties d'essai sont chiffrés localement avec une clé Android Keystore. Ils ne sont pas inclus dans les sauvegardes Android ou les exports du jeu. La désinstallation supprime les données locales et le compteur d'essai. Votre achat reste associé à votre compte Google Play.",
         "La bibliothèque Google Play Billing incluse dans l'application Android peut transmettre des diagnostics à Google lors de l'achat ou de sa restauration. Ces diagnostics sont collectés et partagés avec Google à des fins d'analyse. L'historique des achats est collecté pour permettre l'achat et la restauration. Échappée ne transmet pas vos séances, activités ou mesures de capteurs à Google à ces fins.",
         "Vous pouvez exporter vos activités et les transmettre vous-même à un autre service. Échappée ne transmet pas ces fichiers automatiquement.",
-        "Pour toute question ou demande relative à vos données, utilisez le <a href=\"https://bnjdpn.com/Echappee/fr-FR/support.html\">formulaire d'assistance</a>, catégorie « Confidentialité ». Si vous utilisez ce formulaire, votre adresse de réponse et votre message transitent par Cloudflare et Grok Bot pour traiter votre demande. Ils sont conservés le temps de vous répondre, puis supprimés. Vous pouvez demander l'accès, la rectification ou l'effacement de ces échanges par le même formulaire. Le jeu n'envoie pas vos activités à ce service."
+        "Pour toute question ou demande relative à vos données, utilisez le <a href=\"https://bnjdpn.com/Echappee/fr-FR/support\">formulaire d'assistance</a>, catégorie « Confidentialité ». Si vous utilisez ce formulaire, votre adresse de réponse et votre message transitent par Cloudflare et Grok Bot pour traiter votre demande. Ils sont conservés le temps de vous répondre, puis supprimés. Vous pouvez demander l'accès, la rectification ou l'effacement de ces échanges par le même formulaire. Le jeu n'envoie pas vos activités à ce service."
       ]
     },
-    privacy:{en:'https://bnjdpn.com/Echappee/privacy.html', fr:'https://bnjdpn.com/Echappee/fr-FR/privacy.html'},
-    productSupport:{en:'https://bnjdpn.com/Echappee/support.html', fr:'https://bnjdpn.com/Echappee/fr-FR/support.html'},
+    privacy:{en:'https://bnjdpn.com/Echappee/privacy', fr:'https://bnjdpn.com/Echappee/fr-FR/privacy'},
+    productSupport:{en:'https://bnjdpn.com/Echappee/support', fr:'https://bnjdpn.com/Echappee/fr-FR/support'},
     en:{
       devices:'iPhone · iPad · Apple silicon Mac',
       summary:'Generates an indoor cycling road for a connected FTMS trainer, or a ride with no measured effort.',

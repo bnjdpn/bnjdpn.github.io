@@ -15,14 +15,18 @@ ecosystem = importlib.util.module_from_spec(module)
 module.loader.exec_module(ecosystem)
 # Same public types as marketing_seo.rb SAFE_STAGE_EXTENSIONS; no source/config types.
 EXTENSIONS = set('.avif .css .html .ico .jpeg .jpg .js .png .svg .txt .webmanifest .webp .woff2 .xml'.split())
-LEGACY = {'RealmBox', 'TaskLane', 'NovaStationPinball', 'onigiri-exit-calculator', 'poop-price-calculator'}
+LEGACY = {'RealmBox'}
+# Retired prefixes: no public file, functions/_middleware.js answers 410 Gone.
+GONE = ['NovaStationPinball', 'TaskLane', 'onigiri-exit-calculator', 'poop-price-calculator']
 PUBLIC_JSON = {'VesperDrift': {'press/media/manifest.json'}, 'RealmBox': {'release-manifest.json'}}
-SERVER_INPUTS = {'functions/api/contact.js': 'functions/api/contact.js',
+SERVER_INPUTS = {'functions/_middleware.js': 'functions/_middleware.js',
+                 'functions/api/contact.js': 'functions/api/contact.js',
                  'functions/api/contact/config.js': 'functions/api/contact/config.js',
                  'content/catalog.json': 'content/catalog.json',
                  'content/app-documents.mjs': 'content/app-documents.mjs',
                  'cloudflare/pages-upload.toml': 'wrangler.toml'}
-FUNCTION_ROUTES = {'version': 1, 'include': ['/api/contact', '/api/contact/config'],
+FUNCTION_ROUTES = {'version': 1, 'include': ['/api/contact', '/api/contact/config',
+                                             *[route for name in GONE for route in (f'/{name}', f'/{name}/*')]],
                    'exclude': ['/_asc-hooks/*', '/_funnel/*']}
 
 def git(repo, *args):
@@ -32,7 +36,7 @@ def assemble(spec, output):
     catalogue = json.loads((ROOT / 'content/catalog.json').read_text())
     expected = {x['path'] for x in catalogue} | LEGACY
     if len(spec) != len(expected) or {x['site'] for x in spec} != expected:
-        raise ValueError('Spec must contain exactly one explicit output for every catalogue site and all five historical prefixes')
+        raise ValueError('Spec must contain exactly one explicit output for every catalogue site and the historical RealmBox prefix')
     if output.exists():
         raise ValueError('Refusing to replace an existing output; choose a fresh candidate directory')
     sources = [{'site': 'Portfolio', 'repo': str(ROOT), 'stage': str(ROOT),
@@ -45,6 +49,8 @@ def assemble(spec, output):
         if git(repo, 'rev-parse', 'HEAD') != source['sha']:
             raise ValueError(f"Source HEAD changed: {source['site']}")
         generated = source['kind'] == 'local-generator-stage'
+        if source['site'] in GONE:
+            raise ValueError(f"Retired prefix answers 410 and takes no public output: {source['site']}")
         if source['site'] in LEGACY and not generated:
             raise ValueError('Historical sites require an explicit verified public stage under central .local/')
         if not (stage.is_relative_to(ROOT / '.local') if generated else stage.is_relative_to(repo)) or not (stage / 'index.html').is_file():
@@ -133,7 +139,7 @@ def assemble(spec, output):
         path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / record['source'], path)
     report = {'publishable': False, 'qualification': 'Local candidate only; no served-byte, store URL, contact delivery or provider qualification.',
-              'sources': provenance, 'files': len(plan) + 1, 'historical_prefixes': sorted(LEGACY),
+              'sources': provenance, 'files': len(plan) + 1, 'historical_prefixes': sorted(LEGACY), 'gone_prefixes': GONE,
               'server_inputs': server, 'function_routes': FUNCTION_ROUTES,
               'routing_sha256': hashlib.sha256((artifact / '_routes.json').read_bytes()).hexdigest(),
               'direct_upload': {'cwd': str(output), 'assets': 'public', 'project': 'bnjdpn-site-506',

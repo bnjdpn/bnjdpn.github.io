@@ -3,8 +3,12 @@
 This is the current web publishing procedure for `bnjdpn.com`. The existing
 Cloudflare Pages project is `bnjdpn-site-506`; Wrangler direct upload version
 4.152.0 deploys its public artifact. The assembled site contains the central
-catalogue, 17 catalogue apps and five preserved historical prefixes: 23 public
-site roots from 22 explicit product-site stages plus the central root.
+catalogue, 17 catalogue apps and the preserved historical RealmBox prefix:
+19 public site roots from 18 explicit product-site stages plus the central root.
+`/NovaStationPinball/`, `/TaskLane/`, `/onigiri-exit-calculator/` and
+`/poop-price-calculator/` are retired: `functions/_middleware.js` answers
+410 Gone there, and `_routes.json` sends only those prefixes and the contact
+API to Functions.
 
 GitHub Pages is no longer the web publisher. The former `bnjdpn.github.io`
 URLs remain HTTP 301 compatibility redirects to matching `bnjdpn.com` paths,

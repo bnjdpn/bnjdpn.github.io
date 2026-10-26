@@ -1,7 +1,7 @@
 export const contactApps = {'petits-pots': 'Petits Pots', 'petits-besoins': 'Petits Besoins'};
 export const contactCopy = {
   en: {
-    title: 'Contact {app}', intro: 'A question, a purchase issue or an idea? Write to the app’s support team.',
+    title: 'Contact {app}', genericTitle: 'Contact', intro: 'A question, a purchase issue or an idea? Write to the app’s support team.',
     email: 'Your email', category: 'Subject', message: 'Your message', send: 'Send message',
     categories: [['other', 'A question'], ['bug', 'Something is not working'], ['purchase', 'Purchase or restoration'], ['suggestion', 'An idea']],
     privacy: 'Your email, message and the app/system versions shown in Technical details, the approximate country and the referring site are sent to support through Cloudflare. Grok Bot helps process requests; Benjamin Dupin remains responsible. Please do not include personal information about a child.',
@@ -11,7 +11,7 @@ export const contactCopy = {
     messages: {ready: 'Ready to send.', verify: 'Complete the spam protection before sending.', unavailable: 'Spam protection is unavailable. Reload the page or use the email link below.', sending: 'Sending…', success: 'Message sent. Support will reply to your email.', error: 'The message could not be confirmed as sent. Your text is kept. Please try again or use the email link below.', invalid: 'This form supports Petits Pots and Petits Besoins. Please use the email link for another app.'}
   },
   fr: {
-    title: 'Contacter {app}', intro: 'Une question, un problème d’achat ou une idée ? Écrivez à l’assistance de l’app.',
+    title: 'Contacter {app}', genericTitle: 'Contact', intro: 'Une question, un problème d’achat ou une idée ? Écrivez à l’assistance de l’app.',
     email: 'Votre e-mail', category: 'Sujet', message: 'Votre message', send: 'Envoyer le message',
     categories: [['other', 'Une question'], ['bug', 'Un problème dans l’app'], ['purchase', 'Achat ou restauration'], ['suggestion', 'Une idée']],
     privacy: 'Votre e-mail, votre message et les versions de l’app et du système affichées dans les détails techniques, le pays approximatif et le site d’origine sont transmis à l’assistance via Cloudflare. Grok Bot aide à traiter les demandes ; Benjamin Dupin reste responsable. N’incluez pas d’informations personnelles sur un enfant.',
@@ -24,7 +24,7 @@ export const contactCopy = {
 
 export function contactBody(lang, esc) {
   const t = contactCopy[lang];
-  return `<main id="main" tabindex="-1"><article class="plain contact-page"><h1 id="contact-title" data-template="${esc(t.title)}">${t.title.replace('{app}', contactApps['petits-pots'])}</h1><p>${t.intro}</p>
+  return `<main id="main" tabindex="-1"><article class="plain contact-page"><h1 id="contact-title" data-template="${esc(t.title)}">${t.genericTitle}</h1><p>${t.intro}</p>
 <form id="support-form" action="/api/contact" method="post" data-messages="${esc(JSON.stringify(t.messages))}" data-apps="${esc(JSON.stringify(contactApps))}">
 <input type="hidden" name="app" value="petits-pots">
 <label for="email">${t.email}</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>

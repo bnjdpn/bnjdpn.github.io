@@ -85,7 +85,8 @@ for(const lang of ['en','fr']){
    if(appDocuments.includes(app)){
     const url=`${origin}/${lang==='fr'?'fr/':''}apps/${slug}/${leaf}`;
     expect(html.includes(`rel="canonical" href="${url}"`),prefix+'canonical mismatch');
-    expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
+    if(app.sitemap===false){expect(!pages.includes(`<loc>${url}</loc>`),prefix+'unreleased app listed in sitemap');expect(html.includes('<meta name="robots" content="noindex, follow">'),prefix+'unreleased app must be noindex');}
+    else expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
     for(const alternate of ['en','fr'])expect(html.includes(`rel="alternate" hreflang="${alternate}" href="${origin}/${alternate==='fr'?'fr/':''}apps/${slug}/${leaf}"`),prefix+'alternate missing');
     const storeLinks=[...html.matchAll(/href="([^"]+)"/g)].map(match=>match[1]).filter(href=>/apps\.apple\.com|play\.google\.com\/store/.test(href));
     const publishedAndroid=leaf===''&&app.androidStoreUrl;

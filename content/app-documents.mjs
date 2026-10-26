@@ -5,19 +5,20 @@ export const appDocuments = [
   "path": "catminers",
   "package": "com.bnjdpn.catminers",
   "upcoming": false,
+  "sitemap": false,
   "socialImage": "assets/catminers-icon.png",
   "policyDate": "2026-10-24",
   "operatingSystem": "iOS 15 or later; Android 8 or later",
   "applicationCategory": "GameApplication",
   "fr": {
-    "footerLine": "Catminers 1.0.0 est soumis à Apple et Google pour examen.",
-    "status": "Catminers 1.0.0 est en cours d’examen chez Apple et Google. Le téléchargement public n’est pas encore ouvert.",
-    "contact": "Pour une question sur Catminers, utilisez Contact. Le bouton ouvre votre application de courrier ; ce site n’envoie pas votre message.",
+    "footerLine": "Un démineur félin de Benjamin Dupin.",
+    "status": "Un démineur félin avec une campagne, des défis quotidiens et un refuge animé.",
+    "contact": "Pour une question sur Catminers, utilisez Contact. Le bouton ouvre un nouvel e-mail dans votre application de courrier.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application de courrier avec le bouton Contact.",
     "dateLabel": "Date de la politique",
     "landing": {
       "subtitle": "Un démineur et des chats à accueillir",
-      "description": "Catminers, un démineur félin avec une campagne, des défis quotidiens et un refuge animé. Version 1.0.0 soumise à Apple et Google.",
+      "description": "Catminers, un démineur félin avec une campagne, des défis quotidiens et un refuge animé.",
       "sections": [
         {
           "heading": "Explorer une galerie",
@@ -96,14 +97,14 @@ export const appDocuments = [
     }
   },
   "en": {
-    "footerLine": "Catminers 1.0.0 has been submitted to Apple and Google for review.",
-    "status": "Catminers 1.0.0 is under review by Apple and Google. Public downloads are not open yet.",
-    "contact": "For a Catminers question, use Contact. The button opens your mail app; this site does not send your message.",
+    "footerLine": "A feline minesweeper game by Benjamin Dupin.",
+    "status": "A feline minesweeper game with a campaign, daily challenges and an animated refuge.",
+    "contact": "For a Catminers question, use Contact. The button opens a new email in your mail app.",
     "contactFallback": "JavaScript is needed for the Contact button to open your mail app.",
     "dateLabel": "Policy date",
     "landing": {
       "subtitle": "Minesweeper with cats to welcome",
-      "description": "Catminers is a feline minesweeper game with a campaign, daily challenges and an animated refuge. Version 1.0.0 has been submitted to Apple and Google.",
+      "description": "Catminers is a feline minesweeper game with a campaign, daily challenges and an animated refuge.",
       "sections": [
         {
           "heading": "Explore a gallery",
@@ -175,7 +176,7 @@ export const appDocuments = [
           "heading": "Backups, removal and contact",
           "paragraphs": [
             "The app has no sync service of its own. Apple or Google system backups may include game data, depending on your settings. Removing app data removes its local copy; records held by the store follow that store’s rules.",
-            "Support messages are used to respond to your request. This site opens your mail app and does not automatically send game data. For data questions, use Contact."
+            "Support messages are used to respond to your request. The Contact button opens your mail app; game data is not attached. For data questions, use Contact."
           ]
         }
       ]
@@ -192,14 +193,14 @@ export const appDocuments = [
     "appStoreId": "6820659968",
     "policyDate": "2026-10-23",
     "en": {
-      "footerLine": "Android: staged rollout on Google Play. iOS: under review.",
-      "status": "Petits Besoins for Android is available on Google Play through a staged rollout. The iOS version is under review.",
+      "footerLine": "Available on Google Play.",
+      "status": "Petits Besoins for Android is available on Google Play.",
       "contact": "For a question about the app or its data, use the protected contact form or email petites@bnjdpn.com. Avoid including personal information about a child.",
       "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
       "dateLabel": "Policy date",
       "landing": {
         "subtitle": "Potty notebook",
-        "description": "Petits Besoins, a local potty notebook for parents. Android available through a staged Google Play rollout; iOS under review. Published by Benjamin Dupin.",
+        "description": "Petits Besoins, a local potty notebook for parents. Available on Google Play. Published by Benjamin Dupin.",
         "sections": [
           {
             "heading": "A notebook for the adult",
@@ -262,7 +263,7 @@ export const appDocuments = [
           {
             "heading": "Scope",
             "paragraphs": [
-              "Benjamin Dupin publishes Petits Besoins for iOS and Android, identified by com.bnjdpn.petitsbesoins. This policy covers the Android version distributed on Google Play and the iOS version under review."
+              "Benjamin Dupin publishes Petits Besoins for iOS and Android, identified by com.bnjdpn.petitsbesoins. This policy covers the Android version distributed on Google Play and the iOS version."
             ]
           },
           {
@@ -311,14 +312,14 @@ export const appDocuments = [
       }
     },
     "fr": {
-      "footerLine": "Android : déploiement progressif sur Google Play. iOS : en examen.",
-      "status": "Petits Besoins pour Android est disponible sur Google Play en déploiement progressif. La version iOS est en examen.",
-      "contact": "Pour une question sur l'app ou ses données, le lien petites@bnjdpn.com ouvre l'application mail. Benjamin Dupin reçoit seulement le message envoyé. Ce site ne l'envoie pas. Éviter d'y inclure des informations personnelles sur un enfant.",
+      "footerLine": "Disponible sur Google Play.",
+      "status": "Petits Besoins pour Android est disponible sur Google Play.",
+      "contact": "Pour une question sur l'app ou ses données, le lien petites@bnjdpn.com ouvre l'application mail. Benjamin Dupin reçoit seulement le message que vous envoyez. Éviter d'y inclure des informations personnelles sur un enfant.",
       "contactFallback": "JavaScript est nécessaire pour ouvrir l'application mail avec le bouton Contact.",
       "dateLabel": "Date de la politique",
       "landing": {
         "subtitle": "Carnet de propreté",
-        "description": "Petits Besoins, carnet local de propreté pour les parents. Android disponible progressivement sur Google Play ; iOS en examen. Édité par Benjamin Dupin.",
+        "description": "Petits Besoins, carnet local de propreté pour les parents. Disponible sur Google Play. Édité par Benjamin Dupin.",
         "sections": [
           {
             "heading": "Un carnet pour l'adulte",
@@ -381,7 +382,7 @@ export const appDocuments = [
           {
             "heading": "Champ de la politique",
             "paragraphs": [
-              "Benjamin Dupin édite Petits Besoins pour iOS et Android, identifiée par com.bnjdpn.petitsbesoins. Cette politique couvre la version Android distribuée sur Google Play et la version iOS en examen."
+              "Benjamin Dupin édite Petits Besoins pour iOS et Android, identifiée par com.bnjdpn.petitsbesoins. Cette politique couvre la version Android distribuée sur Google Play et la version iOS."
             ]
           },
           {
@@ -438,8 +439,8 @@ export const appDocuments = [
   "androidStoreUrl": "https://play.google.com/store/apps/details?id=com.bnjdpn.petitspots",
   "policyDate": "2026-10-22",
   "en": {
-    "footerLine": "Available on Android. iOS under review.",
-    "status": "Petits Pots is available on Android. The iOS app is awaiting App Store review.",
+    "footerLine": "Available on Android.",
+    "status": "Petits Pots is available on Android.",
     "contact": "For a question about the app or its data, use the protected contact form or email petites@bnjdpn.com. Avoid including personal information about a child.",
     "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
     "dateLabel": "Policy date",
@@ -577,8 +578,8 @@ export const appDocuments = [
     }
   },
   "fr": {
-    "footerLine": "Disponible sur Android. iOS en cours d’examen.",
-    "status": "Petits Pots est disponible sur Android. L’app iOS est en attente d’examen par Apple.",
+    "footerLine": "Disponible sur Android.",
+    "status": "Petits Pots est disponible sur Android.",
     "contact": "Pour une question sur l’app ou ses données, utilisez le formulaire de contact protégé ou écrivez à petites@bnjdpn.com. Évitez les informations personnelles sur un enfant.",
     "contactFallback": "JavaScript est nécessaire pour ouvrir l’application mail avec le bouton Contact.",
     "dateLabel": "Date de la politique",
