@@ -4,3 +4,4 @@ output/
 .playwright-cli/
 .local/
 scripts/__pycache__/
+.wrangler/

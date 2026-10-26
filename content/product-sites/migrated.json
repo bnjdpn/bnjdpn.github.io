@@ -1,0 +1,32 @@
+{
+  "LoadSense": {
+    "en": "/LoadSense/",
+    "fr": "/LoadSense/fr-FR/",
+    "privacyEn": "/LoadSense/en-US/privacy",
+    "privacyFr": "/LoadSense/fr-FR/privacy"
+  },
+  "NeatShift": {
+    "en": "/NeatShift/",
+    "fr": "/NeatShift/fr-FR/",
+    "privacyEn": "/NeatShift/en-US/privacy",
+    "privacyFr": "/NeatShift/fr-FR/privacy"
+  },
+  "PRVault": {
+    "en": "/PRVault/",
+    "fr": "/PRVault/fr-FR/",
+    "privacyEn": "/PRVault/en-US/privacy",
+    "privacyFr": "/PRVault/fr-FR/privacy"
+  },
+  "TempoReps": {
+    "en": "/TempoReps/",
+    "fr": "/TempoReps/fr-FR/",
+    "privacyEn": "/TempoReps/en-US/privacy",
+    "privacyFr": "/TempoReps/fr-FR/privacy"
+  },
+  "petites-gouttes": {
+    "en": "/petites-gouttes/",
+    "fr": "/petites-gouttes/fr-FR/",
+    "privacyEn": "/petites-gouttes/en-US/privacy",
+    "privacyFr": "/petites-gouttes/fr-FR/privacy"
+  }
+}

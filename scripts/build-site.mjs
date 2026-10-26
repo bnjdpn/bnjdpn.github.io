@@ -10,7 +10,7 @@ import {appDocuments} from '../content/app-documents.mjs';
 import {petitesFormApps, petitesFormPrivacy, petitsPotsFormPrivacy} from '../content/petites-contact.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
-const [apps,profile,media]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json'].map(readJSON));
+const [apps,profile,media,migrated]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json','content/product-sites/migrated.json'].map(readJSON));
 const catalogue=[...apps,...appDocuments.filter(app=>app.catalogue)];
 const origin='https://bnjdpn.com';
 const versions=new Map(await Promise.all(['assets/contact.css','assets/contact.js','styles.css','assets/site.js','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
@@ -25,6 +25,9 @@ const product=path=>apps.find(app=>app.path===path);
 const slugOf=app=>app.path.toLowerCase();
 const homeFor=lang=>lang==='fr'?'/fr/':'/';
 const pagePath=(app,lang,leaf='')=>`${lang==='fr'?'/fr':''}/apps/${slugOf(app)}/${leaf}`;
+// Apps whose own site is built by scripts/product-site: their /apps/<slug>/ pages
+// answer 301 (see _redirects) and every link points to the app site directly.
+const appHref=(app,lang,leaf='')=>{const m=migrated[app.path];if(!m)return pagePath(app,lang,leaf);const base=lang==='fr'?m.fr:m.en;return leaf==='support/'?base+'#contact':leaf==='privacy/'?(lang==='fr'?m.privacyFr:m.privacyEn):base;};
 const urlFor=(app,lang)=>`${origin}/${app.path}/${lang==='fr'?'fr-FR/':''}`;
 const storeUrl=app=>`https://apps.apple.com/app/id${app.id}`;
 const iconPath=app=>app.catalogue?.icon||`assets/apps/${app.icon}.${app.iconFormat||'webp'}`;
@@ -85,16 +88,16 @@ for(const lang of ['en','fr']){
  const catalog=catalogue.map((app,index)=>{
   if(app.catalogue){
    const text=app[lang], search=esc([app.name,text.landing.subtitle,app.catalogue.availability[lang]].join(' '));
-   return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${app.catalogue.category}" data-search="${search}"><a class="row-link" href="${pagePath(app,lang)}"><span class="num">${String(index+1).padStart(2,'0')}</span>${icon(app)}<span class="name">${esc(app.name)}</span><span class="use">${esc(app.catalogue.availability[lang])}</span></a><span class="store-links">${storeLinks(app,'store-link',lang)}</span><figure class="preview">${icon(app)}<figcaption>${esc(text.landing.subtitle)}. ${esc(app.catalogue.availability[lang])}</figcaption></figure></article></li>`;
+   return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${app.catalogue.category}" data-search="${search}"><a class="row-link" href="${appHref(app,lang)}"><span class="num">${String(index+1).padStart(2,'0')}</span>${icon(app)}<span class="name">${esc(app.name)}</span><span class="use">${esc(app.catalogue.availability[lang])}</span></a><span class="store-links">${storeLinks(app,'store-link',lang)}</span><figure class="preview">${icon(app)}<figcaption>${esc(text.landing.subtitle)}. ${esc(app.catalogue.availability[lang])}</figcaption></figure></article></li>`;
   }
   const copy=productCopy[app.path], text=copy[lang];
   const search=esc([app.name,devicesFor(app,lang),text.summary,...text.body].join(' '));
   const num=String(index+1).padStart(2,'0');
-  return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${copy.category}" data-search="${search}"><a class="row-link" href="${pagePath(app,lang)}"><span class="num">${num}</span>${icon(app,index<10)}<span class="name">${esc(app.name)}</span><span class="use">${t.categories[copy.category]}</span></a><span class="store-links">${storeLinks(app,'store-link',lang)}</span><figure class="preview">${screen(app.path,lang,index===0)}<figcaption>${esc(text.summary)} ${esc(devicesFor(app,lang))}</figcaption></figure></article></li>`;
+  return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${copy.category}" data-search="${search}"><a class="row-link" href="${appHref(app,lang)}"><span class="num">${num}</span>${icon(app,index<10)}<span class="name">${esc(app.name)}</span><span class="use">${t.categories[copy.category]}</span></a><span class="store-links">${storeLinks(app,'store-link',lang)}</span><figure class="preview">${screen(app.path,lang,index===0)}<figcaption>${esc(text.summary)} ${esc(devicesFor(app,lang))}</figcaption></figure></article></li>`;
  }).join('\n');
  const upcoming=appDocuments.filter(app=>app.upcoming);
  const upcomingSection=upcoming.length?`<section class="guides-index" id="upcoming"><h2>${lang==='fr'?'En préparation':'In development'}</h2><ul class="guide-list">${upcoming.map(app=>`<li><a href="${pagePath(app,lang)}">${esc(app.name)}</a> — ${esc(app[lang].landing.subtitle)}</li>`).join('')}</ul></section>`:'';
- const directory=[...catalogue,...upcoming].map(app=>`<li><a href="${pagePath(app,lang,'support/')}">${esc(app.name)}</a></li>`).join('');
+ const directory=[...catalogue,...upcoming].map(app=>`<li><a href="${appHref(app,lang,'support/')}">${esc(app.name)}</a></li>`).join('');
  outputs.set(lang==='en'?'index.html':'fr/index.html',`${head({lang,title:t.title,description:t.description,url,enHref:origin+'/',frHref:origin+'/fr/',social,socialWidth:1200,socialHeight:630,socialAlt:t.title,extra:'<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'})}
 <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script><script src="${asset('assets/site.js')}" defer></script></head>
 <body id="top">${header(lang,'/','/fr/')}
@@ -155,7 +158,7 @@ ${footer(lang,en,fr,true,leaf==='landing'&&app.catalogue?app.catalogue.availabil
 for(const guide of guides){
  const app=product(guide.app), url=origin+guideLink(guide), home=homeFor(guide.lang);
  const preview=media[app.path][guide.lang];
- const local=pagePath(app,guide.lang);
+ const local=appHref(app,guide.lang);
  const enHref=guide.lang==='en'?url:origin+'/'+guide.alternate;
  const frHref=guide.lang==='fr'?url:origin+'/'+guide.alternate;
  const alternatives=guide.alternate?`<link rel="alternate" hreflang="${guide.lang}" href="${url}"><link rel="alternate" hreflang="${guide.lang==='fr'?'en':'fr'}" href="${guide.lang==='fr'?enHref:frHref}">`:'';
@@ -184,7 +187,7 @@ for(const guide of guides){
  const loc=origin+guideLink(guide);
  pageLocs.push({loc, en:guide.alternate&&guide.lang==='fr'?origin+'/'+guide.alternate:guide.lang==='en'?loc:null, fr:guide.alternate&&guide.lang==='en'?origin+'/'+guide.alternate:guide.lang==='fr'?loc:null, solo:!guide.alternate});
 }
-for(const app of apps){
+for(const app of apps.filter(app=>!migrated[app.path])){
  for(const leaf of ['','support/','privacy/']){
   const en=origin+pagePath(app,'en',leaf), fr=origin+pagePath(app,'fr',leaf);
   pageLocs.push({loc:en, en, fr});
@@ -214,6 +217,15 @@ for(const [path,html] of outputs){
  }
 
 }
+const redirects=Object.entries(migrated).flatMap(([path,m])=>{
+ const slug=path.toLowerCase();
+ return ['en','fr'].flatMap(lang=>{
+  const base=lang==='fr'?m.fr:m.en, from=`${lang==='fr'?'/fr':''}/apps/${slug}/`;
+  return [['',base],['support/',base+'#contact'],['privacy/',lang==='fr'?m.privacyFr:m.privacyEn]].flatMap(([leaf,to])=>
+   [`${from}${leaf}`,`${from}${leaf}index.html`,`${from}${leaf}`.replace(/\/$/,'')].map(src=>`${src} ${to} 301`));
+ });
+});
+outputs.set('_redirects',`# Generated by scripts/build-site.mjs from content/product-sites/migrated.json.\n${redirects.join('\n')}\n`);
 let stale=false;
 for(const [path,html] of outputs){if(process.argv.includes('--check')){if(await readFile(resolve(root,path),'utf8').catch(()=>null)!==html){console.error(`Stale generated output: ${path}. Run npm run build.`);stale=true;}}else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),html);}}
 if(stale)process.exit(1);

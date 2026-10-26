@@ -27,8 +27,7 @@ const listFiles = (root) => {
 };
 
 const files = listFiles(stage);
-const site = JSON.parse(readFileSync(join(stage, 'site.webmanifest'), 'utf8')).name;
-const base = `https://bnjdpn.com/${site}/`;
+const base = readFileSync(join(stage, 'robots.txt'), 'utf8').match(/Sitemap: (\S+)sitemap\.xml/)[1];
 
 if (reference) {
   const before = new Set(listFiles(reference));
@@ -38,7 +37,7 @@ if (reference) {
 }
 
 const attr = (html, re) => (html.match(re) ?? [])[1];
-const homes = files.filter((f) => /(^|\/)index\.html$/.test(f) && !/timer-|\/privacy|\/terms/.test(f))
+const homes = files.filter((f) => /^(?:[a-z]{2}(?:-[A-Za-z]{2,4})?\/)?index\.html$/.test(f))
   .filter((f) => !readFileSync(join(stage, f), 'utf8').includes('http-equiv="refresh"'));
 const descriptions = new Map();
 const report = [];

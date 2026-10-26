@@ -76,7 +76,7 @@ export function primaryRedirect(cfg, locale) {
   return `<!doctype html>\n<html lang="${escapeHtml(locale)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0; url=${base}"><link rel="canonical" href="${base}"><title>${name}</title></head><body><p><a href="${base}">Continue to ${name}</a></p></body></html>\n`;
 }
 
-export function sitemapXml(cfg, lastmod) {
+export function sitemapXml(cfg, lastmod, previous) {
   const links = hreflangLinks(cfg);
   const alternates = [
     ...links.map(({ locale, url }) => `    <xhtml:link rel="alternate" hreflang="${escapeXml(locale)}" href="${escapeXml(url)}" />`),
@@ -87,17 +87,11 @@ export function sitemapXml(cfg, lastmod) {
   let body = ordered
     .map((url) => ['  <url>', `    <loc>${escapeXml(url)}</loc>`, `    <lastmod>${escapeXml(lastmod)}</lastmod>`, ...alternates, '  </url>'].join('\n'))
     .join('\n');
-  const guides = (cfg.extra_sitemap_paths ?? []).map((path) => `${cfg.base_url}${path}`);
-  if (guides.length) {
-    const guideLinks = [
-      `    <xhtml:link rel="alternate" hreflang="en-US" href="${escapeXml(guides[0])}" />`,
-      `    <xhtml:link rel="alternate" hreflang="fr-FR" href="${escapeXml(guides[1])}" />`,
-      `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(guides[0])}" />`,
-    ];
-    body += '\n' + guides
-      .map((url) => ['  <url>', `    <loc>${escapeXml(url)}</loc>`, `    <lastmod>${escapeXml(lastmod)}</lastmod>`, ...guideLinks, '  </url>'].join('\n'))
-      .join('\n');
-  }
+  // Other pages (guides, legal pages listed by the app) keep their previous entries.
+  const homes = new Set(ordered);
+  const kept = (previous?.match(/<url>[\s\S]*?<\/url>/g) ?? [])
+    .filter((block) => !homes.has(block.match(/<loc>([^<]*)<\/loc>/)?.[1]));
+  if (kept.length) body += '\n' + kept.map((block) => `  ${block.trim()}`).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${body}\n</urlset>\n`;
 }
 
@@ -118,4 +112,26 @@ export function webManifest(cfg) {
 
 export function robotsTxt(cfg) {
   return `User-agent: *\nAllow: /\nSitemap: ${cfg.base_url}sitemap.xml\n`;
+}
+
+// Width and height of a JPEG, PNG or WebP, for Open Graph.
+export function imageSize(data) {
+  if (!data || !Buffer.isBuffer(data)) return {};
+  if (data.readUInt32BE(0) === 0x89504e47) return { width: data.readUInt32BE(16), height: data.readUInt32BE(20) };
+  if (data.toString('ascii', 0, 4) === 'RIFF' && data.toString('ascii', 8, 12) === 'WEBP') {
+    const kind = data.toString('ascii', 12, 16);
+    if (kind === 'VP8X') return { width: 1 + data.readUIntLE(24, 3), height: 1 + data.readUIntLE(27, 3) };
+    if (kind === 'VP8 ') return { width: data.readUInt16LE(26) & 0x3fff, height: data.readUInt16LE(28) & 0x3fff };
+    if (kind === 'VP8L') { const b = data.readUInt32LE(21); return { width: 1 + (b & 0x3fff), height: 1 + ((b >> 14) & 0x3fff) }; }
+  }
+  if (data[0] === 0xff && data[1] === 0xd8) {
+    let i = 2;
+    while (i < data.length) {
+      const marker = data[i + 1];
+      const length = data.readUInt16BE(i + 2);
+      if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) return { width: data.readUInt16BE(i + 7), height: data.readUInt16BE(i + 5) };
+      i += 2 + length;
+    }
+  }
+  return {};
 }

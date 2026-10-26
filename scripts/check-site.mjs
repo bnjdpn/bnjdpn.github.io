@@ -5,6 +5,9 @@ import {guides} from '../content/guides.mjs';
 import {appDocuments} from '../content/app-documents.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const catalog=JSON.parse(await readFile(resolve(root,'content/catalog.json'),'utf8'));
+// Links to migrated app sites point into other repositories; preview-ecosystem.py checks them after assembly.
+const migrated=Object.keys(JSON.parse(await readFile(resolve(root,'content/product-sites/migrated.json'),'utf8')));
+const appSiteRef=ref=>migrated.some(path=>ref.replace(/^\//,'').startsWith(path+'/'));
 const availableDocuments=appDocuments.filter(app=>app.catalogue);
 const availableCatalogue=[...catalog,...availableDocuments];
 const publicAndroid=new Map([['Echappee','com.bnjdpn.echappee'],['petits-pots','com.bnjdpn.petitspots'],['petits-besoins','com.bnjdpn.petitsbesoins'],['petites-gouttes','com.bnjdpn.petitesgouttes'],['petites-bouchees','com.bnjdpn.petitesbouchees'],['petites-dents','com.bnjdpn.petitesdents'],['petites-nuits','com.bnjdpn.petitesnuits']]);
@@ -52,7 +55,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  expect(!/target="_blank"/.test(html),prefix+'forced new tab');
  for(const img of html.matchAll(/<img\b[^>]+>/g)) expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
  const refs=new Set([...html.matchAll(/(?:href|src)="([^"#]+)"/g)].map(m=>m[1]).filter(ref=>!/^(?:https?:|data:|mailto:)/.test(ref)));
- for(let ref of refs){ref=ref.replace(/^\//,'').split('?')[0];if(ref===''||ref.endsWith('/'))ref+='index.html';try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}}
+ for(let ref of refs){if(appSiteRef(ref))continue;ref=ref.replace(/^\//,'').split('?')[0];if(ref===''||ref.endsWith('/'))ref+='index.html';try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}}
  expect(html.includes('class="index"'),prefix+'catalogue index missing');
  for(const app of appDocuments){
   const row=rows.find(row=>row.includes(`data-app="${app.path}"`));
@@ -133,7 +136,7 @@ for(const guide of guides){
  expect(!html.includes('guide-related'),prefix+'unrelated guide recommendation');
  for(const img of html.matchAll(/<img\b[^>]+>/g))expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
  for(const match of html.matchAll(/(?:href|src)="(\/[^"]+)"/g)){
-  const ref=match[1].split(/[?#]/)[0];let path=ref.slice(1);if(path.endsWith('/')||!path)path+='index.html';
+  const ref=match[1].split(/[?#]/)[0];if(appSiteRef(ref))continue;let path=ref.slice(1);if(path.endsWith('/')||!path)path+='index.html';
   try{await access(resolve(root,path));references++;}catch{failures.push(prefix+'missing file '+ref)}
  }
  expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');

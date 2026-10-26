@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
 ORIGIN = 'https://bnjdpn.github.io'
-PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml',
+PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml', '_redirects',
           'site.webmanifest', 'styles.css', 'assets', 'fr', 'apps', 'guides', 'contact']
 LEGACY = {'RealmBox'}
 GONE = ['NovaStationPinball', 'TaskLane', 'onigiri-exit-calculator', 'poop-price-calculator']
@@ -139,6 +139,9 @@ def main():
         elif path.suffix == '.xml':
             refs = re.findall(r'<loc>([^<]+)</loc>|href="([^"]+)"', path.read_text())
             refs = [a or b for a, b in refs]
+        elif path.name == '_redirects':
+            # Every 301 target must exist (anchors included) in the assembled artifact.
+            refs = [line.split()[1] for line in path.read_text().splitlines() if line.strip() and not line.startswith('#')]
         elif path.suffix == '.webmanifest':
             m = json.loads(path.read_text()); refs = [x['src'] for x in m.get('icons', [])] + [m.get('start_url', './')]
         for ref in refs:
