@@ -3,15 +3,13 @@
 // machine cards at Studio Atlas (seat 4, backrest 2, load in kg), En salle / At the gym,
 // Ma salle / My gym, free notebook of 5 items, optional one-time purchase, no Play price.
 const fr = {
-  title: 'MoveAtlas : siège 4, dossier 2, pour cette salle',
+  title: 'MoveAtlas : 1 324 exercices hors ligne, par salle',
   description: '1 324 exercices de salle hors ligne. Notez le siège, le dossier et la charge de chaque machine, salle par salle. Gratuit sur l’App Store et Google Play.',
-  h1: 'Siège 4, dossier 2, notés pour cette salle.',
+  h1: '1 324 exercices hors ligne. Siège 4, dossier 2, pour cette salle.',
   exercise: 'Presse guidée 45°',
   seat: 'Siège',
   back: 'Dossier',
-  load: 'Charge',
-  unit: 'kg',
-  intro: 'MoveAtlas range les réglages de chaque machine dans la salle où elle se trouve. Le catalogue, 1 324 exercices, s’ouvre sans réseau.',
+  intro: 'Le catalogue s’ouvre sans réseau. Le siège et le dossier restent notés dans la salle où la machine se trouve.',
   note: 'Gratuit sur l’App Store et Google Play. Un achat unique facultatif retire la limite du carnet, sans abonnement. Version iOS publique 1.5.0.',
   machineAlt: 'Fiche machine Presse guidée 45° dans MoveAtlas : réglages à Studio Atlas, siège 4, dossier 2, charge en kg, muscles principal et secondaires.',
   machineCap: 'La fiche de la presse guidée 45°, à Studio Atlas : siège 4, dossier 2, charge en kg.',
@@ -75,15 +73,13 @@ const fr = {
 };
 
 const en = {
-  title: 'MoveAtlas: seat 4, backrest 2, for this gym',
+  title: 'MoveAtlas: 1,324 exercises offline, gym by gym',
   description: '1,324 gym exercises offline. Save the seat, backrest and load of each machine, gym by gym. Free on the App Store and Google Play.',
-  h1: 'Seat 4, backrest 2, saved for this gym.',
+  h1: '1,324 exercises offline. Seat 4, backrest 2, for this gym.',
   exercise: 'Sled 45° leg press',
   seat: 'Seat',
   back: 'Backrest',
-  load: 'Load',
-  unit: 'kg',
-  intro: 'MoveAtlas keeps each machine’s settings in the gym where it stands. The catalog, 1,324 exercises, opens with no network.',
+  intro: 'The catalog opens with no network. Seat and backrest stay saved in the gym where the machine stands.',
   note: 'Free on the App Store and Google Play. An optional one-time purchase removes the notebook limit, with no subscription. Public iOS version 1.5.0.',
   machineAlt: 'Sled 45° leg press machine card in MoveAtlas: settings at Studio Atlas, seat 4, backrest 2, load in kg, primary and secondary muscles.',
   machineCap: 'The sled 45° leg press card at Studio Atlas: seat 4, backrest 2, load in kg.',
@@ -147,15 +143,13 @@ const en = {
 };
 
 const de = {
-  title: 'MoveAtlas: Sitz 4, Lehne 2, für dieses Studio',
+  title: 'MoveAtlas: 1.324 Übungen offline, pro Studio',
   description: '1.324 Studio-Übungen offline. Sitz, Lehne und Gewicht jeder Maschine speichern, Studio für Studio. Kostenlos im App Store und bei Google Play.',
-  h1: 'Sitz 4, Lehne 2, für dieses Studio notiert.',
+  h1: '1.324 Übungen offline. Sitz 4, Lehne 2, für dieses Studio.',
   exercise: 'Sled 45° leg press',
   seat: 'Sitz',
   back: 'Lehne',
-  load: 'Gewicht',
-  unit: 'kg',
-  intro: 'MoveAtlas merkt sich die Einstellungen jeder Maschine in dem Studio, in dem sie steht. Der Katalog, 1.324 Übungen, öffnet sich ohne Netz.',
+  intro: 'Der Katalog öffnet sich ohne Netz. Sitz und Lehne bleiben in dem Studio notiert, in dem die Maschine steht.',
   note: 'Kostenlos im App Store und bei Google Play. Ein optionaler Einmalkauf hebt das Notizbuch-Limit auf, ohne Abo. Öffentliche iOS-Version 1.5.0.',
   machineAlt: 'Englische Aufnahme der Gerätekarte Sled 45° leg press in MoveAtlas: Einstellungen bei Studio Atlas, Seat 4, Backrest 2, Gewicht in kg.',
   machineCap: 'Englische Oberfläche. Dieselbe Karte: Sled 45° leg press bei Studio Atlas, Seat 4, Backrest 2, Gewicht in kg.',
@@ -219,15 +213,13 @@ const de = {
 };
 
 const es = {
-  title: 'MoveAtlas: asiento 4, respaldo 2, en tu gimnasio',
+  title: 'MoveAtlas: 1.324 ejercicios sin red, por gimnasio',
   description: '1.324 ejercicios de gimnasio sin conexión. Guarda el asiento, el respaldo y la carga de cada máquina, gimnasio por gimnasio. Gratis en App Store y Google Play.',
-  h1: 'Asiento 4, respaldo 2, guardados para este gimnasio.',
+  h1: '1.324 ejercicios sin red. Asiento 4, respaldo 2, en este gimnasio.',
   exercise: 'Sled 45° leg press',
   seat: 'Asiento',
   back: 'Respaldo',
-  load: 'Carga',
-  unit: 'kg',
-  intro: 'MoveAtlas guarda los ajustes de cada máquina en el gimnasio donde está. El catálogo, 1.324 ejercicios, se abre sin red.',
+  intro: 'El catálogo se abre sin red. El asiento y el respaldo quedan guardados en el gimnasio donde está la máquina.',
   note: 'Gratis en el App Store y en Google Play. Una compra única opcional quita el límite del cuaderno, sin suscripción. Versión pública de iOS 1.5.0.',
   machineAlt: 'Captura en inglés de la ficha Sled 45° leg press en MoveAtlas: ajustes en Studio Atlas, Seat 4, Backrest 2, carga en kg.',
   machineCap: 'Interfaz en inglés. La misma ficha: Sled 45° leg press en Studio Atlas, Seat 4, Backrest 2, carga en kg.',

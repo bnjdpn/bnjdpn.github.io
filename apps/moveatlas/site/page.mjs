@@ -72,7 +72,6 @@ export function render(loc) {
 <dl class="mv-dials">
 <div class="mv-dial"><dt>${esc(t.seat)}</dt><dd class="mv-digit">4</dd></div>
 <div class="mv-dial"><dt>${esc(t.back)}</dt><dd class="mv-digit">2</dd></div>
-<div class="mv-dial mv-dial-unit"><dt>${esc(t.load)}</dt><dd>${esc(t.unit)}</dd></div>
 </dl>
 </div>`;
 

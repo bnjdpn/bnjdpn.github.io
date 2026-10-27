@@ -21,7 +21,7 @@ Une planche de muscles, et les exercices qui s’y rattachent. Le nom s’y prê
 
 ### Option C : « La plaque de la machine » (retenue)
 
-Sur le bâti de la presse, une plaque indique les réglages qu’on a notés la dernière fois. Le haut de page est cette plaque : Studio Atlas, presse guidée 45° (ou sled 45° leg press), siège 4, dossier 2, charge en kg. Les deux chiffres se tamponnent au chargement. La capture réelle de la fiche est juste dessous, puis le parcours dans la salle : chercher, lire les consignes, rouvrir la fiche dans la séance, retrouver Ma salle.
+Sur le bâti de la presse, une plaque indique les réglages qu’on a notés la dernière fois. Le haut de page est cette plaque, compacte : 1 324 exercices hors ligne, puis Studio Atlas, la presse guidée 45° (ou sled 45° leg press), siège 4 et dossier 2. Les deux chiffres se tamponnent au chargement, chaque libellé collé à son chiffre. La charge en kg se lit sur la capture, pas comme une case vide. À partir de 900 px la plaque reste à sa largeur de contenu et se place à côté de la fiche. En dessous, la fiche est juste sous la plaque, puis le parcours en salle : chercher, lire les consignes, rouvrir la fiche dans la séance, retrouver Ma salle.
 
 ## Pourquoi « La plaque de la machine »
 

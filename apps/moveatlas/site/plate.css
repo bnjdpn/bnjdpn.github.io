@@ -48,17 +48,16 @@ ul,ol{padding:0;list-style:none}
 /* The plate is the top of the page: the settings you need at the machine. */
 .mv-open,.mv-find,.mv-read,.mv-floor,.mv-locker,.mv-buy,.mv-close,.mv-kin,.mv-help{max-width:var(--mv-wrap);margin:0 auto;padding:clamp(36px,6vw,80px) var(--mv-side)}
 .mv-open{padding-top:12px}
-.mv-plate{position:relative;background:var(--mv-panel);border:1px solid var(--mv-line);border-radius:8px;padding:14px 16px 8px}
+.mv-plate{position:relative;background:var(--mv-panel);border:1px solid var(--mv-line);border-radius:8px;padding:40px 36px 40px;width:max-content;max-width:100%}
 .mv-rivet{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--mv-muted);box-shadow:inset 0 0 0 3px var(--mv-panel),inset 0 0 0 4px var(--mv-muted)}
-.mv-rivet-a{top:10px;left:10px}.mv-rivet-b{top:10px;right:10px}.mv-rivet-c{bottom:10px;left:10px}.mv-rivet-d{bottom:10px;right:10px}
-.mv-gym{font:800 .85rem/1 var(--mv-stamp);letter-spacing:.22em;text-transform:uppercase;color:var(--mv-cyan)}
-.mv-exercise{margin-top:8px;font:800 clamp(1.4rem,5vw,2rem)/1 var(--mv-stamp);letter-spacing:.01em;color:var(--mv-ice)}
-h1{margin-top:10px;max-width:16em;font:800 clamp(1.7rem,6.6vw,3.05rem)/.96 var(--mv-stamp);letter-spacing:-.02em;text-wrap:balance}
-.mv-dials{margin-top:8px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 10px}
-.mv-dial{flex:1 1 5.2rem;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:2px;min-width:0;padding:8px 0 2px;border-top:1px solid var(--mv-line)}
-.mv-dial dt{font:800 clamp(.78rem,2.6vw,1.2rem)/1 var(--mv-stamp);letter-spacing:.08em;text-transform:uppercase;color:var(--mv-cyan)}
-.mv-dial dd{margin:0;font:800 clamp(2.5rem,12vw,6.4rem)/.8 var(--mv-stamp);letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--mv-ice)}
-.mv-dial-unit dd{font-size:clamp(1.6rem,6vw,2.6rem);letter-spacing:.04em;color:var(--mv-muted)}
+.mv-rivet-a{top:12px;left:12px}.mv-rivet-b{top:12px;right:12px}.mv-rivet-c{bottom:12px;left:12px}.mv-rivet-d{bottom:12px;right:12px}
+.mv-gym{font:800 .85rem/1 var(--mv-stamp);letter-spacing:.16em;text-transform:uppercase;color:var(--mv-cyan)}
+.mv-exercise{margin-top:8px;font:800 clamp(1.35rem,4.6vw,1.85rem)/1 var(--mv-stamp);letter-spacing:.01em;color:var(--mv-ice)}
+h1{margin-top:10px;max-width:14em;font:800 clamp(1.55rem,5.4vw,2.35rem)/.98 var(--mv-stamp);letter-spacing:-.02em;text-wrap:balance}
+.mv-dials{margin-top:14px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:flex-start;gap:10px 28px;width:max-content;max-width:100%}
+.mv-dial{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0;padding:8px 0 0;border-top:1px solid var(--mv-line)}
+.mv-dial dt{font:800 clamp(.78rem,2.4vw,1.05rem)/1 var(--mv-stamp);letter-spacing:.08em;text-transform:uppercase;color:var(--mv-cyan)}
+.mv-dial dd{margin:0;font:800 clamp(2.6rem,11vw,4.4rem)/.8 var(--mv-stamp);letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--mv-ice)}
 .mv-pitch{padding-top:16px;max-width:38rem}
 .mv-intro{font-size:clamp(1.12rem,2.4vw,1.35rem);line-height:1.55}
 .mv-stores{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:14px}
@@ -128,24 +127,18 @@ h2{font:800 clamp(1.8rem,6vw,2.8rem)/.98 var(--mv-stamp);letter-spacing:-.015em;
 }
 @keyframes mv-stamp{from{transform:translateY(-.35em);opacity:0}to{transform:none;opacity:1}}
 
-/* Multi-column grids live in a min-width query. The three stamps share one plate line and wrap when the line is too narrow. */
+/* Multi-column grids live in a min-width query. The plate stays a compact block: each label sits on its digit. */
 @media (min-width:760px){
-  .mv-dials{display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
-  .mv-dial{flex-direction:row;align-items:baseline;justify-content:space-between;gap:4px 16px}
-  .mv-dial dt{font-size:clamp(1.05rem,2vw,1.45rem)}
-  .mv-dial dd{font-size:clamp(3.4rem,8vw,7.2rem)}
-  .mv-dial-unit{grid-column:1 / -1}
-  .mv-dial-unit dd{font-size:clamp(1.8rem,4vw,3rem)}
   .mv-stats{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:18px}
   .mv-stats{display:grid}
   .mv-stats li{border-top:0;border-left:1px solid var(--mv-line);padding:4px 0 4px 14px}
   .mv-stats li:first-child{border-left:0;padding-left:0}
 }
 @media (min-width:900px){
-  .mv-open{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,420px);column-gap:clamp(28px,4vw,64px);align-items:start}
-  .mv-plate{grid-column:1 / -1}
-  .mv-pitch{padding-top:28px}
-  .mv-open .mv-shot{margin-top:0}
+  .mv-open{display:grid;grid-template-columns:minmax(0,34rem) minmax(260px,400px);column-gap:clamp(28px,4vw,56px);align-items:start;justify-content:start}
+  .mv-plate{grid-column:1;grid-row:1}
+  .mv-pitch{grid-column:1;padding-top:22px}
+  .mv-open .mv-shot{grid-column:2;grid-row:1 / span 3;margin-top:0;justify-self:end}
   .mv-open .mv-fine{grid-column:1 / -1;max-width:46em}
   .mv-read{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(260px,400px);column-gap:clamp(28px,5vw,72px);align-items:start}
   .mv-read .mv-shot{margin-top:8px}
