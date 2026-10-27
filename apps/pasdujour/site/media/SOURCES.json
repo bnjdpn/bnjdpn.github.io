@@ -1,0 +1,112 @@
+[
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/fr-FR/home-goal.png",
+    "sha256": "440590eada92c38e8fba111243fd7945a71f0c4280603479fb9c4962bad171f6",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f4/0f/33/f40f332c-ef4d-9ebe-9ae3-e8714673bf0e/home-goal.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.9155
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/fr-FR/history.png",
+    "sha256": "ac37c7f9a0832e8c541b2a9e07279a963232c52fca1a410d151fee00a543c847",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/53/7d/dc/537ddcbb-8895-b57c-e894-deddfc4cf3b1/history.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.8472
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/fr-FR/gallery.png",
+    "sha256": "2d760e33e3d966f5be5f45ee443a977daae18a3d813c713f8e773d15ba4d6174",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f2/77/0c/f2770c44-2357-ef26-a6b0-f45c271cd0c6/gallery.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.7656
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/fr-FR/gallery-families.png",
+    "sha256": "86bd4b9631a58be7626ea958bf635e1e9b892a276f6e0b142f6ecad99020b02b",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/6c/7a/d0/6c7ad0b3-cd72-64a3-689e-f5d7e3212d08/gallery-families.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.5104
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/fr-FR/pro-editor.png",
+    "sha256": "e9feb5edef90e1db73e8ddae9a5e15d86d04426e74534e4906942279183cf057",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/67/bb/22/67bb2280-045b-35ab-04d5-95ede2cbdf30/pro-editor.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.7254
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/en-US/home-goal.png",
+    "sha256": "5edf1bb6d4119b812eb483cc9783b0e6d32ffbf879a2e3dfcd9017c35dc115a8",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/3c/91/f8/3c91f89b-5ddb-0268-ebfb-ac31cb46d8d0/home-goal.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.7714
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/en-US/history.png",
+    "sha256": "2dd7d641b5920acdc913b094ba0ce732469631d229e0ebcef1d8dbd7fe342246",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d3/73/3e/d3733e02-17b7-170d-749b-287903ec33e0/history.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.8582
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/en-US/gallery.png",
+    "sha256": "96f2ebe4267f8bc310d8341f9d2559ae4bda99d887c5f89ba3bd89e44fec4bcb",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/93/b7/16/93b71626-1798-497b-7ad1-4c821107683e/gallery.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.7875
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/en-US/gallery-families.png",
+    "sha256": "7e26c41420665fb3e2c60c9b9572ab3915f3cdd550e0dc81dd6edb0e8a9dcc39",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d3/d6/5a/d3d65a96-05fa-277d-510a-8a99dd503a16/gallery-families.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.4858
+  },
+  {
+    "source": "/Users/benjamin/Documents/Studio/PasDuJour/fastlane/screenshots/en-US/pro-editor.png",
+    "sha256": "3225676be3c4a5060fb1365b99cdb702aa161f763e958910a230748cf59b6636",
+    "size": [
+      422,
+      514
+    ],
+    "publicURL": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5d/c2/18/5dc218a9-e853-7a54-79f0-fb25b7c70cef/pro-editor.png/422x528bb.webp",
+    "verifiedAt": "2026-10-27",
+    "publicMeanAbsoluteChannelDifference": 0.697
+  }
+]
