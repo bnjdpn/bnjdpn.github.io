@@ -55,7 +55,7 @@ Retenir une piste, avec sa justification en 3 phrases (fit avec l'utilisateur, d
 ## 5. Mise en page et contenu
 
 - Le haut de page montre un vrai écran de l'app (l'écran signature), à 390 px comme à 1440 px. On peut le mettre en scène autrement que par le gabarit « titre à gauche, iPhone à droite », mais toujours avec la vraie capture.
-- **INTERDIT : toute image ou illustration dessinée, en SVG, en CSS ou en canvas** (objet, mascotte, cuillère, horloge, plaque, cadran, tampon, décor). Seuls visuels permis : les vraies captures et vidéos de l'app, son icône et les badges officiels des stores. Les petites icônes d'interface (flèche de menu, coche) restent permises. L'identité passe par la typo, la couleur, la mise en page et les textes.
+- **INTERDIT : toute image ou illustration dessinée en code, en SVG, en CSS ou en canvas** (objet, mascotte, cuillère, horloge, plaque, cadran, tampon, décor). Visuels permis : les vraies captures et vidéos de l'app, son icône, les badges officiels des stores, et les images faites avec un générateur d'images (ImageGen ou équivalent), qui sont le bon moyen de remplacer un dessin en code. Les petites icônes d'interface (flèche de menu, coche) restent permises. L'identité passe par la typo, la couleur, la mise en page et les textes.
 - Une structure qui suit le récit de l'utilisateur (avant / pendant / après, ou le moment d'usage), pas une grille de fonctionnalités.
 - Bannir : cartes identiques arrondies avec la même ombre, rangée de 3 cartes à emojis, numéros 01/02/03 sur un contenu qui n'est pas une séquence, sur-titres en capitales espacées au-dessus de chaque titre, « → » ajouté aux boutons, chaînes « A · B · C », un mot du titre en couleur ou en italique.
 - Les captures sont réelles, nettes, à la bonne échelle. Pas de maquette générée qui ne correspond pas au build.
@@ -93,7 +93,7 @@ Anti-slop :
 - [ ] Zéro phrase du §6 « bannir » (rechercher les mots dans le texte).
 - [ ] La page ne partage pas plus de 30 % de ses classes/gabarits avec une autre page d'app du même site.
 - [ ] Un seul élément mémorable, identifiable en une phrase.
-- [ ] Aucune illustration dessinée (SVG, CSS, canvas) : seulement captures réelles, icône et badges.
+- [ ] Aucune illustration dessinée en code (SVG, CSS, canvas) : seulement captures réelles, icône, badges et images ImageGen.
 - [ ] Un vrai écran de l'app dans le premier écran, à 390 et à 1440 px.
 - [ ] Aucune donnée qui contredit une capture, aucune légende méta.
 
