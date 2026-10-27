@@ -3,9 +3,12 @@ export const appDocuments = [
 {
   "name": "Catminers",
   "path": "catminers",
+  "catalogue": {"category": "play", "icon": "assets/catminers-icon.png", "availability": {"en": "Available on iPhone, iPad and Android.", "fr": "Disponible sur iPhone, iPad et Android."}},
+  "appStoreUrl": "https://apps.apple.com/app/id6826644448",
+  "androidStoreUrl": "https://play.google.com/store/apps/details?id=com.bnjdpn.catminers",
+  "appStoreId": "6826644448",
   "package": "com.bnjdpn.catminers",
   "upcoming": false,
-  "sitemap": false,
   "socialImage": "assets/catminers-icon.png",
   "policyDate": "2026-10-24",
   "operatingSystem": "iOS 15 or later; Android 8 or later",

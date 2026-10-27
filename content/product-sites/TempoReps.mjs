@@ -3,12 +3,15 @@
 // mode strings in TempoReps/Resources/*.lproj/Localizable.strings.
 // App Store, read 2026-10-26: free, In-App Purchases Pro Monthly, Annual and
 // Lifetime (FR 2,99 € / 14,99 € / 34,99 €, US $2.99 / $12.99 / $29.99).
-// Requires iOS 18.0 and watchOS 11.0. Not on Google Play (listing 404).
+// Requires iOS 18.0 and watchOS 11.0.
+// On Google Play too: TempoReps 2.5.0 (11) on the production track, completed, read 2026-10-27.
+// Play listing read 2026-10-27; Android 8 or later (minSdk 26).
 
 export default {
   appStoreId: "6758854166",
-  lastModified: "2026-10-26",
-  operatingSystem: "iOS 18.0 or later, watchOS 11.0 or later",
+  lastModified: "2026-10-27",
+  playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.temporeps",
+  operatingSystem: "iOS 18.0 or later, watchOS 11.0 or later, Android 8.0 or later",
   applicationCategory: "SportsApplication",
   currency: {
     "en-US": "USD",
@@ -32,10 +35,10 @@ export default {
       title: "TempoReps: workout timer for tempo, EMOM and Tabata",
       description: "Workout timer for iPhone and Apple Watch. Time each phase of a rep, run EMOM, Tabata, AMRAP and For Time, or chain them in a MIX circuit.",
       hero: {
-        eyebrow: "Workout timer for iPhone and Apple Watch",
+        eyebrow: "Workout timer for iPhone, Apple Watch and Android",
         h1: "A workout timer for tempo reps, EMOM, Tabata and circuits",
         intro: "Choose how many seconds each part of a rep lasts, or chain several timers into one circuit. During the set, TempoReps shows the current phase and the time left on your iPhone and Apple Watch.",
-        note: "Free on the App Store. Requires iOS 18 and watchOS 11.",
+        note: "Free on the App Store and Google Play. Requires iOS 18 and watchOS 11, or Android 8.",
         guide: "Try a 3–0–2–0 tempo",
       },
       alts: [
@@ -111,10 +114,10 @@ export default {
       title: "TempoReps : minuteur tempo, EMOM, Tabata et circuits",
       description: "Minuteur de musculation pour iPhone et Apple Watch. Réglez chaque phase d'une répétition, lancez EMOM, Tabata, AMRAP ou For Time, ou enchaînez-les en circuit MIX.",
       hero: {
-        eyebrow: "Minuteur d'entraînement pour iPhone et Apple Watch",
+        eyebrow: "Minuteur d'entraînement pour iPhone, Apple Watch et Android",
         h1: "Un minuteur de musculation pour le tempo, l'EMOM, le Tabata et les circuits",
         intro: "Choisissez la durée de chaque partie d'une répétition, ou enchaînez plusieurs minuteurs en un seul circuit. Pendant la série, TempoReps affiche la phase en cours et le temps restant sur votre iPhone et votre Apple Watch.",
-        note: "Gratuit sur l'App Store. Nécessite iOS 18 et watchOS 11.",
+        note: "Gratuit sur l'App Store et Google Play. Nécessite iOS 18 et watchOS 11, ou Android 8.",
         guide: "Essayer un tempo 3–0–2–0",
       },
       alts: [
@@ -190,10 +193,10 @@ export default {
       title: "TempoReps: Gym Timer für Tempo, EMOM und Tabata",
       description: "Workout-Timer für iPhone und Apple Watch. Lege jede Phase einer Wiederholung fest, starte EMOM, Tabata, AMRAP oder Auf Zeit oder verbinde sie zu einem MIX-Zirkel.",
       hero: {
-        eyebrow: "Workout-Timer für iPhone und Apple Watch",
+        eyebrow: "Workout-Timer für iPhone, Apple Watch und Android",
         h1: "Ein Gym Timer für Tempo-Wiederholungen, EMOM, Tabata und Zirkel",
         intro: "Lege fest, wie viele Sekunden jeder Teil einer Wiederholung dauert, oder verbinde mehrere Timer zu einem Zirkel. Während des Satzes zeigt TempoReps die aktuelle Phase und die verbleibende Zeit auf iPhone und Apple Watch.",
-        note: "Gratis im App Store. Erfordert iOS 18 und watchOS 11.",
+        note: "Gratis im App Store und bei Google Play. Erfordert iOS 18 und watchOS 11 oder Android 8.",
       },
       alts: [
         "Der Startbildschirm von TempoReps mit den neun Timer-Modi.",
@@ -268,10 +271,10 @@ export default {
       title: "TempoReps: timer de gimnasio, tempo, EMOM y Tabata",
       description: "Timer de entrenamiento para iPhone y Apple Watch. Define cada fase de una repetición, usa EMOM, Tabata, AMRAP o Por tiempo, o combínalos en un circuito MIX.",
       hero: {
-        eyebrow: "Timer de entrenamiento para iPhone y Apple Watch",
+        eyebrow: "Timer de entrenamiento para iPhone, Apple Watch y Android",
         h1: "Un timer de gimnasio para repeticiones con tempo, EMOM, Tabata y circuitos",
         intro: "Elige cuántos segundos dura cada parte de una repetición o une varios timers en un solo circuito. Durante la serie, TempoReps muestra la fase actual y el tiempo restante en tu iPhone y tu Apple Watch.",
-        note: "Gratis en el App Store. Requiere iOS 18 y watchOS 11.",
+        note: "Gratis en el App Store y Google Play. Requiere iOS 18 y watchOS 11, o Android 8.",
       },
       alts: [
         "La pantalla de inicio de TempoReps con los nueve modos de timer.",
@@ -346,10 +349,10 @@ export default {
       title: "TempoReps: timer palestra per tempo, EMOM e Tabata",
       description: "Timer per l'allenamento su iPhone e Apple Watch. Imposta ogni fase di una ripetizione, usa EMOM, Tabata, AMRAP o A tempo, oppure uniscili in un circuito MIX.",
       hero: {
-        eyebrow: "Timer per l'allenamento su iPhone e Apple Watch",
+        eyebrow: "Timer per l'allenamento su iPhone, Apple Watch e Android",
         h1: "Un timer da palestra per ripetizioni a tempo, EMOM, Tabata e circuiti",
         intro: "Scegli quanti secondi dura ogni parte di una ripetizione, oppure unisci più timer in un solo circuito. Durante la serie, TempoReps mostra la fase in corso e il tempo rimanente su iPhone e Apple Watch.",
-        note: "Gratis su App Store. Richiede iOS 18 e watchOS 11.",
+        note: "Gratis su App Store e Google Play. Richiede iOS 18 e watchOS 11, oppure Android 8.",
       },
       alts: [
         "La schermata iniziale di TempoReps con le nove modalità di timer.",
@@ -424,10 +427,10 @@ export default {
       title: "TempoReps: 筋トレ用テンポ・EMOM・タバタタイマー",
       description: "iPhoneとApple Watchで使えるワークアウトタイマー。レップの各フェーズの秒数を設定し、EMOM、タバタ、AMRAP、FOR TIMEを使ったり、MIXでサーキットにつなげたりできます。",
       hero: {
-        eyebrow: "iPhoneとApple Watchのワークアウトタイマー",
+        eyebrow: "iPhone、Apple Watch、Androidのワークアウトタイマー",
         h1: "テンポ、EMOM、タバタ、サーキットに使える筋トレタイマー",
         intro: "レップの各パートを何秒にするかを決めたり、複数のタイマーをひとつのサーキットにつなげたりできます。セット中は、現在のフェーズと残り時間をiPhoneとApple Watchに表示します。",
-        note: "App Storeで無料。iOS 18とwatchOS 11が必要です。",
+        note: "App StoreとGoogle Playで無料。iOS 18とwatchOS 11、またはAndroid 8が必要です。",
       },
       alts: [
         "9つのタイマーモードが並ぶTempoRepsのホーム画面。",
@@ -495,10 +498,10 @@ export default {
       title: "TempoReps: timer siłowy do tempa, EMOM i Tabaty",
       description: "Timer treningowy na iPhone'a i Apple Watch. Ustaw każdą fazę powtórzenia, korzystaj z EMOM, Tabaty, AMRAP lub Na czas albo połącz je w obwód MIX.",
       hero: {
-        eyebrow: "Timer treningowy na iPhone'a i Apple Watch",
+        eyebrow: "Timer treningowy na iPhone'a, Apple Watch i Androida",
         h1: "Timer siłowy do powtórzeń w tempie, EMOM, Tabaty i obwodów",
         intro: "Ustal, ile sekund trwa każda część powtórzenia, albo połącz kilka timerów w jeden obwód. Podczas serii TempoReps pokazuje bieżącą fazę i pozostały czas na iPhonie i Apple Watch.",
-        note: "Bezpłatnie w App Store. Wymaga iOS 18 i watchOS 11.",
+        note: "Bezpłatnie w App Store i Google Play. Wymaga iOS 18 i watchOS 11 lub Androida 8.",
       },
       alts: [
         "Ekran główny TempoReps z dziewięcioma trybami timera.",
@@ -569,10 +572,10 @@ export default {
       title: "TempoReps: timer de academia, tempo, EMOM e Tabata",
       description: "Timer de treino para iPhone e Apple Watch. Defina cada fase de uma repetição, use EMOM, Tabata, AMRAP ou Por tempo, ou junte tudo em um circuito MIX.",
       hero: {
-        eyebrow: "Timer de treino para iPhone e Apple Watch",
+        eyebrow: "Timer de treino para iPhone, Apple Watch e Android",
         h1: "Um timer de academia para repetições com tempo, EMOM, Tabata e circuitos",
         intro: "Escolha quantos segundos dura cada parte de uma repetição ou junte vários timers em um só circuito. Durante a série, o TempoReps mostra a fase atual e o tempo restante no iPhone e no Apple Watch.",
-        note: "Grátis na App Store. Requer iOS 18 e watchOS 11.",
+        note: "Grátis na App Store e no Google Play. Requer iOS 18 e watchOS 11, ou Android 8.",
       },
       alts: [
         "A tela inicial do TempoReps com os nove modos de timer.",

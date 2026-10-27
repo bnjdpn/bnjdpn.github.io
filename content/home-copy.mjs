@@ -3,9 +3,9 @@
 export const homeCopy = {
  en: {
   title: 'Benjamin Dupin. Apps for iPhone, Apple Watch and Android',
-  description: '19 apps by Benjamin Dupin for iPhone, iPad, Mac, Apple Watch and Android. Training, household routines, baby notebooks and two games.',
+  description: '20 apps by Benjamin Dupin for iPhone, iPad, Mac, Apple Watch and Android. Training, household routines, baby notebooks and three games.',
   h1: 'Apps for training, the home and a baby’s first years',
-  intro: 'I’m Benjamin Dupin. I publish 19 apps for iPhone, iPad, Mac, Apple Watch and Android. Each one has its own page with the store screenshots, a support form and its privacy policy.',
+  intro: 'I’m Benjamin Dupin. I publish 20 apps for iPhone, iPad, Mac, Apple Watch and Android. Each one has its own page with the store screenshots, a support form and its privacy policy.',
   jump: 'Go to',
   count: n => `${n} apps`,
   groups: {
@@ -25,9 +25,9 @@ export const homeCopy = {
  },
  fr: {
   title: 'Benjamin Dupin. Apps pour iPhone, Apple Watch et Android',
-  description: '19 applications de Benjamin Dupin pour iPhone, iPad, Mac, Apple Watch et Android. Sport, routines de la maison, carnets de bébé et deux jeux.',
+  description: '20 applications de Benjamin Dupin pour iPhone, iPad, Mac, Apple Watch et Android. Sport, routines de la maison, carnets de bébé et trois jeux.',
   h1: 'Des apps pour le sport, la maison et les premières années de bébé',
-  intro: 'Je suis Benjamin Dupin. Je publie 19 applications pour iPhone, iPad, Mac, Apple Watch et Android. Chacune a sa page, avec les captures des stores, un formulaire de support et sa politique de confidentialité.',
+  intro: 'Je suis Benjamin Dupin. Je publie 20 applications pour iPhone, iPad, Mac, Apple Watch et Android. Chacune a sa page, avec les captures des stores, un formulaire de support et sa politique de confidentialité.',
   jump: 'Aller à',
   count: n => `${n} apps`,
   groups: {
@@ -65,5 +65,6 @@ export const appLines = {
  'petites-dents': ['Record the day each of the 20 baby teeth comes through, and the child’s age that day.', 'Notez le jour où chacune des 20 dents de lait perce, et l’âge de l’enfant ce jour-là.'],
  Echappee: ['Ride generated indoor cycling roads, with a connected FTMS trainer or without one.', 'Roulez sur des routes de vélo d’intérieur générées, avec ou sans home trainer FTMS connecté.'],
  'petits-besoins': ['Record potty visits, accidents and diapers, at home and at daycare.', 'Notez passages au pot, accidents et couches, à la maison comme à la crèche.'],
+ catminers: ['Explore minesweeper boards and welcome cats to your animated shelter.', 'Explorez des galeries, résolvez des grilles et accueillez des chats dans votre refuge.'],
  'petits-pots': ['Track frozen cubes, jars and pouches, and plan a day of meals from what you have.', 'Suivez cubes congelés, pots et gourdes, et préparez une journée de menus avec ce que vous avez.'],
 };

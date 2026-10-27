@@ -9,7 +9,7 @@
     "name": "TempoReps",
     "path": "TempoReps",
     "id": "6758854166",
-    "icon": "temporeps"
+    "icon": "temporeps", "package": "com.bnjdpn.temporeps"
   },
   {
     "name": "PRVault",
