@@ -186,21 +186,22 @@ export const appDocuments = [
   {
     "name": "Petits Besoins",
     "path": "petits-besoins",
-    "catalogue": {"category": "family", "icon": "assets/petits-besoins-icon.png", "availability": {"en": "Available on Android.", "fr": "Disponible sur Android."}},
+    "catalogue": {"category": "family", "icon": "assets/petits-besoins-icon.png", "availability": {"en": "Available on iPhone, iPad and Android.", "fr": "Disponible sur iPhone, iPad et Android."}},
+    "appStoreUrl": "https://apps.apple.com/app/id6820659968",
     "androidStoreUrl": "https://play.google.com/store/apps/details?id=com.bnjdpn.petitsbesoins",
     "socialImage": "assets/petits-besoins-icon.png",
     "package": "com.bnjdpn.petitsbesoins",
     "appStoreId": "6820659968",
     "policyDate": "2026-10-23",
     "en": {
-      "footerLine": "Available on Google Play.",
-      "status": "Petits Besoins for Android is available on Google Play.",
+      "footerLine": "Available on the App Store and Google Play.",
+      "status": "Petits Besoins is available on the App Store for iPhone and iPad, and on Google Play for Android.",
       "contact": "For a question about the app or its data, use the protected contact form. Avoid including personal information about a child.",
       "contactFallback": "JavaScript is needed for the Contact button to open the mail app.",
       "dateLabel": "Policy date",
       "landing": {
         "subtitle": "Potty notebook",
-        "description": "Petits Besoins, a local potty notebook for parents. Available on Google Play. Published by Benjamin Dupin.",
+        "description": "Petits Besoins, a local potty notebook for parents. Available on the App Store and Google Play. Published by Benjamin Dupin.",
         "sections": [
           {
             "heading": "A notebook for the adult",
@@ -312,14 +313,14 @@ export const appDocuments = [
       }
     },
     "fr": {
-      "footerLine": "Disponible sur Google Play.",
-      "status": "Petits Besoins pour Android est disponible sur Google Play.",
+      "footerLine": "Disponible sur l'App Store et Google Play.",
+      "status": "Petits Besoins est disponible sur l'App Store pour iPhone et iPad, et sur Google Play pour Android.",
       "contact": "Pour une question sur l'app ou ses données, utilisez le formulaire de contact de l'app. Benjamin Dupin reçoit seulement le message que vous envoyez. Éviter d'y inclure des informations personnelles sur un enfant.",
       "contactFallback": "JavaScript est nécessaire pour ouvrir l'application mail avec le bouton Contact.",
       "dateLabel": "Date de la politique",
       "landing": {
         "subtitle": "Carnet de propreté",
-        "description": "Petits Besoins, carnet local de propreté pour les parents. Disponible sur Google Play. Édité par Benjamin Dupin.",
+        "description": "Petits Besoins, carnet local de propreté pour les parents. Disponible sur l'App Store et Google Play. Édité par Benjamin Dupin.",
         "sections": [
           {
             "heading": "Un carnet pour l'adulte",

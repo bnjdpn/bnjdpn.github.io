@@ -36,7 +36,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
  expect(rows.length===availableCatalogue.length,prefix+'catalogue length mismatch');
  expect(rows.every(row=>row.includes('data-category=')&&row.includes('data-search=')),prefix+'uncategorized product');
  const storeIds=new Set([...html.matchAll(/apps\.apple\.com\/app\/id(\d+)/g)].map(m=>m[1]));
- const expectedIds=catalog.filter(a=>a.id).map(a=>a.id);
+ const expectedIds=[...catalog.filter(a=>a.id).map(a=>a.id),...appDocuments.filter(a=>a.catalogue&&a.appStoreUrl).map(a=>a.appStoreUrl.match(/id(\d+)$/)[1])];
  expect(storeIds.size===expectedIds.length && expectedIds.every(id=>storeIds.has(id)),prefix+'store destinations drifted');
  expect(!html.includes('NovaStationPinball')&&!html.includes('6799920176'),prefix+'retired app reintroduced');
  const echappeeRow=rows.find(row=>row.includes('data-app="Echappee"'));
@@ -61,7 +61,7 @@ for(const [path,lang] of [['index.html','en'],['fr/index.html','fr']]) {
   const row=rows.find(row=>row.includes(`data-app="${app.path}"`));
   if(app.catalogue){
    expect(row?.includes(app.catalogue.availability[lang]),prefix+app.path+' platform review status missing');
-   expect(!row?.includes('apps.apple.com'),prefix+app.path+' unreleased Apple link');
+   expect(app.appStoreUrl?row?.includes(`href="${app.appStoreUrl}"`):!row?.includes('apps.apple.com'),prefix+app.path+(app.appStoreUrl?' App Store link missing':' unreleased Apple link'));
   }else expect(!row,prefix+'submission-only app leaked into home');
  }
  const playPackages=[...html.matchAll(/play\.google\.com\/store\/apps\/details\?id=([^"&]+)/g)].map(m=>m[1]);
@@ -96,7 +96,8 @@ for(const lang of ['en','fr']){
     if(publishedAndroid){
      expect(!/under review|en (?:cours d.examen|examen)|staged rollout|déploiement progressif/.test(html),prefix+'store procedure leaked into landing');
      expect(app.androidStoreUrl===`https://play.google.com/store/apps/details?id=${app.package}`,prefix+'Android package link mismatch');
-     expect(storeLinks.length===1&&storeLinks[0]===app.androidStoreUrl,prefix+'published Android link missing or unexpected store link');
+     const expectedStores=[app.appStoreUrl,app.androidStoreUrl].filter(Boolean);
+     expect(storeLinks.length===expectedStores.length&&expectedStores.every((href,i)=>storeLinks[i]===href),prefix+'published store links missing or unexpected store link');
     }else expect(storeLinks.length===0,prefix+'unpublished store link');
     expect(app.appStoreId&&leaf!==''?html.includes(`name="apple-itunes-app" content="app-id=${app.appStoreId}"`):!html.includes('apple-itunes-app'),prefix+'Smart App Banner mismatch');
     expect(!html.includes('?v=undefined'),prefix+'asset content hash missing');
