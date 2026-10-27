@@ -1,15 +1,12 @@
-// Petites Bouchées page copy, version 1.1.11 on sale on the App Store.
-// Sources: App Store description and release notes read 2026-10-26, the three
-// store screenshots. Google Play listing com.bnjdpn.petitesbouchees answers 200.
-// In-App Purchase read 2026-10-26: Baby's Records $5.99 (US), £5.99 (UK),
-// Le Dossier de Bébé 6,99 € (FR), one-time. Requires iOS 17.
-// The repository already prepares a next version (German, Italian, Brazilian
-// Portuguese); this copy names no interface language so it stays true for both.
+// Petites Bouchées page copy. Public iOS 1.1.11, Play 1.1.12, read 2026-10-27.
+// Google Play com.bnjdpn.petitesbouchees answers 200. One-time Baby's Records /
+// Le Dossier de Bébé: 6,99 € in France, $7.99 on the US Play store.
+// The interface to announce is French, English and Spanish only.
 export default {
   appStoreId: "6760203890",
   lastModified: "2026-10-26",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.petitesbouchees",
-  operatingSystem: "iOS 17.0 or later, Android",
+  operatingSystem: "iOS, Android",
   applicationCategory: "LifestyleApplication",
   currency: { "en-US": "USD", "en-GB": "GBP", "fr-FR": "EUR" },
   guides: { "en-US": "share-food-journal/", "en-GB": "share-food-journal/", "fr-FR": "fr-FR/partager-journal-aliments/" },
@@ -26,8 +23,8 @@ export default {
       hero: {
         eyebrow: "Weaning journal for iPhone and Android",
         h1: "A baby food journal for first tastes, reactions and allergens",
-        intro: "Search 197 foods or add your own, then log what your baby tried: the date, a purée, a piece or a baby-led meal, your notes and any reaction you saw. A meal can hold several foods with one date and one note.",
-        note: "Free journal, with a one-time Baby's Records purchase. Requires iOS 17 on iPhone.",
+        intro: "Search 197 foods or add your own, then log what your baby tried: the date, a purée, a piece or a baby-led meal, your notes and any reaction you saw.",
+        note: "Free journal, with a one-time Baby's Records purchase. The interface is in French, English and Spanish.",
         guide: "Share the journal with family",
       },
       alts: [
@@ -79,12 +76,12 @@ export default {
               items: [
                 "Export and sharing of the three PDFs: caregiver handover, feeding record and book of firsts",
                 "One purchase, no subscription",
-                "Shared with your family through Apple Family Sharing",
+                "On iPhone, shared through Apple Family Sharing. On Android, tied to the Google account",
               ],
             },
           ],
           notes: [
-            "On the US App Store, Baby's Records costs $5.99, paid once. In other countries and on Google Play, the store shows the price before you buy.",
+            "In France, Baby's Records is €6.99, paid once. On the US Google Play store it is $7.99. The App Store shows your country's price before you pay.",
             "Access you already had is kept.",
             "Petites Bouchées is a journal you fill in. It gives no feeding advice or medical diagnosis and does not replace a healthcare professional.",
           ],
@@ -104,7 +101,7 @@ export default {
       sections: {
         offer: {
           notes: [
-            "On the UK App Store, Baby's Records costs £5.99, paid once. In other countries and on Google Play, the store shows the price before you buy.",
+            "In France, Baby's Records is €6.99, paid once. On the US Google Play store it is $7.99. The App Store shows the price for your country before you pay.",
             "Access you already had is kept.",
             "Petites Bouchées is a journal you fill in. It gives no feeding advice or medical diagnosis and does not replace a healthcare professional.",
           ],
@@ -117,8 +114,8 @@ export default {
       hero: {
         eyebrow: "Journal de diversification sur iPhone et Android",
         h1: "Un journal de diversification pour les premiers goûts et les réactions",
-        intro: "Cherchez parmi 197 aliments ou ajoutez les vôtres, puis notez ce que bébé a goûté : la date, une purée, un morceau ou un repas en DME, vos notes et les réactions observées. Un repas peut réunir plusieurs aliments avec une date et une note communes.",
-        note: "Journal gratuit, avec Le Dossier de Bébé en achat unique. Nécessite iOS 17 sur iPhone.",
+        intro: "Cherchez parmi 197 aliments ou ajoutez les vôtres, puis notez ce que bébé a goûté : la date, une purée, un morceau ou un repas en DME, vos notes et les réactions observées.",
+        note: "Journal gratuit, avec Le Dossier de Bébé en achat unique. L’interface est en français, en anglais et en espagnol.",
         guide: "Partager le journal en famille",
       },
       alts: [
@@ -170,12 +167,12 @@ export default {
               items: [
                 "Export et partage des trois PDF : fiche de garde, suivi alimentaire et carnet des premières fois",
                 "Un seul achat, sans abonnement",
-                "Partagé avec votre famille via le Partage familial Apple",
+                "Sur iPhone, partagé via le Partage familial Apple. Sur Android, lié au compte Google",
               ],
             },
           ],
           notes: [
-            "Sur l'App Store français, Le Dossier de Bébé coûte 6,99 €, en une seule fois. Dans les autres pays et sur Google Play, la boutique affiche le prix avant l'achat.",
+            "En France, Le Dossier de Bébé coûte 6,99 €, en une fois. Sur Google Play aux États-Unis, il est à 7,99 $. L’App Store affiche le prix de votre pays avant l’achat.",
             "Les droits déjà acquis sont conservés.",
             "Petites Bouchées est un journal rempli par le parent, sans conseil alimentaire, avis ni diagnostic médical. Elle ne remplace pas un professionnel de santé.",
           ],
