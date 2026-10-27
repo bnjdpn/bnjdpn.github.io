@@ -15,6 +15,10 @@ But : un visiteur qui arrive sur la page comprend en 5 secondes ce que fait l'ap
 
 **AUCUNE IMAGE NI ILLUSTRATION DESSINÉE EN SVG, NI EN CSS OU CANVAS QUI IMITE UN DESSIN. LES SEULS VISUELS AUTORISÉS SONT LES VRAIES CAPTURES DE L'APP, L'ICÔNE DE L'APP ET LES BADGES OFFICIELS DES STORES.** Les petites icônes d'interface (flèche du menu, etc.) restent permises. Le concept passe par la typographie, la couleur, la mise en page, le texte et les vraies captures.
 
+## 0. RÈGLE BLOQUANTE : AUCUN DESSIN
+
+**AUCUNE IMAGE NI ILLUSTRATION DESSINÉE EN SVG, NI EN CSS OU CANVAS QUI IMITE UN DESSIN. LES SEULS VISUELS AUTORISÉS SONT LES VRAIES CAPTURES DE L'APP, L'ICÔNE DE L'APP ET LES BADGES OFFICIELS DES STORES.** Les petites icônes d'interface (flèche du menu, etc.) restent permises.
+
 ## 1. Partir du produit réel (avant tout design)
 
 Rassembler et lire, pas imaginer :
@@ -37,6 +41,7 @@ Retenir une piste, avec sa justification en 3 phrases (fit avec l'utilisateur, d
 ## 3. Typographie
 
 - Interdit par défaut : Inter, Roboto, Arial, Helvetica, system-ui seul, Poppins, Montserrat, Open Sans, et la paire « grotesque + serif display » réutilisée d'un autre site.
+- Police d'affichage unique sur tout le site : jamais celle d'une autre page d'app, y compris des pages en cours en parallèle.
 - Choisir 1 ou 2 familles qui viennent de l'univers du produit (affichage sportif, étiquette alimentaire, carnet de santé, jeu d'arcade…). Si deux, nettement différentes.
 - Polices auto-hébergées en WOFF2, sous-ensemble latin, `font-display: swap`, préchargement de la seule police du titre. Vérifier la licence (OFL ou achetée).
 - Échelle typographique explicite (ratio choisi), lignes < 75 caractères, interlignage plus grand pour un texte à empattements.
@@ -49,10 +54,14 @@ Retenir une piste, avec sa justification en 3 phrases (fit avec l'utilisateur, d
 
 ## 5. Mise en page et contenu
 
-- Le haut de page montre la chose la plus caractéristique de l'app sous sa forme la plus juste : l'écran signature en grand, une démo interactive, l'objet du monde réel… Pas le gabarit « titre à gauche, iPhone à droite » par réflexe.
+- Le haut de page montre un vrai écran de l'app (l'écran signature), à 390 px comme à 1440 px. On peut le mettre en scène autrement que par le gabarit « titre à gauche, iPhone à droite », mais toujours avec la vraie capture.
+- **INTERDIT : toute image ou illustration dessinée, en SVG, en CSS ou en canvas** (objet, mascotte, cuillère, horloge, plaque, cadran, tampon, décor). Seuls visuels permis : les vraies captures et vidéos de l'app, son icône et les badges officiels des stores. Les petites icônes d'interface (flèche de menu, coche) restent permises. L'identité passe par la typo, la couleur, la mise en page et les textes.
 - Une structure qui suit le récit de l'utilisateur (avant / pendant / après, ou le moment d'usage), pas une grille de fonctionnalités.
 - Bannir : cartes identiques arrondies avec la même ombre, rangée de 3 cartes à emojis, numéros 01/02/03 sur un contenu qui n'est pas une séquence, sur-titres en capitales espacées au-dessus de chaque titre, « → » ajouté aux boutons, chaînes « A · B · C », un mot du titre en couleur ou en italique.
-- Les captures sont réelles, nettes, à la bonne échelle, avec une légende qui dit ce qu'on voit. Pas de maquette générée qui ne correspond pas au build.
+- Les captures sont réelles, nettes, à la bonne échelle. Pas de maquette générée qui ne correspond pas au build.
+- Aucune donnée inventée : un chiffre, une date ou un exemple dans le texte reprend exactement ce que montre la capture voisine.
+- Pas de légende ni de phrase méta qui décrit la page ou la capture (« Les trois lignes du journal », « Le même écran que… »), ni de numéro de version, ni de texte défensif. Une légende, s'il y en a une, dit ce que l'utilisateur y gagne.
+- Desktop : la largeur est utilisée (texte et capture côte à côte, dans une media query min-width), pas une colonne étroite au milieu du vide. Navigation en un ou deux mots par entrée.
 - Motion : un seul moment orchestré (chargement ou démonstration), réponses aux actions de l'utilisateur, `prefers-reduced-motion` respecté. Pas de fondu-glissé sur chaque section.
 
 ## 6. Textes : concrets, précis, sans slop
@@ -84,6 +93,9 @@ Anti-slop :
 - [ ] Zéro phrase du §6 « bannir » (rechercher les mots dans le texte).
 - [ ] La page ne partage pas plus de 30 % de ses classes/gabarits avec une autre page d'app du même site.
 - [ ] Un seul élément mémorable, identifiable en une phrase.
+- [ ] Aucune illustration dessinée (SVG, CSS, canvas) : seulement captures réelles, icône et badges.
+- [ ] Un vrai écran de l'app dans le premier écran, à 390 et à 1440 px.
+- [ ] Aucune donnée qui contredit une capture, aucune légende méta.
 
 Envie :
 - [ ] Test des 5 secondes sur la capture mobile : quoi, pour qui, pourquoi maintenant.
