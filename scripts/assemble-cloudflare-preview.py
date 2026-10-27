@@ -67,7 +67,9 @@ def assemble(spec, output):
                 entry = stage / name
                 if not entry.exists():
                     raise ValueError(f'Missing root public output: {name}')
-                candidates.extend(entry.rglob('*') if entry.is_dir() else [entry])
+                # apps/<app>/site/ holds page sources for an app's own site (bnjdpn.com/<App>/), never public files.
+                candidates.extend([p for p in entry.rglob('*') if not (name == 'apps' and len(p.relative_to(entry).parts) > 1 and p.relative_to(entry).parts[1] == 'site')]
+                                  if entry.is_dir() else [entry])
         elif source['kind'] == 'local-generated-docs-not-staged':
             if not source.get('files'):
                 raise ValueError('docs require an explicit generator-derived file allowlist')

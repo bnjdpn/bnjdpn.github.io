@@ -115,6 +115,9 @@ export async function build({ repo, out, rubyStage }) {
     const text = TEXT_EXTENSIONS.has(extname(path)) ? cleanUrls(Buffer.isBuffer(data) ? data.toString('utf8') : data) : data;
     writeFileSync(target, text);
   }
+  // An app with its own art direction (apps/<app>/site/) lays its pages over the generated stage.
+  const own = join(ROOT, 'apps', cfg.app_name.toLowerCase(), 'site', 'build.mjs');
+  if (existsSync(own)) (await import(pathToFileURL(own).href)).overlay(out);
   return { app: cfg.app_name, files: files.size, out };
 }
 
