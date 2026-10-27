@@ -1,0 +1,186 @@
+{
+  "en-US": [
+    {
+      "name": "reference",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/15/a7/59/15a75999-57f0-3b76-7a54-24fe83bd5306/iPhone_17_Pro_Max-01_reference.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "83c4ce5bf059e602a44db559ddeef7b1ea542ffa754920b70fafabe62a83cde1"
+    },
+    {
+      "name": "record",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/1a/e7/fb/1ae7fb5b-8b01-35de-ca9f-fe7abd4df3ff/iPhone_17_Pro_Max-02_record.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "47ba7f083aac3cef6b0e508102feb167097bdcdfb294f9e191aea09a151924cb"
+    },
+    {
+      "name": "history",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/20/a4/f8/20a4f8fe-aa5f-f4a8-1c85-62f0c278111a/iPhone_17_Pro_Max-03_history.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "fe47c80eeecb624e594daec6f1a29e3a913e06579c0edb215b3e6f77a8f6c2d6"
+    }
+  ],
+  "fr-FR": [
+    {
+      "name": "reference",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/42/54/40/42544077-1e6c-7bcd-4d29-799877ac01e5/iPhone_17_Pro_Max-01_reference.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "971b1018007e0a262ef1cc4832aa5f55da758ef03826cc5dc392ab820e04009a"
+    },
+    {
+      "name": "record",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/74/ff/00/74ff0006-3ca7-e944-b36e-42bc15bda620/iPhone_17_Pro_Max-02_record.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "bb838bb8bd5c95c95ad6169ca9632cd92b4a1fb12036dd0e71ae31d42794f185"
+    },
+    {
+      "name": "history",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/8d/c1/9e/8dc19ead-b102-eb9b-f77f-d06a2d74c2d4/iPhone_17_Pro_Max-03_history.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "42ae09218133ba6aa893e3d484092bda5d2f10d72270b18aecfe05d2e64e1acf"
+    }
+  ],
+  "de-DE": [
+    {
+      "name": "reference",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ad/29/a8/ad29a855-d63f-5a36-4557-b60efd85b191/iPhone_17_Pro_Max-01_reference.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "0315ffd9e72f47e4b8c367a3f277b460a9a53a839f03ca885d6c58e95bceae55"
+    },
+    {
+      "name": "record",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d3/69/23/d3692306-db9d-3a50-8be4-dc2eb7b963bc/iPhone_17_Pro_Max-02_record.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "fb2911305ba78c0b6f1d2c7cfbffc7fbec9718d370499568fa560af970173bbd"
+    },
+    {
+      "name": "history",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/08/ae/06/08ae0611-4e18-7b04-5ac7-d55cefc0d38d/iPhone_17_Pro_Max-03_history.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "ccdeed1ed1eb647aa9fed65119db035cab2d2db13cbdd7f09e7c9b0df03bee62"
+    }
+  ],
+  "es-ES": [
+    {
+      "name": "reference",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/21/8d/a1/218da1cb-c66e-bf8d-8bb0-563ccbe41fd6/iPhone_17_Pro_Max-01_reference.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "3e28dc4c526080ee47711ac7dc733cef3327bd1148a81329e6ffa997ee43fc72"
+    },
+    {
+      "name": "record",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/18/45/41/18454131-d4a7-604b-5a54-2e4ecbfdf682/iPhone_17_Pro_Max-02_record.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "3bbace3c4671af7b91ca9866581643c7fffe672d3434d325dafc975002f8c197"
+    },
+    {
+      "name": "history",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/91/d3/5d/91d35d79-5618-f144-40a3-db060f3656b9/iPhone_17_Pro_Max-03_history.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "60cc9b366ccef9e8e36b2c7a497256a36a1a431c141a117dfa7335005668587f"
+    }
+  ],
+  "es-MX": [
+    {
+      "name": "reference",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/81/00/a3/8100a310-2491-b301-1c75-2b928e72a185/iPhone_17_Pro_Max-01_reference.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "78520c157f3cd386510456b4617c319849104f6c1820d95b9185e5ae7073485d"
+    },
+    {
+      "name": "record",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/11/78/00/11780002-a5e0-17ed-77cf-f3088dec42de/iPhone_17_Pro_Max-02_record.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "142be4d2017bc8047877e38809b56b45aa5efd7ddf2469b0caf3650fb8b8442f"
+    },
+    {
+      "name": "history",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/c3/34/e4/c334e494-fd6c-4734-92b0-ed10beb66f5a/iPhone_17_Pro_Max-03_history.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "465b7cbaa313483448652b3382021c545668c8a7c5f05f22c7fd2b1d1e6d7050"
+    }
+  ],
+  "it": [
+    {
+      "name": "reference",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/85/a4/f2/85a4f28d-5698-b268-855d-5e505d502697/iPhone_17_Pro_Max-01_reference.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "d5b3fcf6741b9de4da5a89d425f07683a4a5157f47837f64ffcca3cf05f49579"
+    },
+    {
+      "name": "record",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/86/76/89/86768972-88f1-0e04-c63f-61f58539562d/iPhone_17_Pro_Max-02_record.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "5b18d867fcb560dbb4787b2b62ed8e6cf66b3c9652c651a597375a1c8be24c73"
+    },
+    {
+      "name": "history",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/82/b9/60/82b96029-9d2f-67a1-6b43-0447d0e94191/iPhone_17_Pro_Max-03_history.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "03145add883779617656b2e74f7d03acc683098ad067cd9b92d3719d2198585c"
+    }
+  ],
+  "ja": [
+    {
+      "name": "reference",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/89/96/75/89967574-fd10-a093-5ce9-9fe767756be7/iPhone_17_Pro_Max-01_reference.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "1f987b7e531696d7e6a014b64f9ca073065cdf52906f49bec0c24a886ccc58c3"
+    },
+    {
+      "name": "record",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/03/14/15/03141502-6087-d04f-f159-ab872c5d5a21/iPhone_17_Pro_Max-02_record.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "3ecd41f047bf316109f604e79064111645ce4589cb27bbee300ca0fd0d7f3d01"
+    },
+    {
+      "name": "history",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/1a/ed/d3/1aedd3b6-86be-2dd5-393c-19fb3ad0f284/iPhone_17_Pro_Max-03_history.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "08a3cf0eae6d3b0751fea5d9e024cb2e185fdc22853805c12f9049584f4b3676"
+    }
+  ],
+  "pt-BR": [
+    {
+      "name": "reference",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/df/62/26/df6226b2-a72d-84fc-c8bc-7d8bf99099c9/iPhone_17_Pro_Max-01_reference.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "ff897af2e23d5563efbe744c0ed3ae0e3bdc0b57775bf9d7fb3230919cf131d9"
+    },
+    {
+      "name": "record",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f3/17/be/f317bea1-f750-41cb-1330-f34ecc79510a/iPhone_17_Pro_Max-02_record.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "bb16c9eed4704d123f99a60761c557631356fb54a17c0db37f7442ab8d1e1cea"
+    },
+    {
+      "name": "history",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/23/eb/68/23eb6876-0ffc-7844-4a52-84fc8c850af7/iPhone_17_Pro_Max-03_history.png/1320x2868bb.png",
+      "version": "1.7.0",
+      "localPixelsIdentical": true,
+      "liveSha256": "66e7077677f43b475781ade416a20ec358819565b8807b51b61844e6cf232239"
+    }
+  ]
+}
