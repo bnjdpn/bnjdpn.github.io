@@ -9,6 +9,10 @@ Page produit de Petites Gouttes (https://bnjdpn.com/petites-gouttes/), généré
 - **Quel problème** : savoir combien il reste, quel sachet sortir en premier, et confier les bons sachets étiquetés à la crèche ou à l'assistante maternelle.
 - **La preuve dans l'app** : le tableau de bord (3 240 mL en 22 sachets, prochain sachet 150 mL du 8 juillet, 15 jours d'autonomie), l'écran Stock, Préparer la semaine et la planche d'étiquettes (captures App Store de la 1.8.0).
 
+## Révision du 27 octobre 2026 : plus d’illustration
+
+Benjamin interdit toute image ou illustration dessinée (SVG, CSS ou canvas qui imite un objet ou un dessin), dans le site comme dans les apps et leurs icônes. Les seuls visuels permis sont les vraies captures de l’app, l’icône de l’app et les badges officiels des stores ; les petites icônes d’interface restent permises. Le tiroir du congélateur (sachets, zips, niveaux de lait, façade et scotch « 22 sachets »), l’étiquette autocollante agrandie et les bandes façon scotch des chapitres (.tape) sont retirés de toutes les langues, avec leur CSS et leur animation. Les titres de chapitre deviennent un simple texte (.chapter-tag). Le haut de page est : titre, badges, vraie capture du tableau de bord. Les pastilles numérotées posées sur les vraies captures restent. Les images de partage (og-en.jpg, og-fr.jpg) sont refaites avec l’icône, le titre et la capture du tableau de bord. Les mentions du tiroir plus bas décrivent la première version.
+
 ## Trois options
 
 ### Option A : « Planche d'étiquettes »

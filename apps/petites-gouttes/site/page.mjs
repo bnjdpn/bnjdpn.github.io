@@ -1,4 +1,4 @@
-// Renders the Petites Gouttes "freezer drawer" landing page for one locale.
+// Renders the Petites Gouttes landing page (first version: "freezer drawer"; the drawn drawer was removed on 2026-10-27) for one locale.
 // Pure function of copy.mjs + content/product-sites (petites-gouttes.mjs, ui.mjs,
 // form-note.mjs): used by build.mjs and by scripts/check-antitemplate.mjs.
 import { createHash } from 'node:crypto';
@@ -64,17 +64,14 @@ export function render(loc) {
   const stores = `<div class="stores"><a class="store-badge" href="${esc(APP_STORE)}" rel="external"><img src="${up}assets/app-store-badges/${loc.code}.svg" width="144" height="48" alt="${esc(ui.badgeAlt)}"></a><a class="store-badge" href="${esc(PLAY)}" rel="external"><img src="/assets/badges/google-play/${loc.play[0]}.webp" width="162" height="48" alt="${esc(loc.play[1])}"></a></div>`;
   const langs = LOCALES.map(l => `<a href="${ORIGIN}${l.dir}" hreflang="${l.code}" lang="${l.code}"${l.code === loc.code ? ' aria-current="page"' : ''}>${esc(LOCALE_NAMES[l.code])}</a>`).join('');
 
-  const D = t.drawer;
-  const ml = D.bags.map(([v]) => parseFloat(v));
-  const max = Math.max(...ml);
-  const bags = D.bags.map(([vol, date], i) => `<div class="bag${i === 0 ? ' bag-next' : ''}" style="--fill:${Math.round(ml[i] / max * 100)}%;--i:${i}">${i === 0 ? `<span class="next-tag">${esc(D.next)}</span>` : ''}<span class="bag-zip"></span><span class="bag-write"><b>${esc(vol.replace(/\s*(mL|fl oz)$/, ''))}</b><i>${esc(vol.match(/(mL|fl oz)$/)[1])}</i><small>${esc(date)}</small></span><span class="bag-milk"></span></div>`).join('');
-  const drawer = `<figure class="drawer-fig"><div class="drawer" role="img" aria-label="${esc(`${D.label} ${D.front}. ${D.next}: ${D.bags[0].join(', ')}.`)}"><div class="bags">${bags}</div><div class="drawer-front"><span class="drawer-tape">${esc(D.front)}</span></div></div><figcaption>${esc(D.caption)}</figcaption></figure>`;
+  // Opening visual: the real dashboard screen, nothing drawn.
+  const opening = `<div class="top-shot">${screen(loc, 'dashboard', C.feed.alt, up, { eager: true, cls: 'screen screen-open' })}</div>`;
 
   const chapter = (id, side, c, shotName, extra = '') => `<article class="chapter" data-side="${side}"${id ? ` id="${id}"` : ''}>
 <div class="chapter-grid">
 ${screen(loc, shotName, c.alt, up, { pins: PINS[shotName](loc.key) })}
 <div class="chapter-text">
-<p class="tape">${esc(c.tag)}</p>
+<p class="chapter-tag">${esc(c.tag)}</p>
 <h2>${esc(c.title)}</h2>
 ${c.body.map(x => `<p>${esc(x)}</p>`).join('')}
 <ol class="legend">${c.pins.map((x, i) => `<li><span class="num" aria-hidden="true">${i + 1}</span><span>${esc(x)}</span></li>`).join('')}</ol>
@@ -84,7 +81,6 @@ ${extra}
 </article>`;
 
   const care = S.daycare;
-  const sticker = `<div class="sticker" aria-hidden="true"><b>${esc(C.care.sticker[0])}</b>${C.care.sticker.slice(1).map(x => `<span>${esc(x)}</span>`).join('')}</div>`;
   const packCols = S.offer.plans.map((pl, i) => `<div class="pack-col${i ? ' pack-paid' : ''}"><h3>${esc(pl.title)}</h3><ul>${pl.items.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
   const cats = ui.categories.map((c, i) => `<option value="${esc(ui.categoryValues[i])}">${esc(c)}</option>`).join('');
 
@@ -137,7 +133,7 @@ ${hreflang}
 ${stores}
 <p class="fine-print">${esc(p.hero.note)}</p>
 </div>
-${drawer}
+${opening}
 </section>
 <section class="journey" aria-label="${esc(S.stock.title)}">
 ${chapter('stock', 'left', C.pump, 'add')}
@@ -145,7 +141,7 @@ ${chapter('', 'right', C.freezer, 'stock')}
 ${chapter('', 'left', C.feed, 'dashboard')}
 </section>
 <section class="care" id="daycare" aria-labelledby="care-title">
-<p class="tape">${esc(C.care.tag)}</p>
+<p class="chapter-tag">${esc(C.care.tag)}</p>
 <h2 id="care-title">${esc(care.title)}</h2>
 <div class="care-grid">
 <div class="care-shots">
@@ -154,7 +150,6 @@ ${screen(loc, 'labels', C.care.labelsAlt, up, { size: 'pair', cls: 'screen scree
 </div>
 <div class="care-text">
 ${care.items.map(([h, x]) => `<h3>${esc(h)}</h3><p>${esc(x)}</p>`).join('')}
-<figure class="sticker-fig">${sticker}<figcaption>${esc(C.care.stickerNote)}</figcaption></figure>
 <p class="guide-link"><a href="${guide}">${esc(p.hero.guide)}</a></p>
 </div>
 </div>

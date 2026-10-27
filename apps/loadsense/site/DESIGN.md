@@ -12,6 +12,10 @@ Les pages confidentialité, conditions, guides, `en-US/index.html` (redirection)
 - **Quel problème** : les données Santé existent (VFC, sommeil, FC au repos) mais personne ne dit quand elles ont été mesurées ni sur quoi repose un score.
 - **Preuve visible** : l'écran Aujourd'hui, « 90/100, calcul du 3 oct. 2026 à 7:51, confiance élevée », avec la phrase de l'app « Tiens aussi compte de ton ressenti avant de t'entraîner ».
 
+## Révision du 27 octobre 2026 : plus d’illustration
+
+Benjamin interdit toute image ou illustration dessinée (SVG, CSS ou canvas qui imite un objet ou un dessin), dans le site comme dans les apps et leurs icônes. Les seuls visuels permis sont les vraies captures de l’app, l’icône de l’app et les badges officiels des stores ; les petites icônes d’interface restent permises. L’horloge 07:51 est du vrai texte, pas un dessin : elle reste, mais sans role="img" ni libellé de remplacement, pour être lue comme du texte. Le cadre de montre en CSS autour de la vraie capture Apple Watch reste. Les images de partage ne contiennent que du texte et la vraie capture Aujourd’hui : elles restent.
+
 ## Trois options
 
 ### Option A : « Relevé d'instrument »

@@ -9,6 +9,10 @@ Page produit de MoveAtlas (https://bnjdpn.com/MoveAtlas/), générée par `page.
 - **Quel problème** : les réglages changent d’une salle à l’autre, et le catalogue doit s’ouvrir même sans réseau.
 - **La preuve dans l’app** : la fiche machine à Studio Atlas, siège 4, dossier 2, charge en kg (captures App Store). Autour : la recherche (1 324 exercices), les consignes écrites, la séance avec En salle / At the gym, et Ma salle / My gym.
 
+## Révision du 27 octobre 2026 : plus d’illustration
+
+Benjamin interdit toute image ou illustration dessinée (SVG, CSS ou canvas qui imite un objet ou un dessin), dans le site comme dans les apps et leurs icônes. Les seuls visuels permis sont les vraies captures de l’app, l’icône de l’app et les badges officiels des stores ; les petites icônes d’interface restent permises. La plaque de machine rivetée (rivets, salle « Studio Atlas », exercice, cadrans Siège 4 et Dossier 2) est retirée de toutes les langues, avec son CSS et son animation. Le haut de page est : titre, texte, badges, vraie capture de l’écran Machine. Les badges App Store blancs de badges/ sont les fichiers officiels d’Apple (version blanche du kit, mêmes tracés que les badges noirs des autres sites). Les images de partage sont refaites avec l’icône, le titre et la capture Machine. Les mentions de la plaque plus bas décrivent la première version.
+
 ## Trois options
 
 ### Option A : « Plan de salle »

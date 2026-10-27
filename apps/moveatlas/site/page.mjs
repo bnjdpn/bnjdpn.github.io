@@ -1,4 +1,4 @@
-// Renders the MoveAtlas "machine plate" landing page for one locale.
+// Renders the MoveAtlas landing page (first version: "machine plate"; the drawn plate was removed on 2026-10-27) for one locale.
 // Pure function of copy.mjs + shared form strings: used by build.mjs and by
 // scripts/check-antitemplate.mjs (npm run check).
 import { createHash } from 'node:crypto';
@@ -64,15 +64,9 @@ export function render(loc) {
   const legacy = LEGACY.map(id => `<span class="mv-legacy" id="${id}"></span>`).join('');
   const relatedDir = loc.code === 'fr-FR' ? 'fr-FR/' : '';
 
-  const plate = `<div class="mv-plate">
-<span class="mv-rivet mv-rivet-a" aria-hidden="true"></span><span class="mv-rivet mv-rivet-b" aria-hidden="true"></span><span class="mv-rivet mv-rivet-c" aria-hidden="true"></span><span class="mv-rivet mv-rivet-d" aria-hidden="true"></span>
-<p class="mv-gym">Studio Atlas</p>
-<p class="mv-exercise">${esc(t.exercise)}</p>
+  // Opening: the title only; the visual is the real Machine screen next to it (no drawn plate).
+  const head = `<div class="mv-head">
 <h1 id="hero-title">${esc(t.h1)}</h1>
-<dl class="mv-dials">
-<div class="mv-dial"><dt>${esc(t.seat)}</dt><dd class="mv-digit">4</dd></div>
-<div class="mv-dial"><dt>${esc(t.back)}</dt><dd class="mv-digit">2</dd></div>
-</dl>
 </div>`;
 
   return `<!doctype html>
@@ -122,7 +116,7 @@ ${hreflang}
 ${legacy}
 <section class="mv-open" id="machine-settings" aria-labelledby="hero-title">
 <span class="mv-legacy" id="machine-settings-title"></span>
-${plate}
+${head}
 <div class="mv-pitch">
 <p class="mv-intro">${esc(t.intro)}</p>
 ${stores}

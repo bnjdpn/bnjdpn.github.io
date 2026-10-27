@@ -9,6 +9,10 @@ Page produit de NoBuyCart (https://bnjdpn.com/NoBuyCart/), générée par `page.
 - **Quel problème** : garder l’envie, le prix qu’on a soi-même saisi, et ce qui l’a provoquée, puis revenir noter la décision.
 - **La preuve dans l’app** : l’éditeur « A cotton jacket » ; la liste (veste en coton, lampe de lecture, sac de voyage) ; les trois notes « I chose to buy », « I chose not to buy », « Not sure yet ». Le montant d’exemple s’écrit avec le symbole de la langue : 100 €, $100, €100, R$ 100, ¥100, ₩100, NT$100.
 
+## Révision du 27 octobre 2026 : plus d’illustration
+
+Benjamin interdit toute image ou illustration dessinée (SVG, CSS ou canvas qui imite un objet ou un dessin), dans le site comme dans les apps et leurs icônes. Les seuls visuels permis sont les vraies captures de l’app, l’icône de l’app et les badges officiels des stores ; les petites icônes d’interface restent permises. Le bordereau papier (fausses cases à cocher, nom et prix d’article inventés, bouton Effacer et son script) est retiré de toutes les langues, avec son CSS et son animation. Le haut de page est : titre, badges, texte, vraie capture de l’app. La règle « 1 ——— 30 » de novembre reste : c’est du texte et un trait. Les images de partage sont refaites avec l’icône, le titre et une vraie capture. Les mentions du bordereau plus bas décrivent la première version.
+
 ## Trois options
 
 ### Option A : « Ticket de caisse »

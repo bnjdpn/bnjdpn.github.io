@@ -1,4 +1,4 @@
-// Renders the NoBuyCart "counter slip" page for one locale.
+// Renders the NoBuyCart page (first version: "counter slip"; the drawn paper slip was removed on 2026-10-27) for one locale.
 // Pure function of copy.mjs + content/product-sites: used by build.mjs and by
 // scripts/check-antitemplate.mjs.
 import { createHash } from 'node:crypto';
@@ -69,18 +69,6 @@ export function render(loc) {
   };
   const stores = `<div class="nbc-stores"><a href="${esc(store)}" rel="external"><img src="${up}assets/app-store-badges/${loc.code}.svg" width="${BADGE_W[loc.code]}" height="40" alt="${esc(ui.badgeAlt)}"></a><a href="${esc(PLAY)}" rel="external"><img src="${play.src}" width="${playW}" height="40" alt="${esc(play.alt)}"></a></div>`;
   const langs = LOCALES.map((l) => `<a href="${ORIGIN}${l.dir}" hreflang="${l.code}" lang="${l.code}"${l.code === loc.code ? ' aria-current="page"' : ''}>${esc(LOCALE_NAMES[l.code])}</a>`).join('');
-  const slip = t.slip;
-  const choices = slip.choices.map(([id, label]) => `<button type="button" class="nbc-choice" data-choice="${id}" aria-pressed="false">${esc(label)}</button>`).join('');
-  const sheet = `<div class="nbc-slip" data-noted="${esc(slip.noted)}">
-<p class="nbc-slip-brand">NoBuyCart</p>
-<p class="nbc-name">${esc(slip.name)}</p>
-<p class="nbc-price">${esc(slip.price)}</p>
-<div class="nbc-field"><p class="nbc-field-label">${esc(slip.promptLabel)}</p><p class="nbc-field-hint">${esc(slip.promptHint)}</p></div>
-<div class="nbc-choices" role="group" aria-labelledby="nbc-choice-label"><p class="nbc-choice-label" id="nbc-choice-label">${esc(slip.choiceLabel)}</p>${choices}</div>
-<p class="nbc-mark" role="status"></p>
-<button type="button" class="nbc-clear">${esc(slip.clear)}</button>
-</div>`;
-
   const picture = (name, alt, eager = false) => {
     const folder = shotFolder(loc, name);
     const foreign = folder === 'en-US' && loc.key !== 'en';
@@ -158,15 +146,12 @@ ${hreflang}
 </header>
 <main id="main">
 <section class="nbc-hero" aria-labelledby="hero-title">
-<h1 id="hero-title">${esc(t.h1)}</h1>
-<div class="nbc-hero-rest">
-${sheet}
 <div class="nbc-hero-side">
+<h1 id="hero-title">${esc(t.h1)}</h1>
 ${stores}
 <p class="nbc-lede">${esc(t.lede)}</p>
+</div>
 ${shot(heroName, heroBlock, 'nbc-shot nbc-hero-shot', true)}
-</div>
-</div>
 </section>
 ${pair('features', t.save, heroName === 'editor' ? '' : 'editor', false)}
 ${pair('waiting', t.list, heroName === 'list' ? '' : 'list', true)}
@@ -233,26 +218,6 @@ ${stores}
 <small class="nbc-legal">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</small>
 </footer>
 <script src="${up}assets/site.js" defer></script>
-<script>
-(function () {
-  var slip = document.querySelector('.nbc-slip');
-  if (!slip) return;
-  var mark = slip.querySelector('.nbc-mark');
-  var noted = slip.getAttribute('data-noted') || '';
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  slip.addEventListener('click', function (event) {
-    var choice = event.target.closest('.nbc-choice');
-    var clear = event.target.closest('.nbc-clear');
-    if (!choice && !clear) return;
-    var all = slip.querySelectorAll('.nbc-choice');
-    for (var i = 0; i < all.length; i++) all[i].setAttribute('aria-pressed', 'false');
-    if (clear) { mark.textContent = ''; mark.classList.remove('nbc-settle'); return; }
-    choice.setAttribute('aria-pressed', 'true');
-    mark.textContent = choice.textContent.trim() + '. ' + noted;
-    if (!reduce) { mark.classList.remove('nbc-settle'); void mark.offsetWidth; mark.classList.add('nbc-settle'); }
-  });
-})();
-</script>
 </body>
 </html>
 `;

@@ -58,9 +58,6 @@ export function render(loc) {
   ] };
   const badges = `<div class="badges"><a class="badge" href="${esc(APP_STORE)}" rel="external"><img src="${up}assets/app-store-badges/${loc.code}.svg" width="144" height="48" alt="${esc(ui.badgeAlt)}"></a><a class="badge" href="${esc(PLAY)}" rel="external"><img src="/assets/badges/google-play/${loc.play[0]}.webp" width="162" height="48" alt="${esc(loc.play[1])}"></a></div>`;
   const langs = LOCALES.map(l => `<a href="${ORIGIN}${l.dir}" hreflang="${l.code}" lang="${l.code}"${l.code === loc.code ? ' aria-current="page"' : ''}>${esc(LOCALE_NAMES[l.code])}</a>`).join('');
-  const b = t.board;
-  const rows = [['tabata', M.tabata.name, b.tabata], ['emom', M.emom.name, b.emom], ['amrap', M.amrap.name, b.amrap], ['rest', M.rest.name, b.rest]];
-  const board = `<div class="board" aria-labelledby="board-title"><p class="board-head" id="board-title">${esc(b.label)}</p><ol class="board-rows">${rows.map(([k, name, dose], i) => `<li class="board-row" data-tone="${k}" style="--i:${i}"><span class="mode">${esc(name)}</span><span class="dose">${esc(dose)}</span></li>`).join('')}</ol><p class="board-total">${esc(b.total)}</p></div>`;
   const ribbon = `<ol class="ribbon" aria-label="3-0-2-0">${[3, 0, 2, 0].map((s, i) => `<li class="cell${i === 0 ? ' now' : ''}" style="--s:${s}"><span>${esc(t.phases[i])}</span><b>${s} s</b></li>`).join('')}</ol>`;
   const guide = loc.guide ? `<p class="more-link"><a href="${ORIGIN}${loc.guide}">${esc(p.hero.guide)}</a></p>` : '';
   const block = (id, tone, mode, mark, title, body, shot, extra = '') => `<article class="block" data-tone="${tone}"${id ? ` id="${id}"` : ''}>
@@ -68,7 +65,7 @@ export function render(loc) {
 <div class="block-body">${shot}<div class="block-copy"><h2>${esc(title)}</h2>${body.map(x => `<p>${esc(x)}</p>`).join('')}${extra}</div></div>
 </article>`;
   const blocks = [
-    block('', 'work', M.tabata.name, b.tabata, t.blocks.tabata, [M.tabata.text, W[0][1]], phone(loc, 'tabata', `${M.tabata.name}: ${t.blocks.tabata}`, up, 'phone')),
+    block('', 'work', M.tabata.name, t.tabataMark, t.blocks.tabata, [M.tabata.text, W[0][1]], phone(loc, 'tabata', `${M.tabata.name}: ${t.blocks.tabata}`, up, 'phone')),
     block('tempo', 'down', M.tempo.name, '3-0-2-0', t.blocks.tempo, [M.tempo.text], phone(loc, 'tempo', `${M.tempo.name} 3-0-2-0: ${t.phases.map((x, i) => `${x} ${[3, 0, 2, 0][i]} s`).join(', ')}`, up, 'phone'), ribbon + guide),
     block('', 'sand', t.blocks.savedTag, '', t.blocks.saved, [W[2][1], W[3][1]], phone(loc, 'routines', W[2][0], up, 'phone')),
     block('', 'go', 'APPLE WATCH', '', t.blocks.watch, [W[1][1]], phone(loc, 'watch', W[1][0], up, 'wrist-shot')),
@@ -126,9 +123,7 @@ ${badges}
 <p class="small-print">${esc(p.hero.note)}</p>
 </div>
 <div class="pairing">
-${board}
 ${phone(loc, 'mix', p.alts[2], up, 'phone pair-phone', true)}
-<p class="pair-cap">${esc(b.caption)}</p>
 </div>
 </section>
 <section class="blocks" aria-label="${esc(S.workout.title)}">

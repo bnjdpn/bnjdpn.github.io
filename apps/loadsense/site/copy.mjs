@@ -12,7 +12,6 @@ export default {
       h1: "Before you train, see where you're starting from.",
       intro: "LoadSense reads last night, your HRV and your recent load in Apple Health, adds how you feel, and shows what each estimate rests on.",
       note: "Free on the App Store, Pro optional. iPhone with iOS 18, Apple Watch with watchOS 11.",
-      clockLabel: "7:51 in the morning, the time of the estimate shown on the screen",
     },
     dayTitle: "A day with LoadSense",
     stops: [
@@ -51,7 +50,6 @@ export default {
       h1: "Avant de vous entraîner, voyez d'où vous partez.",
       intro: "LoadSense lit votre nuit, votre VFC et votre charge récente dans Apple Santé, ajoute votre ressenti, et vous montre sur quoi repose chaque estimation.",
       note: "Gratuit sur l'App Store, Pro en option. iPhone sous iOS 18, Apple Watch sous watchOS 11.",
-      clockLabel: "7 h 51 du matin, l'heure du calcul affichée à l'écran",
     },
     dayTitle: "Une journée avec LoadSense",
     stops: [
@@ -90,7 +88,6 @@ export default {
       h1: "Sieh vor dem Training, wo du heute stehst.",
       intro: "LoadSense liest deine letzte Nacht, deine HRV und deine jüngste Belastung aus Apple Health, ergänzt dein Befinden und zeigt, worauf jede Schätzung beruht.",
       note: "Gratis im App Store, Pro optional. iPhone mit iOS 18, Apple Watch mit watchOS 11.",
-      clockLabel: "7:51 Uhr morgens, die Uhrzeit der Berechnung auf dem Bildschirm",
     },
     dayTitle: "Ein Tag mit LoadSense",
     stops: [
@@ -128,7 +125,6 @@ export default {
       h1: "Antes de entrenar, mira desde dónde partes.",
       intro: "LoadSense lee tu última noche, tu VFC y tu carga reciente en Salud, añade cómo te sientes y te muestra en qué se basa cada estimación.",
       note: "Gratis en el App Store, Pro opcional. iPhone con iOS 18, Apple Watch con watchOS 11.",
-      clockLabel: "Las 7:51 de la mañana, la hora del cálculo que aparece en la pantalla",
     },
     dayTitle: "Un día con LoadSense",
     stops: [
@@ -166,7 +162,6 @@ export default {
       h1: "トレーニングの前に、今日の出発点を知る。",
       intro: "LoadSenseは昨夜の睡眠、心拍変動、最近の負荷をヘルスケアから読み取り、その日の体調を加えて、それぞれの推定が何にもとづくかを示します。",
       note: "App Storeで無料、Proはオプション。iOS 18のiPhone、watchOS 11のApple Watchに対応。",
-      clockLabel: "朝7時51分。画面に表示された推定の計算時刻",
     },
     dayTitle: "LoadSenseの一日",
     stops: [

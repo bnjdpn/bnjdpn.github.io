@@ -42,7 +42,7 @@ ul,ol{padding:0;list-style:none}
 .lang nav a:hover{background:var(--carbon-3)}
 .lang nav a[aria-current]{color:var(--orange);font-weight:700}
 
-/* Hero: the copy, then the board paired with the real MIX screen */
+/* Hero: the copy, then the real MIX screen (no drawn board) */
 .wall{max-width:var(--wrap);margin:0 auto;padding:12px var(--side) clamp(56px,8vw,104px);display:grid;gap:36px}
 .kick{font:500 .8rem/1.5 var(--mono);color:var(--orange);margin-bottom:14px}
 h1{font-weight:800;font-stretch:112%;font-size:clamp(2.1rem,8.4vw,4rem);line-height:.98;letter-spacing:-.012em;text-wrap:balance;margin-bottom:20px}
@@ -51,14 +51,8 @@ h1{font-weight:800;font-stretch:112%;font-size:clamp(2.1rem,8.4vw,4rem);line-hei
 .badge{display:block;line-height:0}
 .badge img{height:48px;width:auto}
 .small-print{margin-top:14px;font-size:.88rem;color:var(--dim);max-width:36em}
-.pairing{display:grid;gap:18px;justify-items:center}
-.board{width:100%;background:var(--carbon-2);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
-.board-head{font:600 .78rem/1.4 var(--mono);color:var(--dim);margin-bottom:10px}
-.board-row{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;column-gap:12px;row-gap:2px;padding:12px 0 12px 14px;border-bottom:1px dashed var(--line);position:relative}
-.board-row::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;border-radius:2px;background:var(--tone)}
-.mode{font-weight:800;font-stretch:120%;font-size:clamp(1.15rem,4.6vw,1.45rem);line-height:1.1}
-.dose{font:500 .92rem/1.2 var(--mono);color:var(--chalk);white-space:nowrap}
-.board-total{padding-top:12px;font:600 .85rem/1.4 var(--mono);color:var(--orange)}
+.pairing{display:grid;justify-items:center}
+.pairing .pair-phone{width:min(78vw,300px)}
 [data-tone="tabata"],[data-tone="work"]{--tone:var(--work)}
 [data-tone="emom"]{--tone:var(--orange)}
 [data-tone="amrap"],[data-tone="down"]{--tone:var(--down)}
@@ -66,7 +60,6 @@ h1{font-weight:800;font-stretch:112%;font-size:clamp(2.1rem,8.4vw,4rem);line-hei
 [data-tone="go"]{--tone:var(--go)}
 .phone{width:min(78vw,320px)}
 .phone img{border-radius:34px;box-shadow:0 0 0 1px rgb(242 237 231/.14),0 30px 60px -30px rgb(0 0 0/.7)}
-.pair-cap{font-size:.9rem;color:var(--dim);text-align:center;max-width:24em}
 
 /* Blocks: phase banner, then screen and words */
 .blocks{max-width:var(--wrap);margin:0 auto;padding:0 var(--side);display:grid;gap:clamp(64px,9vw,112px)}
@@ -132,22 +125,9 @@ h1{font-weight:800;font-stretch:112%;font-size:clamp(2.1rem,8.4vw,4rem);line-hei
 :lang(ja) h1,:lang(ja) h2,:lang(ja) h3,:lang(ja) .banner-mode{font-stretch:100%;letter-spacing:0;line-height:1.25;word-break:auto-phrase}
 :lang(ja) h1{font-size:clamp(1.9rem,6.4vw,3.6rem)}
 
-/* One orchestrated move: the board rows light up in order, like the timer moving through the circuit. */
-@media (prefers-reduced-motion:no-preference){
-  .board-row::before{animation:lit .5s ease-out both;animation-delay:calc(var(--i) * .35s + .2s)}
-  @keyframes lit{from{transform:scaleY(0);opacity:.2}to{transform:scaleY(1);opacity:1}}
-}
-
 /* Desktop and wide tablets only: every multi-column layout lives here, never in the base rules. */
-/* The board and the MIX screen sit side by side once there is room for both. */
-@media (min-width:620px){
-  .pairing{grid-template-columns:minmax(0,1fr) 250px;align-items:end;justify-items:stretch;column-gap:18px;max-width:680px;margin-inline:auto;width:100%}
-  .pairing .board{width:auto;align-self:center;position:relative;z-index:2;margin-right:-44px;box-shadow:0 24px 50px -20px rgb(0 0 0/.8)}
-  .pairing .pair-phone{width:250px}
-  .pair-cap{grid-column:1 / -1;text-align:left}
-}
 @media (min-width:1120px){
-  .wall{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);column-gap:clamp(36px,5vw,80px);align-items:center;padding-top:28px}
+  .wall{grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);column-gap:clamp(36px,5vw,80px);align-items:center;padding-top:28px}
 }
 @media (min-width:900px){
   .links{display:flex;gap:4px 22px;font-size:.95rem}

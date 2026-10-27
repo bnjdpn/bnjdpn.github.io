@@ -8,7 +8,7 @@
 
 :root{
   --frost:#eef5f8;--ice:#e5f0f4;--sky:#7ab0c4;--ink:#32697f;--deep:#1f4a5c;--night:#102d3a;
-  --paper:#ffffff;--milk:#f6eedb;--milk-edge:#e6d6b0;--tape:#efe2ab;--rule:#c9dbe2;--muted:#4a6470;
+  --paper:#ffffff;--rule:#c9dbe2;--muted:#4a6470;
   --rec:"Recursive",ui-rounded,"Segoe UI",sans-serif;
   --side:clamp(18px,5vw,48px);--wrap:1160px;
   color-scheme:light;
@@ -41,7 +41,7 @@ h1,h2{font-variation-settings:"CASL" .55;letter-spacing:-.01em;text-wrap:balance
 .langs nav a{padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--night)}
 .langs nav a[aria-current]{background:var(--ice);font-weight:700}
 
-/* Opening: the copy, then the drawer */
+/* Opening: the copy, then the real dashboard screen (no drawn illustration) */
 .freezer-top{max-width:var(--wrap);margin:0 auto;padding:18px var(--side) clamp(48px,7vw,96px);display:grid;gap:34px}
 .lead-in{font-size:.98rem;color:var(--ink);font-weight:600;margin-bottom:12px}
 h1{font-weight:800;font-size:clamp(2.05rem,7vw,3.55rem);line-height:1.04;margin-bottom:18px}
@@ -50,43 +50,14 @@ h1{font-weight:800;font-size:clamp(2.05rem,7vw,3.55rem);line-height:1.04;margin-
 .store-badge img{height:48px;width:auto}
 .fine-print{margin-top:14px;font-size:.88rem;color:var(--muted);max-width:32em}
 
-.drawer-fig{display:grid;gap:12px}
-.drawer{position:relative;padding:96px 14px 0;border-radius:22px 22px 10px 10px;background:linear-gradient(180deg,#d9eaf1 0%,#c8dfe8 100%);box-shadow:inset 0 2px 0 rgb(255 255 255/.7),inset 0 -30px 40px -30px rgb(31 74 92/.25);overflow:hidden}
-.bags{display:flex;align-items:flex-end;justify-content:center;padding:0 4px}
-.bag{position:relative;flex:1 1 0;min-width:0;max-width:110px;height:clamp(190px,44vw,236px);margin-left:-6px;border-radius:9px 9px 14px 14px;background:rgb(255 255 255/.62);border:1px solid rgb(31 74 92/.2);box-shadow:-6px 0 12px -8px rgb(16 45 58/.35);transform:rotate(calc((var(--i) - 3.5) * .5deg));overflow:hidden}
-.bag:first-child{margin-left:0}
-.bag-zip{position:absolute;inset:0 0 auto;height:12px;background:repeating-linear-gradient(90deg,#9fc8d7 0 3px,#b9d8e3 3px 6px);border-bottom:1px solid rgb(31 74 92/.18)}
-.bag-milk{position:absolute;left:0;right:0;bottom:0;height:calc(var(--fill) * .58);background:linear-gradient(180deg,#fbf6ea 0,var(--milk) 30%,#efe3c6 100%);border-top:2px solid var(--milk-edge)}
-.bag-write{position:absolute;left:5%;right:5%;top:20px;z-index:1;display:grid;gap:0;padding:6px 3px 7px;background:var(--paper);border-radius:4px;box-shadow:0 1px 0 rgb(31 74 92/.1);color:var(--deep);font-variation-settings:"CASL" 1;line-height:1.1;text-align:center}
-.bag-write b{font-weight:750;font-size:min(1rem,3.9vw)}
-.bag-write i{font-style:normal;font-size:min(.72rem,2.8vw);font-weight:600}
-.bag-write small{font-size:min(.7rem,2.7vw);color:var(--muted);margin-top:3px}
-.bag-next{z-index:3;overflow:visible;transform:translateY(-38px);border-color:var(--ink);box-shadow:0 18px 30px -16px rgb(16 45 58/.55)}
-.bag-next .bag-zip,.bag-next .bag-milk{border-radius:inherit}
-.bag-next .bag-zip{border-radius:9px 9px 0 0}
-.bag-next .bag-milk{border-radius:0 0 13px 13px}
-.next-tag{position:absolute;left:-2px;bottom:calc(100% + 8px);white-space:nowrap;padding:5px 10px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:min(.8rem,3.1vw);font-variation-settings:"CASL" .55}
-.next-tag::after{content:"";position:absolute;left:18px;top:100%;border:6px solid transparent;border-top-color:var(--ink)}
-.drawer-front{position:relative;z-index:4;height:clamp(54px,12vw,74px);margin:-24px -14px 0;background:linear-gradient(180deg,#f7fbfc,#e8f1f5);border-top:1px solid rgb(31 74 92/.18);box-shadow:0 -10px 24px -14px rgb(16 45 58/.4);display:grid;place-items:center}
-.drawer-tape{padding:5px 18px;background:var(--tape);color:var(--deep);font-weight:650;font-size:min(1rem,4.2vw);font-variation-settings:"CASL" 1;transform:rotate(-1.5deg);clip-path:polygon(0 8%,4% 0,96% 4%,100% 0,98% 50%,100% 100%,95% 94%,5% 100%,0 92%,2% 50%)}
-.drawer-fig figcaption{font-size:.9rem;color:var(--muted);max-width:36em}
-
-/* Narrow screens keep six bags so each label stays readable. */
-@media (max-width:559px){.bag:nth-child(n+7){display:none}}
-
-/* The one orchestrated moment: the next bag rises out of the drawer. */
-@media (prefers-reduced-motion:no-preference){
-  .bag-next{animation:lift .9s cubic-bezier(.2,.8,.2,1) .35s both}
-  .next-tag{animation:tag .4s ease-out 1.15s both}
-}
-@keyframes lift{from{transform:translateY(0)}to{transform:translateY(-38px)}}
-@keyframes tag{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.top-shot{display:grid;justify-items:center}
+.screen.screen-open{width:min(78vw,340px)}
 
 /* The life of a bag, on the real screens */
 .journey{max-width:var(--wrap);margin:0 auto;padding:0 var(--side);display:grid;gap:clamp(64px,9vw,120px)}
 .chapter-grid{display:grid;gap:28px;justify-items:center}
 .chapter-text{width:100%;max-width:34rem}
-.tape{display:inline-block;margin-bottom:14px;padding:5px 16px;background:var(--tape);color:var(--deep);font-weight:650;font-size:1.02rem;font-variation-settings:"CASL" 1;transform:rotate(-1.2deg);clip-path:polygon(0 8%,4% 0,96% 4%,100% 0,98% 50%,100% 100%,95% 94%,5% 100%,0 92%,2% 50%)}
+.chapter-tag{margin-bottom:12px;color:var(--ink);font-weight:700;font-size:1rem;letter-spacing:.01em}
 .chapter h2,.care h2,.pack h2,.siblings h2,.contact h2{font-weight:780;font-size:clamp(1.7rem,5.4vw,2.6rem);line-height:1.08;margin-bottom:16px}
 .chapter-text>p{color:var(--muted);margin-bottom:12px;max-width:36em}
 .screen{position:relative;width:min(78vw,320px)}
@@ -105,10 +76,6 @@ h1{font-weight:800;font-size:clamp(2.05rem,7vw,3.55rem);line-height:1.04;margin-
 .care-text h3{font-weight:700;font-size:1.15rem;margin:18px 0 4px;font-variation-settings:"CASL" .3}
 .care-text h3:first-child{margin-top:0}
 .care-text p{color:var(--muted)}
-.sticker-fig{margin-top:26px;display:grid;gap:8px;justify-items:start}
-.sticker{display:grid;gap:2px;padding:16px 22px 26px;min-width:min(100%,260px);background:var(--paper);border:1.5px dashed #a9bfc8;border-radius:6px;transform:rotate(-1.4deg);box-shadow:0 14px 26px -18px rgb(16 45 58/.45);font-size:.95rem;color:#1b1b1b}
-.sticker b{font-size:1.2rem;font-weight:700}
-.sticker-fig figcaption{font-size:.85rem;color:var(--muted)}
 .guide-link{margin-top:20px;font-weight:650}
 
 /* Free and the Daycare Pack */
@@ -177,5 +144,6 @@ h1{font-weight:800;font-size:clamp(2.05rem,7vw,3.55rem);line-height:1.04;margin-
   .contact .form-note{grid-column:2}
 }
 @media (min-width:1100px){
-  .freezer-top{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);column-gap:clamp(40px,5vw,72px);align-items:center;padding-top:34px}
+  .screen.screen-open{width:360px}
+  .freezer-top{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);column-gap:clamp(40px,5vw,72px);align-items:center;padding-top:34px}
 }

@@ -5,7 +5,7 @@
 export default {
   en: {
     h1: "Write your session once. TempoReps counts every phase.",
-    board: { label: "On the wall today", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 blocks, 25 min", caption: "The same circuit in the MIX screen of the app." },
+    tabataMark: "20/10 s × 8",
     phases: ["DOWN", "HOLD", "UP", "HOLD"],
     blocks: {
       tabata: "Phase, time left, round. In big type.",
@@ -19,7 +19,7 @@ export default {
   },
   fr: {
     h1: "Écrivez la séance une fois. TempoReps compte chaque phase.",
-    board: { label: "Au mur aujourd'hui", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 blocs, 25 min", caption: "Le même circuit, dans l'écran MIX de l'app." },
+    tabataMark: "20/10 s × 8",
     phases: ["DESCENDEZ", "MAINTENEZ", "MONTEZ", "MAINTENEZ"],
     blocks: {
       tabata: "La phase, le temps, le tour. En grand.",
@@ -33,7 +33,7 @@ export default {
   },
   de: {
     h1: "Schreib dein Training einmal auf. TempoReps zählt jede Phase.",
-    board: { label: "Heute an der Tafel", tabata: "20/10 s × 8", emom: "10 × 1 Min.", amrap: "10 Min.", rest: "1 Min.", total: "4 Blöcke, 25 Min.", caption: "Derselbe Zirkel im MIX-Bildschirm der App." },
+    tabataMark: "20/10 s × 8",
     phases: ["RUNTER", "HALTEN", "HOCH", "HALTEN"],
     blocks: {
       tabata: "Phase, Restzeit, Runde. In großer Schrift.",
@@ -47,7 +47,7 @@ export default {
   },
   es: {
     h1: "Escribe tu sesión una vez. TempoReps cuenta cada fase.",
-    board: { label: "Hoy en la pizarra", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 bloques, 25 min", caption: "El mismo circuito en la pantalla MIX de la app." },
+    tabataMark: "20/10 s × 8",
     phases: ["BAJA", "MANTÉN", "SUBE", "MANTÉN"],
     blocks: {
       tabata: "Fase, tiempo restante y ronda, en grande.",
@@ -61,7 +61,7 @@ export default {
   },
   it: {
     h1: "Scrivi la sessione una volta. TempoReps conta ogni fase.",
-    board: { label: "Oggi alla lavagna", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 blocchi, 25 min", caption: "Lo stesso circuito nella schermata MIX dell'app." },
+    tabataMark: "20/10 s × 8",
     phases: ["GIÙ", "TIENI", "SU", "TIENI"],
     blocks: {
       tabata: "Fase, tempo rimasto, giro. In grande.",
@@ -75,7 +75,7 @@ export default {
   },
   ja: {
     h1: "メニューは一度書くだけ。各フェーズはTempoRepsが数えます。",
-    board: { label: "今日のメニュー", tabata: "20/10秒 × 8", emom: "10 × 1分", amrap: "10分", rest: "1分", total: "4ブロック、合計25分", caption: "同じサーキットを、アプリのMIX画面で。" },
+    tabataMark: "20/10秒 × 8",
     phases: ["下げる", "キープ", "上げる", "キープ"],
     blocks: {
       tabata: "フェーズ、残り時間、ラウンドを大きく表示。",
@@ -89,7 +89,7 @@ export default {
   },
   pl: {
     h1: "Zapisz trening raz. TempoReps odlicza każdą fazę.",
-    board: { label: "Dziś na tablicy", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 bloki, 25 min", caption: "Ten sam obwód na ekranie MIX w aplikacji." },
+    tabataMark: "20/10 s × 8",
     phases: ["W DÓŁ", "TRZYMAJ", "W GÓRĘ", "TRZYMAJ"],
     blocks: {
       tabata: "Faza, pozostały czas, runda. Dużymi znakami.",
@@ -103,7 +103,7 @@ export default {
   },
   pt: {
     h1: "Escreva o treino uma vez. O TempoReps conta cada fase.",
-    board: { label: "Hoje no quadro", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 blocos, 25 min", caption: "O mesmo circuito na tela MIX do app." },
+    tabataMark: "20/10 s × 8",
     phases: ["DESCER", "SEGURE", "SUBIR", "SEGURE"],
     blocks: {
       tabata: "Fase, tempo restante e rodada, em letras grandes.",

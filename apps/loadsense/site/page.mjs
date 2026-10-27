@@ -124,7 +124,7 @@ ${hreflang}
 </header>
 <main id="main">
 <section class="dawnline" aria-labelledby="hero-title">
-<p class="clock" role="img" aria-label="${esc(t.hero.clockLabel)}"><span data-h>${h}</span><span class="colon">:</span><span data-m>${m}</span></p>
+<p class="clock"><span data-h>${h}</span><span class="colon">:</span><span data-m>${m}</span></p>
 <div class="opening">
 <p class="lead">${esc(t.hero.lead)}</p>
 <h1 id="hero-title">${esc(t.hero.h1)}</h1>

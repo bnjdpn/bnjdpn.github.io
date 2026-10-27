@@ -9,6 +9,10 @@ Page produit de TempoReps (https://bnjdpn.com/TempoReps/), générée par `page.
 - Les configurations s'enregistrent et se relancent ; la montre suit la séance et l'écran verrouillé affiche le décompte (Activité en direct).
 - Pro (2,99 € par mois, 14,99 € par an, 34,99 € à vie en France) ajoute plus de configurations, des MIX illimités, l'historique complet et l'export Santé. Pas de compte, pas de pub, pas d'analytics tiers.
 
+## Révision du 27 octobre 2026 : plus d’illustration
+
+Benjamin interdit toute image ou illustration dessinée (SVG, CSS ou canvas qui imite un objet ou un dessin), dans le site comme dans les apps et leurs icônes. Les seuls visuels permis sont les vraies captures de l’app, l’icône de l’app et les badges officiels des stores ; les petites icônes d’interface restent permises. Le tableau de salle (lignes TABATA, EMOM, AMRAP, REPOS avec leurs barres de couleur animées) est retiré de toutes les langues, avec son CSS et son animation. Le haut de page est : titre, badges, vraie capture de l’écran MIX. Le ruban de tempo 3-0-2-0 (texte en cases) et le cadre de montre en CSS autour de la vraie capture Apple Watch restent. Les images de partage sont refaites avec l’icône, le titre et la capture MIX. Les mentions du tableau plus bas décrivent la première version.
+
 ## Trois options
 
 ### Option A : « Chrono de ring »
