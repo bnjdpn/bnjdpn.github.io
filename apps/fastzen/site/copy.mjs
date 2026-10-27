@@ -35,6 +35,7 @@ export default {
     lead: 'A 16:8, 18:6, 20:4 or OMAD fast, on iPhone and Android.',
     intro: 'Start the fast, then put the phone away. FastZen keeps the time already elapsed and the hour it ends. The week can include rest days.',
     nav: ['Fast', 'Week', 'Custom'],
+    strip: ['Home', 'Week', 'Custom'],
     dial: {
       elapsed: '2:00:04', word: 'elapsed', end: 'planned finish',
       hour: '{n} h fast', window: '{n} h eating window', over: '{n} h, past one full turn of the dial',
@@ -95,6 +96,7 @@ export default {
     lead: 'Un jeûne 16:8, 18:6, 20:4 ou OMAD, sur iPhone et Android.',
     intro: 'Démarrez, puis rangez le téléphone. FastZen garde le temps déjà passé et l’heure de fin. La semaine peut prévoir des jours de repos.',
     nav: ['Jeûne', 'Semaine', 'Sur mesure'],
+    strip: ['Accueil', 'Semaine', 'Sur mesure'],
     dial: {
       elapsed: '02:00:04', word: 'écoulé', end: 'fin prévue',
       hour: '{n} h de jeûne', window: 'fenêtre de {n} h', over: '{n} h, plus d’un tour de cadran',
@@ -155,6 +157,7 @@ export default {
     lead: 'Ein Fasten nach 16:8, 18:6, 20:4 oder OMAD, auf iPhone und Android.',
     intro: 'Starten, dann das Telefon weglegen. FastZen behält die vergangene Zeit und die Stunde, zu der das Fasten endet. Die Woche kann Ruhetage haben.',
     nav: ['Fasten', 'Woche', 'Maßwoche'],
+    strip: ['Start', 'Woche', 'Maßwoche'],
     dial: {
       elapsed: '02:00:04', word: 'vergangen', end: 'geplantes Ende',
       hour: '{n} Std. Fasten', window: 'Essensfenster {n} Std.', over: '{n} Std., mehr als eine Runde',
@@ -215,6 +218,7 @@ export default {
     lead: 'Un ayuno 16:8, 18:6, 20:4 u OMAD, en iPhone y Android.',
     intro: 'Empieza y guarda el teléfono. FastZen conserva el tiempo ya pasado y la hora de fin. La semana puede incluir días de descanso.',
     nav: ['Ayuno', 'Semana', 'A medida'],
+    strip: ['Inicio', 'Semana', 'A medida'],
     dial: {
       elapsed: '02:00:04', word: 'transcurrido', end: 'fin previsto',
       hour: '{n} h de ayuno', window: 'ventana de {n} h', over: '{n} h, más de una vuelta',
@@ -275,6 +279,7 @@ export default {
     lead: 'Un ayuno 16:8, 18:6, 20:4 u OMAD, en iPhone y Android.',
     intro: 'Empieza y guarda el teléfono. FastZen conserva el tiempo ya pasado y la hora de fin. La semana puede incluir días de descanso.',
     nav: ['Ayuno', 'Semana', 'A medida'],
+    strip: ['Inicio', 'Semana', 'A medida'],
     dial: {
       elapsed: '2:00:04', word: 'transcurrido', end: 'fin previsto',
       hour: '{n} h de ayuno', window: 'ventana de {n} h', over: '{n} h, más de una vuelta',
@@ -336,6 +341,7 @@ export default {
     lead: 'Un digiuno 16:8, 18:6, 20:4 o OMAD, su iPhone e Android.',
     intro: 'Lo avvii e metti via il telefono. FastZen tiene il tempo già passato e l’ora di fine. La settimana può avere giorni di riposo.',
     nav: ['Digiuno', 'Settimana', 'Su misura'],
+    strip: ['Inizio', 'Settimana', 'Su misura'],
     dial: {
       elapsed: '02:00:04', word: 'trascorso', end: 'fine prevista',
       hour: '{n} h di digiuno', window: 'finestra di {n} h', over: '{n} h, oltre un giro',
@@ -396,6 +402,7 @@ export default {
     lead: 'Um jejum 16:8, 18:6, 20:4 ou OMAD, no iPhone e no Android.',
     intro: 'Comece e guarde o telefone. O FastZen guarda o tempo já passado e a hora do fim. A semana pode ter dias de descanso.',
     nav: ['Jejum', 'Semana', 'Sob medida'],
+    strip: ['Início', 'Semana', 'Sob medida'],
     dial: {
       elapsed: '02:00:04', word: 'decorrido', end: 'fim previsto',
       hour: '{n} h de jejum', window: 'janela de {n} h', over: '{n} h, mais de uma volta',
@@ -456,6 +463,7 @@ export default {
     lead: 'iPhoneとAndroidで、16:8、18:6、20:4、OMAD。',
     intro: '開始したら、電話をしまっていい。経過時間と終了予定はFastZenが持っています。週には休みの日も置けます。',
     nav: ['断食', '週間', 'カスタム'],
+    strip: ['ホーム', '週間', 'カスタム'],
     dial: {
       elapsed: '02:00:04', word: '経過', end: '終了予定',
       hour: '断食{n}時間', window: '食事の時間{n}時間', over: '{n}時間、文字盤を一周以上',

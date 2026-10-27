@@ -1,5 +1,6 @@
-// Renders the FastZen "fasting dial" page for one locale.
+// Renders the FastZen page for one locale.
 // Used by build.mjs and by scripts/check-antitemplate.mjs.
+// Visuals are the real screenshots, the app icon and the store badges.
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import copy from './copy.mjs';
@@ -16,7 +17,6 @@ const STORE = {
 const PLAY = product.playUrl;
 const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('./dial.css', import.meta.url))).digest('hex').slice(0, 10);
 const FAST = 16;
-const ELAPSED = 2;
 const FR_START_MIN = 17 * 60 + 38;
 const EN_START_MIN = 17 * 60 + 20;
 
@@ -50,55 +50,9 @@ function clockMin(total, twelve, am, pm) {
   return `${h % 12 || 12}:${m}${h < 12 ? (am || ' AM') : (pm || ' PM')}`;
 }
 
-function hourTag(hour, twelve, am, pm) {
-  const h = ((hour % 24) + 24) % 24;
-  if (!twelve) return `${String(h).padStart(2, '0')}:00`;
-  return `${h % 12 || 12}${h < 12 ? (am || ' AM') : (pm || ' PM')}`;
-}
-
-// Start sits at the top. Hour labels stay on the ring; the start and finish
-// labels step outward and aside when they would sit on a 3-hour mark.
-const CX = 140;
-const RING = 74;
-const LABEL_R = 96;
-const MARKS = [0, 3, 6, 9, 12, 15, 18, 21];
-
-function apart(a, b) {
-  const d = Math.abs(a - b) % 24;
-  return Math.min(d, 24 - d);
-}
-
-function polarFrom(from, radius) {
-  const a = (from / 24) * Math.PI * 2 - Math.PI / 2;
-  return [CX + Math.cos(a) * radius, CX + Math.sin(a) * radius];
-}
-
-function polar(hour, radius, start) {
-  return polarFrom(((hour - start) % 24 + 24) % 24, radius);
-}
-
-function placeSpecial(hour, start) {
-  let from = ((hour - start) % 24 + 24) % 24;
-  let best = MARKS[0];
-  let bestD = 99;
-  for (const mark of MARKS) {
-    const d = apart(hour, mark);
-    if (d < bestD) { bestD = d; best = mark; }
-  }
-  const need = 1.85;
-  if (bestD < need) {
-    const fromMark = ((best - start) % 24 + 24) % 24;
-    let delta = (from - fromMark + 24) % 24;
-    if (delta > 12) delta -= 24;
-    const dir = delta === 0 ? 1 : (delta > 0 ? 1 : -1);
-    from = (from + dir * (need - bestD) + 24) % 24;
-  }
-  return polarFrom(from, 128);
-}
-
 function screen(loc, name, alt, up, eager, extra) {
   const base = `${up}assets/dial/${loc.shots}/${name}`;
-  const sizes = extra === 'fz-beside' ? '(max-width: 899px) 42vw, 32vh' : '(max-width: 899px) 92vw, 420px';
+  const sizes = extra === 'fz-phone' ? '(max-width: 899px) 30vw, 24vw' : '(max-width: 899px) 92vw, 420px';
   const cls = extra ? `fz-shot ${extra}` : 'fz-shot';
   return `<figure class="${cls}"><picture><source type="image/avif" srcset="${base}-440.avif 440w, ${base}-880.avif 880w" sizes="${sizes}"><img src="${base}-880.webp" srcset="${base}-440.webp 440w, ${base}-880.webp 880w" sizes="${sizes}" width="880" height="1912" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
 }
@@ -113,24 +67,9 @@ export function render(loc) {
   const guide = ORIGIN + product.guides[loc.code];
   const store = STORE[loc.store];
   const play = googlePlayBadge(loc.play);
-  const start = loc.startMin / 60;
   const endMin = (loc.startMin + FAST * 60) % 1440;
   const endText = clockMin(endMin, loc.twelve, t.dial.am, t.dial.pm);
-  const startText = clockMin(loc.startMin, loc.twelve, t.dial.am, t.dial.pm);
-  const [mx, my] = polar(endMin / 60, RING, start).map(n => n.toFixed(2));
-  const [lx, ly] = placeSpecial(endMin / 60, start).map(n => n.toFixed(2));
-  const [sx, sy] = placeSpecial(start, start).map(n => n.toFixed(2));
-  const left = FAST - ELAPSED;
-  const ticks = Array.from({ length: 24 }, (_, hour) => {
-    const major = hour % 3 === 0;
-    const [x1, y1] = polar(hour, major ? 64 : 68, start);
-    const [x2, y2] = polar(hour, 72, start);
-    return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" class="${major ? 'fz-tick fz-major' : 'fz-tick'}"/>`;
-  }).join('');
-  const hourLabels = MARKS.map(h => {
-    const [x, y] = polar(h, LABEL_R, start);
-    return `<text class="fz-hour" x="${x.toFixed(1)}" y="${y.toFixed(1)}">${esc(hourTag(h, loc.twelve, t.dial.am, t.dial.pm))}</text>`;
-  }).join('');
+  const status = `${fill(t.dial.hour, FAST)}, ${fill(t.dial.window, 24 - FAST)}. ${t.dial.end} ${endText}`;
   const ogImg = `${ORIGIN}assets/dial/og-${loc.copy === 'fr' ? 'fr' : 'en'}.jpg`;
   const hreflang = LOCALES.map(l => `<link rel="alternate" hreflang="${l.code}" href="${ORIGIN}${l.dir}">`).join('')
     + HREFLANG.map(([lang, dir]) => `<link rel="alternate" hreflang="${lang}" href="${ORIGIN}${dir}">`).join('')
@@ -154,6 +93,7 @@ export function render(loc) {
   const cats = ui.categories.map((c, i) => `<option value="${esc(ui.categoryValues[i])}">${esc(c)}</option>`).join('');
   const days = t.days.map(([name, plan, hours, rest]) => `<li class="fz-day${rest ? ' fz-rest' : ''}"><span class="fz-dow">${esc(name)}</span><span class="fz-plan">${esc(plan)}${hours ? ` ${esc(hours)}` : ''}</span></li>`).join('');
   const closeShot = cap => `<figcaption class="fz-cap">${esc(cap)}</figcaption></figure>`;
+  const phone = (name, alt, cap) => `${screen(loc, name, alt, up, true, 'fz-phone')}<figcaption class="fz-cap">${esc(cap)}</figcaption></figure>`;
   const paras = xs => xs.map(x => `<p>${esc(x)}</p>`).join('');
 
   return `<!doctype html>
@@ -201,34 +141,17 @@ ${hreflang}
 <main id="main">
 <span class="fz-keep" id="dawn-title"></span>
 <section class="fz-open" aria-labelledby="hero-title">
-<figure class="fz-dial" style="--elapsed:${ELAPSED};--left:${left}" data-start-min="${loc.startMin}" data-elapsed="${ELAPSED}" data-twelve="${loc.twelve ? '1' : '0'}" data-ampm="${esc((t.dial.am || ' AM') + '|' + (t.dial.pm || ' PM'))}" data-end-word="${esc(t.dial.end)}" data-hour-tpl="${esc(t.dial.hour)}" data-win-tpl="${esc(t.dial.window)}" data-over-tpl="${esc(t.dial.over)}">
-<div class="fz-face">
-<svg class="fz-ring" viewBox="0 0 280 280" aria-hidden="true">
-<circle class="fz-track" cx="${CX}" cy="${CX}" r="${RING}"/>
-${ticks}
-<circle class="fz-left" cx="${CX}" cy="${CX}" r="${RING}" pathLength="24" transform="rotate(-90 ${CX} ${CX})" stroke-dasharray="0 ${ELAPSED} ${left} 24"/>
-<circle class="fz-done" cx="${CX}" cy="${CX}" r="${RING}" pathLength="24" transform="rotate(-90 ${CX} ${CX})"/>
-<circle class="fz-mark" cx="${mx}" cy="${my}" r="5"/>
-${hourLabels}
-<text class="fz-startlab" x="${sx}" y="${sy}">${esc(startText)}</text>
-<text class="fz-endlab" x="${lx}" y="${ly}">${esc(endText)}</text>
-</svg>
-<div class="fz-core">
-<p class="fz-time">${esc(t.dial.elapsed)}</p>
-<p class="fz-word">${esc(t.dial.word)}</p>
-<p class="fz-end">${esc(t.dial.end)} ${esc(endText)}</p>
-</div>
-</div>
-</figure>
-<div class="fz-pitch">
-<div class="fz-titleblock">
 <p class="fz-lead">${esc(t.lead)}</p>
 <h1 class="fz-h1" id="hero-title">${esc(t.h1)}</h1>
+<div class="fz-trio">
+${phone('home', t.homeAlt, t.strip[0])}
+${phone('week', t.weekCap, t.strip[1])}
+${phone('today', t.todayAlt, t.strip[2])}
 </div>
-${screen(loc, 'home', t.homeAlt, up, true, 'fz-beside')}</figure>
 ${badges}
 <p class="fz-intro">${esc(t.intro)}</p>
 <p class="fz-fine">${esc(t.fine)}</p>
+<div class="fz-tools" data-start-min="${loc.startMin}" data-twelve="${loc.twelve ? '1' : '0'}" data-ampm="${esc((t.dial.am || ' AM') + '|' + (t.dial.pm || ' PM'))}" data-end-word="${esc(t.dial.end)}" data-hour-tpl="${esc(t.dial.hour)}" data-win-tpl="${esc(t.dial.window)}" data-over-tpl="${esc(t.dial.over)}">
 <div class="fz-proto" role="group" aria-label="${esc(t.protocols)}">
 <button type="button" class="fz-choice" data-h="16" aria-pressed="true">16:8</button>
 <button type="button" class="fz-choice" data-h="18" aria-pressed="false">18:6</button>
@@ -236,7 +159,7 @@ ${badges}
 <button type="button" class="fz-choice" data-h="23" aria-pressed="false">OMAD</button>
 </div>
 <label class="fz-range"><span>${esc(t.custom)}</span><input type="range" min="1" max="48" value="${FAST}"></label>
-<p class="fz-win" aria-live="polite">${esc(fill(t.dial.hour, FAST))}, ${esc(fill(t.dial.window, 24 - FAST))}</p>
+<p class="fz-win" aria-live="polite">${esc(status)}</p>
 </div>
 </section>
 <span class="fz-keep" id="principles-title"></span>
@@ -325,18 +248,14 @@ ${badges}
 <script src="${up}assets/site.js" defer></script>
 <script>
 (function () {
-  var root = document.querySelector('.fz-dial');
+  var root = document.querySelector('.fz-tools');
   if (!root) return;
   var startMin = Number(root.dataset.startMin);
-  var start = startMin / 60;
-  var elapsed = Number(root.dataset.elapsed);
   var twelve = root.dataset.twelve === '1';
   var ampm = (root.dataset.ampm || ' AM| PM').split('|');
-  var endEl = root.querySelector('.fz-end');
-  var winEl = document.querySelector('.fz-win');
-  var mark = root.querySelector('.fz-mark');
-  var buttons = [].slice.call(document.querySelectorAll('.fz-choice'));
-  var range = document.querySelector('.fz-range input');
+  var winEl = root.querySelector('.fz-win');
+  var buttons = [].slice.call(root.querySelectorAll('.fz-choice'));
+  var range = root.querySelector('.fz-range input');
   function clockMin(total) {
     total = ((Math.round(total) % 1440) + 1440) % 1440;
     var H = Math.floor(total / 60), M = total % 60;
@@ -344,59 +263,12 @@ ${badges}
     if (!twelve) return (H < 10 ? '0' : '') + H + ':' + mm;
     return (H % 12 || 12) + ':' + mm + (H < 12 ? ampm[0] : ampm[1]);
   }
-  var cx = 140, ring = 74;
-  var leftEl = root.querySelector('.fz-left');
-  var endLab = root.querySelector('.fz-endlab');
-  var marks = [0, 3, 6, 9, 12, 15, 18, 21];
-  function polar(hour, radius) {
-    var fromStart = ((hour - start) % 24 + 24) % 24;
-    var a = (fromStart / 24) * Math.PI * 2 - Math.PI / 2;
-    return [cx + Math.cos(a) * radius, cx + Math.sin(a) * radius];
-  }
-  function apart(a, b) {
-    var d = Math.abs(a - b) % 24;
-    return Math.min(d, 24 - d);
-  }
-  function place(hour) {
-    var from = ((hour - start) % 24 + 24) % 24;
-    var best = marks[0], bestD = 99, i;
-    for (i = 0; i < marks.length; i++) {
-      var d = apart(hour, marks[i]);
-      if (d < bestD) { bestD = d; best = marks[i]; }
-    }
-    var need = 1.85;
-    if (bestD < need) {
-      var fromMark = ((best - start) % 24 + 24) % 24;
-      var delta = (from - fromMark + 24) % 24;
-      if (delta > 12) delta -= 24;
-      var dir = delta === 0 ? 1 : (delta > 0 ? 1 : -1);
-      from = (from + dir * (need - bestD) + 24) % 24;
-    }
-    var a = (from / 24) * Math.PI * 2 - Math.PI / 2;
-    return [cx + Math.cos(a) * 128, cx + Math.sin(a) * 128];
-  }
   function apply(hours) {
     var endMin = (startMin + Math.round(hours) * 60) % 1440;
-    var end = endMin / 60;
-    endEl.textContent = root.dataset.endWord + ' ' + clockMin(endMin);
-    var shown = Math.min(elapsed, hours);
-    var left = Math.max(0, Math.min(hours, 24) - shown);
-    root.style.setProperty('--elapsed', shown);
-    root.style.setProperty('--left', left);
-    if (leftEl) leftEl.setAttribute('stroke-dasharray', '0 ' + shown + ' ' + left + ' 24');
-    var p = polar(end, ring);
-    mark.setAttribute('cx', p[0].toFixed(2));
-    mark.setAttribute('cy', p[1].toFixed(2));
-    if (endLab) {
-      var lab = place(end);
-      endLab.setAttribute('x', lab[0].toFixed(2));
-      endLab.setAttribute('y', lab[1].toFixed(2));
-      endLab.textContent = clockMin(endMin);
-    }
     var text = hours > 24
       ? root.dataset.overTpl.replace('{n}', hours)
       : root.dataset.hourTpl.replace('{n}', hours) + ', ' + root.dataset.winTpl.replace('{n}', 24 - hours);
-    if (winEl) winEl.textContent = text;
+    if (winEl) winEl.textContent = text + '. ' + root.dataset.endWord + ' ' + clockMin(endMin);
     buttons.forEach(function (b) { b.setAttribute('aria-pressed', Number(b.dataset.h) === hours ? 'true' : 'false'); });
     if (range && Number(range.value) !== hours) range.value = String(hours);
   }
