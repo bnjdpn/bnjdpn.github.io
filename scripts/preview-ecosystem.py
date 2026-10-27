@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
 ORIGIN = 'https://bnjdpn.github.io'
-PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml', '_redirects',
+PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml', '_redirects', '_headers',
           'site.webmanifest', 'styles.css', 'assets', 'fr', 'apps', 'guides', 'contact']
 LEGACY = {'RealmBox'}
 GONE = ['NovaStationPinball', 'TaskLane', 'onigiri-exit-calculator', 'poop-price-calculator']

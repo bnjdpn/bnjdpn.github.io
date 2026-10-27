@@ -66,6 +66,14 @@ with tempfile.TemporaryDirectory() as temp:
         assert (accepted / 'public/Example/index.html').is_file()
         assert not (accepted / 'public/Example/internal.md').exists()
         assert set(result['sources'][1]['files']) == {'index.html'}
+        # Pages must receive the scoped CSS cache policy from the portfolio root.
+        headers = (ROOT / '_headers').read_text()
+        (fixture / '_headers').write_text(headers)
+        assembler.ecosystem.PUBLIC.append('_headers')
+        assembler.assemble([{**source, 'files': ['index.html']}, *legacy], base / 'root-headers')
+        assert (base / 'root-headers/public/_headers').read_text() == headers
+        assert 'max-age=14400' in headers and '/GrooveLog/assets/rhythm/rhythm.css' in headers
+        assembler.ecosystem.PUBLIC.remove('_headers')
         generated = fixture / '.local/exact-stage/Example'
         generated.mkdir(parents=True)
         (generated / 'index.html').write_text('<html lang="fr"></html>')
@@ -110,6 +118,16 @@ with tempfile.TemporaryDirectory() as temp:
             assert 'Disallowed public type' in str(error)
         assert not (base / 'private-json').exists()
         (generated / 'private.json').unlink()
+        # The header-file exception is for the root, not arbitrary app stages.
+        (generated / '_headers').write_text('/*\n  X-Example: unsafe app override\n')
+        try:
+            assembler.assemble([{**source, 'stage': str(generated), 'kind': 'local-generator-stage'}, *legacy], base / 'app-headers')
+            raise AssertionError('App-level headers accepted')
+        except ValueError as error:
+            assert 'Disallowed public type' in str(error)
+        assert not (base / 'app-headers').exists()
+        (generated / '_headers').unlink()
+
         realm = next(item for item in legacy if item['site'] == 'RealmBox')
         (Path(realm['stage']) / 'release-manifest.json').write_text('{"release":"public"}')
         result = assembler.assemble([{**source, 'files': ['index.html']}, *legacy], base / 'public-release')
