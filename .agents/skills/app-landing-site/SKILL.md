@@ -11,6 +11,10 @@ description: >-
 
 But : un visiteur qui arrive sur la page comprend en 5 secondes ce que fait l'app, pour qui, et a envie de l'installer. La page ne pourrait appartenir à aucune autre app.
 
+## 0. RÈGLE BLOQUANTE : AUCUN DESSIN
+
+**AUCUNE IMAGE NI ILLUSTRATION DESSINÉE EN SVG, NI EN CSS OU CANVAS QUI IMITE UN DESSIN. LES SEULS VISUELS AUTORISÉS SONT LES VRAIES CAPTURES DE L'APP, L'ICÔNE DE L'APP ET LES BADGES OFFICIELS DES STORES.** Les petites icônes d'interface (flèche du menu, etc.) restent permises. Le concept passe par la typographie, la couleur, la mise en page, le texte et les vraies captures.
+
 ## 1. Partir du produit réel (avant tout design)
 
 Rassembler et lire, pas imaginer :
@@ -73,6 +77,7 @@ Retenir une piste, avec sa justification en 3 phrases (fit avec l'utilisateur, d
 Avant publication, prendre une capture pleine page desktop 1440 px et mobile 390 px, et les **regarder**. Cocher chaque ligne ; une seule case non cochée = pas de publication.
 
 Anti-slop :
+- [ ] AUCUNE IMAGE NI ILLUSTRATION DESSINÉE (SVG, CSS, CANVAS) : seuls visuels = vraies captures, icône de l'app, badges officiels.
 - [ ] En masquant le nom de l'app, on devine l'app (et pas une autre du même éditeur).
 - [ ] Aucune police par défaut de la liste du §3, aucune palette interdite du §4.
 - [ ] Pas deux sections avec la même structure de cartes ; pas de rangée d'emojis.
