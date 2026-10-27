@@ -114,6 +114,31 @@ with tempfile.TemporaryDirectory() as temp:
         (Path(realm['stage']) / 'release-manifest.json').write_text('{"release":"public"}')
         result = assembler.assemble([{**source, 'files': ['index.html']}, *legacy], base / 'public-release')
         assert (base / 'public-release/public/RealmBox/release-manifest.json').is_file()
+        # BrewMeter's four-hour cache applies at the assembled public root only.
+        (fixture / 'content/catalog.json').write_text('[{"path":"BrewMeter"}]')
+        cache_source = fixture / 'apps/brewmeter/site/cache-headers.txt'
+        cache_source.parent.mkdir(parents=True)
+        shutil.copyfile(ROOT / 'apps/brewmeter/site/cache-headers.txt', cache_source)
+        roast = generated / 'assets/roast/roast.css'
+        roast.parent.mkdir(parents=True)
+        roast.write_text('/* public stylesheet */')
+        cached = assembler.assemble([{**source, 'site': 'BrewMeter', 'stage': str(generated),
+                                     'kind': 'local-generator-stage'}, *legacy], base / 'brew-cache')
+        header = base / 'brew-cache/public/_headers'
+        assert header.read_text() == '/BrewMeter/assets/roast/*\n  Cache-Control: public, max-age=14400\n'
+        assert cached['cache_headers_sha256'] == hashlib.sha256(header.read_bytes()).hexdigest()
+        assert cached['files'] == 7
+        assert not (base / 'brew-cache/public/BrewMeter/_headers').exists()
+        cache_source.write_text('/other/*\n  Cache-Control: public, max-age=14400\n')
+        try:
+            assembler.assemble([{**source, 'site': 'BrewMeter', 'stage': str(generated),
+                                 'kind': 'local-generator-stage'}, *legacy], base / 'bad-brew-cache')
+            raise AssertionError('Unexpected cache rule accepted')
+        except ValueError as error:
+            assert 'Unexpected BrewMeter cache rule' in str(error)
+        assert not (base / 'bad-brew-cache').exists()
+        roast.unlink()
+        (fixture / 'content/catalog.json').write_text('[{"path":"Example"}]')
         (generated / 'internal.md').write_text('Excluded source')
         try:
             assembler.assemble([{**source, 'stage': str(generated),

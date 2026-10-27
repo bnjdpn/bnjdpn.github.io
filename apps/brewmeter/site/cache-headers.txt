@@ -1,0 +1,2 @@
+/BrewMeter/assets/roast/*
+  Cache-Control: public, max-age=14400
