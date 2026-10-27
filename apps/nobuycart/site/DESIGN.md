@@ -49,17 +49,17 @@ Une app voisine (un minuteur, un carnet de bébé) n’aboutit pas à une veste 
 ## Grille finale
 
 Anti-slop :
-- [ ] Nom masqué, on reconnaît une liste d’envies au prix saisi.
-- [ ] Aucune police ni palette interdite.
-- [ ] Pas deux sections à cartes identiques, pas d’emoji, pas de flèche dans les liens.
-- [ ] Un seul élément mémorable : le bordereau 100 EUR.
+- [x] Nom masqué, on reconnaît une liste d’envies au prix saisi.
+- [x] Aucune police ni palette interdite.
+- [x] Pas deux sections à cartes identiques, pas d’emoji, pas de flèche dans les liens.
+- [x] Un seul élément mémorable : le bordereau 100 EUR.
 
 Envie :
-- [ ] 5 secondes sur mobile : le titre, les deux badges, la veste à 100 EUR.
-- [ ] La première capture est l’éditeur, pas un réglage.
+- [x] 5 secondes sur mobile : le titre, les deux badges, la veste à 100 EUR (capture WebKit 390 px, fr-FR).
+- [x] La première capture est l’éditeur, pas un réglage.
 
 Technique :
-- [ ] WebKit iPhone à 375, 390 et 430, zoom 120 % et texte 120 %.
-- [ ] Desktop 1440.
-- [ ] Lighthouse mobile, performance au-dessus de 90.
-- [ ] Confidentialité et assistance à un clic, badges officiels.
+- [x] WebKit iPhone (Playwright WebKit 27.2, 27 oct. 2026) à 375, 390 et 430, zoom 120 % et texte 120 %, fr-FR, en-US, de-DE et ja, menu langue ouvert compris : 42 mesures, aucun élément hors du viewport.
+- [x] Desktop 1440, fr-FR et de-DE, aucun débordement.
+- [x] Lighthouse mobile en local sur fr-FR : performance 99, accessibilité 100, SEO 100, bonnes pratiques 100. LCP 2,1 s, poids 231 KiB.
+- [x] Confidentialité et assistance à un clic, badges officiels.

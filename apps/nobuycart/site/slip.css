@@ -31,15 +31,17 @@ h1,h2{font-weight:700;line-height:1.15;text-wrap:balance;overflow-wrap:break-wor
 .honeypot{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
 .nbc-top{max-width:var(--nbc-wrap);margin:0 auto;padding:14px var(--nbc-side);display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
-.nbc-brand{display:flex;align-items:center;gap:10px;margin-right:auto;color:var(--nbc-field);text-decoration:none;font-weight:700}
+.nbc-brand{display:flex;align-items:center;gap:10px;color:var(--nbc-field);text-decoration:none;font-weight:700;min-width:0}
 .nbc-brand img{width:36px;height:36px;border-radius:8px}
+.nbc-tools{display:flex;align-items:center;gap:10px 14px;margin-left:auto}
 .nbc-nav{display:none}
 .nbc-nav a,.nbc-help{color:var(--nbc-field);text-decoration:none}
 .nbc-nav a:hover,.nbc-help:hover{text-decoration:underline}
 .nbc-lang{position:relative}
 .nbc-lang summary{cursor:pointer;list-style:none;padding:8px 12px;border:1px solid var(--nbc-field);background:var(--nbc-white);min-height:44px;display:flex;align-items:center}
 .nbc-lang summary::-webkit-details-marker{display:none}
-.nbc-lang nav{position:absolute;right:0;top:calc(100% + 6px);z-index:6;display:flex;flex-direction:column;min-width:12rem;max-width:min(18rem,70vw);padding:6px;background:var(--nbc-white);border:1px solid var(--nbc-field)}
+.nbc-lang:not([open]) > nav{display:none}
+.nbc-lang[open] > nav{position:absolute;inset-inline-end:0;top:calc(100% + 6px);z-index:6;display:flex;flex-direction:column;min-width:min(12rem,calc(100vw - 2 * var(--nbc-side)));max-width:min(18rem,calc(100vw - 2 * var(--nbc-side)));max-height:70vh;overflow:auto;padding:6px;background:var(--nbc-white);border:1px solid var(--nbc-field)}
 .nbc-lang a{padding:8px 10px;color:var(--nbc-field);text-decoration:none}
 .nbc-lang a[aria-current="page"]{background:var(--nbc-sheet)}
 
@@ -125,6 +127,7 @@ h1,h2{font-weight:700;line-height:1.15;text-wrap:balance;overflow-wrap:break-wor
 
 @media (min-width:960px){
   .nbc-nav{display:flex;flex-wrap:wrap;gap:8px 16px}
+  .nbc-help{display:none}
   .nbc-hero-rest{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:28px 48px;align-items:start}
   .nbc-hero-side{order:0}
 }

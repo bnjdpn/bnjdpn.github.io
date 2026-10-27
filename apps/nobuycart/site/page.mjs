@@ -146,8 +146,10 @@ ${hreflang}
 <header class="nbc-top">
 <a class="nbc-brand" href="./"><img src="${up}assets/app-icon.png" width="36" height="36" alt=""><span>NoBuyCart</span></a>
 <nav class="nbc-nav" aria-label="${esc(ui.navMain)}"><a href="#features">${esc(S.wishes.nav)}</a><a href="#review">${esc(S.review.nav)}</a><a href="#free-and-register">${esc(S.offer.nav)}</a><a href="#contact">${esc(ui.support)}</a></nav>
+<div class="nbc-tools">
 <a class="nbc-help" href="#contact">${esc(ui.support)}</a>
 <details class="nbc-lang"><summary>${esc(ui.language)}</summary><nav aria-label="${esc(ui.language)}">${langs}</nav></details>
+</div>
 </header>
 <main id="main">
 <section class="nbc-hero" aria-labelledby="hero-title">
