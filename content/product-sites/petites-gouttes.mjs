@@ -31,7 +31,6 @@ export default {
         h1: "Track your breast milk stash and know which bag to use next",
         intro: "Log each bag with its amount, pumping date and use-by time. Petites Gouttes follows it in the freezer, the fridge or at room temperature, and suggests the next bag from the dates you recorded.",
         note: "Free, with a one-time Daycare Pack. Requires iOS 17 on iPhone.",
-        play: "Get it on Google Play",
         guide: "Prepare and label milk bags",
       },
       alts: [
@@ -125,7 +124,6 @@ export default {
         h1: "Gérez votre stock de lait maternel et sachez quel sachet utiliser",
         intro: "Enregistrez chaque sachet avec son volume, sa date de tirage et son échéance. Petites Gouttes le suit au congélateur, au frigo ou à température ambiante, et propose le prochain sachet selon les dates enregistrées.",
         note: "Gratuit, avec un Pack Crèche en achat unique. Nécessite iOS 17 sur iPhone.",
-        play: "Disponible sur Google Play",
         guide: "Préparer et étiqueter les sachets",
       },
       alts: [

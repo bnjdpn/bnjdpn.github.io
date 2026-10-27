@@ -28,7 +28,6 @@ export default {
         h1: "A baby food journal for first tastes, reactions and allergens",
         intro: "Search 197 foods or add your own, then log what your baby tried: the date, a purée, a piece or a baby-led meal, your notes and any reaction you saw. A meal can hold several foods with one date and one note.",
         note: "Free journal, with a one-time Baby's Records purchase. Requires iOS 17 on iPhone.",
-        play: "Get it on Google Play",
         guide: "Share the journal with family",
       },
       alts: [
@@ -120,7 +119,6 @@ export default {
         h1: "Un journal de diversification pour les premiers goûts et les réactions",
         intro: "Cherchez parmi 197 aliments ou ajoutez les vôtres, puis notez ce que bébé a goûté : la date, une purée, un morceau ou un repas en DME, vos notes et les réactions observées. Un repas peut réunir plusieurs aliments avec une date et une note communes.",
         note: "Journal gratuit, avec Le Dossier de Bébé en achat unique. Nécessite iOS 17 sur iPhone.",
-        play: "Disponible sur Google Play",
         guide: "Partager le journal en famille",
       },
       alts: [

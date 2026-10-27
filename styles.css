@@ -173,3 +173,5 @@ main { display: block; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+.app-links .store-badge { line-height: 0; }
+.app-links .store-badge img { display: block; height: 48px; width: auto; }

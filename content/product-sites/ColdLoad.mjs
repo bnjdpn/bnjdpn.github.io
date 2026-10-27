@@ -22,7 +22,8 @@ const ukEquipment = [
 export default {
   appStoreId: "6785921799",
   lastModified: "2026-10-26",
-  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later",
+  playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.coldload",
+  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android",
   applicationCategory: "HealthApplication",
   currency: {
     "de-DE": "EUR", "en-AU": "AUD", "en-CA": "CAD", "en-GB": "GBP", "en-US": "USD",

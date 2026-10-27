@@ -26,7 +26,6 @@ export default {
         h1: "A baby sleep log for nights, naps and wakeups",
         intro: "Choose night or nap, start the timer or enter the times, then note wakeups, feeds, mood on waking and what you saw. The diary groups every entry from noon to noon.",
         note: "Free, with a one-time Sleep Diary PDF purchase. Requires iOS 17 on iPhone.",
-        play: "Get it on Google Play",
       },
       alts: [
         "New sleep entry in Petites Nuits: night or nap, quick sleep log button, bedtime, wake time and mood on waking.",
@@ -125,7 +124,6 @@ export default {
         h1: "Notez les nuits, les siestes et les réveils de votre bébé",
         intro: "Choisissez nuit ou sieste, lancez le minuteur ou saisissez les heures, puis notez les réveils, les tétées ou biberons, le ressenti au réveil et vos observations. Le carnet regroupe les entrées de midi à midi.",
         note: "Gratuit, avec le Carnet de sommeil PDF en achat unique. Nécessite iOS 17 sur iPhone.",
-        play: "Disponible sur Google Play",
       },
       alts: [
         "Nouveau sommeil dans Petites Nuits : nuit ou sieste, saisie rapide, coucher, réveil et humeur au réveil.",

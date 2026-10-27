@@ -7,7 +7,8 @@
 export default {
   appStoreId: "6758960761",
   lastModified: "2026-10-26",
-  operatingSystem: "iOS 18.0 or later, watchOS 11.0 or later",
+  playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.prvault",
+  operatingSystem: "iOS 18.0 or later, watchOS 11.0 or later, Android",
   applicationCategory: "SportsApplication",
   currency: {
     "en-US": "USD",

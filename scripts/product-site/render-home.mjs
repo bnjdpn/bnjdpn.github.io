@@ -5,6 +5,7 @@
 // The page layout lives in layout.css; the app theme only gives colours and fonts.
 import { readFileSync } from 'node:fs';
 import { escapeHtml as e, hreflangLinks, localeUrl } from './stage-common.mjs';
+import { googlePlayBadge, PLAY_DEVELOPER_URL } from './google-play.mjs';
 
 const PERSON_ID = 'https://bnjdpn.com/#benjamin-dupin';
 const LAYOUT_CSS = readFileSync(new URL('./layout.css', import.meta.url), 'utf8')
@@ -60,7 +61,7 @@ function jsonLd(cfg, app, t, locale, url, social) {
   const base = cfg.base_url;
   const store = cfg.app_store_url;
   const graph = [
-    { '@type': 'Person', '@id': PERSON_ID, name: 'Benjamin Dupin', url: 'https://bnjdpn.com/', sameAs: [cfg.developer_profile_url] },
+    { '@type': 'Person', '@id': PERSON_ID, name: 'Benjamin Dupin', url: 'https://bnjdpn.com/', sameAs: [cfg.developer_profile_url, PLAY_DEVELOPER_URL] },
     { '@type': 'WebSite', '@id': `${base}#website`, url: base, name: cfg.app_name, publisher: { '@id': PERSON_ID } },
     {
       '@type': 'SoftwareApplication',
@@ -183,6 +184,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
   const nav = app.sections.filter((s) => t.sections[s.key]?.nav).map((s) => `<a href="#${s.id ?? s.key}">${e(t.sections[s.key].nav)}</a>`).join('');
   const hero = t.hero;
   const guide = app.guides?.[locale];
+  const play = googlePlayBadge(locale);
   const styles = ['base.css', ...(images.has('assets/foundations.css') ? ['foundations.css'] : []), 'theme.css']
     .map((name) => `<link rel="stylesheet" href="${prefix}assets/${name}">`).join('');
   const heroShot = app.heroShot ?? 0;
@@ -216,7 +218,7 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
         <p class="ps-eyebrow">${e(hero.eyebrow)}</p>
         <h1 id="hero-title">${e(hero.h1)}</h1>
         <p class="ps-intro">${e(hero.intro)}</p>
-        <div class="ps-actions"><a class="app-store-action" href="${e(store)}" rel="external"><img src="${prefix}${cfg.app_store_badges[locale]}" width="120" height="40" alt="${e(ui.badgeAlt)}"></a>${app.playUrl && hero.play ? `<a class="ps-button" href="${e(app.playUrl)}" rel="external">${e(hero.play)}</a>` : ''}${guide && hero.guide ? `<a class="ps-button" href="${cfg.base_url}${guide}">${e(hero.guide)} <span aria-hidden="true">→</span></a>` : ''}</div>
+        <div class="ps-actions"><a class="app-store-action" href="${e(store)}" rel="external"><img src="${prefix}${cfg.app_store_badges[locale]}" width="120" height="40" alt="${e(ui.badgeAlt)}"></a>${app.playUrl ? `<a class="app-store-action" href="${e(app.playUrl)}" rel="external"><img src="${play.src}" width="${play.width}" height="${play.height}" alt="${e(play.alt)}"></a>` : ''}${guide && hero.guide ? `<a class="ps-button" href="${cfg.base_url}${guide}">${e(hero.guide)} <span aria-hidden="true">→</span></a>` : ''}</div>
         <p class="ps-note">${e(hero.note)}</p>
       </div>
       ${device(prefix, shots[heroShot], t.alts[heroShot])}
@@ -229,8 +231,8 @@ export function renderHome({ cfg, app, ui: uiByLanguage, names, locale, images, 
       ${kept.form}${t.formNote ? `\n      <p class="ps-small ps-form-note">${e(t.formNote)}</p>` : ''}
     </section>
   </main>
-  <footer class="site-footer"><p><strong>${e(cfg.app_name)}</strong><br>${e(t.footer)}</p>${kept.legalNav}<nav class="seo-author-links" data-portfolio-seo-links aria-label="${e(ui.moreApps)}"><a href="https://bnjdpn.com/">${e(ui.moreApps)}</a><a href="${cfg.developer_profile_url}">Benjamin Dupin · App Store</a></nav>
-<small class="trademark-notice">${app.playUrl ? 'Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.' : 'Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.'}</small></footer>
+  <footer class="site-footer"><p><strong>${e(cfg.app_name)}</strong><br>${e(t.footer)}</p>${kept.legalNav}<nav class="seo-author-links" data-portfolio-seo-links aria-label="${e(ui.moreApps)}"><a href="https://bnjdpn.com/">${e(ui.moreApps)}</a><a href="${cfg.developer_profile_url}">Benjamin Dupin · App Store</a><a href="${PLAY_DEVELOPER_URL}">Benjamin Dupin · Google Play</a></nav>
+<small class="trademark-notice">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</small></footer>
   <dialog class="screenshot-dialog" aria-label="${e(ui.dialog)}"><form method="dialog"><button aria-label="${e(ui.close)}">×</button></form><img alt="" width="880" height="1912"></dialog>
   <script src="${prefix}assets/site.js" defer></script>${lazyScripts(kept.scripts)}
 </body>

@@ -26,7 +26,6 @@ export default {
         h1: "A baby teeth chart with the date and age of every tooth",
         intro: "Tap a tooth to record when teething began, when it came through and anything you noticed. Add the birth date and the app shows your child's exact age that day. One profile per child, no account, and it works offline.",
         note: "Free, with a one-time Keepsake Page & Photos purchase. Requires iOS 17 on iPhone.",
-        play: "Get it on Google Play",
       },
       alts: [
         "The baby teeth chart in Petites Dents: upper and lower arches, with 2 of 20 teeth erupted and 1 fallen out.",
@@ -123,7 +122,6 @@ export default {
         h1: "Notez chaque dent de lait, avec la date et l'âge de votre enfant",
         intro: "Touchez une dent pour noter le début de la poussée, la date de percée et vos observations. Avec la date de naissance, l'app affiche l'âge exact de votre enfant ce jour-là. Un profil par enfant, sans compte, même hors ligne.",
         note: "Gratuit, avec le Carnet Souvenirs en achat unique. Nécessite iOS 17 sur iPhone.",
-        play: "Disponible sur Google Play",
       },
       alts: [
         "Le schéma des dents de lait dans Petites Dents : arcades du haut et du bas, 2 dents sorties sur 20 et 1 tombée.",

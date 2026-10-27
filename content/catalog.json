@@ -15,31 +15,36 @@
     "name": "PRVault",
     "path": "PRVault",
     "id": "6758960761",
-    "icon": "prvault"
+    "icon": "prvault",
+    "package": "com.bnjdpn.prvault"
   },
   {
     "name": "GrooveLog",
     "path": "GrooveLog",
     "id": "6760195408",
-    "icon": "groovelog"
+    "icon": "groovelog",
+    "package": "com.bnjdpn.groovelog"
   },
   {
     "name": "FastZen",
     "path": "FastZen",
     "id": "6761484595",
-    "icon": "fastzen"
+    "icon": "fastzen",
+    "package": "com.bnjdpn.fastzen"
   },
   {
     "name": "ColdLoad",
     "path": "ColdLoad",
     "id": "6785921799",
-    "icon": "coldload"
+    "icon": "coldload",
+    "package": "com.bnjdpn.coldload"
   },
   {
     "name": "MoveAtlas",
     "path": "MoveAtlas",
     "id": "6786200811",
-    "icon": "moveatlas"
+    "icon": "moveatlas",
+    "package": "com.bnjdpn.moveatlas"
   },
   {
     "name": "NeatShift",
@@ -51,13 +56,15 @@
     "name": "BrewMeter",
     "path": "BrewMeter",
     "id": "6760132566",
-    "icon": "brewmeter"
+    "icon": "brewmeter",
+    "package": "com.bnjdpn.brewmeter"
   },
   {
     "name": "NoBuy Cart",
     "path": "NoBuyCart",
     "id": "6778049102",
-    "icon": "nobuycart"
+    "icon": "nobuycart",
+    "package": "com.bnjdpn.nobuycart"
   },
   {
     "name": "Pas du Jour",

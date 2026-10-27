@@ -9,7 +9,8 @@ import { FORM_NOTE as formNote } from './form-note.mjs';
 export default {
   appStoreId: "6760195408",
   lastModified: "2026-10-26",
-  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later",
+  playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.groovelog",
+  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android",
   applicationCategory: "HealthApplication",
   currency: { "de-DE": "EUR", "en-US": "USD", "es-ES": "EUR", "fr-FR": "EUR" },
   guides: {

@@ -33,7 +33,6 @@ export default {
         h1: "A one-thumb space shooter with an 18-mission campaign",
         intro: "Your ship fires on its own. You steer with one thumb, dodge enemy formations and pick weapon upgrades mid-flight to win back the orbital gardens.",
         note: "Free on the App Store and Google Play, with optional purchases. Requires iOS 17 on iPhone and iPad.",
-        play: "Get it on Google Play",
         guide: "How to play",
       },
       alts: [
@@ -102,7 +101,6 @@ export default {
         h1: "Un shoot'em up spatial à un pouce, avec une campagne de 18 missions",
         intro: "Votre vaisseau tire tout seul. Vous le pilotez d'un pouce, esquivez les formations ennemies et choisissez vos armes en vol pour reconquérir les jardins orbitaux.",
         note: "Gratuit sur l'App Store et Google Play, avec des achats facultatifs. Nécessite iOS 17 sur iPhone et iPad.",
-        play: "Disponible sur Google Play",
         guide: "Comment jouer",
       },
       alts: [
