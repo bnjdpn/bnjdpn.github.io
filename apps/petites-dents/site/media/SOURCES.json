@@ -1,0 +1,104 @@
+{
+  "verified": "2026-10-27",
+  "screenshots": [
+    {
+      "locale": "fr-FR",
+      "name": "chart",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/74/81/c5/7481c58c-e2ce-784c-88c9-e50230c68a96/PetitesDents_iPhone17Pro_05_Definitives.png/940x2040bb.png",
+      "sha256": "990bef21b439da91369370b63c857e376c7aed12ea2d91deb0647e0628c248f7",
+      "size": [
+        938,
+        2040
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "name": "choices",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/00/3c/f2/003cf210-31a9-94bd-4ae9-346dd3b0eab3/PetitesDents_iPhone17Pro_06_KeepsakeChoices.png/940x2040bb.png",
+      "sha256": "6cde95dd181335384b8eb047e97424a382fc7bab094e8ad8cfa45191c2d1a8b5",
+      "size": [
+        938,
+        2040
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "name": "card",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/f7/77/6a/f7776ac8-2adc-f37b-3220-f4ff06eed4ef/PetitesDents_iPhone17Pro_08_MilestoneCard.png/940x2040bb.png",
+      "sha256": "f97c9bbebf416a0955823763c4946afe4cdbc4eea18328657575844c8a400fd4",
+      "size": [
+        938,
+        2040
+      ]
+    },
+    {
+      "locale": "en-US",
+      "name": "chart",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/60/3f/cb/603fcbda-9326-58b7-cd25-f1d294a25d05/PetitesDents_iPhone17Pro_05_Definitives.png/940x2040bb.png",
+      "sha256": "c7e6df601189891fa394620e6be3fbd3a346929c138a14f37dbc45cca48ec2cf",
+      "size": [
+        938,
+        2040
+      ]
+    },
+    {
+      "locale": "en-US",
+      "name": "choices",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/43/c3/1c/43c31cb7-0a6a-5eaf-898b-39150aac5430/PetitesDents_iPhone17Pro_06_KeepsakeChoices.png/940x2040bb.png",
+      "sha256": "7585eed9fcf9d879dd194a91147f9d205280e5563dfbeed3f33800921cf1ea22",
+      "size": [
+        938,
+        2040
+      ]
+    },
+    {
+      "locale": "en-US",
+      "name": "card",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/50/77/0c/50770c39-fcbb-f2a8-c818-c9ecbaf37249/PetitesDents_iPhone17Pro_08_MilestoneCard.png/940x2040bb.png",
+      "sha256": "723eedea2a10fde1ed3c753c05e3434b442c4c884345d81cc56386a703e25d1b",
+      "size": [
+        938,
+        2040
+      ]
+    },
+    {
+      "locale": "en-GB",
+      "name": "chart",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/95/f1/64/95f16477-2c30-f921-3f0d-e1f50a196e91/PetitesDents_iPhone17Pro_05_Definitives.png/940x2040bb.png",
+      "sha256": "021d0ae649007cde3693f76c5f34fdbfdd390b179ce36db0f3eff3cc16497608",
+      "size": [
+        938,
+        2040
+      ]
+    },
+    {
+      "locale": "en-GB",
+      "name": "choices",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/24/a5/ba/24a5badc-07c3-a5e3-93fe-0ae594d89f4e/PetitesDents_iPhone17Pro_06_KeepsakeChoices.png/940x2040bb.png",
+      "sha256": "48f31dfa8e04d799b4780d99c755b158e61facb9633cfb01d83b4ead83d5b4ac",
+      "size": [
+        938,
+        2040
+      ]
+    },
+    {
+      "locale": "en-GB",
+      "name": "card",
+      "version": "2.1.4",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/eb/53/7c/eb537cf4-cff5-9421-553c-dbd8bf5e2cd1/PetitesDents_iPhone17Pro_08_MilestoneCard.png/940x2040bb.png",
+      "sha256": "c91949ce3543ed5bae57ca3a993b4ff8190d3f630ef0dd16c2a40f982e613d92",
+      "size": [
+        938,
+        2040
+      ]
+    }
+  ]
+}
