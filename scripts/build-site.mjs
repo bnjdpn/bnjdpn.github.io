@@ -9,7 +9,9 @@ import {guides} from '../content/guides.mjs';
 import {contactApps, formApps, contactCopy, contactBody} from '../content/contact-page.mjs';
 import {appDocuments} from '../content/app-documents.mjs';
 import {petitesFormApps, petitesFormPrivacy, petitsPotsFormPrivacy} from '../content/petites-contact.mjs';
-import {googlePlayBadge} from './product-site/google-play.mjs';
+import {googlePlayBadge, PLAY_DEVELOPER_URL} from './product-site/google-play.mjs';
+import {renderDesk} from './desk.mjs';
+import {deskCopy} from '../content/desk-copy.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const readJSON=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const [apps,profile,media,migrated]=await Promise.all(['content/catalog.json','content/profile.json','content/preview-media.json','content/product-sites/migrated.json'].map(readJSON));
@@ -18,7 +20,7 @@ const groupOf=app=>app.catalogue?app.catalogue.category:productCopy[app.path].ca
 // Home order: by use, then catalogue order inside each group.
 const catalogue=GROUPS.flatMap(key=>[...apps,...appDocuments.filter(app=>app.catalogue)].filter(app=>groupOf(app)===key));
 const origin='https://bnjdpn.com';
-const versions=new Map(await Promise.all(['assets/contact.css','assets/contact.js','styles.css','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
+const versions=new Map(await Promise.all(['assets/contact.css','assets/contact.js','assets/desk.css','assets/desk.js','assets/badges/app-store/en.svg','assets/badges/app-store/fr.svg',...['tall-480','tall-720','wide-960','wide-1280'].flatMap(n=>[`assets/desk/hills-${n}.avif`,`assets/desk/hills-${n}.webp`]),'styles.css','assets/social/og.jpg','assets/social/og-fr.jpg'].map(async path=>[path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12)])));
 for (const path of new Set(appDocuments.map(app=>app.socialImage).filter(Boolean))) {
  versions.set(path,createHash('sha256').update(await readFile(resolve(root,path))).digest('hex').slice(0,12));
 }
@@ -75,17 +77,24 @@ function footer(lang, enHref, frHref, withHreflang=true, footerLine=studioCopy[l
  const t=studioCopy[lang], home=homeFor(lang);
  return `<footer class="footer"><div class="footer-id"><a class="footer-wordmark" href="${home}">Benjamin Dupin</a><p>${esc(footerLine)}</p></div><nav class="footer-nav" aria-label="${t.nav}"><a href="${home}#products">${t.apps}</a><a href="${home}#guides">${t.guidesNav}</a>${contactButton(t.contactTitle)}<a href="#top">${t.top}</a></nav>${languages(lang,enHref,frHref,withHreflang)}<p class="footer-small">© 2026 Benjamin Dupin. ${t.noTracking}</p></footer>`;
 }
-function head({lang,title,description,url,enHref,frHref,social,socialWidth,socialHeight,socialAlt,extra='',robots='index, follow, max-image-preview:large',icon}){
+function head({lang,title,description,url,enHref,frHref,social,socialWidth,socialHeight,socialAlt,extra='',robots='index, follow, max-image-preview:large',icon,desk=false}){
  return `<!doctype html>
 <html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title><meta name="description" content="${esc(description)}">${extra}<meta name="theme-color" content="#f5f2ea"><meta name="robots" content="${robots}">
-<link rel="canonical" href="${url}"><link rel="alternate" hreflang="en" href="${enHref}"><link rel="alternate" hreflang="fr" href="${frHref}"><link rel="alternate" hreflang="x-default" href="${enHref}">${icon?`<link rel="icon" href="/assets/icons/${icon}-128.webp" type="image/webp"><link rel="apple-touch-icon" href="/assets/icons/${icon}-180.png">`:'<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">'}<link rel="manifest" href="/site.webmanifest"><link rel="preload" href="/assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="${asset('styles.css')}">
+<link rel="canonical" href="${url}"><link rel="alternate" hreflang="en" href="${enHref}"><link rel="alternate" hreflang="fr" href="${frHref}"><link rel="alternate" hreflang="x-default" href="${enHref}">${icon?`<link rel="icon" href="/assets/icons/${icon}-128.webp" type="image/webp"><link rel="apple-touch-icon" href="/assets/icons/${icon}-180.png">`:'<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">'}<link rel="manifest" href="/site.webmanifest">${desk?'':`<link rel="preload" href="/assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="${asset('styles.css')}">`}
 <meta property="og:type" content="website"><meta property="og:locale" content="${lang==='fr'?'fr_FR':'en_US'}"><meta property="og:locale:alternate" content="${lang==='fr'?'en_US':'fr_FR'}"><meta property="og:site_name" content="Benjamin Dupin"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${social}"><meta property="og:image:width" content="${socialWidth}"><meta property="og:image:height" content="${socialHeight}"><meta property="og:image:alt" content="${esc(socialAlt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${social}">`;
 }
+const APP_STORE_DEVELOPER='https://apps.apple.com/fr/developer/benjamin-dupin/id1871474236';
+const deskGroups=lang=>GROUPS.map(key=>({key,name:homeCopy[lang].groups[key][0],apps:catalogue.filter(app=>groupOf(app)===key).map(app=>{
+ const doc=Boolean(app.catalogue), line=appLines[app.path][lang==='fr'?1:0], devices=doc?'Android':devicesFor(app,lang);
+ return {id:`app-${slugOf(app)}`,slug:slugOf(app),path:app.path,name:app.name,category:key,line,devices,search:[app.name,line,devices].join(' '),href:appHref(app,lang),supportHref:appHref(app,lang,'support/'),appStore:app.id&&!doc?storeUrl(app):null,play:doc?app.androidStoreUrl||null:playUrl(app),availability:doc?app.catalogue.availability[lang]:''};
+})}));
+const deskUpcoming=lang=>appDocuments.filter(app=>app.upcoming).map(app=>({name:app.name,subtitle:app[lang].landing.subtitle,href:pagePath(app,lang),supportHref:appHref(app,lang,'support/')}));
+const deskFooter=(lang,line)=>{const t=studioCopy[lang], home=homeFor(lang), d=deskCopy[lang];return `<footer class="footer desk-footer"><div class="footer-id"><a class="footer-wordmark" href="${home}">Benjamin Dupin</a><p>${esc(line)}</p></div><nav class="footer-nav" aria-label="${t.nav}"><a href="${APP_STORE_DEVELOPER}">${esc(d.appStorePage)}</a><a href="${PLAY_DEVELOPER_URL}">${esc(d.playPage)}</a>${contactButton(t.contactTitle)}</nav><p class="footer-small">© 2026 Benjamin Dupin. ${t.noTracking}</p><p class="footer-small">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>`;};
+const deskForm=lang=>contactBody(lang,esc).match(/<form id="support-form"[\s\S]*?<\/form>/)[0];
 for (const lang of ['en','fr']) {
  const t=contactCopy[lang], en=origin+'/contact/', fr=origin+'/fr/contact/';
- const mailHeader=header(lang,en,fr), mailFooter=footer(lang,en,fr);
- outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,`${head({lang,title:t.pageTitle,description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'})}<link rel="stylesheet" href="${asset('assets/contact.css')}"><script src="${asset('assets/contact.js')}" defer></script></head><body id="top">${mailHeader}${contactBody(lang,esc)}${mailFooter}</body></html>\n`);
+ outputs.set(`${lang==='fr'?'fr/':''}contact/index.html`,renderDesk({lang,mode:'contact',head:head({lang,title:t.pageTitle,description:t.intro,url:lang==='fr'?fr:en,enHref:en,frHref:fr,social:origin+asset('assets/social/og.jpg'),socialWidth:1200,socialHeight:630,socialAlt:'Benjamin Dupin',desk:true,extra:'<meta name="referrer" content="strict-origin-when-cross-origin">'}),jsonLd:'',groups:deskGroups(lang),upcoming:deskUpcoming(lang),guideLinks:'',h:homeCopy[lang],t:studioCopy[lang],d:deskCopy[lang],languagesNav:languages(lang,en,fr),contactForm:deskForm(lang),contactTemplate:t.title,contactGeneric:t.genericTitle,contactIntro:t.intro,homeHref:homeFor(lang),asset,footer:deskFooter(lang,studioCopy[lang].footerLine)}));
 }
 const guideCards=lang=>guides.filter(g=>g.lang===lang).map(g=>`<li><a href="${guideLink(g)}">${esc(g.heading)}</a><span>${esc(g.description)}</span></li>`).join('');
 for(const lang of ['en','fr']){
@@ -93,35 +102,7 @@ for(const lang of ['en','fr']){
  const graph=[profile,{'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'Benjamin Dupin',inLanguage:['en','fr'],publisher:{'@id':profile['@id']}},{'@type':'CollectionPage','@id':url+'#apps',url,name:homeCopy[lang].title,description:homeCopy[lang].description,inLanguage:lang,dateModified:'2026-10-26T00:00:00Z',mainEntity:{'@id':url+'#catalogue'}},{'@type':'ItemList','@id':url+'#catalogue',name:t.apps,numberOfItems:catalogue.length,itemListElement:catalogue.map((app,i)=>({'@type':'ListItem',position:i+1,name:app.name,url:origin+appHref(app,lang)}))}];
 
  const h=homeCopy[lang];
- const homeIcon=(app,eager)=>`<img class="app-icon" src="/assets/icons/${slugOf(app)}-128.webp" width="128" height="128" alt="" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
- const row=(app,index)=>{
-  const doc=Boolean(app.catalogue), category=doc?app.catalogue.category:productCopy[app.path].category;
-  const line=appLines[app.path][lang==='fr'?1:0], devices=doc?'Android':devicesFor(app,lang);
-  const stores=[app.id&&!doc?`<a class="store-link" href="${storeUrl(app)}" aria-label="App Store, ${esc(app.name)}">App Store</a>`:'',(doc?app.androidStoreUrl:playUrl(app))?`<a class="store-link" href="${doc?app.androidStoreUrl:playUrl(app)}" aria-label="Google Play, ${esc(app.name)}">Google Play</a>`:''].filter(Boolean).join('');
-  const availability=doc?`<span class="sr-only">${esc(app.catalogue.availability[lang])}</span>`:'';
-  return `<li class="entry"><article class="product-row" data-app="${app.path}" data-category="${category}" data-search="${esc([app.name,line,devices].join(' '))}">${homeIcon(app,index<4)}<div class="row-body"><h3><a class="row-link" href="${appHref(app,lang)}">${esc(app.name)}</a></h3><p class="row-line">${esc(line)}</p><p class="row-meta"><span class="devices">${esc(devices)}</span>${availability}${stores}</p></div></article></li>`;
- };
- let shown=0;
- const groups=GROUPS.map(key=>{
-  const members=catalogue.filter(app=>groupOf(app)===key), [name,text]=h.groups[key];
-  const rows=members.map(app=>row(app,shown++)).join('');
-  return `<section class="group" id="${key}" aria-labelledby="${key}-title"><div class="group-head"><h2 id="${key}-title">${name}</h2><p>${esc(text)}</p></div><ol class="apps">${rows}</ol></section>`;
- }).join('\n');
- const jump=`<nav class="jump" aria-label="${h.jump}">${GROUPS.map(key=>`<a href="#${key}">${h.groups[key][0]}<span>${catalogue.filter(app=>groupOf(app)===key).length}</span></a>`).join('')}</nav>`;
- const upcoming=appDocuments.filter(app=>app.upcoming);
- const upcomingSection=upcoming.length?`<section class="guides-index" id="upcoming"><h2>${lang==='fr'?'En préparation':'In development'}</h2><ul class="guide-list">${upcoming.map(app=>`<li><a href="${pagePath(app,lang)}">${esc(app.name)}</a>. ${esc(app[lang].landing.subtitle)}</li>`).join('')}</ul></section>`:'';
- const directory=[...catalogue,...upcoming].map(app=>`<li><a href="${appHref(app,lang,'support/')}">${esc(app.name)}</a></li>`).join('');
- const contactHref=`${lang==='fr'?'/fr':''}/contact/`;
- outputs.set(lang==='en'?'index.html':'fr/index.html',`${head({lang,title:h.title,description:h.description,url,enHref:origin+'/',frHref:origin+'/fr/',social,socialWidth:1200,socialHeight:630,socialAlt:h.title,extra:'<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'})}
-<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script></head>
-<body id="top">${header(lang,'/','/fr/')}
-<main id="main" tabindex="-1"><section class="lede" id="about" aria-labelledby="hero-title"><h1 id="hero-title">${esc(h.h1)}</h1><p class="intro">${esc(h.intro)}</p>${jump}</section>
-<section class="catalog" id="products" aria-label="${t.apps}"><div class="index" id="selected">${groups}</div><p class="availability-note">${t.availability}</p></section>
-${upcomingSection}
-<section class="guides-index" id="guides" aria-labelledby="guides-title"><h2 id="guides-title">${t.guidesTitle}</h2><ul class="guide-list">${guideCards(lang)}</ul></section>
-<section class="contact-block" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">${h.contactTitle}</h2><p>${esc(h.contactText)}</p><p><a class="button" href="${contactHref}">${esc(h.contactCta)}</a></p><details class="support-directory"><summary>${h.supportDirectory}</summary><ul>${directory}</ul></details></section></main>
-${footer(lang,'/','/fr/',true,h.footerLine)}</body></html>
-`);
+ outputs.set(lang==='en'?'index.html':'fr/index.html',renderDesk({lang,mode:'home',head:head({lang,title:h.title,description:h.description,url,enHref:origin+'/',frHref:origin+'/fr/',social,socialWidth:1200,socialHeight:630,socialAlt:h.title,desk:true,extra:'<meta name="google-site-verification" content="Bs6cO9WFohARbIFhvij399ZDgCetytfajAwoCQHBB48">'}),jsonLd:`<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script>`,groups:deskGroups(lang),upcoming:deskUpcoming(lang),guideLinks:guideCards(lang),h,t,d:deskCopy[lang],languagesNav:languages(lang,'/','/fr/'),contactForm:deskForm(lang),contactTemplate:contactCopy[lang].title,contactGeneric:contactCopy[lang].genericTitle,contactIntro:contactCopy[lang].intro,homeHref:home,asset,footer:deskFooter(lang,h.footerLine)}));
  for(const app of apps){
   const copy=productCopy[app.path], text=copy[lang];
   const local=pagePath(app,lang), support=pagePath(app,lang,'support/'), privacy=pagePath(app,lang,'privacy/');
