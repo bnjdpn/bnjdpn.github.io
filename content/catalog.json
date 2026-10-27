@@ -50,7 +50,8 @@
     "name": "NeatShift",
     "path": "NeatShift",
     "id": "6759961773",
-    "icon": "neatshift"
+    "icon": "neatshift",
+    "package": "com.bnjdpn.neatshift"
   },
   {
     "name": "BrewMeter",
