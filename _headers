@@ -6,3 +6,5 @@
   Cache-Control: public, max-age=14400
 /petits-besoins/assets/*
   Cache-Control: public, max-age=14400
+/PasDuJour/assets/glance/*
+  Cache-Control: public, max-age=14400
