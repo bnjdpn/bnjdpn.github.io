@@ -8,8 +8,6 @@ const en = {
   nav: ['Journal', 'Reaction', 'Foods', 'Handover'],
   lead: 'The weaning journal, on iPhone and Android.',
   fine: 'Free journal, no account. The interface is in French, English and Spanish.',
-  spoonLabel: 'Spoon of carrot purée with a Liked stamp.',
-  stamp: 'Liked',
   journalTitle: 'What the journal kept',
   journalBody: [
     'Each tasting stays with its date. On this journal: carrot on October 24, served as purée; apple on October 21, mashed texture; banana on October 17, observed during the meal.',
@@ -102,8 +100,6 @@ const fr = {
   nav: ['Journal', 'Réaction', 'Aliments', 'Fiche'],
   lead: 'Le journal de diversification, sur iPhone et Android.',
   fine: 'Journal gratuit, sans compte. L’interface est en français, en anglais et en espagnol.',
-  spoonLabel: 'Cuillère de purée de carotte avec le tampon Aimé.',
-  stamp: 'Aimé',
   journalTitle: 'Ce que le journal a gardé',
   journalBody: [
     'Chaque dégustation reste avec sa date. Sur ce journal : carotte du 24 octobre, servie en purée ; pomme du 21 octobre, texture écrasée ; banane du 17 octobre, observée pendant le repas.',

@@ -35,16 +35,6 @@ function screen(loc, name, alt, caption, up, eager) {
   return `<figure class="bite-shot"><picture><source type="image/avif" srcset="${base}-440.avif 440w, ${base}-880.avif 880w" sizes="${sizes}"><img src="${base}-880.webp" srcset="${base}-440.webp 440w, ${base}-880.webp 880w" sizes="${sizes}" width="880" height="1912" alt="${esc(alt)}" loading="${loading}"${priority} decoding="async"></picture><figcaption class="bite-caption">${esc(caption)}</figcaption></figure>`;
 }
 
-const spoon = `<svg class="bite-svg" viewBox="0 0 640 280" width="640" height="280" aria-hidden="true" focusable="false">
-<ellipse cx="188" cy="150" rx="156" ry="112" fill="#7A9B5A"/>
-<ellipse cx="188" cy="150" rx="136" ry="94" fill="#E8832A"/>
-<ellipse cx="176" cy="162" rx="88" ry="52" fill="#F2A24A"/>
-<circle cx="150" cy="132" r="7" fill="#D06A1E"/>
-<circle cx="214" cy="186" r="5" fill="#D06A1E"/>
-<path d="M300 128c70-6 210-10 292 8 18 4 22 22 4 28-86 16-214 14-296-4-14-4-14-26 0-32z" fill="#C4844A"/>
-<path d="M328 140c78-4 186-2 250 8" fill="none" stroke="#E2B27A" stroke-width="7" stroke-linecap="round"/>
-</svg>`;
-
 function stores(loc, ui, up) {
   return `<div class="bite-stores"><a class="bite-store" href="${esc(STORE[loc.code])}"><img src="${up}assets/app-store-badges/${loc.code}.svg" width="120" height="40" alt="${esc(ui.badgeAlt)}"></a><a class="bite-store" href="${esc(PLAY)}"><img src="/assets/badges/google-play/${loc.play[0]}.webp" width="162" height="48" alt="${esc(loc.play[1])}"></a></div>`;
 }
@@ -143,7 +133,6 @@ ${stores(loc, ui, up)}
 <p class="bite-fine">${esc(t.fine)}</p>
 </div>
 <div class="bite-stage">
-<div class="bite-spoon" role="img" aria-label="${esc(t.spoonLabel)}">${spoon}<p class="bite-stamp">${esc(t.stamp)}</p></div>
 ${screen(loc, 'journal', t.journalAlt, t.journalCaption, up, true)}
 </div>
 <div class="bite-hero-more">

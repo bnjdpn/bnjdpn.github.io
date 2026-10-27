@@ -19,6 +19,10 @@ Page comme un cahier manuscrit, scotch et écriture ronde. Chaleureux, mais c’
 
 Toute la page est le PDF de la fiche de garde, déplié comme un formulaire. Fidèle à l’export, mais ça met l’achat en premier et ça ressemble à un dossier, pas au moment où l’on tend la cuillère. Rejetée.
 
+## Révision du 27 octobre 2026 : plus d’illustration
+
+Benjamin interdit toute image ou illustration dessinée (SVG, CSS ou canvas qui imite un dessin). La cuillère SVG et le tampon « Aimé » sont retirés de toutes les langues, avec leur CSS et leur animation. Les seuls visuels sont les vraies captures de l’app, l’icône de l’app et les badges officiels des stores ; les petites icônes d’interface restent permises. Le haut de page est donc : titre, badges, capture réelle du Journal. Les images de partage (og-en.jpg, og-fr.jpg) sont refaites avec l’icône, le titre et la capture du Journal. Les mentions de la cuillère et du tampon plus bas décrivent la première version.
+
 ### Option C : « Le couvert » (retenue)
 
 Le haut de page est le couvert de la chaise haute : une cuillère vue de dessus, plus petite, décalée sur la capture réelle du journal, le tampon Aimé sur le manche. La suite suit le geste du parent : ce que le journal a gardé, la réaction pendant que la cuillère est sortie, les 197 aliments, la fiche pour la personne qui garde bébé.
