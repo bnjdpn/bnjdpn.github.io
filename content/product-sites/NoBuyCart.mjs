@@ -4,14 +4,14 @@
 // copy and follows zh-Hant), the three store screenshots (English UI on zh-Hans).
 // In-App Purchase "The Register", one-time, read 2026-10-26: US $3.99,
 // FR/DE 4,99 €, MX $89.00, BR R$ 24,90, JP ¥600, KR ₩6,600, CN ¥28.00,
-// TW $120.00. Requires iOS 17. iPhone and iPad. Not on Google Play.
+// TW $120.00. Requires iOS 17. iPhone and iPad. On Google Play too (Android 8 or later).
 import { FORM_NOTE as formNote } from './form-note.mjs';
 
 export default {
   appStoreId: "6778049102",
   lastModified: "2026-10-26",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.nobuycart",
-  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android",
+  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android 8.0 or later",
   applicationCategory: "LifestyleApplication",
   currency: {
     "de-DE": "EUR", "en-US": "USD", "es-MX": "MXN", "fr-FR": "EUR", ja: "JPY",
@@ -27,12 +27,12 @@ export default {
   locales: {
     en: {
       title: "NoBuyCart: a wishlist app to pause before buying",
-      description: "Save what you want to buy, note what prompted it and decide later. Free wishlist and decisions on iPhone, with no account or bank connection.",
+      description: "Save what you want to buy, note what prompted it and decide later. Free wishlist and decisions on iPhone and Android, with no account or bank connection.",
       hero: {
-        eyebrow: "Wishlist for iPhone",
+        eyebrow: "Wishlist for iPhone and Android",
         h1: "A wishlist that gives you time before you buy",
         intro: "Write down the thing you want, its price and what made you want it. Come back later and record whether you bought it, skipped it or still aren't sure.",
-        note: "Free on the App Store, with an optional one-time purchase. Requires iOS 17.",
+        note: "Free on the App Store and Google Play, with an optional one-time purchase. Requires iOS 17 or Android 8.",
         guide: "Guide: pause before buying",
       },
       alts: [
@@ -91,10 +91,10 @@ export default {
       title: "NoBuyCart : liste d'envies et pause avant d'acheter",
       description: "Notez ce que vous voulez acheter et ce qui vous en a donné envie, puis décidez plus tard. Liste et décisions gratuites, sans compte ni banque.",
       hero: {
-        eyebrow: "Liste d'envies pour iPhone",
+        eyebrow: "Liste d'envies pour iPhone et Android",
         h1: "Une liste d'envies pour prendre le temps avant d'acheter",
         intro: "Notez ce qui vous tente, son prix et ce qui vous en a donné envie. Revenez-y plus tard pour noter si vous l'avez acheté, si vous y avez renoncé ou si vous hésitez encore.",
-        note: "Gratuit sur l'App Store, avec un achat unique facultatif. Nécessite iOS 17.",
+        note: "Gratuit sur l'App Store et Google Play, avec un achat unique facultatif. Nécessite iOS 17 ou Android 8.",
         guide: "Guide : faire une pause avant d'acheter",
       },
       alts: [
@@ -153,10 +153,10 @@ export default {
       title: "NoBuy Cart: Wunschliste für eine Pause vor dem Kauf",
       description: "Notiere, was du kaufen willst und was den Wunsch ausgelöst hat, und entscheide später. Wunschliste und Entscheidungen kostenlos, ohne Konto.",
       hero: {
-        eyebrow: "Wunschliste für das iPhone",
+        eyebrow: "Wunschliste für iPhone und Android",
         h1: "Eine Wunschliste, die dir vor dem Kauf Zeit lässt",
         intro: "Notiere, was du dir wünschst, den Preis und was dich darauf gebracht hat. Komm später zurück und halte fest, ob du es gekauft hast, darauf verzichtet hast oder noch unsicher bist.",
-        note: "Kostenlos im App Store, mit einem optionalen Einmalkauf. Erfordert iOS 17.",
+        note: "Kostenlos im App Store und bei Google Play, mit einem optionalen Einmalkauf. Erfordert iOS 17 oder Android 8.",
       },
       alts: [
         "Ein pausierter Wunsch in NoBuy Cart: eine Baumwolljacke mit angegebenem Preis von 100 € und dem Speicherdatum.",
@@ -212,12 +212,12 @@ export default {
     },
     es: {
       title: "NoBuy Cart: lista de deseos para pausar antes de comprar",
-      description: "Anota lo que quieres comprar y qué te dio la idea, y decide después. Lista de deseos y decisiones gratis en iPhone, sin cuenta ni conexión bancaria.",
+      description: "Anota lo que quieres comprar y qué te dio la idea, y decide después. Lista de deseos y decisiones gratis en iPhone y Android, sin cuenta ni conexión bancaria.",
       hero: {
-        eyebrow: "Lista de deseos para iPhone",
+        eyebrow: "Lista de deseos para iPhone y Android",
         h1: "Una lista de deseos que te da tiempo antes de comprar",
         intro: "Anota lo que quieres, su precio y qué te hizo quererlo. Vuelve más tarde y registra si lo compraste, si decidiste no comprarlo o si aún no lo sabes.",
-        note: "Gratis en la App Store, con una compra única opcional. Requiere iOS 17.",
+        note: "Gratis en la App Store y Google Play, con una compra única opcional. Requiere iOS 17 o Android 8.",
       },
       alts: [
         "Un deseo en pausa en NoBuy Cart: una chaqueta de algodón con un precio declarado de 100 € y la fecha en que se guardó.",
@@ -273,12 +273,12 @@ export default {
     },
     ja: {
       title: "NoBuy Cart：買う前にひと呼吸おく欲しいものリスト",
-      description: "欲しいものと、欲しくなったきっかけをメモして、あとで決める。iPhone 用の欲しいものリスト。記録と決定は無料、アカウントや銀行連携は不要です。",
+      description: "欲しいものと、欲しくなったきっかけをメモして、あとで決める。iPhone・Android 用の欲しいものリスト。記録と決定は無料、アカウントや銀行連携は不要です。",
       hero: {
-        eyebrow: "iPhone 用の欲しいものリスト",
+        eyebrow: "iPhone・Android 用の欲しいものリスト",
         h1: "買う前に考える時間をくれる、欲しいものリスト",
         intro: "欲しいもの、その価格、欲しくなったきっかけを書き留めましょう。あとで戻って、買ったのか、買わなかったのか、まだ迷っているのかを記録できます。",
-        note: "App Store で無料。任意の買い切り購入があります。iOS 17 以降が必要です。",
+        note: "App Store と Google Play で無料。任意の買い切り購入があります。iOS 17 以降または Android 8 以降が必要です。",
       },
       alts: [
         "NoBuy Cart で一時停止中の欲しいもの：申告価格 100 € のコットンジャケットと保存日。",
@@ -334,12 +334,12 @@ export default {
     },
     ko: {
       title: "NoBuy Cart: 구매 전에 잠시 멈추는 위시리스트",
-      description: "사고 싶은 물건과 계기를 기록하고 나중에 결정하세요. iPhone용 위시리스트로, 기록과 결정은 무료이며 계정이나 은행 연결이 필요 없습니다.",
+      description: "사고 싶은 물건과 계기를 기록하고 나중에 결정하세요. iPhone·Android용 위시리스트로, 기록과 결정은 무료이며 계정이나 은행 연결이 필요 없습니다.",
       hero: {
-        eyebrow: "iPhone용 위시리스트",
+        eyebrow: "iPhone·Android용 위시리스트",
         h1: "사기 전에 생각할 시간을 주는 위시리스트",
         intro: "갖고 싶은 물건, 가격, 갖고 싶어진 이유를 적어 두세요. 나중에 돌아와 샀는지, 사지 않기로 했는지, 아직 고민 중인지 기록할 수 있어요.",
-        note: "App Store에서 무료이며, 선택 사항인 1회 구매가 있습니다. iOS 17 이상이 필요합니다.",
+        note: "App Store와 Google Play에서 무료이며, 선택 사항인 1회 구매가 있습니다. iOS 17 이상 또는 Android 8 이상이 필요합니다.",
       },
       alts: [
         "NoBuy Cart에서 잠시 멈춘 위시: 신고 가격 100 €의 면 재킷과 저장한 날짜.",
@@ -395,12 +395,12 @@ export default {
     },
     pt: {
       title: "NoBuy Cart: lista de desejos para pausar antes de comprar",
-      description: "Anote o que você quer comprar e o que despertou a vontade, e decida depois. Lista de desejos e decisões grátis no iPhone, sem conta nem banco.",
+      description: "Anote o que você quer comprar e o que despertou a vontade, e decida depois. Lista de desejos e decisões grátis no iPhone e no Android, sem conta nem banco.",
       hero: {
-        eyebrow: "Lista de desejos para iPhone",
+        eyebrow: "Lista de desejos para iPhone e Android",
         h1: "Uma lista de desejos que dá tempo antes de comprar",
         intro: "Anote o que você quer, o preço e o que despertou a vontade. Volte depois e registre se comprou, se desistiu ou se ainda não sabe.",
-        note: "Grátis na App Store, com uma compra única opcional. Requer iOS 17.",
+        note: "Grátis na App Store e no Google Play, com uma compra única opcional. Requer iOS 17 ou Android 8.",
       },
       alts: [
         "Um desejo em pausa no NoBuy Cart: uma jaqueta de algodão com preço informado de 100 € e a data em que foi salva.",
@@ -456,12 +456,12 @@ export default {
     },
     "zh-Hans": {
       title: "NoBuy Cart：购买前先停一下的心愿清单",
-      description: "记下想买的东西和想买的原因，稍后再决定。iPhone 心愿清单，记录和决定都免费，无需账户或银行连接。",
+      description: "记下想买的东西和想买的原因，稍后再决定。iPhone 和 Android 心愿清单，记录和决定都免费，无需账户或银行连接。",
       hero: {
-        eyebrow: "iPhone 心愿清单",
+        eyebrow: "iPhone 和 Android 心愿清单",
         h1: "在购买之前给自己留点时间的心愿清单",
         intro: "记下想要的东西、价格，以及让你心动的原因。之后再回来，记录你是买了、决定不买，还是还没想好。",
-        note: "在 App Store 免费下载，另有可选的一次性购买。需要 iOS 17 或更高版本。",
+        note: "在 App Store 和 Google Play 免费下载，另有可选的一次性购买。需要 iOS 17 或 Android 8 及以上版本。",
       },
       alts: [
         "NoBuy Cart 中暂停的心愿（英文界面）：一件申报价格为 100 € 的棉质夹克及保存日期。",
@@ -517,12 +517,12 @@ export default {
     },
     "zh-Hant": {
       title: "NoBuy Cart：購買前先停一下的心願清單",
-      description: "記下想買的東西和想買的原因，稍後再決定。iPhone 心願清單，記錄和決定都免費，不需要帳戶或銀行連接。",
+      description: "記下想買的東西和想買的原因，稍後再決定。iPhone 與 Android 心願清單，記錄和決定都免費，不需要帳戶或銀行連接。",
       hero: {
-        eyebrow: "iPhone 心願清單",
+        eyebrow: "iPhone 與 Android 心願清單",
         h1: "在購買之前給自己一點時間的心願清單",
         intro: "記下想要的東西、價格，以及讓你心動的原因。之後再回來，記錄你是買了、決定不買，還是還沒想好。",
-        note: "在 App Store 免費下載，另有可選的一次性購買。需要 iOS 17 或以上版本。",
+        note: "在 App Store 和 Google Play 免費下載，另有可選的一次性購買。需要 iOS 17 或 Android 8 以上版本。",
       },
       alts: [
         "NoBuy Cart 中暫停的心願：一件申報價格為 100 € 的棉質外套及儲存日期。",

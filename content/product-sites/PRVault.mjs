@@ -3,12 +3,12 @@
 // fastlane/metadata (name, subtitle, keywords), the three store screenshots.
 // In-App Purchases read 2026-10-26: US Pro Monthly $2.99, Annual $17.99
 // (7-day free trial for eligible customers), Lifetime $44.99;
-// FR 2,99 € / 19,99 € / 49,99 €. Requires iOS 18 (watchOS 11). Not on Google Play.
+// FR 2,99 € / 19,99 € / 49,99 €. Requires iOS 18 (watchOS 11). On Google Play too (Android 8 or later).
 export default {
   appStoreId: "6758960761",
   lastModified: "2026-10-26",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.prvault",
-  operatingSystem: "iOS 18.0 or later, watchOS 11.0 or later, Android",
+  operatingSystem: "iOS 18.0 or later, watchOS 11.0 or later, Android 8.0 or later",
   applicationCategory: "SportsApplication",
   currency: {
     "en-US": "USD",
@@ -31,12 +31,12 @@ export default {
   locales: {
     en: {
       title: "PRVault: PR tracker, one rep max and working weights",
-      description: "Log strength, weightlifting, WOD and cardio records on iPhone. Import Strong or Hevy CSV files, see your best weight for each rep count and your estimated 1RM.",
+      description: "Log strength, weightlifting, WOD and cardio records on iPhone and Android. Import Strong or Hevy CSV files, see your best weight for each rep count and your estimated 1RM.",
       hero: {
-        eyebrow: "PR tracker for iPhone",
+        eyebrow: "PR tracker for iPhone and Android",
         h1: "A PR tracker for your lifts, WODs and one rep max",
         intro: "Save each result with its date and units, then find the number to beat next time. PRVault keeps the history of each movement and shows your best weight for every rep count.",
-        note: "Free on the App Store, with optional Pro. Requires iOS 18.",
+        note: "Free on the App Store and Google Play, with optional Pro. Requires iOS 18 or Android 8.",
         guide: "Records, estimated 1RM and working weights explained",
       },
       alts: [
@@ -107,12 +107,12 @@ export default {
     },
     fr: {
       title: "PRVault : carnet de records, 1RM et charges",
-      description: "Notez vos records de force, d'haltérophilie, de WOD et de cardio sur iPhone. Importez un CSV Strong ou Hevy, voyez votre meilleure charge par nombre de répétitions et votre 1RM estimé.",
+      description: "Notez vos records de force, d'haltérophilie, de WOD et de cardio sur iPhone et Android. Importez un CSV Strong ou Hevy, voyez votre meilleure charge par nombre de répétitions et votre 1RM estimé.",
       hero: {
-        eyebrow: "Carnet de records pour iPhone",
+        eyebrow: "Carnet de records pour iPhone et Android",
         h1: "Un carnet de records pour la musculation, les WOD et votre 1RM",
         intro: "Enregistrez chaque résultat avec sa date et son unité, puis retrouvez le chiffre à battre la fois suivante. PRVault garde l'historique de chaque mouvement et affiche votre meilleure charge pour chaque nombre de répétitions.",
-        note: "Gratuit sur l'App Store, avec Pro en option. Nécessite iOS 18.",
+        note: "Gratuit sur l'App Store et Google Play, avec Pro en option. Nécessite iOS 18 ou Android 8.",
         guide: "Comprendre record, 1RM estimé et charge de travail",
       },
       alts: [
@@ -183,12 +183,12 @@ export default {
     },
     de: {
       title: "PRVault: PR-Tracker, 1RM und Arbeitsgewichte",
-      description: "Erfasse Rekorde in Kraftsport, Gewichtheben, WOD und Cardio auf dem iPhone. Importiere CSV-Dateien aus Strong oder Hevy und sieh dein bestes Gewicht pro Wiederholungszahl.",
+      description: "Erfasse Rekorde in Kraftsport, Gewichtheben, WOD und Cardio auf iPhone und Android. Importiere CSV-Dateien aus Strong oder Hevy und sieh dein bestes Gewicht pro Wiederholungszahl.",
       hero: {
-        eyebrow: "PR-Tracker fürs iPhone",
+        eyebrow: "PR-Tracker für iPhone und Android",
         h1: "Ein PR-Tracker für Kraftübungen, WODs und dein 1RM",
         intro: "Speichere jedes Ergebnis mit Datum und Einheit und finde beim nächsten Mal die Zahl, die du schlagen willst. PRVault führt den Verlauf jeder Übung und zeigt dein bestes Gewicht für jede Wiederholungszahl.",
-        note: "Gratis im App Store, Pro optional. Erfordert iOS 18.",
+        note: "Gratis im App Store und bei Google Play, Pro optional. Erfordert iOS 18 oder Android 8.",
       },
       alts: [
         "PRVault-Seite für Kniebeugen: gemessenes 1RM von 130 kg, letztes Ergebnis und ein aktives Ziel von 140 kg.",
@@ -258,12 +258,12 @@ export default {
     },
     es: {
       title: "PRVault: registro de PR, 1RM y cargas de trabajo",
-      description: "Registra tus marcas de fuerza, halterofilia, WOD y cardio en el iPhone. Importa archivos CSV de Strong o Hevy y ve tu mejor peso para cada número de repeticiones.",
+      description: "Registra tus marcas de fuerza, halterofilia, WOD y cardio en iPhone y Android. Importa archivos CSV de Strong o Hevy y ve tu mejor peso para cada número de repeticiones.",
       hero: {
-        eyebrow: "Registro de marcas para iPhone",
+        eyebrow: "Registro de marcas para iPhone y Android",
         h1: "Un registro de PR para tus levantamientos, WODs y tu 1RM",
         intro: "Guarda cada resultado con su fecha y su unidad, y encuentra la cifra que tienes que superar la próxima vez. PRVault guarda el historial de cada movimiento y muestra tu mejor peso para cada número de repeticiones.",
-        note: "Gratis en el App Store, con Pro opcional. Requiere iOS 18.",
+        note: "Gratis en el App Store y Google Play, con Pro opcional. Requiere iOS 18 o Android 8.",
       },
       alts: [
         "Página de sentadilla trasera en PRVault: 1RM medido de 130 kg, último resultado y un objetivo activo de 140 kg.",
@@ -332,16 +332,16 @@ export default {
       footer: "Creada por Benjamin Dupin.",
     },
     "es-MX": {
-      description: "Registra tus PR de fuerza, halterofilia, WOD y cardio en tu iPhone. Importa un CSV de Strong o Hevy y consulta tu mejor peso para cada número de repeticiones.",
+      description: "Registra tus PR de fuerza, halterofilia, WOD y cardio en iPhone y Android. Importa un CSV de Strong o Hevy y consulta tu mejor peso para cada número de repeticiones.",
     },
     it: {
       title: "PRVault: registro PR, 1RM e carichi di lavoro",
-      description: "Registra i tuoi record di forza, pesistica, WOD e cardio su iPhone. Importa file CSV da Strong o Hevy e vedi il tuo miglior carico per ogni numero di ripetizioni.",
+      description: "Registra i tuoi record di forza, pesistica, WOD e cardio su iPhone e Android. Importa file CSV da Strong o Hevy e vedi il tuo miglior carico per ogni numero di ripetizioni.",
       hero: {
-        eyebrow: "Registro dei record per iPhone",
+        eyebrow: "Registro dei record per iPhone e Android",
         h1: "Un registro dei PR per sollevamenti, WOD e il tuo 1RM",
         intro: "Salva ogni risultato con data e unità, poi ritrova il numero da battere la volta successiva. PRVault conserva lo storico di ogni movimento e mostra il miglior carico per ogni numero di ripetizioni.",
-        note: "Gratis su App Store, con Pro facoltativo. Richiede iOS 18.",
+        note: "Gratis su App Store e Google Play, con Pro facoltativo. Richiede iOS 18 o Android 8.",
       },
       alts: [
         "Pagina dello squat in PRVault: 1RM misurato di 130 kg, ultimo risultato e un obiettivo attivo di 140 kg.",
@@ -411,12 +411,12 @@ export default {
     },
     ja: {
       title: "PRVault: 自己ベスト記録・1RM・使用重量",
-      description: "ウエイトトレーニング、ウエイトリフティング、WOD、カーディオの記録をiPhoneで管理。StrongやHevyのCSVを取り込み、レップ数ごとの最高重量を確認できます。",
+      description: "ウエイトトレーニング、ウエイトリフティング、WOD、カーディオの記録をiPhoneやAndroidで管理。StrongやHevyのCSVを取り込み、レップ数ごとの最高重量を確認できます。",
       hero: {
-        eyebrow: "iPhoneの自己ベスト記録帳",
+        eyebrow: "iPhone・Androidの自己ベスト記録帳",
         h1: "リフト、WOD、1RMの自己ベストを記録するアプリ",
         intro: "結果を日付と単位つきで保存し、次に超えるべき数字をすぐに確認できます。PRVaultは種目ごとに履歴を残し、レップ数ごとの最高重量を表示します。",
-        note: "App Storeで無料、Proはオプションです。iOS 18が必要です。",
+        note: "App StoreとGoogle Playで無料、Proはオプションです。iOS 18以降またはAndroid 8以降が必要です。",
       },
       alts: [
         "PRVaultのバックスクワットのページ：実測1RM 130 kg、前回の結果、目標140 kg。",
@@ -482,12 +482,12 @@ export default {
     },
     pt: {
       title: "PRVault: registro de PR, 1RM e cargas de treino",
-      description: "Registre seus recordes de força, levantamento de peso, WOD e cardio no iPhone. Importe arquivos CSV do Strong ou do Hevy e veja sua melhor carga por número de repetições.",
+      description: "Registre seus recordes de força, levantamento de peso, WOD e cardio no iPhone e no Android. Importe arquivos CSV do Strong ou do Hevy e veja sua melhor carga por número de repetições.",
       hero: {
-        eyebrow: "Registro de recordes para iPhone",
+        eyebrow: "Registro de recordes para iPhone e Android",
         h1: "Um registro de PR para seus levantamentos, WODs e seu 1RM",
         intro: "Salve cada resultado com data e unidade e encontre o número a superar na próxima vez. O PRVault guarda o histórico de cada movimento e mostra sua melhor carga para cada número de repetições.",
-        note: "Grátis na App Store, com Pro opcional. Requer iOS 18.",
+        note: "Grátis na App Store e no Google Play, com Pro opcional. Requer iOS 18 ou Android 8.",
       },
       alts: [
         "Página do agachamento livre no PRVault: 1RM medido de 130 kg, último resultado e uma meta ativa de 140 kg.",

@@ -5,7 +5,7 @@
 // GB £3.99, AU $5.99, CA $4.99, FR/DE/ES/IT/NL 4,99 €, MX $89.00, JP ¥600,
 // KR ₩6,600, PL 19,99 zł, BR R$ 24,90, RU 349,00 ₽, SE 49,00 kr,
 // TR ₺199,99, UA 4,99 USD, CN ¥28.00, TW $120.00.
-// Requires iOS 17. iPhone and iPad. Not on Google Play.
+// Requires iOS 17. iPhone and iPad. On Google Play too (Android 8 or later).
 // Extra locale folders (unsupported locales redirecting to the English page)
 // and the plate calculator pages are carried unchanged.
 import { FORM_NOTE as formNote } from './form-note.mjs';
@@ -23,7 +23,7 @@ export default {
   appStoreId: "6785921799",
   lastModified: "2026-10-26",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.coldload",
-  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android",
+  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android 8.0 or later",
   applicationCategory: "HealthApplication",
   currency: {
     "de-DE": "EUR", "en-AU": "AUD", "en-CA": "CAD", "en-GB": "GBP", "en-US": "USD",
@@ -59,12 +59,12 @@ export default {
   locales: {
     en: {
       title: "ColdLoad: barbell plate calculator in kg and lb",
-      description: "Enter a target weight in kg or lb and see the plates for each side of the bar, using your own bar and plates. Free on iPhone and iPad, works offline.",
+      description: "Enter a target weight in kg or lb and see the plates for each side of the bar, using your own bar and plates. Free on iPhone, iPad and Android, works offline.",
       hero: {
-        eyebrow: "Plate calculator for iPhone and iPad",
+        eyebrow: "Plate calculator for iPhone, iPad and Android",
         h1: "A barbell plate calculator that uses the plates you own",
         intro: "Type a target in kg or lb and ColdLoad shows the plates to load on each side, counting your bar, collars and the equipment you have switched on. It works offline.",
-        note: "Free on the App Store, with an optional one-time Pro purchase. Requires iOS 17.",
+        note: "Free on the App Store and Google Play, with an optional one-time Pro purchase. Requires iOS 17 or Android 8.",
         guide: "Try the plate calculator online",
       },
       alts: [
@@ -119,31 +119,31 @@ export default {
       formNote: formNote.en,
     },
     "en-GB": {
-      description: "Enter a target weight in kg or lb and see which plates go on each side of the bar, using your own kit. Free on iPhone and iPad; Pro is a one-off purchase.",
+      description: "Enter a target weight in kg or lb and see which plates go on each side of the bar, using your own kit. Free on iPhone, iPad and Android; Pro is a one-off purchase.",
       sections: {
         equipment: { items: ukEquipment },
         offer: { notes: ["On the UK App Store, ColdLoad Pro costs £3.99, paid once, with no subscription. In other countries, the App Store shows the price before you buy."] },
       },
     },
     "en-AU": {
-      description: "Type a target weight in kg or lb and see the plates for each side of the bar, based on your own bar and plates. Free on iPhone and iPad, and it works offline.",
+      description: "Type a target weight in kg or lb and see the plates for each side of the bar, based on your own bar and plates. Free on iPhone, iPad and Android, and it works offline.",
       sections: {
         equipment: { items: ukEquipment },
         offer: { notes: ["On the Australian App Store, ColdLoad Pro costs $5.99, paid once, with no subscription. In other countries, the App Store shows the price before you buy."] },
       },
     },
     "en-CA": {
-      description: "Enter a target in kg or lb and ColdLoad lists the plates for each side of the bar, using the bar and plates you have. Free on iPhone and iPad, works offline.",
+      description: "Enter a target in kg or lb and ColdLoad lists the plates for each side of the bar, using the bar and plates you have. Free on iPhone, iPad and Android, works offline.",
       ...offerNote("On the Canadian App Store, ColdLoad Pro costs $4.99, paid once, with no subscription. In other countries, the App Store shows the price before you buy."),
     },
     fr: {
       title: "ColdLoad : calculateur de disques de barre en kg et lb",
-      description: "Saisissez une charge cible en kg ou lb et voyez les disques à placer de chaque côté, avec votre barre et vos disques. Gratuit sur iPhone et iPad, hors ligne.",
+      description: "Saisissez une charge cible en kg ou lb et voyez les disques à placer de chaque côté, avec votre barre et vos disques. Gratuit sur iPhone, iPad et Android, hors ligne.",
       hero: {
-        eyebrow: "Calculateur de disques pour iPhone et iPad",
+        eyebrow: "Calculateur de disques pour iPhone, iPad et Android",
         h1: "Un calculateur de disques qui part du matériel que vous avez",
         intro: "Saisissez une cible en kg ou lb : ColdLoad indique les disques à placer de chaque côté, en tenant compte de la barre, des stop-disques et du matériel activé. Il fonctionne hors ligne.",
-        note: "Gratuit sur l'App Store, avec un achat unique Pro facultatif. Nécessite iOS 17.",
+        note: "Gratuit sur l'App Store et Google Play, avec un achat unique Pro facultatif. Nécessite iOS 17 ou Android 8.",
         guide: "Essayer le calculateur de disques en ligne",
       },
       alts: [
@@ -198,17 +198,17 @@ export default {
       formNote: formNote.fr,
     },
     "fr-CA": {
-      description: "Entrez une charge cible en kg ou en lb et ColdLoad indique les disques de chaque côté de la barre, selon votre équipement. Gratuit sur iPhone et iPad.",
+      description: "Entrez une charge cible en kg ou en lb et ColdLoad indique les disques de chaque côté de la barre, selon votre équipement. Gratuit sur iPhone, iPad et Android.",
       ...offerNote("Sur l'App Store canadien, ColdLoad Pro coûte 4,99 $, en un seul paiement, sans abonnement. Dans les autres pays, l'App Store affiche le prix avant l'achat."),
     },
     de: {
       title: "ColdLoad: Scheibenrechner für die Langhantel, kg und lb",
       description: "Gib ein Zielgewicht in kg oder lb ein und sieh, welche Scheiben auf jede Seite gehören, mit deiner Stange und deinen Scheiben. Gratis, auch offline.",
       hero: {
-        eyebrow: "Scheibenrechner für iPhone und iPad",
+        eyebrow: "Scheibenrechner für iPhone, iPad und Android",
         h1: "Ein Scheibenrechner für die Langhantel, der dein Material kennt",
         intro: "Gib ein Ziel in kg oder lb ein, und ColdLoad zeigt die Scheiben für jede Seite, mit Stange, Verschlüssen und aktiviertem Material. Funktioniert auch offline.",
-        note: "Gratis im App Store, mit optionalem Pro als Einmalkauf. Erfordert iOS 17.",
+        note: "Gratis im App Store und bei Google Play, mit optionalem Pro als Einmalkauf. Erfordert iOS 17 oder Android 8.",
       },
       alts: [
         "ColdLoad-Ergebnis für 80 kg: 25-kg- und 5-kg-Scheiben auf jeder Seite einer 20-kg-Stange, auf der Stange dargestellt.",
@@ -263,12 +263,12 @@ export default {
     },
     es: {
       title: "ColdLoad: calculadora de discos para barra en kg y lb",
-      description: "Introduce un peso objetivo en kg o lb y mira qué discos van a cada lado de la barra, con tu barra y tus discos. Gratis en iPhone y iPad, también sin conexión.",
+      description: "Introduce un peso objetivo en kg o lb y mira qué discos van a cada lado de la barra, con tu barra y tus discos. Gratis en iPhone, iPad y Android, también sin conexión.",
       hero: {
-        eyebrow: "Calculadora de discos para iPhone y iPad",
+        eyebrow: "Calculadora de discos para iPhone, iPad y Android",
         h1: "Una calculadora de discos para barra que usa tu propio material",
         intro: "Escribe un objetivo en kg o lb y ColdLoad muestra los discos de cada lado, contando la barra, los cierres y el material activado. Funciona sin conexión.",
-        note: "Gratis en la App Store, con una compra única Pro opcional. Requiere iOS 17.",
+        note: "Gratis en la App Store y Google Play, con una compra única Pro opcional. Requiere iOS 17 o Android 8.",
       },
       alts: [
         "Resultado de ColdLoad para 80 kg: discos de 25 kg y 5 kg a cada lado de una barra de 20 kg, dibujados en la barra.",
@@ -322,17 +322,17 @@ export default {
       formNote: formNote.es,
     },
     "es-MX": {
-      description: "Escribe un peso objetivo en kg o lb y ve qué discos van de cada lado de la barra, con tu propio equipo. Gratis en iPhone y iPad y funciona sin conexión.",
+      description: "Escribe un peso objetivo en kg o lb y ve qué discos van de cada lado de la barra, con tu propio equipo. Gratis en iPhone, iPad y Android, y funciona sin conexión.",
       ...offerNote("En la App Store de México, ColdLoad Pro cuesta $89.00 MXN, en un solo pago y sin suscripción. En otros países, la App Store muestra el precio antes de comprar."),
     },
     it: {
       title: "ColdLoad: calcolo dei dischi per bilanciere in kg e lb",
-      description: "Inserisci un peso obiettivo in kg o lb e vedi quali dischi mettere su ogni lato, con il tuo bilanciere e i tuoi dischi. Gratis su iPhone e iPad, anche offline.",
+      description: "Inserisci un peso obiettivo in kg o lb e vedi quali dischi mettere su ogni lato, con il tuo bilanciere e i tuoi dischi. Gratis su iPhone, iPad e Android, anche offline.",
       hero: {
-        eyebrow: "Calcolo dischi per iPhone e iPad",
+        eyebrow: "Calcolo dischi per iPhone, iPad e Android",
         h1: "Un calcolatore di dischi per bilanciere che usa la tua attrezzatura",
         intro: "Scrivi un obiettivo in kg o lb e ColdLoad mostra i dischi per ogni lato, contando bilanciere, fermadischi e attrezzatura attiva. Funziona anche offline.",
-        note: "Gratis sull'App Store, con un acquisto unico Pro facoltativo. Richiede iOS 17.",
+        note: "Gratis sull'App Store e su Google Play, con un acquisto unico Pro facoltativo. Richiede iOS 17 o Android 8.",
       },
       alts: [
         "Risultato di ColdLoad per 80 kg: dischi da 25 kg e 5 kg su ogni lato di un bilanciere da 20 kg, disegnati sul bilanciere.",
@@ -387,12 +387,12 @@ export default {
     },
     ja: {
       title: "ColdLoad：kgとlbに対応したバーベルのプレート計算",
-      description: "目標重量をkgかlbで入力すると、手持ちのバーとプレートで左右に付けるプレートを表示します。iPhoneとiPadで無料、オフラインでも使えます。",
+      description: "目標重量をkgかlbで入力すると、手持ちのバーとプレートで左右に付けるプレートを表示します。iPhone、iPad、Androidで無料、オフラインでも使えます。",
       hero: {
-        eyebrow: "iPhone・iPad用プレート計算アプリ",
+        eyebrow: "iPhone・iPad・Android用プレート計算アプリ",
         h1: "手持ちのプレートで計算するバーベルのプレート計算アプリ",
         intro: "目標をkgかlbで入力すると、バー、カラー、有効にした器具をふまえて左右に付けるプレートを表示します。オフラインでも動きます。",
-        note: "App Storeで無料。Proは任意の買い切りです。iOS 17以降が必要です。",
+        note: "App StoreとGoogle Playで無料。Proは任意の買い切りです。iOS 17以降またはAndroid 8以降が必要です。",
       },
       alts: [
         "ColdLoadの80 kgの結果：20 kgのバーの左右に25 kgと5 kgのプレート。バー上に図示。",
@@ -447,12 +447,12 @@ export default {
     },
     ko: {
       title: "ColdLoad: kg·lb 바벨 원판 계산기",
-      description: "목표 무게를 kg 또는 lb로 입력하면 내 바와 원판으로 양쪽에 끼울 원판을 보여 줍니다. iPhone과 iPad에서 무료이며 오프라인에서도 작동합니다.",
+      description: "목표 무게를 kg 또는 lb로 입력하면 내 바와 원판으로 양쪽에 끼울 원판을 보여 줍니다. iPhone, iPad, Android에서 무료이며 오프라인에서도 작동합니다.",
       hero: {
-        eyebrow: "iPhone·iPad용 원판 계산기",
+        eyebrow: "iPhone·iPad·Android용 원판 계산기",
         h1: "내가 가진 원판으로 계산하는 바벨 원판 계산기",
         intro: "목표를 kg 또는 lb로 입력하면 바, 칼라, 켜 둔 장비를 반영해 양쪽에 끼울 원판을 보여 줍니다. 오프라인에서도 작동합니다.",
-        note: "App Store에서 무료이며, 선택 사항인 Pro 일회성 구매가 있습니다. iOS 17 이상이 필요합니다.",
+        note: "App Store와 Google Play에서 무료이며, 선택 사항인 Pro 일회성 구매가 있습니다. iOS 17 이상 또는 Android 8 이상이 필요합니다.",
       },
       alts: [
         "80 kg에 대한 ColdLoad 결과: 20 kg 바 양쪽에 25 kg와 5 kg 원판, 바 위에 그림으로 표시.",
@@ -507,12 +507,12 @@ export default {
     },
     nl: {
       title: "ColdLoad: schijvencalculator voor de halter, kg en lb",
-      description: "Voer een doelgewicht in kg of lb in en zie welke schijven aan elke kant van de stang horen, met je eigen stang en schijven. Gratis op iPhone en iPad, ook offline.",
+      description: "Voer een doelgewicht in kg of lb in en zie welke schijven aan elke kant van de stang horen, met je eigen stang en schijven. Gratis op iPhone, iPad en Android, ook offline.",
       hero: {
-        eyebrow: "Schijvencalculator voor iPhone en iPad",
+        eyebrow: "Schijvencalculator voor iPhone, iPad en Android",
         h1: "Een schijvencalculator voor de halter die rekent met jouw schijven",
         intro: "Typ een doel in kg of lb en ColdLoad toont de schijven voor elke kant, inclusief stang, sluitingen en het materiaal dat je hebt ingeschakeld. Werkt ook offline.",
-        note: "Gratis in de App Store, met een optionele eenmalige Pro-aankoop. Vereist iOS 17.",
+        note: "Gratis in de App Store en op Google Play, met een optionele eenmalige Pro-aankoop. Vereist iOS 17 of Android 8.",
       },
       alts: [
         "ColdLoad-resultaat voor 80 kg: schijven van 25 kg en 5 kg aan elke kant van een stang van 20 kg, op de stang getekend.",
@@ -567,12 +567,12 @@ export default {
     },
     pl: {
       title: "ColdLoad: kalkulator talerzy na sztangę w kg i lb",
-      description: "Wpisz docelowy ciężar w kg lub lb i zobacz, jakie talerze założyć na każdą stronę sztangi, z Twoim gryfem i talerzami. Za darmo na iPhone i iPad, także offline.",
+      description: "Wpisz docelowy ciężar w kg lub lb i zobacz, jakie talerze założyć na każdą stronę sztangi, z Twoim gryfem i talerzami. Za darmo na iPhone, iPad i Android, także offline.",
       hero: {
-        eyebrow: "Kalkulator talerzy na iPhone i iPad",
+        eyebrow: "Kalkulator talerzy na iPhone, iPad i Android",
         h1: "Kalkulator talerzy na sztangę, który liczy z Twoim sprzętem",
         intro: "Wpisz cel w kg lub lb, a ColdLoad pokaże talerze na każdą stronę, z uwzględnieniem gryfu, zacisków i włączonego sprzętu. Działa także offline.",
-        note: "Bezpłatna w App Store, z opcjonalnym jednorazowym zakupem Pro. Wymaga iOS 17.",
+        note: "Bezpłatna w App Store i Google Play, z opcjonalnym jednorazowym zakupem Pro. Wymaga iOS 17 lub Androida 8.",
       },
       alts: [
         "Wynik ColdLoad dla 80 kg: talerze 25 kg i 5 kg po każdej stronie gryfu 20 kg, narysowane na gryfie.",
@@ -627,12 +627,12 @@ export default {
     },
     pt: {
       title: "ColdLoad: calculadora de anilhas para barra em kg e lb",
-      description: "Digite um peso-alvo em kg ou lb e veja quais anilhas colocar em cada lado da barra, com a sua barra e as suas anilhas. Grátis no iPhone e iPad, funciona offline.",
+      description: "Digite um peso-alvo em kg ou lb e veja quais anilhas colocar em cada lado da barra, com a sua barra e as suas anilhas. Grátis no iPhone, iPad e Android, funciona offline.",
       hero: {
-        eyebrow: "Calculadora de anilhas para iPhone e iPad",
+        eyebrow: "Calculadora de anilhas para iPhone, iPad e Android",
         h1: "Uma calculadora de anilhas para barra que usa o seu equipamento",
         intro: "Digite um alvo em kg ou lb e o ColdLoad mostra as anilhas de cada lado, contando a barra, as presilhas e o equipamento ativado. Funciona offline.",
-        note: "Grátis na App Store, com uma compra única Pro opcional. Requer iOS 17.",
+        note: "Grátis na App Store e no Google Play, com uma compra única Pro opcional. Requer iOS 17 ou Android 8.",
       },
       alts: [
         "Resultado do ColdLoad para 80 kg: anilhas de 25 kg e 5 kg em cada lado de uma barra de 20 kg, desenhadas na barra.",
@@ -687,12 +687,12 @@ export default {
     },
     ru: {
       title: "ColdLoad: калькулятор блинов для штанги, кг и фунты",
-      description: "Введите целевой вес в кг или фунтах и посмотрите, какие блины повесить на каждую сторону, с вашим грифом и блинами. Бесплатно на iPhone и iPad, работает офлайн.",
+      description: "Введите целевой вес в кг или фунтах и посмотрите, какие блины повесить на каждую сторону, с вашим грифом и блинами. Бесплатно на iPhone, iPad и Android, работает офлайн.",
       hero: {
-        eyebrow: "Калькулятор блинов для iPhone и iPad",
+        eyebrow: "Калькулятор блинов для iPhone, iPad и Android",
         h1: "Калькулятор блинов для штанги, который считает по вашему инвентарю",
         intro: "Введите цель в кг или фунтах, и ColdLoad покажет блины для каждой стороны с учётом грифа, замков и включённого инвентаря. Работает без интернета.",
-        note: "Бесплатно в App Store, с необязательной разовой покупкой Pro. Нужна iOS 17.",
+        note: "Бесплатно в App Store и Google Play, с необязательной разовой покупкой Pro. Нужна iOS 17 или Android 8.",
       },
       alts: [
         "Результат ColdLoad для 80 кг: блины 25 кг и 5 кг с каждой стороны грифа 20 кг, нарисованные на грифе.",
@@ -747,12 +747,12 @@ export default {
     },
     sv: {
       title: "ColdLoad: viktskiveräknare för skivstång i kg och lb",
-      description: "Ange en målvikt i kg eller lb och se vilka viktskivor som ska på varje sida av stången, med din egen stång och dina skivor. Gratis på iPhone och iPad, även offline.",
+      description: "Ange en målvikt i kg eller lb och se vilka viktskivor som ska på varje sida av stången, med din egen stång och dina skivor. Gratis på iPhone, iPad och Android, även offline.",
       hero: {
-        eyebrow: "Viktskiveräknare för iPhone och iPad",
+        eyebrow: "Viktskiveräknare för iPhone, iPad och Android",
         h1: "En viktskiveräknare för skivstång som räknar med dina skivor",
         intro: "Skriv ett mål i kg eller lb så visar ColdLoad skivorna för varje sida, med stång, lås och den utrustning du har slagit på. Fungerar även offline.",
-        note: "Gratis på App Store, med ett valfritt engångsköp av Pro. Kräver iOS 17.",
+        note: "Gratis på App Store och Google Play, med ett valfritt engångsköp av Pro. Kräver iOS 17 eller Android 8.",
       },
       alts: [
         "ColdLoad-resultat för 80 kg: skivor på 25 kg och 5 kg på varje sida av en 20 kg-stång, ritade på stången.",
@@ -807,12 +807,12 @@ export default {
     },
     tr: {
       title: "ColdLoad: kg ve lb halter plakası hesaplayıcı",
-      description: "Hedef ağırlığı kg veya lb olarak girin, kendi barınız ve plakalarınızla barın her iki tarafına hangi plakaların takılacağını görün. iPhone ve iPad'de ücretsiz.",
+      description: "Hedef ağırlığı kg veya lb olarak girin, kendi barınız ve plakalarınızla barın her iki tarafına hangi plakaların takılacağını görün. iPhone, iPad ve Android'de ücretsiz.",
       hero: {
-        eyebrow: "iPhone ve iPad için plaka hesaplayıcı",
+        eyebrow: "iPhone, iPad ve Android için plaka hesaplayıcı",
         h1: "Elinizdeki plakalarla hesaplayan halter plakası hesaplayıcı",
         intro: "Hedefi kg veya lb olarak yazın; ColdLoad barı, kilitleri ve açtığınız ekipmanı hesaba katarak her tarafa takılacak plakaları gösterir. Çevrimdışı da çalışır.",
-        note: "App Store'da ücretsiz, isteğe bağlı tek seferlik Pro satın alımıyla. iOS 17 gerekir.",
+        note: "App Store ve Google Play'de ücretsiz, isteğe bağlı tek seferlik Pro satın alımıyla. iOS 17 veya Android 8 gerekir.",
       },
       alts: [
         "80 kg için ColdLoad sonucu: 20 kg barın her iki tarafında 25 kg ve 5 kg plakalar, bar üzerinde çizili.",
@@ -867,12 +867,12 @@ export default {
     },
     uk: {
       title: "ColdLoad: калькулятор млинців для штанги, кг і фунти",
-      description: "Введіть цільову вагу в кг або фунтах і подивіться, які млинці повісити на кожен бік штанги, з вашим грифом і млинцями. Безкоштовно на iPhone та iPad, офлайн.",
+      description: "Введіть цільову вагу в кг або фунтах і подивіться, які млинці повісити на кожен бік штанги, з вашим грифом і млинцями. Безкоштовно на iPhone, iPad та Android, офлайн.",
       hero: {
-        eyebrow: "Калькулятор млинців для iPhone та iPad",
+        eyebrow: "Калькулятор млинців для iPhone, iPad та Android",
         h1: "Калькулятор млинців для штанги, що рахує з вашим інвентарем",
         intro: "Введіть ціль у кг або фунтах, і ColdLoad покаже млинці для кожного боку з урахуванням грифа, замків і ввімкненого інвентарю. Працює без інтернету.",
-        note: "Безкоштовно в App Store, з необов'язковою разовою покупкою Pro. Потрібна iOS 17.",
+        note: "Безкоштовно в App Store і Google Play, з необов'язковою разовою покупкою Pro. Потрібна iOS 17 або Android 8.",
       },
       alts: [
         "Результат ColdLoad для 80 кг: млинці 25 кг і 5 кг з кожного боку грифа 20 кг, намальовані на грифі.",
@@ -927,12 +927,12 @@ export default {
     },
     "zh-Hans": {
       title: "ColdLoad：支持 kg 和 lb 的杠铃片计算器",
-      description: "输入 kg 或 lb 目标重量，按你自己的杠铃杆和杠铃片算出每侧要加的片。iPhone 和 iPad 免费使用，离线也能算。",
+      description: "输入 kg 或 lb 目标重量，按你自己的杠铃杆和杠铃片算出每侧要加的片。iPhone、iPad 和 Android 免费使用，离线也能算。",
       hero: {
-        eyebrow: "iPhone 和 iPad 杠铃片计算器",
+        eyebrow: "iPhone、iPad 和 Android 杠铃片计算器",
         h1: "按你手头杠铃片来算的杠铃片计算器",
         intro: "输入 kg 或 lb 目标，ColdLoad 会结合杠铃杆、卡箍和已启用的器材，显示每侧要加的杠铃片。离线也能用。",
-        note: "App Store 免费下载，可选一次性购买 Pro。需要 iOS 17。",
+        note: "App Store 和 Google Play 免费下载，可选一次性购买 Pro。需要 iOS 17 或 Android 8 及以上版本。",
       },
       alts: [
         "ColdLoad 80 kg 的结果：20 kg 杠铃杆每侧 25 kg 和 5 kg 杠铃片，并在杆上画出。",
@@ -987,12 +987,12 @@ export default {
     },
     "zh-Hant": {
       title: "ColdLoad：支援 kg 與 lb 的槓片計算機",
-      description: "輸入 kg 或 lb 目標重量，依你自己的槓鈴桿和槓片算出每側要加的片。iPhone 和 iPad 免費使用，離線也能算。",
+      description: "輸入 kg 或 lb 目標重量，依你自己的槓鈴桿和槓片算出每側要加的片。iPhone、iPad 和 Android 免費使用，離線也能算。",
       hero: {
-        eyebrow: "iPhone 與 iPad 槓片計算機",
+        eyebrow: "iPhone、iPad 與 Android 槓片計算機",
         h1: "依你手邊槓片計算的槓鈴槓片計算機",
         intro: "輸入 kg 或 lb 目標，ColdLoad 會考慮槓鈴桿、卡扣和已啟用的器材，顯示每側要加的槓片。離線也能用。",
-        note: "App Store 免費下載，可選一次性購買 Pro。需要 iOS 17。",
+        note: "App Store 和 Google Play 免費下載，可選一次性購買 Pro。需要 iOS 17 或 Android 8 以上版本。",
       },
       alts: [
         "ColdLoad 80 kg 的結果：20 kg 槓鈴桿每側 25 kg 和 5 kg 槓片，並畫在桿上。",

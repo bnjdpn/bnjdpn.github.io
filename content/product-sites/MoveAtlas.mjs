@@ -4,7 +4,7 @@
 // (English captures for the in-session shot on de-DE and es-ES).
 // In-App Purchase read 2026-10-26: MoveAtlas Pro · My Notebook, one-time,
 // US $5.99, FR/DE/ES 6,99 €. Requires iOS 17. iPhone and iPad.
-// Not on Google Play (com.bnjdpn.moveatlas answers 404). The extra locale
+// On Google Play too (com.bnjdpn.moveatlas, Android 8 or later). The extra locale
 // stubs (noindex, canonical to the home page) and android/privacy are carried.
 import { FORM_NOTE as formNote } from './form-note.mjs';
 
@@ -12,7 +12,7 @@ export default {
   appStoreId: "6786200811",
   lastModified: "2026-10-26",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.moveatlas",
-  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android",
+  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android 8.0 or later",
   applicationCategory: "HealthApplication",
   currency: { "de-DE": "EUR", "en-US": "USD", "es-ES": "EUR", "fr-FR": "EUR" },
   carry: [
@@ -29,12 +29,12 @@ export default {
   locales: {
     en: {
       title: "MoveAtlas: offline gym exercise library and notebook",
-      description: "Browse 1,324 gym exercises offline and save your machine settings for each gym. Free search, workouts and gym profiles on iPhone and iPad.",
+      description: "Browse 1,324 gym exercises offline and save your machine settings for each gym. Free search, workouts and gym profiles on iPhone, iPad and Android.",
       hero: {
-        eyebrow: "Exercise library for iPhone and iPad",
+        eyebrow: "Exercise library for iPhone, iPad and Android",
         h1: "An offline library of 1,324 gym exercises, with your machine settings",
         intro: "Search an exercise in English, French, German or Spanish, filter by muscle and equipment, and keep the settings of each machine at the gyms where you train.",
-        note: "Free on the App Store, with an optional one-time purchase. Requires iOS 17.",
+        note: "Free on the App Store and Google Play, with an optional one-time purchase. Requires iOS 17 or Android 8.",
       },
       alts: [
         "A saved workout at Studio Atlas in MoveAtlas: six movements, with the machine settings saved for that gym.",
@@ -104,10 +104,10 @@ export default {
       title: "MoveAtlas : exercices de musculation hors ligne et carnet",
       description: "Consultez 1 324 exercices de musculation hors ligne et gardez les réglages de vos machines pour chaque salle. Recherche et séances gratuites.",
       hero: {
-        eyebrow: "Atlas d'exercices pour iPhone et iPad",
+        eyebrow: "Atlas d'exercices pour iPhone, iPad et Android",
         h1: "1 324 exercices de musculation hors ligne, avec les réglages de vos machines",
         intro: "Cherchez un exercice en français, anglais, allemand ou espagnol, filtrez par muscle et par matériel, et gardez les réglages de chaque machine dans les salles où vous vous entraînez.",
-        note: "Gratuit sur l'App Store, avec un achat unique facultatif. Nécessite iOS 17.",
+        note: "Gratuit sur l'App Store et Google Play, avec un achat unique facultatif. Nécessite iOS 17 ou Android 8.",
       },
       alts: [
         "Une séance enregistrée au Studio Atlas dans MoveAtlas : six mouvements, avec les réglages de machine enregistrés pour cette salle.",
@@ -177,10 +177,10 @@ export default {
       title: "MoveAtlas: Übungen fürs Krafttraining, offline",
       description: "1.324 Übungen fürs Studio offline nachschlagen und Geräteeinstellungen für jedes Studio speichern. Suche, Trainingspläne und Studios kostenlos.",
       hero: {
-        eyebrow: "Übungsatlas für iPhone und iPad",
+        eyebrow: "Übungsatlas für iPhone, iPad und Android",
         h1: "1.324 Übungen fürs Krafttraining offline, mit deinen Geräteeinstellungen",
         intro: "Suche Übungen auf Deutsch, Englisch, Französisch oder Spanisch, filtere nach Muskel und Gerät und merke dir die Einstellungen jedes Geräts in den Studios, in denen du trainierst.",
-        note: "Kostenlos im App Store, mit einem optionalen Einmalkauf. Erfordert iOS 17.",
+        note: "Kostenlos im App Store und bei Google Play, mit einem optionalen Einmalkauf. Erfordert iOS 17 oder Android 8.",
       },
       alts: [
         "Ein gespeicherter Trainingsplan im Studio Atlas in MoveAtlas (englische Oberfläche): sechs Übungen mit den gespeicherten Geräteeinstellungen.",
@@ -250,10 +250,10 @@ export default {
       title: "MoveAtlas: ejercicios de gimnasio sin conexión",
       description: "Consulta 1.324 ejercicios de gimnasio sin conexión y guarda los ajustes de tus máquinas en cada gimnasio. Búsqueda y sesiones gratis.",
       hero: {
-        eyebrow: "Atlas de ejercicios para iPhone y iPad",
+        eyebrow: "Atlas de ejercicios para iPhone, iPad y Android",
         h1: "1.324 ejercicios de gimnasio sin conexión, con los ajustes de tus máquinas",
         intro: "Busca un ejercicio en español, inglés, francés o alemán, filtra por músculo y equipo, y guarda los ajustes de cada máquina en los gimnasios donde entrenas.",
-        note: "Gratis en la App Store, con una compra única opcional. Requiere iOS 17.",
+        note: "Gratis en la App Store y Google Play, con una compra única opcional. Requiere iOS 17 o Android 8.",
       },
       alts: [
         "Una sesión guardada en Studio Atlas en MoveAtlas (interfaz en inglés): seis movimientos con los ajustes de máquina guardados para ese gimnasio.",

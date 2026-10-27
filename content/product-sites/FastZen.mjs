@@ -3,14 +3,14 @@
 // 2026-10-26), the three store screenshots.
 // In-App Purchase "Custom Week", one-time, read 2026-10-26: US $5.99,
 // FR/DE/ES/IT 6,99 €, MX $129.00, JP ¥1,000, BR R$ 39,90.
-// Requires iOS 17. iPhone and iPad. Not on Google Play.
+// Requires iOS 17. iPhone and iPad. On Google Play too (Android 8 or later).
 import { FORM_NOTE as formNote } from './form-note.mjs';
 
 export default {
   appStoreId: "6761484595",
   lastModified: "2026-10-26",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.fastzen",
-  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android",
+  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android 8.0 or later",
   applicationCategory: "HealthApplication",
   currency: {
     "de-DE": "EUR", "en-US": "USD", "es-ES": "EUR", "es-MX": "MXN", "fr-FR": "EUR",
@@ -36,12 +36,12 @@ export default {
   locales: {
     en: {
       title: "FastZen: intermittent fasting timer for 16:8 and OMAD",
-      description: "Time a 16:8, 18:6, 20:4 or OMAD fast and see when it ends. Routine, reminders and history are free on iPhone; Custom Week is a one-time purchase.",
+      description: "Time a 16:8, 18:6, 20:4 or OMAD fast and see when it ends. Routine, reminders and history are free on iPhone and Android; Custom Week is a one-time purchase.",
       hero: {
-        eyebrow: "Intermittent fasting timer for iPhone and iPad",
+        eyebrow: "Intermittent fasting timer for iPhone, iPad and Android",
         h1: "An intermittent fasting timer for 16:8, 18:6 and OMAD",
         intro: "Choose a protocol or any length from 1 to 48 hours, then start. FastZen shows how long the fast has run and the time it is planned to end, even after you close the app.",
-        note: "Free on the App Store, with an optional one-time purchase. Requires iOS 17.",
+        note: "Free on the App Store and Google Play, with an optional one-time purchase. Requires iOS 17 or Android 8.",
         guide: "Guide: set up your week",
       },
       alts: [
@@ -101,10 +101,10 @@ export default {
       title: "FastZen : minuteur de jeûne intermittent 16:8 et OMAD",
       description: "Chronométrez un jeûne 16:8, 18:6, 20:4 ou OMAD et voyez quand il se termine. Routine, rappels et historique gratuits ; Semaine sur mesure en achat unique.",
       hero: {
-        eyebrow: "Jeûne intermittent sur iPhone et iPad",
+        eyebrow: "Jeûne intermittent sur iPhone, iPad et Android",
         h1: "Un minuteur de jeûne intermittent pour 16:8, 18:6 et OMAD",
         intro: "Choisissez un protocole ou une durée de 1 à 48 heures, puis démarrez. FastZen affiche depuis combien de temps le jeûne dure et l'heure à laquelle il doit se terminer, même après fermeture de l'app.",
-        note: "Gratuit sur l'App Store, avec un achat unique facultatif. Nécessite iOS 17.",
+        note: "Gratuit sur l'App Store et Google Play, avec un achat unique facultatif. Nécessite iOS 17 ou Android 8.",
         guide: "Guide : personnaliser votre semaine",
       },
       alts: [
@@ -164,10 +164,10 @@ export default {
       title: "FastZen: Intervallfasten-Timer für 16:8 und OMAD",
       description: "Starte ein Fasten nach 16:8, 18:6, 20:4 oder OMAD und sieh, wann es endet. Routine, Erinnerungen und Verlauf sind gratis; die Maßwoche ist ein Einmalkauf.",
       hero: {
-        eyebrow: "Intervallfasten für iPhone und iPad",
+        eyebrow: "Intervallfasten für iPhone, iPad und Android",
         h1: "Ein Timer für Intervallfasten nach 16:8, 18:6 und OMAD",
         intro: "Wähle ein Protokoll oder eine Dauer von 1 bis 48 Stunden und starte. FastZen zeigt, wie lange das Fasten schon läuft und wann es enden soll, auch nachdem du die App geschlossen hast.",
-        note: "Gratis im App Store, mit optionalem Einmalkauf. Erfordert iOS 17.",
+        note: "Gratis im App Store und bei Google Play, mit optionalem Einmalkauf. Erfordert iOS 17 oder Android 8.",
         guide: "Anleitung: deine Woche einrichten",
       },
       alts: [
@@ -227,10 +227,10 @@ export default {
       title: "FastZen: temporizador de ayuno intermitente 16:8 y OMAD",
       description: "Cronometra un ayuno 16:8, 18:6, 20:4 u OMAD y mira cuándo termina. Rutina, recordatorios e historial gratis; Semana a medida es una compra única.",
       hero: {
-        eyebrow: "Ayuno intermitente en iPhone y iPad",
+        eyebrow: "Ayuno intermitente en iPhone, iPad y Android",
         h1: "Un temporizador de ayuno intermitente para 16:8, 18:6 y OMAD",
         intro: "Elige un protocolo o una duración de 1 a 48 horas y empieza. FastZen muestra cuánto tiempo lleva el ayuno y a qué hora está previsto que termine, aunque cierres la app.",
-        note: "Gratis en la App Store, con una compra única opcional. Requiere iOS 17.",
+        note: "Gratis en la App Store y Google Play, con una compra única opcional. Requiere iOS 17 o Android 8.",
         guide: "Guía: configura tu semana",
       },
       alts: [
@@ -306,10 +306,10 @@ export default {
       title: "FastZen: timer per il digiuno intermittente 16:8 e OMAD",
       description: "Cronometra un digiuno 16:8, 18:6, 20:4 o OMAD e vedi quando finisce. Routine, promemoria e cronologia gratis; Settimana su misura è un acquisto unico.",
       hero: {
-        eyebrow: "Digiuno intermittente su iPhone e iPad",
+        eyebrow: "Digiuno intermittente su iPhone, iPad e Android",
         h1: "Un timer per il digiuno intermittente 16:8, 18:6 e OMAD",
         intro: "Scegli un protocollo o una durata da 1 a 48 ore e parti. FastZen mostra da quanto dura il digiuno e a che ora è prevista la fine, anche dopo che hai chiuso l'app.",
-        note: "Gratis sull'App Store, con un acquisto unico facoltativo. Richiede iOS 17.",
+        note: "Gratis sull'App Store e su Google Play, con un acquisto unico facoltativo. Richiede iOS 17 o Android 8.",
         guide: "Guida: imposta la tua settimana",
       },
       alts: [
@@ -369,10 +369,10 @@ export default {
       title: "FastZen：16:8やOMADの断食タイマー",
       description: "16:8、18:6、20:4、OMADの断食を計測し、終了予定時刻を確認できます。ルーティン、通知、履歴は無料。カスタムウィークは買い切りです。",
       hero: {
-        eyebrow: "iPhone・iPad用の断食タイマー",
+        eyebrow: "iPhone・iPad・Android用の断食タイマー",
         h1: "16:8、18:6、OMADに使える断食タイマー",
         intro: "プロトコルか1〜48時間の長さを選んで開始します。アプリを閉じても、経過時間と終了予定時刻はそのまま確認できます。",
-        note: "App Storeで無料。任意の買い切りがあります。iOS 17以降が必要です。",
+        note: "App StoreとGoogle Playで無料。任意の買い切りがあります。iOS 17以降またはAndroid 8以降が必要です。",
         guide: "ガイド：1週間の設定",
       },
       alts: [
@@ -432,10 +432,10 @@ export default {
       title: "FastZen: timer de jejum intermitente 16:8 e OMAD",
       description: "Cronometre um jejum 16:8, 18:6, 20:4 ou OMAD e veja quando ele termina. Rotina, lembretes e histórico grátis; a Semana sob medida é uma compra única.",
       hero: {
-        eyebrow: "Jejum intermitente no iPhone e iPad",
+        eyebrow: "Jejum intermitente no iPhone, iPad e Android",
         h1: "Um timer de jejum intermitente para 16:8, 18:6 e OMAD",
         intro: "Escolha um protocolo ou uma duração de 1 a 48 horas e comece. O FastZen mostra há quanto tempo o jejum está rolando e a hora prevista para terminar, mesmo depois de fechar o app.",
-        note: "Grátis na App Store, com uma compra única opcional. Requer iOS 17.",
+        note: "Grátis na App Store e no Google Play, com uma compra única opcional. Requer iOS 17 ou Android 8.",
         guide: "Guia: configure sua semana",
       },
       alts: [

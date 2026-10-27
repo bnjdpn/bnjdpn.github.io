@@ -4,14 +4,14 @@
 // Pro features), Info.plist Health permissions, the three store screenshots.
 // In-App Purchase "BrewMeter Pro Lifetime", one-time, read 2026-10-26:
 // US $5.99, FR/DE/ES/IT 6,99 €, MX $129.00, JP ¥1,000, BR R$ 39,90.
-// Requires iOS 17. iPhone and iPad. Not on Google Play (Android build not public).
+// Requires iOS 17. iPhone and iPad. On Google Play too (Android 8 or later).
 import { FORM_NOTE as formNote } from './form-note.mjs';
 
 export default {
   appStoreId: "6760132566",
   lastModified: "2026-10-26",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.brewmeter",
-  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android",
+  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android 8.0 or later",
   applicationCategory: "HealthApplication",
   currency: {
     "de-DE": "EUR", "en-US": "USD", "es-ES": "EUR", "es-MX": "MXN", "fr-FR": "EUR",
@@ -36,13 +36,13 @@ export default {
   ],
   locales: {
     en: {
-      title: "BrewMeter: caffeine tracker and drink log for iPhone",
-      description: "Log coffee, tea or an energy drink in one tap and see an estimate of the caffeine left at bedtime. Free on iPhone and iPad; Pro is a one-time purchase.",
+      title: "BrewMeter: caffeine tracker for iPhone and Android",
+      description: "Log coffee, tea or an energy drink in one tap and see an estimate of the caffeine left at bedtime. Free on iPhone, iPad and Android; Pro is a one-time purchase.",
       hero: {
-        eyebrow: "Caffeine tracker for iPhone and iPad",
+        eyebrow: "Caffeine tracker for iPhone, iPad and Android",
         h1: "A caffeine tracker that logs your coffee in one tap",
         intro: "Tap a drink to log it with its serving and its caffeine in mg. BrewMeter keeps what you drank today apart from its estimate of the caffeine still in your system.",
-        note: "Free on the App Store, with an optional one-time Pro purchase. Requires iOS 17.",
+        note: "Free on the App Store and Google Play, with an optional one-time Pro purchase. Requires iOS 17 or Android 8.",
         guide: "Calculate caffeine from mg per 100 mL",
       },
       alts: [
@@ -102,12 +102,12 @@ export default {
     },
     fr: {
       title: "BrewMeter : suivi de la caféine du café, thé et boissons",
-      description: "Notez un café, un thé ou une boisson énergisante en un tap et voyez la caféine estimée au coucher. Gratuit sur iPhone et iPad, Pro en achat unique.",
+      description: "Notez un café, un thé ou une boisson énergisante en un tap et voyez la caféine estimée au coucher. Gratuit sur iPhone, iPad et Android, Pro en achat unique.",
       hero: {
-        eyebrow: "Suivi de caféine pour iPhone et iPad",
+        eyebrow: "Suivi de caféine pour iPhone, iPad et Android",
         h1: "Suivre sa caféine en notant chaque café en un tap",
         intro: "Touchez une boisson pour l'enregistrer avec sa portion et sa caféine en mg. BrewMeter sépare ce que vous avez bu aujourd'hui de son estimation de la caféine encore présente.",
-        note: "Gratuit sur l'App Store, avec un achat unique Pro facultatif. Nécessite iOS 17.",
+        note: "Gratuit sur l'App Store et Google Play, avec un achat unique Pro facultatif. Nécessite iOS 17 ou Android 8.",
         guide: "Calculer la caféine à partir des mg pour 100 mL",
       },
       alts: [
@@ -169,10 +169,10 @@ export default {
       title: "BrewMeter: Koffein-Tracker für Kaffee, Tee und Getränke",
       description: "Erfasse Kaffee, Tee oder einen Energydrink mit einem Tippen und sieh, wie viel Koffein zur Schlafenszeit geschätzt übrig ist. Gratis, Pro als Einmalkauf.",
       hero: {
-        eyebrow: "Koffein-Tracker für iPhone und iPad",
+        eyebrow: "Koffein-Tracker für iPhone, iPad und Android",
         h1: "Ein Koffein-Tracker, der jeden Kaffee mit einem Tippen erfasst",
         intro: "Tippe auf ein Getränk, um es mit Portion und Koffein in mg zu speichern. BrewMeter trennt, was du heute getrunken hast, von der Schätzung, wie viel Koffein noch wirkt.",
-        note: "Gratis im App Store, mit optionalem Pro als Einmalkauf. Erfordert iOS 17.",
+        note: "Gratis im App Store und bei Google Play, mit optionalem Pro als Einmalkauf. Erfordert iOS 17 oder Android 8.",
         guide: "Koffein aus mg pro 100 mL berechnen",
       },
       alts: [
@@ -232,12 +232,12 @@ export default {
     },
     es: {
       title: "BrewMeter: control de cafeína de café, té y bebidas",
-      description: "Registra un café, un té o una bebida energética con un toque y consulta la cafeína estimada al acostarte. Gratis en iPhone y iPad; Pro es una compra única.",
+      description: "Registra un café, un té o una bebida energética con un toque y consulta la cafeína estimada al acostarte. Gratis en iPhone, iPad y Android; Pro es una compra única.",
       hero: {
-        eyebrow: "Control de cafeína para iPhone y iPad",
+        eyebrow: "Control de cafeína para iPhone, iPad y Android",
         h1: "Un registro de cafeína que anota cada café con un toque",
         intro: "Toca una bebida para registrarla con su ración y su cafeína en mg. BrewMeter separa lo que has bebido hoy de su estimación de la cafeína que aún queda en tu cuerpo.",
-        note: "Gratis en la App Store, con una compra única Pro opcional. Requiere iOS 17.",
+        note: "Gratis en la App Store y Google Play, con una compra única Pro opcional. Requiere iOS 17 o Android 8.",
         guide: "Calcular la cafeína a partir de mg por 100 mL",
       },
       alts: [
@@ -296,7 +296,7 @@ export default {
       formNote: formNote.es,
     },
     "es-MX": {
-      description: "Registra un café, un té o una bebida energética con un toque y ve cuánta cafeína estimada te queda a la hora de dormir. Gratis en iPhone y iPad; Pro se paga una sola vez.",
+      description: "Registra un café, un té o una bebida energética con un toque y ve cuánta cafeína estimada te queda a la hora de dormir. Gratis en iPhone, iPad y Android; Pro se paga una sola vez.",
       hero: {
         intro: "Toca una bebida para registrarla con su porción y su cafeína en mg. BrewMeter separa lo que bebiste hoy de su estimación de la cafeína que todavía queda en tu cuerpo.",
       },
@@ -311,12 +311,12 @@ export default {
     },
     it: {
       title: "BrewMeter: monitoraggio della caffeina di caffè e tè",
-      description: "Registra un caffè, un tè o una bevanda energetica con un tocco e guarda la caffeina stimata all'ora di dormire. Gratis su iPhone e iPad, Pro con acquisto unico.",
+      description: "Registra un caffè, un tè o una bevanda energetica con un tocco e guarda la caffeina stimata all'ora di dormire. Gratis su iPhone, iPad e Android, Pro con acquisto unico.",
       hero: {
-        eyebrow: "Monitoraggio della caffeina per iPhone e iPad",
+        eyebrow: "Monitoraggio della caffeina per iPhone, iPad e Android",
         h1: "Un diario della caffeina che registra ogni caffè con un tocco",
         intro: "Tocca una bevanda per registrarla con la porzione e la caffeina in mg. BrewMeter tiene separato ciò che hai bevuto oggi dalla stima della caffeina ancora in circolo.",
-        note: "Gratis sull'App Store, con un acquisto unico Pro facoltativo. Richiede iOS 17.",
+        note: "Gratis sull'App Store e su Google Play, con un acquisto unico Pro facoltativo. Richiede iOS 17 o Android 8.",
         guide: "Calcolare la caffeina dai mg per 100 mL",
       },
       alts: [
@@ -376,12 +376,12 @@ export default {
     },
     ja: {
       title: "BrewMeter：コーヒーやお茶のカフェイン管理アプリ",
-      description: "コーヒー、お茶、エナジードリンクをワンタップで記録し、就寝時に残るカフェインの推定量を確認できます。iPhoneとiPadで無料、Proは買い切りです。",
+      description: "コーヒー、お茶、エナジードリンクをワンタップで記録し、就寝時に残るカフェインの推定量を確認できます。iPhone、iPad、Androidで無料、Proは買い切りです。",
       hero: {
-        eyebrow: "iPhone・iPad用カフェイン管理アプリ",
+        eyebrow: "iPhone・iPad・Android用カフェイン管理アプリ",
         h1: "コーヒーをワンタップで記録するカフェイン管理アプリ",
         intro: "飲み物をタップすると、量とカフェイン（mg）が記録されます。今日飲んだ量と、体内に残るカフェインの推定値は分けて表示されます。",
-        note: "App Storeで無料。Proは任意の買い切りです。iOS 17以降が必要です。",
+        note: "App StoreとGoogle Playで無料。Proは任意の買い切りです。iOS 17以降またはAndroid 8以降が必要です。",
         guide: "100 mLあたりのmgからカフェイン量を計算する",
       },
       alts: [
@@ -441,12 +441,12 @@ export default {
     },
     pt: {
       title: "BrewMeter: controle de cafeína do café, chá e bebidas",
-      description: "Registre um café, um chá ou um energético com um toque e veja a cafeína estimada na hora de dormir. Grátis no iPhone e iPad; o Pro é uma compra única.",
+      description: "Registre um café, um chá ou um energético com um toque e veja a cafeína estimada na hora de dormir. Grátis no iPhone, iPad e Android; o Pro é uma compra única.",
       hero: {
-        eyebrow: "Controle de cafeína para iPhone e iPad",
+        eyebrow: "Controle de cafeína para iPhone, iPad e Android",
         h1: "Um controle de cafeína que registra cada café com um toque",
         intro: "Toque em uma bebida para registrá-la com a porção e a cafeína em mg. O BrewMeter separa o que você bebeu hoje da estimativa da cafeína que ainda está no corpo.",
-        note: "Grátis na App Store, com uma compra única Pro opcional. Requer iOS 17.",
+        note: "Grátis na App Store e no Google Play, com uma compra única Pro opcional. Requer iOS 17 ou Android 8.",
         guide: "Calcular a cafeína a partir de mg por 100 mL",
       },
       alts: [

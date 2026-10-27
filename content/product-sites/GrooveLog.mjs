@@ -3,14 +3,14 @@
 // (identical to the listings read 2026-10-26), the three store screenshots.
 // In-App Purchases read 2026-10-26: US Pro Monthly $2.99, Yearly $12.99,
 // Lifetime $29.99; FR/DE/ES 2,99 € / 14,99 € / 34,99 €. Requires iOS 17.
-// iPhone and iPad. Not on Google Play. Guide pages are carried unchanged.
+// iPhone and iPad. On Google Play too (Android 8 or later). Guide pages are carried unchanged.
 import { FORM_NOTE as formNote } from './form-note.mjs';
 
 export default {
   appStoreId: "6760195408",
   lastModified: "2026-10-26",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.groovelog",
-  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android",
+  operatingSystem: "iOS 17.0 or later, iPadOS 17.0 or later, Android 8.0 or later",
   applicationCategory: "HealthApplication",
   currency: { "de-DE": "EUR", "en-US": "USD", "es-ES": "EUR", "fr-FR": "EUR" },
   guides: {
@@ -31,10 +31,10 @@ export default {
       title: "GrooveLog: Grease the Groove pull-up coach",
       description: "Plan small pull-up, push-up and hold sets through the day with Grease the Groove. Log each set in one tap, with reminders and a private journal.",
       hero: {
-        eyebrow: "Grease the Groove for iPhone and iPad",
+        eyebrow: "Grease the Groove for iPhone, iPad and Android",
         h1: "A Grease the Groove coach for pull-ups and small daily sets",
         intro: "GrooveLog suggests your next easy set, records it in one tap and spaces reminders through the day. Skip a day and nothing piles up for tomorrow.",
-        note: "Free on the App Store, with optional Pro. Requires iOS 17.",
+        note: "Free on the App Store and Google Play, with optional Pro. Requires iOS 17 or Android 8.",
         guide: "Read the Grease the Groove journal guide",
       },
       alts: [
@@ -94,10 +94,10 @@ export default {
       title: "GrooveLog : coach tractions en Grease the Groove",
       description: "Planifiez de petites séries de tractions, pompes et gainage au fil de la journée. Notez chaque série d'un toucher, avec rappels et journal privé.",
       hero: {
-        eyebrow: "Grease the Groove sur iPhone et iPad",
+        eyebrow: "Grease the Groove sur iPhone, iPad et Android",
         h1: "Un coach Grease the Groove pour les tractions et les petites séries du quotidien",
         intro: "GrooveLog propose votre prochaine série facile, l'enregistre d'un toucher et espace les rappels dans la journée. Un jour sauté ne s'ajoute pas au lendemain.",
-        note: "Gratuit sur l'App Store, avec Pro en option. Nécessite iOS 17.",
+        note: "Gratuit sur l'App Store et Google Play, avec Pro en option. Nécessite iOS 17 ou Android 8.",
         guide: "Lire le guide du journal Grease the Groove",
       },
       alts: [
@@ -157,10 +157,10 @@ export default {
       title: "GrooveLog: Klimmzug-Coach für Grease the Groove",
       description: "Plane kleine Sätze Klimmzüge, Liegestütze und Halteübungen über den Tag. Jeder Satz mit einem Tippen, mit Erinnerungen und privatem Protokoll.",
       hero: {
-        eyebrow: "Grease the Groove für iPhone und iPad",
+        eyebrow: "Grease the Groove für iPhone, iPad und Android",
         h1: "Ein Grease-the-Groove-Coach für Klimmzüge und kleine Sätze im Alltag",
         intro: "GrooveLog schlägt deinen nächsten leichten Satz vor, speichert ihn mit einem Tippen und verteilt Erinnerungen über den Tag. Ein ausgelassener Tag wird nicht auf morgen draufgepackt.",
-        note: "Kostenlos im App Store, mit optionalem Pro. Erfordert iOS 17.",
+        note: "Kostenlos im App Store und bei Google Play, mit optionalem Pro. Erfordert iOS 17 oder Android 8.",
         guide: "Zum Leitfaden für das Grease-the-Groove-Protokoll",
       },
       alts: [
@@ -220,10 +220,10 @@ export default {
       title: "GrooveLog: coach de dominadas con Grease the Groove",
       description: "Planifica pequeñas series de dominadas, flexiones y planchas a lo largo del día. Anota cada serie con un toque, con avisos y un registro privado.",
       hero: {
-        eyebrow: "Grease the Groove para iPhone y iPad",
+        eyebrow: "Grease the Groove para iPhone, iPad y Android",
         h1: "Un coach de Grease the Groove para dominadas y pequeñas series diarias",
         intro: "GrooveLog te propone la siguiente serie fácil, la guarda con un toque y reparte los avisos durante el día. Si te saltas un día, no se acumula para mañana.",
-        note: "Gratis en la App Store, con Pro opcional. Requiere iOS 17.",
+        note: "Gratis en la App Store y Google Play, con Pro opcional. Requiere iOS 17 o Android 8.",
         guide: "Leer la guía del diario Grease the Groove",
       },
       alts: [
