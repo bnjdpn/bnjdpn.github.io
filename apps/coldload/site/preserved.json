@@ -1,0 +1,443 @@
+{
+  "de-DE": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Wird gesendet…\" data-success=\"Nachricht gesendet. Danke.\" data-error=\"Die Nachricht konnte nicht gesendet werden. Bitte erneut versuchen.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Kategorie</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Frage\">Frage</option><option value=\"Fehler\">Fehler</option><option value=\"Barrierefreiheit\">Barrierefreiheit</option><option value=\"Datenschutz\">Datenschutz</option><option value=\"Sonstiges\">Sonstiges</option></select></label>\n        <label><span>Ihre E-Mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>App-Version</span><input type=\"text\" name=\"app_version\"></label><label><span>Betriebssystemversion</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Nachricht</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Nachricht senden</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Rechtliche Links\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/de-DE/privacy.html\">Datenschutz</a><a href=\"#contact\">Support</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/de-DE/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "en-AU": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Sending…\" data-success=\"Message sent. Thank you.\" data-error=\"The message could not be sent. Please try again.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Category</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Question\">Question</option><option value=\"Bug\">Bug</option><option value=\"Accessibility\">Accessibility</option><option value=\"Privacy\">Privacy</option><option value=\"Other\">Other</option></select></label>\n        <label><span>Your email</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>App version</span><input type=\"text\" name=\"app_version\"></label><label><span>OS version</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Message</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Send message</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Legal links\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/en-AU/privacy.html\">Privacy</a><a href=\"#contact\">Support</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/en-AU/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "en-CA": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Sending…\" data-success=\"Message sent. Thank you.\" data-error=\"The message could not be sent. Please try again.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Category</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Question\">Question</option><option value=\"Bug\">Bug</option><option value=\"Accessibility\">Accessibility</option><option value=\"Privacy\">Privacy</option><option value=\"Other\">Other</option></select></label>\n        <label><span>Your email</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>App version</span><input type=\"text\" name=\"app_version\"></label><label><span>OS version</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Message</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Send message</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Legal links\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/en-CA/privacy.html\">Privacy</a><a href=\"#contact\">Support</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/en-CA/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "en-GB": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Sending…\" data-success=\"Message sent. Thank you.\" data-error=\"The message could not be sent. Please try again.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Category</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Question\">Question</option><option value=\"Bug\">Bug</option><option value=\"Accessibility\">Accessibility</option><option value=\"Privacy\">Privacy</option><option value=\"Other\">Other</option></select></label>\n        <label><span>Your email</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>App version</span><input type=\"text\" name=\"app_version\"></label><label><span>OS version</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Message</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Send message</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Legal links\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/en-GB/privacy.html\">Privacy</a><a href=\"#contact\">Support</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/en-GB/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "en-US": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Sending…\" data-success=\"Message sent. Thank you.\" data-error=\"The message could not be sent. Please try again.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Category</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Question\">Question</option><option value=\"Bug\">Bug</option><option value=\"Accessibility\">Accessibility</option><option value=\"Privacy\">Privacy</option><option value=\"Other\">Other</option></select></label>\n        <label><span>Your email</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>App version</span><input type=\"text\" name=\"app_version\"></label><label><span>OS version</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Message</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Send message</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Legal links\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/en-US/privacy.html\">Privacy</a><a href=\"#contact\">Support</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/en-US/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "es-ES": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Enviando…\" data-success=\"Mensaje enviado. Gracias.\" data-error=\"No se pudo enviar el mensaje. Inténtalo de nuevo.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Categoría</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Pregunta\">Pregunta</option><option value=\"Error\">Error</option><option value=\"Accesibilidad\">Accesibilidad</option><option value=\"Privacidad\">Privacidad</option><option value=\"Otro\">Otro</option></select></label>\n        <label><span>Tu correo</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Versión de la app</span><input type=\"text\" name=\"app_version\"></label><label><span>Versión del sistema</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Mensaje</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Enviar mensaje</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Enlaces legales\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/es-ES/privacy.html\">Privacidad</a><a href=\"#contact\">Soporte</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/es-ES/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "es-MX": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Enviando…\" data-success=\"Mensaje enviado. Gracias.\" data-error=\"No se pudo enviar el mensaje. Inténtalo de nuevo.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Categoría</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Pregunta\">Pregunta</option><option value=\"Error\">Error</option><option value=\"Accesibilidad\">Accesibilidad</option><option value=\"Privacidad\">Privacidad</option><option value=\"Otro\">Otro</option></select></label>\n        <label><span>Tu correo</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Versión de la app</span><input type=\"text\" name=\"app_version\"></label><label><span>Versión del sistema</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Mensaje</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Enviar mensaje</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Enlaces legales\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/es-MX/privacy.html\">Privacidad</a><a href=\"#contact\">Soporte</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/es-MX/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "fr-CA": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Envoi…\" data-success=\"Message envoyé. Merci.\" data-error=\"Le message n’a pas pu être envoyé. Réessayez.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Catégorie</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Question\">Question</option><option value=\"Bug\">Bug</option><option value=\"Accessibilité\">Accessibilité</option><option value=\"Confidentialité\">Confidentialité</option><option value=\"Autre\">Autre</option></select></label>\n        <label><span>Votre e-mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Version de l’app</span><input type=\"text\" name=\"app_version\"></label><label><span>Version du système</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Message</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Envoyer</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Liens juridiques\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/fr-CA/privacy.html\">Confidentialité</a><a href=\"#contact\">Assistance</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/fr-CA/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "fr-FR": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Envoi…\" data-success=\"Message envoyé. Merci.\" data-error=\"Le message n’a pas pu être envoyé. Réessayez.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Catégorie</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Question\">Question</option><option value=\"Bug\">Bug</option><option value=\"Accessibilité\">Accessibilité</option><option value=\"Confidentialité\">Confidentialité</option><option value=\"Autre\">Autre</option></select></label>\n        <label><span>Votre e-mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Version de l’app</span><input type=\"text\" name=\"app_version\"></label><label><span>Version du système</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Message</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Envoyer</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Liens juridiques\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/fr-FR/privacy.html\">Confidentialité</a><a href=\"#contact\">Assistance</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/fr-FR/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "it": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Invio…\" data-success=\"Messaggio inviato. Grazie.\" data-error=\"Impossibile inviare. Riprova.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Categoria</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Domanda\">Domanda</option><option value=\"Errore\">Errore</option><option value=\"Accessibilità\">Accessibilità</option><option value=\"Privacy\">Privacy</option><option value=\"Altro\">Altro</option></select></label>\n        <label><span>La tua e-mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Versione app</span><input type=\"text\" name=\"app_version\"></label><label><span>Versione del sistema</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Messaggio</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Invia messaggio</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Link legali\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/it/privacy.html\">Privacy</a><a href=\"#contact\">Assistenza</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/it/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "ja": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"送信中…\" data-success=\"送信しました。ありがとうございます。\" data-error=\"送信できませんでした。もう一度お試しください。\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>カテゴリ</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"質問\">質問</option><option value=\"不具合\">不具合</option><option value=\"アクセシビリティ\">アクセシビリティ</option><option value=\"プライバシー\">プライバシー</option><option value=\"その他\">その他</option></select></label>\n        <label><span>メールアドレス</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>アプリのバージョン</span><input type=\"text\" name=\"app_version\"></label><label><span>OSバージョン</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>メッセージ</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">送信</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"法的情報\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/ja/privacy.html\">プライバシー</a><a href=\"#contact\">サポート</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/ja/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "ko": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"보내는 중…\" data-success=\"보냈습니다. 감사합니다.\" data-error=\"보내지 못했습니다. 다시 시도해 주세요.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>분류</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"질문\">질문</option><option value=\"버그\">버그</option><option value=\"손쉬운 사용\">손쉬운 사용</option><option value=\"개인정보 보호\">개인정보 보호</option><option value=\"기타\">기타</option></select></label>\n        <label><span>이메일</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>앱 버전</span><input type=\"text\" name=\"app_version\"></label><label><span>OS 버전</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>메시지</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">메시지 보내기</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"법적 링크\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/ko/privacy.html\">개인정보 보호</a><a href=\"#contact\">지원</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/ko/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "nl-NL": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Verzenden…\" data-success=\"Bericht verzonden. Bedankt.\" data-error=\"Verzenden mislukt. Probeer opnieuw.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Categorie</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Vraag\">Vraag</option><option value=\"Fout\">Fout</option><option value=\"Toegankelijkheid\">Toegankelijkheid</option><option value=\"Privacy\">Privacy</option><option value=\"Overig\">Overig</option></select></label>\n        <label><span>Je e-mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Appversie</span><input type=\"text\" name=\"app_version\"></label><label><span>Systeemversie</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Bericht</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Bericht verzenden</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Juridische links\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/nl-NL/privacy.html\">Privacy</a><a href=\"#contact\">Support</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/nl-NL/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "pl": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Wysyłanie…\" data-success=\"Wysłano. Dziękujemy.\" data-error=\"Nie udało się wysłać. Spróbuj ponownie.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Kategoria</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Pytanie\">Pytanie</option><option value=\"Błąd\">Błąd</option><option value=\"Dostępność\">Dostępność</option><option value=\"Prywatność\">Prywatność</option><option value=\"Inne\">Inne</option></select></label>\n        <label><span>Twój e-mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Wersja aplikacji</span><input type=\"text\" name=\"app_version\"></label><label><span>Wersja systemu</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Wiadomość</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Wyślij</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Linki prawne\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/pl/privacy.html\">Prywatność</a><a href=\"#contact\">Pomoc</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/pl/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "pt-BR": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Enviando…\" data-success=\"Mensagem enviada. Obrigado.\" data-error=\"Não foi possível enviar. Tente novamente.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Categoria</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Pergunta\">Pergunta</option><option value=\"Erro\">Erro</option><option value=\"Acessibilidade\">Acessibilidade</option><option value=\"Privacidade\">Privacidade</option><option value=\"Outro\">Outro</option></select></label>\n        <label><span>Seu e-mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Versão do app</span><input type=\"text\" name=\"app_version\"></label><label><span>Versão do sistema</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Mensagem</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Enviar mensagem</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Links legais\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/pt-BR/privacy.html\">Privacidade</a><a href=\"#contact\">Suporte</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/pt-BR/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "ru": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Отправка…\" data-success=\"Отправлено. Спасибо.\" data-error=\"Не удалось отправить. Повторите попытку.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Категория</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Вопрос\">Вопрос</option><option value=\"Ошибка\">Ошибка</option><option value=\"Доступность\">Доступность</option><option value=\"Конфиденциальность\">Конфиденциальность</option><option value=\"Другое\">Другое</option></select></label>\n        <label><span>Ваш e-mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Версия приложения</span><input type=\"text\" name=\"app_version\"></label><label><span>Версия ОС</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Сообщение</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Отправить</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Правовая информация\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/ru/privacy.html\">Конфиденциальность</a><a href=\"#contact\">Поддержка</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/ru/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "sv": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Skickar…\" data-success=\"Skickat. Tack.\" data-error=\"Kunde inte skickas. Försök igen.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Kategori</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Fråga\">Fråga</option><option value=\"Fel\">Fel</option><option value=\"Tillgänglighet\">Tillgänglighet</option><option value=\"Integritet\">Integritet</option><option value=\"Annat\">Annat</option></select></label>\n        <label><span>Din e-post</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Appversion</span><input type=\"text\" name=\"app_version\"></label><label><span>Systemversion</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Meddelande</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Skicka</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Juridiska länkar\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/sv/privacy.html\">Integritet</a><a href=\"#contact\">Support</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/sv/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "tr": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Gönderiliyor…\" data-success=\"Mesaj gönderildi. Teşekkürler.\" data-error=\"Gönderilemedi. Tekrar deneyin.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Kategori</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Soru\">Soru</option><option value=\"Hata\">Hata</option><option value=\"Erişilebilirlik\">Erişilebilirlik</option><option value=\"Gizlilik\">Gizlilik</option><option value=\"Diğer\">Diğer</option></select></label>\n        <label><span>E-postanız</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Uygulama sürümü</span><input type=\"text\" name=\"app_version\"></label><label><span>Sistem sürümü</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Mesaj</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Mesaj gönder</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Yasal bağlantılar\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/tr/privacy.html\">Gizlilik</a><a href=\"#contact\">Destek</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/tr/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "uk": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"Надсилання…\" data-success=\"Надіслано. Дякуємо.\" data-error=\"Не вдалося надіслати. Спробуйте ще раз.\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>Категорія</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"Запитання\">Запитання</option><option value=\"Помилка\">Помилка</option><option value=\"Доступність\">Доступність</option><option value=\"Приватність\">Приватність</option><option value=\"Інше\">Інше</option></select></label>\n        <label><span>Ваш e-mail</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>Версія застосунку</span><input type=\"text\" name=\"app_version\"></label><label><span>Версія ОС</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>Повідомлення</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">Надіслати</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"Правові посилання\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/uk/privacy.html\">Приватність</a><a href=\"#contact\">Підтримка</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/uk/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "zh-Hans": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"正在发送…\" data-success=\"已发送，谢谢。\" data-error=\"发送失败，请重试。\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>类别</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"问题\">问题</option><option value=\"错误\">错误</option><option value=\"辅助功能\">辅助功能</option><option value=\"隐私\">隐私</option><option value=\"其他\">其他</option></select></label>\n        <label><span>您的邮箱</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>App 版本</span><input type=\"text\" name=\"app_version\"></label><label><span>系统版本</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>消息</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">发送</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"法律链接\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/zh-Hans/privacy.html\">隐私</a><a href=\"#contact\">支持</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/zh-Hans/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  },
+  "zh-Hant": {
+    "form": "<form class=\"support-form\" action=\"/api/contact\" method=\"POST\" data-sending=\"傳送中…\" data-success=\"已傳送，謝謝。\" data-error=\"無法傳送，請再試一次。\">\n        <input type=\"hidden\" name=\"app\" value=\"ColdLoad\"><input type=\"hidden\" name=\"_subject\" value=\"ColdLoad support request\"><label class=\"honeypot\" aria-hidden=\"true\">Leave empty<input type=\"text\" name=\"_gotcha\" tabindex=\"-1\" autocomplete=\"off\"></label>\n        <label><span>類別</span><select name=\"category\" required><option value=\"\" selected disabled>—</option><option value=\"問題\">問題</option><option value=\"錯誤\">錯誤</option><option value=\"輔助使用\">輔助使用</option><option value=\"私隱\">私隱</option><option value=\"其他\">其他</option></select></label>\n        <label><span>您的電郵</span><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label>\n        <label><span>App 版本</span><input type=\"text\" name=\"app_version\"></label><label><span>系統版本</span><input type=\"text\" name=\"os_version\"></label>\n        <label class=\"message-field\"><span>訊息</span><textarea name=\"message\" required></textarea></label>\n        <div class=\"cf-turnstile\" data-sitekey=\"0x4AAAAAAFb8sZbCULV4skmB\" data-action=\"contact\"></div>\n        <button type=\"submit\">傳送</button><p class=\"form-status\" role=\"status\" aria-live=\"polite\"></p>\n      </form>",
+    "legalNav": "<nav aria-label=\"法律連結\"><a id=\"privacy\" data-privacy-redirect href=\"https://bnjdpn.com/ColdLoad/zh-Hant/privacy.html\">私隱</a><a href=\"#contact\">支援</a></nav>",
+    "privacy": "https://bnjdpn.com/ColdLoad/zh-Hant/privacy.html",
+    "ids": [
+      "main",
+      "coldload-title",
+      "hero-title",
+      "method",
+      "method-title",
+      "features",
+      "features-title",
+      "toolchain-title",
+      "more-apps",
+      "related-title",
+      "contact",
+      "contact-title",
+      "privacy"
+    ],
+    "scripts": []
+  }
+}
