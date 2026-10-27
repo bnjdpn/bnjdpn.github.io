@@ -129,6 +129,14 @@ def assemble(spec, output):
         if path.is_symlink() or not path.resolve().is_relative_to(ROOT.resolve()) or not path.is_file() or not path.stat().st_size:
             raise ValueError(f'Missing/unsafe server input: {name}')
         server[target] = {'source': name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+    # Validate app-owned cache rules before creating any candidate directory.
+    headers = None
+    if 'BrewMeter/assets/roast/roast.css' in targets:
+        if '_headers' in targets:
+            raise ValueError('Refusing to overwrite planned root headers')
+        headers = (ROOT / 'apps/brewmeter/site/cache-headers.txt').read_bytes()
+        if headers != b'/BrewMeter/assets/roast/*\n  Cache-Control: public, max-age=14400\n':
+            raise ValueError('Unexpected BrewMeter cache rule')
     # Validate everything before creating a candidate. Manifest stays outside the public directory.
     artifact = output / 'public'
     artifact.mkdir(parents=True)
@@ -137,12 +145,17 @@ def assemble(spec, output):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
     (artifact / '_routes.json').write_text(json.dumps(FUNCTION_ROUTES, indent=2) + '\n')
+    # Pages reads headers only at the public root. Keep the app stage allowlist strict.
+    cache_headers = None
+    if headers is not None:
+        (artifact / '_headers').write_bytes(headers)
+        cache_headers = hashlib.sha256(headers).hexdigest()
     for target, record in server.items():
         path = output / target
         path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / record['source'], path)
     report = {'publishable': False, 'qualification': 'Local candidate only; no served-byte, store URL, contact delivery or provider qualification.',
-              'sources': provenance, 'files': len(plan) + 1, 'historical_prefixes': sorted(LEGACY), 'gone_prefixes': GONE,
+              'sources': provenance, 'files': len(plan) + 1 + int(cache_headers is not None), 'cache_headers_sha256': cache_headers, 'historical_prefixes': sorted(LEGACY), 'gone_prefixes': GONE,
               'server_inputs': server, 'function_routes': FUNCTION_ROUTES,
               'routing_sha256': hashlib.sha256((artifact / '_routes.json').read_bytes()).hexdigest(),
               'direct_upload': {'cwd': str(output), 'assets': 'public', 'project': 'bnjdpn-site-506',
