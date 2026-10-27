@@ -1,12 +1,14 @@
 // Petites Nuits page copy, version 1.2.5 on sale on the App Store.
 // Sources: App Store description and release notes read 2026-10-26, the three
-// store screenshots (en-GB shows the 24-hour diary instead of the trends chart).
+// store screenshots (en-GB shows the 24-hour diary instead of the trends grid).
+// Landing assets refreshed from the public App Store 1.2.5 screenshots on 2026-10-27;
+// see apps/petites-nuits/site/ASSETS.md.
 // Google Play listing com.bnjdpn.petitesnuits answers 200.
 // In-App Purchase read 2026-10-26: Sleep Diary PDF $3.99 (US), £3.99 (UK),
 // Carnet de sommeil PDF 4,99 € (FR), one-time. Requires iOS 17.
 export default {
   appStoreId: "6764533941",
-  lastModified: "2026-10-26",
+  lastModified: "2026-10-27",
   playUrl: "https://play.google.com/store/apps/details?id=com.bnjdpn.petitesnuits",
   operatingSystem: "iOS 17.0 or later, Android",
   applicationCategory: "LifestyleApplication",
@@ -20,7 +22,7 @@ export default {
   locales: {
     en: {
       title: "Petites Nuits: baby sleep log for nights and naps",
-      description: "Log your baby's nights, naps and wakeups, read noon-to-noon totals and preview the full PDF diary for free. A one-time purchase unlocks sharing and printing.",
+      description: "Log your baby's nights, naps and wakeups, read noon-to-noon totals and preview the full PDF diary for free. A one-time purchase enables sharing and printing.",
       hero: {
         eyebrow: "Baby sleep diary for iPhone and Android",
         h1: "A baby sleep log for nights, naps and wakeups",
@@ -30,7 +32,7 @@ export default {
       alts: [
         "New sleep entry in Petites Nuits: night or nap, quick sleep log button, bedtime, wake time and mood on waking.",
         "A night in progress in Petites Nuits, started at 10:00 PM, with the Baby wakes up button.",
-        "Trends in Petites Nuits: sleep duration and wakeups over the last 14 nights.",
+        "Trends in Petites Nuits: recorded nights and naps, with their durations.",
       ],
       sections: {
         log: {
@@ -96,7 +98,7 @@ export default {
       formNote: "This form is protected against spam by Cloudflare Turnstile, which checks technical browser signals, including your IP address. Cloudflare forwards your message to the publisher.",
     },
     "en-GB": {
-      description: "Log your baby's nights, naps and wakeups, read noon-to-noon totals and preview the full PDF diary for free. A one-off purchase unlocks sharing and printing.",
+      description: "Log your baby's nights, naps and wakeups, read noon-to-noon totals and preview the full PDF diary for free. A one-off purchase enables sharing and printing.",
       hero: {
         note: "Free, with a one-off Sleep Diary PDF purchase. Requires iOS 17 on iPhone.",
       },
@@ -128,7 +130,7 @@ export default {
       alts: [
         "Nouveau sommeil dans Petites Nuits : nuit ou sieste, saisie rapide, coucher, réveil et humeur au réveil.",
         "Une nuit en cours dans Petites Nuits, commencée à 22:00, avec le bouton Bébé se réveille.",
-        "Évolution dans Petites Nuits : durée de sommeil et réveils sur les 14 dernières nuits.",
+        "Évolution dans Petites Nuits : nuits et siestes enregistrées, avec leurs durées.",
       ],
       sections: {
         log: {
