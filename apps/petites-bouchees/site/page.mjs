@@ -107,7 +107,7 @@ ${hreflang}
 <link rel="icon" href="${up}assets/app-icon.png">
 <link rel="apple-touch-icon" href="${up}assets/app-icon-512.png">
 <link rel="manifest" href="${up}site.webmanifest">
-<link rel="preload" href="${up}assets/spoon/fonts/literata-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${up}assets/spoon/fonts/baloo-2-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${up}assets/spoon/spoon.css?v=${CSS_VERSION}">
 <meta name="author" content="Benjamin Dupin">
 <meta property="og:type" content="website">
