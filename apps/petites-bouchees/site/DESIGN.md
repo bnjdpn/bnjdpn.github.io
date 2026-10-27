@@ -7,7 +7,7 @@ Page produit de Petites Bouchées (https://bnjdpn.com/petites-bouchees/), géné
 - **Qui** : un parent pendant la diversification, souvent une main sur la cuillère et l’autre près du téléphone.
 - **Quel moment** : juste après la cuillère, avant d’oublier si bébé a aimé, est resté neutre ou n’a pas aimé.
 - **Quel problème** : retrouver la date, la purée ou le morceau, la réaction observée, puis laisser une fiche à la personne qui garde bébé.
-- **La preuve dans l’app** : le journal du 26 octobre (carotte en purée aimée, pomme en morceau neutre, banane en purée pas aimée) et l’écran de saisie, avec les trois boutons Aimé, Neutre, Pas aimé.
+- **La preuve dans l’app** : le journal (carotte du 24 octobre servie en purée, pomme du 21 octobre en texture écrasée, banane du 17 octobre observée pendant le repas) et l’écran de saisie de l’avocat du 26 octobre, avec les boutons Aimé, Neutre, Pas aimé.
 
 ## Trois options
 
@@ -21,13 +21,13 @@ Toute la page est le PDF de la fiche de garde, déplié comme un formulaire. Fid
 
 ### Option C : « Le couvert » (retenue)
 
-Le haut de page est le couvert de la chaise haute : une cuillère vue de dessus, la purée de carotte encore dedans, le tampon Aimé qui se pose sur le manche, puis les trois lignes du journal sous la date du 26 octobre. La suite suit le geste du parent : ce que le journal a gardé, la réaction pendant que la cuillère est sortie, les 197 aliments, la fiche pour la personne qui garde bébé.
+Le haut de page est le couvert de la chaise haute : une cuillère vue de dessus, plus petite, décalée sur la capture réelle du journal, le tampon Aimé sur le manche. La suite suit le geste du parent : ce que le journal a gardé, la réaction pendant que la cuillère est sortie, les 197 aliments, la fiche pour la personne qui garde bébé.
 
 ## Pourquoi « Le couvert »
 
 - C’est l’objet dans la main au moment d’ouvrir l’app, et la question exacte : est-ce que bébé a aimé.
 - Élément mémorable unique : le tampon de réaction qui se pose sur la cuillère (un seul mouvement au chargement, coupé si l’utilisateur réduit les animations).
-- Contraste net : LoadSense est une journée sombre avec une horloge, TempoReps un tableau de salle, Petites Gouttes un tiroir de sachets bleu givre. Ici le thème est clair comme l’app, mais l’objet est une cuillère et un ticket de table, pas un congélateur. Police Literata seule (OFL), absente des trois autres pages.
+- Contraste net : LoadSense est une journée sombre avec une horloge, TempoReps un tableau de salle, Petites Gouttes un tiroir de sachets bleu givre. Ici le thème est clair comme l’app, mais l’objet est une cuillère posée sur la capture du journal, pas un congélateur. Police Literata seule (OFL), absente des trois autres pages.
 
 ## Test du template
 
@@ -35,7 +35,8 @@ Une app voisine (Petites Gouttes, Petites Nuits) n’aboutit pas à ce plan : pa
 
 ## Règles de la page
 
-- Ordre : titre, badges, cuillère et ticket ; journal ; réaction ; catalogue ; fiche de garde et transfert par fichier ; gratuit et Dossier de Bébé ; appel ; apps sœurs ; assistance.
+- Ordre : titre, badges, cuillère réduite et capture du journal ; texte du journal ; réaction ; catalogue ; fiche de garde et transfert par fichier ; gratuit et Dossier de Bébé ; appel ; apps sœurs ; assistance. Pas de tableau : les dates et les notes sont celles de la capture (carotte le 24 octobre, servie en purée ; pomme le 21 octobre, texture écrasée ; banane le 17 octobre, observée pendant le repas).
+- À partir de 960 px, la colonne de droite du haut de page porte la cuillère et la capture. À partir de 880 px, réaction, catalogue et fiche mettent le texte et la capture côte à côte.
 - Aucun conseil alimentaire ni âge recommandé. La pastille « Souvent ~4 m » / « Often ~4 mo » est décrite comme une pastille du catalogue. Les écrans décrivent les observations. L’app ne remplace pas un professionnel de santé.
 - Prix cités seulement s’ils sont dans FACTS : 6,99 € en France, 7,99 $ sur Google Play aux États-Unis. Le reste renvoie à la boutique. iPhone : Partage familial Apple. Android : compte Google.
 - Police unique, Literata 500 et 800, sous-ensemble latin (latin-1, dont œ), `font-display: swap`, préchargement du seul graisse 800. Environ 22 Ko par fichier.
@@ -66,5 +67,5 @@ Technique :
 
 - [x] WebKit iPhone à 375, 390 et 430 px, zoom 120 % et texte 120 %, menu de langue ouvert compris, sans débordement (fr-FR, en-US, en-GB).
 - [x] Desktop 1440 relu, sans débordement.
-- [x] Lighthouse mobile local : fr-FR performance 100, accessibilité 100, SEO 100 (LCP 1,7 s, CLS 0,004). en-US : 99, 100, 100.
+- [x] Lighthouse mobile local, après la capture dans le premier écran : fr-FR performance 100, accessibilité 100, SEO 100 (LCP 1,7 s, CLS 0,002).
 - [x] Confidentialité et assistance à un clic, badges officiels, fiches store de FACTS.

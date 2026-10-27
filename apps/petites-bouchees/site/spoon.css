@@ -74,65 +74,53 @@ a { color: var(--sage); }
 .bite-lang nav a { padding: 10px 12px; text-decoration: none; color: var(--ink); }
 .bite-lang nav a[aria-current] { background: var(--band); font-weight: 800; }
 
-.bite-hero { max-width: var(--wrap); margin: 0 auto; padding: 8px var(--side) 28px; }
-.bite-lead { font-size: 1.2rem; margin-bottom: 18px; }
+.bite-hero { max-width: var(--wrap); margin: 0 auto; padding: 4px var(--side) 8px; }
+.bite-lead { font-size: 1.15rem; margin-bottom: 14px; }
 .bite-stores { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 8px; }
 .bite-store { line-height: 0; }
 .bite-store img { height: 40px; width: auto; max-width: 100%; }
-.bite-fine { margin-top: 18px; font-size: 0.95rem; color: var(--muted); }
+.bite-fine { margin: 10px 0 0; font-size: 0.95rem; color: var(--muted); }
 
-.bite-place { margin: 22px 0 0; }
-.bite-spoon { position: relative; max-width: 640px; }
+.bite-stage { position: relative; margin-top: 6px; }
+.bite-spoon { position: relative; z-index: 2; width: min(42vw, 156px); margin: 0 0 -22px 2px; }
 .bite-svg { width: 100%; height: auto; display: block; }
 .bite-stamp {
   position: absolute;
-  left: 46%;
-  top: 8%;
+  left: 48%;
+  top: 2%;
   margin: 0;
-  padding: 0.22em 0.48em 0.18em;
+  padding: 0.18em 0.42em 0.14em;
   background: #2F7A3A;
   color: #fff;
   font-weight: 800;
-  font-size: min(1.55rem, 6.4vw);
+  font-size: 0.92rem;
   line-height: 1;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  border: 3px solid var(--ink);
+  border: 2px solid var(--ink);
   transform: rotate(-11deg);
   animation: bite-land 0.7s cubic-bezier(.2, .8, .2, 1) both;
 }
 @keyframes bite-land {
-  from { transform: rotate(-11deg) translateY(-22px); }
+  from { transform: rotate(-11deg) translateY(-16px); }
   to { transform: rotate(-11deg) translateY(0); }
 }
-.bite-day { margin: 8px 0 0; font-weight: 800; font-size: clamp(1.4rem, 4vw, 2rem); color: var(--sage); }
-.bite-ticket { width: 100%; max-width: 34rem; border-collapse: collapse; margin-top: 6px; border-left: 6px solid var(--peach); }
-.bite-ticket th, .bite-ticket td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); font-size: min(1.08rem, 4.4vw); vertical-align: baseline; }
-.bite-ticket th { font-weight: 800; width: 38%; }
-.bite-tone { font-weight: 800; }
-.bite-tone-yes { color: #1F6B32; }
-.bite-tone-mid { color: #8A6400; }
-.bite-tone-no { color: #A33B34; }
-.bite-place figcaption, .bite-caption { font-size: 0.95rem; color: var(--muted); margin-top: 10px; }
+.bite-caption { font-size: 0.95rem; color: var(--muted); margin-top: 10px; }
 
-.bite-journal, .bite-foods, .bite-handover, .bite-kin, .bite-help {
-  max-width: 740px;
+.bite-hero-more { margin-top: 22px; }
+.bite-foods, .bite-handover, .bite-kin, .bite-help, .bite-offer {
+  max-width: var(--wrap);
   margin: 0 auto;
   padding: clamp(48px, 8vw, 88px) var(--side) 0;
 }
-.bite-offer {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: clamp(48px, 8vw, 88px) var(--side) 0;
-}
-.bite-journal p, .bite-foods p, .bite-hand-copy p { color: var(--ink); }
-.bite-shot { width: min(100%, 420px); margin: 22px auto 0; }
+.bite-foods p, .bite-handover p, .bite-hero-more p { color: var(--ink); }
+.bite-shot { width: 100%; max-width: 520px; margin: 0; }
 .bite-shot img { width: 100%; height: auto; border-radius: 22px; box-shadow: 0 0 0 1px var(--line); background: #fff; }
-.bite-journal .bite-shot img { box-shadow: 10px 10px 0 #7A9B5A; }
-.bite-caption { margin-left: auto; margin-right: auto; }
+.bite-stage .bite-shot img { box-shadow: 10px 10px 0 #7A9B5A; }
+.bite-split .bite-shot { margin-top: 18px; }
 
 .bite-taste { background: var(--band); margin-top: clamp(48px, 8vw, 88px); padding: clamp(40px, 7vw, 80px) var(--side); }
-.bite-wrap { max-width: 740px; margin: 0 auto; }
+.bite-split { max-width: var(--wrap); margin: 0 auto; }
 .bite-reacts { list-style: none; padding: 0; margin: 18px 0 8px; display: grid; gap: 8px; max-width: 40rem; }
 .bite-react { padding: 14px 16px; font-weight: 800; font-size: clamp(1.45rem, 5vw, 2rem); line-height: 1.1; color: var(--ink); }
 .bite-react-yes { background: #66BB6A; }
@@ -192,8 +180,17 @@ a { color: var(--sage); }
 .bite-foot small { display: block; margin-top: 16px; max-width: 46em; font-size: 0.78rem; line-height: 1.45; }
 
 @media (min-width: 960px) {
-  .bite-hero { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr); column-gap: clamp(28px, 4vw, 72px); align-items: center; }
-  .bite-fine { grid-column: 1 / -1; }
+  .bite-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 480px);
+    grid-template-areas: "top stage" "more stage";
+    column-gap: clamp(32px, 4vw, 72px);
+    align-items: start;
+  }
+  .bite-hero-top { grid-area: top; }
+  .bite-hero-more { grid-area: more; margin-top: 8px; }
+  .bite-stage { grid-area: stage; margin-top: 0; }
+  .bite-spoon { width: 180px; margin-bottom: -36px; }
 }
 @media (min-width: 720px) {
   .bite-store img { height: 48px; }
@@ -204,7 +201,10 @@ a { color: var(--sage); }
   .bite-paid { padding: 18px 22px 10px; }
 }
 @media (min-width: 880px) {
-  .bite-journal .bite-shot img { box-shadow: 12px 12px 0 #7A9B5A; }
+  .bite-split { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 420px); column-gap: clamp(28px, 4vw, 64px); align-items: start; }
+  .bite-split > div { grid-column: 1; grid-row: 1; }
+  .bite-split .bite-shot { grid-column: 2; grid-row: 1; width: 100%; margin-top: 0; }
+  .bite-stage .bite-shot img { box-shadow: 12px 12px 0 #7A9B5A; }
 }
 @media (min-width: 980px) {
   .bite-nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }

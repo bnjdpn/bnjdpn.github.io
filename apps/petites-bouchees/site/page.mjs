@@ -27,10 +27,12 @@ const SWATCH = ['#4CAF50', '#FF9800', '#D4A574', '#E57373', '#64B5F6', '#FFD54F'
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function screen(loc, name, alt, caption, up) {
+function screen(loc, name, alt, caption, up, eager) {
   const base = `${up}assets/spoon/${loc.shots}/${name}`;
-  const sizes = '(min-width: 880px) 380px, calc(100vw - 40px)';
-  return `<figure class="bite-shot"><picture><source type="image/avif" srcset="${base}-440.avif 440w, ${base}-880.avif 880w" sizes="${sizes}"><img src="${base}-880.webp" srcset="${base}-440.webp 440w, ${base}-880.webp 880w" sizes="${sizes}" width="880" height="1912" alt="${esc(alt)}" loading="lazy" decoding="async"></picture><figcaption class="bite-caption">${esc(caption)}</figcaption></figure>`;
+  const sizes = eager ? '(min-width: 960px) 460px, calc(100vw - 40px)' : '(min-width: 880px) 400px, calc(100vw - 40px)';
+  const loading = eager ? 'eager' : 'lazy';
+  const priority = eager ? ' fetchpriority="high"' : '';
+  return `<figure class="bite-shot"><picture><source type="image/avif" srcset="${base}-440.avif 440w, ${base}-880.avif 880w" sizes="${sizes}"><img src="${base}-880.webp" srcset="${base}-440.webp 440w, ${base}-880.webp 880w" sizes="${sizes}" width="880" height="1912" alt="${esc(alt)}" loading="${loading}"${priority} decoding="async"></picture><figcaption class="bite-caption">${esc(caption)}</figcaption></figure>`;
 }
 
 const spoon = `<svg class="bite-svg" viewBox="0 0 640 280" width="640" height="280" aria-hidden="true" focusable="false">
@@ -82,7 +84,6 @@ export function render(loc) {
     ],
   };
   const langs = LOCALES.map((l) => `<a href="${ORIGIN}${l.dir}" hreflang="${l.code}" lang="${l.code}"${l.code === loc.code ? ' aria-current="page"' : ''}>${esc(LOCALE_NAMES[l.code])}</a>`).join('');
-  const rows = t.rows.map(([food, how, reaction, tone]) => `<tr><th scope="row">${esc(food)}</th><td>${esc(how)}</td><td><span class="bite-tone bite-tone-${tone}">${esc(reaction)}</span></td></tr>`).join('');
   const reacts = t.reacts.map((word, i) => `<li class="bite-react bite-react-${['yes', 'mid', 'no'][i]}">${esc(word)}</li>`).join('');
   const swatches = t.swatches.map((name, i) => `<li><span class="bite-swatch" style="--swatch:${SWATCH[i]}"></span>${esc(name)}</li>`).join('');
   const pdfs = t.pdfs.map(([name, text]) => `<h3>${esc(name)}</h3><p>${esc(text)}</p>`).join('');
@@ -134,45 +135,47 @@ ${hreflang}
 <details class="bite-lang"><summary>${esc(ui.language)}</summary><nav aria-label="${esc(ui.language)}">${langs}</nav></details>
 </header>
 <main id="main">
-<section class="bite-hero" aria-labelledby="hero-title">
-<div class="bite-hero-copy">
+<section class="bite-hero" id="features" aria-labelledby="hero-title">
+<div class="bite-hero-top">
 <h1 id="hero-title">${esc(t.h1)}</h1>
 <p class="bite-lead">${esc(t.lead)}</p>
 ${stores(loc, ui, up)}
-</div>
-<figure class="bite-place">
-<div class="bite-spoon" role="img" aria-label="${esc(t.spoonLabel)}">${spoon}<p class="bite-stamp">${esc(t.stamp)}</p></div>
-<p class="bite-day">${esc(t.day)}</p>
-<table class="bite-ticket"><tbody>${rows}</tbody></table>
-<figcaption>${esc(t.ticketCaption)}</figcaption>
-</figure>
 <p class="bite-fine">${esc(t.fine)}</p>
-</section>
-<section class="bite-journal" id="features" aria-labelledby="journal-title">
-<div class="bite-journal-copy">
+</div>
+<div class="bite-stage">
+<div class="bite-spoon" role="img" aria-label="${esc(t.spoonLabel)}">${spoon}<p class="bite-stamp">${esc(t.stamp)}</p></div>
+${screen(loc, 'journal', t.journalAlt, t.journalCaption, up, true)}
+</div>
+<div class="bite-hero-more">
 <h2 id="journal-title">${esc(t.journalTitle)}</h2>
 ${t.journalBody.map((p) => `<p>${esc(p)}</p>`).join('')}
 </div>
-${screen(loc, 'journal', t.journalAlt, t.journalCaption, up)}
 </section>
 <section class="bite-taste" id="taste" aria-labelledby="taste-title">
-<div class="bite-wrap">
+<div class="bite-split">
+<div>
 <h2 id="taste-title">${esc(t.tasteTitle)}</h2>
 ${t.tasteBody.map((p) => `<p>${esc(p)}</p>`).join('')}
 <ul class="bite-reacts">${reacts}</ul>
 <p class="bite-aside">${esc(t.tasteNote)}</p>
+</div>
 ${screen(loc, 'taste', t.tasteAlt, t.tasteCaption, up)}
 </div>
 </section>
 <section class="bite-foods" id="foods" aria-labelledby="foods-title">
+<div class="bite-split">
+<div>
 <h2 id="foods-title">${esc(t.foodsTitle)}</h2>
 ${t.foodsBody.map((p) => `<p>${esc(p)}</p>`).join('')}
 <ul class="bite-key">${swatches}</ul>
 <p>${esc(t.allergens)}</p>
+</div>
 ${screen(loc, 'foods', t.foodsAlt, t.foodsCaption, up)}
+</div>
 </section>
 <section class="bite-handover" id="handover" aria-labelledby="hand-title">
-<div class="bite-hand-copy">
+<div class="bite-split">
+<div>
 <h2 id="hand-title">${esc(t.handTitle)}</h2>
 ${t.handBody.map((p) => `<p>${esc(p)}</p>`).join('')}
 <div class="bite-pdfs">${pdfs}</div>
@@ -182,6 +185,7 @@ ${t.handBody.map((p) => `<p>${esc(p)}</p>`).join('')}
 <p class="bite-aside">${esc(t.limit)}</p>
 </div>
 ${screen(loc, 'handover', t.handAlt, t.handCaption, up)}
+</div>
 </section>
 <section class="bite-offer" id="free-and-records" aria-labelledby="offer-title">
 <h2 id="offer-title">${esc(t.offerTitle)}</h2>
