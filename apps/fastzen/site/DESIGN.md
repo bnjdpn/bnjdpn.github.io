@@ -7,7 +7,7 @@ Page produit de FastZen (https://bnjdpn.com/FastZen/), générée par `page.mjs`
 - **Qui** : quelqu’un qui fait un jeûne intermittent (16:8, 18:6, 20:4, OMAD ou une durée libre).
 - **Quel moment** : pendant le jeûne, téléphone en poche, pour voir depuis combien de temps ça dure et à quelle heure c’est prévu de finir.
 - **Quel problème** : le temps passe, l’app a été fermée, et la semaine n’est pas la même tous les jours (repos compris).
-- **La preuve dans l’app** : l’accueil « Jeûne en cours », 02:00:04 écoulé, fin prévue à 13:00, durée 16 h (captures App Store). La semaine sur mesure montre mardi et samedi en repos.
+- **La preuve dans l’app** : l’accueil français « Jeûne en cours », 02:00:04 écoulé, début samedi à 17:38, fin prévue dimanche à 09:38, durée 16 h. L’accueil anglais montre le même type de jeûne, commencé à 17:20 (5:20 PM) et fini à 09:20 (9:20 AM). La semaine sur mesure montre mardi et samedi en repos.
 
 ## Trois options
 
@@ -21,7 +21,7 @@ La fin prévue comme une réservation, papier clair et filet cuivre. L’heure o
 
 ### Option C : « Le cadran du jeûne » (retenue)
 
-Un cadran de 24 heures, comme l’accueil de l’app : le début (21:00) est en haut, le sens est celui des aiguilles. L’arc clair est le temps écoulé, l’arc sauge est ce qui reste du jeûne, le bambou est la fenêtre où l’on mange, le point sauge porte l’heure de fin. Les repères 00:00, 03:00, 06:00… tournent avec le début. Ensuite les vrais écrans.
+Un cadran de 24 heures, comme l’accueil de l’app : le début du jeûne montré (17:38 en français, 17:20 sur les captures anglaises) est en haut, le sens est celui des aiguilles. L’arc clair est le temps écoulé, l’arc sauge est ce qui reste du jeûne, le bambou est la fenêtre où l’on mange, le point sauge porte l’heure de fin. Les repères d’heures tournent avec le début. L’heure de fin est décalée vers l’extérieur quand elle collerait à un repère. Ensuite les vrais écrans, les mêmes horaires que le cadran.
 
 ## Pourquoi « Le cadran du jeûne »
 
@@ -35,7 +35,7 @@ TempoReps n’aboutirait pas à un cadran de jeûne avec des jours de repos. Nom
 
 ## Règles de la page
 
-- Ordre : cadran, titre, badges, choix du protocole. À partir de 900 px, la capture d’accueil est dans le premier écran, à côté du cadran. Puis la semaine, une seule date, l’historique, l’achat unique, les deux autres apps, l’assistance.
+- Ordre : cadran, titre avec la capture d’accueil à côté, badges, choix du protocole. Le numéro de version n’est pas dans le premier écran. À partir de 900 px, la capture fait au moins 70 % de la hauteur de l’écran et le cadran se réduit. Puis la semaine, une seule date, l’historique, l’achat unique, les deux autres apps, l’assistance.
 - Le cadran se lit sans légende. Pas de phrase qui décrit la page (« le cadran reprend l’écran »).
 - Navigation desktop : un ou deux mots (Jeûne, Semaine, Sur mesure, Assistance).
 - Police unique, Fraunces (OFL, The Fraunces Project), variable et sous-ensemblée latin, 36 Ko, graisses 400 à 700. Japonais : les glyphes absents passent à une mincho système. Aucune police des autres sites.
@@ -52,18 +52,19 @@ TempoReps n’aboutirait pas à un cadran de jeûne avec des jours de repos. Nom
 Anti-slop :
 - [x] Nom masqué, on reconnaît un jeûne en cours (02:00:04, fin prévue, arc de 16 h, semaine avec repos).
 - [x] Aucune police ni phrase interdite. Fraunces n’est la police d’aucun autre site.
-- [x] Classes distinctes de LoadSense, TempoReps et Petites Gouttes (`scripts/check-antitemplate.mjs`).
+- [x] Classes distinctes de LoadSense, TempoReps et Petites Gouttes (`scripts/check-antitemplate.mjs` : 59 classes, 0 % partagées).
 - [x] Pas de cartes numérotées, pas d’emoji, pas de flèche dans les liens.
 - [x] Un seul élément mémorable : le cadran qui se dessine au chargement. Changer de protocole met à jour l’arc, sans deuxième animation.
 
 Envie :
-- [x] 5 secondes sur mobile (390×844) : le temps écoulé, la fin prévue, le titre, les deux badges officiels.
+- [x] Premier écran mobile (WebKit, iPhone 13, 390×664) : cadran 02:00:04, fin prévue 09:38, titre, capture d’accueil (dimanche 09:38, samedi 17:38, 16 h) et les deux badges. Les badges finissent à y 617.
+- [x] Le cadran français et la capture française décrivent le même jeûne. Les pages qui montrent la capture anglaise partent de 17:20 et finissent à 09:20.
 - [x] Les écrans sont les captures App Store, fr-FR et en-US. Les autres langues le disent quand elles reprennent l’anglais.
-- [x] Le prix affiché n’apparaît qu’en français (6,99 €) et en anglais (5,99 $, et 6,49 $ sur Google Play US).
+- [x] Le prix affiché n’apparaît qu’en français (6,99 €) et en anglais (5,99 $, et 6,49 $ sur Google Play US). Le numéro de version n’est pas dans le premier écran.
 
 Technique :
-- [x] WebKit (Playwright, iPhone) à 375, 390 et 430 px, zoom 120 % et texte 120 %, sur les 8 langues : pas de débordement hors le champ honeypot. Capture d’accueil à 73 % de la largeur avec le zoom.
-- [x] Desktop 1440×900 : navigation en un ou deux mots, cadran et capture d’accueil dans le premier écran (la capture va de y 217 à y 716).
-- [x] Clic 18:6 : fin prévue 15:00, arc restant 16 h, repère 15:00. `prefers-reduced-motion` : pas d’animation.
-- [x] Lighthouse mobile local sur `/FastZen/fr-FR/` après le recadrage : performance 100, accessibilité 100, bonnes pratiques 100, SEO 100, LCP 1,8 s, CLS 0.
-- [x] Confidentialité et assistance à un clic. Pas de page de mentions légales. Formulaire `/api/contact`, honeypot, Turnstile `0x4AAAAAAFb8sZbCULV4skmB`, `assets/site.js` inchangé.
+- [x] WebKit à 375, 390 et 430 px, zoom 120 %, texte 120 %, et les deux ensemble, sur les 8 langues : `scrollWidth` égale `clientWidth`. Le lien d’évitement et le honeypot restent hors champ.
+- [x] Desktop 1440×900 : navigation en un ou deux mots. La capture d’accueil mesure 290×630, soit 70 % de la hauteur. Le cadran fait 240 px.
+- [x] Clic 18:6 depuis 17:38 : fin prévue 11:38, arc restant `0 2 16 24`. En anglais, depuis 17:20 : 11:20 AM. `prefers-reduced-motion` : pas d’animation.
+- [x] Lighthouse mobile local sur `/FastZen/fr-FR/` : performance 100, accessibilité 100, bonnes pratiques 100, SEO 100, LCP 1,9 s, CLS 0, TBT 0.
+- [x] `npm run check` vert. Confidentialité et assistance à un clic. Pas de page de mentions légales. Formulaire `/api/contact`, honeypot, Turnstile `0x4AAAAAAFb8sZbCULV4skmB`, `assets/site.js` inchangé.
