@@ -6,8 +6,10 @@
   var menu = document.getElementById('start-menu');
   var lang = document.documentElement.lang;
   var flow = window.matchMedia('(max-width: 999px), (max-height: 639px)');
-  // Phones: folders open as windows, About starts as a taskbar balloon.
-  var phone = window.matchMedia('(max-width: 700px)');
+  // Below 1000px wide: folders open as windows, About starts as a taskbar balloon.
+  var phone = window.matchMedia('(max-width: 999px)');
+  // Tablets in portrait: windows leave the icon column visible and usable.
+  var roomy = window.matchMedia('(min-width: 701px) and (max-width: 999px) and (min-height: 640px)');
   var baseTitle = document.title;
   var z = 20, cascade = 0, contactLoaded = !!document.querySelector('script[src*="contact.js"]');
   var openers = new Map();
@@ -83,7 +85,7 @@
       var topW = shown.sort(function (a, b) { return (+b.style.zIndex || 0) - (+a.style.zIndex || 0); })[0];
       if (icons) icons.inert = false;
       document.querySelectorAll('.desktop .win, .desktop .group').forEach(function (w) { w.inert = !!topW && w !== topW && !topW.contains(w) && !w.contains(topW); });
-      if (pd) pd.inert = full;
+      if (pd) pd.inert = full && !roomy.matches;
     } else {
       document.querySelectorAll('.desktop .win, .desktop .group').forEach(function (w) { w.inert = false; });
       if (icons) icons.inert = full;
@@ -228,6 +230,7 @@
   if (clock) { tick(); setInterval(tick, 20000); }
 
   flow.addEventListener('change', syncTasks);
+  roomy.addEventListener('change', syncTasks);
   function syncAbout() {
     if (!about) return;
     if (phone.matches) { if (!about.classList.contains('is-max')) about.classList.remove('is-open'); }

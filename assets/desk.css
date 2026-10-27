@@ -229,8 +229,8 @@ html:not(.js) #support-form{display:none}
  body.win-full{overflow:hidden}
 }
 @media (max-width:420px){.apps{grid-template-columns:repeat(4,1fr)}.icon{font-size:12px}}
-/* Phones (<= 700px): the whole monitor stays on screen, with a desktop of folders */
-@media (max-width:700px){
+/* Phones, tablets and landscape phones (< 1000px wide): the whole monitor stays on screen, with a desktop of folders */
+@media (max-width:999px){
  :root{--chin:50px;--bar:40px}
  .room{display:block;padding:0;min-height:0}
  .crt{position:relative;width:100%;height:100svh;min-height:500px;padding:20px 18px var(--chin);border-radius:28px 28px 32px 32px/24px 24px 32px 32px;
@@ -300,6 +300,60 @@ html:not(.js) #support-form{display:none}
  .sm-sub .sm-row{padding-left:14px;gap:8px;min-height:40px;font-size:13.5px}
  .sm-sub img{width:22px;height:22px}
  .desk-footer{margin:0;padding:18px 20px 28px;border-radius:0;background:none;box-shadow:none}
+}
+/* Tablets (701-999px): bigger bezel and icons, restored windows beside the icon column */
+@media (min-width:701px) and (max-width:999px){
+ :root{--chin:62px}
+ .crt{padding:30px 30px var(--chin);border-radius:38px 38px 44px 44px/32px 32px 44px 44px}
+ .crt::before{inset:13px 12px calc(var(--chin) - 14px);border-radius:32px/28px}
+ .crt-screen{border-radius:34px/40px}
+ .crt-chin{left:42px;right:40px;gap:22px}
+ .crt-brand{font-size:13px}
+ .crt-vents{max-width:200px}
+ .crt-power{width:28px;height:28px}
+ .apps.phone-desk{top:18px;left:14px;bottom:12px;grid-template-rows:repeat(auto-fill,104px);grid-auto-columns:98px}
+ .icon{width:98px;font-size:14px}
+ .icon img,.sys{width:56px;height:56px}
+ .icon img{border-radius:13px}
+ .sys{background-size:56px 56px}
+ .win,.group.is-open,html:not(.js) .group:target{inset:24px 26px 26px 132px;border-radius:8px 8px 4px 4px;box-shadow:0 0 0 1px #062a80,inset 0 1px 0 rgba(255,255,255,.35),0 16px 36px rgba(0,0,0,.6),0 3px 8px rgba(0,0,0,.45)}
+ .win-bar{border-radius:8px 8px 0 0}
+ html.js body .desktop .win-about.win.is-max,html:not(.js) body .desktop .win-about.win:target{inset:24px 26px 26px 132px;border-radius:8px 8px 4px 4px;box-shadow:0 0 0 1px #062a80,0 16px 36px rgba(0,0,0,.6)}
+ html.js body .desktop .win-about.win.is-max .win-bar,html:not(.js) body .desktop .win-about.win:target .win-bar{border-radius:8px 8px 0 0}
+ .group.is-open .apps,html:not(.js) .group:target .apps{grid-template-columns:repeat(auto-fill,minmax(98px,1fr))}
+ html.js body .desktop .win-about.win:not(.is-max),html:not(.js) body .desktop .win-about.win:not(:target){width:310px;inset:auto 12px 16px auto}
+ html.js body .desktop .win-about.win:not(.is-max) h1,html:not(.js) body .desktop .win-about.win:not(:target) h1{font-size:16px}
+ .start-menu{width:min(400px,calc(100% - 12px))}
+}
+/* Landscape phones (701-999px wide, short): thin top bezel, icons in columns, maximized windows */
+@media (min-width:701px) and (max-width:999px) and (max-height:639px){
+ :root{--chin:34px;--bar:36px}
+ .crt{min-height:0;padding:12px 28px var(--chin);border-radius:26px/20px}
+ .crt::before{inset:5px 13px calc(var(--chin) - 7px);border-radius:22px/16px}
+ .crt-screen{border-radius:24px/30px}
+ .crt-chin{left:38px;right:38px;gap:18px}
+ .crt-brand{font-size:11px}
+ .crt-power{width:22px;height:22px}
+ .apps.phone-desk{top:6px;left:10px;bottom:4px;grid-template-rows:repeat(auto-fill,94px);grid-auto-columns:94px}
+ .icon{width:94px;font-size:13px}
+ .icon img,.sys{width:48px;height:48px}
+ .icon img{border-radius:11px}
+ .sys{background-size:48px 48px}
+ .win,.group.is-open,html:not(.js) .group:target{inset:0;border-radius:0;box-shadow:none}
+ .win-bar{height:32px;border-radius:0}
+ .win-btn{width:26px;height:26px}
+ html.js body .desktop .win-about.win.is-max,html:not(.js) body .desktop .win-about.win:target{inset:0;border-radius:0;box-shadow:none}
+ html.js body .desktop .win-about.win.is-max .win-bar,html:not(.js) body .desktop .win-about.win:target .win-bar{border-radius:0}
+ .win-body{padding:12px 18px 16px}
+ .group.is-open .apps,html:not(.js) .group:target .apps{grid-template-columns:repeat(auto-fill,minmax(94px,1fr));padding:10px 6px 14px}
+ .group.is-open .group-label,html:not(.js) .group:target .group-label{padding-top:5px;padding-bottom:5px}
+ html.js body .desktop .win-about.win:not(.is-max),html:not(.js) body .desktop .win-about.win:not(:target){inset:auto 12px 12px auto}
+ html.js body .desktop .win-about.win:not(.is-max) h1,html:not(.js) body .desktop .win-about.win:not(:target) h1{font-size:15px}
+ .start{font-size:16px}
+ .start-menu{width:min(460px,calc(100% - 12px))}
+ .sm-head{height:42px}
+ .sm-mark{width:30px;height:30px;font-size:17px}
+ .sm-row,.sm-sub .sm-row{min-height:36px}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 @media (forced-colors:active){.glass,.wall{display:none}}
