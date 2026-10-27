@@ -44,6 +44,10 @@ h1,h2,h3{line-height:1.15;margin:0}
 .sys{border-radius:0;box-shadow:none;background:center/48px 48px no-repeat;filter:drop-shadow(0 2px 3px rgba(0,0,0,.5))}
 .sys-guides{background-image:url(/assets/desk/folder.svg)}
 .sys-mail{background-image:url(/assets/desk/mail.svg)}
+.phone-desk,.win-bar.folder-bar,.balloon-hint{display:none}
+.sys-about{background-image:url(/assets/desk/about.svg)}
+.sys-folder{background-image:url(/assets/desk/folder.svg)}
+.sys-help{background-image:url(/assets/desk/guides.svg)}
 .icon span:last-child{padding:1px 4px;border-radius:2px;text-shadow:1px 1px 1px #000,0 0 5px rgba(0,0,0,.7)}
 .icon:hover span:last-child{background:rgba(49,106,197,.5)}
 .icon:focus-visible span:last-child,.icon.is-active span:last-child{background:var(--sel);text-shadow:none;outline:1px dotted #fff}
@@ -225,5 +229,77 @@ html:not(.js) #support-form{display:none}
  body.win-full{overflow:hidden}
 }
 @media (max-width:420px){.apps{grid-template-columns:repeat(4,1fr)}.icon{font-size:12px}}
+/* Phones (<= 700px): the whole monitor stays on screen, with a desktop of folders */
+@media (max-width:700px){
+ :root{--chin:50px;--bar:40px}
+ .room{display:block;padding:0;min-height:0}
+ .crt{position:relative;width:100%;height:100svh;min-height:500px;padding:20px 18px var(--chin);border-radius:28px 28px 32px 32px/24px 24px 32px 32px;
+  background:radial-gradient(140% 70% at 50% 0%,rgba(255,255,255,.24),transparent 55%),linear-gradient(180deg,var(--shell-hi) 0%,var(--shell) 12%,var(--shell) 80%,var(--shell-lo) 100%);
+  box-shadow:inset 0 2px 1px rgba(255,255,255,.65),inset 0 -3px 3px rgba(0,0,0,.2),inset 3px 0 4px rgba(255,255,255,.2),inset -3px 0 4px rgba(0,0,0,.14)}
+ .crt::before{display:block;inset:9px 8px calc(var(--chin) - 10px);border-radius:24px/22px}
+ .crt::after{display:none}
+ .crt-screen{position:relative;height:100%;min-height:0;overflow:hidden;padding:0;border-radius:26px/30px;background:#04060b;
+  box-shadow:0 0 0 4px #101114,0 0 0 5px #2a2a2c,0 0 16px 6px rgba(120,170,255,.2)}
+ .wall img{position:absolute;z-index:0}
+ .glass{position:absolute;inset:0;border-radius:inherit;z-index:80;box-shadow:inset 0 0 44px rgba(0,0,0,.55),inset 0 0 7px rgba(0,0,0,.85),inset 0 0 0 1px rgba(255,255,255,.04)}
+ .glass::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(110% 38% at 32% -6%,rgba(255,255,255,.14),transparent 62%),linear-gradient(152deg,rgba(255,255,255,.075) 0%,rgba(255,255,255,.02) 30%,transparent 42%),radial-gradient(160% 110% at 50% 45%,transparent 58%,rgba(0,0,0,.32) 100%),radial-gradient(60% 40% at 50% 40%,rgba(120,170,255,.05),transparent 70%)}
+ .crt-chin{position:absolute;left:28px;right:26px;bottom:0;z-index:auto;height:var(--chin);padding:0 2px;gap:14px;background:none;box-shadow:none}
+ .crt-vents{max-width:110px}
+ .desktop{position:absolute;inset:0 0 var(--bar) 0;padding:0}
+ .icons{position:static}
+ .index{display:block}
+ .group,.sys-icons{display:none}
+ .apps.phone-desk{display:grid;position:absolute;top:10px;left:6px;bottom:8px;z-index:2;grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(auto-fill,88px);grid-auto-columns:82px;gap:0}
+ .icon{width:82px;font-size:13px}
+ .icon img,.sys{width:48px;height:48px}
+ .icon img{border-radius:11px}
+ .sys{background-size:48px 48px}
+ .icon span:last-child{text-shadow:1px 1px 1px #000,0 0 4px rgba(0,0,0,.8)}
+ .icon:not(.is-active):hover span:last-child{background:none}
+ .icon:focus-visible span:last-child{background:var(--sel)}
+
+ /* Maximized windows, inside the glass */
+ .win,.group.is-open,html:not(.js) .group:target{position:absolute;inset:0;display:none;width:auto;max-height:none;margin:0;padding:0 3px 3px;border-radius:0;z-index:10;box-shadow:none;background:linear-gradient(180deg,#0a5ce0,#0846b8)}
+ .win.is-open,html:not(.js) .win:target,.group.is-open,html:not(.js) .group:target{display:flex;flex-direction:column}
+ .win-bar{margin:0 -3px;height:38px;padding:0 6px 0 16px;border-radius:0;font-size:15px}
+ .group.is-open .folder-bar,html:not(.js) .group:target .folder-bar{display:flex}
+ .win-btn{width:30px;height:30px}
+ .win-min::before{left:8px;bottom:7px;width:10px}
+ .win-close::before,.win-close::after{width:16px;height:3px}
+ .win-body{padding:16px 16px 22px}
+ .group.is-open .group-label,html:not(.js) .group:target .group-label{position:static;flex:none;margin:0 -3px;padding:7px 14px 7px 36px;background:url(/assets/desk/folder.svg) 13px 50%/16px 16px no-repeat,linear-gradient(180deg,#2b303b,#22262f);border-radius:0;font-size:13px;letter-spacing:.02em;text-transform:none;color:#cfd8ea;text-shadow:none;box-shadow:inset 0 -1px 0 #3a4252}
+ .group.is-open .apps,html:not(.js) .group:target .apps{flex:1;min-height:0;overflow:auto;align-content:start;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:12px 0;padding:14px 6px 20px;background:var(--body);border:1px solid #0831a0}
+ .group .icon{width:auto}
+
+ /* About: a taskbar balloon until opened */
+ html.js body .desktop .win-about.win:not(.is-max),html:not(.js) body .desktop .win-about.win:not(:target){position:absolute;display:block;inset:auto 8px 14px auto;width:min(264px,calc(100% - 100px));margin:0;padding:0;border-radius:8px;border:1px solid #6e6e5e;background:#ffffe1;color:#000;box-shadow:2px 4px 8px rgba(0,0,0,.5);z-index:5}
+ html.js body .desktop .win-about.win:not(.is-max)::after,html:not(.js) body .desktop .win-about.win:not(:target)::after{content:"";position:absolute;right:46px;bottom:-14px;border:7px solid transparent;border-top:7px solid #ffffe1;border-right:13px solid #ffffe1;filter:drop-shadow(1px 1px 0 #6e6e5e)}
+ html.js body .desktop .win-about.win:not(.is-max) .win-bar,html:not(.js) body .desktop .win-about.win:not(:target) .win-bar{position:absolute;top:5px;right:5px;z-index:1;height:auto;margin:0;padding:0;background:none;border-radius:0;text-shadow:none}
+ html.js body .desktop .win-about.win:not(.is-max) .win-glyph,html:not(.js) body .desktop .win-about.win:not(:target) .win-glyph,html.js body .desktop .win-about.win:not(.is-max) .win-title,html:not(.js) body .desktop .win-about.win:not(:target) .win-title,html.js body .desktop .win-about.win:not(.is-max) .intro,html:not(.js) body .desktop .win-about.win:not(:target) .intro,html.js body .desktop .win-about.win:not(.is-max) .win-actions,html:not(.js) body .desktop .win-about.win:not(:target) .win-actions,html.js body .desktop .win-about.win:not(.is-max) .note,html:not(.js) body .desktop .win-about.win:not(:target) .note{display:none}
+ html.js body .desktop .win-about.win:not(.is-max) .win-close,html:not(.js) body .desktop .win-about.win:not(:target) .win-close{width:24px;height:24px;border:1px solid #8c8c80;background:#f7f7ea;box-shadow:none}
+ html.js body .desktop .win-about.win:not(.is-max) .win-close::before,html:not(.js) body .desktop .win-about.win:not(:target) .win-close::before,html.js body .desktop .win-about.win:not(.is-max) .win-close::after,html:not(.js) body .desktop .win-about.win:not(:target) .win-close::after{width:12px;height:2px;background:#222}
+ html.js body .desktop .win-about.win:not(.is-max) .win-body,html:not(.js) body .desktop .win-about.win:not(:target) .win-body{position:relative;overflow:visible;padding:10px 34px 11px 40px;border:0;background:none;color:#000}
+ html.js body .desktop .win-about.win:not(.is-max) .win-body::before,html:not(.js) body .desktop .win-about.win:not(:target) .win-body::before{content:"i";position:absolute;left:10px;top:11px;width:21px;height:21px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8cc4ff,#1f64d6 60%,#0d3f9e);color:#fff;font:italic 700 14px/21px Georgia,serif;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.4)}
+ html.js body .desktop .win-about.win:not(.is-max) h1,html:not(.js) body .desktop .win-about.win:not(:target) h1{margin:0 0 5px;font-size:15px;line-height:1.3;letter-spacing:0;color:#000}
+ html.js body .desktop .win-about.win:not(.is-max) .balloon-hint,html:not(.js) body .desktop .win-about.win:not(:target) .balloon-hint{display:block;margin:0;font-size:14px;line-height:1.35;color:#222}
+ html.js body .desktop .win-about.win.is-dismissed:not(.is-max),html.js body.win-full .desktop .win-about.win:not(.is-max){display:none}
+ html.js body .desktop .win-about.win.is-max,html:not(.js) body .desktop .win-about.win:target{position:absolute;inset:0;display:flex;width:auto;margin:0;border-radius:0;box-shadow:none}
+ html.js body .desktop .win-about.win.is-max .win-bar,html:not(.js) body .desktop .win-about.win:target .win-bar{border-radius:0}
+
+ .taskbar{position:absolute;left:0;right:0;bottom:0}
+ .start{font-size:17px;padding:0 16px 2px 8px;margin-right:6px}
+ .tray{gap:6px;padding:0 10px 0 8px}
+ .start-menu{position:absolute;left:0;right:auto;bottom:var(--bar);width:min(344px,calc(100% - 12px));max-height:calc(100% - var(--bar) - 10px);overflow:auto;border-radius:7px 7px 0 0}
+ .sm-head{height:50px;border-radius:7px 7px 0 0;font-size:15px}
+ .sm-mark{width:34px;height:34px;font-size:19px}
+ .sm-cols{grid-template-columns:1.18fr 1fr}
+ .sm-right{border-left:1px solid #3b63b8;border-top:0}
+ .sm-row{min-height:42px;padding:4px 10px;font-size:14px}
+ .sm-right .sm-row{font-weight:700}
+ .sm-label{margin:6px 10px 3px;font-size:10.5px}
+ .sm-sub .sm-row{padding-left:14px;gap:8px;min-height:40px;font-size:13.5px}
+ .sm-sub img{width:22px;height:22px}
+ .desk-footer{margin:0;padding:18px 20px 28px;border-radius:0;background:none;box-shadow:none}
+}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 @media (forced-colors:active){.glass,.wall{display:none}}

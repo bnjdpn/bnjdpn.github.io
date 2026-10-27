@@ -6,17 +6,26 @@
   var menu = document.getElementById('start-menu');
   var lang = document.documentElement.lang;
   var flow = window.matchMedia('(max-width: 999px), (max-height: 639px)');
+  // Phones: folders open as windows, About starts as a taskbar balloon.
+  var phone = window.matchMedia('(max-width: 700px)');
   var baseTitle = document.title;
   var z = 20, cascade = 0, contactLoaded = !!document.querySelector('script[src*="contact.js"]');
   var openers = new Map();
 
-  function win(id) { var w = id && document.getElementById(id); return w && w.classList.contains('win') ? w : null; }
-  function openWins() { return Array.prototype.slice.call(document.querySelectorAll('.win.is-open')); }
-  function heading(w) { return w.querySelector('.win-body h1, .win-body h2'); }
-  function iconFor(id) { return document.querySelector('.icon[data-open="' + id + '"]'); }
+  function win(id) { var w = id && document.getElementById(id); return w && (w.classList.contains('win') || w.classList.contains('group')) ? w : null; }
+  function isFolder(w) { return w.classList.contains('group'); }
+  function openWins() { return Array.prototype.slice.call(document.querySelectorAll('.win.is-open, .group.is-open')); }
+  function heading(w) { return w.querySelector('.win-body h1, .win-body h2, .group-label'); }
+  function iconFor(id) {
+    var all = document.querySelectorAll('.icon[data-open="' + id + '"]');
+    for (var i = 0; i < all.length; i++) if (all[i].offsetParent) return all[i];
+    return all[0] || null;
+  }
+  var about = document.getElementById('about');
+  function counts(w) { return w !== about || w.classList.contains('is-max'); }
 
   function front(w) {
-    document.querySelectorAll('.win.is-front').forEach(function (x) { x.classList.remove('is-front'); });
+    document.querySelectorAll('.win.is-front, .group.is-front').forEach(function (x) { x.classList.remove('is-front'); });
     w.classList.add('is-front');
     w.style.zIndex = ++z;
     syncTasks();
@@ -64,10 +73,21 @@
     });
     document.querySelectorAll('.icon.is-active').forEach(function (i) { i.classList.remove('is-active'); });
     openWins().forEach(function (w) { var i = iconFor(w.id); if (i) i.classList.add('is-active'); });
-    var full = flow.matches && openWins().some(function (w) { return !w.classList.contains('win-about'); });
+    var shown = openWins().filter(counts);
+    var full = flow.matches && shown.length > 0;
     body.classList.toggle('win-full', full);
     var icons = document.querySelector('.icons');
-    if (icons) icons.inert = full;
+    var pd = document.querySelector('.phone-desk');
+    if (phone.matches) {
+      // Only the front window takes keyboard and screen reader focus.
+      var topW = shown.sort(function (a, b) { return (+b.style.zIndex || 0) - (+a.style.zIndex || 0); })[0];
+      if (icons) icons.inert = false;
+      document.querySelectorAll('.desktop .win, .desktop .group').forEach(function (w) { w.inert = !!topW && w !== topW && !topW.contains(w) && !w.contains(topW); });
+      if (pd) pd.inert = full;
+    } else {
+      document.querySelectorAll('.desktop .win, .desktop .group').forEach(function (w) { w.inert = false; });
+      if (icons) icons.inert = full;
+    }
   }
 
   function setHash(id) {
@@ -77,7 +97,7 @@
 
   function open(id, opener) {
     var w = win(id);
-    if (!w) return false;
+    if (!w || (isFolder(w) && !phone.matches)) return false;
     closeMenu(false);
     if (id === 'contact' && !contactLoaded) {
       contactLoaded = true;
@@ -87,12 +107,13 @@
       document.head.appendChild(s);
     }
     w.classList.add('is-open');
+    if (w === about && phone.matches) w.classList.add('is-max');
     if (opener) openers.set(id, opener);
     place(w);
     front(w);
-    if (!w.classList.contains('win-about')) task(w);
+    if (w !== about) task(w);
     syncTasks();
-    if (!w.classList.contains('win-about')) setHash(id);
+    if (w !== about) setHash(id);
     var h = heading(w);
     if (h) { h.tabIndex = -1; h.focus({ preventScroll: !flow.matches }); }
     return true;
@@ -105,6 +126,8 @@
 
   function close(w) {
     w.classList.remove('is-open', 'is-front');
+    if (w === about && phone.matches) w.classList.add('is-dismissed');
+    if (w === about) w.classList.remove('is-max');
     var b = tasks.querySelector('[data-task="' + w.id + '"]');
     if (b) b.remove();
     if (location.hash === '#' + w.id) setHash('');
@@ -116,7 +139,7 @@
   }
 
   function minimize(w) {
-    w.classList.remove('is-open', 'is-front');
+    w.classList.remove('is-open', 'is-front', 'is-max');
     if (location.hash === '#' + w.id) setHash('');
     syncTasks();
     var b = tasks.querySelector('[data-task="' + w.id + '"]');
@@ -158,6 +181,7 @@
       if (tw.classList.contains('is-open') && tw.classList.contains('is-front')) minimize(tw); else open(tw.id, t);
       return;
     }
+    if (t.dataset.close && t.dataset.close === 'about' && phone.matches && !about.classList.contains('is-max')) { e.preventDefault(); close(about); return; }
     if (t.dataset.close && !(contactPage && t.dataset.close === 'contact')) { e.preventDefault(); close(win(t.dataset.close)); return; }
     if (t.dataset.min) { e.preventDefault(); minimize(win(t.dataset.min)); return; }
     if (t.dataset.open && win(t.dataset.open)) { e.preventDefault(); open(t.dataset.open, t.closest('#start-menu') ? startBtn : t); }
@@ -171,7 +195,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
     if (menu && !menu.hidden) { closeMenu(true); return; }
-    var top = openWins().filter(function (w) { return w.classList.contains('is-front'); })[0];
+    var top = openWins().filter(function (w) { return w.classList.contains('is-front') && counts(w); })[0];
     if (top && !(contactPage && top.id === 'contact')) close(top);
   });
 
@@ -204,9 +228,19 @@
   if (clock) { tick(); setInterval(tick, 20000); }
 
   flow.addEventListener('change', syncTasks);
+  function syncAbout() {
+    if (!about) return;
+    if (phone.matches) { if (!about.classList.contains('is-max')) about.classList.remove('is-open'); }
+    else { about.classList.remove('is-max', 'is-dismissed'); about.classList.add('is-open'); }
+  }
+  phone.addEventListener('change', function () {
+    syncAbout();
+    if (!phone.matches) document.querySelectorAll('.group.is-open').forEach(function (g) { g.classList.remove('is-open', 'is-front'); var b = tasks.querySelector('[data-task="' + g.id + '"]'); if (b) b.remove(); });
+    syncTasks();
+  });
   window.addEventListener('hashchange', function () { var id = location.hash.slice(1); if (win(id) && !win(id).classList.contains('is-open')) open(id); });
-  var about = document.getElementById('about');
   if (about) about.classList.add('is-front');
+  syncAbout();
   var start = location.hash.slice(1);
   if (win(start) && start !== 'about') open(start);
   else if (contactPage) { var c = win('contact'); front(c); }
