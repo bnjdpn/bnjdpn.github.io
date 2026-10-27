@@ -1,6 +1,8 @@
 // Renders the LoadSense "24 hours" landing page for one locale.
 // Pure function of copy.mjs + shared form strings: used by build.mjs and by
 // scripts/check-antitemplate.mjs (npm run check).
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import copy from './copy.mjs';
 import { UI, LOCALE_NAMES } from '../../../content/product-sites/ui.mjs';
 import { FORM_NOTE } from '../../../content/product-sites/form-note.mjs';
@@ -18,6 +20,9 @@ export const LOCALES = [
 // trends and watch exist natively in en-US and fr-FR only.
 const NATIVE_EXTRA = new Set(['en-US', 'fr-FR']);
 const DIMS = { today: [880, 1912], measures: [880, 1912], week: [880, 1912], journal: [880, 1912], trends: [880, 1912] };
+
+// Stylesheet URL carries its content hash: Pages serves CSS with max-age=14400.
+const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('./day.css', import.meta.url))).digest('hex').slice(0, 10);
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -94,7 +99,7 @@ ${hreflang}
 <link rel="manifest" href="${up}site.webmanifest">
 <link rel="preload" href="${up}assets/day/fonts/big-shoulders-display-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${up}assets/day/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${up}assets/day/day.css">
+<link rel="stylesheet" href="${up}assets/day/day.css?v=${CSS_VERSION}">
 <meta name="author" content="Benjamin Dupin">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LoadSense">
