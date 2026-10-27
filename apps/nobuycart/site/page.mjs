@@ -63,8 +63,8 @@ export function render(loc) {
     '@context': 'https://schema.org',
     '@graph': [
       { '@type': 'Person', '@id': 'https://bnjdpn.com/#benjamin-dupin', name: 'Benjamin Dupin', url: 'https://bnjdpn.com/', sameAs: ['https://apps.apple.com/fr/developer/benjamin-dupin/id1871474236', 'https://play.google.com/store/apps/developer?id=Benjamin+Dupin'] },
-      { '@type': 'SoftwareApplication', '@id': `${ORIGIN}#software`, name: 'NoBuyCart', description: p.description, url: ORIGIN, image: ogImg, applicationCategory: product.applicationCategory, operatingSystem: 'iOS, Android', offers: { '@type': 'Offer', price: '0', priceCurrency: product.currency[loc.code] }, author: { '@id': 'https://bnjdpn.com/#benjamin-dupin' }, sameAs: [store.split('?')[0], PLAY] },
-      { '@type': 'WebPage', '@id': `${self}#webpage`, url: self, name: p.title, description: p.description, inLanguage: loc.code, about: { '@id': `${ORIGIN}#software` } },
+      { '@type': 'SoftwareApplication', '@id': `${ORIGIN}#software`, name: 'NoBuyCart', description: t.meta, url: ORIGIN, image: ogImg, applicationCategory: product.applicationCategory, operatingSystem: 'iOS, Android', offers: { '@type': 'Offer', price: '0', priceCurrency: product.currency[loc.code] }, author: { '@id': 'https://bnjdpn.com/#benjamin-dupin' }, sameAs: [store.split('?')[0], PLAY] },
+      { '@type': 'WebPage', '@id': `${self}#webpage`, url: self, name: p.title, description: t.meta, inLanguage: loc.code, about: { '@id': `${ORIGIN}#software` } },
     ],
   };
   const stores = `<div class="nbc-stores"><a href="${esc(store)}" rel="external"><img src="${up}assets/app-store-badges/${loc.code}.svg" width="${BADGE_W[loc.code]}" height="40" alt="${esc(ui.badgeAlt)}"></a><a href="${esc(PLAY)}" rel="external"><img src="${play.src}" width="${playW}" height="40" alt="${esc(play.alt)}"></a></div>`;
@@ -74,33 +74,38 @@ export function render(loc) {
   const sheet = `<div class="nbc-slip" data-noted="${esc(slip.noted)}">
 <p class="nbc-slip-brand">NoBuyCart</p>
 <p class="nbc-name">${esc(slip.name)}</p>
-<p class="nbc-price"><span>${esc(slip.amount)}</span><span>${esc(slip.currency)}</span></p>
-<p class="nbc-hint">${esc(slip.priceHint)}</p>
+<p class="nbc-price">${esc(slip.price)}</p>
 <div class="nbc-field"><p class="nbc-field-label">${esc(slip.promptLabel)}</p><p class="nbc-field-hint">${esc(slip.promptHint)}</p></div>
 <div class="nbc-choices" role="group" aria-labelledby="nbc-choice-label"><p class="nbc-choice-label" id="nbc-choice-label">${esc(slip.choiceLabel)}</p>${choices}</div>
 <p class="nbc-mark" role="status"></p>
 <button type="button" class="nbc-clear">${esc(slip.clear)}</button>
 </div>`;
 
-  const picture = (name, alt) => {
+  const picture = (name, alt, eager = false) => {
     const folder = shotFolder(loc, name);
     const foreign = folder === 'en-US' && loc.key !== 'en';
     const fullAlt = foreign ? `${alt} ${t.foreign}` : alt;
     const base = `${up}assets/slip/${folder}/${name}`;
-    const sizes = '(max-width: 1039px) 92vw, 420px';
-    return { alt: fullAlt, html: `<picture><source type="image/avif" srcset="${base}-440.avif 440w, ${base}-880.avif 880w" sizes="${sizes}"><img src="${base}-880.webp" srcset="${base}-440.webp 440w, ${base}-880.webp 880w" sizes="${sizes}" width="880" height="1912" alt="${esc(fullAlt)}" loading="lazy" decoding="async"></picture>` };
+    const sizes = eager ? '(max-width: 959px) 280px, 360px' : '(max-width: 1039px) 92vw, 420px';
+    const load = eager ? 'eager' : 'lazy';
+    const priority = eager ? ' fetchpriority="high"' : '';
+    return { alt: fullAlt, html: `<picture><source type="image/avif" srcset="${base}-440.avif 440w, ${base}-880.avif 880w" sizes="${sizes}"><img src="${base}-880.webp" srcset="${base}-440.webp 440w, ${base}-880.webp 880w" sizes="${sizes}" width="880" height="1912" alt="${esc(fullAlt)}" loading="${load}" decoding="async"${priority}></picture>` };
   };
-  const shot = (name, block, cls = 'nbc-shot') => {
-    const pic = picture(name, block.alt);
+  const shot = (name, block, cls = 'nbc-shot', eager = false) => {
+    const pic = picture(name, block.alt, eager);
     const cap = shotFolder(loc, name) === 'en-US' && loc.key !== 'en' ? `${block.cap} ${t.foreign}` : block.cap;
     return `<figure class="${cls}">${pic.html}<figcaption class="nbc-cap">${esc(cap)}</figcaption></figure>`;
   };
   const prose = (block) => `<div class="nbc-prose">${block.body.map((x) => `<p>${esc(x)}</p>`).join('')}</div>`;
   const pair = (id, block, name, shotFirst) => {
+    const head = `<section class="nbc-block" id="${id}" aria-labelledby="${id}-title"><h2 id="${id}-title">${esc(block.title)}</h2>`;
+    if (!name) return `${head}${prose(block)}</section>`;
     const text = `<div>${prose(block)}</div>`;
     const pic = shot(name, block);
-    return `<section class="nbc-block" id="${id}" aria-labelledby="${id}-title"><h2 id="${id}-title">${esc(block.title)}</h2><div class="nbc-pair${shotFirst ? ' nbc-pair-shot' : ''}">${shotFirst ? pic + text : text + pic}</div></section>`;
+    return `${head}<div class="nbc-pair${shotFirst ? ' nbc-pair-shot' : ''}">${shotFirst ? pic + text : text + pic}</div></section>`;
   };
+  const heroName = loc.code === 'fr-FR' ? 'list' : 'editor';
+  const heroBlock = heroName === 'list' ? t.list : t.save;
 
   const cats = ui.categories.map((c, i) => `<option value="${esc(ui.categoryValues[i])}">${esc(c)}</option>`).join('');
   const noteKey = loc.key === 'zh-Hans' || loc.key === 'zh-Hant' ? loc.key : loc.key;
@@ -112,7 +117,7 @@ export function render(loc) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(p.title)}</title>
-<meta name="description" content="${esc(p.description)}">
+<meta name="description" content="${esc(t.meta)}">
 <meta name="theme-color" content="#f6f6fd">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="${self}">
@@ -128,7 +133,7 @@ ${hreflang}
 <meta property="og:site_name" content="NoBuyCart">
 <meta property="og:locale" content="${loc.og}">
 <meta property="og:title" content="${esc(p.title)}">
-<meta property="og:description" content="${esc(p.description)}">
+<meta property="og:description" content="${esc(t.meta)}">
 <meta property="og:url" content="${self}">
 <meta property="og:image" content="${ogImg}">
 <meta property="og:image:width" content="1200">
@@ -136,7 +141,7 @@ ${hreflang}
 <meta property="og:image:alt" content="${esc(t.h1)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(p.title)}">
-<meta name="twitter:description" content="${esc(p.description)}">
+<meta name="twitter:description" content="${esc(t.meta)}">
 <meta name="twitter:image" content="${ogImg}">
 <meta name="twitter:image:alt" content="${esc(t.h1)}">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
@@ -159,12 +164,12 @@ ${sheet}
 <div class="nbc-hero-side">
 ${stores}
 <p class="nbc-lede">${esc(t.lede)}</p>
-<p class="nbc-fine">${esc(t.fine)}</p>
+${shot(heroName, heroBlock, 'nbc-shot nbc-hero-shot', true)}
 </div>
 </div>
 </section>
-${pair('features', t.save, 'editor', false)}
-${pair('waiting', t.list, 'list', true)}
+${pair('features', t.save, heroName === 'editor' ? '' : 'editor', false)}
+${pair('waiting', t.list, heroName === 'list' ? '' : 'list', true)}
 <section class="nbc-block" id="decide" aria-labelledby="decide-title">
 <h2 id="decide-title">${esc(t.decide.title)}</h2>
 ${prose(t.decide)}
@@ -174,7 +179,6 @@ ${pair('history', t.history, 'history', true)}
 <section class="nbc-block" id="review" aria-labelledby="review-title">
 <h2 id="review-title">${esc(t.review.title)}</h2>
 ${prose(t.review)}
-<p class="nbc-disclaimer">${esc(S.review.note)}</p>
 ${shot('review', t.review, 'nbc-shot nbc-center')}
 </section>
 <section class="nbc-month" id="november" aria-labelledby="november-title">
@@ -191,9 +195,9 @@ ${shot('review', t.review, 'nbc-shot nbc-center')}
 <div><dt>${esc(t.register.freeLabel)}</dt><dd>${esc(t.register.free)}</dd></div>
 <div><dt>${esc(t.register.paidLabel)}</dt><dd>${esc(t.register.paid)}</dd></div>
 </dl>
-<p class="nbc-prose">${esc(t.register.price)}</p>
+${t.register.price ? `<p class="nbc-prose">${esc(t.register.price)}</p>` : ''}
 <p class="nbc-fine">${esc(t.register.kept)}</p>
-<p class="nbc-disclaimer">${esc(S.offer.privacy)} <a href="${privacy}">${esc(S.offer.privacyLink)}</a></p>
+<p class="nbc-device">${esc(t.device)} <a href="${privacy}">${esc(S.offer.privacyLink)}</a></p>
 ${shot('register', t.register, 'nbc-shot nbc-center')}
 </section>
 <section class="nbc-close" aria-labelledby="close-title">
