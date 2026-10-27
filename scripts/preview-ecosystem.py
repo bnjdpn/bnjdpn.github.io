@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
 ORIGIN = 'https://bnjdpn.github.io'
-PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml', '_redirects', '_headers',
+PUBLIC = ['404.html', 'index.html', 'robots.txt', 'sitemap.xml', 'sitemap-pages.xml', '_redirects', '_headers', 'petits-pots',
           'site.webmanifest', 'styles.css', 'assets', 'fr', 'apps', 'guides', 'contact']
 LEGACY = {'RealmBox'}
 GONE = ['NovaStationPinball', 'TaskLane', 'onigiri-exit-calculator', 'poop-price-calculator']
@@ -116,7 +116,7 @@ def main():
 
     errors, checked, counts, pages = setup_errors, 0, {}, {}
     files = [(portfolio / f, '/' + f) for f in PUBLIC if (portfolio / f).is_file()]
-    for folder in ['assets', 'fr', 'apps', 'guides', 'contact']:
+    for folder in [name for name in PUBLIC if (portfolio / name).is_dir()]:
         files += [(p, '/' + p.relative_to(portfolio).as_posix()) for p in (portfolio / folder).rglob('*') if p.is_file()]
     for slug, root in roots.items():
         if not root.is_dir(): errors.append({'site': slug, 'error': 'Missing generated root', 'path': str(root)}); continue
