@@ -1,0 +1,152 @@
+[
+  {
+    "locale": "fr-FR",
+    "shot": 1,
+    "source": "store/app-store-media/fr-FR/NeatShift iPhone 17 Pro Max-01_today.png",
+    "sha256": "9cab78e5121df8500a78b3fe1bae8d179fa3197e707ecd5851e3ddd773ef2cba",
+    "saleVersion": "2.7.0",
+    "public_image_comparison_MAE_255": 0.804,
+    "crop": [
+      132,
+      937,
+      1056,
+      1816
+    ],
+    "outputs": [
+      [
+        440,
+        757
+      ],
+      [
+        880,
+        1513
+      ]
+    ],
+    "note": "Contiguous native region only, editorial title and background excluded. No app content changed."
+  },
+  {
+    "locale": "fr-FR",
+    "shot": 2,
+    "source": "store/app-store-media/fr-FR/NeatShift iPhone 17 Pro Max-02_availability.png",
+    "sha256": "d1d094218657a6a4f9e765a8d1b7d51ca1e616d9140338910af8ed0568e78e83",
+    "saleVersion": "2.7.0",
+    "public_image_comparison_MAE_255": 0.832,
+    "crop": [
+      132,
+      841,
+      1056,
+      1912
+    ],
+    "outputs": [
+      [
+        440,
+        797
+      ],
+      [
+        880,
+        1593
+      ]
+    ],
+    "note": "Contiguous native region only, editorial title and background excluded. No app content changed."
+  },
+  {
+    "locale": "fr-FR",
+    "shot": 3,
+    "source": "store/app-store-media/fr-FR/NeatShift iPhone 17 Pro Max-03_room_priorities.png",
+    "sha256": "5822804ae675a71b3047e49c2671c08ac93f342d8dc5aaead3f93ce58a9bff54",
+    "saleVersion": "2.7.0",
+    "public_image_comparison_MAE_255": 0.684,
+    "crop": [
+      132,
+      761,
+      1056,
+      1992
+    ],
+    "outputs": [
+      [
+        440,
+        830
+      ],
+      [
+        880,
+        1660
+      ]
+    ],
+    "note": "Contiguous native region only, editorial title and background excluded. No app content changed."
+  },
+  {
+    "locale": "en-US",
+    "shot": 1,
+    "source": "store/app-store-media/en-US/NeatShift iPhone 17 Pro Max-01_today.png",
+    "sha256": "362e1ae66d4eabf8dff230855c7f1010c7393073fc6356796cf59862cbcf6781",
+    "saleVersion": "2.7.0",
+    "public_image_comparison_MAE_255": 0.78,
+    "crop": [
+      132,
+      937,
+      1056,
+      1816
+    ],
+    "outputs": [
+      [
+        440,
+        757
+      ],
+      [
+        880,
+        1513
+      ]
+    ],
+    "note": "Contiguous native region only, editorial title and background excluded. No app content changed."
+  },
+  {
+    "locale": "en-US",
+    "shot": 2,
+    "source": "store/app-store-media/en-US/NeatShift iPhone 17 Pro Max-02_availability.png",
+    "sha256": "59e7451a59fc5c16809fe3ab7e89c12828f499d1e321ef0c51a57a991d98e712",
+    "saleVersion": "2.7.0",
+    "public_image_comparison_MAE_255": 0.818,
+    "crop": [
+      132,
+      841,
+      1056,
+      1912
+    ],
+    "outputs": [
+      [
+        440,
+        797
+      ],
+      [
+        880,
+        1593
+      ]
+    ],
+    "note": "Contiguous native region only, editorial title and background excluded. No app content changed."
+  },
+  {
+    "locale": "en-US",
+    "shot": 3,
+    "source": "store/app-store-media/en-US/NeatShift iPhone 17 Pro Max-03_room_priorities.png",
+    "sha256": "cfde8c7d4bb10af51910f1e5e56b66838b92ecc6f33681b41c08d0926d378ac3",
+    "saleVersion": "2.7.0",
+    "public_image_comparison_MAE_255": 0.658,
+    "crop": [
+      132,
+      761,
+      1056,
+      1992
+    ],
+    "outputs": [
+      [
+        440,
+        830
+      ],
+      [
+        880,
+        1660
+      ]
+    ],
+    "note": "Contiguous native region only, editorial title and background excluded. No app content changed."
+  }
+]
