@@ -1,6 +1,7 @@
-// Petites Bouchées page copy. Public iOS 1.1.11, Play 1.1.12, read 2026-10-27.
-// Google Play com.bnjdpn.petitesbouchees answers 200. One-time Baby's Records /
-// Le Dossier de Bébé: 6,99 € in France, $7.99 on the US Play store.
+// Petites Bouchées page copy. Public iOS 1.1.11, Play 1.1.12.
+// Prices read on the public listings 2026-10-27:
+// App Store FR 6,99 €, US $5.99, GB £5.99.
+// Google Play FR 6,99 €, US $7.99, GB £6.99.
 // The interface to announce is French, English and Spanish only.
 export default {
   appStoreId: "6760203890",
@@ -81,7 +82,7 @@ export default {
             },
           ],
           notes: [
-            "In France, Baby's Records is €6.99, paid once. On the US Google Play store it is $7.99. The App Store shows your country's price before you pay.",
+            "On the US App Store, Baby's Records is $5.99, paid once. On the US Google Play store it is $7.99.",
             "Access you already had is kept.",
             "Petites Bouchées is a journal you fill in. It gives no feeding advice or medical diagnosis and does not replace a healthcare professional.",
           ],
@@ -101,7 +102,7 @@ export default {
       sections: {
         offer: {
           notes: [
-            "In France, Baby's Records is €6.99, paid once. On the US Google Play store it is $7.99. The App Store shows the price for your country before you pay.",
+            "On the UK App Store, Baby's Records is £5.99, paid once. On Google Play in the UK it is £6.99.",
             "Access you already had is kept.",
             "Petites Bouchées is a journal you fill in. It gives no feeding advice or medical diagnosis and does not replace a healthcare professional.",
           ],
@@ -172,7 +173,7 @@ export default {
             },
           ],
           notes: [
-            "En France, Le Dossier de Bébé coûte 6,99 €, en une fois. Sur Google Play aux États-Unis, il est à 7,99 $. L’App Store affiche le prix de votre pays avant l’achat.",
+            "Sur l'App Store français, Le Dossier de Bébé coûte 6,99 €, en une fois. Sur Google Play en France, il est aussi à 6,99 €.",
             "Les droits déjà acquis sont conservés.",
             "Petites Bouchées est un journal rempli par le parent, sans conseil alimentaire, avis ni diagnostic médical. Elle ne remplace pas un professionnel de santé.",
           ],

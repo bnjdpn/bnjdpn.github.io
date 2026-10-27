@@ -21,7 +21,7 @@ const en = {
   tasteTitle: 'The reaction, while the spoon is still out',
   tasteBody: [
     'Open a food and record the tasting: the date, then Liked, Neutral or Disliked.',
-    'You can also flag a digestive issue or a possible allergic reaction, and write how you served it. On the carrot screen, the first tasting reads “Served as purée”.',
+    'You can also flag a digestive issue or a possible allergic reaction, and write how you served it.',
   ],
   reacts: ['Liked', 'Neutral', 'Disliked'],
   tasteNote: 'These screens describe what you entered. They do not say whether a food is safe for your child.',
@@ -69,7 +69,7 @@ const en = {
     'On iPhone, shared with Family Sharing',
     'On Android, tied to the Google account',
   ],
-  price: 'In France, Baby’s Records is €6.99, paid once. On the US Google Play store it is $7.99. The App Store shows your country’s price before you pay.',
+  price: 'On the US App Store, Baby’s Records is $5.99, paid once. On the US Google Play store it is $7.99.',
   kept: 'Access you already had is kept.',
   privacy: 'The journal is stored on your device until you export or share it.',
   privacyLink: 'Privacy policy',
@@ -91,7 +91,7 @@ const gb = {
     ['Feeding record', 'The record for your paediatrician. The first page is free to preview.'],
     en.pdfs[2],
   ],
-  price: 'In France, Baby’s Records is €6.99, paid once. On the US Google Play store it is $7.99. The App Store shows the price for your country before you pay.',
+  price: 'On the UK App Store, Baby’s Records is £5.99, paid once. On Google Play in the UK it is £6.99.',
   allergens: 'The 12 major allergens stay in the free journal: peanut, tree nuts, sesame, soya, egg, milk, gluten, fish, crustaceans, molluscs, celery and mustard. The screen shows what you recorded.',
 };
 
@@ -115,7 +115,7 @@ const fr = {
   tasteTitle: 'La réaction, pendant que la cuillère est encore sortie',
   tasteBody: [
     'Ouvrez un aliment et notez la dégustation : la date, puis Aimé, Neutre ou Pas aimé.',
-    'Vous pouvez aussi signaler un problème digestif ou une réaction allergique possible, et écrire comment vous l’avez servi. Sur l’écran carotte, la première dégustation dit « Servi en purée ».',
+    'Vous pouvez aussi signaler un problème digestif ou une réaction allergique possible, et écrire comment vous l’avez servi.',
   ],
   reacts: ['Aimé', 'Neutre', 'Pas aimé'],
   tasteNote: 'Ces écrans décrivent vos observations. Ils n’indiquent pas si un aliment est sûr pour votre enfant.',
@@ -163,7 +163,7 @@ const fr = {
     'Sur iPhone, partagé via le Partage familial',
     'Sur Android, lié au compte Google',
   ],
-  price: 'En France, Le Dossier de Bébé coûte 6,99 €, en une fois. Sur Google Play aux États-Unis, il est à 7,99 $. L’App Store affiche le prix de votre pays avant l’achat.',
+  price: 'Sur l’App Store français, Le Dossier de Bébé coûte 6,99 €, en une fois. Sur Google Play en France, il est aussi à 6,99 €.',
   kept: 'Les droits déjà acquis sont conservés.',
   privacy: 'Le journal est conservé sur votre appareil jusqu’à ce que vous l’exportiez ou le partagiez.',
   privacyLink: 'Politique de confidentialité',
