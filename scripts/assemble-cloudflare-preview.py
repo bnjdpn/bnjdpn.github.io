@@ -99,7 +99,7 @@ def assemble(spec, output):
             special = (relative.as_posix() in PUBLIC_JSON.get(source['site'], set()) or
                        (source['site'] == 'TempoReps' and relative.as_posix() == 'review/foreground-service-code10.mp4') or
                        (source['site'] in {'Echappee', 'VesperDrift'} and path.suffix == '.mp4') or
-                       (source['site'] == 'Portfolio' and relative.as_posix() == '_redirects'))
+                       (source['site'] == 'Portfolio' and relative.as_posix() in {'_redirects', '_headers'}))
             if any(part in {'node_modules', '_src', 'src', 'scripts', 'tools', 'tests', 'proofs', 'evidence', 'functions', 'email-worker'} for part in relative.parts):
                 raise ValueError(f'Technical source in public output: {path}')
             if ((path.suffix.lower() not in EXTENSIONS and not special) or
