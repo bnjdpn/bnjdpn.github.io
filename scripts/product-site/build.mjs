@@ -62,6 +62,11 @@ export async function build({ repo, out, rubyStage }) {
     const { overlay } = await import(pathToFileURL(join(ROOT, 'apps/echappee/site/build.mjs')).href);
     return overlay(out);
   }
+  // Catalogue-only apps can own a site without a marketing directory in the app repo.
+  if (basename(repo) === 'petits-pots') {
+    const { overlay } = await import('../../apps/petits-pots/site/build.mjs');
+    return overlay(out);
+  }
   const cfg = JSON.parse(readFileSync(join(repo, 'marketing/site.json'), 'utf8'));
   cfg.app_name ??= cfg.app?.name;
   const app = (await import(pathToFileURL(join(ROOT, 'content/product-sites', `${basename(repo)}.mjs`)).href)).default;

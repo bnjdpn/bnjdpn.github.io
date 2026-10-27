@@ -89,7 +89,12 @@ for(const lang of ['en','fr']){
     const url=`${origin}/${lang==='fr'?'fr/':''}apps/${slug}/${leaf}`;
     expect(html.includes(`rel="canonical" href="${url}"`),prefix+'canonical mismatch');
     if(app.sitemap===false){expect(!pages.includes(`<loc>${url}</loc>`),prefix+'unreleased app listed in sitemap');expect(html.includes('<meta name="robots" content="noindex, follow">'),prefix+'unreleased app must be noindex');}
-    else expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
+    else if(app.path==='petits-pots' && leaf===''){
+     const final=`${origin}/petits-pots/${lang==='fr'?'fr-FR/':''}`;
+     expect(pages.includes(`<loc>${final}</loc>`)&&!pages.includes(`<loc>${url}</loc>`),prefix+'product sitemap must use final route');
+     const redirects=await readFile(resolve(root,'_redirects'),'utf8');
+     expect(redirects.includes(`${url.slice(origin.length)} ${final.slice(origin.length)} 301`),prefix+'product redirect missing');
+    }else expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
     for(const alternate of ['en','fr'])expect(html.includes(`rel="alternate" hreflang="${alternate}" href="${origin}/${alternate==='fr'?'fr/':''}apps/${slug}/${leaf}"`),prefix+'alternate missing');
     const storeLinks=[...html.matchAll(/href="([^"]+)"/g)].map(match=>match[1]).filter(href=>/apps\.apple\.com|play\.google\.com\/store/.test(href));
     const publishedAndroid=leaf===''&&app.androidStoreUrl;
@@ -146,6 +151,22 @@ for(const guide of guides){
   expect(alternate?.alternate===guide.path.replace(/index\.html$/,''),prefix+'non-reciprocal alternate');
   expect(html.includes(`hreflang="${alternate?.lang}" href="${origin}/${guide.alternate}"`),prefix+'alternate missing');
  }else expect(!html.includes('hreflang='),prefix+'false alternate');
+}
+// Petits Pots is generated in this repository, so its references must exist locally.
+for(const [lang,route] of [['en','petits-pots/'],['fr','petits-pots/fr-FR/']]){
+ const html=await readFile(resolve(root,route,'index.html'),'utf8'),prefix=route+': ';
+ expect(html.includes(`<html lang="${lang}">`),prefix+'language mismatch');
+ expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
+ expect(html.includes(`rel="canonical" href="${origin}/${route}"`),prefix+'canonical mismatch');
+ expect(html.includes('"operatingSystem":"Android"')&&!/apps\.apple\.com/.test(html),prefix+'Android availability mismatch');
+ const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+ expect(new Set(ids).size===ids.length,prefix+'duplicate IDs');
+ for(const m of html.matchAll(/href="#([^"]+)"/g))expect(ids.includes(m[1]),prefix+'broken anchor '+m[1]);
+ for(const m of html.matchAll(/(?:href|src)="(\/[^"#]+)"/g)){
+  let ref=m[1].split(/[?#]/)[0].slice(1);if(!ref||ref.endsWith('/'))ref+='index.html';
+  try{await access(resolve(root,ref));references++;}catch{failures.push(prefix+'missing file '+ref);}
+ }
+ for(const img of html.matchAll(/<img\b[^>]+>/g))expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
 }
 expect(sitemap.match(/<sitemap>/g)?.length===catalog.length+1,'sitemap index count mismatch');
 for(const app of catalog)expect(sitemap.includes(`${origin}/${app.path}/sitemap.xml`),'missing product sitemap '+app.path);
