@@ -1,0 +1,1514 @@
+[
+  {
+    "locale": "de-DE",
+    "file": "02-880.avif",
+    "source": "marketing/shots/de-DE/02-880.avif",
+    "sha256": "704d2c6feb9984826e7a5db0967531b9f3ec0bdf21557a40daa3cbe7bfe770fc"
+  },
+  {
+    "locale": "de-DE",
+    "file": "03-880.avif",
+    "source": "marketing/shots/de-DE/03-880.avif",
+    "sha256": "2d81152c851ced123e0ac8d51197d17efdb7a65c910c5e40ef4eca00ac840354"
+  },
+  {
+    "locale": "de-DE",
+    "file": "02-440.webp",
+    "source": "marketing/shots/de-DE/02-440.webp",
+    "sha256": "9a84462824339c53f54bf86a3a3e81903054ce82815c1f7e880a752b466131ff"
+  },
+  {
+    "locale": "de-DE",
+    "file": "03-440.webp",
+    "source": "marketing/shots/de-DE/03-440.webp",
+    "sha256": "b8fea440df77dd2d9e9e7dc2aa5c9ba562de3e36dbc0eda235679f4882b30ca4"
+  },
+  {
+    "locale": "de-DE",
+    "file": "01-440.avif",
+    "source": "marketing/shots/de-DE/01-440.avif",
+    "sha256": "b6dbf32c01ee8bdb0d03211c331f2b6a39e3a5a71376f0fb2ada49c2a649d3f0"
+  },
+  {
+    "locale": "de-DE",
+    "file": "01-880.webp",
+    "source": "marketing/shots/de-DE/01-880.webp",
+    "sha256": "a08c17b1e0b1b1b4d340267a6f884a91dbda59b5b6de412c53fc962ea9fdd29e"
+  },
+  {
+    "locale": "de-DE",
+    "file": "01-440.webp",
+    "source": "marketing/shots/de-DE/01-440.webp",
+    "sha256": "b2d5bc59fc88ee707859efe12f43be300b8f2aea2d7bf7a2d330b6e4e8628df0"
+  },
+  {
+    "locale": "de-DE",
+    "file": "01-880.avif",
+    "source": "marketing/shots/de-DE/01-880.avif",
+    "sha256": "98ce59486bab644c9ac6f12b0066f0ee6e75fab8f12070e26c7b1ac76f5e8c6f"
+  },
+  {
+    "locale": "de-DE",
+    "file": "02-880.webp",
+    "source": "marketing/shots/de-DE/02-880.webp",
+    "sha256": "ee0bd64a5ef597cf05deb6df327db39a0b35bc80146a2f92d1ccf1b9354b1afb"
+  },
+  {
+    "locale": "de-DE",
+    "file": "03-880.webp",
+    "source": "marketing/shots/de-DE/03-880.webp",
+    "sha256": "4208dbeb7d62028f8874114ecd83b4c59404465c50f710c6bec1944a1cf10992"
+  },
+  {
+    "locale": "de-DE",
+    "file": "02-440.avif",
+    "source": "marketing/shots/de-DE/02-440.avif",
+    "sha256": "f6876cd6a17a06e6530d6faba66d99684e76f6ad920c0b471197f5abbf21a5c6"
+  },
+  {
+    "locale": "de-DE",
+    "file": "03-440.avif",
+    "source": "marketing/shots/de-DE/03-440.avif",
+    "sha256": "00698b9ee86f9927a6e57b0bb80aef62540639625d7f228eea5278446352ab1a"
+  },
+  {
+    "locale": "en-AU",
+    "file": "02-880.avif",
+    "source": "marketing/shots/en-AU/02-880.avif",
+    "sha256": "71ab50000f8724b4041ff500c72fbe5d8815e42bb1572dfce222091c078ea217"
+  },
+  {
+    "locale": "en-AU",
+    "file": "03-880.avif",
+    "source": "marketing/shots/en-AU/03-880.avif",
+    "sha256": "47937bd24b6e85e87539fbae8ad8b04b6120c8f74efa3f689ead39d32af60905"
+  },
+  {
+    "locale": "en-AU",
+    "file": "02-440.webp",
+    "source": "marketing/shots/en-AU/02-440.webp",
+    "sha256": "f3cd9315df1c9fbc723f613738febbc41c57585c98d5b49ec6311c32e9654e21"
+  },
+  {
+    "locale": "en-AU",
+    "file": "03-440.webp",
+    "source": "marketing/shots/en-AU/03-440.webp",
+    "sha256": "b9c533bee559424e5be2f95f1e279823797f1d7d923cf86e3ddcf2e588ee14be"
+  },
+  {
+    "locale": "en-AU",
+    "file": "01-440.avif",
+    "source": "marketing/shots/en-AU/01-440.avif",
+    "sha256": "36888ff0873efb703ec2cebdb14566f59a75aa6ba260ee02c8b1da19dde8b3e0"
+  },
+  {
+    "locale": "en-AU",
+    "file": "01-880.webp",
+    "source": "marketing/shots/en-AU/01-880.webp",
+    "sha256": "f20a6ace8b0d7ffca1ce0530efab078fcde67b979a88e5a232facd7a7631e406"
+  },
+  {
+    "locale": "en-AU",
+    "file": "01-440.webp",
+    "source": "marketing/shots/en-AU/01-440.webp",
+    "sha256": "4462db6155926c82459fafafae64c203fd8431a990e52b1d351da70f8965b0cc"
+  },
+  {
+    "locale": "en-AU",
+    "file": "01-880.avif",
+    "source": "marketing/shots/en-AU/01-880.avif",
+    "sha256": "9f867897a8be8f81bc85c37ba3d60174af8ba3dc206e2e90266deb62c154ff94"
+  },
+  {
+    "locale": "en-AU",
+    "file": "02-880.webp",
+    "source": "marketing/shots/en-AU/02-880.webp",
+    "sha256": "25a73aa8c318618278be85f1f626bd634bdb73c09d5d63866a1a2c16a51cd73c"
+  },
+  {
+    "locale": "en-AU",
+    "file": "03-880.webp",
+    "source": "marketing/shots/en-AU/03-880.webp",
+    "sha256": "391219ccd5fd86ac5b29e2553dfbc173212aeb72c549ca32e737aa3ae8dc7df4"
+  },
+  {
+    "locale": "en-AU",
+    "file": "02-440.avif",
+    "source": "marketing/shots/en-AU/02-440.avif",
+    "sha256": "9e3b264f92cdc5b09d6fc227c1151ebfc8c686d1bbefcfbd73dff5f75f90ed63"
+  },
+  {
+    "locale": "en-AU",
+    "file": "03-440.avif",
+    "source": "marketing/shots/en-AU/03-440.avif",
+    "sha256": "ce6585996b28f145e3c9ccac2895b171ed40508b2976d014809ea51a8d535f5e"
+  },
+  {
+    "locale": "en-CA",
+    "file": "02-880.avif",
+    "source": "marketing/shots/en-CA/02-880.avif",
+    "sha256": "71ab50000f8724b4041ff500c72fbe5d8815e42bb1572dfce222091c078ea217"
+  },
+  {
+    "locale": "en-CA",
+    "file": "03-880.avif",
+    "source": "marketing/shots/en-CA/03-880.avif",
+    "sha256": "47937bd24b6e85e87539fbae8ad8b04b6120c8f74efa3f689ead39d32af60905"
+  },
+  {
+    "locale": "en-CA",
+    "file": "02-440.webp",
+    "source": "marketing/shots/en-CA/02-440.webp",
+    "sha256": "f3cd9315df1c9fbc723f613738febbc41c57585c98d5b49ec6311c32e9654e21"
+  },
+  {
+    "locale": "en-CA",
+    "file": "03-440.webp",
+    "source": "marketing/shots/en-CA/03-440.webp",
+    "sha256": "b9c533bee559424e5be2f95f1e279823797f1d7d923cf86e3ddcf2e588ee14be"
+  },
+  {
+    "locale": "en-CA",
+    "file": "01-440.avif",
+    "source": "marketing/shots/en-CA/01-440.avif",
+    "sha256": "36888ff0873efb703ec2cebdb14566f59a75aa6ba260ee02c8b1da19dde8b3e0"
+  },
+  {
+    "locale": "en-CA",
+    "file": "01-880.webp",
+    "source": "marketing/shots/en-CA/01-880.webp",
+    "sha256": "f20a6ace8b0d7ffca1ce0530efab078fcde67b979a88e5a232facd7a7631e406"
+  },
+  {
+    "locale": "en-CA",
+    "file": "01-440.webp",
+    "source": "marketing/shots/en-CA/01-440.webp",
+    "sha256": "4462db6155926c82459fafafae64c203fd8431a990e52b1d351da70f8965b0cc"
+  },
+  {
+    "locale": "en-CA",
+    "file": "01-880.avif",
+    "source": "marketing/shots/en-CA/01-880.avif",
+    "sha256": "9f867897a8be8f81bc85c37ba3d60174af8ba3dc206e2e90266deb62c154ff94"
+  },
+  {
+    "locale": "en-CA",
+    "file": "02-880.webp",
+    "source": "marketing/shots/en-CA/02-880.webp",
+    "sha256": "25a73aa8c318618278be85f1f626bd634bdb73c09d5d63866a1a2c16a51cd73c"
+  },
+  {
+    "locale": "en-CA",
+    "file": "03-880.webp",
+    "source": "marketing/shots/en-CA/03-880.webp",
+    "sha256": "391219ccd5fd86ac5b29e2553dfbc173212aeb72c549ca32e737aa3ae8dc7df4"
+  },
+  {
+    "locale": "en-CA",
+    "file": "02-440.avif",
+    "source": "marketing/shots/en-CA/02-440.avif",
+    "sha256": "9e3b264f92cdc5b09d6fc227c1151ebfc8c686d1bbefcfbd73dff5f75f90ed63"
+  },
+  {
+    "locale": "en-CA",
+    "file": "03-440.avif",
+    "source": "marketing/shots/en-CA/03-440.avif",
+    "sha256": "ce6585996b28f145e3c9ccac2895b171ed40508b2976d014809ea51a8d535f5e"
+  },
+  {
+    "locale": "en-GB",
+    "file": "02-880.avif",
+    "source": "marketing/shots/en-GB/02-880.avif",
+    "sha256": "71ab50000f8724b4041ff500c72fbe5d8815e42bb1572dfce222091c078ea217"
+  },
+  {
+    "locale": "en-GB",
+    "file": "03-880.avif",
+    "source": "marketing/shots/en-GB/03-880.avif",
+    "sha256": "47937bd24b6e85e87539fbae8ad8b04b6120c8f74efa3f689ead39d32af60905"
+  },
+  {
+    "locale": "en-GB",
+    "file": "02-440.webp",
+    "source": "marketing/shots/en-GB/02-440.webp",
+    "sha256": "f3cd9315df1c9fbc723f613738febbc41c57585c98d5b49ec6311c32e9654e21"
+  },
+  {
+    "locale": "en-GB",
+    "file": "03-440.webp",
+    "source": "marketing/shots/en-GB/03-440.webp",
+    "sha256": "b9c533bee559424e5be2f95f1e279823797f1d7d923cf86e3ddcf2e588ee14be"
+  },
+  {
+    "locale": "en-GB",
+    "file": "01-440.avif",
+    "source": "marketing/shots/en-GB/01-440.avif",
+    "sha256": "36888ff0873efb703ec2cebdb14566f59a75aa6ba260ee02c8b1da19dde8b3e0"
+  },
+  {
+    "locale": "en-GB",
+    "file": "01-880.webp",
+    "source": "marketing/shots/en-GB/01-880.webp",
+    "sha256": "f20a6ace8b0d7ffca1ce0530efab078fcde67b979a88e5a232facd7a7631e406"
+  },
+  {
+    "locale": "en-GB",
+    "file": "01-440.webp",
+    "source": "marketing/shots/en-GB/01-440.webp",
+    "sha256": "4462db6155926c82459fafafae64c203fd8431a990e52b1d351da70f8965b0cc"
+  },
+  {
+    "locale": "en-GB",
+    "file": "01-880.avif",
+    "source": "marketing/shots/en-GB/01-880.avif",
+    "sha256": "9f867897a8be8f81bc85c37ba3d60174af8ba3dc206e2e90266deb62c154ff94"
+  },
+  {
+    "locale": "en-GB",
+    "file": "02-880.webp",
+    "source": "marketing/shots/en-GB/02-880.webp",
+    "sha256": "25a73aa8c318618278be85f1f626bd634bdb73c09d5d63866a1a2c16a51cd73c"
+  },
+  {
+    "locale": "en-GB",
+    "file": "03-880.webp",
+    "source": "marketing/shots/en-GB/03-880.webp",
+    "sha256": "391219ccd5fd86ac5b29e2553dfbc173212aeb72c549ca32e737aa3ae8dc7df4"
+  },
+  {
+    "locale": "en-GB",
+    "file": "02-440.avif",
+    "source": "marketing/shots/en-GB/02-440.avif",
+    "sha256": "9e3b264f92cdc5b09d6fc227c1151ebfc8c686d1bbefcfbd73dff5f75f90ed63"
+  },
+  {
+    "locale": "en-GB",
+    "file": "03-440.avif",
+    "source": "marketing/shots/en-GB/03-440.avif",
+    "sha256": "ce6585996b28f145e3c9ccac2895b171ed40508b2976d014809ea51a8d535f5e"
+  },
+  {
+    "locale": "en-US",
+    "file": "02-880.avif",
+    "source": "marketing/shots/en-US/02-880.avif",
+    "sha256": "71ab50000f8724b4041ff500c72fbe5d8815e42bb1572dfce222091c078ea217"
+  },
+  {
+    "locale": "en-US",
+    "file": "03-880.avif",
+    "source": "marketing/shots/en-US/03-880.avif",
+    "sha256": "47937bd24b6e85e87539fbae8ad8b04b6120c8f74efa3f689ead39d32af60905"
+  },
+  {
+    "locale": "en-US",
+    "file": "02-440.webp",
+    "source": "marketing/shots/en-US/02-440.webp",
+    "sha256": "f3cd9315df1c9fbc723f613738febbc41c57585c98d5b49ec6311c32e9654e21"
+  },
+  {
+    "locale": "en-US",
+    "file": "03-440.webp",
+    "source": "marketing/shots/en-US/03-440.webp",
+    "sha256": "b9c533bee559424e5be2f95f1e279823797f1d7d923cf86e3ddcf2e588ee14be"
+  },
+  {
+    "locale": "en-US",
+    "file": "01-440.avif",
+    "source": "marketing/shots/en-US/01-440.avif",
+    "sha256": "36888ff0873efb703ec2cebdb14566f59a75aa6ba260ee02c8b1da19dde8b3e0"
+  },
+  {
+    "locale": "en-US",
+    "file": "01-880.webp",
+    "source": "marketing/shots/en-US/01-880.webp",
+    "sha256": "f20a6ace8b0d7ffca1ce0530efab078fcde67b979a88e5a232facd7a7631e406"
+  },
+  {
+    "locale": "en-US",
+    "file": "01-440.webp",
+    "source": "marketing/shots/en-US/01-440.webp",
+    "sha256": "4462db6155926c82459fafafae64c203fd8431a990e52b1d351da70f8965b0cc"
+  },
+  {
+    "locale": "en-US",
+    "file": "01-880.avif",
+    "source": "marketing/shots/en-US/01-880.avif",
+    "sha256": "9f867897a8be8f81bc85c37ba3d60174af8ba3dc206e2e90266deb62c154ff94"
+  },
+  {
+    "locale": "en-US",
+    "file": "02-880.webp",
+    "source": "marketing/shots/en-US/02-880.webp",
+    "sha256": "25a73aa8c318618278be85f1f626bd634bdb73c09d5d63866a1a2c16a51cd73c"
+  },
+  {
+    "locale": "en-US",
+    "file": "03-880.webp",
+    "source": "marketing/shots/en-US/03-880.webp",
+    "sha256": "391219ccd5fd86ac5b29e2553dfbc173212aeb72c549ca32e737aa3ae8dc7df4"
+  },
+  {
+    "locale": "en-US",
+    "file": "02-440.avif",
+    "source": "marketing/shots/en-US/02-440.avif",
+    "sha256": "9e3b264f92cdc5b09d6fc227c1151ebfc8c686d1bbefcfbd73dff5f75f90ed63"
+  },
+  {
+    "locale": "en-US",
+    "file": "03-440.avif",
+    "source": "marketing/shots/en-US/03-440.avif",
+    "sha256": "ce6585996b28f145e3c9ccac2895b171ed40508b2976d014809ea51a8d535f5e"
+  },
+  {
+    "locale": "es-ES",
+    "file": "02-880.avif",
+    "source": "marketing/shots/es-ES/02-880.avif",
+    "sha256": "09681150b756a16b7d8d3c687b2dd24118f59216ec0f5a1b285d6f86e0ae2437"
+  },
+  {
+    "locale": "es-ES",
+    "file": "03-880.avif",
+    "source": "marketing/shots/es-ES/03-880.avif",
+    "sha256": "4702ef3a3b76420a383f4da699e4a2070b0b6a0d8346c3db867417c59912200a"
+  },
+  {
+    "locale": "es-ES",
+    "file": "02-440.webp",
+    "source": "marketing/shots/es-ES/02-440.webp",
+    "sha256": "ce7b40d1b86fbaeb54d52b8072d8ea1d95b43b3921eb668737972756e60a731c"
+  },
+  {
+    "locale": "es-ES",
+    "file": "03-440.webp",
+    "source": "marketing/shots/es-ES/03-440.webp",
+    "sha256": "9ed7f225a4fb4bddc6f4699e3462c75069a92232b6e06f4f256ca9f18763fcd3"
+  },
+  {
+    "locale": "es-ES",
+    "file": "01-440.avif",
+    "source": "marketing/shots/es-ES/01-440.avif",
+    "sha256": "4c76ae13c921bc2633fca1c40a093079f5fb964cf86fd42a9291503571ed25e2"
+  },
+  {
+    "locale": "es-ES",
+    "file": "01-880.webp",
+    "source": "marketing/shots/es-ES/01-880.webp",
+    "sha256": "941ccdb904a66398bb9bd34efb4834956808c0d50543a1272b2028be43394770"
+  },
+  {
+    "locale": "es-ES",
+    "file": "01-440.webp",
+    "source": "marketing/shots/es-ES/01-440.webp",
+    "sha256": "2a84cc8919aa366330ef98be303558aeabe9dc4ce673d8c4862f4cd17dc88882"
+  },
+  {
+    "locale": "es-ES",
+    "file": "01-880.avif",
+    "source": "marketing/shots/es-ES/01-880.avif",
+    "sha256": "aa1e6836e59fc5529d10470a4152eeaa7a5e0257aa1f04a5a9fbe179e80c8e31"
+  },
+  {
+    "locale": "es-ES",
+    "file": "02-880.webp",
+    "source": "marketing/shots/es-ES/02-880.webp",
+    "sha256": "41cf8d4bdf191dc925c57fe7fc0ad9db05d60e5645aba24e3bbb00951b44dcdd"
+  },
+  {
+    "locale": "es-ES",
+    "file": "03-880.webp",
+    "source": "marketing/shots/es-ES/03-880.webp",
+    "sha256": "fbac295fb419856ef856ec9480978bc8256035c9290487308beab1d27a338822"
+  },
+  {
+    "locale": "es-ES",
+    "file": "02-440.avif",
+    "source": "marketing/shots/es-ES/02-440.avif",
+    "sha256": "901fdf8f3caeb9d943e81b1f6736af60ac317b8a49a28d22de63587b0245061a"
+  },
+  {
+    "locale": "es-ES",
+    "file": "03-440.avif",
+    "source": "marketing/shots/es-ES/03-440.avif",
+    "sha256": "363b3a332dc9202cd5dc2812911b5e086d283807bc767fb63b807de66b547386"
+  },
+  {
+    "locale": "es-MX",
+    "file": "02-880.avif",
+    "source": "marketing/shots/es-MX/02-880.avif",
+    "sha256": "09681150b756a16b7d8d3c687b2dd24118f59216ec0f5a1b285d6f86e0ae2437"
+  },
+  {
+    "locale": "es-MX",
+    "file": "03-880.avif",
+    "source": "marketing/shots/es-MX/03-880.avif",
+    "sha256": "4702ef3a3b76420a383f4da699e4a2070b0b6a0d8346c3db867417c59912200a"
+  },
+  {
+    "locale": "es-MX",
+    "file": "02-440.webp",
+    "source": "marketing/shots/es-MX/02-440.webp",
+    "sha256": "ce7b40d1b86fbaeb54d52b8072d8ea1d95b43b3921eb668737972756e60a731c"
+  },
+  {
+    "locale": "es-MX",
+    "file": "03-440.webp",
+    "source": "marketing/shots/es-MX/03-440.webp",
+    "sha256": "9ed7f225a4fb4bddc6f4699e3462c75069a92232b6e06f4f256ca9f18763fcd3"
+  },
+  {
+    "locale": "es-MX",
+    "file": "01-440.avif",
+    "source": "marketing/shots/es-MX/01-440.avif",
+    "sha256": "4c76ae13c921bc2633fca1c40a093079f5fb964cf86fd42a9291503571ed25e2"
+  },
+  {
+    "locale": "es-MX",
+    "file": "01-880.webp",
+    "source": "marketing/shots/es-MX/01-880.webp",
+    "sha256": "941ccdb904a66398bb9bd34efb4834956808c0d50543a1272b2028be43394770"
+  },
+  {
+    "locale": "es-MX",
+    "file": "01-440.webp",
+    "source": "marketing/shots/es-MX/01-440.webp",
+    "sha256": "2a84cc8919aa366330ef98be303558aeabe9dc4ce673d8c4862f4cd17dc88882"
+  },
+  {
+    "locale": "es-MX",
+    "file": "01-880.avif",
+    "source": "marketing/shots/es-MX/01-880.avif",
+    "sha256": "aa1e6836e59fc5529d10470a4152eeaa7a5e0257aa1f04a5a9fbe179e80c8e31"
+  },
+  {
+    "locale": "es-MX",
+    "file": "02-880.webp",
+    "source": "marketing/shots/es-MX/02-880.webp",
+    "sha256": "41cf8d4bdf191dc925c57fe7fc0ad9db05d60e5645aba24e3bbb00951b44dcdd"
+  },
+  {
+    "locale": "es-MX",
+    "file": "03-880.webp",
+    "source": "marketing/shots/es-MX/03-880.webp",
+    "sha256": "fbac295fb419856ef856ec9480978bc8256035c9290487308beab1d27a338822"
+  },
+  {
+    "locale": "es-MX",
+    "file": "02-440.avif",
+    "source": "marketing/shots/es-MX/02-440.avif",
+    "sha256": "901fdf8f3caeb9d943e81b1f6736af60ac317b8a49a28d22de63587b0245061a"
+  },
+  {
+    "locale": "es-MX",
+    "file": "03-440.avif",
+    "source": "marketing/shots/es-MX/03-440.avif",
+    "sha256": "363b3a332dc9202cd5dc2812911b5e086d283807bc767fb63b807de66b547386"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "02-880.avif",
+    "source": "marketing/shots/fr-CA/02-880.avif",
+    "sha256": "a75cfd5dbfbffe92bf8c4a64512f760726d7db9b6b5e1ddfd315a334fd82a40f"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "03-880.avif",
+    "source": "marketing/shots/fr-CA/03-880.avif",
+    "sha256": "f7dd0d186660065270b9d5ff87fb8ca0fd0c1a104fbc85335acdd0186c4b55c1"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "02-440.webp",
+    "source": "marketing/shots/fr-CA/02-440.webp",
+    "sha256": "3729d48d838032d319287616978def5468cdd3377e22d4f5adc5e4ad727bcf85"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "03-440.webp",
+    "source": "marketing/shots/fr-CA/03-440.webp",
+    "sha256": "b4a9d9fc9ce1a6191bd36fe8929e421e220c4a52c6897dde555ddb54045ebdb3"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "01-440.avif",
+    "source": "marketing/shots/fr-CA/01-440.avif",
+    "sha256": "7d792a5c703b2377049eefa521e9e677c110f26d746300d377caf37d03fa2051"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "01-880.webp",
+    "source": "marketing/shots/fr-CA/01-880.webp",
+    "sha256": "c4b63da3047c6e2349a6f8a5b34176ed837aea57f859bb54302f12d2518568c8"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "01-440.webp",
+    "source": "marketing/shots/fr-CA/01-440.webp",
+    "sha256": "7255d4708d3a650523981787141234c8b76ce0e1726fb46b1e94bf115256fe99"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "01-880.avif",
+    "source": "marketing/shots/fr-CA/01-880.avif",
+    "sha256": "368ac2860ba25ba313ac4e8c0a35f9bdfc2226c5231f5047b9e2f8628fafa54c"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "02-880.webp",
+    "source": "marketing/shots/fr-CA/02-880.webp",
+    "sha256": "0c3f52917f6f7a122b50bc5db9450c0083faf3e373331169c45751a3be92bd34"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "03-880.webp",
+    "source": "marketing/shots/fr-CA/03-880.webp",
+    "sha256": "e1cce4557595079d10a06c2f639abbbf13f22549f59505d15054bb4e322392ef"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "02-440.avif",
+    "source": "marketing/shots/fr-CA/02-440.avif",
+    "sha256": "deb8f04c99fbacb64d717f302d7251b56ec934366faadef2208963af5913a286"
+  },
+  {
+    "locale": "fr-CA",
+    "file": "03-440.avif",
+    "source": "marketing/shots/fr-CA/03-440.avif",
+    "sha256": "145dccd5931cf8ed65bca2740a02529572c232f143fa0c017e78f3a42bb72531"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "02-880.avif",
+    "source": "marketing/shots/fr-FR/02-880.avif",
+    "sha256": "a75cfd5dbfbffe92bf8c4a64512f760726d7db9b6b5e1ddfd315a334fd82a40f"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "03-880.avif",
+    "source": "marketing/shots/fr-FR/03-880.avif",
+    "sha256": "f7dd0d186660065270b9d5ff87fb8ca0fd0c1a104fbc85335acdd0186c4b55c1"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "02-440.webp",
+    "source": "marketing/shots/fr-FR/02-440.webp",
+    "sha256": "3729d48d838032d319287616978def5468cdd3377e22d4f5adc5e4ad727bcf85"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "03-440.webp",
+    "source": "marketing/shots/fr-FR/03-440.webp",
+    "sha256": "b4a9d9fc9ce1a6191bd36fe8929e421e220c4a52c6897dde555ddb54045ebdb3"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "01-440.avif",
+    "source": "marketing/shots/fr-FR/01-440.avif",
+    "sha256": "7d792a5c703b2377049eefa521e9e677c110f26d746300d377caf37d03fa2051"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "01-880.webp",
+    "source": "marketing/shots/fr-FR/01-880.webp",
+    "sha256": "c4b63da3047c6e2349a6f8a5b34176ed837aea57f859bb54302f12d2518568c8"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "01-440.webp",
+    "source": "marketing/shots/fr-FR/01-440.webp",
+    "sha256": "7255d4708d3a650523981787141234c8b76ce0e1726fb46b1e94bf115256fe99"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "01-880.avif",
+    "source": "marketing/shots/fr-FR/01-880.avif",
+    "sha256": "368ac2860ba25ba313ac4e8c0a35f9bdfc2226c5231f5047b9e2f8628fafa54c"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "02-880.webp",
+    "source": "marketing/shots/fr-FR/02-880.webp",
+    "sha256": "0c3f52917f6f7a122b50bc5db9450c0083faf3e373331169c45751a3be92bd34"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "03-880.webp",
+    "source": "marketing/shots/fr-FR/03-880.webp",
+    "sha256": "e1cce4557595079d10a06c2f639abbbf13f22549f59505d15054bb4e322392ef"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "02-440.avif",
+    "source": "marketing/shots/fr-FR/02-440.avif",
+    "sha256": "deb8f04c99fbacb64d717f302d7251b56ec934366faadef2208963af5913a286"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "03-440.avif",
+    "source": "marketing/shots/fr-FR/03-440.avif",
+    "sha256": "145dccd5931cf8ed65bca2740a02529572c232f143fa0c017e78f3a42bb72531"
+  },
+  {
+    "locale": "it",
+    "file": "02-880.avif",
+    "source": "marketing/shots/it/02-880.avif",
+    "sha256": "8587a4bd5577076a85998fdc5af3cac7993dd15b1e52b41a485dc4860c4b48f3"
+  },
+  {
+    "locale": "it",
+    "file": "03-880.avif",
+    "source": "marketing/shots/it/03-880.avif",
+    "sha256": "d6f36955bae3b974dd1f94adfc0a5d587daf5fc231c224b3dbefe521735d7b14"
+  },
+  {
+    "locale": "it",
+    "file": "02-440.webp",
+    "source": "marketing/shots/it/02-440.webp",
+    "sha256": "09e464f203d102322f8ffcb9827e547f809d16c8b65aa4b80bfc188b9023e90c"
+  },
+  {
+    "locale": "it",
+    "file": "03-440.webp",
+    "source": "marketing/shots/it/03-440.webp",
+    "sha256": "ba7573de795fd6ce1d33bb92740b6bb6888d734f4c5686cd928e2754bcc594ce"
+  },
+  {
+    "locale": "it",
+    "file": "01-440.avif",
+    "source": "marketing/shots/it/01-440.avif",
+    "sha256": "c39980eaadc24b221d48cb3fcd6e9c60c0c47ba268fc380b91bb61578e60c94f"
+  },
+  {
+    "locale": "it",
+    "file": "01-880.webp",
+    "source": "marketing/shots/it/01-880.webp",
+    "sha256": "e264ebbe391d0fd825c1a69299f9eea16419033c2cc0ad6e3ebb48b5a14ee3e7"
+  },
+  {
+    "locale": "it",
+    "file": "01-440.webp",
+    "source": "marketing/shots/it/01-440.webp",
+    "sha256": "05c4a644857b70a3c178d06bfd2f02bcf281d1f5026ce3344c6736d2c6a3aafc"
+  },
+  {
+    "locale": "it",
+    "file": "01-880.avif",
+    "source": "marketing/shots/it/01-880.avif",
+    "sha256": "0846954810de058f5d34d0af64fde0401007cfc6ff8aaceeee29a94b02f9bc3f"
+  },
+  {
+    "locale": "it",
+    "file": "02-880.webp",
+    "source": "marketing/shots/it/02-880.webp",
+    "sha256": "c35dfee8ce15eb73dda374b60fc8009aa59d924b4e56a14dc051303766757f01"
+  },
+  {
+    "locale": "it",
+    "file": "03-880.webp",
+    "source": "marketing/shots/it/03-880.webp",
+    "sha256": "d7208094f3de51ff953f5fc64e07ab5e6ab03b79a6d50ec5f363dad86de8bacb"
+  },
+  {
+    "locale": "it",
+    "file": "02-440.avif",
+    "source": "marketing/shots/it/02-440.avif",
+    "sha256": "30310aa878d6d234e1696038c4d9c5abda9aaa9894a78ba569d05fed000deaf0"
+  },
+  {
+    "locale": "it",
+    "file": "03-440.avif",
+    "source": "marketing/shots/it/03-440.avif",
+    "sha256": "be1284f19410f78b2e5b461367b7406b4ed180df7dce78af43822b5ea7211a44"
+  },
+  {
+    "locale": "ja",
+    "file": "02-880.avif",
+    "source": "marketing/shots/ja/02-880.avif",
+    "sha256": "404385a220b2581afaff64911c1626d572a0043326b7ff17290cd14f745e4740"
+  },
+  {
+    "locale": "ja",
+    "file": "03-880.avif",
+    "source": "marketing/shots/ja/03-880.avif",
+    "sha256": "e9480d56ac75352fd8a6492090951ff495c75d04e5a06549b0952c950131bc00"
+  },
+  {
+    "locale": "ja",
+    "file": "02-440.webp",
+    "source": "marketing/shots/ja/02-440.webp",
+    "sha256": "b592445ee7975a8f42ff2679fec67bf4e31f97c478c19635dfadd0571f99ae31"
+  },
+  {
+    "locale": "ja",
+    "file": "03-440.webp",
+    "source": "marketing/shots/ja/03-440.webp",
+    "sha256": "02a5a8a0f78a5b292e9083d9b3c19fc72ce43b6b0aff77f58b7b94b8fb3c3243"
+  },
+  {
+    "locale": "ja",
+    "file": "01-440.avif",
+    "source": "marketing/shots/ja/01-440.avif",
+    "sha256": "fb8f575a1ba57b8120fc6c7b510ee6bf2536b4c917c672854774455254c356b9"
+  },
+  {
+    "locale": "ja",
+    "file": "01-880.webp",
+    "source": "marketing/shots/ja/01-880.webp",
+    "sha256": "b8a0aec294f40c9c3ed11074468b824429e2c0d6c9bcd12844eb3ff0453fa4c7"
+  },
+  {
+    "locale": "ja",
+    "file": "01-440.webp",
+    "source": "marketing/shots/ja/01-440.webp",
+    "sha256": "9fb2b75c8b5e265e060904413499ae8bccf0fd28109688fc0da023263e77be51"
+  },
+  {
+    "locale": "ja",
+    "file": "01-880.avif",
+    "source": "marketing/shots/ja/01-880.avif",
+    "sha256": "a5134a59c3c04162517326332de7241ca3f63c032dabbf3ece380df76ae4425f"
+  },
+  {
+    "locale": "ja",
+    "file": "02-880.webp",
+    "source": "marketing/shots/ja/02-880.webp",
+    "sha256": "4a0cfbb31c22d5e60300d6c8278de358a681f2072c1d4dc987fde0e1fb13dd1e"
+  },
+  {
+    "locale": "ja",
+    "file": "03-880.webp",
+    "source": "marketing/shots/ja/03-880.webp",
+    "sha256": "4ee20cc1927b8af4f8286b481615045c8d6e28cec1e263885e1d836b3f39fb32"
+  },
+  {
+    "locale": "ja",
+    "file": "02-440.avif",
+    "source": "marketing/shots/ja/02-440.avif",
+    "sha256": "1313c76d3d9172474604f81547cd4928ef8a3be56f85480b97d45014697504cd"
+  },
+  {
+    "locale": "ja",
+    "file": "03-440.avif",
+    "source": "marketing/shots/ja/03-440.avif",
+    "sha256": "a5bff92423be2f400d44d2970906ac79649060d4ffb956943a6ff2e29bba2935"
+  },
+  {
+    "locale": "ko",
+    "file": "02-880.avif",
+    "source": "marketing/shots/ko/02-880.avif",
+    "sha256": "38dfa8a43f812d5776ae68e97d83a6429239b1c09ba3e6cbc76a48af5d8943bd"
+  },
+  {
+    "locale": "ko",
+    "file": "03-880.avif",
+    "source": "marketing/shots/ko/03-880.avif",
+    "sha256": "093d022b39cfd436002469041c1e9febe48d7ef73fb3b7a480da559e45f1530c"
+  },
+  {
+    "locale": "ko",
+    "file": "02-440.webp",
+    "source": "marketing/shots/ko/02-440.webp",
+    "sha256": "4221470d25bc220081954db7d3e48929e98faaf9d39b89320eccac6810c9c27d"
+  },
+  {
+    "locale": "ko",
+    "file": "03-440.webp",
+    "source": "marketing/shots/ko/03-440.webp",
+    "sha256": "222dd17fa9e141338fe2dd51f724a787b4ada2aedf618e7119f537dada4b0cc1"
+  },
+  {
+    "locale": "ko",
+    "file": "01-440.avif",
+    "source": "marketing/shots/ko/01-440.avif",
+    "sha256": "3350af9ff9747c20d5f7dd128a6f332f52fb75fc346b6890b848df65164afdb4"
+  },
+  {
+    "locale": "ko",
+    "file": "01-880.webp",
+    "source": "marketing/shots/ko/01-880.webp",
+    "sha256": "4665a98b5bde3135216e7a58e962ddee3055e18d28bf4f5eb2cfd0a070068ceb"
+  },
+  {
+    "locale": "ko",
+    "file": "01-440.webp",
+    "source": "marketing/shots/ko/01-440.webp",
+    "sha256": "f56ad59385c3e8bae3db3f8e198dcd6c68988698cfde7b6d73767df3d3cc8663"
+  },
+  {
+    "locale": "ko",
+    "file": "01-880.avif",
+    "source": "marketing/shots/ko/01-880.avif",
+    "sha256": "223e16c62cb3499e7c5a854f8b4b8ec698f4d9d11e0dc118cc5814868ba2ea80"
+  },
+  {
+    "locale": "ko",
+    "file": "02-880.webp",
+    "source": "marketing/shots/ko/02-880.webp",
+    "sha256": "b70895e1c35293ee3cb261341cee434f9ce64632a3044770a5751f7c34825528"
+  },
+  {
+    "locale": "ko",
+    "file": "03-880.webp",
+    "source": "marketing/shots/ko/03-880.webp",
+    "sha256": "c275b78c1d75efd30b6d2f5e60a7296352d47770bcb8a8db9ac4e88417cfb55e"
+  },
+  {
+    "locale": "ko",
+    "file": "02-440.avif",
+    "source": "marketing/shots/ko/02-440.avif",
+    "sha256": "bff66dd6dc27dd2ee28222a9fa0c5ef96054e17744a4930ab7ba4c6589ca93a6"
+  },
+  {
+    "locale": "ko",
+    "file": "03-440.avif",
+    "source": "marketing/shots/ko/03-440.avif",
+    "sha256": "6954e8c82043d30b248a5dfe80e216a8abf655ae61eededd07e787cd4e62b3c0"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "02-880.avif",
+    "source": "marketing/shots/nl-NL/02-880.avif",
+    "sha256": "6a4008a586beb58f35866525ff98f3e710120e6ec6ee351a8192344755e51c1a"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "03-880.avif",
+    "source": "marketing/shots/nl-NL/03-880.avif",
+    "sha256": "e6d9d409109733148eda35d112d8463ab13ef3514fbd74e0eabf2cd4cd309683"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "02-440.webp",
+    "source": "marketing/shots/nl-NL/02-440.webp",
+    "sha256": "6130e66c5ba4ebc71b4d1df77ed4d3595b445ddd0d580a1f47730dd77a135502"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "03-440.webp",
+    "source": "marketing/shots/nl-NL/03-440.webp",
+    "sha256": "a94c64c81c2d2b9973eed2111135a631fc505c2d54e8b255f2250dce94f64ba2"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "01-440.avif",
+    "source": "marketing/shots/nl-NL/01-440.avif",
+    "sha256": "88823c2b7b62aec5f60620eff0ce6a34d5c32557a5daa4855d738bf71c9e4f4c"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "01-880.webp",
+    "source": "marketing/shots/nl-NL/01-880.webp",
+    "sha256": "be651f8c554cc2a4541bb474ab342f5e4be63fabed22f6f870c6fe34c2056114"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "01-440.webp",
+    "source": "marketing/shots/nl-NL/01-440.webp",
+    "sha256": "7c1b575e03fc82ffe851742e6611a62a0cff3e16d9387d7694d1972981fb053e"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "01-880.avif",
+    "source": "marketing/shots/nl-NL/01-880.avif",
+    "sha256": "ee5064e487a0fd9bc6784ae104c068bff1f9bb69e4f6199940aa56ebc724cf65"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "02-880.webp",
+    "source": "marketing/shots/nl-NL/02-880.webp",
+    "sha256": "30ecf75686b083d98fcb250c4942623df1a59978ebb011a2be5e0439598149ef"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "03-880.webp",
+    "source": "marketing/shots/nl-NL/03-880.webp",
+    "sha256": "7d39ff6412738294d4677b941a361597794703138bdb36ea26d42f02319429e5"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "02-440.avif",
+    "source": "marketing/shots/nl-NL/02-440.avif",
+    "sha256": "5075680742070452ffb0e6145f296239fc1aba5a050d229cd0d6268e64a383c0"
+  },
+  {
+    "locale": "nl-NL",
+    "file": "03-440.avif",
+    "source": "marketing/shots/nl-NL/03-440.avif",
+    "sha256": "dc75084533e8d94d989472480a747d675d03de82bc46e78cd06b64545744c272"
+  },
+  {
+    "locale": "pl",
+    "file": "02-880.avif",
+    "source": "marketing/shots/pl/02-880.avif",
+    "sha256": "8fda29c298bc0797e745bade8d64c758518c81ea42c14ccbf59e38393ed152a0"
+  },
+  {
+    "locale": "pl",
+    "file": "03-880.avif",
+    "source": "marketing/shots/pl/03-880.avif",
+    "sha256": "aa19f24c6c3229d81c7ee9572fa0ca132da9a7b3555b49b9f9498e7566680f59"
+  },
+  {
+    "locale": "pl",
+    "file": "02-440.webp",
+    "source": "marketing/shots/pl/02-440.webp",
+    "sha256": "94d350763bccf0d7ca479db33f7330d1578ae14ff0b4b657111ec32d64660cd2"
+  },
+  {
+    "locale": "pl",
+    "file": "03-440.webp",
+    "source": "marketing/shots/pl/03-440.webp",
+    "sha256": "28b26e2f5361ee1e0171e9a714f0cb94803d95e0d23dcac60d23e29cc10c5893"
+  },
+  {
+    "locale": "pl",
+    "file": "01-440.avif",
+    "source": "marketing/shots/pl/01-440.avif",
+    "sha256": "a0ddf06ebf9423f05b7e10eb939438f3601d026915988cddea8c1d8b5b7138e0"
+  },
+  {
+    "locale": "pl",
+    "file": "01-880.webp",
+    "source": "marketing/shots/pl/01-880.webp",
+    "sha256": "b73b3aceaefc7d822f14289197e11bc9c278b4fbe63a32b8424c2fa823c9e7d4"
+  },
+  {
+    "locale": "pl",
+    "file": "01-440.webp",
+    "source": "marketing/shots/pl/01-440.webp",
+    "sha256": "f20fba8fb808d98419d7d55c6a3df41feb26b473fcc99a11fd7beb879a265d80"
+  },
+  {
+    "locale": "pl",
+    "file": "01-880.avif",
+    "source": "marketing/shots/pl/01-880.avif",
+    "sha256": "ec02e929a271235832881cddea8b3295eb33554ebe7a1c7932f8c09b8c4f9fb7"
+  },
+  {
+    "locale": "pl",
+    "file": "02-880.webp",
+    "source": "marketing/shots/pl/02-880.webp",
+    "sha256": "76f3fe6a4bfe96dd7791198523faef8b28ac9eb81c47a8ac3f3b3a5603da3484"
+  },
+  {
+    "locale": "pl",
+    "file": "03-880.webp",
+    "source": "marketing/shots/pl/03-880.webp",
+    "sha256": "4106ea287990fa61b86f43f54478cdd0956a408ff4912f4c8548c5f070dbb705"
+  },
+  {
+    "locale": "pl",
+    "file": "02-440.avif",
+    "source": "marketing/shots/pl/02-440.avif",
+    "sha256": "e01758f7a496b50d61cac09d8a9c452bdfbb8d0baf0e14a3b82310fac605cbfb"
+  },
+  {
+    "locale": "pl",
+    "file": "03-440.avif",
+    "source": "marketing/shots/pl/03-440.avif",
+    "sha256": "85f0a59f02b196dd8ae2827d435e07c521ce3081c65b187495f222fd7a97f9a5"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "02-880.avif",
+    "source": "marketing/shots/pt-BR/02-880.avif",
+    "sha256": "261a0218c270a5ee0a8da6f93e3edb68ccd0f2db8c116212cf6ea0e7989058d5"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "03-880.avif",
+    "source": "marketing/shots/pt-BR/03-880.avif",
+    "sha256": "a66f2dde04113f21518f35eac3ef8433f044b78c60fa174e7eb3a1c619a0322a"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "02-440.webp",
+    "source": "marketing/shots/pt-BR/02-440.webp",
+    "sha256": "f09ef9bb2fd7852ec4213db0481d62c0e2ddca5de84df812fdae2f4e6c311380"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "03-440.webp",
+    "source": "marketing/shots/pt-BR/03-440.webp",
+    "sha256": "119e233281469b99991e8ae9ebc5b2d10a386898ef38af1f3ddb25aab082434a"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "01-440.avif",
+    "source": "marketing/shots/pt-BR/01-440.avif",
+    "sha256": "035b3d1c576d224145657f93b1e2535eb559b0c4ee3466897ed5fc40f6d5a844"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "01-880.webp",
+    "source": "marketing/shots/pt-BR/01-880.webp",
+    "sha256": "1389b72cdcd78767031ce1fa491d3dc0f65e8dd76a2fec8bdc96919561bfc843"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "01-440.webp",
+    "source": "marketing/shots/pt-BR/01-440.webp",
+    "sha256": "39b092e32b06af11bf88e5ce61a9547f005033caa0db3520e1fe34d20437f3ff"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "01-880.avif",
+    "source": "marketing/shots/pt-BR/01-880.avif",
+    "sha256": "e59e411dfba1cc86b9112d255051dd96f7519248759eaab7746178b38d57ed82"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "02-880.webp",
+    "source": "marketing/shots/pt-BR/02-880.webp",
+    "sha256": "bfa17dbbfa3052e9b55b2344622875e221191c90b5a1b1b541ea2ce5c8674ba1"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "03-880.webp",
+    "source": "marketing/shots/pt-BR/03-880.webp",
+    "sha256": "08e5162e721997894c87ceb5f6a633a3ac4e93336be749619b5b1b501de35a74"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "02-440.avif",
+    "source": "marketing/shots/pt-BR/02-440.avif",
+    "sha256": "cee3b6fcba88c1730556bc6f1bbe87c51ac4399ece52e7c332a092f79a5890e7"
+  },
+  {
+    "locale": "pt-BR",
+    "file": "03-440.avif",
+    "source": "marketing/shots/pt-BR/03-440.avif",
+    "sha256": "97295680ce14954aec361fe38f7373cf6e077fdb653c9e3c88e61aa2d9afc973"
+  },
+  {
+    "locale": "ru",
+    "file": "02-880.avif",
+    "source": "marketing/shots/ru/02-880.avif",
+    "sha256": "289e85d106a68266dbc9bfe6163f42eb6550fb15386c9a35ccd7079dbe4128f7"
+  },
+  {
+    "locale": "ru",
+    "file": "03-880.avif",
+    "source": "marketing/shots/ru/03-880.avif",
+    "sha256": "dc0944487b4271aa2172f1f78d26e76da2bf8399b3001bfa0426c907a6b63603"
+  },
+  {
+    "locale": "ru",
+    "file": "02-440.webp",
+    "source": "marketing/shots/ru/02-440.webp",
+    "sha256": "a5acbdee50b5809931834a95a7f9f56cb88b91d9f0098076e5aade7dacee43ec"
+  },
+  {
+    "locale": "ru",
+    "file": "03-440.webp",
+    "source": "marketing/shots/ru/03-440.webp",
+    "sha256": "c1d15f30e5ae6a8e55a48b728a223b672cfb473aa717a97cd3f10eb25feb53c7"
+  },
+  {
+    "locale": "ru",
+    "file": "01-440.avif",
+    "source": "marketing/shots/ru/01-440.avif",
+    "sha256": "cdc78540ebdd4324cfd6dff08acedb70805fac2ab1091ed061d6190abaf0bdb6"
+  },
+  {
+    "locale": "ru",
+    "file": "01-880.webp",
+    "source": "marketing/shots/ru/01-880.webp",
+    "sha256": "d995b6b056ea98f818c2d2895e320a437cf562b997445c052276cc7c92703766"
+  },
+  {
+    "locale": "ru",
+    "file": "01-440.webp",
+    "source": "marketing/shots/ru/01-440.webp",
+    "sha256": "d79297e0629128ca6b86a3890456abfc26f842c00b1705c8099c5373ae92fed9"
+  },
+  {
+    "locale": "ru",
+    "file": "01-880.avif",
+    "source": "marketing/shots/ru/01-880.avif",
+    "sha256": "3fbce4cac4c18c82d6c31d173b25b8e847a069512dcd55c10d23087d65248027"
+  },
+  {
+    "locale": "ru",
+    "file": "02-880.webp",
+    "source": "marketing/shots/ru/02-880.webp",
+    "sha256": "6d95f83b982bb62664ecf45ebef22776205e1b691fa42ad20138f91622e05ff8"
+  },
+  {
+    "locale": "ru",
+    "file": "03-880.webp",
+    "source": "marketing/shots/ru/03-880.webp",
+    "sha256": "7f1f28cac4966501bdb4145eee1bffab9960f93e93b46d8e64e247a07e4faa3b"
+  },
+  {
+    "locale": "ru",
+    "file": "02-440.avif",
+    "source": "marketing/shots/ru/02-440.avif",
+    "sha256": "ac831e4f841c910fd93f3d56c6ac24ece1462544da5d6d2320861e56a4ea42e7"
+  },
+  {
+    "locale": "ru",
+    "file": "03-440.avif",
+    "source": "marketing/shots/ru/03-440.avif",
+    "sha256": "b29df190bf3b1da13a8dda81d613dbd90de13371f67b663803de2d0f52ff0b48"
+  },
+  {
+    "locale": "sv",
+    "file": "02-880.avif",
+    "source": "marketing/shots/sv/02-880.avif",
+    "sha256": "fa0560b9b4809715264553a0f3a6d50e183ac4ae6c7e45ea30a647827dd2b537"
+  },
+  {
+    "locale": "sv",
+    "file": "03-880.avif",
+    "source": "marketing/shots/sv/03-880.avif",
+    "sha256": "26159e4aae0ca12cc03def05661f7d52c53336d014612f1ede34034cc9d7336f"
+  },
+  {
+    "locale": "sv",
+    "file": "02-440.webp",
+    "source": "marketing/shots/sv/02-440.webp",
+    "sha256": "32fbad9ae01b06ef4b011318f09c8a69e1106716392819635ca41f12ea73d8fb"
+  },
+  {
+    "locale": "sv",
+    "file": "03-440.webp",
+    "source": "marketing/shots/sv/03-440.webp",
+    "sha256": "cbf39e7289f0e1694a02fc66ede9e42e45171054ba51b18ef9cb547f296b4f01"
+  },
+  {
+    "locale": "sv",
+    "file": "01-440.avif",
+    "source": "marketing/shots/sv/01-440.avif",
+    "sha256": "bc01038aaa295dfffa768f6392be0c28e409d862a5e1a37809721b5642d778f1"
+  },
+  {
+    "locale": "sv",
+    "file": "01-880.webp",
+    "source": "marketing/shots/sv/01-880.webp",
+    "sha256": "fba4d7206c879d58e2a83eedf00a8099a0c444977006fee8108af6806ff5cdc0"
+  },
+  {
+    "locale": "sv",
+    "file": "01-440.webp",
+    "source": "marketing/shots/sv/01-440.webp",
+    "sha256": "3f2ced9d7449d8b78867c672fbf8525fd9abeb06ca50ff4db59810cc8cc4b72a"
+  },
+  {
+    "locale": "sv",
+    "file": "01-880.avif",
+    "source": "marketing/shots/sv/01-880.avif",
+    "sha256": "a240119ccc973266f3953e10229f4ffcfb7378fba3f99f50304893f50445b5d0"
+  },
+  {
+    "locale": "sv",
+    "file": "02-880.webp",
+    "source": "marketing/shots/sv/02-880.webp",
+    "sha256": "4bede48eaff2d074b74058d69cad61d7cfda8a7d9f517fd97ea8389667d4cd6c"
+  },
+  {
+    "locale": "sv",
+    "file": "03-880.webp",
+    "source": "marketing/shots/sv/03-880.webp",
+    "sha256": "0bda82df0c77afd95fdb3e05ee921fc8c4a996e4466a8fad433c1ab658dbbb70"
+  },
+  {
+    "locale": "sv",
+    "file": "02-440.avif",
+    "source": "marketing/shots/sv/02-440.avif",
+    "sha256": "c10d28a926c9f09d5975c1670ae6ec7c7d306add58ca6ca5501af8b3586a952c"
+  },
+  {
+    "locale": "sv",
+    "file": "03-440.avif",
+    "source": "marketing/shots/sv/03-440.avif",
+    "sha256": "78234d657a0bab6535241de54b962a6cb1759501536723c237f6b1d22c35afa2"
+  },
+  {
+    "locale": "tr",
+    "file": "02-880.avif",
+    "source": "marketing/shots/tr/02-880.avif",
+    "sha256": "4466f5931f35b68b3a85faeda1cd04b78ba57a4e12a20accc7fca55be6471122"
+  },
+  {
+    "locale": "tr",
+    "file": "03-880.avif",
+    "source": "marketing/shots/tr/03-880.avif",
+    "sha256": "dc02421da00506b3cb4db0afc8ff86ab9ad6972108bca45e23d54cc89153a0da"
+  },
+  {
+    "locale": "tr",
+    "file": "02-440.webp",
+    "source": "marketing/shots/tr/02-440.webp",
+    "sha256": "bbcfad19b7579a7900ea602741001a548b8a8d09640fea61835c1e110ef55168"
+  },
+  {
+    "locale": "tr",
+    "file": "03-440.webp",
+    "source": "marketing/shots/tr/03-440.webp",
+    "sha256": "7556d2ce594b12df1e2a48133eca8f63741a97aaf167cf82d9965bcf07c108b2"
+  },
+  {
+    "locale": "tr",
+    "file": "01-440.avif",
+    "source": "marketing/shots/tr/01-440.avif",
+    "sha256": "d3b071f4f11934c314d74aa152413dfd534654c9035451bd2345dd67baf02082"
+  },
+  {
+    "locale": "tr",
+    "file": "01-880.webp",
+    "source": "marketing/shots/tr/01-880.webp",
+    "sha256": "2bdf9339adb1fba6892d3f067530da1c2dfe8b23447a8b8116a7ef94aa9c6c3f"
+  },
+  {
+    "locale": "tr",
+    "file": "01-440.webp",
+    "source": "marketing/shots/tr/01-440.webp",
+    "sha256": "ac07d2a611799e08fe9f46a90410685eae77a82cc8ae7cb3d482a2b92aa34b88"
+  },
+  {
+    "locale": "tr",
+    "file": "01-880.avif",
+    "source": "marketing/shots/tr/01-880.avif",
+    "sha256": "b2dc778f38fcb4e0c177aa8865beb6942083ba7b8c97cc9fb9c31ed4e484a0da"
+  },
+  {
+    "locale": "tr",
+    "file": "02-880.webp",
+    "source": "marketing/shots/tr/02-880.webp",
+    "sha256": "21be84dcb1144af785ab1b288215056d978b07e0a0368f396c6a20b88b4cbfb5"
+  },
+  {
+    "locale": "tr",
+    "file": "03-880.webp",
+    "source": "marketing/shots/tr/03-880.webp",
+    "sha256": "8a863e4eaa3bd74ca92adb2d22756d09bd8d4b361226d46215e23ef4a2000f55"
+  },
+  {
+    "locale": "tr",
+    "file": "02-440.avif",
+    "source": "marketing/shots/tr/02-440.avif",
+    "sha256": "b7685839b33537c0499b852c5f75513587687839fc418867c7d30ca5b904be11"
+  },
+  {
+    "locale": "tr",
+    "file": "03-440.avif",
+    "source": "marketing/shots/tr/03-440.avif",
+    "sha256": "e764759d8f000c7e9fe9bf2144444ab4914d3d0e592949a8a8dc93bfb6976dca"
+  },
+  {
+    "locale": "uk",
+    "file": "02-880.avif",
+    "source": "marketing/shots/uk/02-880.avif",
+    "sha256": "92581f985e14b6de9731af2edd14e5cc335e2208b63256c56fa469ffaadb2cc5"
+  },
+  {
+    "locale": "uk",
+    "file": "03-880.avif",
+    "source": "marketing/shots/uk/03-880.avif",
+    "sha256": "85cbad72a5c913af1e57e52b8c8226f7ba35a4bf5e0436dd7f00290fe6a8e34c"
+  },
+  {
+    "locale": "uk",
+    "file": "02-440.webp",
+    "source": "marketing/shots/uk/02-440.webp",
+    "sha256": "2976c0db80a2d61cac9958fcc187a87993b179e3edb183936c52370de2532428"
+  },
+  {
+    "locale": "uk",
+    "file": "03-440.webp",
+    "source": "marketing/shots/uk/03-440.webp",
+    "sha256": "5da023208c19a83fe0405cf85450964c264d296550b9e31b77228e12c84cb389"
+  },
+  {
+    "locale": "uk",
+    "file": "01-440.avif",
+    "source": "marketing/shots/uk/01-440.avif",
+    "sha256": "5ed2a77bf6fc024fc8c1c347d6f84cea66068a794f9a414659e0b439c7a10327"
+  },
+  {
+    "locale": "uk",
+    "file": "01-880.webp",
+    "source": "marketing/shots/uk/01-880.webp",
+    "sha256": "6a24cffde1d61230a677f6c50aba44b2598b748cca6d96452606111e5e3adbb4"
+  },
+  {
+    "locale": "uk",
+    "file": "01-440.webp",
+    "source": "marketing/shots/uk/01-440.webp",
+    "sha256": "ff120b3f47e23d86b70ca297cfbd89fb7c42790152b3142adb281ba75ab6aad5"
+  },
+  {
+    "locale": "uk",
+    "file": "01-880.avif",
+    "source": "marketing/shots/uk/01-880.avif",
+    "sha256": "e75ad6ae3e4583e6e1a69d1a8cc654668fa2edaaf6fc158d6bc0776baf66822e"
+  },
+  {
+    "locale": "uk",
+    "file": "02-880.webp",
+    "source": "marketing/shots/uk/02-880.webp",
+    "sha256": "225f9842b4d33e5d6bd6170368368ef0c32bd53aa761025d2ae7543ce3f50bce"
+  },
+  {
+    "locale": "uk",
+    "file": "03-880.webp",
+    "source": "marketing/shots/uk/03-880.webp",
+    "sha256": "d8808cd88d8c1eb7866c77b9d1a4e5274dfde0db7dc258a7abb4dda99d79ceb6"
+  },
+  {
+    "locale": "uk",
+    "file": "02-440.avif",
+    "source": "marketing/shots/uk/02-440.avif",
+    "sha256": "f29b7599aa5dadad2f0573324506fa90b7af77f72baa76d8e0eb3d4ced8a9415"
+  },
+  {
+    "locale": "uk",
+    "file": "03-440.avif",
+    "source": "marketing/shots/uk/03-440.avif",
+    "sha256": "8843c13e7248dde8a351eddc9b3b377fa0661e92dade01ed820229acb92e5691"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "02-880.avif",
+    "source": "marketing/shots/zh-Hans/02-880.avif",
+    "sha256": "a80aa3aa133d35792a944204bb5f67748ba813c038eca31d6d1ee0b1a2ba3c68"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "03-880.avif",
+    "source": "marketing/shots/zh-Hans/03-880.avif",
+    "sha256": "0ec9530f09a63921a57b1f0be17e1c535056cdf4252bb9bf9377537c5fba388d"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "02-440.webp",
+    "source": "marketing/shots/zh-Hans/02-440.webp",
+    "sha256": "dbd06b45f1ca148ed35d36e5f69ff87aebdf2c4f0beb7ebc4c3966ad78ee338c"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "03-440.webp",
+    "source": "marketing/shots/zh-Hans/03-440.webp",
+    "sha256": "6a645887ade5b96176b82cddad073149b07916c3173b5343a310c93e70828616"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "01-440.avif",
+    "source": "marketing/shots/zh-Hans/01-440.avif",
+    "sha256": "64b36e81b8ac86335f7ffa174e02a14bdb3d54dd08d4609ae542f3a1ff26cde8"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "01-880.webp",
+    "source": "marketing/shots/zh-Hans/01-880.webp",
+    "sha256": "adadcf5de58bd5923510c05e4bd2195ae31f657a10254ab2657fbb729b435c42"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "01-440.webp",
+    "source": "marketing/shots/zh-Hans/01-440.webp",
+    "sha256": "4df358ac4e80f13ade33cf606ad5481d5ab17e505b524034b46ce686bbe441d4"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "01-880.avif",
+    "source": "marketing/shots/zh-Hans/01-880.avif",
+    "sha256": "7386ebf8c9352f63ed817d08254987d06cd967d45ed9cb5f5eb20fe7645c0e99"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "02-880.webp",
+    "source": "marketing/shots/zh-Hans/02-880.webp",
+    "sha256": "aa597ed5f1db7b7388ef1b7c1bd0bcac06a2b4c4edfe97bf7c82e8d8ae4634d0"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "03-880.webp",
+    "source": "marketing/shots/zh-Hans/03-880.webp",
+    "sha256": "f45415d77c7329e665e9e6dbd577f4e41306dd1936aca8776ebd448be9216bad"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "02-440.avif",
+    "source": "marketing/shots/zh-Hans/02-440.avif",
+    "sha256": "309cb26ea96b5b2689e594e14c5228a7187fb1c29604a4a26108b1b2186f9b81"
+  },
+  {
+    "locale": "zh-Hans",
+    "file": "03-440.avif",
+    "source": "marketing/shots/zh-Hans/03-440.avif",
+    "sha256": "45a29954776534322224d1a96ae1ea3b7078e7e366e18feb0e54376cf2a27494"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "02-880.avif",
+    "source": "marketing/shots/zh-Hant/02-880.avif",
+    "sha256": "a5ec3768b58d28c78671ca4cb6b28fbabe0fbf41a126a6e44e08821b89e98b7e"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "03-880.avif",
+    "source": "marketing/shots/zh-Hant/03-880.avif",
+    "sha256": "920c17091ce5984e346c0ce603a54984ff8925532a6c8280b862361cc04ac93e"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "02-440.webp",
+    "source": "marketing/shots/zh-Hant/02-440.webp",
+    "sha256": "3b988388d15c6a752034e12eec3a5e33c83951df41c77ed369be7ff280dfed6e"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "03-440.webp",
+    "source": "marketing/shots/zh-Hant/03-440.webp",
+    "sha256": "404bf3e7422054bce905977393ab1a0f3ab6d2fdec24ec934238ed251f5a434d"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "01-440.avif",
+    "source": "marketing/shots/zh-Hant/01-440.avif",
+    "sha256": "21a701bc04900addcf8b467dc9e1504347c2561c9587ec1b4a36b38eba13ed75"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "01-880.webp",
+    "source": "marketing/shots/zh-Hant/01-880.webp",
+    "sha256": "6132518c3ff29767f4059360919252c6ad8c30866f0291ffd69a105413939bc1"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "01-440.webp",
+    "source": "marketing/shots/zh-Hant/01-440.webp",
+    "sha256": "1f733fb3fc3ba57e49cf2971bfa6bc750ef5fc99954df4ad71c70ad5683b6d35"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "01-880.avif",
+    "source": "marketing/shots/zh-Hant/01-880.avif",
+    "sha256": "923a6d89a39e5dedd367bee18ea7f9872199a3a7914b79a51fc046bbeda48e27"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "02-880.webp",
+    "source": "marketing/shots/zh-Hant/02-880.webp",
+    "sha256": "47999173f424df9f3948b4b0622b707c3af5607bc991fc30d84b84c4cc6744aa"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "03-880.webp",
+    "source": "marketing/shots/zh-Hant/03-880.webp",
+    "sha256": "57ebea3bfe56d33216b7b9eda785bed3efaf173167c789b1728a8015bf04464e"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "02-440.avif",
+    "source": "marketing/shots/zh-Hant/02-440.avif",
+    "sha256": "85c4353d75daaa6a69a759cb6a32619d33185f642f21f98662eeae79341e7cf2"
+  },
+  {
+    "locale": "zh-Hant",
+    "file": "03-440.avif",
+    "source": "marketing/shots/zh-Hant/03-440.avif",
+    "sha256": "5d0d9391c6b78426bec74aca725a487f43dbc0b574c7537affa63a6d138056c9"
+  }
+]

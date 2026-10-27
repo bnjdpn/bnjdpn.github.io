@@ -1,0 +1,86 @@
+[
+  {
+    "code": "de-DE",
+    "source": "de-DE"
+  },
+  {
+    "code": "en-AU",
+    "source": "en-AU"
+  },
+  {
+    "code": "en-CA",
+    "source": "en-CA"
+  },
+  {
+    "code": "en-GB",
+    "source": "en-GB"
+  },
+  {
+    "code": "en-US",
+    "source": "en-US"
+  },
+  {
+    "code": "es-ES",
+    "source": "es-ES"
+  },
+  {
+    "code": "es-MX",
+    "source": "es-MX"
+  },
+  {
+    "code": "fr-CA",
+    "source": "fr-CA"
+  },
+  {
+    "code": "fr-FR",
+    "source": "fr-FR"
+  },
+  {
+    "code": "it",
+    "source": "it"
+  },
+  {
+    "code": "ja",
+    "source": "ja"
+  },
+  {
+    "code": "ko",
+    "source": "ko"
+  },
+  {
+    "code": "nl-NL",
+    "source": "nl-NL"
+  },
+  {
+    "code": "pl",
+    "source": "pl"
+  },
+  {
+    "code": "pt-BR",
+    "source": "pt-BR"
+  },
+  {
+    "code": "ru",
+    "source": "ru"
+  },
+  {
+    "code": "sv",
+    "source": "sv"
+  },
+  {
+    "code": "tr",
+    "source": "tr"
+  },
+  {
+    "code": "uk",
+    "source": "uk"
+  },
+  {
+    "code": "zh-Hans",
+    "source": "zh-Hans"
+  },
+  {
+    "code": "zh-Hant",
+    "source": "zh-Hant"
+  }
+]
