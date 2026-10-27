@@ -48,24 +48,36 @@ function clock(hour, twelve, am, pm) {
   return `${h % 12 || 12}:00${suffix}`;
 }
 
-function mark(hour) {
-  const a = (hour / 24) * Math.PI * 2 - Math.PI / 2;
-  return [100 + Math.cos(a) * 88, 100 + Math.sin(a) * 88].map(n => n.toFixed(2));
+// The home screen puts the start hour at the top and runs clockwise.
+const CX = 130;
+const RING = 76;
+const LABEL_R = 102;
+const END_R = 116;
+
+function polar(hour, radius) {
+  const fromStart = ((hour - START) % 24 + 24) % 24;
+  const a = (fromStart / 24) * Math.PI * 2 - Math.PI / 2;
+  return [CX + Math.cos(a) * radius, CX + Math.sin(a) * radius];
 }
 
-const ticks = Array.from({ length: 24 }, (_, i) => {
-  const major = i % 6 === 0;
-  const a = (i / 24) * Math.PI * 2 - Math.PI / 2;
-  const r1 = major ? 72 : 79;
-  const r2 = 84;
-  const line = (r) => `${(100 + Math.cos(a) * r).toFixed(2)} ${(100 + Math.sin(a) * r).toFixed(2)}`;
-  return `<line x1="${line(r1).split(' ')[0]}" y1="${line(r1).split(' ')[1]}" x2="${line(r2).split(' ')[0]}" y2="${line(r2).split(' ')[1]}" class="${major ? 'fz-tick fz-major' : 'fz-tick'}"/>`;
+function hourTag(hour, twelve, am, pm) {
+  const h = ((hour % 24) + 24) % 24;
+  if (!twelve) return `${String(h).padStart(2, '0')}:00`;
+  return `${h % 12 || 12}${h < 12 ? (am || ' AM') : (pm || ' PM')}`;
+}
+
+const ticks = Array.from({ length: 24 }, (_, hour) => {
+  const major = hour % 3 === 0;
+  const [x1, y1] = polar(hour, major ? 66 : 70);
+  const [x2, y2] = polar(hour, 74);
+  return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" class="${major ? 'fz-tick fz-major' : 'fz-tick'}"/>`;
 }).join('');
 
-function screen(loc, name, alt, up, eager) {
+function screen(loc, name, alt, up, eager, extra) {
   const base = `${up}assets/dial/${loc.shots}/${name}`;
-  const sizes = '(max-width: 899px) 92vw, 420px';
-  return `<figure class="fz-shot"><picture><source type="image/avif" srcset="${base}-440.avif 440w, ${base}-880.avif 880w" sizes="${sizes}"><img src="${base}-880.webp" srcset="${base}-440.webp 440w, ${base}-880.webp 880w" sizes="${sizes}" width="880" height="1912" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
+  const sizes = extra === 'fz-beside' ? '240px' : '(max-width: 899px) 92vw, 420px';
+  const cls = extra ? `fz-shot ${extra}` : 'fz-shot';
+  return `<figure class="${cls}"><picture><source type="image/avif" srcset="${base}-440.avif 440w, ${base}-880.avif 880w" sizes="${sizes}"><img src="${base}-880.webp" srcset="${base}-440.webp 440w, ${base}-880.webp 880w" sizes="${sizes}" width="880" height="1912" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
 }
 
 export function render(loc) {
@@ -80,7 +92,16 @@ export function render(loc) {
   const play = googlePlayBadge(loc.play);
   const endHour = (START + FAST) % 24;
   const endText = clock(endHour, loc.twelve, t.dial.am, t.dial.pm);
-  const [mx, my] = mark(endHour);
+  const [mx, my] = polar(endHour, RING).map(n => n.toFixed(2));
+  const [lx, ly] = polar(endHour, END_R).map(n => n.toFixed(2));
+  const left = FAST - ELAPSED;
+  const apart = (a, b) => { const d = Math.abs(a - b) % 24; return Math.min(d, 24 - d); };
+  const hourLabels = [0, 3, 6, 9, 12, 15, 18, 21].map(h => {
+    const [x, y] = polar(h, LABEL_R);
+    const cls = h === START ? 'fz-hour fz-start' : 'fz-hour';
+    const hidden = h !== START && apart(h, endHour) < 2 ? ' hidden' : '';
+    return `<text class="${cls}" data-h="${h}" x="${x.toFixed(1)}" y="${y.toFixed(1)}"${hidden}>${esc(hourTag(h, loc.twelve, t.dial.am, t.dial.pm))}</text>`;
+  }).join('');
   const ogImg = `${ORIGIN}assets/dial/og-${loc.copy === 'fr' ? 'fr' : 'en'}.jpg`;
   const hreflang = LOCALES.map(l => `<link rel="alternate" hreflang="${l.code}" href="${ORIGIN}${l.dir}">`).join('')
     + HREFLANG.map(([lang, dir]) => `<link rel="alternate" hreflang="${lang}" href="${ORIGIN}${dir}">`).join('')
@@ -145,20 +166,22 @@ ${hreflang}
 <a class="skip" href="#main">${esc(ui.skip)}</a>
 <header class="fz-bar">
 <a class="fz-brand" href="./"><img src="${up}assets/app-icon.png" width="36" height="36" alt=""><span>FastZen</span></a>
-<nav class="fz-nav" aria-label="${esc(ui.navMain)}"><a href="#features">${esc(t.runningTitle)}</a><a href="#routine">${esc(t.weekTitle)}</a><a href="#custom-week">${esc(t.paidTitle)}</a><a href="#contact">${esc(ui.support)}</a></nav>
+<nav class="fz-nav" aria-label="${esc(ui.navMain)}"><a href="#features">${esc(t.nav[0])}</a><a href="#routine">${esc(t.nav[1])}</a><a href="#custom-week">${esc(t.nav[2])}</a><a href="#contact">${esc(ui.support)}</a></nav>
 <details class="fz-lang"><summary>${esc(ui.language)}</summary><nav aria-label="${esc(ui.language)}">${langs}</nav></details>
 </header>
 <main id="main">
 <span class="fz-keep" id="dawn-title"></span>
 <section class="fz-open" aria-labelledby="hero-title">
-<figure class="fz-dial" style="--hours:${FAST};--elapsed:${ELAPSED}" data-start="${START}" data-elapsed="${ELAPSED}" data-twelve="${loc.twelve ? '1' : '0'}" data-ampm="${esc((t.dial.am || ' AM') + '|' + (t.dial.pm || ' PM'))}" data-end-word="${esc(t.dial.end)}" data-hour-tpl="${esc(t.dial.hour)}" data-win-tpl="${esc(t.dial.window)}" data-over-tpl="${esc(t.dial.over)}">
+<figure class="fz-dial" style="--elapsed:${ELAPSED};--left:${left}" data-start="${START}" data-elapsed="${ELAPSED}" data-twelve="${loc.twelve ? '1' : '0'}" data-ampm="${esc((t.dial.am || ' AM') + '|' + (t.dial.pm || ' PM'))}" data-end-word="${esc(t.dial.end)}" data-hour-tpl="${esc(t.dial.hour)}" data-win-tpl="${esc(t.dial.window)}" data-over-tpl="${esc(t.dial.over)}">
 <div class="fz-face">
-<svg class="fz-ring" viewBox="0 0 200 200" aria-hidden="true">
-<circle class="fz-track" cx="100" cy="100" r="88"/>
+<svg class="fz-ring" viewBox="0 0 260 260" aria-hidden="true">
+<circle class="fz-track" cx="${CX}" cy="${CX}" r="${RING}"/>
 ${ticks}
-<circle class="fz-fast" cx="100" cy="100" r="88" pathLength="24" transform="rotate(225 100 100)"/>
-<circle class="fz-done" cx="100" cy="100" r="88" pathLength="24" transform="rotate(225 100 100)"/>
-<circle class="fz-mark" cx="${mx}" cy="${my}" r="5.5"/>
+<circle class="fz-left" cx="${CX}" cy="${CX}" r="${RING}" pathLength="24" transform="rotate(-90 ${CX} ${CX})" stroke-dasharray="0 ${ELAPSED} ${left} 24"/>
+<circle class="fz-done" cx="${CX}" cy="${CX}" r="${RING}" pathLength="24" transform="rotate(-90 ${CX} ${CX})"/>
+<circle class="fz-mark" cx="${mx}" cy="${my}" r="5"/>
+${hourLabels}
+<text class="fz-endlab" x="${lx}" y="${ly}">${esc(hourTag(endHour, loc.twelve, t.dial.am, t.dial.pm))}</text>
 </svg>
 <div class="fz-core">
 <p class="fz-time">${esc(t.dial.elapsed)}</p>
@@ -166,8 +189,8 @@ ${ticks}
 <p class="fz-end">${esc(t.dial.end)} ${esc(endText)}</p>
 </div>
 </div>
-<figcaption class="fz-hint">${esc(t.dial.caption)}</figcaption>
 </figure>
+<div class="fz-pitch">
 <p class="fz-lead">${esc(t.lead)}</p>
 <h1 class="fz-h1" id="hero-title">${esc(t.h1)}</h1>
 ${badges}
@@ -181,6 +204,8 @@ ${badges}
 </div>
 <label class="fz-range"><span>${esc(t.custom)}</span><input type="range" min="1" max="48" value="${FAST}"></label>
 <p class="fz-win" aria-live="polite">${esc(fill(t.dial.hour, FAST))}, ${esc(fill(t.dial.window, 24 - FAST))}</p>
+</div>
+${screen(loc, 'home', t.homeAlt, up, false, 'fz-beside')}</figure>
 </section>
 <span class="fz-keep" id="principles-title"></span>
 <section class="fz-block" id="features" aria-labelledby="features-title">
@@ -189,7 +214,7 @@ ${badges}
 <h2 id="features-title">${esc(t.runningTitle)}</h2>
 ${paras(t.running)}
 </div>
-${screen(loc, 'home', t.homeAlt, up, true)}${closeShot(t.homeCap)}
+${screen(loc, 'home', t.homeAlt, up, true, 'fz-repeat')}${closeShot(t.homeCap)}
 </div>
 </section>
 <span class="fz-keep" id="related-title"></span>
@@ -284,15 +309,46 @@ ${badges}
     if (!twelve) return (h < 10 ? '0' : '') + h + ':00';
     return (h % 12 || 12) + ':00' + (h < 12 ? ampm[0] : ampm[1]);
   }
+  function ringTag(h) {
+    h = ((h % 24) + 24) % 24;
+    if (!twelve) return (h < 10 ? '0' : '') + h + ':00';
+    return (h % 12 || 12) + (h < 12 ? ampm[0] : ampm[1]);
+  }
+  var cx = 130, ring = 76, endR = 116;
+  var leftEl = root.querySelector('.fz-left');
+  var endLab = root.querySelector('.fz-endlab');
+  var hourLabs = [].slice.call(root.querySelectorAll('.fz-hour'));
+  function polar(hour, radius) {
+    var fromStart = ((hour - start) % 24 + 24) % 24;
+    var a = (fromStart / 24) * Math.PI * 2 - Math.PI / 2;
+    return [cx + Math.cos(a) * radius, cx + Math.sin(a) * radius];
+  }
+  function apart(a, b) {
+    var d = Math.abs(a - b) % 24;
+    return Math.min(d, 24 - d);
+  }
   function apply(hours) {
     var end = (start + hours) % 24;
     endEl.textContent = root.dataset.endWord + ' ' + clock(end);
     var shown = Math.min(elapsed, hours);
-    root.style.setProperty('--hours', hours);
+    var left = Math.max(0, Math.min(hours, 24) - shown);
     root.style.setProperty('--elapsed', shown);
-    var a = (end / 24) * Math.PI * 2 - Math.PI / 2;
-    mark.setAttribute('cx', (100 + Math.cos(a) * 88).toFixed(2));
-    mark.setAttribute('cy', (100 + Math.sin(a) * 88).toFixed(2));
+    root.style.setProperty('--left', left);
+    if (leftEl) leftEl.setAttribute('stroke-dasharray', '0 ' + shown + ' ' + left + ' 24');
+    var p = polar(end, ring);
+    mark.setAttribute('cx', p[0].toFixed(2));
+    mark.setAttribute('cy', p[1].toFixed(2));
+    if (endLab) {
+      var lab = polar(end, endR);
+      endLab.setAttribute('x', lab[0].toFixed(2));
+      endLab.setAttribute('y', lab[1].toFixed(2));
+      endLab.textContent = ringTag(end);
+      endLab.toggleAttribute('hidden', apart(end, start) === 0);
+    }
+    hourLabs.forEach(function (el) {
+      var h = Number(el.dataset.h);
+      el.toggleAttribute('hidden', h !== start && apart(h, end) < 2);
+    });
     var text = hours > 24
       ? root.dataset.overTpl.replace('{n}', hours)
       : root.dataset.hourTpl.replace('{n}', hours) + ', ' + root.dataset.winTpl.replace('{n}', 24 - hours);

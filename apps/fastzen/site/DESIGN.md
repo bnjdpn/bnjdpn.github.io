@@ -21,7 +21,7 @@ La fin prévue comme une réservation, papier clair et filet cuivre. L’heure o
 
 ### Option C : « Le cadran du jeûne » (retenue)
 
-Un cadran de 24 heures. L’arc sauge est le jeûne, le point cuivre est la fin prévue, le temps écoulé est au centre. Le visiteur passe de 16:8 à 18:6, 20:4, OMAD ou une durée de 1 à 48 h, et l’arc suit. Ensuite les vrais écrans : le jeûne en cours, la semaine avec ses repos, une seule date, l’historique, l’achat unique.
+Un cadran de 24 heures, comme l’accueil de l’app : le début (21:00) est en haut, le sens est celui des aiguilles. L’arc clair est le temps écoulé, l’arc sauge est ce qui reste du jeûne, le bambou est la fenêtre où l’on mange, le point sauge porte l’heure de fin. Les repères 00:00, 03:00, 06:00… tournent avec le début. Ensuite les vrais écrans.
 
 ## Pourquoi « Le cadran du jeûne »
 
@@ -35,7 +35,9 @@ TempoReps n’aboutirait pas à un cadran de jeûne avec des jours de repos. Nom
 
 ## Règles de la page
 
-- Ordre : cadran, titre, badges, choix du protocole ; puis le jeûne en cours (capture accueil) ; la semaine (liste des jours de la capture, puis l’écran) ; une seule date ; l’historique et la phrase de suivi ; l’achat unique ; les deux autres apps déjà liées ; l’assistance.
+- Ordre : cadran, titre, badges, choix du protocole. À partir de 900 px, la capture d’accueil est dans le premier écran, à côté du cadran. Puis la semaine, une seule date, l’historique, l’achat unique, les deux autres apps, l’assistance.
+- Le cadran se lit sans légende. Pas de phrase qui décrit la page (« le cadran reprend l’écran »).
+- Navigation desktop : un ou deux mots (Jeûne, Semaine, Sur mesure, Assistance).
 - Police unique, Fraunces (OFL, The Fraunces Project), variable et sous-ensemblée latin, 36 Ko, graisses 400 à 700. Japonais : les glyphes absents passent à une mincho système. Aucune police des autres sites.
 - Couleurs de l’app en thème sombre, celui des captures : Tea Black #0F1311, Bamboo #262E29, Sage Mist #8FA897, Copper #C26A3A, Mochi #F2EFE8. Le texte secondaire est Sage Mist (7,3:1 sur Tea Black). Le cuivre sur Tea Black est à 4,8:1. Le texte des boutons cuivre est Tea Black.
 - Une seule colonne par défaut. La navigation textuelle et les grilles à deux colonnes vivent dans des media queries `min-width` (860 px et 900 px).
@@ -60,8 +62,8 @@ Envie :
 - [x] Le prix affiché n’apparaît qu’en français (6,99 €) et en anglais (5,99 $, et 6,49 $ sur Google Play US).
 
 Technique :
-- [x] WebKit (Playwright, iPhone) à 375, 390 et 430 px, zoom 120 % et texte 120 %, sur les 8 langues : `scrollWidth` égal à la largeur, aucun élément hors champ hors le champ honeypot. Capture d’accueil à 89 % de la largeur, 73 % avec le zoom 120 %. Le menu de langue ouvert (ja, 375 px) ne déborde pas.
-- [x] Desktop 1440×900 : navigation en ligne, section « jeûne en cours » en deux colonnes (604 px et 420 px).
-- [x] Clic 18:6 : fin prévue 15:00, arc 18. Curseur à 30 h : fin prévue 03:00, « plus d’un tour de cadran ». `prefers-reduced-motion` : pas d’animation.
-- [x] Lighthouse mobile local sur `/FastZen/fr-FR/` : performance 100, accessibilité 100, bonnes pratiques 100, SEO 100, LCP 1,8 s, CLS 0.
+- [x] WebKit (Playwright, iPhone) à 375, 390 et 430 px, zoom 120 % et texte 120 %, sur les 8 langues : pas de débordement hors le champ honeypot. Capture d’accueil à 73 % de la largeur avec le zoom.
+- [x] Desktop 1440×900 : navigation en un ou deux mots, cadran et capture d’accueil dans le premier écran (la capture va de y 217 à y 716).
+- [x] Clic 18:6 : fin prévue 15:00, arc restant 16 h, repère 15:00. `prefers-reduced-motion` : pas d’animation.
+- [x] Lighthouse mobile local sur `/FastZen/fr-FR/` après le recadrage : performance 100, accessibilité 100, bonnes pratiques 100, SEO 100, LCP 1,8 s, CLS 0.
 - [x] Confidentialité et assistance à un clic. Pas de page de mentions légales. Formulaire `/api/contact`, honeypot, Turnstile `0x4AAAAAAFb8sZbCULV4skmB`, `assets/site.js` inchangé.
