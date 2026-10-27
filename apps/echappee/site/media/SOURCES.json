@@ -1,0 +1,34 @@
+[
+  {
+    "locale": "fr-FR",
+    "name": "road",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/92/7a/77/927a7719-8c17-d6e1-df33-9b0840ab36c8/03_mac.png/1440x900bb.webp",
+    "sha256": "50ab35fffa0008d3c446414b884a39cc680a067ef7be4365b90dac4260670c64",
+    "verified": "2026-10-27",
+    "description": "Public App Store Mac screenshot; no crop, no added artwork"
+  },
+  {
+    "locale": "fr-FR",
+    "name": "ride",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/0e/f3/75/0ef3751e-417b-770e-b337-553ca3ff10f0/01_mac.png/1440x900bb.webp",
+    "sha256": "be0e9be3a8ea33af8c1d2e6e89c1ded26d1d4d6b371fba9aa43fb0f30d6eae92",
+    "verified": "2026-10-27",
+    "description": "Public App Store Mac screenshot; no crop, no added artwork"
+  },
+  {
+    "locale": "en-US",
+    "name": "road",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e4/e5/a5/e4e5a54f-263a-fba4-e72a-1ab5d7fbcff8/03_mac.png/1440x900bb.webp",
+    "sha256": "25061c7c847e1da285fb4f74340f747b24e5f833348dae7e49b8a9d6b2dcdfa1",
+    "verified": "2026-10-27",
+    "description": "Public App Store Mac screenshot; no crop, no added artwork"
+  },
+  {
+    "locale": "en-US",
+    "name": "ride",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/4a/14/c2/4a14c2ff-bdd1-d37a-a81a-6ae0712503e0/01_mac.png/1440x900bb.webp",
+    "sha256": "fdbe02e281c65283b2a9c152686ace7b395f7c0d6d27fb982a2bb8507e466e36",
+    "verified": "2026-10-27",
+    "description": "Public App Store Mac screenshot; no crop, no added artwork"
+  }
+]

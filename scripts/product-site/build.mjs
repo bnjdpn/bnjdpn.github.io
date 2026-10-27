@@ -13,7 +13,7 @@
 // Pages the Ruby generator built and this one does not render yet (guides,
 // extra locale folders) are listed in the app's `carry` patterns and copied
 // unchanged from the previous stage given with --ruby-stage.
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { basename, dirname, extname, join, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { renderHome } from './render-home.mjs';
@@ -54,6 +54,14 @@ function storeNames(repo, cfg) {
 }
 
 export async function build({ repo, out, rubyStage }) {
+  // Échappée has no marketing/site.json: its existing _pages scene is the base.
+  if (basename(repo) === 'Echappee') {
+    const base = rubyStage ?? join(repo, '_pages');
+    if (resolve(base) === resolve(out)) throw new Error('Use a separate Échappée candidate directory');
+    cpSync(base, out, { recursive: true });
+    const { overlay } = await import(pathToFileURL(join(ROOT, 'apps/echappee/site/build.mjs')).href);
+    return overlay(out);
+  }
   const cfg = JSON.parse(readFileSync(join(repo, 'marketing/site.json'), 'utf8'));
   cfg.app_name ??= cfg.app?.name;
   const app = (await import(pathToFileURL(join(ROOT, 'content/product-sites', `${basename(repo)}.mjs`)).href)).default;
