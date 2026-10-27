@@ -67,6 +67,10 @@ export async function build({ repo, out, rubyStage }) {
     const { overlay } = await import('../../apps/petits-pots/site/build.mjs');
     return overlay(out);
   }
+  // Catalogue-only app: the website lives entirely in this repository.
+  if (basename(repo) === 'PetitsBesoins') {
+    return (await import('../../apps/petits-besoins/site/build.mjs')).overlay(out);
+  }
   const cfg = JSON.parse(readFileSync(join(repo, 'marketing/site.json'), 'utf8'));
   cfg.app_name ??= cfg.app?.name;
   const app = (await import(pathToFileURL(join(ROOT, 'content/product-sites', `${basename(repo)}.mjs`)).href)).default;

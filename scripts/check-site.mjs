@@ -94,7 +94,8 @@ for(const lang of ['en','fr']){
      expect(pages.includes(`<loc>${final}</loc>`)&&!pages.includes(`<loc>${url}</loc>`),prefix+'product sitemap must use final route');
      const redirects=await readFile(resolve(root,'_redirects'),'utf8');
      expect(redirects.includes(`${url.slice(origin.length)} ${final.slice(origin.length)} 301`),prefix+'product redirect missing');
-    }else expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
+    }else if(app.path==='petits-besoins'&&leaf==='') expect(!pages.includes(`<loc>${url}</loc>`),prefix+'redirected catalogue URL in sitemap');
+    else expect(pages.includes(`<loc>${url}</loc>`),prefix+'sitemap entry missing');
     for(const alternate of ['en','fr'])expect(html.includes(`rel="alternate" hreflang="${alternate}" href="${origin}/${alternate==='fr'?'fr/':''}apps/${slug}/${leaf}"`),prefix+'alternate missing');
     const storeLinks=[...html.matchAll(/href="([^"]+)"/g)].map(match=>match[1]).filter(href=>/apps\.apple\.com|play\.google\.com\/store/.test(href));
     const publishedAndroid=leaf===''&&app.androidStoreUrl;
@@ -168,6 +169,37 @@ for(const [lang,route] of [['en','petits-pots/'],['fr','petits-pots/fr-FR/']]){
  }
  for(const img of html.matchAll(/<img\b[^>]+>/g))expect(/\bwidth="\d+"/.test(img[0])&&/\bheight="\d+"/.test(img[0])&&/\balt="[^"]*"/.test(img[0]),prefix+'image lacks dimensions/alt');
 }
+// Independent catalogue site: check the assembled public paths, not its source directory.
+const petitsRedirects=await readFile(resolve(root,'_redirects'),'utf8');
+for(const [lang,dir] of [['en',''],['fr','fr-FR/']]){
+ const route=`/petits-besoins/${dir}`, path=`${route.slice(1)}index.html`;
+ const html=await readFile(resolve(root,path),'utf8'), prefix=path+': ';
+ expect(html.includes(`<html lang="${lang}">`),prefix+'language mismatch');
+ expect((html.match(/<h1\b/g)||[]).length===1,prefix+'one H1 required');
+ expect(html.includes(`rel="canonical" href="${origin}${route}"`),prefix+'canonical mismatch');
+ expect(pages.includes(`<loc>${origin}${route}</loc>`),prefix+'sitemap entry missing');
+ expect(html.includes('id="contact"'),prefix+'contact anchor missing');
+ expect(html.includes(`href="${lang==='fr'?'/fr':''}/contact/?app=petits-besoins"`),prefix+'protected contact route missing');
+ expect(!html.includes('<form')&&!html.includes('challenges.cloudflare.com'),prefix+'contact form duplicated');
+ expect(html.includes('id6820659968')&&html.includes('details?id=com.bnjdpn.petitsbesoins'),prefix+'store identity mismatch');
+ for(const match of html.matchAll(/href="#([^"]+)"/g))expect(html.includes(`id="${match[1]}"`),prefix+'missing anchor '+match[1]);
+ const from=`${lang==='fr'?'/fr':''}/apps/petits-besoins`;
+ for(const suffix of ['','/','/index.html'])expect(petitsRedirects.includes(`${from}${suffix} ${route} 301`),prefix+'301 missing');
+ for(const match of html.matchAll(/(?:href|src)="([^"#]+)"|srcset="([^"]+)"/g)){
+  const refs=match[2]?match[2].split(',').map(s=>s.trim().split(' ')[0]):[match[1]];
+  for(const ref of refs){
+   const url=new URL(ref,origin+route);
+   if(url.origin!==origin)continue;
+   let local=url.pathname.slice(1);if(!local||local.endsWith('/'))local+='index.html';
+   try{await access(resolve(root,local));references++;}catch{failures.push(prefix+'missing public file '+local);}
+  }
+ }
+}
+const petitsCss=await readFile(resolve(root,'petits-besoins/assets/relais.css'),'utf8');
+for(const match of petitsCss.matchAll(/url\(['"]?([^)'"]+)/g)){
+ try{await access(resolve(root,'petits-besoins/assets',match[1]));references++;}catch{failures.push('Petits Besoins missing CSS asset '+match[1]);}
+}
+expect((await readFile(resolve(root,'_headers'),'utf8')).includes('/petits-besoins/assets/*\n  Cache-Control: public, max-age=14400'), 'Petits Besoins asset cache missing');
 expect(sitemap.match(/<sitemap>/g)?.length===catalog.length+1,'sitemap index count mismatch');
 for(const app of catalog)expect(sitemap.includes(`${origin}/${app.path}/sitemap.xml`),'missing product sitemap '+app.path);
 for(const url of [`${origin}/`,`${origin}/fr/`])expect(pages.includes(`<loc>${url}</loc>`),'missing page sitemap '+url);
