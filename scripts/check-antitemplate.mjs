@@ -3,6 +3,9 @@
 // Each site must render through its own page.mjs and fail if it slides back
 // to the shared look: banned fonts, banned marketing phrases, arrow/middle-dot
 // tics, or more than 30% of its CSS classes shared with the legacy templates.
+// Sites are also checked against each other: under 30% shared classes and no
+// shared @font-face family, so a new app page cannot be a recolored copy of
+// another app's page.
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -43,8 +46,11 @@ function legacyClasses(ownDir) {
   return ref;
 }
 
+const fontFamilies = css => new Set([...css.matchAll(/@font-face\s*{[^}]*font-family:\s*["']?([^"';}]+)/gi)].map(m => m[1].trim().toLowerCase()));
+
 const failures = [];
 const report = [];
+const sites = [];
 for (const app of readdirSync(join(root, 'apps')).sort()) {
   const dir = join(root, 'apps', app, 'site');
   if (!existsSync(join(dir, 'DESIGN.md'))) continue;
@@ -75,8 +81,18 @@ for (const app of readdirSync(join(root, 'apps')).sort()) {
   const share = styled.length ? shared.length / styled.length : 0;
   report.push(`${app}: ${styled.length} classes, ${shared.length} shared with legacy templates (${Math.round(share * 100)}%)${shared.length ? `: ${shared.join(', ')}` : ''}`);
   if (share >= MAX_SHARED) failures.push(`${app}: ${Math.round(share * 100)}% of classes shared with legacy templates (max ${MAX_SHARED * 100}%)`);
+  sites.push({ app, styled: new Set(styled), fonts: fontFamilies(css) });
+}
+
+for (const a of sites) for (const b of sites) {
+  if (a === b) continue;
+  const shared = [...a.styled].filter(c => b.styled.has(c));
+  const share = a.styled.size ? shared.length / a.styled.size : 0;
+  report.push(`${a.app} vs ${b.app}: ${shared.length} shared classes (${Math.round(share * 100)}%)${shared.length ? `: ${shared.join(', ')}` : ''}`);
+  if (share >= MAX_SHARED) failures.push(`${a.app}: ${Math.round(share * 100)}% of classes shared with the ${b.app} site (max ${MAX_SHARED * 100}%)`);
+  if (a.app < b.app) for (const f of a.fonts) if (b.fonts.has(f)) failures.push(`${a.app} and ${b.app} both use the font "${f}"`);
 }
 
 for (const line of report) console.log(`anti-template: ${line}`);
 if (failures.length) { for (const f of failures) console.error(`anti-template FAIL: ${f}`); process.exit(1); }
-console.log(`anti-template: ${report.length} site(s) pass`);
+console.log(`anti-template: ${sites.length} site(s) pass`);

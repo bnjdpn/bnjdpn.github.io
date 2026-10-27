@@ -1,0 +1,118 @@
+// TempoReps "program on the wall" page: only the strings this page adds.
+// Facts, mode descriptions, offer, notes, privacy and support texts come from
+// content/product-sites/TempoReps.mjs (version 2.5.0, read 2026-10-26/27).
+// Phase labels are the ones on each locale's Tempo screenshot.
+export default {
+  en: {
+    h1: "Write your session once. TempoReps counts every phase.",
+    board: { label: "On the wall today", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 blocks, 25 min", caption: "The same circuit in the MIX screen of the app." },
+    phases: ["DOWN", "HOLD", "UP", "HOLD"],
+    blocks: {
+      tabata: "Phase, time left, round. In big type.",
+      tempo: "Every rep gets a rhythm.",
+      saved: "Your timers, ready for next session.",
+      savedTag: "MY TIMERS",
+      watch: "The timer on your wrist.",
+    },
+    endTitle: "Free, with all nine modes. No account, no ads.",
+    otherApps: "Other apps by Benjamin Dupin",
+  },
+  fr: {
+    h1: "Écrivez la séance une fois. TempoReps compte chaque phase.",
+    board: { label: "Au mur aujourd'hui", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 blocs, 25 min", caption: "Le même circuit, dans l'écran MIX de l'app." },
+    phases: ["DESCENDEZ", "MAINTENEZ", "MONTEZ", "MAINTENEZ"],
+    blocks: {
+      tabata: "La phase, le temps, le tour. En grand.",
+      tempo: "Un rythme pour chaque répétition.",
+      saved: "Vos minuteurs, prêts pour la prochaine séance.",
+      savedTag: "MES MINUTEURS",
+      watch: "Le minuteur au poignet.",
+    },
+    endTitle: "Gratuit, avec les neuf modes. Sans compte ni publicité.",
+    otherApps: "Les autres apps de Benjamin Dupin",
+  },
+  de: {
+    h1: "Schreib dein Training einmal auf. TempoReps zählt jede Phase.",
+    board: { label: "Heute an der Tafel", tabata: "20/10 s × 8", emom: "10 × 1 Min.", amrap: "10 Min.", rest: "1 Min.", total: "4 Blöcke, 25 Min.", caption: "Derselbe Zirkel im MIX-Bildschirm der App." },
+    phases: ["RUNTER", "HALTEN", "HOCH", "HALTEN"],
+    blocks: {
+      tabata: "Phase, Restzeit, Runde. In großer Schrift.",
+      tempo: "Jede Wiederholung bekommt einen Rhythmus.",
+      saved: "Deine Timer, bereit fürs nächste Training.",
+      savedTag: "MEINE TIMER",
+      watch: "Der Timer am Handgelenk.",
+    },
+    endTitle: "Gratis, mit allen neun Modi. Ohne Konto, ohne Werbung.",
+    otherApps: "Weitere Apps von Benjamin Dupin",
+  },
+  es: {
+    h1: "Escribe tu sesión una vez. TempoReps cuenta cada fase.",
+    board: { label: "Hoy en la pizarra", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 bloques, 25 min", caption: "El mismo circuito en la pantalla MIX de la app." },
+    phases: ["BAJA", "MANTÉN", "SUBE", "MANTÉN"],
+    blocks: {
+      tabata: "Fase, tiempo restante y ronda, en grande.",
+      tempo: "Cada repetición con su ritmo.",
+      saved: "Tus timers, listos para la próxima sesión.",
+      savedTag: "MIS TIMERS",
+      watch: "El timer en tu muñeca.",
+    },
+    endTitle: "Gratis, con los nueve modos. Sin cuenta ni anuncios.",
+    otherApps: "Otras apps de Benjamin Dupin",
+  },
+  it: {
+    h1: "Scrivi la sessione una volta. TempoReps conta ogni fase.",
+    board: { label: "Oggi alla lavagna", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 blocchi, 25 min", caption: "Lo stesso circuito nella schermata MIX dell'app." },
+    phases: ["GIÙ", "TIENI", "SU", "TIENI"],
+    blocks: {
+      tabata: "Fase, tempo rimasto, giro. In grande.",
+      tempo: "Un ritmo per ogni ripetizione.",
+      saved: "I tuoi timer, pronti per la prossima sessione.",
+      savedTag: "I MIEI TIMER",
+      watch: "Il timer al polso.",
+    },
+    endTitle: "Gratis, con tutte e nove le modalità. Senza account né pubblicità.",
+    otherApps: "Le altre app di Benjamin Dupin",
+  },
+  ja: {
+    h1: "メニューは一度書くだけ。各フェーズはTempoRepsが数えます。",
+    board: { label: "今日のメニュー", tabata: "20/10秒 × 8", emom: "10 × 1分", amrap: "10分", rest: "1分", total: "4ブロック、合計25分", caption: "同じサーキットを、アプリのMIX画面で。" },
+    phases: ["下げる", "キープ", "上げる", "キープ"],
+    blocks: {
+      tabata: "フェーズ、残り時間、ラウンドを大きく表示。",
+      tempo: "1回ごとに、決まったリズムを。",
+      saved: "保存したタイマーで、次回もすぐに。",
+      savedTag: "マイタイマー",
+      watch: "タイマーを手首に。",
+    },
+    endTitle: "9つのモードすべて無料。アカウント不要、広告なし。",
+    otherApps: "Benjamin Dupinのほかのアプリ",
+  },
+  pl: {
+    h1: "Zapisz trening raz. TempoReps odlicza każdą fazę.",
+    board: { label: "Dziś na tablicy", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 bloki, 25 min", caption: "Ten sam obwód na ekranie MIX w aplikacji." },
+    phases: ["W DÓŁ", "TRZYMAJ", "W GÓRĘ", "TRZYMAJ"],
+    blocks: {
+      tabata: "Faza, pozostały czas, runda. Dużymi znakami.",
+      tempo: "Każde powtórzenie ma swój rytm.",
+      saved: "Twoje timery gotowe na następny trening.",
+      savedTag: "MOJE TIMERY",
+      watch: "Timer na nadgarstku.",
+    },
+    endTitle: "Za darmo, ze wszystkimi dziewięcioma trybami. Bez konta i reklam.",
+    otherApps: "Inne aplikacje Benjamina Dupina",
+  },
+  pt: {
+    h1: "Escreva o treino uma vez. O TempoReps conta cada fase.",
+    board: { label: "Hoje no quadro", tabata: "20/10 s × 8", emom: "10 × 1 min", amrap: "10 min", rest: "1 min", total: "4 blocos, 25 min", caption: "O mesmo circuito na tela MIX do app." },
+    phases: ["DESCER", "SEGURE", "SUBIR", "SEGURE"],
+    blocks: {
+      tabata: "Fase, tempo restante e rodada, em letras grandes.",
+      tempo: "Cada repetição com seu ritmo.",
+      saved: "Seus timers prontos para o próximo treino.",
+      savedTag: "MEUS TIMERS",
+      watch: "O timer no pulso.",
+    },
+    endTitle: "Grátis, com os nove modos. Sem conta e sem anúncios.",
+    otherApps: "Outros apps de Benjamin Dupin",
+  },
+};
