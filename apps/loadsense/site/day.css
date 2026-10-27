@@ -69,13 +69,13 @@ h1{font:800 clamp(2.6rem,5.6vw,4.6rem)/.95 var(--shout);letter-spacing:.003em;te
 
 /* The day */
 .stops{list-style:none;padding:0}
-.stop{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,.85fr);column-gap:clamp(24px,4vw,64px);padding:clamp(64px,9vw,128px) max(var(--side),calc((100% - var(--wrap))/2 + var(--side)))}
-.hour{align-self:start;position:sticky;top:12px;font:800 clamp(4.5rem,10.5vw,9.5rem)/.82 var(--shout);font-variant-numeric:tabular-nums;letter-spacing:-.005em;white-space:nowrap}
+.stop{display:grid;grid-template-columns:minmax(0,1fr);row-gap:22px;column-gap:clamp(24px,4vw,64px);padding:clamp(64px,9vw,128px) max(var(--side),calc((100% - var(--wrap))/2 + var(--side)))}
+.hour{align-self:start;font:800 min(7rem,24vw)/.82 var(--shout);font-variant-numeric:tabular-nums;letter-spacing:-.005em;white-space:nowrap}
 .words{align-self:start;max-width:30rem}
 .words h3{font:800 clamp(2rem,3.4vw,3.1rem)/.98 var(--shout);text-wrap:balance;margin-bottom:18px}
 .words p{max-width:34em}
 .media{align-self:start}
-.media .screen{max-width:340px}
+.media .screen{width:min(78vw,340px)}
 .said{margin-top:28px;padding-left:18px;border-left:4px solid var(--lime)}
 .said p{font-size:1.2rem;font-weight:700;line-height:1.4}
 .said.big{margin-top:0;padding-left:22px;border-left-width:6px}
@@ -84,13 +84,11 @@ h1{font:800 clamp(2.6rem,5.6vw,4.6rem)/.95 var(--shout);letter-spacing:.003em;te
 :lang(ja) .said.big p{font-family:var(--read);font-weight:700;line-height:1.35;font-size:clamp(1.5rem,2.2vw,2rem)}
 .day-name{display:block;font-size:.34em;line-height:1;letter-spacing:.04em;margin-bottom:.12em}
 .said footer{margin-top:8px;font-size:.88rem;color:var(--soft)}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:460px}
-.pair .lift{margin-top:clamp(40px,6vw,88px)}
+.pair{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
 .signals h3{font-size:.95rem;font-weight:700;color:var(--soft);margin-bottom:10px}
 .signals ul{list-style:none;padding:0;border-top:1px solid #2a4250}
 .signals li{padding:11px 0;border-bottom:1px solid #2a4250;font-size:1.02rem}
-.stop:has(.pair){grid-template-columns:minmax(0,.95fr) minmax(0,.9fr) minmax(0,1.15fr)}
-.bare .words{grid-column:2 / -1;max-width:44rem}
+.bare .words{max-width:44rem}
 .bare .words h3{font-size:clamp(2.4rem,4.6vw,4rem)}
 
 .night{background:var(--night)}
@@ -149,17 +147,23 @@ h1{font:800 clamp(2.6rem,5.6vw,4.6rem)/.95 var(--shout);letter-spacing:.003em;te
 :lang(ja) h1{font-size:clamp(2rem,4.2vw,3.4rem)}
 :lang(ja) .tomorrow h2,:lang(ja) .home-data h2,:lang(ja) .offer h2{font-size:clamp(1.9rem,3.8vw,3.2rem)}
 
+/* Desktop day: hour | words | screens. Kept out of the base rules so no
+   selector here can leak into the one-column phone layout. */
+@media (min-width:861px){
+  .stop{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,.85fr);row-gap:0}
+  .stop:has(.pair){grid-template-columns:minmax(0,.95fr) minmax(0,.9fr) minmax(0,1.15fr)}
+  .hour{position:sticky;top:12px;font-size:clamp(4.5rem,10.5vw,9.5rem)}
+  .media .screen{width:auto;max-width:340px}
+  .pair{grid-template-columns:1fr 1fr;gap:16px;max-width:460px}
+  .pair .lift{margin-top:clamp(40px,6vw,88px)}
+  .bare .words{grid-column:2 / -1}
+}
+
 @media (max-width:860px){
   .dawnline{grid-template-columns:1fr;grid-template-areas:"clock" "opening" "shot"}
   .clock{font-size:33vw}
   .opening{padding-top:20px}
   .hero-shot{margin:44px auto 0;width:min(78vw,340px)}
-  .stop{grid-template-columns:minmax(0,1fr);row-gap:22px}
-  .hour{position:static;font-size:clamp(4.2rem,22vw,7rem)}
-  .bare .words{grid-column:auto}
-  .media .screen{width:min(78vw,340px)}
-  .pair{max-width:none}
-  .media .pair .screen{width:auto}
   .home-data,.help{grid-template-columns:1fr}
   .home-data h2{grid-row:auto}
   .tiers,.support-form{grid-template-columns:1fr}
